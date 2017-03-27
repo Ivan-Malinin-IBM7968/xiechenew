@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:http://www.xieche.com.cn/common/verify/
+
+Sitemap: http://www.xieche.com.cn/sitemap.xml

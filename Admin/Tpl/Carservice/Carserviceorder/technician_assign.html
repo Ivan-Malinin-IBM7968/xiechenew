@@ -1,0 +1,94 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+
+<div class="title">分配技师</div>
+
+<!-- 列表显示区域  -->
+<div >
+<form name="detailForm" id="detailForm" action="__URL__/update" method="post">
+<table style="width:99%;line-height:50px;">
+
+<tr>
+	<th>姓名</th>
+	<th>距离</th>
+	<th>订单详情</th>
+</tr>
+    <tr>
+        <td>
+        <foreach name="technician_list" item="list" key="k">
+            <if condition="$k%5==0"></br></if>
+                <!--<input type="radio" name="technician_id" class="technician_id" value="{$list.id}">-->
+                <a href="javascript:void(0);" onclick="bind({$list.id},{$list.tid});" tid="{$list.id}">{$list.truename}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </foreach>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+<!--<tr>-->
+	<!--<td align="left">-->
+		<!--<input type="button" name="assignBtn" id="assignBtn" value="确认分配">&nbsp;&nbsp;-->
+	<!--</td>-->
+<!--</tr>-->
+
+</table>
+</form>
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+	$("#assignBtn").click(function(){
+		var technician_id = $('input[name="technician_id"]:checked').val();
+		if(technician_id == "" || technician_id == undefined){
+			alert('请选择需要分配的技师');
+			return false;
+		}
+
+		$("#detailForm").attr("action", "__URL__/technician_schedule?id={$id}&technician_id="+technician_id);
+		$("#detailForm").submit();
+		return true;
+	});
+    function bind(group_id,technician_id) {
+        if (confirm('确定分配吗？')) {
+        } else {
+            return false;
+        }
+
+        jQuery.ajax({
+            type: 'POST',
+            url: '__URL__/technician_schedule',
+            cache: false,
+            dataType: 'JSON',
+            data: 'group_id=' + group_id + '&technician_id=' + technician_id +'&id={$id}',
+            success: function (data) {
+                if (data == 1) {
+                    //alert('分配成功');
+                    location.href = '__URL__';
+                } else {
+                    return false;
+                }
+            }
+        });
+    }
+</script>

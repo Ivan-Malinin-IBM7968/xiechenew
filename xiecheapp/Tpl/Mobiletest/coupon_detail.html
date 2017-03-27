@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+	<head>
+		<meta>
+	    <title>携车网 - 优惠券详情</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/coupon_detail.css" />
+		<script src="__PUBLIC__/mobile/js/libs/require.js" data-main="__PUBLIC__/mobile/js/main"></script>
+		
+	</head>
+	<body>
+		<div id='loading-overlay'>
+	        <div class="loading" id="loading-con">
+	            <img src="__PUBLIC__/mb/images/ajax-loader.gif" alt="Loading..."/>  
+	            <div class="loading-text">努力加载中...</div>
+	        </div>
+	        
+	    </div>
+		<div id="warpper" style="background:#f1f1f1;">
+			<!-- Header Start -->
+			<header id="header" data-role="header">
+				<h1>优惠券详情</h1>
+				<span id="left-trigger">
+					<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+				</span>
+				<span id="right-trigger" >
+					<a href="tel:4006602822" class="service-call"></a>
+				</span>
+			</header>
+			<!-- Header End -->
+
+			<!-- Content Wrapper Start -->
+			<div id="content-wrapper" style="background:#f1f1f1; padding: 10px;" data-role="content" >
+				<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+				<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+					 
+			        <ul data-role="listview" data-inset="true" style="min-width:180px;">
+			            <li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+			            	<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+						</li>
+			            <li><a href="__APP__/Mobile" rel="external">预约维修保养</a></li>
+						<li><a href="__APP__/Mobile-coupon_list" rel="external">优惠券</a></li>
+						<li><a href="__APP__/Mobile-my_account" rel="external">我的账户</a></li>
+			        </ul>
+				</div>
+				<!-- Coupon Image Start -->
+				<div class="ui-grid-solo" style="background: #ffffff; ">
+					<img src="{$coupon.coupon_pic}" alt="" style="width: 100%">	
+				</div>
+				<!-- Coupon Image End -->
+
+				<!-- Coupon Name&Price Start -->
+				<div class="ui-grid-a" style="background: #ffffff; padding: 10px;">
+					<div class="ui-block-a coupon-name" style="width: 70%;">
+						<h2>{$coupon.coupon_name}</h2>
+					</div>
+					<div class="ui-block-b coupon-price"  style="width: 30%; padding-left: 10px;">
+						<strong>¥{$coupon.coupon_amount}</strong>
+						<em>¥{$coupon.cost_price}</em>	
+					</div>
+				</div>
+				<!-- Coupon Name&Price End -->
+
+				<!-- Coupon Type Start -->
+				<div class="ui-grid-solo coupon-type" style="background: #ffffff; padding: 0px 10px;">
+					<if condition="$coupon.coupon_type eq 1">
+					<span class="coupon-type xj">现金券</span>
+					<else/>
+					<span class="coupon-type tc">套餐券</span>
+					</if>
+				</div>
+				<!-- Coupon Type End -->
+
+				<!-- Coupon Info Block Start -->
+				<div class="ui-grid-a" style="background: #ffffff; padding: 10px;">
+					<div class="ui-block-a coupon-info" >
+						<ul>
+							<li>{$coupon.pay_count}人已经购买</li>
+							<li>{$coupon.end_time|date="Y-m-d",###}到期</li>
+						</ul>
+					</div>
+					<div class="ui-block-b coupon-buy-btn">
+						<a href="__APP__/Mobile-coupon_order-coupon_id-{$coupon.id}" rel="external">购买</a>
+					</div>
+				</div>
+				<!-- Coupon Info Block End -->
+
+				<!-- Map Start -->
+				<div class="ui-grid-solo coupon-map" style="background: #ffffff; padding: 10px;border-top: 2px solid #f1f1f1;">
+					<h4 style="margin: 0px;">店铺名称:&nbsp;{$shop_name}</h4>
+					<h5 >店铺地址:&nbsp;{$shop_address}</h5>
+				</div>
+				<!-- Map End -->
+
+				<!-- Coupon Detail Content Start -->
+				<div class="ui-grid-solo coupon-content" style="background: #ffffff; padding: 10px;border-top: 2px solid #f1f1f1;">
+					{$coupon.coupon_des}
+				</div>
+				<!-- Coupon Detail Contents End -->
+
+			</div>
+
+		</div>
+		<include file="Public:wapfoot" />
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+	</body>
+</html>

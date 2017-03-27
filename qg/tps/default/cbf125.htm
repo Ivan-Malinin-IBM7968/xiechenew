@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>力帆-摩托迷-活动</title></head>
+<script type="text/javascript" src="http://www.motorfans.com.cn/js/jquery-1.3.2.min.js"></script>
+<style>
+form{padding: 0px;margin: 0px;}
+body,table,td,tr{size: 14px;}
+.rightnav {
+position:fixed;
+right:0;
+bottom:0;
+border: 1px solid #d7d7d7;
+width: 300px;
+height: 250px;
+background-color: #ffffff;
+text-align: center;
+}
+ .cssrain{
+        background:#BBB;
+        border:2px double #000000;
+        height:200px;
+        width:200px;
+        padding:10px; /*加了padding 也无影响.*/
+ }
+</style>
+
+<body>
+<div style="display: none;">
+<iframe id="bound_frame" name="bound_frame" src="about:blank" width=99% height=99% border=0 frameborder=0></iframe>
+</div>
+
+<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr><td><img src=http://auction.motorfans.com.cn/lifan/1.jpg border=0>
+</td></tr>
+  <tr>
+    <td height="1000" align="center" valign="top" style="background: url(2.jpg);background-repeat: repeat-y;">
+        <table width="1000" border="0" cellspacing="0" cellpadding="10">
+      <tr>
+        <td align="center" valign="middle">
+您打开本页面时服务器时间是：<u><b>{$server_time}</b></u><br><br>
+2次抢楼间隔时间为15秒，请大家注意!<Br>
+<table width="80%" border="0" cellspacing="0" cellpadding="10" align=center><Tr><td align=left>
+<hr>
+抢购规则：<Br>
+首先在指定的时间段内比如周2周五晚上21-23点，大家一起抢楼层，每人限制15秒间隔。  抢多少楼层并不限制。<br>
+凡用户资料信息没有填写正确手机和联系地址的，都做放弃处理。<br>
+不能用一个身份证和手机号码注册多个id 。<br><br>
+由于时差关系，美国股市收盘价格，会在我们踩楼活动结束以后的第2天凌晨才出来结果。<br>
+理论上想作弊都很难！！！ 除非谁能操控美国股市指数，来作弊抢购力帆V250，<br>
+
+以活动结束后的第一个道琼斯收盘指数（  http://finance.sina.com.cn/stock/usstock/US100_DJI.shtml）<br>
+× 以活动结束后的第一个纳斯达克收盘指数（  http://finance.sina.com.cn/stock/usstock/US100_IXIC.shtml）<br>
+× 10000 = 12位数。（指数以证交所公布数字为准）<br>
+<br>
+注：例如踩楼层抢购活动是北京时间 2011年1月31日21:00-22:00活动结束，<br>
+北京时间2月1日早上， 美国股市收盘，道琼斯和纳斯达克指数公布结果。<br>
+<br>
+如果1/31未开盘，则等到下一个交易日的收盘指数作为参考。<br>
+<br>
+将此12位数的数字倒序排列后（如首位是0，则直接抹去），<br>
+再除以参加本次活动的楼层数，就是最后一个（最大一个）楼层的数字，<br>
+得到的余数加1即为本次活动的最终获奖号码。<br>
+若您的“楼层号”与最终获奖号码完全一致，就可以获得本次活动的“特价力帆V250”啦！<br>
+<br>
+例如：<br>
+
+把规则的举例换成第一轮的实例计算<br>
+2010年1月20日美国道琼斯指数为：11822.80 ,纳斯达克指数2704.29 ;<br>
+20日活动参与楼层总数212095楼.故获奖者推算方法为：<br>
+11822.80*2704.29=319722798120,倒过来就是021897227913;<br>
+0直接抹去,拿21897227913除以212095,商是103242,余数是115923;<br>
+115923+1=115924,因此<br>
+中奖号码就是115924（楼层数）<br>
+如果中奖人资料有问题，或者联系不上，就再加1，为115925，以此类推！<br>
+<hr>
+
+                <p><br />
+                <font color=red><B><!--if:qg_start-->
+                <!--else:qg_start-->
+					当前时间不可以抢楼。抢楼时间请密切关注活动介绍。
+                <!--/if:qg_start-->
+					<br>
+                                最近的一次抢购时间为{$next_s_time} ~ {$next_e_time}</B></font>
+                </p>
+
+        <!--if:is_login-->
+        <SCRIPT LANGUAGE="JavaScript">
+        <!--
+                function check_profile(theform){
+                        if(theform.truename.value.length<2){
+                                alert("请输入真实姓名");
+                                return false;
+                        }
+                        if(theform.tel.value.length<6){
+                                alert("请输入联系电话");
+                                return false;
+                        }
+                        if(theform.idcard.value.length<15){
+                                alert("请输入身份证号码");
+                                return false;
+                        }
+                        if(theform.address.value.length<6){
+                                alert("请输入收货地址");
+                                return false;
+                        }
+                        if(theform.zipcode.value.length<6){
+                                alert("请输入邮政编码");
+                                return false;
+                        }
+                        if(theform.prov.value.length<1){
+                                alert("请选择省份");
+                                return false;
+                        }
+                        if(theform.city.value<0){
+                                alert("请选择城市");
+                                return false;
+                        }
+                        return true;
+                }
+        //-->
+        </SCRIPT>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                        <FORM name=userinfo METHOD=POST ACTION="index.php?action=save" target="bound_frame" onSubmit="return check_profile(this);">
+                          <tr>
+                                <td>&nbsp;</td>
+                                <td>你好，{$sess.user_name}，请核对/补充您的个人资料</td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>真实姓名:</td>
+                                <td align=left><label>
+                                  <input type="text" name="truename" id="truename" VALUE="{$user.truename}"/>
+                                </label></td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>联系电话：</td>
+                                <td align=left><input type="text" name="tel" id="tel" VALUE="{$user.tel}"/></td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>身 份 证：</td>
+                                <td align=left><input name="idcard" type="text" id="idcard" size="32" maxlength="32" VALUE="{$user.idcard}"/></td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>收货地址：</td>
+                                <td align=left>
+<script src="selectcity.js" type="text/javascript"></script>省 份:<SELECT onchange="selectcity('');" size="1" name="prov" require="true" datatype="require"></SELECT> 城 市:<SELECT size="1" name="city" onClick=""></SELECT>
+<SCRIPT language=javascript>
+ProvinceOptionMenu('{$user.prov}');
+selectcity('{$user.city}');
+</SCRIPT>                                  <br><textarea name="address" id="address" cols="60" rows="2">{$user.address}</textarea>
+                                </td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>邮编：</td>
+                                <td align=left><input type="text" name="zipcode" id="zipcode" VALUE="{$user.zipcode}"/></td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>其他：</td>
+                                <td align=left><INPUT TYPE="checkbox" NAME="acceptad" VALUE="1"{$user.acceptad}>接受力帆的促销信息资料</td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                                <td>&nbsp;</td>
+                                <td align=left><input type="submit" name="button2" id="button2" value=" 保存资料 " /></td>
+                                <td>&nbsp;</td>
+                          </tr>
+                          </form>
+                        </table>
+
+
+</td></tr></table>
+
+        <!--if:have_profile-->
+        <font color=blue size=3>您的资料已经补充完毕，可以参加抢购，请确保资料的正确性和实时性。<br>抢购期间请保证您的IP固定（不要重新拨号），IP变化后需要重新登录。</font><br><br><hr>
+
+                <!--if:qg_start-->
+<script type="text/javascript">
+<!--
+function sdisable(){
+        $("#sbt").attr("disabled","disabled");
+}
+function fleshVerify(){ 
+	//重载验证码
+	var timenow = new Date().getTime();
+	$('#verifyImg').attr("src",'/index.php/common/verify/'+timenow);
+}
+//-->
+</script>
+<font color=red size=5><b>抢购已经开始！请输入验证码抢楼！</b></font><br>
+                <FORM name='form1' METHOD=POST ACTION="index.php?action=update" target="bound_frame" onSubmit="sdisable();">
+					
+					<img style="float: left;padding-left: 354px;" id="verifyImg" SRC="/index.php/common/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle">
+					<br>
+					<INPUT TYPE="text" NAME="vcode{$ipvcode}" maxlength=4 style="width: 100px;font-family: bold;"><font size=2>输入上图4个数字作为验证码</font><br><br>
+					<INPUT id='sbt' TYPE="submit" VALUE=" 我要抢楼！ " style="height: 48px;font-size: 32px;font-family: bold;">
+                </FORM>
+
+<script type="text/javascript">
+<!--
+$("#sbt").attr("disabled","");
+//-->
+</script>
+                <!--else:qg_start-->
+						当前时间不可以抢购！请注意查看规则！
+                <!--/if:qg_start-->
+
+        <!--else:have_profile-->
+        <font color=red size=5><br>您的资料尚不完整，无法参与抢楼，请赶快补充您的资料。</font>
+
+        <!--/if:have_profile-->
+
+
+<hr>
+{$sess.user_name}，您抢到的楼层是：<br>
+{$my_list}
+
+
+        <!--else:is_login-->
+
+                <FORM name='form_login' METHOD=POST ACTION="index.php?action=login" target="bound_frame">
+                                <table align=center width=550>
+                                <tr>
+                                        <td colspan=2>抢购期间请保证您的IP固定（不要重新拨号），IP变化后需要重新登录。</td>
+                                </tr>
+                                <tr>
+                                        <td>用户名：</td>
+                                        <td><input type="text" name="username" style="height: 32px;font-size: 22px;width: 240px;"></td>
+                                </tr>
+                                <tr>
+                                        <td>密　码：</td>
+                                        <td><input type="password" name="password" style="height: 32px;font-size: 22px;width: 240px;"></td>
+                                </tr>
+                                <tr>
+                                        <td></td>
+                                        <td><INPUT id='login' TYPE="submit" VALUE=" 请登录 " style="height: 32px;font-size: 22px;font-family: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<a href=http://www.xieche.net/index.php/member/add/ target=_blank>注册</a></td>
+                                </tr>
+                                </table>
+
+                </FORM>
+
+
+        <!--/if:is_login-->
+
+
+<hr>
+这里是参加活动的列表：<br>
+{$now_list}
+
+{$Paginationpage}
+
+
+
+
+
+                </td>
+      </tr>
+    </table></td>
+  </tr>
+
+
+
+
+
+</table>
+
+<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+<TR>
+        <TD align=center>
+        Copyright 2005—2011 motorfans.com.cn All rights reserved. 中国摩托迷网 版权所有 <br>
+在法律允许范围内，中国摩托迷网保留对活动条款进行即时更改的最终解释权
+您所浏览的页面为力帆在摩托迷平台刊登之广告 所述产品非摩托迷出品<br>
+        </TD>
+</TR>
+</TABLE>
+<a name=bottom></a>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? " https://ssl." : " http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5434455-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<layout name='layout_note' />   
+<div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 费用明细</div>
+        <div class="userjzbar15"></div>
+		<div class="Consumebox">
+			<!-- <p class="ht01">
+			<a href="__APP__/membercar/delete/u_c_id/{$get_u_c_id}" class="Delbut right"></a>
+			<a href="__APP__/membercar/read/u_c_id/{$get_u_c_id}" class="editbut right"></a>
+			<a href="__APP__/note/" class="Notebut"></a>
+			</p> -->
+			<div>
+				<div><font ><b>选择要显示费用明细的车辆</b></font></div>
+				<div class="mycar_list">
+				<volist name="list_all_car" id="carlist" >
+					<a <if condition="$carlist.u_c_id eq $get_u_c_id">class="current" </if> href="__APP__/detail/listdetail/u_c_id/{$carlist.u_c_id}"><span>{$carlist.car_name}</span></a>
+				</volist>
+					</div>
+			</div>
+			<div class="clear"></div>
+			<div class="Consumelistbg1"></div>
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+			  <tr>
+				<td class="w2"><span class="left">{$get_car_name}</span>
+			
+				  <!-- <select name="select" class="right">
+                    <option value="1">-----选择全部时段-----</option>
+                  </select> --></td>
+			  </tr>
+			</table>
+<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody">
+  <tr>
+	<td class="w2">
+	<ul class="nr">
+		<li>平均油耗:<strong>{$note_total.avg_oil}</strong>升/百公里 </li>
+		<li>月均费用:<strong>{$note_total.avg_month_cost}</strong>元 </li>
+		<li>百公里费用:<strong>{$note_total.total_cost_100}</strong>元 </li>
+		<li>百公里油费:<strong>{$note_total.oil_cost_100}</strong>元 </li>
+		<li>总费用:<strong>{$note_total.total_cost}</strong>元 </li>
+		<li>行驶里程:<strong>{$note_total.total_tripmile}</strong>公里 </li>
+		<li>总计油量:<strong>{$note_total.total_quantity}</strong>升</li>
+		<li>平均油价:<strong>{$note_total.avg_unit_price}</strong>元</li>
+		<div class="clear"></div>
+	</ul>
+	<div class="clear"></div>
+	</td>
+  </tr>
+  <tr>
+	<td class="w2 none">
+			<script src="__PUBLIC__/highcharts/js/highcharts.js?v={$Think.config.VERSION_DATE}" type="text/javascript" language="javascript"></script>
+			<div class="layerDown" id="FeeConstructChartTwo">
+			<script src="__PUBLIC__/highcharts/js/modules/exporting.js?v={$Think.config.VERSION_DATE}" type="text/javascript" language="javascript"></script>
+			<script type="text/javascript">
+			var chart;
+			jQuery(document).ready(function() {
+				chart = new Highcharts.Chart({
+					chart: {
+						renderTo: 'all_total',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false
+					},
+					title: {
+						text: '费用统计'
+					},
+					credits:{
+						enabled:!0,
+						text:"纵横携车网",
+						href:"http://www.xieche.net",
+						position:{
+							align:"right",
+							x:-10,
+							verticalAlign:"bottom",
+							y:-5
+						},
+						style:{
+							cursor:"pointer",
+							color:"#909090",
+							fontSize:"10px"
+							}
+						},
+					tooltip: {
+						formatter: function() {
+							return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								connectorColor: '#000000',
+								formatter: function() {
+									return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+								}
+							}
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share',
+						data: [
+							{$list_everynote_cost}
+						]
+					}]
+				})
+			})
+			</script>
+			<div id="all_total" style="width: 448px; height: 266px; margin: 0 auto"></div>
+		</div>
+		<input type="hidden" value="&lt;graph rotateYAxisName='0' baseFont='宋体' baseFontSize='12' palette='10'  caption='' xAxisName='' yAxisName='' showValues='1' decimals='0' formatNumberScale='0' useRoundEdges='1'&gt;&lt;/graph&gt;" id="TXT_XMLFeeConstructDataTwo">
+		</td>
+	</tr>
+</table>
+			    <script type="text/javascript" language="javascript" src="__PUBLIC__/Js/jquery-fn-tab.js?v={$Think.config.VERSION_DATE}"></script>
+<div id="ex02" class="tabContainer">
+	<div class="dt">
+		<ul class="tag01 tabTitle">
+			<volist name='Think.config.NOTE_TYPE_NAME' id="type" key="title_key">
+					<li><!--<a href="__APP__/detail/listnoterows/u_c_id/{$get_u_c_id}/note_type/{$title_key}">{$type}</a>-->{$type}</li>
+			</volist>
+			</ul>
+	</div>
+			<div class="clear"></div>
+			<style>
+			 .tabBox .ContactTxt{
+				display:none;
+			}
+			</style>
+			<div class="tabBox">
+			<volist name='Think.config.NOTE_TYPE_NAME' id="type" >
+				{:W('Notelist',array('note_type'=>$key,'note_key'=>$key,'name'=>$type,'u_c_id'=>$get_u_c_id))}
+			</volist>	
+			  </div>
+            
+		</div>
+	</div>
+
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+<script>
+	$("#ex02").tabs(".tabTitle", ".tabBox", { currentTab: 0, isAutoPlay: false, switchingMode: 'c' });
+</script>

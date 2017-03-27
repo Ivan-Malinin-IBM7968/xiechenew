@@ -1,0 +1,34 @@
+.pay {margin-left: 70px;}
+.pay-1{padding-top:36px;padding-bottom:40px;}
+.pay-1-1{padding-bottom:10px;font-size:16px}
+.pay_ul{background-color:#eaeeed;height:60px;line-height:60px;padding-left:30px;padding-top:5px}
+.pay_li{float:left;width:120px;cursor:pointer;text-align:center}
+.bank_li,.platform_li{float:left;width:180px;padding:10px 20px;margin-right:10px;}
+.pay_cur{border:1px solid #f05525}
+.cur{background-color:#ffffff}
+.gopay{background-color:#f05525;color:#ffffff;display:block;width:180px;height:50px;line-height:50px;text-align:center;border:none}
+.bank,.payc{margin:30px 0px;padding-left:30px}
+.pay_bg{background:url(../images/pay/bank.png) scroll no-repeat;height:30px;line-height:30px}
+.bank_li1{background-position:20px -839px}
+.bank_li2{background-position:20px -896px}
+.bank_li3{background-position:20px -196px}
+.bank_li4{background-position:20px -589px}
+.bank_li5{background-position:20px -391px}
+.bank_li6{background-position:20px -615px}
+.bank_li7{background-position:20px -924px}
+.bank_li8{background-position:20px -225px}
+.bank_li9{background-position:20px -812px}
+.bank_li10{background-position:20px -953px}
+.bank_li11{background-position:20px -504px}
+.bank_li12{background-position:20px -448px}
+.bank_li13{background-position:20px -250px}
+.bank_li14{background-position:20px -729px}
+.bank_li15{background-position:20px -644px}
+.bank ul,.payc ul{margin-bottom:20px}
+.pay_1{background-position:20px -30px}
+.pay_2{background-position:20px -2px}
+.gopay:hover,.gopay:focus{color:#ffffff}
+.pay_3{padding-left:30px}
+
+
+

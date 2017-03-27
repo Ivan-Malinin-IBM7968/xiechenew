@@ -1,0 +1,72 @@
+<layout name='layout_myhome' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script src="__PUBLIC__/Js/area/area.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+})
+</script>
+<div id="wddd-right">个人信息修改</div>
+<div id="wddd-right2" style="border: 0px solid #CCCCCC;"><br/>
+<div class="yuyuebox uc-inner">
+				
+				<form action="/index.php/member/update_user" method="post">
+					<table width="60%" border="0" align="center" cellpadding="1" cellspacing="15"  style="margin-left:160px;">
+					  <tr>
+						<td  height="30" align="left" valign="middle" >原始密码:&nbsp;  
+							<input name="oldpassword" type="password" id="oldpassword" value="" class="inp01" />
+							<font size="1" color="grey" style="font-size:12px;">修改密码时需要输入</font>
+						</td>
+						</tr>
+						<td  align="left" valign="middle" > 密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;
+							<input name="password" type="password" id="password" class="inp01" /><font size="1" color="grey" style="font-size:12px;">&nbsp;修改密码时需要输入</font>
+						</td>
+						</tr>
+						<tr>
+							<td align="left" valign="middle" > 确认密码：<input name="repassword" type="password" id="repassword" class="inp01" /><font size="1" color="grey" style="font-size:12px;">&nbsp;修改密码时需要输入</font> </td>
+							
+						</tr>
+						<tr>
+							<td align="left" valign="middle" > 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" name="email" id="email" class="inp01" value="{$member.email}"/><font color=red><b></b></font><span id="check_email" class="check_register"></td>
+							
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="left" valign="middle" >手机号码：<input type="text" name="mobile" id="mobile" class="inp01" value="{$member.mobile}"/><font color=red><b></b></font><span id="check_mobile" class="check_register"></td>
+							
+						</tr>
+						<tr>
+							<td align="left" valign="middle" >选择城市：
+								<select location="loc" label="省" name="prov"></select>
+								<select location="loc" label="市" name="city"></select>
+								<select location="loc" label="区" name="area"></select>
+								<input type="hidden" id="hid_prov" value={$member[prov]}>
+								<input type="hidden" id="hid_city" value={$member[city]}>
+								<input type="hidden" id="hid_area" value={$member[area]}>
+							</td>
+						</tr>
+						<tr>
+							<td valign="middle" style="padding-left: 160px;">
+								<input type="submit"  value="提交" />
+							</td>
+						
+						</tr>
+					</table>
+
+
+				<input type="hidden" name="__hash__" value="b4de5171da6c3d22f8d89ebb530d1a4f_61be394b088424caa3254ad79eb326cf" /></form>
+				<input type="hidden" id="old_email" name="old_email" value="z@sina.com.cn" />
+				<input type="hidden" id="old_mobile" name="old_mobile" value="13800131000" />
+				
+				<div class="form-footer">
+				</div><br>
+				
+			</div>
+</div>

@@ -1,0 +1,135 @@
+<layout name='layout_maintenance' />
+ <link type="text/css" href="__PUBLIC__/css/groupbuy_detail.css" rel="stylesheet">
+    <div class="snav" id="snav">
+     	<ul>
+	       <li><a href="/carservice">府上养车</a></li>
+	       <li><a href="/shopservice/index">4S店预约保养</a></li>
+	       <li><a href="/coupon" class="current" style="background-color:#fbfaf8;">团购保养</a></li>
+	    </ul>
+	    <span>
+	    	<b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+	    </span>
+    </div>
+    
+	<div class="groupd">
+		
+		<div class="w1183 groupd-1">
+			<p class="groupd-1-1"><a href="/">首页</a> > <a href="/coupon">团购保养</a> > {$coupon.coupon_name}</p>
+			<div class="row">
+				<div class="col-md-6">
+					<img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$coupon.coupon_logo}" width="100%"/>
+				</div>
+				<div class="col-md-6 groupd-2">
+					<h3 class="groupd-title">{$coupon.coupon_name}</h3>
+					<p class="font-18"><font class="groupd-3">￥{$coupon.coupon_amount}</font> / <font style="text-decoration:line-through;">{$coupon.cost_price}</font></p>
+					<div class="font-18 clearfix">
+						<div style="padding-bottom:10px">适用车型：</div>
+						<div>{$Direction}</div>
+					</div>
+					
+					<h3 class="groupd-shopname">{$shopinfo.shop_address}<a href="{:U('/shopservice/detail',array('shop_id'=>$shopinfo['id']))}{:C('HTML_URL_SUFFIX')}" class="groupd-4">查看店铺</a></h3>
+					<div class="groupd-5 clearfix">
+						<img class="fl" height="22" src="__PUBLIC__/images/car4s/10.png">
+						<span>10分</span>
+						<a href="{:U('/shopservice/detail',array('shop_id'=>$shopinfo['id']))}#comment" class="groupd-4">{$shopinfo.comment_number}人评价</a>
+					</div>
+					<h3 class="groupd-phone">{$phone}</h3>
+					<div class="groupd-6 clearfix">
+						<img class="fl" alt="" src="__PUBLIC__/images/groupbuy_detail/1.gif">
+						<div class="fl">支持"15天退款"</div>
+						<img class="fl groupd-6-1" alt="" src="__PUBLIC__/images/groupbuy_detail/2.gif">
+						<div class="fl">支持"过期退款"</div>
+					</div>
+					<div class="groupd-buy clearfix">
+						<div class="groupd-7 text-center fl"><a href="{:U('/coupon/order',array('id'=>$coupon['id'])) }">立即抢购</a></div>
+						<div class="groupd-7-1 fl"><font class="groupd-7-2">2人</font>限购，数量有限，下单要快哟</div>
+					</div>
+				</div>
+			</div>
+		<notempty name="other_coupon">
+			<div class="oneyh">
+        <h4>该商户其他团购</h4>
+        <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+          <tr style="border-bottom:1px solid #e3e3e3; font-size:18px; height:50px;">
+            <td>现价</td>
+            <td align="center">原价</td>
+            <td align="center">名称</td>
+            <td align="center">已购数量</td>
+            <td align="center" width="15%">操作</td>
+          </tr>
+		 <volist name="other_coupon" id="other_c" mod="2">
+          <tr height="40">
+            <td><span>￥</span><span>{$other_c.coupon_amount}</span></td>
+            <td align="center" align="center"><span>￥</span><span>{$other_c.cost_price}</span></td>
+            <td align="center"><a href="#">{$other_c.coupon_name}</a></td>
+            <td align="center">{$other_c.pay_count}人已购买</td>
+            <td align="center"><a href="__APP__/coupon/detail/id/{$other_c.id}.html" class="showyh">查看</a></td>
+          </tr>
+          </volist>
+        </table>
+      </div>
+      </notempty>
+			<h4 class="groupd-8">关于本团购</h4>
+			<div class="groupd-9">
+				<h5>团购详情</h5>
+				{$coupon.coupon_des}
+			</div>
+			
+			<!-- <div class="groupd-11">
+				<h5>产品展示</h5>
+				<div class="groupd-12 clearfix">
+					<div class="fl">
+						<img alt="" src="__PUBLIC__/images/groupbuy_detail/2.jpg">
+						<p>原厂机油</p>
+					</div>
+					<div class="fl">
+						<img alt="" src="__PUBLIC__/images/groupbuy_detail/3.jpg">
+						<p>原厂机滤</p>
+					</div>
+				</div>
+				<h5>4S店环境</h5>
+				<div class="groupd-12 clearfix">
+					<div class="fl">
+						<img alt="" src="__PUBLIC__/images/groupbuy_detail/4.jpg">
+						<p>4S店外景</p>
+					</div>
+					<div class="fl">
+						<img alt="" src="__PUBLIC__/images/groupbuy_detail/5.jpg">
+						<p>客户接待区</p>
+					</div>
+				</div>
+				<div class="groupd-12 clearfix">
+					<div class="fl">
+						<img alt="" src="__PUBLIC__/images/groupbuy_detail/6.jpg">
+						<p>客户休息区</p>
+					</div>
+					<div class="fl">
+						<img alt="" src="__PUBLIC__/images/groupbuy_detail/7.jpg">
+						<p>维修工位</p>
+					</div>
+				</div>
+			</div>
+			 -->
+			<div class="groupd-13 row">
+				<div class="col-md-4 text-center">
+					<img alt="" src="__PUBLIC__/images/groupbuy_detail/wx1.jpg">
+					<h5>1.扫描二维码，关注携车网</h5>
+				</div>
+				<div class="col-md-4 text-center">
+					<img alt="" src="__PUBLIC__/images/groupbuy_detail/wx2.jpg">
+					<h5>2.绑定微信</h5>
+				</div>
+				<div class="col-md-4 text-center">
+					<img alt="" src="__PUBLIC__/images/groupbuy_detail/wx3.jpg">
+					<h5>3.查看动态</h5>
+				</div>
+			</div>
+			<div class="fr groupd-14">
+				<div class="groupd-buy clearfix">
+					<div class="groupd-7 text-center fl"><a href="{:U('/coupon/order',array('id'=>$coupon['id'])) }">立即抢购</a></div>
+					<div class="groupd-7-1 fl"><font class="groupd-7-2">2人</font>限购，数量有限，下单要快哟</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>

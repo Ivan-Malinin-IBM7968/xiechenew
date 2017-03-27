@@ -1,0 +1,44 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title">编辑分组 [ <A HREF="__URL__">返回列表</A> ]</div>
+        <FORM METHOD=POST id="form1" >
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight" >名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="medium bLeftRequire"  check='^\S+$' warning="不能为空,且不能含有空格" NAME="name" value="{$vo.name}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">说明：</TD>
+                    <TD class="tLeft"><input TYPE="text" class="medium bLeftRequire"  NAME="title" value="{$vo.title}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight">显示：</TD>
+                    <TD class="tLeft"><SELECT class="small bLeft"  NAME="show">
+                            <option <eq name="vo.status" value="1" >selected</eq> value="1">是</option>
+                            <option <eq name="vo.status" value="0" >selected</eq> value="0">否</option>
+                        </SELECT></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight">状态：</TD>
+                    <TD class="tLeft">
+                        <SELECT class="small bLeft"  NAME="status">
+                            <option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+                            <option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+                        </SELECT>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <input TYPE="hidden" name="id" value="{$vo.id}">
+                        <input TYPE="hidden" name="ajax" value="1">
+                        <div class="impBtn fLeft"><input TYPE="button" value="保存" onclick="sendForm('form1','__URL__/update/','tips')" class="save imgButton"></div>
+                        <div class="impBtn fRig"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

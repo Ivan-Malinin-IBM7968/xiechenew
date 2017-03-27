@@ -1,0 +1,117 @@
+<layout name='layout_note' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	});
+	$(".listdetail").click(function(){
+		popup2();
+		 var shopid=$(this).attr('shopid');
+		 var product_str=$(this).attr('product_str');
+		 var workhours_sale=$(this).attr('workhours_sale');
+		 var product_sale=$(this).attr('product_sale');
+		  var select_services=$(this).attr('select_services');
+		 var select_model_id=$(this).attr('select_model_id');
+		 var timesale_id=$(this).attr('timesale_id');
+		 $.ajax({
+			type: "POST",
+			url: "__APP__/order/ajax_get_product_info",
+			cache: false,
+			dataType:"text",
+			data:"shop_id="+shopid+"&select_model_id="+select_model_id+"&select_services="+select_services+"&product_sale="+product_sale+"&workhours_sale="+workhours_sale+"&timesale_id="+timesale_id+"&product_str="+product_str,			
+			success: function(data){
+				if (data){
+					var param = data;					
+					$("#product_content").append(param);
+					
+				}
+			}
+		});
+
+	});
+});
+	function popup2(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>明细</em><a close="1"  class="flbc">关闭</a></h3><div id="product_content"></div>',
+			drag:true,//不可拖动
+			cover:true//设置笼罩
+		});
+	}
+
+
+</script>
+
+<div class="usercontent">
+        <div class="guidenav" > <a href="#" class="Crumbs" >首页</a> > 油耗明细</div>
+        <div class="userjzbar13"></div>
+		<div class="yuyuebox">
+			<p class="ht01">
+			</p>
+			<div class="clear"></div>
+			<div class="yuyuelistbg1"></div>
+			<table border="0" cellspacing="0" cellpadding="0" class="yuyuelisttitle">
+			  <tr>
+				<td class="w2"><span class="left">我的订单：<span class="f12 f6">共 <span class="fr2">{$count}</span> 个订单</span></span>
+			
+				 </td>
+			  </tr>
+			</table>
+
+			<ul class="tag01">
+			<li><a href="__URL__/orderlist">全部</a></li>
+			<volist name="Think.config.ORDER_MENU_TYPE" id="vo_os">
+				<li>{$vo_os}</li>
+			</volist>
+
+				<div class="clear"></div>
+			</ul>
+			<div class="clear"></div>
+		  <table border="0" cellspacing="0" cellpadding="0" class="yuyuelistbody none">
+			  <tr>
+                <th>订单号 </th>
+                <th>预约时间</th>
+                <th>订单状态</th>
+				<th>投诉状态</th>
+				<th>操作</th>
+                <th>详细</th>
+              </tr>
+			  <volist name="list" id="vo">
+              <tr>
+                <td><strong>{$vo.id}</strong></td>
+                <td class="f11">{$vo.order_time|date="y-m-d H:s",###}</td>
+				
+				<td class="fgre">
+				<volist name="Think.config.ORDER_STATE" id="vo_os">
+				<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+				</volist>
+				</td>
+				<td class="f11">
+				<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+				<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+				</volist>
+				</td>
+				<td><eq name="vo.order_state" value="0"><a href="__URL__/editstate/order_id/{$vo.id}/order_state/-1">取消预约</a></eq>&nbsp;&nbsp;
+				<if condition="($vo.complain_state == 0) AND ($vo.order_state == 2)">
+				<a href="__URL__/editstate/order_id/{$vo.id}/complain_state/1">投诉</a>
+				</if>
+				<if condition="($vo.complain_state == 1) AND ($vo.order_state == 2)">
+				<a href="__URL__/editstate/order_id/{$vo.id}/complain_state/2">取消投诉</a>
+				</if>
+				</td>
+                <!-- <td><a href="javascript:void(0);" class="ckanbut listdetail" timesale_id="{$vo.timesale_id}" product_sale="{$vo.list_timesale.product_sale}" workhours_sale="{$vo.list_timesale.workhours_sale}" product_str="{$vo.product_str}" select_services="{$vo.select_services}" select_model_id="{$vo.model_id}" shopid="{$vo.shop_id}" ></a></td> -->
+                <td><a href="__URL__/show_order_detail/orderid/{$vo.id}" class="ckanbut listdetail"></a> <if condition="($vo.order_state eq 2) and ($vo.iscomment eq 0)" ><a href="###" class="comment" id="comment" orderid="{$vo.id}" shopid="{$vo.shop_id}"></a></if> <if condition="$vo.iscomment eq 1" ><a href="###" class="showcomment" id="showcomment" orderid="{$vo.id}" shopid="{$vo.shop_id}"></a></if></td>
+              </tr>
+			</volist>
+            </table>
+		</div>
+		
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,290 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/order.css" rel="stylesheet">
+<script src="__PUBLIC__/jquery/jquery.md5.js"></script>
+    <div class="ordernav">
+      <div class="onavtip">&nbsp;</div>
+    </div>
+    
+    <div class="w709">
+
+      <div class='stepcon <if condition="$step eq 1">step1<elseif condition="$step eq 2"/>step2<elseif condition="$step eq 3"/>step3<elseif condition="$step eq 4"/>step3</if>'>
+        <ul>
+          <li <if condition="$step eq 1">class="current"</if>>1.确认帐号</li>
+          <li <if condition="$step eq 2">class="current"</if>>2.安全验证</li>
+          <li <if condition="($step eq 3) OR ($step eq 4)">class="current"</if>>3.重置密码 </li>
+        </ul>
+      </div>
+      <if condition="$step eq 1">
+      <div class="fzhanghao">
+        <p>请填写您需要找回的帐号</p>
+        <form action="?step=2" enctype="multipart/form-data" method="post" id="form1">
+          <div class="user-input dinput"><input type="text" placeholder="请您输入用户名或手机号" id="finduname" name="finduname"><span>请您输入用户名</span></div>
+          <div class="ver-input dinput"><input type="text" placeholder="请输入验证码" name="verify" id="verify" maxlength="4"/><img src="/common/verify" id="img-code" alt="点击获取验证码" height="30"/><a href="#" id="refreshCode">换一张</a><span>请您输入验证码</span></div>
+          <div class="sub-input"><input type="button" name="button1" id="button1" value="下一步"/></div>
+        </form>
+      </div>
+      <elseif condition="$step eq 2"/>
+      <div class="fmobile">
+        <div class="fmleft">
+          <p>短信找回</p>
+        </div>
+        <div class="fmright">
+          <form action="?step=3" method="post" id="form2" enctype="multipart/form-data" >
+            <div class="user-input dinput">
+              <input type="text" placeholder="输入您的手机号码" name="mobile" id="mobile"/>
+            </div>
+            <div class="send-input">
+              <input type="button" id="send_verify" value="发送验证码"/>
+            </div>
+            <div class="send-input dinput">
+              <input type="text" placeholder="输入验证码" maxlength="5" name="sendverify" id="sendverify"/>
+            </div>
+            <div class="sub-input"><input type="button" name="button2" id="button2" value="下一步"/></div>
+          </form>
+        </div>
+      </div>
+      <elseif condition="$step eq 3"/>
+      <div class="fnewpass">
+        <form action="?step=4" method="post" enctype="multipart/form-data" id="form3">
+        <div class="user-input dinput"><strong>新密码</strong><input type="text" placeholder="请您填写密码" id="password" name="password"><span>请您填写密码</span></div>
+        <div class="user-input dinput"><strong>确认新密码</strong><input type="text" placeholder="请您输入确认密码" id="password2" name="password2"><span>请您输入确认密码</span></div>
+        <div class="sub-input "><strong>&nbsp;</strong><input type="button" value="完成" name="button3" id="button3"/></div>
+        </form>
+      </div>
+      <elseif condition="$step eq 4"/>
+      <div class="fsuccess">
+        <div class="fok">恭喜!携车网账号{$username}({$mobile})已经成功修改密码！</div>
+        <div class="flogin"><a href="/Public/login">直接登录</a></div>
+      </div>
+      </if>
+
+    </div>
+
+
+
+<style type="text/css">
+  .w709{width: 709px; margin: 0 auto;}
+  .stepcon{overflow: hidden; height: 36px; line-height: 36px; margin: 30px 0 20px;}
+  .step1{background: url(__PUBLIC__/images/common/step1bg.png) 0 0 no-repeat;}
+  .step2{background: url(__PUBLIC__/images/common/step2bg.png) 0 0 no-repeat;}
+  .step3{background: url(__PUBLIC__/images/common/step3bg.png) 0 0 no-repeat;}
+
+  .stepcon ul{overflow: hidden;}
+  .stepcon ul li{float: left; color: #19293b; width: 231px; padding-left: 20px;}
+  .stepcon ul li.current{color: #FFFFFF; }
+  .fzhanghao{overflow: hidden;}
+  .fzhanghao p{margin-bottom: 20px;}
+  .dinput{margin-bottom: 20px; overflow: hidden; line-height: 30px;}
+
+  .dinput input{border-color: #ccc #ddd #ddd #ccc; border-style: solid; border-width: 1px; color: #333; float: left; font-size: 14px; height: 30px; line-height: 30px; outline: medium none; overflow: hidden; padding: 0 0 0 8px; vertical-align: middle; box-shadow: 2px 2px 3px #EEE inset;}
+  .dinput span{color: #da1111; display: none; padding-left: 15px;}
+  .ver-input img{padding-left: 15px; float: left; width: 80px;}
+  .ver-input a{padding-left: 15px; float: left; width: 70px;}
+  .user-input input{width: 260px;}
+  .dinput input:focus{border-color: #da1111;}
+  .ver-input input{width: 110px;}
+  .sub-input input{border: none; width: 110px; background: #19293b; height: 30px; color: #FFFFFF;}
+  
+  .fmobile{overflow: hidden;}
+  .fmleft{float: left; width: 72px; background: url(__PUBLIC__/images/common/fmobileicon.png) center top no-repeat; height: 150px;}
+  .fmleft p{text-align: center; margin-top: 80px;}
+  .fmright{float: left; padding-left: 20px;}
+  .send-input{margin-bottom: 20px; overflow: hidden;}
+  .send-input input{width: 110px;}
+  .send-input #send_verify{display:block; width: 110px; border: 1px solid #cacaca; background: #e9e9e9; height: 30px; line-height: 30px; text-align: center; text-decoration: none;}
+  .send-input #send_verify:hover{background: #FFFFFF;}
+
+  .fnewpass strong{float: left; width: 85px; text-align: right; padding-right: 10px; font-weight: normal;}
+
+  .fsuccess{overflow: hidden; text-align: center;}
+  .fsuccess .fok{background: url(__PUBLIC__/images/common/fsuccess.png) left center no-repeat; padding-left: 30px; height: 40px; line-height: 40px; display: inline-block; margin-bottom: 15px;}
+  .fsuccess .flogin a{width: 108px; height: 32px; color: #FFFFFF; text-decoration: none; background: #19293b; display: inline-block; line-height: 32px;}
+
+</style>
+
+<script type="text/javascript">
+  $(function(){
+    $("#refreshCode, #img-code").on("click", function(e){
+      e.preventDefault();
+      var newTime = new Date().getTime();
+      $("#img-code").attr("src","/common/verify/" + newTime);
+    });
+
+    $(".dinput input").keyup(function(){
+      if($(this).val()==""){
+        $(this).css("border-color","#da1111");
+      }else{
+        $(this).css("border-color","#377bcb");
+      }
+    });
+
+    $(".dinput input").blur(function(){
+      if($(this).val()==""){
+        $(this).css("border-color","#da1111");
+        $(this).siblings("span").show()
+      }else{
+        $(this).css("border-color","#ccc #ddd #ddd #ccc");
+        $(this).siblings("span").hide()
+      }
+    });
+
+
+    
+  });
+  $("#button1").click(function () {
+      if ($("#finduname").val() == "") {
+          alert("用户名不可为空");
+          $("#finduname").focus();
+      } else if (!(/^[0-9]{4}$/.test($("#verify").val()))) {
+          alert("验证码格式错误");
+          $("#verify").focus();
+          /*.val($("#verify").val())*/
+      } else {
+          $.ajax({
+              type: "POST",
+              url: "/public/findpass1verify",
+              data: {finduname: $("#finduname").val(), verify: $("#verify").val()},
+              dataType: "json",
+              success: function (data) {
+                  if (!data.status) {
+                      alert(data.info);
+                  } else {
+                      window.location.href = data.url;
+                  }
+              }
+          });
+      }
+
+  });
+
+  //验证第二步
+  $("#button2").click(function (){
+    if($("#mobile").val()==""){
+      alert("用户名不可为空");
+      $("#mobile").focus();
+    }
+    else if(!(/^[0-9]{5}$/.test($("#sendverify").val()))){
+      alert("验证码格式错误");
+      $("#sendverify").focus().val($("#sendverify").val());
+    }
+    else {
+     $.ajax({
+       type: "POST",
+       url: "/public/findpass2verify",
+       data: {sendverify:$("#sendverify").val()},
+       dataType: "json",
+       success: function(data){
+        if(!data.status){
+          alert(data.info);
+        }else{
+          window.location.href = data.url;
+        }
+       }
+     });
+    }
+
+  });
+
+  function send_verify_show(i){
+    if(i>='0'){
+      $("#send_verify").attr("disabled",true); 
+      $("#send_verify").attr("value",i+"秒后重新发送");
+      i--;
+      setTimeout(function(){send_verify_show(i);},1000);
+    }else{
+      $("#send_verify").attr("disabled",false); 
+      $("#send_verify").attr("value","发送手机验证码");
+    }
+  }
+
+  $("#send_verify").click(function(){
+      var mobile = $('#mobile').val();
+      var key = $.md5(mobile);
+      var second = "60";
+      var mobileRegExp = /^1[3|4|5|7|8][0-9]\d{4,8}$/;
+      if(!mobileRegExp.test(mobile)){
+          alert('请输入正确的手机号码');
+          return false;
+      }else{
+          $.ajax({
+              type: "POST",
+              url: "/public/send_verify2",
+              cache: false,
+              data:{mobile:mobile,key:key},/*"mobile="+mobile,*/
+              dataType: "json",
+              success: function(data){
+
+                  if(data.code == 0){
+                      alert(data.message);
+                      return false;
+                  }if(data.code == 1){
+                      $("#send_verify").show();
+                      send_verify_show(second);
+                  }else if(data.code == 2){
+                      alert(data.message);
+                      return false;
+                  }else if(data.code == 3){
+                      alert(data.message);
+                      return false;
+                  }
+              },
+              error: function(){
+                  $("#send_verify").show();
+                  send_verify_show(second);
+          }
+        })
+
+      }
+    }); 
+
+
+
+  //验证第三部
+  $("#button3").click(function(){
+    var password = $("#password").val();
+    var password2 = $("#password2").val();
+    var passrxpnull = /^\s*$/g;
+    var passrxp = /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
+    if(!password){
+      alert("密码不可为空");
+      $("#password").focus();
+      return false;
+    }
+
+    if(passrxpnull.test(password)){
+      alert("密码中不可包含空格").val("");
+      return false;
+    }
+
+    if(!passrxp.test(password)){
+      alert("密码长度控制在6-22位");
+      $("#password").focus();
+      return false;
+    }
+
+    if(!password2){
+      alert("请再次输入密码");
+      $("#password2").focus();
+      return false;
+    }
+
+    if(password==password2){
+      $.ajax({
+       type: "POST",
+       url: "/public/findpass3verify",
+       data: {password:password,password2:password2},
+       dataType: "json",
+       success: function(data){
+        if(!data.status){
+          alert(data.info);
+          window.location.href = data.url;
+        }else{
+          alert(data.info);
+          window.location.href = data.url;
+        }
+       }
+     });
+    }
+
+  });
+</script>

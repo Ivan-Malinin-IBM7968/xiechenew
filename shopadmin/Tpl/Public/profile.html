@@ -1,0 +1,82 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<load file="__CSS__/newstyle.css" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var curFileNum = 0;
+var rowsnum=0;  //记录行数
+var rindex="";       //列索引
+function addRow(){   
+	curFileNum++;
+	rowsnum++;
+    var arow=tbl.insertRow();
+	var td = arow.insertCell();
+	td.innerHTML='<div class="impBtn  fLeft" ><INPUT TYPE="file"  name="file'+ curFileNum +'" class="file bgcolor1 large"> </div><IMG SRC="__IMG__/mit.gif" WIDTH="20" HEIGHT="20" onclick="javascript:deleteRow()" align="absmiddle" onfocus="javascript:getObject(this)" style="cursor:hand" BORDER="0" ALT="删除"> ';
+	td.align="center"
+	//addFileForm.num.value=rowsnum;
+}
+function deleteRow(){
+	if(tbl.rows.length>0){
+		tbl.deleteRow(rindex); //删除当前行
+		rowsnum--;    
+	}else{
+		return;
+	}
+	rindex="";
+}
+function getObject(obj){ 
+	rindex=obj.parentElement.parentElement.rowIndex;/*当前行对象*/
+}
+
+function uploadComplete(id,name){
+	$('photo').innerHTML	=	'<IMG SRC="__PUBLIC__/Images/girl/'+name+'" class="shadow" style="border:1pt solid gray" BORDER="0" width="130" height="179" ALT="" align="absmiddle">';
+}
+function uploading(msg){
+	$('result').style.display = 'block';
+	$('result').innerHTML	=	'<IMG SRC="__IMG__/ajaxloading.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="" align="absmiddle"> 文件上传中～';
+	return true;
+}
+//-->
+</SCRIPT>
+<div id="main" class="main" >
+<div class="content">
+<div id="main-right"><h1 style="text-shadow: none;">编辑资料</h1>
+</div>
+<!-- <div class="title">编辑资料</div> -->
+<div class="fLeft" style="width:90%;float:left">
+<FORM METHOD=POST  id="form1" >
+<TABLE cellpadding=3 cellspacing=3>
+<TR>
+	<TD class="tRight" >昵称：</TD>
+	<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="nickname" value="{$vo.nickname}"></TD>
+</TR>
+<TR>
+	<TD class="tRight">Email：</TD>
+	<TD class="tLeft"><INPUT TYPE="text" class="large bLeft"  NAME="email" value="{$vo.email}"></TD>
+</TR>
+<TR>
+	<TD class="tRight" >联系手机：</TD>
+	<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="shop_mobile" value="{$vo.shop_mobile}" onkeyup="this.value=this.value.replace(/\D/g,'')">（短信接收号）</TD>
+</TR>
+<TR>
+	<TD class="tRight" >事故车专员手机号：</TD>
+	<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="shop_salemobile" value="{$vo.shop_salemobile}" onkeyup="this.value=this.value.replace(/\D/g,'')">（短信接收号）</TD>
+</TR>
+<TR>
+	<TD class="tRight tTop">备  注：</TD>
+	<TD class="tLeft"><TEXTAREA class="large bLeft"  NAME="remark" ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+</TR>
+<TR>
+	<TD ></TD>
+	<TD class="center">
+	<INPUT TYPE="hidden" name="id" value="{$vo.id}">
+	<INPUT TYPE="hidden" name="ajax" value="1">
+	<INPUT TYPE="button" value="保 存" onclick="sendForm('form1','__URL__/change/')" class="submit small">
+	<INPUT TYPE="reset" class="small submit hMargin" value="清 空" >
+	</TD>
+</TR>
+</TABLE>
+</FORM>
+</div>
+</div>
+</div>

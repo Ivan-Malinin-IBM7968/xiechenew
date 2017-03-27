@@ -1,0 +1,296 @@
+	<layout name='layout_new' />
+	<link rel="stylesheet" href="__PUBLIC__/new_2/css/coupon_hot_list.css">
+	<link rel="stylesheet" href="__PUBLIC__/new_pa/css/selectize.css">
+		
+
+	<script src="__PUBLIC__/new_2/js/base.js?v={$Think.config.VERSION_DATE}" ></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+	<style>
+	select{position:relative;left:-2px;top:-2px; font-weight:400;font-size:15px;width:253px;line-height:30px;border:1px solid;color:#909993;padding:5px 20px}
+	</style> 
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="http://www.xieche.com.cn">首页</a></li>
+			<li>></li>
+			<li><a href="__APP__/tuangou">4S店售后团购</a></li>
+			<li>></li>
+			<li><a href="__APP__/shop/{$shopinfo.id}">上海联通新悦-东风悦达起亚4S店</a></li>
+			<li>></li>
+			<li>联通新悦东风悦达起亚K2小保养套餐</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="w1200 content">
+		<div class="w830 content-left">
+			<div class="filter-container">
+				<form action="__APP__/coupon-test" method="POST">
+					<div class="get-brand-container">
+					
+						<label>选择品牌:</label>
+                       	<select hidefocus id="get_brand"  name="brand_id"  onchange="comp_brlist('get_brand','get_series', 'get_model');"  style="width:225px; float: left;"></select>
+						
+					</div>
+					<div class="get-series-container">
+						<label>选择车系:</label>
+                        <select class="car_series"id="get_series" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');" name="series_id" style="width:225px; float: left;"></select>
+					</div>
+					<div class="get-models-container">
+						<label >选择车型:</label>
+                        <select class="car_model" id="get_model"  name="model_id" style="width:225px; float: left;"></select>
+					</div>
+					<div class="submit-container">
+						<input type="submit" value="提 交">
+					</div>
+					<div class="clear"></div>
+
+				
+				
+				</form>
+				
+
+
+			</div>
+			<div class="">
+				<ul class="coupon-ul">
+					<volist name="tuangous" id="tg">
+					<li style="border-color: rgb(231, 231, 231);">
+						<div>
+							<div class="coupon-img">
+								<a href="__URL__/{$tg.id}" target="_blank" title="{$tg.coupon_name}">
+									<img alt="{$tg.coupon_name}" title="{$tg.coupon_name}" src="/UPLOADS/Coupon/Logo/{$tg.coupon_pic}" width="253" height="190">
+								</a>
+							</div>
+							<div class="coupon-name">
+								<a href="__URL__/{$tg.id}" target="_blank">{$tg.coupon_name}</a>
+							</div>
+							<div class="cuupon-address">{$tg.shop_address}
+								<a href="__APP__/shop/{$tg.shop_id}" target="_blank">[查看店铺]</a>
+							</div>
+							<div class="coupon-price">
+								<strong>￥{$tg.coupon_amount}元</strong>
+								<em>￥{$tg.cost_price}元</em>
+								<div class="coupon-bought">
+									<span>{$tg.pay_count}</span>人已购买
+								</div>
+							</div>
+						</div>
+					</li>
+					</volist>
+				</ul>
+			</div>
+
+			<div class="clear"></div>
+			<div class="pagerArea">
+				<ul id="pager">
+				{$page}
+				</ul>
+			</div>
+
+		</div>
+		<div class="w350 content-right">
+			<div class="coupon-notice">
+				<h3>跨品牌保养介绍：</h3>
+				<ul>
+					<li>&bull;&nbsp;&nbsp;跨品牌保养，是携车网为打破4S店售后品牌垄断、降低保养价格的一个创新养车方式。</li>
+					<li>&bull;&nbsp;&nbsp;对于不同品牌车型共用同一车型平台的，推出跨品牌的4S店保养套餐，用低折扣的价格，为车主提供不打折的原厂品质服务。</li>
+					<li>&bull;&nbsp;&nbsp;如大家熟知的上海大众途观和一汽大众速腾是同一个PQ35平台，别克英朗和雪佛兰科鲁兹也是同一平台等这些车型共用平台和动力总成，其售后保养零件也是共用的。也就是说，上海大众途观和一汽大众速腾可以到对方品牌4S店保养，别克英朗与雪佛兰科鲁兹也可共用一个4S店等。。</li>
+				</ul>
+			</div>
+			<div class="tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+
+			</div>
+			<div class="tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script src="__PUBLIC__/common/js/libs/jquery/jquery-1.11.min.js"></script>
+	<script src="__PUBLIC__/new_pa/js/selectize.js"></script>
+<script>
+	
+		$(".coupon-ul li,.shop-ul li").hover(function(){
+          $(this).css({
+            "border-color" : "#ff6600"
+          })
+        }, function(){
+           $(this).css({
+            "border-color" : "#e7e7e7"
+          })
+        });
+
+
+	$(document).ready(function(){
+	/*
+       // var brandData = get_car_info("/Paiframe-PostCar_brand");
+        
+        var $getBrand, getBrand,
+          $getSeries, getSeries,
+          $getModel, getModel;
+
+        function managerAjaxdata(data){
+          return data
+        }
+
+        function get_car_info(url){
+          $.ajax({
+            url : url ,
+            dataType : "json",
+            success : function(data){
+              managerAjaxdata(data)
+            }
+          });
+        };
+
+        function hTab(tab_controler,tab_con){
+          this.tab_controler = tab_controler;
+          this.tab_con = tab_con;
+          var tabs = $(tab_controler).children("li");
+          var panels = $(tab_con).children("div");
+          $(tab_con).children("div").css("display","none");
+          $(tab_con).children("div:first").css("display","block");
+          $(tabs).hover(function(){
+            var index = $.inArray(this,tabs);
+            tabs.removeClass("current").eq(index).addClass("current");
+            panels.css("display","none").eq(index).css("display","block");
+          });
+        };
+
+        hTab('#tabs1','#con1');
+        hTab(".tabs2",".con2");
+        hTab(".tabs3",".con3");
+
+        //get car brand 
+
+         $getBrand = $("#get_brand").selectize({
+          "create": false,
+            "labelField" : "brand_name",
+            "valueField" : "brand_id",
+            "searchField" : ["brand_name"],
+            "sortField": [
+                  {"field": "word", "direction": "asc"}
+              ],
+            onChange : function(value){
+              if (!value.length) return;
+                getSeries.disable();
+                  getSeries.clearOptions();
+                  getSeries.load(function(cb){
+                    getSeries.enable();
+                    getSeries.addOption({"series_name":"选择车系","series_id":""});
+                    $.ajax({
+                  url : "Paiframe-PostCar_series-brand_id-"+ value,
+                  dataType : "json",
+                  success : function(data){
+                    cb(data)
+                  }
+                });
+               })
+              }
+          }); 
+
+        //get car series
+        $getSeries = $("#get_series").selectize({
+           "creat" : false,
+           "labelField" : "series_name",
+           "valueField" : "series_id",
+           "searchField" : ["series_name"],
+           "sortField": [
+                  {"field": "word", "direction": "asc"}
+              ],
+           onChange : function(value){
+              if (!value.length) return;
+                getModel.disable();
+                  getModel.clearOptions();
+                  getModel.load(function(cb){
+                    getModel.enable();
+                    getSeries.addOption({"model_name":"选择车型","model_id":""});
+                    $.ajax({
+                  url : "Paiframe-PostCar_model-series_id-"+ value,
+                  dataType : "json",
+                  success : function(data){
+                    cb(data)
+                  }
+                });
+               })
+              }
+        }); 
+
+        // get car model
+        $getModel = $("#get_model").selectize({
+          "create" : false,
+          "searchField" : ["model_name"],
+            "labelField" : "model_name",
+            "valueField" : "model_id",
+            "sortField": [
+                  {"field": "word", "direction": "asc"}
+              ]
+        }); 
+
+        
+
+        getBrand = $getBrand[0].selectize;
+        getBrand.load(function(cb){
+          $.ajax({
+            url : "Paiframe-PostCar_brand",
+            dataType : "json",
+            success : function(data){
+              cb(data)
+            }
+          });
+        });
+		
+		getBrand.addItem(4);
+
+
+        getSeries = $getSeries[0].selectize;
+		
+        getModel = $getModel[0].selectize;
+
+        getSeries.disable();
+        getModel.disable();
+
+      });*/
+	</script>
+	<script>
+		comp_fctlist("get_brand", "get_series", "get_model", '{$brand_id}', '{$series_id}', '{$model_id}');
+	</script>

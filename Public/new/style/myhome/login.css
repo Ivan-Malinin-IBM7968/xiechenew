@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* login by tank */
+/* layout */
+.nav_logo_icson{ float:none; margin-bottom:10px;}
+
+/* clear float */
+.main{zoom:1;position:relative}
+.main:after{ clear:both; display:block; visibility:hidden; content:""; height:0; line-height:0;}
+
+/* 雪碧图 */
+.btn_login_with_qq {background-image:url(/static_v1/img/login/register.png);background-repeat:no-repeat;}
+.btn_login_with_qq {display:inline-block;width:83px;height:24px;line-height:90px;overflow:hidden;background-position:0px 0px;vertical-align:middle;margin-left:8px;outline:none;}
+
+
+/* 登录\注册页 s */
+body .yx_head {height:63px; display: none;}
+html body .main {margin: 40px auto 0; }
+.mod_login .login_qq{ background:#F3F3F3;height:29px;padding-top:5px;padding-left:10px;}
+.mod_login .login_other{ padding:10px;padding-bottom:0px;}
+.mod_login .login_other a:link,
+.mod_login .login_other a:visited {color:#085C9B;}
+.mod_login .login_other a:hover {color:#D4105A;}
+.mod_login .login_other a:hover b {text-decoration:none;}
+.mod_login .hd{ font-size:14px;}
+.mod_login .btn_wrap {padding-top:10px;}
+.mod_login .btn_wrap .btn {display:inline-block;padding:0px 20px;height:24px;line-height:24px;line-height:26px\9;overflow:hidden;font-weight:bold;vertical-align:middle;color:#fff;
+background: #2A6BC2; 
+background:-moz-linear-gradient(center top , #2272D0 0%, #2A6BC2 50%, #3164B0 100%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2272D0), color-stop(50%,#2A6BC2), color-stop(100%,#3164B0)); /* webkit */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2272D0', endColorstr='#3164B0',GradientType=0 );
+}
+.mod_login .btn_wrap .btn:hover {text-decoration:none;}
+
+.list_info li{ margin-bottom:10px;padding-left:50px;vertical-align:top;zoom:1;}
+.list_info .tit{ display:inline-block; margin-left:-80px; width:80px;font-size:14px;text-align:right;}
+.list_info .input_vali,
+.list_info .input_short{ width:240px;height:23px;line-height:23px;border:1px solid #ccc;text-indent:5px;}
+
+
+/* 登录页 s */
+.wrap_login {height:460px;padding:0px;}
+.header_login {margin-top:60px;margin-bottom:-58px;padding-bottom:0px;overflow:hidden;}
+.wrap_login .mod_login {position:absolute;z-index:3;right:4px;top:0px;width:360px;height:455px;border:1px solid #D7D7D7;background-color:#F3F3F3;}
+.wrap_login .login_shadow {position:absolute;z-index:2;right:0px;top:7px;width:360px;height:457px;background-color:#F2F2F2;}
+.wrap_login .banner {
+	float:left;
+	width:590px;
+	height:455px;
+	
+	background-image:url("../../images/login_banner.jpg");
+	background-repeat:no-repeat;
+}
+.wrap_login .info_icson {display:none;}
+
+.wrap_login .mod_login .hd {
+	background-color: #FFFFFF;
+    height: 27px;
+    overflow: hidden;
+    padding: 25px 0 0 30px;
+}
+.wrap_login .mod_login .hd h3 {
+	color: #3164AF;
+    font: 24px/22px "微软雅黑";
+}
+.wrap_login .mod_login .hd h3 span {
+	color: #CCCCCC;
+    font: 12px/21px "微软雅黑";
+    padding-left: 10px;
+}
+.wrap_login .mod_login .bd {/*height:160px;*/padding:20px 38px 10px 30px;background-color:#FFF;}
+.wrap_login .list_info li {margin-bottom:15px;}
+.wrap_login .list_info li.btn_row {margin-bottom:20px;}
+.wrap_login .list_info_has_error li {margin-bottom:10px;}
+.wrap_login .list_info_has_error li.row_name {margin-bottom:15px;}
+.wrap_login .list_info_has_error li.btn_row {margin-bottom:15px;}
+.wrap_login .list_info .tit {text-align:left;width:58px;line-height:25px;display:inline-block;vertical-align:middle;margin-left:-50px;}
+.wrap_login .list_info .tit {#display:inline;}
+.wrap_login .list_info .input_short {width:232px;}
+.wrap_login .list_info .input_vali {width:44px;}
+.wrap_login .list_info .valid {display:inline-block;width:130px;height:53px;margin:0 5px;}
+.wrap_login .list_info .valid img {width:130px;height:53px;vertical-align:middle;}
+.wrap_login .list_info .change {display:inline-block;_display:inline;_zoom:1;width:108px;color:#317ee7;vertical-align:middle;}
+.wrap_login .list_info .error {margin:-10px 0 5px;padding-left:58px;}
+.wrap_login .list_info input {vertical-align:middle;#margin:-1px 0px;}
+.wrap_login .para_warn {background-color:#FFFFE3;border:1px solid #FFCC99;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;-moz-box-shadow:1px 2px 0px #E5E5E5;-webkit-box-shadow:1px 2px 0px #E5E5E5;box-shadow:1px 2px 0px #E5E5E5;}
+.wrap_login .para_warn a:link,
+.wrap_login .para_warn a:visited {color:#085C9B;}
+.wrap_login .para_warn a:hover {color:#D4105A;}
+.wrap_login .para_warn b {height:14px\0;_vertical-align:1px;}
+.wrap_login .label_wrap label {cursor:pointer;}
+.wrap_login .label_wrap input {#margin-left:-3px;#margin-top:-2px;_margin-top:-4px;#margin-right:-4px;}
+.wrap_login .mod_login .btn_wrap {padding-top:0px;}
+.wrap_login .mod_login .btn_wrap .btn_login {margin-right:10px;}
+.wrap_login .mod_login .btn_wrap .btn_get_pwd {display:inline-block;background:none;background-color:#FFF;font-weight:300;}
+.wrap_login .mod_login .btn_wrap .btn_get_pwd:link,
+.wrap_login .mod_login .btn_wrap .btn_get_pwd:visited {color:#085C9B;}
+.wrap_login .mod_login .btn_wrap .btn_get_pwd:hover {color:#D4105A;}
+.wrap_login .register {height:100px;padding-left:30px;}
+.wrap_login .register h3 {font:normal 24px/28px "\5FAE\8F6F\96C5\9ED1";color:#D4105A;padding-top:5px;}
+.wrap_login .register .txt_tips {/*padding-top:10px;*/color:#555;}
+.wrap_login .register .txt_tips a:link,
+.wrap_login .register .txt_tips a:visited {color:#085C9B;}
+.wrap_login .register .txt_tips a:hover {color:#D4105A;}
+.wrap_login .login_qq .guide_msg {display:inline-block;vertical-align:middle;height:24px;line-height:24px;line-height:26px\9;overflow:hidden;}
+.wrap_login .login_other{ background-color:#FFFFFF; border-top:1px dashed #D7D7D7; height:65px;}
+.wrap_login .login_other .t{ display:block; height:25px;}
+.wrap_login .login_other a{ width:120px; height:24px; display:inline-block; line-height:90px; overflow:hidden; vertical-align:middle;}
+.wrap_login .login_other .btn_login_with_qq{
+	margin:0px 10px 0px 70px;
+	background-image: url(../../images/myhome/tencentpay.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+.wrap_login .login_other .btn_login_alipay{
+	background-image: url(../../images/myhome/alipay.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+/* 注册页 s */
+.wrap_register .crumb {height:25px;line-height:25px;}
+.wrap_register .crumb .arrow {font-family: "\5B8B\4F53";padding:0px 8px;font-weight:700;}
+.wrap_register .crumb a:link,
+.wrap_register .crumb a:visited {color:#096DBA;}
+.wrap_register .crumb a:hover {color:#D4105A;}
+
+.wrap_register .mod_login .hd {margin-top:20px;zoom:1;overflow:hidden;height:35px;}
+.wrap_register .mod_login .hd h3 {float:left;font:normal 30px/35px "\5FAE\8F6F\96C5\9ED1";color:#3164AF;}
+.wrap_register .mod_login .hd h3 span {font:normal 12px/21px "\5FAE\8F6F\96C5\9ED1";color:#CCCCCC;padding-left:10px;}
+.wrap_register .mod_login .todo_link:link, .wrap_register .mod_login .todo_link:visited, .wrap_register .mod_login .todo_link:hover {text-decoration:underline;color:#085C9B;}
+.wrap_register .mod_login .hd .more { position:absolute;right:0;margin-top:9px;text-align:right;font-size:12px;color:#555;}
+.wrap_register .mod_login .bd {margin-top:25px;}
+.wrap_register .mod_login li{ margin-bottom:8px; padding:4px 4px 4px 80px;}
+.wrap_register .label_wrap label {cursor:pointer;}
+.wrap_register .label_wrap input {#margin-left:-3px;#margin-top:-2px;_margin-top:-4px;#margin-right:-4px;}
+.wrap_register .login_other { margin-top:10px; padding:10px 0 0; border-top:1px dotted #D7D7D7;text-align:left;}
+.wrap_register .login_other a{ width:120px; height:24px; display:block; line-height:90px; overflow:hidden; vertical-align:middle;}
+.wrap_register .login_other .btn_login_with_qq{ background:url(/static_v1/img/login/tencentpay.png) no-repeat 0 0; margin:10px 0;}
+.wrap_register .login_other .btn_login_alipay{ background:url(/static_v1/img/login/alipay.png) no-repeat 0 0;}
+
+/* 各种tips */
+.wrap_register .mod_login .tips_right,
+.wrap_register .mod_login .tips_status,
+.wrap_register .mod_login .tips_error{ display:none; margin-left:10px;}
+
+.wrap_register .mod_login .status_ok .tips_right{ display: inline-block}
+.wrap_register .mod_login .tips_error,
+.wrap_register .mod_login .tips_status {height:23px;line-height:22px;border:1px solid #FFCC99;background-color:#FFFFE3;padding:0px 5px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;-moz-box-shadow:1px 2px 0px #E5E5E5;-webkit-box-shadow:1px 2px 0px #E5e5e5;box-shadow:1px 2px 0px #E5E5E5;vertical-align:middle;line-height:24px\9;_line-height:26px;overflow:hidden;}
+.wrap_register .mod_login .status_here .tips_status{display:inline-block;}
+.wrap_register .mod_login .status_no .tips_error{ display:inline-block;}
+.wrap_register .mod_login .status_no .tips_error b {display:inline;zoom:0;padding:0px 0px 0px 10px;font-size:12px;vertical-align:0\0;}
+
+/* 密码等级 */
+.wrap_register .mod_login .pwd_grade {padding-top:10px;}
+.wrap_register .mod_login .pwd_grade span {display:inline-block;vertical-align:middle;_vertical-align:4px;width:30px;height:12px;margin-right:3px;overflow:hidden;background-color:#F0F0F0;}
+.wrap_register .mod_login .pwd_grade .txt {display:inline-block;vertical-align:middle;margin-left:5px;width:12px;height:18px;overflow:hidden;text-indent:12px;}
+.wrap_register .mod_login .pwd_grade .txt {#display:inline;}
+
+.wrap_register .mod_login .grade_weak .mima1 {background-color:#F94335;}
+.wrap_register .mod_login .grade_weak .txt {text-indent:0px;}
+.wrap_register .mod_login .grade_common .mima1,
+.wrap_register .mod_login .grade_common .mima2 {background-color:#FF9900;}
+.wrap_register .mod_login .grade_common .txt {text-indent:-12px;}
+.wrap_register .mod_login .grade_strong .mima1,
+.wrap_register .mod_login .grade_strong .mima2,
+.wrap_register .mod_login .grade_strong .mima3 {background-color:#6DB200;}
+.wrap_register .mod_login .grade_strong .txt {text-indent:-24px;}
+
+.wrap_register .txt_tiaokuan{ width:730px; height:130px;border:1px solid #ccc;overflow-y:auto;}

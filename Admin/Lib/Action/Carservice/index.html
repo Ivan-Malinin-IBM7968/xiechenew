@@ -1,0 +1,71 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script>
+	function delete_sale(id){
+		$.ajax({
+			type:'POST',
+			url:'__URL__/delete_sale',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+	<!-- 主体内容  -->
+	<div class="content" >
+	<div class="title">销售管理</div>
+	<div>
+		<form action="__APP__/Shop/Salemanage" method="post" >
+			店铺类别：<select name="shop_type">
+				<option value="1" <if condition="$shop_type eq 1">selected</if> >4S店</option>
+            	<option value="2" <if condition="$shop_type eq 2">selected</if> >快修店</option>
+			</select><br>
+			店铺名称：<input TYPE="text" id="shop_name" class="large bLeftRequire" NAME="shop_name" value="{$shop_name}"><br>
+			负责人 ： <input TYPE="text" id="shop_boss" class="large bLeftRequire" NAME="shop_boss" value="{$shop_boss}"><br>
+			<input type="submit" value="搜索">
+		</form>
+	</div>
+	<div class="impBtn hMargin fLeft shadow">
+		<input id="" class="add imgButton" type="button" onclick="add()" value="添加" name="add">
+	</div>
+	<div class="list">
+		<table class="list">
+			<tr class="row">
+				<th width="5%">ID</th>
+				<th width="10%">技师姓名</th>
+				<th width="25%">手机号</th>
+				<th width="40%">地址</th>
+				<th width="20%">擅长车型</th>
+			</tr>
+			<volist name="list" id="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.nickname}</td>
+					<td>{$vo.mobile}</td>
+					<td>{$vo.address}</td>
+					<td>{$vo.fs}</td>
+				</tr>
+			</volist>
+			<tr>
+				<td colspan="4">{$page}</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+</div>

@@ -1,0 +1,237 @@
+<layout name='layout' />
+<link rel="stylesheet" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/buy.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<script>
+	$(document).ready(function(){
+		$("#show_detail").toggle(
+		  function () {
+			  $("#J_deal-detail").removeClass("Hide");
+			  $(this).html("- 收起详情");
+		  },
+		  function () {
+			  $("#J_deal-detail").addClass("Hide");
+			  $(this).html("+ 查看详情");
+		  }
+		);
+	})
+</script>
+<div id="xz" style="width:960px; height:35px; margin:10px auto; padding:0px; border:1px solid #CCC; background-color:#FFF"> 
+<p class="p1" style="width:950px; height:26px; margin:0 auto; padding:0px; line-height:26px; border-bottom:1px solid #efefef;">
+选 择： {$brand.brand_name}  |  {$series.series_name} |  {$model.model_name}
+</p></div>
+
+<div class="pgm">
+
+	<div class="main_w page-index">
+
+	<div class="gray-box content order-process" style="float:left;width:700px;">
+
+				<!--<form method="post" action="__APP__/coupon/savecoupon/coupon_id/{$coupon.id}" name="submitForm">-->
+				<form method="post" action="{:URL('/coupon/savecoupon',array('coupon_id'=>$coupon['id']))}{:C('HTML_URL_SUFFIX')}" name="submitForm">
+				<div class="cont">
+
+					<div class="gray-title">
+
+						<div class="infor">
+
+								<span class="project"><font color="#000000">商品名称</font></span>
+
+								<span class="num"><font color="#000000">数量</font></span>
+
+								<span class="unitprice"><font color="#000000">价格</font></span>
+
+								<span class="allprice"><font color="#000000">价值</font></span>
+
+						</div>
+
+						<div id="J_select-tip" class="pop-tip-box  Hide">
+
+							<div class="cont">请选择您需要的套餐</div>
+
+							<div class="m"></div>
+
+						</div>
+
+						<span class="drop"></span>
+
+					</div>
+				 <div class="infor-box">
+
+<!-- 单套餐 -->
+<table width="100%" cellspacing="0" cellpadding="0" class="order-tab single-dealcase"><tbody>
+<tr class="J_deal-case J_item-active">
+
+	<td width="340" class="name">{$coupon.coupon_name}</td>
+
+	<td align="center">
+
+    <p class="sold"><input class="J_amount" type="text" name="number" size="5" value="1"></p>
+
+	</td>
+
+	<td width="60" align="center"><span class="price J_unit-price">¥{$coupon.coupon_amount}
+</span></td>
+
+	<td width="60" align="center"><span class="price J_total">¥{$coupon.cost_price}</span></td>
+
+</tr>
+</tbody></table>
+							<div class="order-deal-infor"><a id="show_detail" href="###">+ 查看详情</a></div>
+
+							<div id="J_deal-detail" class="deal-infor Hide">
+								{$coupon.coupon_summary}
+							</div>
+
+							<div class="order-mobile">
+								<strong class="redstrong">
+									团购成功后，团购券序列号将发送到 
+									<input type="text" name="mobile" value="{$member.mobile}" class="J_mobile" />
+								</strong>
+							</div>
+							<div class="order-sum">
+								应付总额：
+								<strong class="redstrong">
+									<span class="redstrong" id="aprice">¥{$coupon.coupon_amount}</span>
+								</strong>
+							</div>
+
+
+						</div>
+
+
+						<div class="order-btn">
+
+							<div id="J_btnwrap" class="b-rbtn"><input type="submit" value="提交订单" track="dp_tg_order_102324_shanghai" data-url="/deal/register?callback=/order" id="submitBtn"></div>
+						</div>
+
+					</div>
+
+ 				</form></div>
+
+
+
+<div class="sidebar">
+
+<div class="index_switch J_switch">
+
+	<ul class="wrap fade J_wrap">
+
+		<li><a target='_blank' href='__APP__/coupon/24' ><img src='__PUBLIC__/new/images/U6652P33DT20121203093133.jpg'></a></li>
+
+	</ul>
+
+	<!-- <ul class="ctrl J_ctrl">
+
+		<li>1</li>
+
+		<li>2</li>
+
+	</ul> -->
+
+</div>
+
+<div class="M-today side-box">
+	<h3>现金券推荐</h3>
+<ol class="assess-list">
+<volist name="tuijian_coupon1" id="tcoupon1" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon1.id}" >
+								<img width="105" alt="{$tcoupon1.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon1.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+<h3>团购券推荐</h3>
+<ol class="assess-list">
+<volist name="tuijian_coupon2" id="tcoupon2" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon2.id}" >
+								<img width="105" alt="{$tcoupon2.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon2.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+	</div>
+
+
+
+<!-- <div class="M-invite side-box">
+    <h3>意见反馈</h3>
+    <div class="Fix icon-box">
+        <span class="im-opinion Cont-icon"></span>
+        <div class="Noflow cont-txt">携车纵横网希望听到你的声音
+
+            <p class="click">
+                <a track="dp_tuangou_refund" rel="nofollow" href="http://www.dianping.com/contactus">» 提交意见反馈</a>
+            </p>
+        </div>
+    </div>
+</div>
+	<div class="rss-wrap"><span class="i-rss"></span>
+
+		<a class="B" href="/rss/shanghai" rel="nofollow" target="_blank" class="B" track="dp_tuangou_follow_rssdown">
+
+			订阅携车纵横网RSS
+
+		</a>
+
+	</div>
+ -->
+</div>
+</div>
+</div>

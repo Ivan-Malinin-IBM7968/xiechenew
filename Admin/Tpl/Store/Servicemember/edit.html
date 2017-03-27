@@ -1,0 +1,308 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<div id="main" class="main" >
+<script src="__JS__/jquery-1.6.2.min.js"></script>
+
+<script src="__PUBLIC__/Js/Uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/Uploadify/uploadify.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/Jcrop/css/jquery.Jcrop.min.css" media="all">
+
+<script type="text/javascript" src="__PUBLIC__/Js/Jcrop/js/jquery.Jcrop.min.js"></script>
+
+<style type="text/css">
+	.file-tips {
+		color: #A8A8A3;
+		font-size: 12px;
+		left: 0;
+		line-height: 1.4;
+		padding: 0 15px;
+		text-align: center;
+		top: 90px;
+		width: 170px;
+	}
+	
+	.preview-area {
+		float: left;
+		position: relative
+	}
+	
+	.tcrop {
+		clear: right;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.tcrop .prompt  {
+		font-size: 13px; 
+		font-weight: normal;
+		color: #666;
+	}
+	
+	.preview{float: left; margin-right: 20px;}
+	.preview-area .crop {
+		float: left;
+		margin-bottom: 20px;
+		margin-top: 10px;
+		overflow: hidden;
+	}
+	.crop200 {
+		height: 200px;
+		width: 200px;
+	}
+	.reupload-img {
+		bottom: 50px;
+		position: absolute;
+		width: 150px;
+	}
+</style>
+<script type="text/javascript">
+var img_id_upload=new Array();//初始化数组，存储已经上传的图片名
+	var uploadLimit = 1;//初始化数组下标
+	$(function() {
+		$('#logo').uploadify({
+			'auto'     : true,//关闭自动上传
+			'fileObjName' : 'logo',
+			'removeCompleted': true,
+			'removeTimeout' : 1,//文件队列上传完成1秒后删除
+			'swf'      : '/Public/Admin/Js/Uploadify/uploadify.swf',
+			'uploader' : '__URL__/pic_upload/uploadify/1',
+			'buttonText' : '选择图片',//设置按钮文本
+			'multi'    : false,//允许同时上传多张图片
+			'uploadLimit' : uploadLimit,//一次最多只允许上传10张图片
+			'queueSizeLimit' : 1, //队列中同时存在的文件个数限制 
+			'fileTypeDesc' : 'Image Files',//只允许上传图像
+			'fileTypeExts' : '*.gif; *.jpg; *.png',//限制允许上传的图片后缀
+			'fileSizeLimit' : '2000KB',//限制上传的图片大小
+			'onUploadSuccess' : function(file, data, response) { //每次成功上传后执行的回调函数，从服务端返回数据到前端
+				$('#preview-hidden').find('*').remove();
+				$('#preview-hidden').hide().addClass('hidden').css({'padding-top':0,'padding-left':0});
+				$('#logo').uploadify('settings','uploadLimit', ++uploadLimit);
+
+				var preview = $('#preview-hidden');
+				preview.show().removeClass('hidden');
+				$('.file-tips').hide();
+
+				//两个预览窗口赋值
+				$('.crop').children('img').attr('src',"__UPLOAD__/Service/"+data);
+				//隐藏表单赋值
+				$('#logo').val(data);
+				$('.prompt').html("     (拖动及调整至合适位置上传)");
+				
+				$('#img_src').val(data);
+				//绑定需要裁剪的图片
+				var img = $('<img />');
+				preview.append(img);
+				preview.children('img').attr('src',"__UPLOAD__/Service/"+data);
+				var crop_img = preview.children('img');
+				crop_img.attr('id',"cropbox").show();
+
+
+				//裁剪插件
+				$('#cropbox').Jcrop({
+		            bgColor:'#333',   //选区背景色
+		            bgFade:true,      //选区背景渐显
+		            fadeTime:1000,    //背景渐显时间
+		            allowSelect:false, //是否可以选区，
+		            allowResize:true, //是否可以调整选区大小
+		            aspectRatio: 1,     //约束比例
+		            minSize : [100,100],//可选最小大小
+		            boxWidth : 400,		//画布宽度
+		            boxHeight : 400,	//画布高度
+		            onChange: showPreview,//改变时重置预览图
+		            onSelect: showPreview,//选择时重置预览图
+		            setSelect:[ 0, 0, 100, 100],//初始化时位置
+		            onSelect: function (c){	//选择时动态赋值，该值是最终传给程序的参数！
+			            $('#x').val(c.x);//需裁剪的左上角X轴坐标
+			            $('#y').val(c.y);//需裁剪的左上角Y轴坐标
+			            $('#w').val(c.w);//需裁剪的宽度
+			            $('#h').val(c.h);//需裁剪的高度
+		          }
+		        });
+				
+				/*重新上传,清空裁剪参数
+				var i = 0;
+				$('.reupload-img').click(function(){
+					$('#preview-hidden').find('*').remove();
+					
+					$('#preview-hidden').hide().addClass('hidden').css({'padding-top':0,'padding-left':0});
+				});
+				*/
+
+			},
+			'onSelectError' : function (file, errorCode, errorMsg) {
+            	//返回码。文件为空
+            	if(errorCode == SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED){
+            		this.queueData.errorMsg = "只能上传1张图片 要重新上传，请点击重新上传";
+            	}
+            },
+			'onUploadError' : function (file, errorCode, errorMsg) {
+				return false;
+            	/*返回码。文件为空
+            	if(errorCode == SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED){
+            		this.queueData.errorMsg = "请点击重新上传";
+            	}*/
+            }
+		});
+
+
+		var text=$("#signature").val();
+		var counter=text.length;
+		$("#numtj span").text(30-counter);
+		$("#signature").keyup(function() {
+			var counter=$(this).val().length;
+			$("#numtj span").text(30-counter);
+		});
+
+	});
+
+	//预览图
+	function showPreview(coords){
+		var img_width = $('#cropbox').width();
+		var img_height = $('#cropbox').height();
+		  //根据包裹的容器宽高,设置被除数
+		  var rx = 200 / coords.w;
+		  var ry = 200 / coords.h; 
+		  $('#crop-preview-200').css({
+			width: Math.round(rx * img_width) + 'px',
+			height: Math.round(ry * img_height) + 'px',
+			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+			marginTop: '-' + Math.round(ry * coords.y) + 'px'
+		  });
+	}
+</script>
+<script type="text/javascript">
+	function checkName(){
+		var account = $('#account').val();
+			
+			$.ajax({
+				type: "POST",
+				url: "/Admin/index.php/shopadmin/checkAccount",
+				cache: false,
+				data: "account="+account,
+				success: function(data){
+					if(data == 'num'){
+						alert('用户名必须是字母，且5位以上！');
+					}
+					else if(data == 'chongfu'){
+						alert('该用户名已经存在！');
+					}
+					else{
+						alert('可以使用');
+					}
+				}
+				
+		})
+	
+	}
+
+	function GetShopname(){
+		var shopname = $('#shopname').val();
+		$.ajax({
+			type: "POST",
+			url: "__URL__/GetShopname",
+			cache: false,
+			data: "shopname="+shopname,
+			success: function(data){
+				if(data!='none'){
+					data = eval("(" + data + ")");
+					$("#shop_id").html("");
+					$("#shop_id").append("<option value=''>请选择4S店</option>");
+					for (i=0; i<data.length; i++ ){
+						$("#shop_id").append("<option value='"+data[i]['id']+"'>"+data[i]['shop_name']+"</option>");
+					}
+				}
+			}
+		
+		})
+	}
+</script>
+<div class="content">
+<div class="title">修改服务顾问 [ <a href="__URL__">返回列表</a> ]</div>
+<form method='post' id="form1" action="__URL__/update/" enctype="multipart/form-data">
+<table cellpadding=3 cellspacing=3>
+<tr>
+	<td class="tRight" >姓名：</td>
+	<td class="tLeft" ><input type="text" class="medium bLeft" name="name" value="{$vo.name}"></td>
+</tr>
+<tr>
+	<td class="tRight" >性别：</td>
+	<td class="tLeft" >
+		<input type="radio" name="sex" value="1" <if condition="$vo.sex eq 1">checked</if>>男&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="sex" value="0" <if condition="$vo.sex eq 0">checked</if>>女
+	</td>
+</tr>
+<tr>	
+	<td  class="tRight" >搜索4S店：</td>
+	<td class="tLeft" >
+		<input type="text" name="shopname" id="shopname" value="{$data.shopname}"><input type="button" id="btn_ok" value="查询" onclick="GetShopname();">	（点查询后下方4S店只列出包含该关键字的店铺给你选择）
+	</td>
+</tr>
+<tr>
+	<td class="tRight" >所属4S店：</td>
+	<td class="tLeft" >
+		<select name='shop_id' id="shop_id">
+			<option value='0'>选择商铺</option>
+			<volist name='shoplist' id='list'>
+				<option value='{$list.id}' <if condition="$vo[shop_id] eq $list[id]">selected</if>>{$list.shop_name}</option>
+			</volist>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td class="tRight" >手机号：</td>
+	<td class="tLeft" ><input type="text" class="medium bLeft" name="mobile" value="{$vo.mobile}"></td>
+</tr>
+<tr>
+	<td class="tRight" >头像：</td>
+	<td class="tLeft" >
+			<input type="file" name="logo" id="logo" />
+
+					
+			<div class="preview hidden" id="preview-hidden"></div>
+
+			<div class="preview-area">
+				<input type="hidden" name="x" id="x">
+				<input type="hidden" name="y" id="y">
+				<input type="hidden" name="w" id="w">
+				<input type="hidden" name="h" id="h">
+				<input type="hidden" name="img_src" id="img_src">
+				<div class="tcrop">头像预览<span class="prompt"></span></div>
+				<div class="crop crop200">
+					<img <notempty name="vo.logo">width="200" height="200"</notempty>src="__UPLOAD__/Service/{$vo.logo}" id="crop-preview-200">
+					<div style="clear:both"></div>
+				</div>
+				
+				<!-- <a class="reupload-img" href="javascript:$('#logo').uploadify('settings','uploadLimit', ++uploadLimit);">重新上传</a> -->
+			</div>
+			<div class="file-tips"><span style="color:red;">*</span>支持JPG,PNG,GIF，图片小于1MB，尺寸不小于100*100,真实高清头像更受欢迎！</div>
+		</td>
+</tr>
+
+<tr>
+	<td class="tRight">状态：</td>
+	<td class="tLeft">
+		<select class="small bLeft"  name="status">
+			<option value="1" <if condition="$vo.status eq 1">checked</if>>启用</option>
+			<option value="0" <if condition="$vo.status eq 0">checked</if>>禁用</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td class="tRight tTop">服务口号：</td>
+	<td class="tLeft"><TEXTAREA class="large bLeft"  name="signature" rows="5" cols="57">{$vo.signature}</textarea></td>
+</tr>
+<tr>
+	<td></td>
+	<td class="center">
+	<input type="hidden" value="{$vo.id}" name="id">
+	<input type="submit" value="保 存" class="small submit">
+	<input type="reset" class="submit  small" value="清 空" >
+	</td>
+</tr>
+</table>
+</form>
+</div>
+</div>

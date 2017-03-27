@@ -1,0 +1,41 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title">编辑商铺公告 [ <A HREF="__URL__/index/shop_id/{$list.shop_id}">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1" action="__URL__/update" enctype="multipart/form-data">
+		    <input type="hidden" name="id" value="{$list.id}" />
+            <input type="hidden" name="shop_id" value="{$list.shop_id}" />
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight tTop">商铺公告标题：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft" NAME="noticetitle" ROWS="5" COLS="35">{$list.noticetitle}</TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">网页标题（seo）</TD>
+                    <TD class="tLeft"><TEXTAREA class="large bLeftRequire" NAME="seo_title" ROWS="5" COLS="35"><if condition="$list.seo_title eq ''">{$title}<else/>{$list.seo_title}</if></TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">网页关键字（seo）</TD>
+                    <TD class="tLeft"><TEXTAREA class="large bLeftRequire" NAME="keyword" ROWS="5" COLS="35"><if condition="$list.keyword eq ''">{$keyword}<else/>{$list.keyword}</if></TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">网页描述（seo）</TD>
+                    <TD class="tLeft"><TEXTAREA class="large bLeftRequire" NAME="summary" ROWS="5" COLS="35"><if condition="$list.summary eq ''">{$summary}<else/>{$list.summary}</if></TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">商铺公告简介：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft" NAME="noticedescription" ROWS="10" COLS="100">{$list.noticedescription}</TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title">编辑商家申请信息 
+			[ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1">
+            <TABLE cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >商家名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="shop_name" value="{$vo.shop_name}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >所在城市：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="city" value="{$vo.city}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >联系人姓名：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="username" value="{$vo.username}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >联系电话：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="phone" value="{$vo.phone}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >qq：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="qq" value="{$vo.qq}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >email：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="email" value="{$vo.email}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >状态：</TD>
+                    <TD class="tLeft" >
+						<select name="status">
+							<option value="0" <if condition="$vo.status eq 0">selected</if>>申请</option>
+							<option value="1" <if condition="$vo.status eq 1">selected</if>>客服确认</option>
+							<option value="2" <if condition="$vo.status eq 2">selected</if>>成功</option>
+							<option value="3" <if condition="$vo.status eq 3">selected</if>>失败</option>
+						</select>
+					</TD>
+                </TR>
+
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <input TYPE="hidden" name="id" value="{$vo.id}">
+                        <input TYPE="hidden" name="ajax" value="1">
+						<div class="impBtn fLeft"><input TYPE="button" value="保存" onclick="sendForm('form1','__URL__/update/','tips')" class="save imgButton"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

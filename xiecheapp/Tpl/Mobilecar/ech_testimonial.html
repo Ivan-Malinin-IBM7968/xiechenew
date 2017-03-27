@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no">
+<title>可兑换奖品</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+body{background:url(__PUBLIC__/mobile/images/castrol/newbg.jpg) top center no-repeat #4a9cc4; background-size: 100%;}
+a{text-decoration: none; color: #FFFFFF;}
+.content{font-family:"微软雅黑"; font-size:12px; color:#FFF; overflow: hidden;}
+.left{ float:left;}
+.right{ float:right;}
+.lipin_show{ padding-right:20px; padding-top:25px;}
+.pad_top{ padding-top:25px; padding-bottom:20px;}
+.clearf{ clear:both;}
+.btu_sty{ width:76px; height:30px; display:block;  margin-bottom:20px; text-align:center; line-height:30px; background-color:rgba(255,255,255,0.2);/*红绿蓝颜色配比，不透明度20%*/}
+.btu_sty2{ margin-bottom:0px;}
+.gasoline{ height:27px; line-height:27px;}
+.exchange{ width:43px; height:27px; display:block; background-color:rgba(255,255,255,0.2); margin-right:10px; text-align:center; line-height:27px;}
+.ex_fei{ width:175px; height:27px; display:block; background-color:rgba(255,255,255,0.2); text-align:center; line-height:27px; margin-right: 20px;}
+.nocan{background:none;}
+.padd_left{ padding-left:20px;}
+.padd_left2{ padding-left:20px;}
+.hr1{ height:1px; background-color:#CCC; margin:10px 0px;}
+.hr2{ height:1px; background-color:#CCC;}
+
+.font_select{ font-size:18px;}
+.lipin_img{ background:url(__PUBLIC__/mobile/images/castrol/libao.png) 20px center no-repeat; text-indent:28px; font-size:14px; background-size: 19px;}
+.onelipin{margin: 10px 0; overflow: hidden;}
+.onelipin a{display: block;}
+</style>
+</head>
+
+<body>
+<div class="content">
+    <div class="padd_left2">
+        <div class="lipin_show left" >
+            <p class="pad_top">总油量<span class="font_select">{$oil_num}ml</span></p>
+            <p>
+            <if condition="$oil_num lt 400">10元打车代金券<elseif condition="($oil_num egt 400) AND ($oil_num lt 600) " /> 上门汽车安全检测<elseif condition="($oil_num egt 600) AND ($oil_num lt 1000) " />上门汽车保养专业服务<elseif condition="($oil_num egt 1000) AND ($oil_num lt 2500) " />府上养车-黄壳机油套餐<elseif condition="($oil_num egt 2500) AND ($oil_num lt 4000) " />府上养车-蓝壳机油套餐<elseif condition="($oil_num egt 4000) AND ($oil_num lt 6000) " />府上养车-灰壳机油套餐<else />1000元加油卡</if>等着你哦
+			
+        </div>
+        <div class="lipin_show right">
+            <div class="btu_sty"><a href="/mobilecar/gift_records-wx-{$weixin_id}">兑换记录</a></div>
+            <div class="btu_sty"><a href="/mobilecar-oilorderdetail-wx-{$weixin_id}">机油明细</a></div>
+            <div class="btu_sty btu_sty2"><a href="/mobilecar/howgain">如何获得？</a></div>
+        </div>
+        <div class="clearf"></div>
+     </div>
+   
+    <div class="padd_left lipin_img">礼品兑换列表</div>
+    <div class="hr1"></div>
+    <div class="padd_left">
+        <div class="onelipin">
+          <a href="/mobilecar-newoil_order-type-1">
+            <div class="gasoline left">400ml</div>
+            <div class="ex_fei right <lt name='oil_num' value='400'>nocan</lt>">10元打车代金券</div>
+            <egt name="oil_num" value="400"><div class="exchange right">可兑换</div> </egt>
+            <div class="clearf"></div>
+          </a>
+        </div>
+        <div class="hr2"></div>
+          <div class="onelipin"> 
+            <a href="/mobilecar-newoil_order-type-2">
+            <div class="gasoline left">600ml</div>
+            <div class="ex_fei right <lt name='oil_num' value='600'>nocan</lt>">上门汽车安全检测</div>
+            <egt name="oil_num" value="600"><div class="exchange right">可兑换</div> </egt>
+            <div class="clearf"></div>
+            </a>
+          </div> 
+         <div class="hr2"></div>
+          <div class="onelipin"> 
+            <a href="/mobilecar-newoil_order-type-3">
+            <div class="gasoline left">1000ml</div>
+            <div class="ex_fei right <lt name='oil_num' value='1000'>nocan</lt>">上门汽车保养专业服务</div>
+            <egt name="oil_num" value="1000"><div class="exchange right">可兑换</div> </egt>
+            <div class="clearf"></div>
+            </a>
+          </div> 
+          <div class="hr2"></div>
+          <div class="onelipin"> 
+            <a href="/mobilecar-newoil_order-type-4">
+            <div class="gasoline left">2500ml</div>
+            <div class="ex_fei right <lt name='oil_num' value='2500'>nocan</lt>">府上养车-壳牌黄喜力机油套餐</div>
+            <egt name="oil_num" value="2500"><div class="exchange right">可兑换</div> </egt>
+            <div class="clearf"></div>
+            </a>
+          </div> 
+          <div class="hr2"></div>
+          <div class="onelipin"> 
+            <a href="/mobilecar-newoil_order-type-5">
+            <div class="gasoline left">4000ml</div>
+            <div class="ex_fei right <lt name='oil_num' value='4000'>nocan</lt>">府上养车-壳牌蓝喜力机油套餐</div>
+            <egt name="oil_num" value="4000"><div class="exchange right">可兑换</div> </egt>
+            <div class="clearf"></div>
+            </a>
+          </div>
+           <div class="hr2"></div>
+           <div class="onelipin"> 
+            <a href="/mobilecar-newoil_order-type-6">
+            <div class="gasoline left">6000ml</div>
+            <div class="ex_fei right <lt name='oil_num' value='6000'>nocan</lt>">府上养车-壳牌灰喜力机油套餐</div>
+            <egt name="oil_num" value="6000"><div class="exchange right">可兑换</div> </egt>
+            <div class="clearf"></div>
+            </a>
+          </div>
+         <div class="hr2"></div>
+          <div class="onelipin"> 
+            <a href="/mobilecar-newoil_order-type-7">
+            <div class="gasoline left">10000ml</div>
+            <div style="height:60px;line-height:20px" class="ex_fei right nocan"><p>1000元加油卡(共50张,已兑完),</p><p>因活动火爆特增加20张，12月31日中午12:00准时抢兑，先兑先得</p></div>
+            <egt name="oil_num" value="10000"><div class="exchange right" style="background:none;"><p id="timeok">可兑换</p></div> </egt>
+            <div class="clearf"></div>
+            </a>
+          </div>
+       </div>
+    </div>
+    
+    </div>
+  <script type="text/javascript">
+    /* var sum,day,h,m,s;
+    sum = {$time};
+    function countdown(){
+      day=parseInt(sum/86400);
+      h=parseInt(sum%86400/3600);
+      m=parseInt(sum%86400%3600/60)
+      s=sum%60;
+      document.getElementById("timeok").innerHTML = +day+"天后<br/>可兑换";
+      if(sum<=0){
+        window.reload();
+      }else{
+        sum--;
+      }
+    }
+
+    setInterval(countdown,1000); */
+
+  </script>
+   <script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+	</script>
+</body>
+</html>

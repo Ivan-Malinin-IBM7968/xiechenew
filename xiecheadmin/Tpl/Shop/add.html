@@ -1,0 +1,90 @@
+{// 加载头部公共文件 }
+<include file="Public:my_header" />
+    <script src="__PUBLIC__/think/jquery-1.6.2.min.js"></script>
+    <script src="__PUBLIC__/think/jquery.think.js"></script>
+    <script src="__PUBLIC__/Js/DatePicker/WdatePicker.js"></script>
+
+    <script>
+        $(function(){
+            Think.init({
+                basePath:"__PUBLIC__/think"
+            });
+        });
+
+		function fleshVerify(){ 
+		//重载验证码
+		var timenow = new Date().getTime();
+		$('#verifyImg').attr("src",'__URL__/verify/'+timenow);
+
+}
+
+
+    </script>
+
+
+<div id="main" class="main" >
+<div class="content">
+<div class="title">添加商家 [ <a href="__URL__">返回列表</a> ]</div>
+<div id="result" class="result none"></div>
+<table>
+<form method="POST" action="__URL__/insert" enctype="multipart/form-data">
+<tr>
+<td>商家名称</td><td><input type="text" name="shop_name"></td>
+</tr>
+<tr>
+<td>商家电话</td><td><input type="text" name="shop_phone"></td>
+</tr>
+<tr>
+<td>商家地址</td><td><input type="text" name="shop_address"></td>
+</tr>
+<tr>
+<td>商家简介</td><td><input type="text" name="shop_account"></td>
+</tr>
+<tr>
+<td>商家坐标</td><td><input type="text" name="shop_maps"></td>
+</tr>
+<tr>
+<td>商家类型</td>
+<td>
+
+<select  name="shop_class">
+<volist name="Think.config.SHOP_CALSS" id="vo">
+<option value="{$key}">{$vo}</option>
+</volist>
+</select>
+
+</td>
+</tr>
+    <tr>
+        <td>选择城市</td>
+        <td>
+            <select location="loc" label="省"  name="shop_prov"></select>
+            <select location="loc" label="市" name="shop_city"></select>
+            <select location="loc" label="区" name="shop_area"></select>
+        </td>
+    </tr>
+<tr>
+<tr>
+<td>开放时间</td><td><input type="text" onclick="WdatePicker()" name="open_time"></td>
+</tr>
+<tr>
+<td>关闭时间</td><td><input type="text" onclick="WdatePicker()" name="close_time"></td>
+</tr>
+<tr>
+<td>商家头像</td><td><input type="file" name="avatar"></td>
+</tr>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Js/editor/kindeditor.js"></script>
+<script type="text/javascript">
+    KE.show({
+        id : 'content_1', //TEXTAREA输入框的ID
+   });
+</script>
+	<td class="tRight tTop">内容：</td>
+	<td class="tLeft"><textarea id="content_1" name="shop_detail" style="width:700px;height:300px;"></textarea>	</td>
+<tr>
+<td colspan="2"><input type="submit" value="保 存"  class="button small"> </td>
+</tr>
+</form>
+</table>
+</div>
+</div>

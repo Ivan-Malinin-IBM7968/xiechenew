@@ -1,0 +1,295 @@
+<layout name='layout_new' />
+
+<link type="text/css" rel="stylesheet" href="__APP__Public/mobile/movie/video_js/video-js.min.css">
+<script src="__APP__Public/mobile/movie/video_js/video.js"></script> 
+
+<style type="text/css">
+.cs-bg{width: 100%; background:url('__APP__/Public/carservice/img/carservice_bg1.jpg') scroll no-repeat center 0px #ffffff; overflow: hidden; padding-bottom: 20px;}
+.cs-main{width:1183px; position:relative; margin:0px auto; overflow:hidden;}
+.cs-top{height:320px;}
+.cs-line{width:390px;clear:both;height:60px;}
+.cs-left{float:left;color:#000000;}
+.f1{width:46px}.f2{width:125px;}.f3{width:296px}
+.form{background:url('__APP__/Public/carservice/img/form_bg.jpg') scroll no-repeat 0px 0px;position: absolute;left:0px;top:30px;width:368px;height:260px;padding:63px 5px}
+.form select{color:#666666;width:100%;height:28px;line-height:28px; font-family: Trebuchet MS;}
+.form i{color:#ff0000}
+.form p{cursor:pointer;width:296px;color:#ffffff;background-color:#00b3f7;height:30px;line-height:30px;margin-left:46px;text-align:center}
+.form span{display:block;height:28px;line-height:28px;padding-left:10px}
+.left-video{float: left; width: 370px;}
+.videoright{float:right;width:750px; overflow:hidden;}
+.videoright p{font-size: 16px; font-family:微软雅黑; line-height: 2.5em; position: relative;}
+.videoright p b{position: absolute; font-size: 30px; font-family:微软雅黑; left: 0; top: -5px;}
+.videoright p.ptip{padding-left: 32px;}
+
+
+
+.content{ width:1183px; margin:0px auto; overflow: hidden;}
+.content *{font-family:微软雅黑; font-size:14px; color:#333333;}
+.content .fuwu_title_font{font-size:24px; color:#1e73b9; font-weight:600; padding-bottom:30px;}
+.content h2{font-size:18px; font-weight:normal;}
+.content p{ padding:10px 0px 10px 0px;}
+.content .anli_font{ font-size:16px; margin:50px 0px;}
+.content .chexin_font{ color:#1e73b9; font-size:18px; font-weight:600; margin-bottom:20px;}
+.content .bold{ font-weight:500;}
+.content .font_com{ margin-bottom:10px;}
+.content .font_com1{ margin-bottom:37px;}
+.content .img_margin{ margin-bottom:26px;}
+.content .xinxi{ float:left; padding-right:235px;}
+.content .float{ float:left;}
+.content .top{ margin-top:20px;}
+.content .top2{ margin:20px 0px 40px 0px;}
+.content .margin{ margin-right:20px;}
+.content .clear{ clear:both; }
+.content .top_queren{ margin-top:40px;}
+.content .top_baoyang{ margin-top:10px;}
+.content .top_feiyong{ margin-top:15px;}
+.content hr{margin-left: 0;}
+</style>
+
+</head>
+
+<body>
+<div class="cs-bg">
+<div class="cs-main">
+	<div class="cs-top">
+		<form class="form" id="form1" name="form1" method="post" action="">
+	        <div class="cs-line">
+		        <div class="cs-left f1">
+			        <span><i>*</i>品牌:</span>
+			     </div>
+			     <div class="cs-left f2">
+			        <select name="brand_id" id="brand_id">
+			        	<option value="">选择品牌</option>
+			            <volist name="brand_list" id="vo">
+			            	<option value="{$vo.brand_id}">{$vo.word}&nbsp;{$vo.brand_name}</option>
+			            </volist>
+			        </select>
+		        </div>
+		        <div class="cs-left f1">
+			        <span><i>*</i>车型:</span>
+			     </div>
+		        <div class="cs-left f2">
+			        <select name="model_id" id="model_id">
+		            	<option value="">选择车型</option>
+		        	</select>
+		        </div>
+	        </div>
+	        <div class="cs-line">
+	        	<div class="cs-left f1">
+			        <span><i>*</i>款式:</span>
+			     </div>
+			     <div class="cs-left f3">
+		            <select name="style_id" id="style_id">
+			        	<option value="">选择款式</option>
+				    </select>
+			     </div>
+	        </div>
+	        <div class="cs-line">
+	        	<p id="subBtn">提交</p>
+	        </div>
+	   </form>
+	</div>
+	<div style="overflow:hidden; margin:40px 0 50px;">
+   		<div class="left-video">
+   			<div style="width:370px">
+	   			<video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" controls="controls" preload="auto" width="100%" height="264" poster="__APP__/Public/carservice/img/videoimg.jpg" data-setup='{"example_option":true}'>
+				  <source src="http://www.xieche.com.cn/fsyc/xieche.flv" type='video/x-flv' />
+				</video> 
+			</div>
+   		</div>
+   		<div class="videoright">
+            <div style="float:left; width:390px;">
+                <p class="ptip"><b>在</b>上海 你很累 我们知道 为生存 为家人 为梦想</p>
+                <p>你用辛苦的一步步把成功的距离丈量</p>
+                <p>你本该陪伴家人 却走在陌生城市的出差路上</p>
+                <p>你本该已酣然入眠 却在深夜打卡机上按下寂静的一响</p>
+                <p>被轻视 想放弃 曾迷茫 曾慌张</p>
+                <p>唯有梦想可以让你保持嚣张</p>
+            </div>
+            <div style="float:right; width:300px;">
+                <p>这个城市这么大  却没有人能够借你肩膀</p>
+                <p>这个城市这么大  却没有人能懂你的假装</p>
+                <p>前行路上不需要假装   你很忙  我们知道</p>
+                <p>我们想为你分担一点点  让你在前行路上</p>
+                <p>节约出一点点 坐下来的时光</p>
+            </div>
+        </div>
+   </div>
+</div>
+
+
+<div class="content">
+    <div class="fuwu_title_font">服务流程</div>
+    <h2>1.预约服务</h2>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>网站、APP、微信、电话下单预约，客服人员提前一天与车主电话确认预约信息</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/fuwu_01.jpg"/></div>
+    
+    <h2>2.技师到达</h2>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>工作车、服务技师携设备及配件，在预定时间到达，与车主沟通确认后，开始施工准备，布置警示、架设监控、车辆护套、场地布置</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/jishi.jpg"/></div>
+    
+    <h2>3.进行保养</h2>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>请车主当面查验并拆封配件，拆卸旧配件，更换新配件，悉心完成整套保养工作，过程中，热情与车主沟通答疑</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/baoyang.jpg"/></div>
+    
+    <h2>4.车辆检测</h2>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>保养完成后，附赠爱车体检4类38项爱车深度专业检测及评分，及时向车主微信推送检测报告</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/jiance.jpg"/></div>
+    
+    <h2>5.完成结算</h2>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>服务完成后，爱车交付车主验收，车主验收确认后签字并结算，向车主礼貌告别</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/jiesuan.jpg"/></div>
+
+<div class="anli_font"><b style="font-size:24px;color:#1e73b9;font-weight:bold;">案例</b>&nbsp高端车保养，有钱可以很“任性”</div>
+
+<div class="chexin_font">保时捷卡宴3.0AT</div>
+<div class="font_com">时间：11月19日下午</div>
+<div class="font_com1">地点：许小姐办公楼地下停车场</div>
+<div class="xinxi">
+    <div>1.确认信息</div>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>确认订单信息后，师傅按标准操作检查车子周身</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/messagequeren.jpg"/></div>
+</div>
+<div class="float">
+    <div>2.布置现场</div>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>规范操作：1.师傅架起摄像机；2.驾驶座套上保护；3.准备工具和配件</p>
+    <div class="img_margin"><img src="/Public/carservice/Images/buzhi.jpg"/></div>
+</div>
+<div class="clear"></div>
+<div>3.开始保养</div>
+<hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <div class="top">
+        <div class="float margin">
+            <div class="bottom"><img src="/Public/carservice/Images/choujiyou.jpg"/></div>
+            <p>抽出旧机油</p>    
+        </div >
+        <div class="float margin">
+            <div class="bottom"><img src="/Public/carservice/Images/xiejilu.jpg"/></div>
+            <p>拆卸旧机滤</p>    
+        </div>
+        <div class="float margin">
+            <div class="bottom"><img src="/Public/carservice/Images/huanjilu.jpg"/></div>
+            <p>换上新机滤</p>    
+        </div>
+        <div class="float">
+            <div class="bottom"><img src="/Public/carservice/Images/jiajiyou.jpg"/></div>
+            <p>倒入新机油</p>    
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+<div class="top_baoyang">4.开始保养</div>
+<hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <div class="top">
+        <div class="float margin">
+            <div class="bottom"><img src="/Public/carservice/Images/pangdongshui.jpg"/></div>
+            <p>防冻液冰点值</p>   
+        </div >
+        <div class="float margin">
+            <div class="bottom"><img src="/Public/carservice/Images/dianpin.jpg"/></div>
+            <p>电瓶电压</p> 
+        </div>
+        <div class="float margin">
+            <div class="bottom"><img src="/Public/carservice/Images/taiya.jpg"/></div>
+            <p>轮胎胎压</p> 
+        </div>
+        <div class="float">
+            <div class="bottom"><img src="/Public/carservice/Images/bolishui.jpg"/></div>
+            <p>玻璃水免费添加</p>  
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="top_feiyong">5.结算费用</div>
+    <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+    <p>30分钟不到，轻松搞定保养。许小姐满意之余，感叹我们的服务是他们当爹妈的福音，省下了不少时间.</p>
+    <div class="top2"><img src="/Public/carservice/Images/jie_suan.jpg"/></div>
+    
+    <div class="chexin_font bold">玛莎拉蒂总裁</div>
+    <div class="font_com">时间：11月21日下午</div>
+    <div>地点：停车场</div>
+    <div class="top_queren">
+        <div>“总裁”很忙，确认完订单信息，即可开工</div>
+        <hr style="width:120px; height:2px; background:#5f9cef; border:none;"/>
+        <div class="top">
+            <img src="/Public/carservice/Images/mashaladi.jpg"/>
+        </div>
+    </div>
+    
+</div>
+
+
+</div>
+<script>
+$(function(){
+    $("#brand_id").change(function(){
+        var brand_id = $(this).val();
+        $.ajax({
+            type:'POST',
+            url:'__APP__/carservice/ajax_car_model',
+            cache:false,
+            dataType:'JSON',
+            data:'brand_id='+brand_id,
+            success:function(data){
+                data = data.data;
+                if(data.errno == 0){
+                    var model_list_html = '<option value="">选择车型</option>';
+                    $.each(data.result.model_list, function(k, v){
+						model_list_html += '<option value="'+v['series_id']+'">'+v['word'].substr(1, 1)+'&nbsp;'+v['series_name']+'</option>';
+                    });
+                    $("#model_id").html(model_list_html);
+                }else{
+                    alert(data.errmsg);
+                    return false;
+                }
+            }
+        });
+    });
+
+    $("#model_id").live("change", function(){
+        var model_id = $(this).val();
+        $.ajax({
+            type:'POST',
+			url:'__APP__/carservice/ajax_car_style',
+            cache:false,
+            dataType:'JSON',
+            data:'model_id='+model_id,
+            success:function(data){
+                data = data.data;
+                if(data.errno == 0){
+                    var style_list_html = '<option value="">选择款式</option>';
+                    $.each(data.result.style_list, function(k, v){
+						style_list_html += '<option value="'+v['model_id']+'">'+v['model_name']+'</option>';
+                    });
+                    $("#style_id").html(style_list_html);
+                }else{
+                    alert(data.errmsg);
+                    return false;
+                }
+            }
+        });
+    });
+
+    $("#subBtn").click(function(){
+        var brand_id = $("#brand_id").val();
+        var model_id = $("#model_id").val();
+        var style_id = $("#style_id").val();
+
+        if(!style_id){
+        	alert('请选择车型');
+            return false;
+        }
+        window.location.href='__APP__/carservice/sub_car?brand_id='+brand_id+'&model_id='+model_id+'&style_id='+style_id;
+    });
+});
+</script>
+
+</body>
+</html>

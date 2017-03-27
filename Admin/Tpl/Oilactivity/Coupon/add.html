@@ -1,0 +1,128 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">优惠券添加[ <a href="__URL__/index">返回列表</A> ]</div>
+		 <form method=post id="form1" name="form1" action="__URL__/addCoupon" enctype="multipart/form-data">
+			<table cellpadding=3 cellspacing=3>
+				<tr>
+                    <td class="tRight" >名称：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_name"></td>
+                </tr>
+                <tr>
+                    <td class="tRight" >优惠金额：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_amount"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >数量：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_count"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >优惠券标识码：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_prefix"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >标题：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_title"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >副标题：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_subtitle"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >使用说明：</td>
+                    <td class="tLeft" ><input type="text" name="coupon_summary"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >服务范围：</td>
+                    <td class="tLeft" ><input type="text" name="service_area"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" >支持套餐：</td>
+                    <td class="tLeft" >
+                            <volist name="eventType" id="type" key="key">
+                            <label>
+                                {$type.name}
+                                <input <if condition="$key eq 1">checked</if> type="radio" name="support_type" value="{$key}" />
+                            </label>
+                            </volist>
+                    </td>
+                </tr>
+				<tr>
+                    <td class="tRight" >有效期：</td>
+                    <td class="tLeft">
+                        <input type="text" name="start_time" onclick="new Calendar().show(this);" value="{$start_time}" readonly="readonly"> —
+                        <input type="text" name="end_time" onclick="new Calendar().show(this);" value="{$end_time}" readonly="readonly">
+                    </td>
+                </tr>
+				<tr>
+                    <td class="tRight" >活动图片：</td>
+                    <td class="tLeft" ><input id="eventImage" type="file" name="coupon_thumb"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" ></td>
+                    <td class="tLeft" >
+                         <img id="eventPreview" alt="" width="200" src="http://placehold.it/200x200">
+                    </td>
+                </tr>
+				<tr>
+                    <td class="tRight" >使用说明图片：</td>
+                    <td class="tLeft" ><input id="detailImage" type="file" name="coupon_detail_img"></td>
+                </tr>
+				<tr>
+                    <td class="tRight" ></td>
+                    <td class="tLeft" >
+                         <img id="detailPreview" alt="" width="200" src="http://placehold.it/200x200">
+                    </td>
+                </tr>
+				<tr>
+                    <td class="tRight" >活动类型：</td>
+                    <td class="tLeft" >
+                        线上<input checked type="radio" value="0" name="type">
+                        线下<input type="radio" value="1" name="type">
+                    </td>
+                </tr>
+				<tr>
+                    <td class="tRight" clospan="2"><input type="submit" value="确认"></td>
+                </tr>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<script type="text/javascript" charset="utf-8">
+    (function(){
+        var module = {
+            init : function(){
+                var self = this;
+                $('#eventImage').change(function(){
+                    self.readURL(this, $('#eventPreview'));
+                });
+                $('#detailImage').change(function(){
+                    self.readURL(this, $('#detailPreview'));
+                });
+            },
+
+            readURL : function (input, target) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        target.attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        };
+        module.init();
+    })();
+</script>

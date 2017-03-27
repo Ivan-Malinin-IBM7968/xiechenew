@@ -1,0 +1,145 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    function check_cardid(){
+        var cardid = $("#cardid").val();
+        if(cardid == ''){
+        	//$("#card_exist").html("请输入卡号！");
+        	//$("#cardid").focus();
+            return false;
+        }
+    	$.ajax({
+			type: "POST",
+			url: "__URL__/check_cardid",
+			cache: false,
+			data: "cardid="+cardid,
+			success: function(data){
+				if(data > '1'){
+					$("#card_exist").html("该卡号已绑定了手机"+data+",(<a href='__URL__/read/phonenum/"+data+"'>使用这个手机号下单</a>)");
+				}else if(data == '1'){
+					$("#card_exist").html("该卡号可以使用！");
+				}else if(data == '-1'){
+					$("#card_exist").html("该卡号不存在！");
+				}else if(data == '-2'){
+					$("#card_exist").html("数据错误！");
+				}
+			}
+		})
+    }
+    
+    function sendsms(){
+        var mobile = $("#mobile").val();
+        if(!/^1\d{10}$/.test(mobile)){
+            alert("手机号格式不正确！");
+            return false;
+        }
+    	$.ajax({
+			type: "POST",
+			url: "__URL__/sendsms",
+			cache: false,
+			data: "mobile="+mobile,
+			success: function(data){
+				if(data == 1){
+					alert("发送成功！");
+				}else{
+					alert("发送失败！");
+				}
+			}
+		})
+    }
+    
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增用户 [ <A HREF="__URL__/index">返回列表</A> ][<a href="javascript:void(0)" onclick="$('#model').show();return false;">给用户发送短信</a>]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/insert">
+			<table cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >来电号码：</TD>
+                    <TD class="tLeft" >{$Think.get.mobile}</TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >手机号码：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="mobile" value="{$mobile}" class="large bLeftRequire" check='^\S+$' warning="号码不能为空" NAME="mobile"><font color="red">*手机号码必填</font><input type="button" id="send_sms" value="发送短消息" onclick="sendsms();" /></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >卡号：</TD>
+                    <TD class="tLeft" ><input TYPE="text" value="" class="large bLeftRequire" check='^\S+$' warning="号码不能为空" NAME="cardid" id="cardid" onblur="check_cardid();"><input type="button" value="检查" onclick="check_cardid();"/><font color="grey">选填</font>
+                    <br><span id="card_exist"></span>
+                    </TD>
+                </TR>
+				<TR>
+                    <TD colspan="2"><input type="submit" value="添加并进入下单页面">&nbsp;&nbsp;&nbsp;<input type="checkbox" id="ql_huodong" name="ql_huodong" value="1"/>给优惠劵发抢楼信息&nbsp;&nbsp;&nbsp;<input type="checkbox" id="reg" name="reg" value="1"/>给用户发注册消息</TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <div style="width:500px;z-index:99;background-color:#efefef;padding:0px 0px 20px 40px;position:fixed;top:30%;left:30%;display:none" id="model">
+	<div style="float:right;padding:10px 20px 0px 0px;cursor:pointer" onClick="$(this).parent().hide()">X</div>
+	<h3 style="padding-top:30px">请填写客户资料:</h3>
+	<div style="padding:10px 0px"><label style="width:80px;display:inline-block">手机号码：</label><input name="add_mobile" /></div>
+	<div style="padding:10px 0px"><label style="width:80px;display:inline-block;vertical-align:top">备注：</label><textarea rows="5" style="width:300px" name="add_remark" readonly></textarea></div>
+	<div style="padding:10px 0px"><label style="width:80px;display:inline-block;vertical-align:top"></label><button id="send">添加</button></div>	
+</div>
+<script type="text/javascript">
+	var $uid = '{$Think.session.authId}';
+	var $username = '{$Think.session.loginAdminUserName}';
+	var canSend = false;
+	$staff = {
+			'1'	  : '6002',//admin
+			'223' : '6002',//王俊炜
+			'171' : '6003',//彭晓文
+			'267' : '6004',//朱迎春
+			'259' : '6005',//乔敬超
+			'234' : '6006',//张美婷
+			'243' : '6007',//黄美琴
+			'242' : '6008',//李宝峰
+			'266' : '6010',//黄赟
+			'252' : '6009',//周祥金
+			'273' : '6011'//杨超
+	};
+	if($staff[$uid]){
+		canSend = true;
+		var html = '【携车网-府上养车】你很忙，我们知道，99元上门为您保养爱车，4S品质，省钱省事。另有4S店预约折扣、车辆维修返利等，好多便宜。400-660-2822，服务工号：'+$staff[$uid]+' '+$username;
+		$('textarea[name=add_remark]').val(html);
+	}
+	
+	$('#send').click(function(){
+		/* if(!canSend){
+			alert('您无权限发送');
+			return false;
+		} */
+		var add_mobile = $('input[name="add_mobile"]').val();
+		if(!add_mobile){
+			alert('请填写客户电话');
+			return false;
+		}
+		var add_remark = $('textarea[name="add_remark"]').val();
+		if(!add_remark){
+			alert('请填写发送内容');
+			return false;
+		}
+		$.post('__URL__/sendMsg',{'mobile':add_mobile,'content':add_remark},function(data){
+			if(data.status){
+				alert('发送成功');
+				window.location.reload();
+			}else{
+				alert(data.msg);
+			}
+		},'json')
+	})
+</script>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

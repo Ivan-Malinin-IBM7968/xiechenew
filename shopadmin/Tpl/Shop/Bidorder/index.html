@@ -1,0 +1,70 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>事故车订单列表</h1>
+</div>
+<div id="main-right2">
+	<div>
+	<FORM METHOD=POST ACTION="__URL__">
+		<table class="list"  width="785">
+		
+			<tr>
+				<td>时间搜索：</td>
+				<td>
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly"></td>
+			</tr>
+			<tr>
+			<td style="width:100px;height:40px;">订单状态：</td>
+				<td style="height:40px;">
+					<volist name="Think.config.BIDORDER_STATE" id="statevo">
+						<input type="radio" value="{$key}" name="order_status" <if condition="$data.order_status eq $key">checked</if>>{$statevo}
+					</volist>
+					<input type="radio" value="" name="order_status" <if condition="$data.order_status eq ''">checked</if>>全部
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="搜索" style="impBtn hMargin fLeft shadow"></td>
+			</tr>
+		</table>
+		</FORM>
+	</div>
+  <table width="785" border="0" cellspacing="1" cellpadding="1" bgcolor="#E4E4E4">
+    <tr>
+      
+      <td align="center" bgcolor="#EEEEEE">订单号</td>
+      <td align="center" bgcolor="#EEEEEE">姓名</td>
+	  <td align="center" bgcolor="#EEEEEE">车牌号</td>
+      <td align="center" bgcolor="#EEEEEE">车型</td>
+	  <td align="center" bgcolor="#EEEEEE">订单状态</td>
+      <td align="center" bgcolor="#EEEEEE">到店时间</td>
+	  <td align="center" bgcolor="#EEEEEE">携车网客服描述</td>
+	  <td align="center" bgcolor="#EEEEEE">查看</td>
+    </tr>
+
+
+    <volist name="data.Bidorder" id="vo">
+    <tr>
+		<td  align="center" bgcolor="#FFFFFF">{$vo.order_id}</td>
+		<td align="center" bgcolor="#FFFFFF">{$vo.truename}</td>
+		<td align="center" bgcolor="#FFFFFF"><if condition="$vo.licenseplate eq ''">无<else/>{$vo.licenseplate}</if></td>
+		<td align="center" bgcolor="#FFFFFF">{$vo.fsname}</td>
+		<td align="center" bgcolor="#FFFFFF">
+			<volist name="Think.config.BIDORDER_STATE" id="statevo">
+				<if condition="$vo.order_status eq $key">{$statevo}</if>
+			</volist>
+		</td>
+		<td align="center" bgcolor="#FFFFFF">{$vo.tostore_time|date="y-m-d H:i:s",###}</td>
+		<td align="center" bgcolor="#FFFFFF"><if condition="$vo.insurance_remark eq ''">暂无备注<else/>{$vo.insurance_remark}</if></td>
+		<td align="center" bgcolor="#FFFFFF">
+			<a href="__APP__/Shop/Safeorder/bidorder/id/{$vo.insurance_id}/type/1">订单详情</a></if>
+
+		</td>
+    </tr>
+    </volist>
+  </table>
+  <div id="main-right3">{$page}</div>
+</div>
+
+</div>

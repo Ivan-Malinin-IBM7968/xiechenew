@@ -1,0 +1,92 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="orderdetail">
+			<div class="orderdetailtop">
+				<table height="40">
+					<tr>
+						<td width="20"></td>
+						<td width="200">订单编号：{$order_info['id']}</td>
+						<td width="200">交易状态：
+							<switch name="order_info.status">
+						    <case value="0">等待处理</case>
+						    <case value="1">预约已确认</case>
+						    <case value="2">已分配技师</case>
+						    <case value="8">已作废</case>
+						     <case value="9">服务已完成</case>
+    						</switch>
+						</td>
+						<td>
+							
+						</td>
+
+					</tr>
+				</table>
+			</div>
+			<div class="orderdetailcon">
+				<!-- <dl><dt>订单详情</dt></dl> -->
+				<dl>
+					<dt>订单类型</dt>
+					<dd>事故车维修订单</dd>
+					<dt>下单人信息</dt>
+					<dd>
+						<ul>
+							<li>姓名：{$list.truename}</li>
+							<li>手机号：{$list.mobile}</li>
+							<li>下单时间：{$list.create_time|date="Y-m-d H:i:s",###}</li>
+						</ul>
+					</dd>
+					<dt>车辆信息</dt>
+					<dd>
+						<ul>
+							<li>车型：A6L（一汽奥迪）2005-2011-A6L 2.0T MT</li>
+							<!-- <li>车牌号：{$list.licenseplate}</li> -->
+						</ul>
+					</dd>
+					<dt>保险信息</dt>
+					<dd>
+						<ul>
+							<li>保险公司：{$list.insurance_name}</li>
+							<li>定损金额：{$list.loss_price}</li>
+						</ul>
+					</dd>
+					<dt>其他</dt>
+					<dd>
+						<ul>
+							<li>备注：{$list.remark}</li>
+						</ul>
+					</dd>
+
+				</dl>
+			</div>
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.orderdetail{background: #fbfaf8;}
+	.orderdetailtop{background: #eaeeed; font-size: 16px; overflow: hidden; margin:0 0 20px;}
+	.orderdetailtop b{font-size: 24px; color: #ff4a00;}
+	.orderdetailtop span{font-size: 14px;}
+	.orderdetailtop span a{display: inline-block; width: 60px; height: 24px; line-height: 24px; margin-left: 20px; background: #38558b; color: #FFFFFF; text-align: center;}
+	.orderdetailcon{border: 1px solid #ebefee; overflow: hidden; margin:0 0 20px; padding: 20px 15px;}
+	.orderdetailcon dl{overflow: hidden; margin: 0 0 20px 0;}
+	.orderdetailcon dl dt{font-size: 14px; font-weight: bold; background: #EAEEED; height: 30px; padding: 0 20px; line-height: 30px;}
+	.orderdetailcon dl dd{padding: 20px; font-size: 14px; line-height: 2em;}
+	.orderdetailcon dl dd.dboder{border: 1px solid #ccc; margin: 20px 0; padding: 0; text-indent: 20px;}
+</style>

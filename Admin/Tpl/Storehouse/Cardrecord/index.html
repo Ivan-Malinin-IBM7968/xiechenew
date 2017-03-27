@@ -1,0 +1,143 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<!-- 菜单区域  -->
+<script>
+	function delete_sale(id){
+		$.ajax({
+			type:'POST',
+			url:'__URL__/delete_sale',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+	<!-- 主体内容  -->
+	<div class="content" >
+	<div class="title">卡库存明细</div>
+	<!-- <div class="impBtn hMargin fLeft shadow" style="margin:10px 5px">
+		<a href="__APP__/Storehouse/Cardrecord/sale" id="" class="add imgButton" type="button" onclick="add()" style="padding:0px 10px;border:none">领用明细</a>
+	</div>
+	<div class="impBtn hMargin fLeft shadow" style="margin:10px 5px">
+		<a href="__APP__/Storehouse/Cardrecord/sale" id="" class="add imgButton" type="button" onclick="add()" style="padding:0px 10px;border:none">销售明细</a>
+	</div>
+	<div class="impBtn hMargin fLeft shadow" style="margin:10px 5px">
+		<a href="__APP__/Storehouse/Cardrecord/sale" id="" class="add imgButton" type="button" onclick="add()" style="padding:0px 10px;border:none">退卡明细</a>
+	</div>
+	<div class="impBtn hMargin fLeft shadow" style="margin:10px 5px">
+		<a href="__APP__/Storehouse/Cardrecord/sale" id="" class="add imgButton" type="button" onclick="add()" style="padding:0px 10px;border:none">库存明细</a>
+	</div>
+	 -->
+	 
+	<div class="operate" style="margin:15px 0px">
+		 <form action="__URL__" method="post" >
+			明细类型：<select name="type">
+					<option value="0">请选择类型</option>
+					<option value="3" <eq name="type" value="3">selected</eq>>领用明细</option>
+					<option value="4" <eq name="type" value="4">selected</eq>>销售明细</option>
+					<option value="5" <eq name="type" value="5">selected</eq>>退卡明细</option>
+					<option value="7" <eq name="type" value="7">selected</eq>>库存明细</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			产品名称：<select name="name">
+					<option value="0">请选择名称</option>
+					<volist name="name_list" id="vo">
+						<option <eq name="vo.name" value="$name">selected</eq> value="{$vo.name}">{$vo.name}</option>
+					</volist>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" value="搜索">
+		</form> 
+	</div>
+	
+	<div class="list">
+		<table class="list">
+			<empty name="store">
+				<tr class="row">
+					<th align=center>ID</th>
+					<th align=center>日期</th>
+					<th align=center>操作类型</th>
+					<th align=center>产品用途</th>
+					<th align=center>产品名称</th>
+					<th align=center>领用部门</th>
+					<th align=center>领用人</th>
+					<th align=center>领用数量</th>
+					
+					<th align=center>已使用数</th>
+					<th align=center>单价</th>
+					<th align=center>总金额</th>
+					<th align=center>赠送</th>
+					<th align=center>退回</th>
+					<th align=center>库存</th>
+					<th align=center>操作</th>
+				</tr>
+				<volist name="list" id="vo">
+					<tr>
+						<td align=center>{$vo.record_id}</td>
+						<td align=center>{$vo.create_time|date="y-m-d",###}</td>
+						<td align=center>
+							<eq name="vo.record_type" value="2">入库</eq>
+							<eq name="vo.record_type" value="3">领卡</eq>
+							<eq name="vo.record_type" value="4">销售</eq>
+							<eq name="vo.record_type" value="5">退卡</eq>
+							<eq name="vo.record_type" value="6">结算</eq>
+						</td>
+						<td align=center>{$vo.use_way}</td>
+						<td align=center>{$vo.name}</td>
+						<td align=center>市场部</td>
+						<td align=center>{$vo.receive_person}</td>
+						<td align=center><eq name="vo.record_type" value="3"><a href="__APP__/Storehouse/Cardlist/index?info_id={$vo.id}&status=3">{$vo.record_num}</a></eq></td>
+						<td align=center><eq name="vo.record_type" value="4"><a href="__APP__/Storehouse/Cardlist/index?info_id={$vo.id}&status=4">{$vo.record_num}</a></eq></td>
+						<td align=center>{$vo.price}</td>
+						<td align=center>{$vo['price']*$vo['num']}</td>
+						<td align=center><eq name="vo.record_type" value="4"><eq name="vo.sale_type" value="2"><a href="__APP__/Storehouse/Cardlist/index?info_id={$vo.id}&status=4">{$vo.record_num}</a></eq></eq></td>
+						<td align=center><eq name="vo.record_type" value="5"><a href="__APP__/Storehouse/Cardlist/index?info_id={$vo.id}&status=5">{$vo.record_num}</a></eq></td>
+						<td align=center><a href="__APP__/Storehouse/Cardlist/index?info_id={$vo.id}">{$vo.house_num}</a></eq></td>
+						<td align=center><a onclick="showlog('cardrecord',{$vo.id})" href="javascript:void(0);">查看日志</a></td>
+					</tr>
+				</volist>
+			<else />
+				<tr class="row">
+					<th align=center>ID</th>
+					<th align=center>日期</th>
+					<th align=center>产品用途</th>
+					<th align=center>产品名称</th>
+					<th align=center>单价</th>
+					<th align=center>总金额</th>
+					<th align=center>库存数量</th>
+					<th align=center>操作</th>
+				</tr>
+				<volist name="list" id="vo">
+					<tr>
+						<td align=center>{$vo.house_id}</td>
+						<td align=center>{$vo.create_time|date="y-m-d",###}</td>
+						<td align=center>{$vo.use_way}</td>
+						<td align=center>{$vo.name}</td>
+						<td align=center>{$vo.price}</td>
+						<td align=center>{$vo['price']*$vo['house_num']}</td>
+						<td align=center>{$vo.house_num}</eq></td>
+						<td align=center><a onclick="showlog('cardcate',{$vo.id})" href="javascript:void(0);">查看日志</a></td>
+					</tr>
+				</volist>
+			</empty>
+			<tr>
+				<td colspan="4">{$page}</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+</div>

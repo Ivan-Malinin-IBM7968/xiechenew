@@ -1,0 +1,89 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script type="text/javascript" src="/Public/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="/Public/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+	
+	<!-- 主体内容  -->
+	<div class="content" >
+		<div class="title">车型库-产品价格管理</div>
+		<form action="__APP__/Store/Carproduct/" method="post" >
+		<div>
+			<table class="list">
+				<volist name="data" id="list">
+				<tr>
+					<td width="10%">{$list.name}</td>
+					<td width="90%">
+						<volist name="list.items" id="item">
+							<span class="item_service"><input type="checkbox" name="serviceitem[]" value="{$item.id}" <in name="item.id" value="$serviceitem_str" >checked</in> />{$item.name}</span>
+						</volist>
+					</td>
+				</tr>
+				</volist>
+			</table>
+		</div>
+		<div style="clear:both;"></div>
+		<div style="height:20px;"></div>
+		<div>
+			<table>
+			<tr>
+				<td>车牌品牌：</td>
+				<td>
+					<select id="get_brand" name="brand_id" style= "width:120px" onchange="comp_brlist('get_brand','get_series', 'get_model');"></select>
+				</td>
+			</tr>
+			<tr>
+				<td>车系：</td>
+				<td>
+					<select id="get_series" name="series_id" style= "width:120px" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');"></select>
+				</td>
+			</tr>
+			<tr>
+				<td>车型：</td>
+				<td>
+				<select id="get_model" name="model_id" style= "width:120px" disabled></select>
+				</td>
+			</tr>
+		</table>
+		<input type="submit" value="搜索">
+		</div>
+		</form>
+	<script type="text/javascript">
+		comp_fctlist("get_brand", "get_series", "get_model",{$brand_id},{$series_id},{$model_id});
+	</script>
+
+	<div style="height:20px;"></div>
+	<div class="list">
+		<table class="list">
+			<th>服务名称</th>
+			<th>品牌</th>
+			<th>车系</th>
+			<th>车型</th>
+			<th>价格明细</th>
+			<th>查看</th>
+			
+			<volist name="productlist" id="vo">
+				<tr>
+					<td>{$vo.service_name}</td>
+					<td>{$vo.brand_name}</td>
+					<td>{$vo.series_name}</td>
+					<td>{$vo.model_name}</td>
+					<td>
+					<volist name="vo.detail_list" id="detaillist">
+						{$detaillist.Midl_name}:&nbsp;&nbsp;{$detaillist.price}x{$detaillist.quantity}{$detaillist.unit}={:template_multiplication($detaillist[price],$detaillist[quantity])}元<br>
+					</volist>
+					</td>
+					<td><a href="__URL__/detail/product_id/{$vo.id}" target="_blank">查看详情</a></td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+		
+	</div>
+</div>

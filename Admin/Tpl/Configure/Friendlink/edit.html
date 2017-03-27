@@ -1,0 +1,29 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title">编辑友情链接 
+			[ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1">
+            <TABLE cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight tTop">标题：</TD>
+                    <TD class="tLeft"><input type="text" name="name"  class="large bLeftRequire" value="{$vo.name}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">链接地址：</TD>
+                    <TD class="tLeft"><input type="text" name="link"  class="large bLeftRequire"  value="{$vo.link}"><font color="red">(必须以http:// 开头！！)</font></TD>
+                </TR>
+                <TR>
+                    <TD class="center" cols="2">
+                        <input TYPE="hidden" name="ajax" value="1">
+						<input type="hidden" name="id" value="{$vo.id}" />
+						<div class="impBtn fLeft"><input TYPE="button" value="保存" onclick="sendForm('form1','__URL__/update/','tips')" class="save imgButton"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

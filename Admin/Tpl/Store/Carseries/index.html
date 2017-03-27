@@ -1,0 +1,173 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script>
+	$(function(){
+		$("#add_series").click(function(){
+			var word = $("#word").val();
+			var brand_id = {$brand_info.brand_id};
+			//车系名称
+            var series_name = $("#series_name").val();
+            if(series_name==''){
+                alert('车系名称不能为空!');
+                return false ;
+            }
+			$.ajax({
+				type:'POST',
+				url:'__APP__/Store/Carseries/add_series',
+				cache:false,
+				dataType:'text',
+				data:'&word='+word+'&brand_id='+brand_id+'&series_name='+series_name ,
+				success:function(data){
+					if(data == 1){
+						alert("添加成功");
+						window.location.reload();
+					}
+				}
+			})
+		})
+	})
+	
+	function update_series(id){
+        //首字母
+		var word = $("#seriesword_"+id).val();
+        //车系名称
+		var seriesname = $("#seriesname_"+id).val();
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Store/Carseries/save_series',
+			cache:false,
+			dataType:'text',
+			data:'word='+word+'&seriesname='+seriesname+'&series_id='+id ,
+			success:function(data){
+				if(data == 1){
+					alert("修改成功");
+					window.location.reload();
+				}else{
+					alert("修改失败");
+				}
+			}
+		})
+	}
+
+	function delete_series(id){
+		if(!confirm("确定要删除吗？")){
+			return false;
+		}
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Store/Carseries/delete_series',
+			cache:false,
+			dataType:'text',
+			data:'series_id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+	<!-- 主体内容  -->
+	<div class="content" >
+	<div class="title">车型库-{$brand_info.brand_name}</div>
+	<div>
+		<table >
+			<tr>
+				<td>新增车系：</td>
+				<td><input type="text" name="series_name" id="series_name"/></td>
+			</tr>
+            <tr>
+				<td>首字母：</td>
+				<td><input type="text" name="word" id="word"  /></td>
+			</tr>
+<!--			<tr>
+				<td>类型：</td>
+				<td><input type="text" name="sort" id="sort"/></td>
+			</tr>
+			<tr>
+				<td>投产年份：</td>
+				<td><input type="text" name="start_year" id="start_year"/></td>
+			</tr>
+			<tr>
+				<td>停产年份：</td>
+				<td><input type="text" name="end_year" id="end_year"/></td>
+			</tr>
+			<tr>
+				<td>选择4S店：</td>
+				<td><select name="fsid" id="fsid">
+					<option value='0'>选择4S店</option>
+				<volist name='fs' id='eachfs'>
+					<option value='{$eachfs.fsid}'>{$eachfs.fsname}</option>
+				</volist>
+			</select></td>
+			</tr>
+			<tr>
+				<td>新增4S店：</td>
+				<td><input type="text" name="fsname" id="fsname" /></td>
+			</tr> -->
+			<tr>
+				<td></td>
+				<td><input type="button" id="add_series" value="提交"/></td>
+			</tr>
+			
+		</table>
+	</div>
+	<div style="height:20px;"></div>
+	<div>
+		<form action="__APP__/Store/Carseries/index/brand_id/{$brand_info.brand_id}" method="post" >
+			车系搜索： 名称<input type="text" name="series_name" value="{$series_name}" />&nbsp;&nbsp;<input type="submit" value="搜索">
+		</form>
+	</div>
+	<div class="list">
+		<table class="list">
+			<tr class="row">
+				<th width="5%">车系ID</th>
+				<th width="5%">首字母</th>
+				<th width="10%">车系名称</th>
+<!--			<th width="10%">车系</th>
+				<th width="10%">类型</th>
+				<th width="10%">投产年份</th>
+				<th width="10%">停产年份</th>
+			    <th width="10%">4S店</th>-->
+				<th width="20%">操作</th>
+			</tr>
+			<volist name="list" id="vo">
+				<tr>
+					<td>{$vo.series_id}</td>
+					<td><input type="text" id="seriesword_{$vo.series_id}" value="{$vo.word}" size="5" /></td>
+					<td>
+                        <input type="text" id="seriesname_{$vo.series_id}" value="{$vo.series_name}" size="20" />
+                    </td>
+<!--					<td><input type="text" id="type_{$vo.series_id}" value="{$vo.type}" size="10" /></td>
+					<td><input type="text" id="sort_{$vo.series_id}" value="{$vo.sort}" size="10" /></td>
+					<td><input type="text" id="start_year_{$vo.series_id}" value="{$vo.start_year}" size="5" ></td>
+					<td><input type="text" id="end_year_{$vo.series_id}" value="{$vo.end_year}" size="5" /></td>
+					<td>
+						<select id="fsid_{$vo.series_id}">
+							<option value='0' <if condition="$vo['fsid'] eq 0"> selected </if> >选择4S店</option>
+							<volist name="fs" id="fslist">
+								<option value="{$fslist.fsid}" <if condition="$fslist['fsid'] eq $vo['fsid']"> selected </if> >{$fslist.fsname}</option>
+							</volist>
+						</select>
+					</td>-->
+					<td><input type="button" value="修改" onclick="update_series({$vo.series_id});">&nbsp;&nbsp;&nbsp;<a href="__APP__/Store/Carmodel/index/series_id/{$vo.series_id}" >详情</a>&nbsp;&nbsp;&nbsp;<input type="button" value="删除" onclick="delete_series({$vo.series_id});"></td>
+				</tr>
+			</volist>
+			<tr>
+				<td colspan="4">{$page}</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+</div>

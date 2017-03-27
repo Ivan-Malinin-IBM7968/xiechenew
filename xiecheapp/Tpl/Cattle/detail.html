@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta >
+		<title>携车网-养车惠分享，好事荐成双</title>
+		<link rel="shortcut icon" href="http://statics.xieche.com.cn/new_2/images/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/common/css/reset.css" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+		<meta name="apple-mobile-web-app-title" content="携车网">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<style>
+		*{font-family: "微软雅黑", "Microsoft Yahei"}
+			#block1{width: 100%; height: 1010px; background: url("http://event.xieche.com.cn/20140508/images/old//bg01.jpg") center center no-repeat;}
+			#inner-block1{width: 1200px; height: 1010px; margin: 0 auto; position: relative;}
+
+			.reg-box{position: absolute; width: 550px; height: 230px; overflow: hidden; bottom:2px; right:84px;  overflow: hidden;
+			background: url("http://event.xieche.com.cn/20140508/images/old/sprite.png?v=2") -10px -250px no-repeat;}
+			.reg-box.logined{background: url("http://event.xieche.com.cn/20140508/images/old/sprite.png") -10px -500px no-repeat;}
+			.inner-reg-box{width: 370px; height: 230px; padding-left: 180px; position: relative; padding-top: 20px;}
+			.inner-reg-box .title{ position: absolute; left: 0px; bottom: 60px; width: 180px; text-align: center;}
+			.inner-logout-box{width: 370px; height: 230px; padding-left: 180px; position: relative; padding-top: 20px;}
+			.inner-logout-box .title{ position: absolute; left: 0px; bottom: 60px; width: 180px; text-align: center;}
+			.reg-box .inner-logout-box{display: none;}
+			.reg-box.logined .inner-reg-box{display:none;}
+			.reg-box.logined .inner-logout-box{display: block;}
+			.reg-box .phone,
+			.reg-box .password{ margin: 20px auto; width: 387px; height: 42px; overflow: hidden;}
+			.reg-box .phone input,
+			.reg-box .password input{  border: 1px solid #cdcdcd; width: 316px; padding-left: 5px; height: 38px; line-height: 38px; margin-right: 10px; font-size: 16px; display: inline-block; float: left;}
+			.reg-box .login-btn a{
+				display: inline-block; background: #f1f1f1; color: #000000; width: 103px; height: 40px; line-height: 40px; text-align: center; text-decoration: none;float: left; margin-right: 20px;
+			}
+
+			.reg-box .login-btn  a{color: #f1f1f1; background: url("http://event.xieche.com.cn/20140508/images/old/sprite.png") 0px -83px repeat-x; width: 152px; background-repeat: repeat-x; }
+			.reg-box .login-btn  a:visited{background: url("http://event.xieche.com.cn/20140508/images/old/sprite.png") 0px -83px repeat-x; background-repeat: repeat-x;}
+			.reg-box .login-btn  a:hover{background: url("http://event.xieche.com.cn/20140508/images/old/sprite.png") 0px -120px repeat-x; background-repeat: repeat-x;}
+			#block2{width: 100%; height: 360px; background: url("http://event.xieche.com.cn/20140508/images/old/bg02.jpg") center center no-repeat;}
+			#inner-block2{width: 1200px; height: 360px; margin: 0 auto; position: relative;}
+			.referer-container{width: 594px; height: 46px; line-height: 46px; background: url("http://event.xieche.com.cn/20140508/images/old/sprite.png") 0px -740px no-repeat; position: absolute; left: 60px; bottom: 25px;  padding-left: 20px;}
+			.referer-container a{color: white; font-size: 18px; text-decoration: none;}
+			.referer-container a:visited{color: white;}
+			.referer-container a:hover{text-decoration: underline;}
+
+			#block3{width: 100%; height: 48px; background: url("http://event.xieche.com.cn/20140508/images/old/bg03.jpg") center center no-repeat;}
+			#block4{width: 100%; height: auto; background: url("http://event.xieche.com.cn/20140508/images/old/bg04.jpg") center center no-repeat;}
+			#inner-block-4{width:1200px; height: auto; margin: 0 auto; padding-bottom: 50px; padding-top: 10px;}
+			#inner-block-4 table{width: 1070px; heigth: auto;  margin: 0 auto; border: 1px solid #e5e5e5}
+			#inner-block-4 table td{height: 40px; line-height: 40px; border: 1px solid #e5e5e5; text-align: center;}
+			#block5{width: 100%; height: 995px; background: url("http://event.xieche.com.cn/20140508/images/old/bg05.jpg") center center no-repeat;}
+
+		</style>
+	</head>
+	<body>
+		<div id="block1">
+			<div id="inner-block1">
+				<notempty name="Think.session.uid">
+				<div class="reg-box logined">
+				<else />
+				<div class="reg-box">
+				</notempty>
+
+					<notempty name="Think.session.uid">
+					<!-- logout box START -->
+					<div class="inner-logout-box">
+						<div class="title">Hi,{$userinfo.username}</div>
+						<div class="phone" style="font-size: 22px; line-height: 42px; margin: 0px auto; margin-top: 20px;" >
+							<strong>你的手机尾号为：</strong><span>{$userinfo.show_mobile}</span>
+						</div>
+						<div class="password" style="font-size: 22px; line-height: 42px; margin: 0px auto;">
+							<strong>您已成功登录携车网！</strong>
+						</div>
+
+						<div class="login-btn" style="margin-top: 10px;">
+							<a href="javascript:void(0);" id="logout">注销</a>
+						</div>
+					</div>
+					<!-- logout box END -->
+
+					<else />
+
+					<!-- login box START -->
+					<div class="inner-reg-box">
+						<form action="__APP__/Cattle-login" method="post" name="form1">
+						<div class="title">Hi,您好!</div>
+						<div class="phone">
+							<input type="text" name="mobile" value="手机号码">
+						</div>
+						<div class="password">
+							<input type="password" name="password" value="">
+						</div>
+
+						<div class="login-btn">
+							<a href="javascript:void(0);" id="login" onClick="document.form1.submit();">立即验证</a>
+						</div>
+						</form>
+					</div>
+					<!-- login box END -->
+					</notempty>
+				</div>
+
+			</div>
+		</div>
+		<div id="block2">
+			<div id="inner-block2">
+				<div class="referer-container">
+					<a href="javascript: void(0);">http://www.xieche.com.cn/cattle-index-mobile-{$mobile}</a>
+				</div>
+			</div>
+		</div>
+		<div id="block3">
+
+		</div>
+		<div id="block4">
+			<div id="inner-block-4">
+				<table>
+					<tr>
+						<td>推荐用户</td>
+						<td>服务项目</td>
+						<td>服务状态</td>
+						<td>完成时间</td>
+						<td>奖励状况</td>
+					</tr>
+					<volist name="result" id="vo">
+					<tr>
+						<td>{$vo.mobile}</td>
+						<td>{$vo.service}</td>
+						<td>{$vo.order_state}</td>
+						<td>{$vo.complete_time}</td>
+						<td>{$vo.state}</td>
+					</tr>
+					</volist>
+				</table>
+			</div>
+		</div>
+		<div id="block5">
+
+		</div>
+
+		<script src="http://statics.xieche.com.cn/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script>
+			(function(){
+					$(".reg-box .phone input, .reg-box .verify input, .reg-box .verify-code input, .reg-box .rec-phone-number input")
+						.each(function(index, element) {
+							var $element = $(element);
+							var defaultValue = $element.val();
+							$element.css('color', '#999999');
+							$element.focus(function() {
+									var actualValue = $element.val();
+									if (actualValue == defaultValue) {
+											$element.val('');
+											$element.css('color', '#333');
+									}
+							});
+							$element.blur(function() {
+									var actualValue = $element.val();
+									if (!actualValue) {
+											$element.val(defaultValue);
+											$element.css('color', '#999999');
+									}
+							});
+					});
+
+					$("#logout").click(function() {
+						window.location.href="__APP__/Cattle-logout";
+					});
+			}());
+			
+		</script>
+	</body>
+</html>

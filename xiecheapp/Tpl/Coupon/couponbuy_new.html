@@ -1,0 +1,304 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/sales.css?v={$Think.config.VERSION_DATE}" />
+	<style>
+		.info-h3{font-size: 18px; color: #1b1b1b; border-bottom: 3px solid #e0e0e0; }
+		.table-con table{border-bottom: 1px dashed #d1d1d1; padding-bottom: 10px; display: block;}
+		.table-con *{font-size: 14px; }
+		.table-con th{background: white; color: #333333; height: 40px; line-height: 40px; font-size: 14px;}
+		.table-con tr td{border: none; }
+		.buy-coupon{
+
+		}
+		.total-price em {font-size: 14px; color: #777777; margin-right: 5px; font-style: normal;}
+		.buy-coupon .total-price { position: absolute; bottom: 0px; right: 125px; display: block; width: 200px; height: 34px; line-height: 44px; }
+		.ticket-con{ margin-top: 20px; padding: 10px; width: 758px; height: 30px;}.ticket-con{margin-top: 20px; padding: 10px; width: 758px; height: 30px; border-bottom: 1px dashed #dddddd; margin-top: 10px; padding-bottom: 10px;}
+		.ticketbox{}
+		.ticketbox{}
+
+		#xjzh{padding-left: 5px; margin-top: 10px; padding-bottom: 10px;}
+		#xjzh .caption{color: #1b1b1b; line-height: 30px; font-size: 14px;  margin-bottom: 10px; background: url("http://statics.xieche.com.cn/new_2/images/coupon/couponpay-sprite.jpg") 0px 0px no-repeat; padding-left: 30px;cursor: pointer;}
+		#xjzh .caption.off{ background: url("http://statics.xieche.com.cn/new_2/images/coupon/couponpay-sprite.jpg") 0px -30px no-repeat;}
+		#use_account{background: url("http://statics.xieche.com.cn/new_2/images/coupon/couponpay-sprite.jpg") 0px -30px no-repeat; padding-left: 30px; }
+		#xjzh .content{display: none;}
+		#xjzh .caption:hover span{text-decoration: underline;}
+		#xjzh .caption span{font-weight: bolder; margin-right: 10px;}
+
+		#membersalecoupon_id{display: inline-block; width: 30px; height: 30px; display: inline-block; float: left }
+		.pay-btn{width: 130px; height: 50px; display: block; position: absolute; right: 0px; bottom: 0px;}
+		.change-mobile{height: 30px; line-height: 30px;}
+		#mobile-input{border: 1px solid #cdcdcd; width: 200px; height: 30px; line-height: 30px; font-size: 16px; display: inline-block;}
+		/*adding weixin-banner to shop-detail*/
+		.weixin-banner{width: 780px; height: 327px; margin: 20px 0px; background: url("http://statics.xieche.net/new_2/images/order-complete-weixin/weixin-780.jpg") 0px 0px no-repeat; } 
+
+	</style>
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="__APP__/coupon"> 4S店售后团购</a></li>
+			<li>></li>
+			<li><a href="__APP__/coupon/{$coupon.id}" target="_blank">{$coupon.coupon_name}</a></li>
+			<li>></li>
+			<li><a href="###">购买</a></li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="content w1200">
+		<div class="content-left w780 order ">
+			<h3 class="info-h3">购买详情</h3>
+			<div class="buy-coupon table-con">
+				<form method="post" action="{:URL('/coupon/savecoupon',array('coupon_id'=>$coupon['id']))}{:C('HTML_URL_SUFFIX')}">
+				<table width="778">
+					<tr>
+						<th width='400'>商品名称</th>
+						<th width="170">数量</th>
+						<th width="100">现价</th>
+						<th width="80">原价</th>
+					</tr>
+					<tr>
+						<td>{$coupon.coupon_name}</td>
+						<td>
+							<div class="change-num">
+								<a href="" class="cut change-action">-</a>
+								<input type="text" class='change-input' value="1" name="number">
+								<a href="" class="add change-action">+</a>
+							</div>
+						</td>
+						<td><span class='curr-price'><em>¥</em><strong>{$coupon.coupon_amount}</strong></span></td>
+						<td><span class="prev-price"><em>¥</em>{$coupon.cost_price}</span></td>
+					</tr>
+				</table>
+
+				<if condition="$Msalecoupon.membersalecoupon_id gt 0">
+				<div  class='ticket-con'>
+					<div class="ticketbox" style="font-size: 14px; text-align: left; ">
+						<input type="checkbox" id="membersalecoupon_id" name="membersalecoupon_id" value="{$Msalecoupon.membersalecoupon_id}">
+						<span style="color: #a40000; display: inline-block; float: left; line-height: 30px; font-size: 16px; " >使用礼品卡</span>
+						<span style="color: #959595; display: inline-block; float: left; line-height: 30px;">（无限额满减礼品券{$Msalecoupon.money}元,该礼品券如使用后不得取消）</span>
+						<div id="discount-money" style="display:none">{$Msalecoupon.money}</div>
+					</div>
+				</div>
+				</if>
+
+				<if condition="$coupon.amount gt 0">
+				<div class='ticket-con' style="padding: 0 0 20px 10px; text-align: left;;  height: auto;" id="xjzh">
+					<div class="caption" id="payamount" >
+						您当前有&nbsp;&nbsp;¥{$coupon.amount}&nbsp;&nbsp;可用余额 <input type="text" name="account_amount" style="width:90px;"s value="{$coupon.amount}" id="account_amount"/><input type="button" onclick="get_account('{$coupon.amount}','{$coupon.coupon_amount}')" value="使用">
+					</div>
+					<div id="use_account"></div>
+
+					<div id="paycode" style="display:none;">
+						支付密码: <input type="password" name="paycode" class="mobile" value="" id="mobile-input"/><a href="{:URL('/Myhome/verifymobile')}">忘记支付密码</a>
+					</div>
+				</div>
+				</if>
+
+				<div class="total-price-con">
+					<span class="change-mobile" >
+						团购券序列号将发送到: <input type="text" name="mobile" class="mobile" value="{$member.mobile}" id="mobile-input"/>
+					</span>
+					<span class="total-price" id="total_price">
+						<em>应付总额: </em><strong id="total_money">¥{$coupon.coupon_amount}</strong>
+					</span>
+					<span class="total-price" id="use_total"></span>
+					<span class='pay-btn'>
+						<input type="submit" class='submit' value='提交订单' style="background: #0364cb; font-size: 18px; width: 130px; height: 40px;" />
+					</span>
+				</div>
+				<form>
+			</div>
+			
+			<!-- weixin-banner start -->
+			<div class="w830 weixin-banner"></div>
+			<!-- weixin-banner end -->
+			
+		</div>
+		<!--右侧开始-->
+		<div class="content-right w400">
+			<div class="w350 tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+					</li>
+					<div class="clear"></div>
+					</volist>
+				</ul>
+
+			</div>
+			<div class="w350 tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+					</li>
+					<div class="clear"></div>
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+		<script>
+
+		function get_money(){
+			var total_money = $('#total_money').html()
+			var discount = $('#discount-money').text();
+			if(!discount.length){
+				discount = parseInt(100.00);
+			}else{
+				discount = parseInt(discount);
+			}
+					if($("input[name='membersalecoupon_id']").attr("checked") == 'checked'){
+						money = parseInt(total_money.substr(1,total_money.length)) - discount;
+						$('#total_money').html("¥"+money+".00");
+					}else{
+						money = parseInt(total_money.substr(1,total_money.length))
+						$('#total_money').html("¥"+money+".00");
+					}
+		}
+			(function(){
+				$('#membersalecoupon_id').click(function(){
+					var total_money = $('#total_money').html()
+					var discount = $('#discount-money').text();
+					if(!discount.length){
+						discount = parseInt(100.00);
+					}else{
+						discount = parseInt(discount);
+					}
+					
+					if($("input[name='membersalecoupon_id']").attr("checked") == 'checked'){
+						money = parseInt(total_money.substr(1,total_money.length)) - discount;
+						$('#total_money').html("¥"+money+".00");
+					}else{
+						money = parseInt(total_money.substr(1,total_money.length)) +  discount;
+						$('#total_money').html("¥"+money+".00");
+					}
+				})
+				
+				
+				
+
+
+
+				// toggle the detail content
+				$(".detail-trigger").on('click',function(e){
+					e.preventDefault();
+					$(".coupon-detail .detail").toggle();
+				})
+
+				// add & reduce the number of the product
+				var basePrice = parseFloat($('.curr-price strong').html()),
+					finalPrice = $('.total-price strong');
+
+				$('.change-num .cut').on('click', function(e){
+					e.preventDefault();
+					var curVal = parseFloat($('.change-num .change-input').val()),
+						changedVal = --curVal
+					
+					if(curVal>0){
+						$('.change-num .change-input').val(changedVal);
+						
+					}else{
+						return;
+					}
+					finalPrice.html("¥"+changedVal*basePrice+".00");
+					get_money();
+				})
+
+				$('.change-num .add').on('click', function(e){
+					e.preventDefault();
+					var curVal = parseFloat($('.change-num .change-input').val()),
+						changedVal = ++curVal;
+					$('.change-num .change-input').val(changedVal);
+					finalPrice.html("¥"+changedVal*basePrice+".00")
+					get_money();
+				})
+
+				$('.change-input').on('change', function(e){
+					e.preventDefault();
+					if($(this).val()<=0){
+						$(this).val(1);
+					}
+					var changedVal = parseFloat($(this).val());
+					finalPrice.html("¥"+changedVal*basePrice+".00");
+					get_money();
+				});
+
+				$("#mobile-input").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+
+			}())
+		</script>
+		<!--右侧结束-->
+		<div class="clear"></div>
+		
+	</div>
+	<script type="text/javascript">
+	function get_account(amount,coupon_amount){
+							$("#xjzh .caption").toggleClass('off');
+		var use=$("#account_amount").val();
+		var left=amount-use;
+		if(left<0){
+			alert('您的余额不足,请重新设置使用');
+			return false;
+		}
+		now_total=coupon_amount-use;
+		if(now_total<0){
+			alert('土豪，请不要滥用账户余额啊');
+			return false;
+		}
+		$("#paycode").attr("style","").css({
+			"margin-top" : "10px"
+		});
+		$("#payamount").attr("style","display:none");
+		$("#total_price").attr("style","display:none");
+		var use_account="本次使用¥"+use+"元,剩下余额¥"+left+"元<input type='button' value='取消使用' onclick='cancel()'><input type='hidden' name='use' value="+use+">";
+		$("#use_account").html(use_account);
+		var use_total="<em>应付总额: </em><strong>¥"+now_total+"</strong><input type='hidden' name='use' value="+use+">";
+		$("#use_total").html(use_total);
+	}
+	function cancel(){
+		$("#use_total").html('');
+		$("#total_price").attr("style","");
+		$("#paycode").attr("style","display:none");
+		$("#payamount").attr("style","");
+		$("#use_account").html('');
+	}
+	</script>

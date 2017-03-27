@@ -1,0 +1,6427 @@
+@charset "utf-8";
+.bit_top {
+	margin:0 auto 10px;
+	background:#f4f4f4;
+	height:28px;
+	position:relative;
+	z-index:666666;
+	border-bottom:1px #f0f0f0 solid;
+	line-height:150%
+}
+.bit_top a:link, .bit_top a:visited {
+	color:#666;
+	text-decoration:none
+}
+.bit_top a:hover {
+	color:#c00;
+	text-decoration:underline
+}
+.bit_top .login_linkbox a:link, .bit_top .login_linkbox a:visited {
+	color:#666
+}
+.bit_top .login_linkbox a:hover {
+	color:#c00
+}
+.bit_top .bit950 {
+	width:960px;
+	margin:0 auto
+}
+.bit950 ul {
+	float:left
+}
+.bit950 ul li {
+	color:#cbcacc;
+	float:left;
+	padding:5px 6px 0 0;
+	display:inline;
+	margin-right:7px;
+	position:relative;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120517.png) 100% -634px no-repeat;
+	z-index:2
+}
+.bit950 ul li.last {
+	background:0
+}
+.bt_login_box {
+	float:right;
+	position:relative;
+	z-index:10;
+	margin-right:-7px
+}
+.bt_login_box_l {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120517.png) 100% -634px no-repeat;
+	margin-right:3px
+}
+.bt_login_box ul li {
+	background:0;
+	padding-right:0;
+	height:23px;
+	padding-top:5px;
+	color:#999;
+	border:1px #f4f4f4 solid;
+	border-width:0 1px
+}
+.bt_login_box ul li label {
+	color:#666;
+	margin:0 5px 0 0
+}
+.bt_login_box ul li .bit_loginInput {
+	height:14px;
+	padding:2px 0 0 2px;
+	-moz-box-shadow:1px 1px 1px #ccc inset;
+	-webkit-box-shadow:1px 1px 1px #ccc inset;
+	box-shadow:1px 1px 1px #ccc inset;
+	border:1px solid #cacaca;
+	font-size:12px;
+	width:73px;
+	overflow:hidden;
+	line-height:1.2
+}
+.bt_login_box ul li .bit_logintop {
+	width:45px;
+	height:18px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120517.png) -429px -107px no-repeat;
+	border:0;
+	text-align:center;
+	font-size:12px;
+	cursor:pointer;
+	padding:0;
+	padding:4px 0 0\9
+}
+.bt_login_box ul li.login {
+	margin-left:-5px
+}
+.bt_login_box ul li.login_0 {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120517.png) 100% -634px no-repeat;
+	padding-right:10px;
+	margin-right:3px
+}
+.bt_login_box ul li.last {
+	padding:5px 10px 0 0
+}
+.bt_login_box ul li.bit_link {
+	padding:5px 4px 0 5px
+}
+.bt_login_box ul li.bit_link ul {
+	display:none
+}
+.bt_login_box ul li.bit_hover ul {
+	display:block
+}
+.bt_login_box ul li.bit_link strong {
+	display:block;
+	float:left
+}
+.bt_login_box ul li.bit_link a {
+	padding:0 15px 0 0;
+	display:block;
+	position:relative
+}
+.bt_login_box ul li.bit_link a em {
+	height:4px;
+	display:block;
+	overflow:hidden;
+	border:6px solid #06a;
+	border-color:#a6a6a6 #f4f4f4;
+	border-width:4px 4px 0 4px;
+	width:0;
+	position:absolute;
+	right:0;
+	top:7px;
+*top:5px
+}
+.bt_login_box ul li.bit_hover a em {
+	border-color:#1E4674 #fff
+}
+.bt_login_box ul li.bit_hover strong sub {
+	z-index:12;
+	background:#fff;
+	position:absolute;
+	bottom:-1px;
+	left:0;
+	width:100%;
+	_width:auto;
+	height:1px;
+	overflow:hidden
+}
+.bt_login_box ul li.bit_hover {
+	height:23px;
+	border:1px #ccc solid;
+	border-width:0 1px;
+	background:#fff;
+	-moz-box-shadow:1px 0 1px #ccc;
+	-webkit-box-shadow:1px 0 1px #ccc;
+	box-shadow:1px 0 1px #ccc
+}
+.bt_login_box ul li.bit_hover ul {
+	_margin:0 -2px 0 0;
+	display:block;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	_border-top:0;
+	top:28px;
+	left:-1px;
+	width:96px;
+	padding:0 0 9px;
+	z-index:11;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc
+}
+.bt_login_box ul li.bit_hover ul li {
+	border:1px #E9E9E9 solid;
+	border-width:0 0 1px 0;
+	float:left;
+	margin:0 10px;
+	padding:8px 0 0;
+	height:22px;
+	display:block
+}
+.bt_login_box ul li.bit_hover ul li a {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120517.png) no-repeat;
+	padding:0 0 0 25px;
+	display:block;
+	height:16px;
+	line-height:15px
+}
+.bt_login_box ul li.bit_hover ul li a.sina {
+	background-position:-378px -257px
+}
+.bt_login_box ul li.bit_hover ul li a.qq {
+	background-position:-378px -290px
+}
+.bt_login_box ul li.bit_hover ul li a.renren {
+	background-position:-378px -273px
+}
+.bt_login_box ul li.bit_hover ul li a.kaixin {
+	background-position:-378px -307px
+}
+.bt_login_box ul li.bit_hover ul li a.baidu {
+	background-position:-378px -341px
+}
+.bt_login_box ul li.bit_hover ul li a.taobao {
+	background-position:-378px -324px
+}
+.bt_login_box ul li.bit_hover ul li a:hover {
+	text-decoration:underline;
+	color:#c00
+}
+.bt_login_box ul li.bit_hover ul li.last {
+	border:0
+}
+.bt_login_box ul li.bit_hover ul.byname {
+	width:126px;
+	height:151px;
+	overflow:hidden;
+	padding:15px 0 0 0;
+	padding-right:-1px
+}
+.bt_login_box ul li.bit_hover ul.byname li {
+	width:58px;
+	float:left;
+	margin:0 1px 0 0;
+	background:0;
+	padding:0;
+	border:0
+}
+.bt_login_box ul li.bit_hover ul.byname li a {
+	background:0;
+	padding:0 0 0 10px
+}
+.bt_login_box ul li.bit_hover ul.byname li.enteribit {
+	border-top:1px #e9e9e9 solid;
+	display:inline;
+	margin:4px 0 0 10px;
+	padding:8px 0 0;
+	width:106px
+}
+.bt_login_box ul li.bit_hover ul.byname li.enteribit a {
+	padding:0
+}
+.bt_login_box ul li.bitname {
+	background:0;
+	font-family:Arial
+}
+.bt_login_box ul li.bit_hover ul.bbs {
+	width:102px;
+	left:0;
+	right:auto
+}
+.bt_login_box ul li.bit_hover ul.bbs li a {
+	background:0;
+	padding:0
+}
+.bt_login_box ul li a.newmsg {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120517.png) -474px -106px no-repeat;
+	padding-left:21px;
+	color:#c00;
+	font-family:simsun
+}
+.bt_login_box ul li a.newmsg:link, .bt_login_box ul li a.newmsg:visited {
+	color:#c00
+}
+.bt_login_box ul li a.newmsg:hover {
+	text-decoration:none
+}
+.bt_login_box ul li.bit_hover dl {
+	display:block;
+	margin:0 -1px 0 0;
+	display:block;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	_border-top:0;
+	top:28px;
+	right:0;
+	padding:9px 0 0 10px;
+	z-index:11;
+	width:183px;
+	overflow:hidden;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc
+}
+.bt_login_box ul li.bit_hover dl dt {
+	color:#999;
+	float:left;
+	width:96%;
+	margin:5px 10px 0 0;
+	font-weight:bold;
+	line-height:24px;
+*line-height:26px;
+	height:24px;
+	overflow:hidden;
+	border-top:1px #e9e9e9 solid
+}
+.bt_login_box ul li.bit_hover dl dt.noborder {
+	border:0;
+	margin:0 10px 0 0
+}
+.bt_login_box ul li.bit_hover dl dt.dtmore {
+	font-weight:normal;
+	padding:4px 0 8px 0
+}
+.bt_login_box ul li.bit_hover dl dd {
+	float:left;
+	padding:0 12px 0 0;
+	line-height:22px;
+	white-space:nowrap
+}
+.bt_login_box ul li.bit_hover dl dd a {
+	padding:0
+}
+.bt_login_box ul li.bit_hover dl dt a:link, .bt_login_box ul li.bit_hover dl dt a:visited {
+	color:#56616D
+}
+.bt_login_box ul li.bit_hover dl dt a:hover {
+	color:#c00
+}
+.bt_login_box ul li.bit_hover ul.focuscar {
+	height:auto;
+	overflow:hidden;
+	padding:13px 0 0;
+	width:138px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li {
+	height:auto;
+	border:0;
+	margin:0 0 0 10px;
+	padding:0;
+	display:inline
+}
+.bt_login_box ul li.bit_hover ul.focuscar li a {
+	background:0;
+	padding:0
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b {
+	font-weight:bold;
+	color:#AEAEAE;
+	display:block;
+	width:118px;
+	height:18px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b.mygarage {
+	border-top:1px solid #e9e9e9;
+	padding-top:8px;
+	margin-top:2px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b a:link, .bt_login_box ul li.bit_hover ul.focuscar li b a:visited {
+	color:#56616D
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b a:hover {
+	color:#C00
+}
+.bt_login_box ul li.bit_hover ul.focuscar li p {
+	height:17px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b, .bt_login_box ul li.bit_hover ul.focuscar li p {
+	margin-bottom:6px;
+	overflow:hidden
+}
+.footer0904_2 {
+	width:960px;
+	overflow:hidden;
+	margin:0 auto;
+	padding:20px 0;
+	color:#666;
+	text-align:center;
+	clear:both;
+	font-size:12px;
+	line-height:150%
+}
+.footer0904_2 a:link, .footer0904_2 a:visited {
+	color:#1E4674;
+	text-decoration:none
+}
+.footer0904_2 a:hover {
+	color:#C00;
+	text-decoration:underline
+}
+.footer_about {
+	position:relative;
+	height:26px;
+	margin:0;
+	border:0;
+	background:0;
+	text-align:center;
+	overflow:hidden
+}
+.footer_about .about {
+	float:left;
+	position:relative;
+	left:50%;
+	list-style:none;
+	text-align:center
+}
+.footer_about .about li {
+	position:relative;
+	right:50%;
+	float:left;
+	padding:0 10px;
+	line-height:15px;
+	height:14px;
+	margin-top:6px;
+	cursor:pointer;
+	border-right:1px #ccc solid
+}
+.footer_about .about li a {
+	line-height:15px
+}
+.footer_about .about li.last {
+	border:0
+}
+@charset "utf-8";
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0
+}
+body {
+	font-size:12px;
+	font-family:simsun;
+	line-height:160%;
+	color:#4a4a4a
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0
+}
+fieldset, img {
+	border:0
+}
+legend {
+	display:none
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style:normal;
+	font-weight:normal
+}
+ol, ul {
+	list-style:none
+}
+caption, th {
+	text-align:left
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%;
+	font-weight:normal
+}
+q:before, q:after {
+	content:''
+}
+abbr, acronym {
+	border:0
+}
+a:link, a:visited {
+	color:#1e4674;
+	text-decoration:none
+}
+a:hover {
+	color:#c00;
+	text-decoration:underline
+}
+a strong {
+	color:#da0000
+}
+.bt_page {
+	width:960px;
+	margin:0 auto;
+	text-align:left
+}
+.clear {
+	clear:both;
+	height:0;
+	font-size:0;
+	overflow:hidden
+}
+.con_ad {
+	clear:both;
+	height:80px;
+	margin:0 0 10px;
+	padding:0;
+	width:950px
+}
+.bit_top {
+	width:auto;
+	border-left:0;
+	border-right:0
+}
+.bt_nav {
+	width:161px;
+	float:left
+}
+.bt_main {
+	width:789px;
+	float:right;
+	overflow:hidden
+}
+.bt_login_box ul li.bit_hover ul.yingyong {
+	width:92px;
+	left:0;
+	right:auto;
+	padding:7px 0 4px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li {
+	background:0;
+	margin:0 7px;
+	padding:5px 0 0
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_menu_liu.png) no-repeat 0 0
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a.cyg {
+	background-position:0 1px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a.wzcx {
+	background-position:0 -31px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a.ycjl {
+	background-position:0 -65px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a.yhgc {
+	background-position:0 -96px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a.esc {
+	background-position:0 -130px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li a.ppzj {
+	background-position:0 -164px
+}
+.bt_login_box ul li.bit_hover ul.yingyong li.last {
+	background:url(http://pic.baa.bitautotech.com/WebPic/ask/dy/dl_bg_bor.png) repeat-x scroll 0 0
+}
+.bt_login_box ul li.bit_hover ul.yingyong li.last a {
+	background:0;
+	padding:0
+}
+.bt_login_box ul li.bit_hover ul.yingyong li.last a:link, .bt_login_box ul li.bit_hover ul.yingyong li.last a:visited {
+	color:#4D6F99
+}
+.bt_login_box ul li.bit_hover ul.yingyong li.last a:hover {
+	color:#4b74a7
+}
+.line_box {
+	border:1px #e9e9e9 solid;
+	margin:0 0 10px 0;
+	position:relative;
+	clear:both;
+	z-index:1
+}
+.line_box h3 {
+	background:#f7f7f7;
+	border-bottom:1px #e9e9e9 solid;
+	font-family:simSun;
+	font-size:14px;
+	font-weight:bold;
+	height:28px;
+	line-height:28px;
+	overflow:hidden
+}
+.line_box h3 span {
+	border:1px #5c87a4 solid;
+	color:#fff;
+	float:left;
+	padding:0 20px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120510.png) 0 -307px repeat-x;
+	height:26px;
+	line-height:26px
+}
+.line_box h3 span a:link, .line_box h3 span a:visited {
+	color:#fff
+}
+.line_box h3 span a:hover {
+	color:#c00
+}
+.line_box .more {
+	font-family:SimSun;
+	font-size:12px;
+	font-weight:normal;
+	position:absolute;
+	right:10px;
+	top:6px;
+	color:#666
+}
+.line_box .more a:link, .line_box .more a:visited {
+	color:#56616D
+}
+.line_box .more a:hover {
+	color:#c00
+}
+.bt_nav .line_box h3 {
+	background:#fafafa;
+	height:31px;
+	line-height:31px;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #DCDEE6
+}
+.bt_nav .line_box h3 span {
+	background:0;
+	color:#4A4A4A;
+	border:0;
+	line-height:32px
+}
+.bt_nav .line_box .more {
+	top:8px
+}
+.menu_box {
+	padding:0 0 10px
+}
+.menu_box ul {
+	overflow:hidden;
+	zoom:1;
+	padding:0 10px
+}
+.menu_box ul li {
+	height:33px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png) repeat-x 0 100%;
+	clear:both;
+	width:100%;
+	float:left
+}
+.menu_box ul li span {
+	padding:0 0 0 16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) no-repeat -190px -101px;
+	display:block;
+	margin:10px 0 4px 10px;
+	font-size:14px
+}
+.menu_box ul li a:link, .menu_box ul li a:visited {
+	color:#333
+}
+.menu_box ul li a:hover {
+	color:#c00;
+	text-decoration:underline
+}
+.menu_box ul li.on {
+	height:auto;
+	padding:0 0 1px
+}
+.menu_box ul li.on span {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) no-repeat -190px -145px
+}
+.menu_box ul li ul {
+	display:none
+}
+.menu_box ul li.on ul {
+	clear:both;
+	padding:0;
+	display:block
+}
+.menu_box ul li.on ul li {
+	height:33px;
+	line-height:33px;
+	padding:0;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png") repeat-x scroll 0 0;
+	overflow:hidden
+}
+.menu_box ul li.on ul li span {
+	margin:0 0 0 26px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) no-repeat -190px -55px
+}
+.menu_box ul li.current {
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png") repeat-x scroll 0 100% #F7F7F7;
+	font-weight:800
+}
+.menu_box ul li.on ul li.current {
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png") repeat-x scroll 0 0 #F7F7F7;
+	font-weight:800
+}
+.menu_box ul li.on ul li.current span {
+	height:33px;
+	overflow:hidden
+}
+.menu_box_two {
+	overflow:hidden;
+	zoom:1
+}
+.menu_box_two ul li {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_menu_lib.png) no-repeat 0 100%;
+	clear:both;
+	width:100%;
+	float:left
+}
+.menu_box_two ul li span {
+	padding:0 0 0 16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_menu_ul_lis.png) no-repeat 3px 8px;
+	float:left;
+	margin:8px 0 0 10px;
+	height:25px
+}
+.menu_box_two ul li a:link, .menu_box_two ul li a:visited {
+	color:#4a4a4a
+}
+.menu_box_two ul li a:hover {
+	color:#4a4a4a;
+	text-decoration:underline
+}
+.menu_box_two ul li.last {
+	background:0
+}
+.menu_box_two ul li.current {
+	background-color:#f3f6fa;
+	font-weight:800
+}
+.menu_box_two ul li ul {
+	padding:0 0 5px;
+	clear:both;
+	width:100%;
+	float:left
+}
+.menu_box_two ul li ul li {
+	background:0
+}
+.menu_box_two ul li ul li span {
+	background:0;
+	padding-left:28px;
+	margin:0 0 0 10px;
+	line-height:26px
+}
+.menu_use ul li span {
+	padding:0 0 0 27px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_menu_liu.png) no-repeat 0 0;
+	height:18px;
+	line-height:18px
+}
+.menu_use ul li span.cyg {
+	background-position:1px 1px
+}
+.menu_use ul li span.wzcx {
+	background-position:1px -576px
+}
+.menu_use ul li span.ycjl {
+	background-position:2px -64px
+}
+.menu_use ul li span.yhgc {
+	background-position:2px -96px
+}
+.menu_use ul li span.esc {
+	background-position:1px -130px
+}
+.menu_use ul li span.ppzj {
+	background-position:2px -163px
+}
+.menu_use ul li span.cxjs {
+	background-position:1px -194px
+}
+.menu_use ul li span.cxdb {
+	background-position:1px -227px
+}
+.menu_use ul li span.esccx {
+	background-position:1px -258px
+}
+.menu_use ul li span.fyjl {
+	background-position:1px -289px
+}
+.menu_use ul li span.fyph {
+	background-position:1px -321px
+}
+.menu_use ul li span.gcjsq {
+	background-position:1px -354px
+}
+.menu_use ul li span.gcbxjs {
+	background-position:1px -193px
+}
+.menu_use ul li span.jszcx {
+	background-position:1px -386px
+}
+.menu_use ul li span.kcsj {
+	background-position:1px -415px
+}
+.menu_use ul li span.kbdb {
+	background-position:1px -448px
+}
+.menu_use ul li span.kbph {
+	background-position:1px -479px
+}
+.menu_use ul li span.sslk {
+	background-position:1px -512px
+}
+.menu_use ul li span.tpdb {
+	background-position:1px -545px
+}
+.menu_use ul li span.wzxxtx {
+	background-position:1px -576px
+}
+.menu_use ul li span.xcgj {
+	background-position:1px -609px
+}
+.menu_use ul li span.yhzn {
+	background-position:1px -641px
+}
+.menu_use ul li span.cyjh {
+	background-position:1px -677px
+}
+.menu_use ul li span.ypsc {
+	background-position:1px -707px
+}
+.menu_use ul li span.yhph {
+	background-position:1px -740px
+}
+.menu_use ul li span.zxdy {
+	background-position:1px -772px
+}
+.menu_use ul li span.zjy {
+	background-position:1px -806px
+}
+.menu_use ul li span.zxbjcx {
+	background-position:1px -842px
+}
+.menu_use ul li span.fgsc {
+	background-position:1px -877px
+}
+.menu_use ul li span.jssc {
+	background-position:1px -913px
+}
+.menu_use ul li span.qczh {
+	background-position:1px -948px
+}
+.menu_use ul li span.tjyy {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_menu_lij.png) no-repeat 0 0
+}
+.menu_use ul li.tjyy {
+	background:0;
+	margin:0 10px;
+	float:none;
+	width:auto;
+	height:22px;
+	line-height:22px
+}
+.menu_use ul li.tjyy span {
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png") no-repeat -189px -29px;
+	padding:0 0 0 12px;
+	float:right;
+	margin:5px 0 0
+}
+.menu_use ul li.tjyy a:link, .menu_use ul li.tjyy a:visited {
+	color:#56616d;
+	font-size:12px
+}
+.menu_use ul li.tjyy a:hover {
+	color:#c00
+}
+.daka_new {
+	width:161px;
+	height:41px;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png") no-repeat 0 0;
+	font-family:microsoft yahei;
+	font-size:16px;
+	color:#fff;
+	text-align:center
+}
+.daka_new a {
+	display:block;
+	line-height:41px
+}
+.daka_new a i {
+	font-style:normal
+}
+.daka_new a:link, .daka_new a:visited {
+	color:#436890
+}
+.daka_new a:hover {
+	text-decoration:none
+}
+.daka_new_hui {
+	width:161px;
+	height:41px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_daka_bg.png) no-repeat 0 -41px;
+	font-size:14px;
+	color:#fff;
+	font-weight:800;
+	text-align:center;
+	line-height:41px
+}
+.daka_number {
+	position:absolute;
+	color:#f60;
+	font-size:28px;
+	font-weight:800;
+	font-style:normal;
+	left:100px;
+	top:3px;
+	font-family:Arial
+}
+.daka_number i {
+	font-style:normal
+}
+#pcard {
+	position:relative
+}
+a.a_colse {
+	width:12px;
+	height:12px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_close.png) no-repeat 0 0;
+	display:block;
+	line-height:100px;
+	overflow:hidden
+}
+a.a_colse:hover {
+	background-position:0 -12px
+}
+.rzca_inline {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_renzheng.png) no-repeat 0 0;
+	width:75px;
+	height:20px;
+	text-indent:-2000px;
+	float:left;
+	overflow:hidden
+}
+.a_qczj {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 0 -23px;
+	width:75px;
+	height:20px;
+	text-indent:-2000px;
+	float:left
+}
+.spread_box {
+	min-height:700px;
+	_height:700px
+}
+.spread_box h3 {
+	margin:0 0 15px
+}
+.spread_box h3 small {
+	font-size:12px;
+	color:#999;
+	float:left;
+	font-weight:normal;
+	margin:0 0 0 10px;
+	font-family:microsoft yahei
+}
+.spread_box h3 em {
+	float:right;
+	margin:6px 10px 0;
+	line-height:18px;
+	color:#8e8e8e;
+	font-size:12px;
+	font-weight:normal
+}
+.spread_box h4 {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_infor_h.png) repeat-x 0 100%;
+	height:27px;
+	margin:0 20px 20px;
+	clear:both
+}
+.spread_box h4 span {
+	font-weight:800;
+	float:left
+}
+.spread_box h4 small {
+	font-size:12px;
+	color:#8e8e8e;
+	margin:0 0 0 15px
+}
+.spread_box h4 em {
+	float:right;
+	margin:5px 0 0
+}
+.box_lineedit {
+	overflow:hidden;
+	position:relative;
+	zoom:1
+}
+.box_lineedit ul {
+	overflow:hidden;
+	position:relative;
+	zoom:1;
+	margin:10px 0 0;
+	padding:0 0 10px;
+	width:900px
+}
+.box_lineedit ul li {
+	border:1px solid #e0eaf4;
+	width:258px;
+	height:101px;
+	float:left;
+	padding:0 0 0 10px;
+	position:relative;
+	margin:10px 30px 0 0
+}
+.box_lineedit ul li img {
+	margin:10px 10px 0 0;
+	width:120px;
+	height:80px;
+	border:1px solid #ecebeb;
+	float:left
+}
+.box_lineedit ul li .friend_zh_con {
+	width:125px;
+	float:left;
+	margin:10px 0 0
+}
+.box_lineedit ul li .friend_zh_con strong {
+	font-weight:800;
+	margin:10px 0;
+	display:block
+}
+.box_lineedit ul li .friend_zh_con p {
+	color:#8e8e8e;
+	margin:0
+}
+.box_lineedit ul li .friend_zh_con p em {
+	font-size:14px;
+	font-weight:800;
+	font-family:Arial
+}
+.box_lineedit ul li .friend_zh_con p label {
+	display:block
+}
+.box_lineedit ul li .close {
+	position:absolute;
+	top:10px;
+	right:10px;
+	display:none
+}
+.box_lineedit ul li .close a {
+	width:12px;
+	height:12px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_close.png) no-repeat 0 0;
+	display:block;
+	line-height:100px;
+	overflow:hidden
+}
+.box_lineedit ul li .close a:hover {
+	background-position:0 -12px
+}
+.box_lineedit ul li.current {
+	background:#f2f5fb
+}
+.box_lineedit ul li.current .close {
+	display:block
+}
+.layer_box {
+	border:5px solid #3369A7;
+	background:#fff;
+	z-index:1000;
+	width:490px;
+	position:absolute
+}
+.layer_box h3 {
+	background:#e7f5ff;
+	height:35px
+}
+.layer_box h3 span {
+	padding:0 10px;
+	font-size:14px;
+	font-weight:800;
+	line-height:35px;
+	border:0;
+	background:0;
+	color:#333
+}
+.layer_box .close {
+	position:absolute;
+	top:10px;
+	right:10px;
+	z-index:2
+}
+.layer_box .close a {
+	width:12px;
+	height:12px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) no-repeat -188px -308px;
+	display:block;
+	line-height:100px;
+	overflow:hidden
+}
+.cgjWidth1 {
+	width:110px
+}
+.cgjWidth2 {
+	width:145px
+}
+.cgjWidth3 {
+	width:87px
+}
+input.input_data {
+	width:105px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_icon_data.png) no-repeat 98% 2px;
+	border:1px solid #7f9db9;
+	padding:2px
+}
+.col_sub {
+	width:149px;
+	float:left;
+	position:relative;
+	margin:10px 0 0 20px;
+	display:inline
+}
+.col_con_p {
+	position:relative;
+	min-height:600px;
+	_height:600px;
+	margin:20px 20px 0
+}
+.col_con_b {
+	width:742px;
+	float:right;
+	position:relative;
+	min-height:600px;
+	_height:600px;
+	margin:10px 20px 0 0;
+	display:inline
+}
+.publictab1 {
+	border-bottom:1px solid #dcdee6;
+	margin:10px 20px;
+	height:25px;
+	position:relative;
+	clear:both
+}
+.publictab1 ul {
+	float:left;
+	padding:0 0 0 10px;
+	height:26px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5
+}
+.publictab1 ul li {
+	float:left;
+	margin:0 5px 0 0;
+	height:24px;
+	text-align:center;
+	background:#f0f1f7;
+	border:1px solid #dcdee6;
+	border-bottom:0
+}
+.publictab1 ul li a {
+	border:1px solid #fff;
+	border-bottom:0;
+	display:block;
+	height:23px;
+	line-height:23px;
+	float:left;
+	padding:0 8px
+}
+.publictab1 ul li.current {
+	background:#fff;
+	font-weight:800;
+	height:25px
+}
+.publictab1 ul li.current a:link, .publictab1 ul li.current a:visited {
+	color:#4a4a4a
+}
+.publictab1 strong {
+	position:absolute;
+	right:5px;
+	top:4px
+}
+.the_pages {
+	clear:both;
+	position:relative;
+	height:53px;
+	font-family:simSum;
+	overflow:hidden
+}
+.the_pages div {
+	float:left;
+	position:relative;
+	left:50%;
+	padding:10px 0
+}
+.the_pages div a:link, .the_pages div a:link {
+	color:#333
+}
+.the_pages div a:hover {
+	color:#fefefe
+}
+.the_pages div a, .the_pages div span, .the_pages div em {
+	position:relative;
+	left:-50%;
+	display:block;
+	float:left;
+	margin:0 0 0 5px;
+	height:18px;
+*height:17px;
+	width:auto;
+	padding:2px 7px 2px 8px;
+*padding:3px 7px 2px 8px;
+	white-space:nowrap;
+	text-align:center;
+	border:1px solid #ccc;
+	font-size:12px;
+	line-height:18px;
+	text-decoration:none;
+	overflow:hidden
+}
+.the_pages div em {
+	border:1px solid #fff
+}
+.the_pages div input {
+	position:relative;
+	right:50%;
+	float:left;
+	margin:0 4px 0 0;
+	height:16px;
+	line-height:20px;
+	overflow:hidden;
+	font-size:12px;
+	padding:2px
+}
+.the_pages div input.text {
+	width:22px;
+	margin:0 5px
+}
+.the_pages div span.num {
+	border:1px #fff solid;
+	border-width:1px 0;
+	background:0;
+	color:#000;
+	padding:2px 0 2px 15px
+}
+.the_pages div span.numl {
+	padding:2px 5px 2px 0;
+	margin-left:0
+}
+.the_pages div span {
+	border:1px solid #ccc;
+	background:#fff;
+	text-decoration:none;
+	color:#333
+}
+.the_pages div a:link {
+	background:#fff
+}
+.the_pages div a:visited {
+	background:#fff
+}
+.the_pages div a:hover {
+	border:1px solid #557890;
+	background:#80a0b7;
+	text-decoration:none;
+	color:#fefefe
+}
+.the_pages div a.linknow {
+	border:#fff;
+	background-color:#fff;
+	color:#333;
+	font-weight:bold
+}
+.the_pages div span.nolink {
+	color:#ccc
+}
+.the_pages div input.button {
+	background:transparent none repeat scroll 0 50%;
+	border:1px solid #CCC;
+	color:#333;
+	display:block;
+	font-size:12px;
+	font-weight:normal;
+	height:23px;
+	line-height:23px;
+	padding:0 4px 2px;
+	text-align:center;
+	width:auto;
+	cursor:pointer
+}
+.box_friend {
+	display:block;
+	width:302px;
+	border:1px solid #898989;
+	border-right:1px solid #C4C4C4;
+	border-bottom:1px solid #C4C4C4
+}
+.box_friend .border {
+	padding:3px 2px;
+	width:298px;
+	border:1px solid #DDD;
+	border-bottom:0;
+	border-right:0;
+	display:block
+}
+.box_friend .border .superbox {
+	float:left;
+	width:280px
+}
+.box_friend .border a.secets_friend {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/gifts_zh_select.gif) no-repeat 0 0;
+	width:18px;
+	height:7px;
+	line-height:100px;
+	overflow:hidden;
+	display:block;
+	margin:4px 0 0;
+	float:right
+}
+.box_friend .border .input_f {
+	display:inline
+}
+.box_friend .border input.text {
+	border:0;
+	float:left;
+	width:270px;
+	cursor:text;
+	padding:3px 2px
+}
+.box_friend .border .text {
+	border:0;
+	display:inline;
+	float:left;
+	cursor:text;
+	background:#FFF
+}
+.box_friend .border .text strong {
+	margin-right:10px;
+	float:left;
+	word-break:keep-all;
+	white-space:nowrap
+}
+.box_friend .border .text strong span {
+	float:left;
+	margin:0 3px 0 0;
+	padding:0;
+	display:inline;
+	color:#333
+}
+.box_friend .border .text strong a.del {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif) no-repeat -64px -170px;
+	display:block;
+	float:left;
+	height:14px;
+	line-height:100px;
+	overflow:hidden;
+	width:12px;
+	margin:2px 0 0
+}
+.box_friend .border .text strong a:hover.del {
+	background-position:-50px -170px
+}
+.box_friend .border a:hover.secets_friend {
+	background-position:0 -17px
+}
+.box_friend .border a.list {
+	background-position:0 -32px
+}
+.box_friend .border a:hover.list {
+	background-position:0 -49px
+}
+.input_friend {
+	border:1px solid #C4C4C4;
+	position:absolute;
+	width:302px;
+	background:#fff;
+	margin:1px 0 0;
+	left:65px;
+*left:66px
+}
+.input_friend ul {
+	padding:5px
+}
+.input_friend ul li {
+	height:21px;
+	padding:0 5px;
+	line-height:21px;
+	cursor:default;
+	margin:2px 0
+}
+.input_friend ul li.current {
+	background:#3369A7;
+	color:#fff
+}
+.bottom_an {
+	border-left:1px solid #cc6d00;
+	border-top:1px solid #cc6d00;
+	border-right:1px solid #cf760f;
+	border-bottom:1px solid #d27104;
+	float:left;
+	margin:0 7px 0 0;
+	height:auto
+}
+.bottom_an strong {
+	display:block;
+	float:left
+}
+.bottom_an strong input {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png) repeat-x 0 0;
+	border:0;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:24px;
+	padding:2px 20px 3px;
+*padding:4px 20px 0;
+	cursor:pointer;
+	float:left;
+	_width:0;
+*overflow:visible;
+	border:0;
+	font-size:14px
+}
+.bottom_an_c {
+	border-left:1px solid #769dbc;
+	border-top:1px solid #769dbc;
+	border-right:1px solid #7ea3c0;
+	border-bottom:1px solid #789fbe;
+	float:left;
+	margin-right:10px
+}
+.bottom_an_c strong {
+	display:block;
+	float:left
+}
+.bottom_an_c strong input {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png) repeat-x 0 -24px;
+	height:24px;
+	border:0;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:24px;
+	padding:2px 20px 3px;
+*padding:4px 20px 0;
+	cursor:pointer;
+	float:left;
+	_width:0;
+*overflow:visible;
+	border:0;
+	font-size:14px
+}
+.bottom_an_b {
+	border:1px solid #a5a5a5;
+	float:left;
+	margin-right:10px
+}
+.bottom_an_b strong {
+	display:block;
+	float:left
+}
+.bottom_an_b strong input {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png) repeat-x 0 -67px;
+	height:24px;
+	border:0;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:24px;
+	padding:2px 20px 3px;
+*padding:4px 20px 0;
+	cursor:default;
+	float:left;
+	_width:0;
+*overflow:visible;
+	border:0;
+	font-size:14px
+}
+.bottom_an_g {
+	border:1px solid #6faa43;
+	border-right:1px solid #537827;
+	border-bottom:1px solid #537827;
+	float:left
+}
+.bottom_an_g strong {
+	border:1px solid;
+	border-color:#b7ea65 #8ecd44 #8ecd44 #b7ea65;
+	display:block;
+	float:left
+}
+.bottom_an_g strong input {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_input.png) repeat-x 0 -52px;
+	height:22px;
+	border:0;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:22px;
+	padding:3px 5px 2px;
+*padding:4px 5px 0;
+	cursor:pointer;
+	float:left;
+	_width:0;
+*overflow:visible;
+	border:0
+}
+a.gifts_ycb {
+	float:left;
+	padding-left:22px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_liwu_bi.png) no-repeat 0 0;
+color:#;
+c00;
+	height:18px;
+	line-height:18px;
+	cursor:default
+}
+a.gifts_ycb:link, a.gifts_ycb:hover, a.gifts_ycb:visited {
+	color:#8E8E8E;
+	text-decoration:none
+}
+.bottom_hf {
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png") repeat-x scroll 0 0;
+	border-left:1px solid #cc6d00;
+	border-top:1px solid #cc6d00;
+	border-right:1px solid #cf760f;
+	border-bottom:1px solid #d27104;
+	color:#FFF;
+	cursor:pointer;
+	font-weight:bold;
+	height:21px;
+	line-height:21px;
+	text-align:center;
+	width:43px
+}
+a.sendnewmsg {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) -185px -328px no-repeat;
+	padding:0 0 0 22px;
+	float:left;
+	margin:0 10px 0 0;
+	display:inline
+}
+a.xtqz_zh {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_qiuzhu.png) no-repeat scroll 0 1px transparent;
+	float:left;
+	padding-left:20px
+}
+.forms_lh fieldset ol li {
+	clear:both;
+	padding:0 0 5px;
+	zoom:1;
+	overflow:hidden;
+	margin:0 0 6px
+}
+.forms_lh fieldset ol li.nowidth {
+	height:auto
+}
+.forms_lh fieldset ol li label {
+	float:left;
+	width:85px;
+	text-align:right;
+	margin:3px 10px 0 0
+}
+.forms_lh fieldset ol li.nowidth label {
+	margin:5px 10px 0 0
+}
+.forms_lh fieldset ol li label em {
+	color:#F60;
+	margin:0 5px 0 0
+}
+.forms_lh fieldset ol li span {
+	float:left;
+	margin:3px 10px 0 0
+}
+.forms_lh fieldset ol li span input {
+	float:left;
+*margin:1px 0 0 0
+}
+.forms_lh fieldset ol li input {
+	float:left;
+	margin:0 5px 0 0;
+*margin:0 1px 0 0
+}
+.forms_lh fieldset ol li small {
+	float:left;
+	font-size:12px;
+	font-style:normal;
+	color:#999
+}
+.forms_lh fieldset ol li big {
+	float:left;
+	font-size:12px;
+	font-style:normal;
+	color:#333
+}
+.forms_lh fieldset ol li.tishi {
+	padding:0 0 5px 95px;
+	margin:-5px 0 0;
+	overflow:visible
+}
+.forms_lh fieldset ol li.tishi .tips {
+	width:auto;
+	padding:0
+}
+.forms_lh fieldset ol li .k160 {
+	width:255px;
+	border:1px solid #C4C4C4;
+	padding:2px
+}
+.forms_lh fieldset.submit {
+	padding:0 0 0 95px;
+	margin:10px 0 0
+}
+.forms_lh fieldset.submit .bottom_an {
+	float:left
+}
+.forms_lh .k160 {
+	width:160px
+}
+.forms_lh .k100 {
+	width:100px
+}
+.forms_lh .k205 {
+	width:205px
+}
+.forms_lh .k90 {
+	width:90px
+}
+.forms_lh .k30 {
+	width:30px
+}
+.forms_lh .k50 {
+	width:50px
+}
+.forms_lh .k60 {
+	width:64px
+}
+.forms_lh .k70 {
+	width:74px
+}
+.forms_lh .k120 {
+	width:120px
+}
+.forms_lh .k110 {
+	width:110px
+}
+.forms_lh .k360 {
+	width:360px
+}
+.forms_lh .k300 {
+	width:300px
+}
+.forms_lh .k195 {
+	width:195px
+}
+.forms_lh .k500 {
+	width:500px
+}
+.forms_lh .k300h {
+	width:300px;
+	height:80px
+}
+.forms_lh fieldset p {
+	padding:10px 0;
+	clear:both;
+	color:#8e8e8e
+}
+.forms_lh .tishi_r {
+	float:left;
+	padding:4px 0 0 23px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -7px;
+	margin:0 0 0 10px
+}
+.forms_lh .tishi_r span {
+	color:#c00
+}
+.forms_lh .tishi_r strong {
+	display:block;
+	width:1px;
+	overflow:hidden;
+	line-height:100px;
+	height:20px
+}
+.forms_lh fieldset .txdzlist {
+	float:left;
+	width:590px
+}
+.forms_lh fieldset .txdzlist ul li {
+	display:inline;
+	clear:both;
+	padding:0 0 5px;
+	margin:0;
+	height:auto;
+	width:590px;
+	_background:transparent
+}
+.forms_lh fieldset .txdzlist ul li span.line0 {
+	width:15px;
+	padding:0 5px 0 0;
+	_padding:0
+}
+.forms_lh fieldset .txdzlist ul li span.line1 {
+	width:320px
+}
+.forms_lh fieldset .txdzlist ul li.kong span.line1 {
+	_padding:0 10px 0 10px
+}
+.forms_lh fieldset .txdzlist ul li span.line2 {
+	width:120px
+}
+.forms_lh fieldset .txdzlist ul li span.line2 em {
+	color:#F60
+}
+.forms_lh fieldset .txdzlist ul li span a.button_tj {
+	display:block;
+	width:52px;
+	height:21px;
+	border:1px solid #d6dde2;
+	text-align:center;
+	line-height:19px;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png") no-repeat -148px -286px;
+	text-indent:-9999px;
+	overflow:hidden;
+	margin:3px 0 0
+}
+.forms_lh fieldset .txdzlist ul li span.bt_tj a.button_tj strong {
+	font-weight:bold;
+	color:#56616d;
+	margin:0 2px 0 0
+}
+.forms_lh fieldset .txdzlist ul li span input {
+	float:none
+}
+.forms_lh fieldset .txdzlist ul li em {
+	margin:0 5px;
+	color:#999
+}
+.forms_lh fieldset .txdzlist ul li small {
+	color:#666
+}
+.forms_lh fieldset .txdzlist ul li span a:hover.button_tj {
+	text-decoration:none
+}
+.forms_lh fieldset ul.grah li {
+	width:70px
+}
+.forms_lh fieldset .mima_lh {
+	margin:0 10px 0 100px;
+	clear:both
+}
+.forms_lh fieldset .mima_lh .left {
+	float:left;
+	height:5px;
+	display:block;
+	margin:5px 10px 0 0
+}
+.forms_lh fieldset .mima_lh .left strong {
+	background:#c9c9c9;
+	display:block;
+	float:left;
+	width:42px;
+	height:5px;
+	text-indent:9999px;
+	overflow:hidden;
+	margin:0;
+	border-right:1px solid #fff
+}
+.forms_lh fieldset .mima_lh .left span {
+	background:#f00;
+	display:block;
+	width:42px;
+	height:5px;
+	text-indent:9999px;
+	overflow:hidden;
+	margin:0;
+	border-right:1px solid #fff
+}
+.forms_lh fieldset .mima_lh .right {
+	float:left
+}
+.forms_lh fieldset .mima_lh .right small {
+	float:left
+}
+.forms_lh fieldset .mima_lh .right em {
+	color:#F60
+}
+.forms_lh fieldset .zhong_lh .left span {
+	background:#f90
+}
+.forms_lh fieldset .qiang_lh .left span {
+	background:#390
+}
+.forms_lh fieldset.submit .tishi_friend {
+	margin:5px 0 0;
+	float:left;
+	padding:0 0 0 10px
+}
+.renren {
+	height:18px
+}
+.renren em {
+	float:right
+}
+.renren em a:link, .renren em a:visited {
+	text-decoration:underline
+}
+a.a_edit {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/photo_li_4.gif) no-repeat scroll 0 -205px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a.a_edit:hover {
+	background-position:0 -49px
+}
+a.a_add {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/add_an.gif) no-repeat 0 4px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a.a_del, a.a_close {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/photo_li_4.gif) no-repeat scroll 0 -231px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a.a_del:hover, a.a_close:hover {
+	background-position:0 -19px
+}
+.ts_lh {
+	position:relative;
+	padding:6px 0 10px 0
+}
+.ts_lh em {
+	background:#ffffe6;
+	padding:4px 6px 3px;
+	border:1px solid #ffd6a5;
+	display:block;
+	width:260px
+}
+.ts_lh em b {
+	display:block;
+	font-weight:normal
+}
+.ts_lh strong {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 0;
+	position:absolute;
+	top:0;
+	left:9px;
+	text-indent:9999px;
+	display:block;
+	width:11px;
+	height:7px;
+	overflow:hidden
+}
+.ts_w_lh {
+	padding:0 0 0 10px;
+	float:left;
+	position:relative;
+	margin:3px 0 0
+}
+.ts_w_lh em {
+	background:#ffffe6;
+	padding:3px 5px 2px 23px;
+	border:1px solid #ffd6a5;
+	display:block;
+	color:#333;
+	background:#ffffe6 url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png") no-repeat -182px 5px;
+	color:#f60
+}
+.ts_w_lh em a.yzm, .ts_w_lh em a.yzm:link, .ts_w_lh em a.yzm:visited, .ts_w_lh em a.yzm:active {
+	color:#56616d;
+	margin:0 0 0 5px
+}
+.ts_w_lh em a.yzm:hover {
+	color:#c00
+}
+.ts_w_lh strong {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -52px;
+	position:absolute;
+	top:6px;
+	left:5px;
+	text-indent:9999px;
+	display:block;
+	width:6px;
+	height:11px;
+	overflow:hidden
+}
+.ts_w_lh2 {
+	padding:0
+}
+.ts_w_lh2 strong {
+	width:11px;
+	height:7px;
+	left:20px;
+	top:-6px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 0
+}
+.tips {
+	color:#999;
+	float:left;
+	line-height:16px;
+	padding:0 0 0 10px
+}
+.forms_lh {
+	color:#666;
+	position:relative
+}
+.forms_lh input {
+	color:#333;
+	float:left;
+	font-size:12px;
+	height:20px;
+	padding:2px 5px;
+	_padding:4px 5px 0;
+	overflow:hidden;
+	border:1px solid #d3d3d3;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/inputbg.png) no-repeat 0 0
+}
+.forms_lh input.danxuan {
+	height:auto;
+	padding:0
+}
+.forms_lh textarea {
+	color:#333;
+	float:left;
+	font-size:12px;
+	padding:5px 3px
+}
+.forms_lh select {
+	color:#8e8e8e;
+	float:left;
+	font-size:12px;
+	margin:0 5px 0 0;
+	height:22px;
+	padding:2px 0
+}
+.forms_lh select.default_group {
+	height:26px;
+	line-height:26px;
+	border-left:1px solid #898a89;
+	border-top:1px solid #898a89;
+	border-right:1px solid #c6c7c7;
+	border-bottom:1px solid #c6c7c7
+}
+.forms_lh .border {
+	border-left:1px solid #898a89;
+	border-top:1px solid #898a89;
+	border-right:1px solid #c6c7c7;
+	border-bottom:1px solid #c6c7c7;
+	margin:0 5px 0 0;
+	height:20px;
+	padding:4px 3px 0
+}
+.forms_lh fieldset {
+	clear:both;
+	position:relative;
+	padding:1px 0 0
+}
+.forms_lh fieldset ul {
+	clear:both;
+	overflow:hidden
+}
+.forms_lh fieldset ul.jj1 {
+	padding:0 0 0 10px
+}
+.forms_lh fieldset ul li {
+	float:left;
+	margin:0 10px 0 0;
+	padding:0 0 10px;
+	overflow:hidden
+}
+.forms_lh fieldset ul li input, .forms_lh fieldset ul li span {
+	float:left;
+	margin:0 5px 0 0;
+*margin:0 3px 0 0;
+	display:inline
+}
+.publictab2 {
+	height:30px;
+	margin:10px 20px
+}
+.publictab2 ul li {
+	float:left;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_menu1_bg.png) no-repeat 100% 50%;
+	padding:0 13px 0 0;
+	margin:0 12px 0 0
+}
+.publictab2 ul li.current a {
+	font-weight:800
+}
+.publictab2 ul li.last {
+	background:0;
+	padding:0;
+	margin:0
+}
+.publictab2 ul li.current a:link, .publictab2 ul li.current a:visited {
+	color:#4a4a4a;
+	text-decoration:none;
+	cursor:default
+}
+.login_layer {
+	width:450px
+}
+.login_huiyuan .friend_del_group {
+	width:407px
+}
+.login_layer06 {
+	padding:5px
+}
+.login_layer06 .ibit_hei20 {
+	height:35px;
+	clear:both
+}
+.login_layer06 .ibit_lo_error {
+	background:#ffffe6 url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat -10px -44px;
+	border:1px solid #ffd6a5;
+	padding:4px 0 4px 30px;
+	height:18px;
+	line-height:20px
+}
+.login_layer06 .ibit_lo_error span {
+	color:#c00
+}
+.login_layer06 ul li {
+	height:35px
+}
+.login_layer06 ul li label {
+	width:75px;
+	margin:0 10px 0 0;
+	text-align:right;
+	color:#666;
+	float:left
+}
+.login_layer06 ul li .error {
+	display:inline
+}
+.login_layer06 ul li .input {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_input.png) no-repeat scroll 0 -1px;
+	border:1px solid #d2d2d2;
+	height:20px;
+	line-height:22px;
+	padding:2px;
+	width:146px;
+	margin:0 10px 0 0;
+	float:left
+}
+.login_layer06 ul li .input_on {
+	border:1px solid #f60
+}
+.login_layer06 ul li .error small {
+	color:#c00;
+	font-size:12px
+}
+.login_layer06 ul li.style_msg3 {
+	height:53px
+}
+.login_layer06 ul li.style_msg3 input {
+	width:66px;
+	float:left;
+	margin:0 0 5px
+}
+.login_layer06 ul li.style_msg3 .code {
+	float:left;
+	margin:0 10px 0 0
+}
+.login_layer06 ul li.style_msg3 a {
+	float:left;
+	margin:7px 0 0
+}
+.login_layer06 ul li.style_msg3 a.yzm {
+	clear:both;
+	margin:7px 0 5px 83px
+}
+.login_layer06 ul li.style_msg3 .error {
+	clear:both;
+	padding:0 0 0 85px;
+	clear:both
+}
+.login_layer06 ul li.style_msg3 .error small {
+	color:#c00;
+	font-size:12px
+}
+.login_layer06 .position {
+	float:left;
+	padding:0 0 0 85px;
+	height:85px;
+	overflow:hidden
+}
+.login_layer06 .position span {
+	margin:5px 0 0 10px;
+	float:left
+}
+.login_layer06 .position span a {
+	text-decoration:underline
+}
+.login_layer06 .position p {
+	clear:both;
+	color:#666;
+	width:250px;
+	height:32px
+}
+.login_layer06 .position p label {
+	float:left;
+	margin:0 10px 0 0
+}
+.login_layer06 .position p input {
+	float:left;
+	margin:2px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.login_layer06 .position p input {
+	float:left;
+	margin:2px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.login_layer06 .zhijiedenglu {
+	margin:0 20px;
+	padding:10px 0 0;
+*padding:5px 0 0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_infor_h.png) repeat-x scroll 0 0 transparent;
+	clear:both
+}
+.login_layer06 .zhijiedenglu h4 {
+	color:#666;
+	float:left
+}
+.login_layer06 .login_other {
+	height:30px
+}
+.login_layer06 .login_other a {
+	float:left;
+	height:16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_other.png) no-repeat 0 0;
+	width:16px;
+	line-height:16px;
+	overflow:hidden;
+	margin:0 10px 0 0
+}
+.login_layer06 .zhijiedenglu .login_other a {
+	line-height:43px
+}
+.login_layer06 .login_other a.lo_sina {
+	background-position:0 0
+}
+.login_layer06 .login_other a.lo_ren {
+	background-position:0 -16px
+}
+.login_layer06 .login_other a.lo_qq {
+	background-position:0 -32px
+}
+.login_layer06 .login_other a.lo_kaixin {
+	background-position:0 -50px
+}
+.login_layer06 .login_other a.lo_taobao {
+	background-position:0 -67px
+}
+.login_layer06 .login_other a.lo_baidu {
+	background-position:0 -84px;
+	margin:0
+}
+.layer_height0 {
+	height:240px;
+	overflow:hidden
+}
+.index_hide_style {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/error_bg.png) no-repeat 0 50px;
+	padding:10px 0 0 124px;
+	height:220px
+}
+.index_hide_style strong {
+	font-size:20px;
+	font-weight:bold;
+	display:block;
+	margin:90px 0 0
+}
+.xunzhang_all {
+	clear:both
+}
+.xunzhang_all ul {
+	float:left
+}
+.xunzhang_all ul li {
+	float:left;
+	margin:0 5px 0 0;
+	display:inline;
+	width:25px;
+	height:25px
+}
+.xunzhang_all ul li a.icon {
+	display:block;
+	width:24px;
+	height:24px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/huizhang.png) no-repeat 0 0;
+	text-indent:-9999px;
+	overflow:hidden
+}
+.xunzhang_all ul li a.by {
+	background-position:0 0
+}
+.xunzhang_all ul li a.xxs {
+	background-position:0 -24px
+}
+.xunzhang_all ul li a.czs {
+	background-position:0 -48px
+}
+.xunzhang_all ul li a.gzs {
+	background-position:0 -72px
+}
+.xunzhang_all ul li a.dxs {
+	background-position:0 -96px
+}
+.xunzhang_all ul li a.sss {
+	background-position:0 -120px
+}
+.xunzhang_all ul li a.bss {
+	background-position:0 -144px
+}
+.xunzhang_all ul li a.cwdj {
+	background-position:0 -168px
+}
+.xunzhang_all ul li a.lxdr {
+	background-position:0 -192px
+}
+.xunzhang_all ul li a.xfdr {
+	background-position:0 -216px
+}
+.xunzhang_all ul li a.msdr {
+	background-position:0 -240px
+}
+.xunzhang_all ul li a.sydr {
+	background-position:0 -264px
+}
+.xunzhang_all ul li a.xlcq {
+	background-position:0 -288px
+}
+.xunzhang_all ul li a.fourjz {
+	background-position:0 -312px
+}
+.xunzhang_all ul li a.sixjz {
+	background-position:0 -336px
+}
+.xunzhang_all ul li a.eightjz {
+	background-position:0 -360px
+}
+.xunzhang_all ul li a.zy8jz {
+	background-position:0 -384px
+}
+.xunzhang_all ul li a.ys {
+	background-position:0 -408px
+}
+.xunzhang_all ul li a.tf {
+	background-position:0 -432px
+}
+.xunzhang_all ul li a.gre {
+	background-position:0 -456px
+}
+.xunzhang_all ul li a.mxdr {
+	background-position:0 -480px
+}
+.xunzhang_all ul li a.axgy {
+	background-position:0 -504px
+}
+.xunzhang_all span {
+	float:left;
+	margin:0 11px 0 0
+}
+.xunzhang_all span a {
+	margin:7px 0 0;
+	float:left
+}
+.xunzhang_all span a:link, .xunzhang_all span a:visited {
+	text-decoration:underline
+}
+.infor_box {
+	border:3px solid #e9e9e9;
+	background:#fbfbfb;
+	overflow:hidden;
+	float:left;
+	padding:12px 18px
+}
+.infor_head_box {
+	float:left;
+	border-right:1px solid #eee;
+	padding:0 20px 0 0;
+	overflow:hidden
+}
+.user_photo {
+	width:80px;
+	height:80px;
+	border:1px solid #e9e9e9;
+	padding:4px;
+	float:left;
+	margin:0 10px 15px 0;
+	overflow:hidden
+}
+.user_photo img {
+	width:80px;
+	height:80px
+}
+.infor_add {
+	float:left
+}
+.infor_add ul li {
+	float:left;
+	margin:0 0 5px
+}
+.infor_add ul li label {
+	color:#666
+}
+.infor_add ul li span {
+	color:#4a4a4a
+}
+.infor_add ul li em {
+	color:#c00;
+	font-weight:bold
+}
+.infor_add ul li.mall {
+	width:px
+}
+.infor_add ul li.mall a {
+	color:#c00;
+	font-weight:bold
+}
+.infor_add h4 {
+	margin:5px 0 20px;
+	float:left;
+	width:100%;
+	position:relative
+}
+.infor_add h4 a {
+	font-family:simsun
+}
+.infor_add h4 strong {
+	font-size:14px;
+	font-weight:800;
+	margin:0 5px 0 0;
+	float:left;
+	color:#333
+}
+.infor_add h4 i.bt_grsz {
+	position:absolute;
+	right:0;
+	top:0;
+	width:70px;
+	height:21px;
+	display:block;
+	border:1px solid #d6dde2
+}
+.infor_add h4 i.bt_grsz a {
+	display:block;
+	text-align:center;
+	line-height:19px;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png") repeat-x 0 -48px;
+*background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png") repeat-x 0 -47px;
+	font-weight:800;
+	border:1px solid #fff;
+	color:#56616d;
+	font-style:normal
+}
+.infor_add h4 i.bt_grsz a:hover {
+	color:#c00;
+	text-decoration:none
+}
+.infor_my_box {
+	float:left;
+	border-left:1px solid #fff;
+	padding:0 0 0 20px;
+	overflow:hidden
+}
+.zh_shuming {
+	padding:5px 0 5px 25px;
+	border:1px solid #ffd6a5;
+	margin:0 20px 15px;
+	background:#ffffe6 url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png") no-repeat -181px -179px
+}
+.zh_shuming p {
+	color:#f60
+}
+.sj_shuming {
+	background:#ffffe6 url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png") no-repeat -158px -383px;
+	padding:10px 0 10px 55px
+}
+.otherask_lh {
+	padding:0 20px;
+	clear:both
+}
+.table_otherask {
+	padding:1px;
+	background:#fff;
+	margin:0 0 20px;
+	color:#333;
+	zoom:1;
+	font-size:12px
+}
+.table_otherask thead th {
+	background:#f7f7f7;
+	height:30px;
+	color:#808080;
+	border-bottom:1px solid #e5e5e5;
+	padding:0 10px 0 10px
+}
+.table_otherask tr td {
+	height:33px;
+	border-bottom:1px solid #e5e5e5;
+	padding:0 10px 0 10px
+}
+.table_otherask tr td strong {
+	color:#4a4a4a
+}
+.table_otherask tr td.textleft {
+	text-align:left;
+	padding:0 0 0 10px
+}
+.table_otherask tr th.textright, .table_otherask tr td.textright {
+	text-align:right
+}
+.table_otherask tr th.textcenter, .table_otherask tr td.textcenter {
+	text-align:center
+}
+.table_otherask tr td span.y {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -1152px;
+	width:20px;
+	height:20px;
+	text-indent:-9999px;
+	overflow:hidden;
+	display:block
+}
+.table_otherask tr td span.w {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -1078px;
+	width:20px;
+	height:20px;
+	text-indent:-9999px;
+	overflow:hidden;
+	display:block
+}
+.table_otherask tr td span.text_red {
+	color:#d63333
+}
+.table_otherask tr td span.text_hui {
+	color:#ccc
+}
+.table_otherask tr td span.text_hui2 {
+	color:#999
+}
+.table_otherask tr td span.text_green {
+	color:#5c8533
+}
+.table_otherask tr td i {
+	float:left;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -501px;
+	width:16px;
+	height:15px;
+	display:block;
+	text-indent:9999px;
+	overflow:hidden;
+	margin:0 5px 0 5px
+}
+.table_otherask tr td i.hf {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -501px
+}
+.table_otherask tr td i.nohf {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -541px
+}
+.table_otherask tr td i.xs {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -1309px
+}
+.table_otherask tr td i.tp {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -1361px
+}
+.table_otherask tr td i.hd {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -1413px
+}
+.table_otherask tr td i.bl {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat 0 -1464px
+}
+.table_otherask tr td small {
+	float:right;
+	font-size:12px;
+	display:block;
+	width:120px
+}
+.table_otherask tr td span.text_oneline {
+	float:left;
+	display:block;
+	height:20px;
+	overflow:hidden
+}
+.huibg {
+	background:#fcfcfc
+}
+.hover_bg {
+	background:#ffffe6
+}
+.cgjMustList {
+	width:450px;
+	margin:10px auto 0
+}
+.cgjYellowts {
+	background:#fffdd5;
+	height:30px;
+	padding:0 0 0 12px
+}
+.cgjYellowts p {
+	padding:5px 0 0 25px;
+	color:#8e8e8e
+}
+.cgjYellowts p strong {
+	color:#c00
+}
+.cgjYellowts p.zhuyi {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_icon.png) no-repeat scroll 0 8px
+}
+.cgjYellowts p.tishi {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_icon0.png) no-repeat scroll 0 6px
+}
+.cgjMustList fieldset {
+	padding:30px 0 0
+}
+.cgjMustList fieldset ul li {
+	padding:0 0 15px;
+	_padding:0 0 12px;
+	position:relative;
+	clear:both;
+	overflow:hidden;
+	zoom:1
+}
+.cgjMustList fieldset ul li label {
+	width:70px;
+	float:left;
+	text-align:right;
+	color:#666
+}
+.cgjMustList fieldset ul li label em {
+	color:#c00;
+	margin:0 3px 0 0
+}
+.cgjMustList fieldset ul li select {
+	color:#8e8e8e;
+	width:110px;
+	margin:0 5px 0 0
+}
+.cgjMustList fieldset ul li select, .cgjMustList fieldset ul li input, .cgjMustList fieldset ul li span {
+	float:left;
+	margin-right:5px;
+	display:inline
+}
+.cgjMustList fieldset ul li.cgjGmsj select {
+	width:55px
+}
+.cgjMustList fieldset ul li p {
+	color:#8e8e8e;
+	clear:both;
+	margin-left:65px
+}
+.cgjMustList fieldset ul.cgj_cent {
+	padding-left:75px
+}
+.cgjMustList fieldset ul li .ts_w_lh {
+	margin:0
+}
+.ibit_deltips {
+	margin:30px 0 0
+}
+.ibit_deltips p {
+	padding:5px 0 0 105px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_icon1.png) no-repeat 60px 0;
+	font-size:14px;
+	width:240px
+}
+.ibit_adddel_tips {
+	margin:30px 0 0;
+	height:70px
+}
+.ibit_adddel_tips p {
+	padding:9px 0 0 170px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_icon2.png) no-repeat 125px 0;
+	font-size:14px;
+	width:240px;
+	height:32px;
+	font-weight:800
+}
+.layer_bottom {
+	height:50px;
+	text-align:center;
+	padding:10px 0 0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012/bt_infor_h.png) repeat-x 0 0;
+	margin:10px 0 0
+}
+.layer_bottom .bottom_an {
+	margin:0 10px 0 170px;
+	display:inline
+}
+.ibit_add_wen {
+	height:60px
+}
+.ibit_add_wen p {
+	background-position:0 0;
+	padding:9px 0 0 50px
+}
+.ibit_cheku_img p {
+	margin:0 0 5px
+}
+.ibit_cheku_img p strong {
+	font-weight:800;
+	margin:0 3px
+}
+.ibit_cheku_img {
+	height:125px
+}
+.ibit_cheku_img ul li {
+	width:122px;
+	float:left;
+	text-align:center;
+	margin:0 20px 0 0
+}
+.ibit_cheku_img ul li img {
+	width:120px;
+	height:80px;
+	display:block
+}
+.cgjMustList fieldset ul li.cgjCx p {
+	clear:none;
+	margin:0;
+	width:300px;
+	float:left
+}
+.cgjMustList fieldset ul li.cgjCx small {
+	color:#999;
+	font-size:12px
+}
+.cgjMustList fieldset ul li.cgjCx select.cgjWidth0 {
+	width:150px
+}
+.cgjMustList fieldset ul li.cgjCx select {
+	width:125px
+}
+.cgjMustList fieldset ul li.cgjSZD select {
+	width:72px
+}
+.cgjMustList fieldset ul li.cgjSZD select.k60 {
+	width:62px
+}
+.cgjMustList fieldset ul li.cgjSZD select.k120 {
+	width:82px
+}
+.cgjMustList fieldset ul li #tipcarnum, .cgjMustList fieldset ul li #tipenginenum {
+	display:none
+}
+.ui-dialog {
+	position:absolute;
+	top:0;
+	left:0;
+	width:490px;
+	overflow:hidden;
+	border:5px solid #557DAE;
+	background:none repeat scroll 0 0 #FFF
+}
+.ui-dialog .ui-dialog-titlebar {
+	padding:5px 10px;
+	position:relative;
+	height:25px;
+	background:#E7F5FF
+}
+.ui-dialog .ui-dialog-title {
+	color:#333;
+	font-size:14px;
+	font-weight:800;
+	line-height:25px
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	position:absolute;
+	right:.3em;
+	top:50%;
+	width:19px;
+	margin:-10px 0 0 0;
+	padding:1px;
+	height:18px
+}
+.ui-dialog a span.ui-icon-closethick {
+	width:12px;
+	height:12px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) no-repeat -188px -308px;
+	display:block;
+	line-height:100px;
+	overflow:hidden
+}
+.ui-dialog .ui-dialog-titlebar-close span {
+	display:block;
+	margin:1px
+}
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
+	padding:0
+}
+.ui-dialog .ui-dialog-content {
+	position:relative;
+	border:0;
+	padding:10px;
+	background:0
+}
+.ui-dialog .ui-dialog-buttonpane {
+	text-align:left;
+	border-width:1px 0 0 0;
+	background-image:none;
+	padding:10px 0;
+	overflow:hidden;
+	zoom:1;
+	position:relative
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	position:relative;
+	left:50%;
+	float:left
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button {
+	position:relative;
+	left:-50%;
+	float:left
+}
+.ui_bottom_y {
+	border-left:1px solid #cc6d00;
+	border-top:1px solid #cc6d00;
+	border-right:1px solid #cf760f;
+	border-bottom:1px solid #d27104;
+	float:left;
+	margin:0 7px 0 0;
+	height:26px;
+	padding:0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png) repeat-x 0 0
+}
+.ui_bottom_y span.ui-button-text {
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:24px;
+	padding:2px 20px 3px;
+*padding:2px 15px 3px;
+	cursor:pointer;
+	_width:0;
+*overflow:visible;
+	border:0;
+	font-size:14px;
+	display:block;
+	word-break:keep-all;
+	white-space:nowrap
+}
+.ui_bottom_b {
+	border-left:1px solid #769dbc;
+	border-top:1px solid #769dbc;
+	border-right:1px solid #7ea3c0;
+	border-bottom:1px solid #789fbe;
+	float:left;
+	margin-right:10px;
+	height:26px;
+	padding:0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png) repeat-x 0 -24px
+}
+.ui_bottom_b span.ui-button-text {
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:24px;
+	padding:2px 20px 3px;
+*padding:2px 15px 3px;
+	cursor:pointer;
+	_width:0;
+*overflow:visible;
+	border:0;
+	font-size:14px;
+	display:block;
+	word-break:keep-all;
+	white-space:nowrap
+}
+.ui_bottom_h {
+	border:1px solid #a5a5a5;
+	float:left;
+	margin-right:10px;
+	height:26px;
+	padding:0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/bt_bg_x_lh.png) repeat-x 0 -67px
+}
+.ui_bottom_h span.ui-button-text {
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	height:24px;
+	padding:2px 20px 3px;
+*padding:2px 15px 3px;
+	cursor:pointer;
+	_width:0;
+*overflow:visible;
+	border:0;
+	font-size:14px;
+	display:block;
+	word-break:keep-all;
+	white-space:nowrap
+}
+.ui-widget-overlay {
+	background:url("http://i.qichetong.com/js/ui-bg_flat_0_aaaaaa_40x100.png") repeat-x scroll 50% 50% #AAA;
+	opacity:.3;
+	height:100%;
+	left:0;
+	position:absolute;
+	top:0;
+	width:100%
+}
+.tao_head_box {
+	border-bottom:3px #3b6486 solid;
+	margin:0 0 10px 0;
+	background:#fff
+}
+.tao_head {
+	height:67px;
+	width:960px;
+	margin:-10px auto 0
+}
+.tao_head .tao_logo {
+	width:130px;
+	height:40px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/logo_qct.png) 0 0 no-repeat;
+	margin:17px 0 0 0;
+	float:left
+}
+.tao_head .tao_logo a {
+	width:130px;
+	height:40px;
+	display:block;
+	line-height:1000px;
+	overflow:hidden
+}
+.tao_head ul.menu {
+	margin:7px 0 0 22px;
+	float:right;
+	font-size:18px;
+	font-family:Microsoft Yahei
+}
+.tao_head ul.menu li {
+	float:left;
+	text-align:center;
+	_width:59px;
+	height:60px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/leche_nav_line.png) 100% 20px no-repeat;
+	white-space:nowrap
+}
+.tao_head ul.menu li.on {
+	background:0
+}
+.tao_head ul.menu li a, .tao_head ul.menu li a span, .tao_head ul.menu li a em {
+	cursor:pointer;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/leche_nav.png) no-repeat;
+	height:60px;
+	line-height:60px;
+	display:block;
+	_cursor:pointer
+}
+.tao_head ul.menu li.on a {
+	background-position:100% -10px;
+	padding-right:1px
+}
+.tao_head ul.menu li.on a span {
+	background-position:0 -93px;
+	padding-left:1px
+}
+.tao_head ul.menu li.on a span em {
+	background-position:center -189px
+}
+.tao_head ul.menu li a span em {
+	padding:0 20px
+}
+.tao_head ul.menu li.on a span em {
+	padding:0 19px
+}
+.clear {
+	clear:both;
+	height:0;
+	font-size:0;
+	overflow:hidden
+}
+.con_ad {
+	clear:both;
+	height:80px;
+	margin:0 0 10px;
+	padding:0;
+	width:950px
+}
+.bit_top {
+	width:auto;
+	border-left:0;
+	border-right:0
+}
+a.best:link, a.best:visited {
+	color:#d01d19
+}
+.line_box {
+	border:0;
+	padding:0;
+	margin:0 0 10px 0;
+	position:relative;
+	clear:both
+}
+.line_box h3 {
+	background:#EBF2FD;
+	border-top:1px solid #609FDE;
+	font-size:12px;
+	font-weight:800;
+	height:26px;
+	line-height:26px
+}
+.line_box h3 span {
+	padding:0 0 0 10px
+}
+.line_box h3 span.line {
+	padding:0;
+	color:#333
+}
+.line_box h3 a:hover {
+	text-decoration:underline
+}
+.line_box h3 span span {
+	color:#333;
+	padding:0
+}
+.line_box .more {
+	font-family:SimSun;
+	font-size:12px;
+	font-weight:normal;
+	position:absolute;
+	right:10px;
+	top:6px;
+	color:#666
+}
+.line_box .more .morelist {
+	margin:2px -10px 0 0
+}
+.line_box .more .morelist li {
+	float:left;
+	border-right:1px #000 solid;
+	padding:0 5px 0 0;
+	margin:0 5px 0 0;
+	height:14px;
+	line-height:14px
+}
+.line_box .more .morelist li.last {
+	border:0
+}
+.line_box h3 strong.picser_dh {
+	margin-left:20px
+}
+.line_box h3 strong.picser_dh a:link, .line_box h3 strong.picser_dh a:visited {
+	color:#f60
+}
+.twopages_zh_t h3 {
+	background:#F4F4F4;
+	border-top:1px solid #ddd;
+	clear:both;
+	margin-bottom:10px;
+	font-size:12px
+}
+.twopages_zh_t h3 span {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/friend_zh_icon.gif) no-repeat 10px 8px;
+	padding-left:30px;
+	font-weight:800;
+	display:block;
+	float:left
+}
+.twopages_zh_t h3 span small {
+	font-size:12px;
+	font-weight:400;
+	margin-left:10px
+}
+.bit950 ul {
+	float:left
+}
+.bit950 ul li {
+	float:left;
+	padding:5px 10px 0 0;
+	position:relative;
+	background:url(http://image.bitauto.com/uimg/index100528/images/bit_icon1012171730.png) 100% -1259px no-repeat;
+	z-index:2
+}
+.bit950 ul li a.bitautologo {
+	background:url(http://image.bitautoimg.com/themes/2009/common/images/bt_frame_logo.png) no-repeat scroll 0 0;
+	display:block;
+	height:19px;
+	line-height:1000px;
+	overflow:hidden;
+	width:71px
+}
+.bt_login_box {
+	padding:0 10px 0 0;
+	float:right;
+	position:relative;
+	z-index:10
+}
+.bt_login_box ul li {
+	background:0;
+	padding-right:0;
+	height:23px;
+	padding-top:5px;
+	padding-top:4px\9
+}
+.bt_login_box ul li label {
+	color:#666;
+	margin:0 5px 0 0
+}
+.bt_login_box ul li .bit_loginInput {
+	height:14px;
+	padding:2px 0 0 2px;
+	background:url(http://img1.baa.bitautotech.com/webpic/head/bit_topbg.png) no-repeat 0 -28px;
+	border:1px solid #cacaca;
+	font-size:12px;
+	width:73px;
+	overflow:hidden;
+	line-height:1.2
+}
+.bt_login_box ul li .bit_logintop {
+	width:45px;
+	height:18px;
+	background:url(http://img1.baa.bitautotech.com/webpic/head/bit_topbg.png) no-repeat 0 -44px;
+	border:0;
+	text-align:center;
+	font-size:12px;
+	cursor:pointer;
+	padding:0;
+	padding:4px 0 0\9
+}
+.bt_login_box ul li.login {
+	padding-left:5px
+}
+.bt_login_box ul li.login_0 {
+	margin-right:10px
+}
+.bt_login_box ul li.lastB {
+	background:url(http://image.bitauto.com/uimg/index100528/images/bit_icon1012171730.png) -65px -1259px no-repeat;
+	padding-left:20px
+}
+.col-all {
+	width:960px;
+	float:left
+}
+.col-sub {
+	float:left;
+	width:150px
+}
+.col-sub-last {
+	float:left;
+	width:230px;
+	margin:0;
+	overflow:hidden
+}
+.col-main {
+	float:left;
+	width:570px;
+	margin:0
+}
+.col-side {
+	float:right;
+	width:220px;
+	overflow:hidden
+}
+.col-side .line_box {
+	padding:0;
+	margin:0 0 10px 0;
+	position:relative
+}
+.col-side .line_box h3 {
+	font-size:14px;
+	font-weight:bold;
+	border-bottom:1px #d1ddea solid;
+	line-height:28px;
+	height:28px;
+	overflow:hidden;
+	padding:0 0 0 10px;
+	color:#000;
+	text-align:left;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/wx_col-side_h3.png) 0 0 no-repeat
+}
+.col-side .line_box h3 span {
+	padding:0
+}
+.col-side .line_box .more {
+	font-family:SimSun;
+	font-size:12px;
+	font-weight:normal;
+	position:absolute;
+	right:10px;
+	top:6px;
+	color:#666
+}
+.col-side .line_box .more a strong {
+	color:da0000
+}
+.col-side_ad {
+	margin-bottom:10px
+}
+.col-con {
+	float:left;
+	width:720px
+}
+.col-con1 {
+	float:left;
+	width:630px;
+	margin-right:10px
+}
+.col-con2 {
+	float:left;
+	width:800px
+}
+.col-con_sub {
+	float:left;
+	width:355px;
+	margin-right:10px
+}
+.col-con_main {
+	float:left;
+	width:355px
+}
+ul li ul li .border {
+	border:1px solid #C4C4C4;
+	border-left:1px solid #898989;
+	border-top:1px solid #898989;
+	float:left;
+	display:block;
+	height:23px;
+	margin-right:5px;
+	width:290px;
+	overflow:hidden
+}
+ul li ul li p {
+	width:368px
+}
+ul li ul li input {
+	float:left
+}
+ul li ul li input.text {
+	color:#999
+}
+ul li ul li .border input {
+	border:0;
+	border-left:1px solid #ddd;
+	border-top:1px solid #ddd;
+	height:16px;
+	width:420px;
+	padding:3px 2px
+}
+ul li ul li .border textarea {
+	border:0;
+	border-left:1px solid #ddd;
+	border-top:1px solid #ddd;
+	height:16px;
+	width:420px;
+	padding:3px 2px;
+	font-size:12px;
+	line-height:14px;
+	font-family:"宋体"
+}
+a.cxp {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) no-repeat 0 -580px;
+	padding-left:25px
+}
+a.xrz {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) no-repeat 0 -613px;
+	padding-left:25px
+}
+a.slw {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) no-repeat 0 -1062px;
+	padding-left:25px
+}
+input.fb {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif) no-repeat 0 -217px;
+	width:57px;
+	height:43px;
+	border:0;
+	font-size:14px;
+	color:#fff;
+	font-weight:800;
+	cursor:pointer
+}
+.footer720px {
+	width:720px;
+	margin:0
+}
+.bottom_hf {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif) no-repeat 0 -260px;
+	width:43px;
+	height:21px;
+	border:0;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	line-height:21px;
+	cursor:pointer
+}
+
+
+.nav_bk .bt_page {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/ir.png) repeat-x 0 -111px;
+	background-position:bottom;
+	line-height:46px;
+	height:46px;
+	margin-top:-5px;
+	overflow:visible
+}
+.nav_logo {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/ibitauto_logo.png) no-repeat 0 0;
+	_background:0;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://pic.baa.bitautotech.com/webpic/ibitauto/ibitauto_logo.png', sizingMethod='image ');
+	height:46px;
+	width:151px;
+	float:left
+}
+.nav_logo h1 {
+	width:151px
+}
+.nav_logo h1 a {
+	display:block;
+	width:151px;
+	text-indent:-999em;
+	height:46px;
+	position:relative
+}
+.nav ul {
+	float:left
+}
+.nav li {
+	position:relative;
+	
+	float:left;
+	z-index:8
+}
+.nav li h3 {
+	height:34px;
+	overflow:hidden;
+	float:left;
+	font:700 14px/16px Arial;
+	padding:0 10px 0 0
+}
+.nav li h3.current {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/ib.png) no-repeat right -234px
+}
+.nav li h3.current a {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/ib.png) no-repeat left -234px
+}
+.nav li h3 a span {
+	font-family:times New Roman;
+	margin-right:3px;
+	font-size:16px
+}
+.nav li h3 a, .nav li h3 a:visited {
+	display:block;
+	float:left;
+	padding:0 5px 0 15px;
+	color:#fff;
+	height:34px;
+	line-height:34px
+}
+.nav li h3 a.more, .nav li h3 a.more:visited {
+	width:15px;
+	height:15px;
+	overflow:hidden;
+	text-indent:-999em;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) no-repeat -1px -744px;
+	padding:0;
+	margin-top:9px
+}
+.nav li h3 a.more:hover {
+	background-color:#326294
+}
+.nav li h3 a.new_msg, .nav li h3 a.new_msg:hover, .nav li h3 a.new_msg:visited {
+	text-indent:-999em;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/msg_xin.gif) no-repeat 0 -3px;
+	width:16px;
+	height:11px;
+	overflow:hidden;
+	margin:12px 0 0 5px;
+	padding:0
+}
+.nav li h3 a.new_style, .nav li h3 a:link.new_style, .nav li h3 a:visited.new_style {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/cyg_bg_new.gif) no-repeat 0 0;
+	width:23px;
+	height:11px;
+	overflow:hidden;
+	margin:11px 0 0 5px;
+	padding:0;
+	line-height:120px;
+	left:40px;
+	position:absolute;
+	top:-2px
+}
+.hidediv {
+	position:absolute;
+	top:0;
+	left:0;
+	height:0;
+	width:0;
+	display:block
+}
+.nav li dl {
+	background:#fff;
+	position:absolute;
+	top:46px;
+	left:12px;
+	border:1px solid #3369A7;
+	padding:10px;
+	z-index:999
+}
+.nav li dd {
+	border-bottom:1px solid #EBF2FD;
+	height:26px;
+	line-height:26px;
+	width:110px
+}
+.nav li dd b {
+	color:#F60;
+	font-weight:400;
+	padding-left:10px
+}
+.nav_r {
+	height:46px;
+	float:right;
+	line-height:24px;
+	padding:0 15px 0 0;
+	width:320px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/index_serch_an.gif) no-repeat 100% 6px
+}
+.nav_r ul {
+	float:left;
+	margin:15px 10px 0 0;
+	overflow:hidden;
+	height:30px
+}
+.nav_r ul li {
+	float:left;
+	margin-right:10px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/menu_nav_right_bg.gif) 0 50% no-repeat;
+	padding:0 0 0 10px
+}
+.nav_r ul li.fist {
+	background:0
+}
+.nav_r ul li a:link, .nav_r ul li a:visited {
+	color:#fff
+}
+.nav_r .serch_box {
+	background:#6C9FD4;
+	float:right;
+	margin:15px 0 0 0;
+	padding:2px;
+	width:146px;
+	overflow:hidden
+}
+.nav_r .serch_box input {
+	float:left
+}
+.nav_r .serch_box .input {
+	background:#fff;
+	height:14px;
+	width:122px;
+	border:0;
+	padding:2px;
+	margin:0 2px 0 0;
+	line-height:15px;
+	overflow:hidden;
+	font-size:12px;
+	color:#999
+}
+.nav_r .serch_box .serch {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/menu_nav_serch.gif) no-repeat 0 0;
+	height:18px;
+	width:18px;
+	border:0;
+	cursor:pointer
+}
+.nav_r {
+	width:auto
+}
+.nav_r ul {
+	margin:15px 0 0 0
+}
+.nav_r ul li {
+	background:0;
+	margin-right:0;
+	color:#fff
+}
+.menu {
+	background:#E9F2FC url(http://pic.baa.bitautotech.com/webpic/ibitauto/menu_bg.png) no-repeat left top;
+	border-right:2px solid #DAE5F8;
+	padding-top:10px
+}
+.main {
+	border:1px solid #C9D8F4;
+	padding:1px;
+	min-height:600px;
+	_height:600px
+}
+.mainr {
+	background:#E9F2FC;
+	border-left:2px solid #DAE5F8
+}
+.user_photo {
+	border:1px solid #efeff0;
+	padding:5px;
+	width:120px;
+	height:120px;
+	margin:0 auto;
+	padding:6px;
+	overflow:hidden;
+	line-height:120px;
+	vertical-align:middle;
+	text-align:center;
+	position:relative
+}
+.user_photo img {
+	vertical-align:middle;
+	float:left;
+	width:120px;
+	height:120px
+}
+.user_info {
+	width:120px;
+	margin:5px auto;
+	overflow:hidden
+}
+.user_info dt {
+	width:120px;
+	text-align:center;
+	line-height:24px;
+	color:#000
+}
+.user_info dd {
+	width:60px;
+	float:left;
+	text-align:center;
+	overflow:hidden
+}
+.user_photo .modelLogo {
+	position:absolute;
+	width:120px;
+	height:120px;
+	top:6px;
+	left:6px
+}
+.menu ul {
+	clear:both;
+	padding:0 0 30px 10px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/menu_bgb.png) no-repeat bottom left
+}
+.menu ul li {
+	height:33px;
+	width:128px;
+	margin-left:10px;
+	line-height:33px;
+	vertical-align:bottom;
+	border-top:1px solid #D8E3F6;
+	position:relative;
+	overflow:hidden
+}
+.menu ul li.current {
+	width:131px;
+	padding-left:10px;
+	margin:-1px -3px 0 0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/ib.png) no-repeat 0 -198px;
+	height:35px;
+	position:relative;
+	z-index:999;
+	line-height:32px;
+	border-top:0
+}
+.menu ul li.current, x:-moz-any-link {
+margin-top:0
+}
+.menu ul li.current, x:-moz-any-link, x:default {
+margin-top:-1px
+}
+.menu ul li.current a.ico, .menu ul li.current a.ico:visited {
+	color:#f60
+}
+.menu ul li a.fr, .menu ul li a.fr:visited {
+	float:right;
+	padding-right:5px;
+	color:#999
+}
+.menu ul li.current a.fr {
+	padding-right:8px
+}
+.menu ul li small.new {
+	display:block;
+	position:absolute;
+	width:23px;
+	height:11px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/cgj_new.gif) no-repeat 0 0;
+	overflow:hidden;
+	right:17px;
+	top:7px
+}
+.menu ul li small.hot {
+	display:block;
+	width:23px;
+	height:11px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bt_hot.png) no-repeat 0 0;
+	overflow:hidden;
+	display:inline-block;
+	float:left;
+	margin:5px 0 0 5px
+}
+.menu ul li.current small.new, .menu ul li.current small.hot {
+	display:none
+}
+.menu ul a.ico {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) 0 -827px no-repeat;
+	float:left;
+	padding-left:26px;
+	font-size:14px;
+	font-weight:700
+}
+.menu ul a.ico_yl {
+	background-position:-2px -372px
+}
+.menu ul a.ico_xc {
+	background-position:-2px -170px
+}
+.menu ul a.ico_rz {
+	background-position:-2px -202px
+}
+.menu ul a.ico_lt {
+	background-position:-2px -339px
+}
+.menu ul a.ico_dy {
+	background-position:-2px -270px
+}
+.menu ul a.ico_esc {
+	background-position:-2px -1479px
+}
+.menu ul a.ico_cy {
+	background-position:-3px -672px
+}
+.menu ul a.ico_csh {
+	background-position:-2px -922px
+}
+.menu ul a.ico_dd {
+	background-position:-2px -953px
+}
+.menu ul a.ico_gc {
+	background-position:-2px -1258px
+}
+.menu ul a.ico_ychy {
+	background-position:-2px -1524px
+}
+.menu ul a.ico_tj {
+	background-position:-3px -706px;
+	font-size:12px;
+	font-weight:400
+}
+.menu ul a.ico_hyllk {
+	background-position:-2px -985px
+}
+.menu ul a:hover.ico_tj {
+	background-position:-3px -886px
+}
+.menu ul a.ico_gift {
+	background-position:-1px -1056px
+}
+.menu ul a.ico_cgj {
+	background-position:-1px -1569px
+}
+.menu ul a.ico_dd2 {
+	background-position:-2px -1614px
+}
+.menu ul a.ico_rw {
+	background-position:-2px -1690px
+}
+.menu ul a.ico_hz {
+	background-position:-2px -1732px
+}
+.menu ul a:link.no_open, .menu ul a:visited.no_open {
+	color:#999
+}
+.menu ul a:hover.no_open {
+	text-decoration:none
+}
+.menu ul a.ico_tuan {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) no-repeat scroll -2px -1871px
+}
+.menu h4 {
+	font-weight:800;
+	height:25px
+}
+.menu h4 span {
+	padding:0 20px
+}
+.menu ul.my {
+	background:0;
+	padding:0 0 24px 10px
+}
+.guanxi_name ul, .guanxi_fen ul, .guanxi_style ul {
+	padding:0;
+	margin:0;
+	background:0
+}
+.guanxi_name ul li, .guanxi_fen ul li, .guanxi_style ul li {
+	padding:0 0 0 6px;
+	margin:0;
+	border:0;
+	width:auto;
+	height:20px;
+	line-height:20px;
+	text-align:left
+}
+.guanxi_name, .guanxi_fen, .guanxi_style {
+	margin:0 auto;
+	padding:10px 0 0;
+	text-align:center;
+	width:132px;
+	clear:both;
+	overflow:hidden;
+	border-bottom:1px solid #d8e3f6
+}
+.guanxi_name strong {
+	font-weight:800;
+	font-size:14px;
+	display:block
+}
+.guanxi_name a.a_rzcy {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 0 -1px;
+	width:76px;
+	height:21px;
+	line-height:200px;
+	overflow:hidden;
+	margin:7px 0 0;
+	display:block
+}
+.guanxi_name a.a_qczj {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 0 -22px;
+	width:76px;
+	height:21px;
+	line-height:200px;
+	overflow:hidden;
+	margin:7px 0 0;
+	display:block
+}
+.guanxi_name ul {
+	margin:5px 0 0;
+	border-top:1px solid #d8e3f6;
+	padding:7px 0;
+	height:39px
+}
+.guanxi_name ul li label {
+	color:#999
+}
+.guanxi_name ul li em {
+	color:#f60
+}
+.guanxi_fen {
+	height:47px
+}
+.guanxi_fen ul li {
+	float:left;
+	width:64px;
+	clear:none;
+	text-align:center;
+	height:32px;
+	padding:0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/ibit_menu_r.png) 100% 0 repeat-y;
+	line-height:17px;
+	padding:5px 0 0;
+	font-size:13px
+}
+.guanxi_fen ul li.fist {
+	background:0
+}
+.guanxi_fen ul li a:link, .guanxi_fen ul li a:visited {
+	color:#666
+}
+.guanxi_fen ul li a:hover {
+	color:#f60;
+	text-decoration:underline
+}
+.guanxi_fen ul li a:hover em {
+	text-decoration:underline
+}
+.guanxi_fen ul li a em {
+	display:block
+}
+.guanxi_xun {
+	clear:both;
+	margin:0 5px 0 20px;
+	padding:0 0 20px
+}
+.guanxi_xun img {
+	width:22px;
+	height:22px;
+	margin:0 3px 0 0
+}
+.guanxi_style a:link, .guanxi_style a:visited {
+	color:#666
+}
+.guanxi_style {
+	border-bottom:1px solid #d8e3f6;
+	height:45px;
+	margin-bottom:25px
+}
+.guanxi_style ul li {
+	width:66px;
+	float:left;
+	clear:none;
+	height:22px;
+	overflow:hidden;
+	padding:0
+}
+.guanxi_style ul li a {
+	display:block;
+	border-right:1px solid #d8e3f6;
+	line-height:14px;
+	text-align:center
+}
+.guanxi_style ul li a:hover {
+	color:#f60;
+	text-decoration:underline
+}
+.guanxi_style ul li.no a {
+	border:0
+}
+.msgbox {
+	border:1px solid #C9D8F4;
+	float:left;
+	width:758px;
+	font-family:宋体;
+	padding:22px 19px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-msgbox2.jpg) 1px 1px no-repeat;
+	min-height:790px;
+	_height:790px
+}
+.msgbox h2 {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icon-mail2.gif) 0 3px no-repeat;
+	padding:0 0 0 24px;
+	font-weight:bold;
+	font-size:16px;
+	margin-bottom:10px
+}
+.publictab1 {
+	float:left;
+	width:758px;
+	border-bottom:3px solid #3072B3;
+	margin-bottom:10px
+}
+.publictab1 ul {
+	float:left;
+	padding:0 0 0 10px
+}
+.publictab1 li {
+	float:left;
+	padding:15px 0 0 3px;
+	margin:0 5px 0 0;
+	display:inline;
+	height:25px;
+	position:relative;
+	text-align:center;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-msgtab.gif) 0 15px no-repeat
+}
+.publictab1 li a {
+	float:left;
+	padding:2px 8px 0 5px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-msgtab.gif) 100% 0 no-repeat;
+	height:23px;
+	line-height:23px;
+	overflow:hidden
+}
+.publictab1 .current {
+	background-position:0 100%
+}
+.publictab1 .current a {
+	background-position:100% 100%;
+	color:#fff;
+	font-weight:bold
+}
+.publictab1 li span {
+	position:absolute;
+	top:0;
+	right:0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-tip.gif);
+	width:19px;
+	height:18px;
+	color:#fff;
+	line-height:13px;
+	font-size:10px;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif
+}
+.publictab2 {
+	float:left;
+	width:756px;
+	border:1px solid #C9D8F4;
+	border-top:0;
+	margin:-10px 0 20px 0
+}
+.publictab2 ul {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-publictab2.gif) 0 -32px repeat-x;
+	height:32px;
+	width:744px;
+	padding-left:10px;
+	border:1px #fff;
+	border-style:none solid
+}
+.publictab2 li {
+	float:left;
+	line-height:1em
+}
+.publictab2 li a {
+	float:left;
+	padding:12px 13px 0 13px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-publictab2.gif) 100% -64px;
+	height:20px;
+	word-break:keep-all;
+	white-space:nowrap
+}
+.publictab2 .current {
+	padding:0 0 0 2px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-publictab2.gif) 0 2px;
+	position:relative;
+	top:1px;
+	z-index:11;
+	left:-1px
+}
+.publictab2 .current a {
+	padding:12px 12px 0 10px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-publictab2.gif) 100% 2px;
+	font-weight:bold;
+	color:#333;
+	margin-top:-1px;
+	height:21px
+}
+.nocont {
+	text-align:center;
+	padding:30px 0 0;
+	height:60px;
+	font-size:14px;
+	color:#666
+}
+.the_pages {
+	clear:both;
+	position:relative;
+	height:53px;
+	font-family:simSum
+}
+.the_pages div {
+	float:left;
+	position:relative;
+	left:50%;
+	padding:10px 0
+}
+.the_pages div a, .the_pages div span, .the_pages div em {
+	position:relative;
+	left:-50%;
+	display:block;
+	float:left;
+	margin:0 0 0 4px;
+	height:17px;
+	width:auto;
+	padding:2px 8px;
+	white-space:nowrap;
+	text-align:center;
+	border:1px solid #164a84;
+	font-size:12px;
+	line-height:18px;
+	text-decoration:none
+}
+.the_pages div em {
+	border:1px solid #fff
+}
+.the_pages div input {
+	position:relative;
+	right:50%;
+	float:left;
+	margin:0 4px 0 0;
+	height:16px;
+	line-height:20px;
+	overflow:hidden;
+	font-size:12px;
+	padding:2px
+}
+.the_pages div input.text {
+	width:27px
+}
+.the_pages div input.button {
+	height:21px;
+	padding:0;
+*padding:0 0 0 7px;
+	_padding:0;
+	width:43px;
+	background:url(http://www.bitauto.com/themes/2009/common/images/icon_post2.png);
+	color:#fff;
+	font-weight:bold;
+	border:0;
+	line-height:21px;
+	cursor:pointer;
+	text-align:center
+}
+.the_pages div span.num {
+	border:0;
+	background:0;
+	color:#000;
+	padding:2px 2px 2px 8px
+}
+.the_pages div span {
+	border-color:#666;
+	color:#666;
+	background:#fff
+}
+.the_pages div a:link {
+	background:#fff
+}
+.the_pages div a:visited {
+	background:#fff
+}
+.the_pages div a:hover {
+	border:1px solid #164a84;
+	background:#e3eaef;
+	text-decoration:none;
+	color:#164a84
+}
+.the_pages div a.linknow {
+	border:1px solid #164a84;
+	background-color:#164a84;
+	color:#fff
+}
+.box_friend {
+	display:block;
+	width:302px;
+	border:1px solid #898989;
+	border-right:1px solid #C4C4C4;
+	border-bottom:1px solid #C4C4C4
+}
+.box_friend .border {
+	padding:3px 2px;
+	width:298px;
+	border:1px solid #DDD;
+	border-bottom:0;
+	border-right:0;
+	display:block
+}
+.box_friend .border .superbox {
+	float:left;
+	width:280px
+}
+.box_friend .border a.secets_friend {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/gifts_zh_select.gif) no-repeat 0 0;
+	width:18px;
+	height:7px;
+	line-height:100px;
+	overflow:hidden;
+	display:block;
+	margin:4px 0 0;
+	float:right
+}
+.box_friend .border .input_f {
+	display:inline
+}
+.box_friend .border input.text {
+	border:0;
+	float:left;
+	width:270px;
+	cursor:text;
+	padding:3px 2px
+}
+.box_friend .border .text {
+	border:0;
+	display:inline;
+	float:left;
+	cursor:text;
+	background:#FFF
+}
+.box_friend .border .text strong {
+	margin-right:10px;
+	float:left;
+	word-break:keep-all;
+	white-space:nowrap
+}
+.box_friend .border .text strong span {
+	float:left;
+	margin:0 3px 0 0;
+	padding:0;
+	display:inline;
+	color:#333
+}
+.box_friend .border .text strong a.del {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif) no-repeat -64px -170px;
+	display:block;
+	float:left;
+	height:14px;
+	line-height:100px;
+	overflow:hidden;
+	width:12px;
+	margin:2px 0 0
+}
+.box_friend .border .text strong a:hover.del {
+	background-position:-50px -170px
+}
+.box_friend .border a:hover.secets_friend {
+	background-position:0 -17px
+}
+.box_friend .border a.list {
+	background-position:0 -32px
+}
+.box_friend .border a:hover.list {
+	background-position:0 -49px
+}
+#popBox {
+	background:#000;
+	position:absolute;
+	z-index:9999;
+	top:0;
+	left:0;
+	filter:alpha(opacity=0);
+	opacity:0;
+	-moz-opacity:0
+}
+#popWin textarea {
+	font-size:12px
+}
+#popBox iframe {
+	width:100%;
+	border:0;
+	position:absolute;
+	z-index:1;
+	height:100%;
+	filter:alpha(opacity = 0)
+}
+#popWin {
+	border:5px solid #609FDE;
+	background:#fff;
+	text-align:left;
+	z-index:9999999;
+	position:absolute
+}
+#popWin h3 {
+	margin:0;
+	background:#E9F2FC;
+	font-size:14px;
+	line-height:30px;
+	text-indent:10px;
+	height:30px;
+	font-weight:bold;
+	width:100%
+}
+#popWin .close {
+	width:12px;
+	display:block;
+	text-decoration:none;
+	cursor:pointer;
+	height:12px;
+	overflow:hidden;
+	position:absolute;
+	right:11px;
+	top:9px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-pop.gif);
+	line-height:5555px
+}
+#popWin .close:hover {
+	background-position:0 -12px
+}
+#popWin .btn {
+	float:left;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/bg-popline.gif) top center no-repeat;
+	width:100%;
+	padding:20px 0 30px 0
+}
+#popWin .btn .position {
+	float:left;
+	position:relative;
+	left:50%;
+	width:auto;
+	margin-left:0!important;
+	padding-left:0!important
+}
+#popWin .btn .position .bottom_an {
+	position:relative;
+	left:-50%;
+	margin:0 5px
+}
+#popWin .btn .position .bottom_an_c {
+	position:relative;
+	left:-50%;
+	margin:0 5px
+}
+#popWin .login_list {
+	padding-bottom:30px
+}
+#popWin .login_list ul li {
+	height:36px;
+	float:left
+}
+.forms_lh fieldset ol li {
+	clear:both;
+	padding:0 0 5px;
+	zoom:1;
+	overflow:hidden;
+	margin:0 0 5px;
+*margin:0;
+	height:24px;
+	vertical-align:top
+}
+.forms_lh fieldset ol li.nowidth {
+	height:auto
+}
+.forms_lh fieldset ol li label {
+	float:left;
+	width:90px;
+	text-align:right;
+	margin:0 10px 0 0
+}
+.forms_lh fieldset ol li label em {
+	color:#F60;
+	margin:0 5px 0 0
+}
+.forms_lh fieldset ol li span, .forms_lh fieldset ol li input {
+	float:left;
+	margin:0 5px 0 0
+}
+.forms_lh fieldset ol li small {
+	float:left;
+	font-size:12px;
+	font-style:normal;
+	color:#999
+}
+.forms_lh fieldset ol li big {
+	float:left;
+	font-size:12px;
+	font-style:normal;
+	color:#333
+}
+.forms_lh fieldset ol li.tishi {
+	padding:0 0 5px 68px;
+	height:auto;
+	margin:-5px 0 0
+}
+a.a_close {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif) no-repeat -64px -170px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a:hover.a_close {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif) no-repeat -50px -170px
+}
+a.a_edit {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/photo_li_4.gif) no-repeat scroll 0 -205px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a.a_edit:hover {
+	background-position:0 -49px
+}
+a.a_add {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/add_an.gif) no-repeat 0 3px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a.a_del {
+	width:12px;
+	height:14px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/photo_li_4.gif) no-repeat scroll 0 -231px;
+	overflow:hidden;
+	line-height:100px;
+	display:block;
+	float:left
+}
+a.a_del:hover {
+	background-position:0 -19px
+}
+.forms_lh {
+	color:#666;
+	position:relative
+}
+.forms_lh input {
+	color:#333;
+	float:left;
+	font-size:12px;
+	height:16px;
+	padding:2px 3px 0
+}
+.forms_lh input.danxuan {
+	height:auto;
+	padding:0
+}
+.forms_lh textarea {
+	color:#333;
+	float:left;
+	font-size:12px;
+	padding:5px 3px
+}
+.forms_lh select {
+	color:#333;
+	float:left;
+	font-size:12px;
+	margin:0 5px 0 0
+}
+.forms_lh select.default_group {
+	height:26px;
+	line-height:26px;
+	border-left:1px solid #898a89;
+	border-top:1px solid #898a89;
+	border-right:1px solid #c6c7c7;
+	border-bottom:1px solid #c6c7c7
+}
+.forms_lh .border {
+	border-left:1px solid #898a89;
+	border-top:1px solid #898a89;
+	border-right:1px solid #c6c7c7;
+	border-bottom:1px solid #c6c7c7;
+	margin:0 5px 0 0;
+	height:20px;
+	padding:4px 3px 0
+}
+.forms_lh fieldset {
+	clear:both;
+	position:relative
+}
+.forms_lh fieldset ul {
+	clear:both;
+	overflow:hidden
+}
+.forms_lh fieldset ul.jj1 {
+	padding:0 0 0 10px
+}
+.forms_lh fieldset ul li {
+	float:left;
+	margin:0 10px 0 0;
+	padding:0 0 10px;
+	overflow:hidden
+}
+.forms_lh fieldset ul li input, .forms_lh fieldset ul li span {
+	float:left;
+	margin:0 5px 0 0;
+*margin:0 3px 0 0;
+	display:inline
+}
+.forms_lh fieldset ol {
+	clear:both
+}
+.forms_lh fieldset ol li {
+	clear:both;
+	padding:0 0 5px;
+	zoom:1;
+	overflow:hidden;
+	margin:0 0 5px;
+*margin:0;
+	height:24px;
+	vertical-align:top
+}
+.forms_lh fieldset ol li.nowidth {
+	height:auto
+}
+.forms_lh fieldset ol li label {
+	float:left;
+	width:90px;
+	text-align:right;
+	margin:0 10px 0 0
+}
+.forms_lh fieldset ol li label em {
+	color:#F60;
+	margin:0 5px 0 0
+}
+.forms_lh fieldset ol li span, .forms_lh fieldset ol li input {
+	float:left;
+	margin:0 5px 0 0
+}
+.forms_lh fieldset ol li small {
+	float:left;
+	font-size:12px;
+	font-style:normal;
+	color:#999
+}
+.forms_lh fieldset ol li big {
+	float:left;
+	font-size:12px;
+	font-style:normal;
+	color:#333
+}
+.forms_lh fieldset ol li.tishi {
+	padding:0 0 5px 68px;
+	height:auto;
+	margin:-5px 0 0
+}
+.menu ul a.ico_yyt {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_niming.gif) no-repeat 0 7px
+}
+.menu ul a.ico_gjx {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_niming.gif) no-repeat 0 -33px
+}
+.publictab3 {
+	clear:both;
+	margin:0;
+	height:25px
+}
+.publictab3 ul {
+	overflow:hidden
+}
+.publictab3 ul li {
+	float:left;
+	margin:0 20px;
+	_margin:0 35px 0 5px
+}
+.publictab3 ul li a, .publictab3 ul li a:link, .publictab3 ul li a:visited, .publictab3 ul li a:hover, .publictab3 ul li a:active {
+	text-decoration:underline
+}
+.publictab3 ul li.current a, .publictab3 ul li.current a:link, .publictab3 ul li.current a:visited, .publictab3 ul li.current a:hover, .publictab3 ul li.current a:active {
+	color:#333;
+	text-decoration:none
+}
+.re_dayi {
+	margin:0 0 10px
+}
+.re_yl {
+	margin:0 0 10px
+}
+.moai {
+	margin:100px auto 0;
+	width:500px;
+	border:3px solid #e8e8e8;
+	padding:30px
+}
+.moai h3 {
+	border-bottom:1px solid #d8dfea;
+	padding:10px 0;
+	margin:0 0 10px
+}
+.moai h3 span {
+	font-size:14px;
+	font-weight:bold
+}
+.moai p {
+	line-height:25px;
+	text-indent:2em
+}
+.guanxi_bg {
+	background:#E9F2FC url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg1.png) no-repeat 0 0
+}
+.guanxi_bg ul {
+	height:786px
+}
+.guanxi_infor {
+	width:799px;
+	height:192px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg2.png) no-repeat 0 0
+}
+.guanxi_infor .infor_ul {
+	padding:30px 0 0 30px;
+	float:left
+}
+.guanxi_infor .infor_ul h3 {
+	width:445px;
+	float:left
+}
+.guanxi_infor .infor_ul h3 strong {
+	font-weight:800;
+	font-size:16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png) no-repeat 3px -7px;
+	padding-left:30px;
+	float:left;
+	margin:0 10px 0 0
+}
+.guanxi_infor .infor_ul h3 a.a_rzcy {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 0 -1px;
+	width:76px;
+	height:21px;
+	float:left;
+	line-height:200px;
+	overflow:hidden
+}
+.guanxi_infor .infor_ul h3 a.a_qczj {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 0 -23px;
+	width:76px;
+	height:21px;
+	float:left;
+	line-height:200px;
+	overflow:hidden
+}
+.guanxi_infor .infor_ul ul {
+	clear:both;
+	width:485px;
+	padding:20px 0 0
+}
+.guanxi_infor .infor_ul ul li {
+	float:left;
+	width:212px;
+	margin:0 0 5px
+}
+.guanxi_infor .infor_ul ul li.buy {
+	float:right;
+	width:272px
+}
+.guanxi_infor .infor_ul ul li label {
+	color:#999;
+	float:left;
+	line-height:19px
+}
+.guanxi_infor .infor_ul ul li p {
+	display:inline
+}
+.guanxi_infor .infor_ul ul li p em {
+	color:#f60;
+	margin:0 10px 0 0
+}
+.guanxi_infor .infor_ul p {
+	clear:both;
+	padding:5px 0 0
+}
+.guanxi_infor .infor_ul p span {
+	color:#ccc;
+	margin:0 10px
+}
+.guanxi_infor .infor_tu {
+	float:right;
+	margin:25px 0 0;
+	padding:0 15px 0 0
+}
+.guanxi_infor .infor_tu ul {
+	height:65px;
+	overflow:hidden;
+	float:right
+}
+.guanxi_infor .infor_tu ul li {
+	float:left;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 100% -271px;
+	padding:10px 0 0;
+	width:80px;
+	text-align:center;
+	height:43px
+}
+.guanxi_infor .infor_tu ul li.fist {
+	background:0
+}
+.guanxi_infor .infor_tu ul li a {
+	font-size:18px;
+	font-weight:800;
+	font-family:Microsoft YaHei
+}
+.guanxi_infor .infor_tu ul li a em {
+	display:block;
+	font-weight:800
+}
+.guanxi_infor .infor_tu .guanxi_xun {
+	width:220px;
+	margin:0;
+	float:right
+}
+.guanxi_infor .infor_tu .guanxi_xun img {
+	width:32px;
+	height:32px
+}
+.guanxi_box0 {
+	background:0;
+	border-top:0;
+	border-left:0;
+	width:760px
+}
+.guanxi_guanzhuta {
+	height:65px;
+	padding:5px 0 0;
+	position:relative
+}
+.guanxi_guanzhuta a {
+	width:132px;
+	height:27px;
+	line-height:27px;
+	text-align:center;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/guanxi_bg0.png) no-repeat 0 -233px;
+	font-size:14px;
+	font-weight:800;
+	display:block;
+	margin:0 auto
+}
+.guanxi_guanzhuta a.ed {
+	cursor:default
+}
+.guanxi_guanzhuta a.ed:link, .guanxi_guanzhuta a.ed:visited {
+	color:#999
+}
+.guanxi_guanzhuta a.ed:hover {
+	text-decoration:none
+}
+.guanxi_guanzhuta small {
+	color:#999;
+	font-size:12px;
+	position:absolute;
+	top:6px;
+	right:16px
+}
+.guanxi_guanzhuta small a {
+	background:0;
+	display:inline;
+	font-weight:400;
+	font-size:12px
+}
+.yulu_in_ta {
+	height:185px
+}
+.main_two {
+	border-top:0
+}
+.main_two .index_main {
+	background:0
+}
+.gohome {
+	float:right;
+	margin-top:-26px
+}
+.viewall {
+	text-align:right;
+	height:20px;
+	clear:both;
+	margin:0 10px 0 0
+}
+.msgbox h2 a.jrsy {
+	font-size:12px;
+	margin:0 0 0 10px;
+	font-weight:normal;
+	text-decoration:underline
+}
+.publictab1 a.woyaotiwen {
+	display:block;
+	float:right;
+	margin:16px 0 0;
+	width:62px;
+	height:21px;
+	font-weight:bold;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/cyg_del.gif) no-repeat 0 -144px;
+	text-align:center;
+	line-height:21px;
+	_padding:1px 0 0;
+	color:#fff
+}
+.login_zh_box {
+	width:950px;
+	margin:0 auto
+}
+.header_box {
+	height:57px;
+	padding:30px 0 0
+}
+.header_box h2 {
+	float:left;
+	background: url(../images/logo.png) no-repeat 0 0;
+	height:44px;
+	width:300px
+}
+.header_box h2 a {
+	display:block;
+	line-height:200px;
+	overflow:hidden;
+	height:44px;
+	float:left
+}
+.header_box h2 a.bitauto {
+	width:130px;
+	margin-right:30px
+}
+.header_box h2 a.ibitauto {
+	width:70px
+}
+.header_box small {
+	float:right;
+	font-size:12px;
+	margin:35px 0 0
+}
+.main_bgbox {
+	width:950px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_bg.png) no-repeat 0 19px
+}
+.tel_p {
+	float:left;
+	margin:390px 0 0
+}
+.tel_p p {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/icon-phone.gif) no-repeat 0 0;
+	padding-left:15px
+}
+.tel_p p a {
+	margin:0 0 0 10px
+}
+.sidebar {
+	float:right;
+	background:0;
+	width:367px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_bot.png) no-repeat 0 100%
+}
+.s_member {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_top.png) no-repeat 0 0;
+	padding:15px 0 0
+}
+.s_member_b {
+	width:285px;
+	margin:0 auto
+}
+.s_member_b fieldset {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png) repeat-x scroll 0 0;
+	padding:20px 0 0
+}
+.s_member_b fieldset p {
+	height:45px
+}
+.s_member_b fieldset p label {
+	font-size:14px;
+	float:left;
+	margin:5px 0 0
+}
+.s_member_b fieldset p.input_left {
+	padding:0 0 0 57px;
+	height:30px
+}
+.s_member_b fieldset p.input_left input {
+	float:left;
+	margin:2px 5px 0 0;
+	_margin:-1px 1px 0 0
+}
+.s_member_b fieldset p .input {
+	width:210px;
+	height:25px;
+	font-size:12px;
+	border:1px solid #b9b9b9;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	padding:1px;
+	font-size:14px;
+	color:#999
+}
+.s_member_b fieldset p .input_on {
+	color:#333
+}
+.s_member_b fieldset .div_left {
+	padding:0 0 0 57px;
+	height:55px
+}
+.s_member_b fieldset .div_left strong {
+	float:left
+}
+.s_member_b fieldset .div_left strong .a_login {
+	width:130px;
+	height:36px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_input.png) no-repeat 0 0;
+	display:block;
+	line-height:100px;
+	overflow:hidden;
+	margin:0 10px 0 0;
+	float:left
+}
+.s_member_b fieldset .div_left strong .a_login:hover {
+	background-position:0 -41px
+}
+.s_member_b fieldset .div_left a {
+	margin:10px 0 0;
+	float:left
+}
+.s_member_b fieldset .div_left a.password {
+	text-decoration:underline;
+	width:65px
+}
+.s_member_b fieldset .yz {
+	height:60px;
+	position:relative
+}
+.s_member_b fieldset .yz label {
+	font-size:14px;
+	float:left;
+	margin:5px 0 0
+}
+.s_member_b fieldset .yz .input {
+	width:90px;
+	height:25px;
+	font-size:12px;
+	border:1px solid #b9b9b9;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	padding:1px;
+	float:left
+}
+.s_member_b fieldset .yz #pVerifyMessage {
+	color:#f00;
+	padding:5px 0 10px 57px;
+	clear:both
+}
+.s_member_b fieldset .yz .ts_w_lh {
+	clear:both;
+	color:#f00;
+	padding:5px 0 10px 57px;
+	background:0;
+	left:-2px;
+	margin:2px 0
+}
+.s_member_b fieldset .yz .ts_w_lh em {
+	width:auto
+}
+.s_member_b h3 {
+	font-size:14px;
+	font-weight:800
+}
+.s_member_b ul {
+	margin:0 20px 10px
+}
+.s_member_b h2 {
+	display:block;
+	line-height:200px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_input.png) no-repeat 0 -145px;
+	overflow:hidden;
+	height:50px
+}
+.s_member_b .login_other {
+	margin:10px 0 0;
+	padding:0 0 0 30px
+}
+.s_member_b .login_other a {
+	display:block;
+	float:left;
+	height:16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_other.png) no-repeat 0 0;
+	padding-left:20px;
+	line-height:18px;
+	overflow:hidden;
+	width:100px;
+	margin:0 0 8px
+}
+.s_member_b .login_other a.lo_sina {
+	background-position:0 0;
+	width:115px
+}
+.s_member_b .login_other a.lo_ren {
+	background-position:0 -16px;
+	width:115px
+}
+.s_member_b .login_other a.lo_qq {
+	background-position:0 -32px
+}
+.s_member_b .login_other a.lo_kaixin {
+	background-position:0 -50px
+}
+.s_member_b .login_other a.lo_taobao {
+	background-position:0 -67px;
+	width:115px
+}
+.s_member_b .login_other a.lo_baidu {
+	background-position:0 -84px
+}
+.s_member_b h2.bgb {
+	background:url(http://x.xieche.net/Public/new/images/logo.png) no-repeat scroll -131px 0;
+	margin-bottom:3px
+}
+.s_member_b .zhijiedenglu {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png) repeat-x scroll 0 0;
+	padding:20px 0 0;
+	height:100px
+}
+.s_member_b .zhijiedenglu h3 {
+	font-size:12px;
+	font-weight:400
+}
+.s_member_b .mashangzhuce {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png) repeat-x scroll 0 0;
+	padding:15px 0 0;
+	height:55px
+}
+.s_member_b .mashangzhuce h3 {
+	font-size:12px;
+	float:left;
+	margin:3px 5px 0 0
+}
+.s_member_b .mashangzhuce .login_ljzc {
+	float:left;
+	width:100px;
+	height:27px;
+	overflow:hidden;
+	line-height:100px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_input.png) no-repeat 0 -84px
+}
+.s_member_b .mashangzhuce .login_ljzc:hover {
+	background-position:0 -117px
+}
+.header_box {
+	height:57px;
+	padding:13px 0 0
+}
+.header_box h2 {
+	background:url("http://x.xieche.net/Public/new/images/logo.png") no-repeat scroll 0 0 transparent;
+	float:left;
+	height:43px;
+	width:300px;
+	overflow:hidden
+}
+.header_box h2 a {
+	display:block;
+	line-height:100px;
+	height:44px;
+	overflow:hidden;
+	float:left
+}
+.header_box h2 a.bitauto {
+	width:140px
+}
+.header_box h2 a.ibitauto {
+	width:90px
+}
+.header_box small {
+	float:right;
+	font-size:12px;
+	margin:35px 0 0;
+	background:url("http://image.bitautoimg.com/uimg/index091217/images/bit_icon091231.png") no-repeat scroll 9px -1264px
+}
+.header_box small a {
+	margin-left:17px
+}
+.login_box {
+	border: 1px solid #e5e5e5;
+	min-height: 475px;
+	height: 100%;
+	margin: 0 auto;
+	width: 1200px;
+}
+.box_bg {
+	padding:45px 98px;
+	width:762px;
+	overflow:hidden
+}
+.lj_login {
+	margin:0 auto;
+	overflow:hidden;
+	height:100%
+}
+.lj_login h2 {
+	border-bottom:1px solid #e0e0e0;
+	height:35px;
+	margin:0 0 25px
+}
+.lj_login h2 strong {
+	font-family:Microsoft YaHei;
+	font-size:18px;
+	float:left;
+	line-height:1.3
+}
+.lj_login h2 small {
+	font-size:12px;
+	float:right;
+	color:#999;
+	margin:8px 0 0
+}
+.login_rightNav {
+	width:285px;
+	float:right;
+	overflow:hidden
+}
+.stylebox img {
+	border:1px solid #feebd3;
+	width:262px;
+	height:168px;
+	margin:0 9px
+}
+.stylebox h3 {
+	font-size:14px;
+	height:35px;
+	line-height:35px;
+	border-bottom:1px solid #e5e5e5;
+	font-family:microsoft yahei;
+	color:#333;
+	overflow:hidden
+}
+.stylebox ul {
+	margin:0 20px
+}
+.stylebox ul li {
+	color:#666;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png") repeat-x scroll 0 100%;
+	height:25px;
+	padding:5px 0 0
+}
+.stylebox ul li i {
+	display:block;
+	width:30px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_icon.png) no-repeat 0 0;
+	float:left;
+	height:18px
+}
+.stylebox ul li i.hd {
+	background-position:0 0
+}
+.stylebox ul li i.xc {
+	background-position:0 -31px
+}
+.stylebox ul li i.lq {
+	background-position:0 -62px
+}
+.stylebox ul li i.lq {
+	background-position:0 -62px
+}
+.login_list h6 {
+	font-size:18px;
+	height:35px;
+	line-height:35px;
+	border-bottom:1px solid #e5e5e5;
+	font-family:microsoft yahei;
+	color:#333
+}
+.login_list p {
+	margin:0 30px;
+	color:#666
+}
+.login_list p strong {
+	padding:30px 0 10px;
+	display:block
+}
+.login_list ul {
+	border-top:1px solid #fff;
+	padding:20px 0 0
+}
+.login_list ul li input, .login_list ul li select {
+	float:left
+}
+.login_list ul li select {
+	margin-top:3px
+}
+.login_list ul li.z_index {
+	z-index:2
+}
+.login_list ul li {
+	clear:both;
+	position:relative;
+	margin:0 0 20px;
+	height:34px
+}
+.login_list ul li.noheight {
+	height:auto
+}
+.login_list ul li label {
+	width:85px;
+	text-align:right;
+	float:left;
+	color:#333;
+	margin:7px 0 0;
+	font-size:14px
+}
+.login_list ul li label em {
+	font-size:12px;
+	margin:0 3px 0 0;
+	color:#f00
+}
+.login_list ul li .input {
+	border-left:1px solid #b9b9b9;
+	border-top:1px solid #b9b9b9;
+	border-right:1px solid #dedede;
+	border-bottom:1px solid #dedede;
+	width:194px;
+	height:28px;
+	padding:2px 5px;
+	line-height:28px;
+	font-size:14px;
+	color:#999
+}
+.login_list ul li .input_on {
+	border:1px solid #f60;
+	color:#333
+}
+.login_list ul li.tips {
+	height:auto
+}
+.login_list ul li .tips {
+	width:192px
+}
+.login_list ul li.mail {
+	position:relative;
+	z-index:2
+}
+.login_list ul li .maillayer {
+	border:1px solid #c4c4c4;
+	width:204px;
+	position:absolute;
+	background:#fff;
+	top:33px;
+	left:85px;
+	z-index:100
+}
+.login_list ul li .maillayer ul {
+	margin:5px;
+	padding:0
+}
+.login_list ul li .maillayer ul li {
+	height:25px;
+	color:#999;
+	margin:0;
+	white-space:normal;
+	word-break:break-all;
+	overflow:hidden
+}
+.login_list ul li .maillayer ul li span {
+	padding:0 10px
+}
+.login_list ul li .maillayer ul li a {
+	display:block;
+	height:25px;
+	line-height:25px;
+	padding:0 10px
+}
+.login_list ul li .maillayer ul li a:hover {
+	text-decoration:none;
+	color:#3369A7
+}
+.login_list ul li .maillayer ul li.current {
+	background:#3369a7
+}
+.login_list ul li .maillayer ul li.current a:link, .login_list ul li .maillayer ul li.current a:visited {
+	color:#fff;
+	text-decoration:none
+}
+.login_list ul li.select_xiala select {
+	width:170px;
+	height:20px;
+	margin:5px 5px 5px 0
+}
+.login_list ul li.select_xiala_d select {
+	width:85px;
+	height:20px
+}
+.login_list ul li .hui {
+	color:#999
+}
+.login_list ul li.yz input {
+	width:90px;
+	margin-right:5px
+}
+.login_list ul li.yz .code {
+	height:26px;
+	float:left;
+	overflow:hidden;
+	width:99px
+}
+.login_list ul li.xy input {
+	margin:2px 5px 0 0;
+	margin:-1px 0 0 0\9;
+	margin:2px 5px 0 0\0
+}
+.login_list ul li.xy span {
+	color:#666
+}
+.login_list ul li.yz .error a {
+	float:none
+}
+.login_list ul li.xy {
+	height:20px
+}
+.login_list ul li.select_xiala {
+	height:auto!important;
+	width:475px;
+	margin:0 0 10px
+}
+.login_list ul li.select_xiala p label {
+	text-align:left;
+	width:85px
+}
+.login_list ul li.select_xiala p label input {
+	margin:1px 5px 0 0;
+*margin:-2px 0 0 0
+}
+.login_list ul li.select_xiala .lit_box .dingdian {
+	width:25px;
+	height:12px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/ibit_login_d.png) no-repeat 0 0;
+	position:absolute;
+	top:-12px;
+	left:24px
+}
+.login_list ul li .lit_box {
+	clear:both;
+	background:#f1f4f9;
+	border:1px solid #d1def0;
+	margin:15px 0 0 110px;
+	padding:10px 0 10px 10px;
+	height:60px;
+	position:relative
+}
+.login_list ul li .lit_box p {
+	clear:both;
+	margin:0
+}
+.login_list ul li .lit_box strong {
+	font-weight:800;
+	float:left;
+	clear:both;
+	width:100%
+}
+.login_list ul li .lit_box .zhushou_link {
+	position:absolute;
+	right:5px;
+	top:5px
+}
+.login_list ul li.select_xiala .box_nocar .dingdian {
+	left:116px
+}
+.tip_errpo {
+	border:1px solid #d1def0;
+	background:#f6faff;
+	padding:7px 10px;
+	height:20px;
+	width:160px;
+	margin:0 0 10px 100px;
+	overflow:hidden
+}
+.tip_errpo strong em {
+	font-weight:800
+}
+.tip_errpo p {
+	width:154px;
+	height:4px;
+	overflow:hidden;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_input.png) no-repeat 0 -81px;
+	margin:0
+}
+.tairou strong em {
+	color:#f00
+}
+.tairou p {
+	background-position:0 -81px
+}
+.rou strong em {
+	color:#f00
+}
+.rou p {
+	background-position:0 -86px
+}
+.zhong strong em {
+	color:#f90
+}
+.zhong p {
+	background-position:0 -91px
+}
+.qiang strong em {
+	color:#090
+}
+.qiang p {
+	background-position:0 -96px
+}
+.login_list ul li .Correct {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012qct//msg_bg.gif) no-repeat scroll 0 2px transparent;
+	color:#999;
+	float:left;
+	height:20px;
+	margin:2px auto 0 4px;
+	padding-left:30px;
+	width:30px
+}
+.login_list ul li .error {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012qct//msg_bg.gif) no-repeat scroll 0 -21px transparent;
+	color:#f60;
+	float:left;
+	height:20px;
+	margin:7px auto 0 4px;
+	padding-left:30px;
+	line-height:16px;
+	width:170px
+}
+.login_ok {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_okbg.png) no-repeat 0 10px;
+	padding:20px 0 18px 150px
+}
+.login_mainNav .login_ok {
+	width:550px;
+	margin:0 0 0 100px;
+	_margin:0 0 0 50px
+}
+.login_ok h3 {
+	width:600px;
+	font-size:14px;
+	font-weight:800;
+	margin:0 0 10px;
+	height:28px
+}
+.login_ok h3 a.yanzhaeng {
+	font-size:12px;
+	text-decoration:underline;
+	font-weight:400;
+	margin:0 0 0 10px;
+	float:left
+}
+.login_ok h3 a.yanzhaeng_end {
+	font-size:12px;
+	text-decoration:underline;
+	font-weight:400;
+	margin:0 0 0 10px;
+	float:left;
+	color:#999;
+	cursor:default
+}
+.login_ok h3 em {
+	font-size:16px;
+	font-weight:800;
+	color:#f60;
+	font-family:arial
+}
+.login_ok h3 strong {
+	font-weight:800
+}
+.login_ok h3 strong, .login_ok h3 em {
+	float:left
+}
+.login_ok h3 .bottom_an {
+	margin-left:10px
+}
+.login_ok h3 small {
+	float:left;
+	font-weight:400;
+	font-size:12px;
+	color:#999;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012qct/login_gif.gif) no-repeat 10px 2px;
+	padding-left:30px
+}
+.login_ok h3 small em {
+	float:none;
+	margin:0 2px
+}
+.login_ok p {
+	color:#666;
+	margin:0 0 15px
+}
+.login_ok p em {
+	color:#f60;
+	margin:0 3px
+}
+.login_ok span {
+	display:block;
+	background:#fff7c3;
+	margin:0 0 10px;
+	padding:15px;
+	width:330px;
+	height:26px;
+	overflow:hidden
+}
+.login_ok span small {
+	float:left;
+	font-size:12px;
+	margin:5px 0 0
+}
+.login_ok p i {
+	color:#999;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_icon.png) no-repeat 0 -137px;
+	display:block;
+	padding-left:20px;
+	font-size:12px;
+	font-style:normal
+}
+.login_ok ul {
+	position:relative;
+	overflow:hidden;
+	zoom:1
+}
+}
+.login_ok ul li {
+	height:36px;
+	clear:both;
+	width:555px;
+	float:left;
+	overflow:hidden;
+	zoom:1
+}
+.login_ok ul li label {
+	width:100px
+}
+.mailask {
+	padding:20px 0 0 0;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png") repeat-x scroll 0 0;
+	margin:0 0 0 150px
+}
+.mailask h3 {
+	font-size:14px;
+	font-weight:800;
+	height:25px
+}
+.mailask ul {
+	margin:0 0 20px
+}
+.mailask ul li {
+	color:#666
+}
+.mailask ul li p {
+	background:url("http://img1.baa.bitautotech.com/webpic/login/login_icon.png") no-repeat scroll 3px -86px;
+	padding:3px 0 3px 20px
+}
+.login_editmail {
+	padding:0 0 0 50px
+}
+.login_editmail h3 {
+	font-size:14px;
+	font-weight:800;
+	height:25px;
+	overflow:hidden
+}
+.login_editmail h3 span {
+	display:block;
+	width:181px;
+	text-align:right;
+	float:left
+}
+.login_editmail h3 em {
+	font-size:16px;
+	font-weight:800;
+	color:#f60;
+	display:block;
+	float:left;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png") repeat-x scroll 0 100%;
+	width:355px;
+	padding:0 5px 5px;
+	font-family:arial
+}
+.login_editmail ul {
+	padding:10px 0;
+	padding-left:45px;
+	clear:both
+}
+.login_editmail ul li {
+	clear:both;
+	height:36px
+}
+.login_editmail ul li label {
+	float:left;
+	text-align:right;
+	width:135px
+}
+.login_editmail ul li label em {
+	color:#f00;
+	margin:0 3px
+}
+.login_list ul li .bottom_an {
+	margin-right:5px
+}
+.wjmmbox {
+	float:left;
+	padding:3px 0 0 30px;
+	display:inline
+}
+.wjmmbox a {
+	text-decoration:underline
+}
+.skin_jh {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_lebg.png) no-repeat 0 12px
+}
+.skin_zh {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_lcbg.png) no-repeat 0 14px
+}
+.login_zhaohuimima {
+	width:700px
+}
+.login_zhaohuimima h3 {
+	padding:0 0 0 100px;
+	font-size:14px;
+	height:35px;
+	font-weight:800
+}
+.login_zhaohuimima h3 em, .login_zhaohuimima h3 strong {
+	font-weight:800
+}
+.login_zhaohuimima ul li label {
+	width:180px
+}
+.menu_uphead {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/login_uphead.png) no-repeat 0 0;
+	width:760px;
+	height:31px;
+	overflow:hidden;
+	clear:both;
+	margin:0 0 40px
+}
+.menu_uphead ul li {
+	width:233px;
+	float:left;
+	padding-left:20px;
+	line-height:31px;
+	color:#fff
+}
+.menu_uphead ul li strong {
+	font-weight:800;
+	font-size:14px
+}
+.menu_uphead ul li small {
+	font-size:14px
+}
+.menu_uphead ul li.cuuuren {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/login_uphead.png) no-repeat 0 -33px;
+	width:272px
+}
+.uphead_box {
+	width:120px;
+	height:120px;
+	border:1px solid #ccc;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_uphead_bg.png) no-repeat 0 0;
+	float:left;
+	margin:10px 0 20px;
+	overflow:hidden
+}
+.login_skip {
+	clear:both;
+	text-align:right;
+	height:25px
+}
+.login_skip a {
+	float:right
+}
+.login_list ul li.file {
+	height:auto
+}
+.login_list ul li.file small {
+	display:block;
+	color:#ccc;
+	clear:both;
+	font-size:12px;
+	padding:5px 0 0 108px;
+	height:25px
+}
+.uphead_img {
+	float:left;
+	margin:10px 0 0;
+	padding:0 0 30px
+}
+.uphead_img p {
+	margin:15px 0 0
+}
+.two {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/login_uphead.png) no-repeat 0 -34px
+}
+.login_bbs {
+	border:1px solid #dee3e7;
+	margin:0 0 20px
+}
+.login_bbs h3 {
+	background:url("http://www.bitauto.com/themes/2009/common/images/h3_bg.png") repeat-x scroll 0 0;
+	color:#000;
+	font-size:14px;
+	font-weight:bold;
+	height:29px;
+	line-height:28px;
+	overflow:hidden;
+	padding:0;
+	border:0
+}
+.login_bbs .bbs_list {
+	margin:20px
+}
+.login_bbs .bbs_list ul {
+	width:100%;
+	float:left
+}
+.login_bbs .bbs_list ul li {
+	float:left;
+	width:120px
+}
+.login_bbs .bbs_list ul li input {
+	float:left;
+	margin:2px 5px 0 0;
+	margin:-1px 0 0 0\9
+}
+.login_select {
+	margin:0 0 20px;
+	padding:10px 10px 0
+}
+.login_select strong {
+	float:left;
+	margin:3px 10px 0 0
+}
+.login_select ul {
+	width:670px;
+	float:left
+}
+.login_select ul li {
+	float:left;
+	margin:0 20px 5px 0;
+	border:1px solid #DEE7F7;
+	background:#F7F7FF;
+	padding:2px 17px 2px 10px
+}
+.login_select ul li.current {
+	background:#ebf2fd;
+	padding:2px 5px 2px 10px
+}
+.login_select ul li a {
+	float:left;
+	margin:0 5px 0 0
+}
+.login_select ul li a.close {
+	float:left;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/min_img.gif") no-repeat scroll -63px -170px transparent;
+	height:14px;
+	line-height:100px;
+	overflow:hidden;
+	width:12px;
+	padding:0;
+	margin:1px 0 0 0;
+	display:none
+}
+.login_select ul li a.close:hover {
+	background-position:-50px -170px
+}
+.login_select ul li.current a.close {
+	display:block
+}
+.login_bbs .user_list {
+	margin:20px
+}
+.login_bbs .user_list ul li {
+	float:left;
+	width:170px;
+	padding:0 0 0 20px;
+	color:#666;
+	height:90px
+}
+.login_bbs .user_list ul li input {
+	float:left;
+	margin:20px 5px 0 0
+}
+.login_bbs .user_list ul li img {
+	width:60px;
+	height:60px;
+	border:1px solid #c9d8f4;
+	float:left;
+	margin:0 10px 0 0
+}
+.login_bbs .user_list ul li small {
+	font-size:12px;
+	display:block
+}
+.login_bbs .user_list p {
+	clear:both;
+	padding:0 0 0 35px;
+	padding:0 0 0 45px\9
+}
+.login_bbs .user_list p input {
+	padding:3px 0 0\9;
+	height:25px
+}
+.login_bbs .user_list p a {
+	margin-left:20px
+}
+.three {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/login_uphead.png) no-repeat 0 -69px
+}
+.allTab {
+	width:100%;
+	background:url(http://car.bitauto.com/car/images/bg-tab2.gif);
+	height:38px;
+	overflow:hidden
+}
+.allTab .tab {
+	padding:3px 0 0 10px
+}
+.allTab .tab li {
+	float:left;
+	padding:0 0 0 1px;
+	margin:0 5px 0 0;
+	display:inline;
+	background:#fff url(http://car.bitauto.com/car/images/bg-tab.gif) left bottom;
+	font-size:14px;
+	line-height:35px;
+	height:35px
+}
+.allTab .tab li a {
+	float:left;
+	padding:0 15px;
+	background:url(http://car.bitauto.com/car/images/bg-tab.gif) right bottom;
+	color:#fff;
+	height:35px;
+	font-weight:bold
+}
+.allTab .tab li a:visited {
+	color:#fff
+}
+.allTab .tab .on {
+	background-position:left top
+}
+.allTab .tab .on a {
+	background-position:right top;
+	color:#000
+}
+.allTab .tab .on a:visited {
+	color:#000
+}
+.car_top_tit {
+	padding:12px 0 0 0;
+	width:100%;
+	text-align:center;
+	height:45px;
+*height:44px;
+	_height:45px;
+	overflow:hidden;
+	background:url(http://www.bitauto.com/themes/2009/common/images/car_top_tit_bg.png) 0 0 repeat-x;
+	border-bottom:1px #dee3e7 solid;
+	position:relative
+}
+.car_top_tit ul {
+	width:835px;
+	margin:auto;
+	height:35px;
+	background:url(http://www.bitauto.com/themes/2009/common/images/car_top_tit_ul_bg.png) 0 3px repeat-x
+}
+.car_top_tit li {
+	background:0;
+	color:#ccc;
+	font-size:16px;
+	font-weight:bold;
+	float:left;
+	margin:0;
+	width:32px;
+	text-align:center;
+	height:32px;
+	line-height:32px;
+	display:block;
+	text-transform:none
+}
+.car_top_tit .nolink {
+	background:0
+}
+.car_top_tit a:link, .car_top_tit a:visited {
+	width:30px;
+	margin:auto;
+	display:block;
+	text-align:center;
+	height:30px;
+	line-height:32px;
+	overflow:hidden
+}
+.car_top_tit a:hover, .car_top_tit a:active {
+	border:1px #ccc solid;
+	background:#fff;
+	line-height:30px
+}
+.bbs_box_list {
+	border:1px solid #dee3e7
+}
+.bybrand_list {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/bg-bybrand.gif) repeat-y;
+	height:220px;
+	overflow-y:scroll
+}
+.bybrand_list dt {
+	border-bottom:1px solid #E2E6EA;
+	background:#F1F6F9;
+	line-height:36px;
+	height:36px;
+	overflow:hidden;
+	clear:both
+}
+.bybrand_list dt label {
+	padding:0 0 0 8px;
+	color:#c00;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:16px;
+	text-transform:uppercase
+}
+.bybrand_list dd {
+	overflow:hidden;
+	padding:10px
+}
+.bybrand_list h2 {
+	padding:12px 0 5px 0;
+	float:left;
+	width:100%;
+	font-weight:bold;
+	font-size:14px
+}
+.bybrand_list ul {
+	float:left;
+	width:784px;
+	padding:0 0 5px 0
+}
+.bybrand_list li {
+	width:195px;
+	float:left;
+	height:35px
+}
+.bybrand_list li input {
+	float:left;
+	margin:2px 5px 0 0;
+	margin:-1px 0 0 0\9;
+	margin:2px 5px 0 0\0
+}
+.login_mainNav0 {
+	width:515px;
+	padding:0 22px 0 0;
+	float:left;
+}
+.login_rightNav0 {
+	width:200px;
+	float:right;
+	margin:0 0 0 25px
+}
+.lj_login h2 small {
+	float:left;
+	padding:0 0 0 10px
+}
+.rightline {
+	background:url("http://css.inc.baa.bitautotech.com/200909/images/baaTab_bg03.png") repeat-y scroll right 0;
+	margin:0 0 20px
+}
+.login_list ul li.tishi {
+	padding:0 0 0 110px;
+	margin:-10px 0 10px;
+	width:470px;
+	height:auto
+}
+.login_list ul li.tishi .ts {
+	padding:5px 5px 5px 25px;
+	background:#f0f5f9 url(http://img1.baa.bitautotech.com/webpic/login/renzhengbg.png) no-repeat 5px 7px;
+	border:1px solid #ccc
+}
+.login_list ul li.tishi .ts p {
+	margin:0
+}
+.mailasktwo {
+	padding:0 0 0 20px;
+	height:280px
+}
+.mailasktwo h3 {
+	font-size:14px;
+	font-weight:800;
+	height:25px
+}
+.mailasktwo ul {
+	margin:0 0 20px
+}
+.mailasktwo ul li {
+	color:#666
+}
+.mailasktwo ul li p {
+	background:url("http://img1.baa.bitautotech.com/webpic/login/renzhengbg.png") no-repeat scroll 0 -88px;
+	padding:0 0 0 16px;
+	margin:10px 0
+}
+.header_box {
+	height:50px;
+	padding:13px 10px 0;
+	border-bottom:3px solid #527ca9
+}
+.header_box h2 {
+	background:url(http://x.xieche.net/Public/new/images/logo.png) no-repeat scroll 0 5px;
+	float:left;
+	height:43px;
+	width:140px;
+	overflow:hidden;
+	margin:0 5px 0 0;
+	display:inline
+}
+.header_box h2 a {
+	display:block;
+	line-height:100px;
+	height:44px;
+	overflow:hidden;
+	float:left
+}
+.header_box p {
+	float:left;
+	color:#999;
+	margin:20px 0 0;
+	font-family:microsoft yahei
+}
+.top_rightbt {
+	float:right;
+	padding:15px 0 0
+}
+.tishibox {
+	padding:10px 10px 10px 45px;
+	background:#f0f5f9 url(http://img1.baa.bitautotech.com/webpic/login/renzhengbg.png) no-repeat 10px 13px;
+	border:1px solid #ccc;
+	margin:0 30px 30px 0;
+	color:#333
+}
+.tishibox ul li {
+	margin:0 0 5px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 8px;
+	padding:0 0 0 10px
+}
+.login_mainNav {
+	width:625px;
+	float:left
+}
+.login_rightNav {
+	width:230px;
+	float:right
+}
+.scpp {
+	float:left;
+	margin:5px 0 0
+}
+.scpp p {
+	margin:0 0 10px
+}
+.scpp p span {
+	float:left;
+	width:140px;
+	display:block
+}
+.login_list ul li .scpp p select {
+	margin:0
+}
+.k100 {
+	width:100px
+}
+.scly {
+	float:left;
+	padding:5px 0 10px;
+	width:500px;
+	overflow:hidden;
+	zoom:1
+}
+.scly p {
+	float:left;
+	padding:0 5px 5px 0;
+	width:115px;
+	display:inline;
+	height:18px;
+	overflow:hidden
+}
+.login_list .scly p input {
+	margin:2px;
+	float:left;
+	_margin:0
+}
+.login_list .scly .Correct, .login_list .scly .error {
+	margin:-2px 0 5px
+}
+.login_list ul li.xiangxidizhi .input {
+	width:300px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/renzhengbg.png) no-repeat 0 -226px
+}
+.login_list ul li span.text {
+	display:block;
+	float:left;
+	color:#666;
+	margin:4px 10px 0 0
+}
+.login_list ul li.grjj {
+	height:auto;
+	margin:0 0 20px;
+	overflow:hidden
+}
+.login_list ul li.grjj textarea {
+	width:465px;
+*width:468px;
+	float:left
+}
+.login_list ul li.tishi .error {
+	margin:10px 0
+}
+.login_list ul li.tishi .Correct {
+	margin:10px 0
+}
+.right_rzcz {
+	clear:both;
+	padding:0 0 45px 5px;
+	overflow:hidden;
+	zoom:1;
+	width:243px
+}
+.right_rzcz a.rzczimg_small {
+	float:left;
+	width:105px;
+	height:138px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -600px;
+	margin:0 8px 0 0
+}
+.right_rzcz a.qczjimg_small {
+	float:left;
+	width:105px;
+	height:138px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -738px;
+	margin:0 8px 0 0
+}
+.right_rzcz ul {
+	padding:5px 0 0 3px;
+	float:left;
+	color:#666
+}
+.right_rzcz ul li {
+	padding:0 0 3px;
+	white-space:nowrap
+}
+.right_rzcz h4 {
+	margin:15px 0 5px
+}
+.right_rzcz h4 a.rzcz {
+	display:block;
+	width:75px;
+	height:22px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -167px;
+	text-indent:-999px;
+	overflow:hidden
+}
+.right_rzcz h4 a.qczj {
+	display:block;
+	width:75px;
+	height:22px;
+	background:url("http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png") no-repeat scroll 0 -111px transparent;
+	text-indent:-999px;
+	overflow:hidden
+}
+.right_rzcz h5 {
+	font-weight:bold;
+	font-size:14px;
+	margin:8px 0 5px
+}
+.right_rzcz a.rzczimg {
+	float:left;
+	width:130px;
+	height:172px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -256px;
+	margin:0 35px 0 0
+}
+.right_rzcz a.qczjimg {
+	float:left;
+	width:130px;
+	height:172px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -428px;
+	margin:0 10px 0 0
+}
+.headerimgbox {
+	width:950px;
+	height:220px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/headimg.jpg) no-repeat 0 0;
+	text-indent:-9999px;
+	overflow:hidden;
+	margin:1px 0 10px
+}
+.col-con2 {
+	width:718px
+}
+.msgbox {
+	width:678px;
+	min-height:580px;
+	_height:600px
+}
+.msgbox h2.shenfen {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -57px;
+	margin:0 0 15px
+}
+.index_l {
+	background:none repeat scroll 0 0 #E9F2FC;
+	border-left:2px solid #DAE5F8;
+	padding:20px 0
+}
+.msgbox .mailasktwo {
+	height:auto;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/border_aRui2.gif") repeat-x scroll 0 0;
+	padding:20px;
+	margin:0 30px
+}
+.msgbox .right_rzcz {
+	float:left;
+	width:300px;
+	clear:none;
+	padding:0 0 30px 30px
+}
+.msgbox .right_rzcz a.bt_wyrz {
+	display:block;
+	border:0;
+	width:75px;
+	height:26px;
+	line-height:26px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -230px;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	margin:8px 0 0
+}
+.newrenzhen {
+	padding:0 10px 0 10px
+}
+.newrenzhen h3 {
+	font-size:14px;
+	font-weight:bold;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/border_aRui2.gif") repeat-x scroll 0 100% #EBF2FD;
+	margin:0 0 10px;
+	padding:0 0 8px
+}
+.newrenzhen h3 span.wangyou {
+	display:block;
+	padding:0 0 0 25px;
+	background:url("http://pic.baa.bitautotech.com/webpic/ibitauto/icons.png") no-repeat scroll 0 -110px transparent
+}
+.newrenzhen ul.list li {
+	margin:0 0 30px;
+	overflow:hidden;
+	zoom:1;
+	color:#666
+}
+.newrenzhen ul.list li img {
+	float:left;
+	margin:0 10px 5px 0;
+	border:1px solid #c9d8f4
+}
+.newrenzhen ul.list li p.text {
+	float:left;
+	overflow:hidden;
+	width:120px
+}
+.newrenzhen ul.list li p.text a.rzcz {
+	display:block;
+	border:0;
+	width:75px;
+	height:26px;
+	line-height:26px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -168px;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	margin:5px 0 0;
+	text-indent:-9999px;
+	overflow:hidden
+}
+.newrenzhen ul.list li p.text a.qczj {
+	display:block;
+	border:0;
+	width:75px;
+	height:26px;
+	line-height:26px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/chezhurenzheng02.png) no-repeat 0 -111px;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	margin:5px 0 0;
+	text-indent:-9999px;
+	overflow:hidden
+}
+.newrenzhen ul.list li p.text a.name {
+	font-weight:bold
+}
+.newrenzhen ul.list li p.textone {
+	clear:both
+}
+.newrenzhen ul.list li p.textone strong {
+	font-weight:bold
+}
+.kaixin_login .login_photo {
+	float:left;
+	width:132px;
+	padding:0 30px 0 0;
+	text-align:center;
+	height:300px
+}
+.kaixin_login .login_photo .user_photo {
+	margin:5px auto 8px
+}
+.kaixin_login .login_kaixin_box {
+	width:560px;
+	float:right;
+	margin:0 20px
+}
+.kaixin_login .login_kaixin_box h3 {
+	border-bottom:1px solid #dedede;
+	height:35px;
+	position:relative
+}
+.kaixin_login .login_kaixin_box h3 label {
+	font-size:14px;
+	font-weight:800;
+	float:left;
+	width:170px;
+	position:absolute;
+	height:35px
+}
+.kaixin_login .login_kaixin_box h3 label.current {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/loginallbg_lh.png) no-repeat 45px -464px;
+	height:36px
+}
+.kaixin_login .login_kaixin_box h3 label.you {
+	left:0
+}
+.kaixin_login .login_kaixin_box h3 label.meiyou {
+	left:170px
+}
+.kaixin_login .login_kaixin_box h3 label input {
+	float:left;
+	margin:3px 8px 0 0;
+*margin:-1px 3px 0 0
+}
+.kaixin_login .login_kaixin_box fieldset {
+	padding:30px 0 0;
+	clear:both
+}
+.kaixin_login .login_kaixin_box fieldset p {
+	height:35px
+}
+.kaixin_login .login_kaixin_box fieldset p.input_left {
+	padding:9px 0 0 95px;
+	color:#666
+}
+.kaixin_login .login_kaixin_box fieldset p.input_left input {
+	float:left;
+	margin:2px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.kaixin_login .login_kaixin_box fieldset p .input {
+	width:158px;
+	height:20px;
+	line-height:20px;
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_input.png) no-repeat 0 0;
+	border:1px solid #7f9db9;
+	padding:2px
+}
+.kaixin_login .login_kaixin_box fieldset p .input_on {
+	border:1px solid #F60
+}
+.kaixin_login .login_kaixin_box fieldset p.mail .input {
+	width:211px
+}
+.kaixin_login .login_kaixin_box fieldset p label {
+	color:#666;
+	width:95px;
+	text-align:right;
+	float:left;
+	margin:4px 0 0
+}
+.kaixin_login .login_kaixin_box fieldset p label.car {
+	width:auto;
+	text-align:left;
+	margin:5px 20px 0 0
+}
+.kaixin_login .login_kaixin_box fieldset p label.car input {
+	float:left;
+	margin:2px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.kaixin_login .login_kaixin_box fieldset p select {
+	width:106px;
+	margin:3px 5px 0 0
+}
+.kaixin_login .login_kaixin_box fieldset p label em {
+	color:#c00;
+	margin:0 7px 0 0
+}
+.kaixin_login .login_kaixin_box fieldset .bottom_an {
+	margin-left:95px;
+	display:inline
+}
+.kaixin_login .login_kaixin_box .login_list {
+	clear:both;
+	padding:30px 0 0
+}
+.kaixin_login .login_kaixin_box .login_list ul li {
+	height:40px
+}
+.kaixin_login .login_kaixin_box .login_list ul li p label {
+	text-align:left;
+	width:85px
+}
+.kaixin_login .login_kaixin_box .login_list ul li p label input {
+	margin:1px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.kaixin_login .login_kaixin_box .login_list .bottom_an {
+	margin-left:85px;
+	display:inline
+}
+.stylebox .zhijiedenglu {
+	margin:0 20px;
+	padding:7px 0 0
+}
+.stylebox .zhijiedenglu h4 {
+	color:#666;
+	height:22px;
+	margin:0
+}
+.stylebox .login_other {
+	border-top:1px solid #fff;
+	float:left
+}
+.stylebox .login_other a {
+	display:block;
+	float:left;
+	height:16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_other.png) no-repeat 0 0;
+	padding-left:20px;
+	line-height:18px;
+	overflow:hidden;
+	width:60px;
+	margin:25px 0 5px 20px;
+	display:inline
+}
+.stylebox .login_other a.lo_sina {
+	background-position:0 0
+}
+.stylebox .login_other a.lo_ren {
+	background-position:0 -16px
+}
+.stylebox .login_other a.lo_qq {
+	background-position:0 -32px
+}
+.stylebox .login_other a.lo_kaixin {
+	background-position:0 -50px
+}
+.stylebox .login_other a.lo_taobao {
+	background-position:0 -67px
+}
+.stylebox .login_other a.lo_baidu {
+	background-position:0 -84px
+}
+.login_huiyuan .friend_del_group {
+	width:407px
+}
+.login_layer06 {
+	padding:5px
+}
+.login_layer06 .ibit_hei20 {
+	height:35px;
+	clear:both
+}
+.login_layer06 .ibit_lo_error {
+	background:#ffffe6 url(http://pic.baa.bitautotech.com/webpic/ibitauto/lh_allpic.gif) no-repeat -10px -44px;
+	border:1px solid #ffd6a5;
+	padding:4px 0 4px 30px;
+	height:18px;
+	line-height:20px
+}
+.login_layer06 .ibit_lo_error span {
+	color:#c00
+}
+.login_layer06 ul li {
+	height:35px
+}
+.login_layer06 ul li label {
+	width:75px;
+	margin:0 10px 0 0;
+	text-align:right;
+	color:#666;
+	float:left
+}
+.login_layer06 ul li .error {
+	display:inline
+}
+.login_layer06 ul li .input {
+	background:url(http://img1.baa.bitautotech.com/webpic/login/login_input.png) no-repeat scroll 0 0 transparent;
+	border:1px solid #7F9DB9;
+	height:20px;
+	line-height:22px;
+	padding:2px;
+	width:146px;
+	margin:0 10px 0 0
+}
+.login_layer06 ul li .input_on {
+	border:1px solid #f60
+}
+.login_layer06 ul li .error small {
+	color:#c00;
+	font-size:12px
+}
+.login_layer06 ul li.style_msg3 {
+	height:53px
+}
+.login_layer06 ul li.style_msg3 input {
+	width:66px;
+	float:left;
+	margin:0 0 5px
+}
+.login_layer06 ul li.style_msg3 .code {
+	float:left;
+	margin:0 10px 0 0
+}
+.login_layer06 ul li.style_msg3 a {
+	float:left;
+	margin:7px 0 0
+}
+.login_layer06 ul li.style_msg3 .error {
+	clear:both;
+	padding:0 0 0 85px;
+	clear:both
+}
+.login_layer06 ul li.style_msg3 .error small {
+	color:#c00;
+	font-size:12px
+}
+.login_layer06 .position {
+	float:left;
+	padding:0 0 0 85px;
+	height:95px;
+	overflow:hidden
+}
+.login_layer06 .position span {
+	float:left;
+	margin:7px 0 0 10px
+}
+.login_layer06 .position p {
+	clear:both;
+	color:#666;
+	width:250px;
+	height:32px
+}
+.login_layer06 .position p label {
+	float:left;
+	margin:0 10px 0 0
+}
+.login_layer06 .position p input {
+	float:left;
+	margin:2px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.login_layer06 .position p input {
+	float:left;
+	margin:2px 5px 0 0;
+*margin:-1px 0 0 0
+}
+.login_layer06 .position .bottom_an strong input {
+	padding:2px 16px 3px;
+*padding:2px 20px 0;
+	font-size:14px
+}
+.login_layer06 .position .bottom_an_c strong input {
+	padding:2px 16px 3px;
+*padding:2px 20px 0;
+	font-size:14px
+}
+.login_layer06 .zhijiedenglu {
+	margin:0 20px;
+	padding:10px 0 0;
+*padding:5px 0 0;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/201212/huidian_x.png) repeat-x scroll 0 0 transparent;
+	clear:both
+}
+.login_layer06 .zhijiedenglu h4 {
+	color:#666;
+	float:left
+}
+.login_layer06 .login_other {
+	height:30px
+}
+.login_layer06 .login_other a {
+	float:left;
+	height:16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_other.png) no-repeat 0 0;
+	width:16px;
+	line-height:18px;
+	overflow:hidden;
+	margin:0 10px 0 0
+}
+.login_layer06 .login_other a.lo_sina {
+	background-position:0 0
+}
+.login_layer06 .login_other a.lo_ren {
+	background-position:0 -16px
+}
+.login_layer06 .login_other a.lo_qq {
+	background-position:0 -32px
+}
+.login_layer06 .login_other a.lo_kaixin {
+	background-position:0 -50px
+}
+.login_layer06 .login_other a.lo_taobao {
+	background-position:0 -67px
+}
+.login_layer06 .login_other a.lo_baidu {
+	background-position:0 -84px;
+	margin:0
+}
+.layer_height0 {
+	height:240px;
+	overflow:hidden
+}
+#footer0904 {
+	width:940px;
+	margin:0 auto;
+	padding:10px 10px 0;
+	color:#666;
+	text-align:center;
+	clear:both
+}
+.footer_c {
+	margin:0 10px 15px;
+	float:left
+}
+.footer_yj {
+	float:right
+}
+.footer_yj a.wytyj {
+	margin:0 20px 0 0
+}
+.footer_yj span {
+	font-family:arial
+}
+.zhaohui_link {
+	height:120px;
+	padding:0 0 0 50px
+}
+.zhaohui_link li {
+	width:181px!important;
+	height:91px!important;
+	float:left;
+	margin:0 20px 0 0;
+	clear:none!important
+}
+.zhaohui_link li a {
+	display:block;
+	height:91px;
+	line-height:200px;
+	line-height:200px;
+	overflow:hidden
+}
+.zhaohui_link li.mail {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012qct/login_ib_mail.png) no-repeat 0 0
+}
+.zhaohui_link li.phone {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012qct/login_ib_phone.png) no-repeat 0 0
+}
+.login_wang {
+	padding:30px 20px 30px 100px;
+	height:100px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/2012qct/login_wan.png) no-repeat 30px 25px
+}
+.login_wang strong {
+	font-weight:800;
+	font-size:14px
+}
+.login_wang small {
+	font-size:12px;
+	color:#999;
+	display:block;
+	margin:5px 0 30px
+}
+.login_mainNav_w {
+	width:810px;
+	margin:0 auto
+}
+.login_mainNav_w ol li {
+	color:#666
+}
+.login_mainNav_w ol li strong {
+	font-size:14px;
+	font-weight:800
+}
+.login_mainNav_w ol li ol {
+	margin:5px 0 0 66px
+}
+.login_mainNav_w ol li ol li {
+	text-indent:-21px;
+	margin:0 0 20px
+}
+.login_mainNav_w ol li ol li ol {
+	margin:5px 0 0 28px
+}
+.login_mainNav_w ol li ol li ol li {
+	margin:0
+}

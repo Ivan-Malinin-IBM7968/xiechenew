@@ -1,0 +1,25 @@
+<script type="text/javascript" src="./jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="./xheditor-1.1.13-zh-cn.min.js"></script>
+<script type="text/javascript" src="./xheditor_plugins/ubb.min.js"></script>
+<style type="text/css">
+.btnMap {
+	width:50px !important;
+	background:transparent url(googlemap/map.gif) no-repeat center center;
+}
+-->
+</style>
+<script type="text/javascript">
+$(pageInit);
+function pageInit()
+{
+var plugins={
+		map:{c:'btnMap',t:'插入Google地图',e:function(){
+			var _this=this;
+			_this.saveBookmark();
+			_this.showIframeModal('Google 地图','googlemap/googlemap.html',function(v){_this.loadBookmark();_this.pasteHTML('<img src="'+v+'" />');},538,404);
+		}}
+	};
+	$('#elm2').xheditor({plugins:plugins,upLinkUrl:"!{editorRoot}xheditor_plugins/multiupload/multiupload.html?uploadurl={editorRoot}demos/upload.php%3Fimmediate%3D1&ext=附件文件(*.zip;*.rar;*.txt)",upImgUrl:'!{editorRoot}xheditor_plugins/multiupload/multiupload.html?uploadurl={editorRoot}demos/upload.php%3Fimmediate%3D1&ext=图片文件(*.jpg;*.jpeg;*.gif;*.png)',upFlashUrl:'!{editorRoot}xheditor_plugins/multiupload/multiupload.html?uploadurl={editorRoot}demos/upload.php%3Fimmediate%3D1&ext=Flash动画(*.swf)',upMediaUrl:'!{editorRoot}xheditor_plugins/multiupload/multiupload.html?uploadurl={editorRoot}demos/upload.php%3Fimmediate%3D1&ext=多媒体文件(*.wmv;*.avi;*.wma;*.mp3;*.mid)'});
+}
+</script>
+<textarea id="elm2" name="elm2" rows="12" cols="80" style="width: 90%">mytest</textarea>

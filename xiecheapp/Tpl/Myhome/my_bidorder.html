@@ -1,0 +1,50 @@
+<layout name='layout_myhome' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+})
+</script>
+<div id="wddd-right">我的保险订单</div>
+<div id="wddd-right2"><br/>
+ <table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#e4e4e4" >
+  <tr align="center">
+    <td width="5%" height="30" bgcolor="#EBEBEB">订单号</td>
+    <td width="10%" height="30" bgcolor="#EBEBEB">驾驶员姓名</td>
+    <td width="10%" height="30" bgcolor="#EBEBEB">驾驶员手机号</td>
+    <td width="10%" height="30" bgcolor="#EBEBEB">车牌号</td>
+    <td width="15%" height="30" bgcolor="#EBEBEB">保险公司名称</td>
+	<td width="10%" height="30" bgcolor="#EBEBEB">定损金额</td>
+	<td width="20%" height="30" bgcolor="#EBEBEB">维修4S店</td>
+	<td width="20%" height="30" bgcolor="#EBEBEB">订单状态</td>
+	<td width="20%" height="30" bgcolor="#EBEBEB">添加时间</td>
+  </tr>
+  <volist name="list" id="vo">
+  <tr align="center">
+    <td height="35" bgcolor="#FFFFFF">{$vo.order_id}</td>
+    <td height="35" bgcolor="#FFFFFF">{$vo.truename}</td>
+    <td height="35" bgcolor="#FFFFFF">{$vo.mobile}</td>
+    <td height="35" bgcolor="#FFFFFF">{$vo.licenseplate}</td>
+    <td height="35" bgcolor="#FFFFFF">{$vo.insurance_info.insurance_name}</td>
+    <td height="35" bgcolor="#FFFFFF">{$vo.insurance_info.loss_price}</td>
+	<td height="35" bgcolor="#FFFFFF">{$vo.shop_name}</td>
+	<td height="35" bgcolor="#FFFFFF">{$vo.order_status}</td>
+	<td height="35" bgcolor="#FFFFFF">{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+	<td height="35" bgcolor="#FFFFFF"><a href="__APP__/myhome/add_bidorder_comment/bidorder_id/{$vo.order_id}">评价</a><a href="{:URL('/myhome/bidorder_progress',array('bidorder_id'=>$vo['order_id']))}">维修进度</a></td>
+  </tr>
+  </volist>
+  <tr>
+    <td height="45" colspan="9" align="right" bgcolor="#FFFFFF">
+    	<table border="0" cellspacing="0" cellpadding="0" style="font-size:12px; margin:0 10px 0 0; padding:0px;" >
+      	<tr>
+        	<td height="36" align="right">{$page}</td>
+        </tr>
+      </table>
+   	</td>
+  </tr>
+</table>
+<br>
+</div>

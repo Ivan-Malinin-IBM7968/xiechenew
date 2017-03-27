@@ -1,0 +1,50 @@
+<layout name='layout_maintenance' />
+	 <link type="text/css" href="__PUBLIC__/css/carservice.css" rel="stylesheet">
+   <link type="text/css" rel="stylesheet" href="__PUBLIC__/js/video_js/video-js.min.css">
+   <script src="__PUBLIC__/js/video_js/video.js"></script> 
+    
+    <div class="snav" id="snav">
+        <ul>
+          <li><a href="/carservice" class="current">府上养车</a></li>
+          <eq name="new_city_name" value="上海">
+          <li><a href="/shopservice/index">4S店预约保养</a></li>
+          <li><a href="/coupon">团购保养</a></li>
+          </eq>
+        </ul>
+        <span>
+          <b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+        </span>
+    </div>
+    <div class="article1">
+      <div class="w1183">
+          <div style="height:80px; line-height:80px; font-size:16px;"><a href="/">首页</a> &gt; <a href="/carservice">府上养车</a> &gt; <a href="/carservice/nlist">优惠速递</a> &gt;{$content['noticetitle']}</div>
+          <h4><span>{$content['noticetitle']}</span></h4>
+          <p>分类：养车心得 原作者：携车网 发布时间：{$content['update_time']|date='Y-m-d',###}</p>
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到开心网" href="#" class="bds_kaixin001" data-cmd="kaixin001"></a><a title="分享到百度新首页" href="#" class="bds_bdhome" data-cmd="bdhome"></a></div>
+          <div>
+              <p class="readnum">13544</p>
+              <div class="nextpage">
+              <p>上一篇：<empty name="prev">无<else/><a href="/carservice/narticle/id/{$prev['id']}">{$prev['noticetitle']}</a></empty></p>
+              <p>下一篇：<empty name="next">无<else/><a href="/carservice/narticle/id/{$next['id']}">{$next['noticetitle']}</a></empty></p>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="article2">
+      <div class="w1183">
+        <h4>{$content['noticetitle']}</h4>
+        <div class="abody">{$content['noticedescription']}</div>
+      </div>
+    </div>
+
+<style type="text/css">
+  .article1{overflow: hidden;}
+  .article1 h4{font-size: 30px; margin: 0 0 20px;}
+  .article1 h4 span{background: url(__PUBLIC__/images/carservice/titlebg.png) right center no-repeat; padding-right: 30px;}
+  .article2{background: #f4f4f4; overflow: hidden; padding: 20px 0 30px;}
+  .article2 h4{text-align: center; line-height: 50px; font-weight: bold;}
+  .article2 .abody{line-height: 2em; font-size: 14px; padding: 0 100px; text-indent: 2em;}
+  .readnum{float: left; background: url(__PUBLIC__/images/carservice/readnum.png) left center no-repeat; padding-left: 25px; font-size: 12px; color: #999;}
+  .nextpage{float: right;}
+</style>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>

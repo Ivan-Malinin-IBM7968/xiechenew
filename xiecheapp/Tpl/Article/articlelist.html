@@ -1,0 +1,151 @@
+<layout name='layout' />
+<link rel="stylesheet" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/articlelist.css?v={$Think.config.VERSION_DATE}" />
+
+<div id="xz" style="width:960px; height:120px; margin:10px auto; padding:0px; "><a href="__APP__/coupon" target="_blank"><img src="__PUBLIC__/new/images/banner.jpg"></a></div>
+<div id="zx-dh">
+<div id="zx-dh-left">您当前所在的位置 : <a href="__APP__/index">纵横携车网</a> &gt; <a href="__APP__/articlelist">用车心得</a></div>
+<div id="zx-dh-right">
+	<form name="form2" method="post" action="__APP__/article/articlelist">
+		热门搜索 ：<a href="{:URL('/articlelist',array('keyword'=>保养))}">保养</a>&nbsp;&nbsp;
+					<a href="{:URL('/articlelist',array('keyword'=>机油))}">机油</a>&nbsp;&nbsp;
+					<a href="{:URL('/articlelist',array('keyword'=>故障))}">故障</a>&nbsp;&nbsp;
+					<a href="{:URL('/articlelist',array('keyword'=>误区))}">误区</a>
+		<label>
+		  <input name="keyword" type="text" id="keyword"  value="{$keyword}">
+		</label>
+		<label>
+		  <input type="submit" name="搜索" id="搜索" value="搜索">
+		</label>
+	  </form>
+</div>
+
+</div>
+<div id="main-zx">
+  <div id="main-zx-left">
+  <!-- <div id="mian-zx-lsft-s" style="float:center;">{$page}</div> -->
+    <div id="list">
+	<notempty name="articleinfo" >
+    <ul class="list">
+    <volist name="articleinfo" id="vo">
+    <li><em>({$vo.create_time|date="Y-m-d H:i:s",###})</em><a href="__APP__/article/{$vo.id}">{$vo.title}</a></li>
+    </volist>
+    </ul>
+	<else/>
+	对不起暂无信息
+	</notempty>
+    </div>
+    <div style="clear: both;"></div>
+	<div style="text-align: center;margin-top:10px;">{$page}</div>
+   
+	<!-- <div id="zx-wb"><h2 class="zb-wblb">推荐顾问</h2>
+	<volist name="expert_tuijian" id="vo_expert">
+		<dl>
+		<dt><a target="_blank" href="/tipask/?u-{$vo_expert.uid}.html"><img alt="{$vo_expert.username}" width="70" height="70" src="/tipask/css/default/avatar.gif" /></a></dt>
+		<dd><a target="_blank" href="/tipask/?u-{$vo_expert.uid}.html">{$vo_expert.username}</a></dd>
+		</dl>
+	</volist>
+	</div> -->
+	
+</div>
+<div id="main-zx-right">
+<!-- <p class="zx-right-wz">相关文章</p>
+<dl>
+<dt style="background-image: url(http://i1.sinaimg.cn/qc/photo_auto/photo/82/25/178225/178225_140.jpg); background-repeat:no-repeat;"></dt>
+<dd>福特翼虎海外售29.7万</dd>
+</dl>
+<dl>
+<dt style="background-image:url(http://i0.sinaimg.cn/qc/photo_auto/photo/5b/eb/201175/201175_140.jpg);background-repeat:no-repeat;"></dt>
+<dd>福特翼虎海外售29.7万</dd>
+</dl>
+<ul>
+<li>国内女星座驾大比拼 | 奢华铂金汽车聚会 | 汽车聚会</li>
+<li>国内女星座驾大比拼 | 奢华铂金汽车聚会 | 汽车聚会</li>
+<li>国内女星座驾大比拼 | 奢华铂金汽车聚会 | 汽车聚会</li>
+<li>国内女星座驾大比拼 | 奢华铂金汽车聚会 | 汽车聚会</li>
+<li>国内女星座驾大比拼 | 奢华铂金汽车聚会 | 汽车聚会</li>
+<li>国内女星座驾大比拼 | 奢华铂金汽车聚会 | 汽车聚会</li>
+</ul> -->
+<div id="zx-right-yhq">
+  
+<p class="zx-right-wz2">现金券</p>
+<ol class="assess-list">
+<volist name="tuijian_coupon1" id="tcoupon1" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon1.id}" >
+								<img width="105" alt="{$tcoupon1.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon1.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+<p class="zx-right-wz">套餐券</p>
+<ol class="assess-list">
+<volist name="tuijian_coupon2" id="tcoupon2" offset="0" length="2">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon2.id}" >
+								<img width="105" alt="{$tcoupon2.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon2.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+
+</div>
+<!-- <div id="last-nav"></div> -->
+</div>
+</div>
+

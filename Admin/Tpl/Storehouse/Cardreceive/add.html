@@ -1,0 +1,118 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+
+
+<style type="text/css">
+	td{padding:10px 20px;border-bottom:1px solid #cccccc}
+</style>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增领卡单 [ <A HREF="__URL__">返回列表</A> ]</div>
+         <div style="padding:20px 0px">
+         	开单人：{$Think.session.loginAdminUserName}&nbsp;&nbsp;&nbsp;&nbsp;
+         	开单日期：{$time|date="y-m-d",###}<br>
+         </div>
+         <notempty name="list">
+		 <form id="form">
+			<table cellpadding=3 cellspacing=0>
+				<tr>
+					<td></td>
+					<td>产品用途：</td>
+					<td>编码：</td>
+					<td>单价：</td>
+					<td>领卡数量：</td>
+					<td>总金额：</td>
+				</tr>
+				<volist name="list" id="vo">
+					<tr>
+						<td><input type="checkbox" name="ck" data-id="{$vo.id}" /></td>
+						<td>{$vo.use_way}</td>
+						<td>{$vo.ic} - {$vo.id}</td>
+						<td>{$vo.price}</td>
+						<td><input class="num" name="num" /></td>
+						<td>{$vo['price']*$vo['num']}</td>
+					</tr>
+					
+				</volist>
+				<tr>
+					<td>开单备注</td>
+					<td colspan="5">
+						<textarea name="remark" style="width:100%"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>销售类型</td>
+					<td colspan="5">
+						<input type="checkbox" name="type" />&nbsp;&nbsp;&nbsp;赠送卡
+					</td>
+				</tr>
+				<tr>
+					<td>领卡人</td>
+					<td colspan="5">
+						<input type="text" name="receive_person" />
+					</td>
+				</tr>
+                <TR>
+                    <TD colspan="4" style="border:none"><input TYPE="button" value="提交" onclick="check();" /></TD>
+                </TR>
+			</table>
+		 </form>
+		 <else />
+		 	<p>当前没有产品可领</p>
+		 </notempty>
+    </div>
+<script type="text/javascript">
+function check(){
+	id = '';
+	ret = true;
+	$('#form').find('input[name=ck]').each(function(){
+		if( $(this).attr('checked') == 'checked'){
+			id += $(this).attr('data-id')+':';
+			num = $(this).parent().parent().find('.num').val();
+			if(!num){
+				alert('请填写销售数量');
+				ret = false;
+			} 
+			
+			if( num && parseInt(num) != num ){
+				alert('销售数量必须填整数');
+				ret = false;
+			}else{
+				id +=  num + '|';
+			}
+			
+		}
+	});
+	if(!ret){
+		return false;
+	}
+	if(!id){
+		alert('请勾选要领卡的产品');
+		return false;
+	}
+	type = 1;
+	if($('input[name=type]').attr('checked') == 'checked'){
+		type = 2;
+	}
+	
+	receive_person = $('input[name=receive_person]').val();
+	remark = $('textarea[name=remark]').val();
+	$.post("__URL__/do_add",{'id':id,'remark':remark,'type':type,'receive_person':receive_person},function(data){
+		if(data.status){
+			alert(data.info);
+			document.location.href="/Admin/index.php/Storehouse/Cardreceive/index";
+		}else{
+			alert(data.info);
+		}	
+	},'json'); 
+	
+}
+</script>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

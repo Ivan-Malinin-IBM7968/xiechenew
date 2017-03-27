@@ -1,0 +1,80 @@
+<layout name='layout_new' />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/user.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/user_002.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_safe.css" />
+
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	<style type="text/css">
+	.personal-info{width: 908px; height: 10px; background: #ffffff; border: 1px solid #dadada;padding: 20px; font-size: 14px;}
+	.strong{font-family: 微软雅黑;font-size: 18px;text-align: left;}
+	</style>
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<div class="content-right main my-safe">
+			<h2 class="title">安全中心</h2>
+			<div class="my-safe-content">
+				<table width='100%' class="my-safe-table">
+					<tr>
+						<td width="190">
+							<span class="done img-sign"></span>
+							<div class="done caption">登录密码</div>
+							<div class="clear"></div>
+						</td>
+						<td width="580">
+							<div class="desc">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</div>
+						</td>
+						<td width="180">
+							<!-- <div class="manage">
+								<a href="">修改密码</a>
+							</div> -->
+						</td>
+					</tr>
+					<tr>
+						<td >
+							<span class="done img-sign"></span>
+							<div class="done caption">手机验证</div>
+							<div class="clear"></div>
+						</td>
+						<td>
+							<div class="desc">验证后，可用于快速找回登录密码及支付密码，接收账户余额变动提醒。</div>
+						</td>
+						<td>
+							<!-- <div class="manage">
+								<a href="">立即验证</a>
+							</div> -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="do img-sign"></span>
+							<div class="done caption">支付密码</div>
+							<div class="clear"></div>
+						</td>
+						<td>
+							<div class="desc">启用支付密码后，在使用账户资产时，需通过支付密码进行身份认证。</div>
+						</td>
+						<td>
+							<div class="manage">
+								<a href="{:URL('/myhome/verifymobile',array())}">立即启用</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class='clear'></div>
+	</div>
+
+	<div id="popup"></div>
+	<div class="blackbox"></div>
+
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>

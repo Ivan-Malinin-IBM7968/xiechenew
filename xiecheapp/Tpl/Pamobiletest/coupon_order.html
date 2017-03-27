@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+		<meta>
+	    <title>优惠券详情 ｜ Coupon Example</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<!-- <link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.css" /> -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/coupon_order.css" />
+		<script type="text/javascript" src="__PUBLIC__/mb/js/libs/zepto/zepto.min.js"></script>
+		<!-- <script src="__PUBLIC__/mb/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script> -->
+		<script src="__PUBLIC__/mb/js/main.js"></script>
+	</head>
+	<body style="background: #f1f1f1;">
+		<div id="wrapper" >
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>优惠券详情 ｜ Coupon Example</h1>
+				</header>
+				<div id="content-wrapper">
+				<div id="inner-content-wrapper">
+					<!-- 服务类型 开始 -->
+					<div id="pi" class="sl">
+						<div class="title">
+							<span class="circle"></span>
+							<h3>您所要购买的现金券</h3>
+							<div class="clear"></div>
+						</div>
+						<div class="i-list">
+							<ul>
+								<li>
+									<label>名 称：</label>
+									<div>上海大众郎逸1.6L车型小保养套餐券</div>
+								</li>
+								<li>
+									<label>单 价：</label>
+									<strong style="color: #fd8612; font-size: 1.4em; font-weight: bold; display: inline-block; float: right" id="single-price">¥<span style="font-weight: bold">400</span></strong>
+								</li>
+								<li>
+									<label>数 量：</label>
+									<div id="conpon-count">
+										<a href="javascript:void(0);" id="count-plus">增加</a>
+										
+										<input type="text" id="coupon-count-value" value="1">
+										<a href="javascript:void(0);" id="count-minus">减少</a>
+									</div>
+									
+								</li>
+								<li>
+									<label>总 价：</label>
+									<strong style="color: #fd8612; font-size: 1.4em; font-weight: bold; display: inline-block; float: right" id="final-price">¥<span style="font-weight: bold">400</span></strong>
+								</li>
+								
+
+								
+								<div class="clear"></div>
+							</ul>
+						</div>
+						<div class="clear"></div>
+						<div class="title">
+							<span class="circle"></span>
+							<h3>您的联系方式：</h3>
+							<div class="clear"></div>
+						</div>
+						<div class="i-list" style="margin-top: 10px;">
+							<ul>
+								
+								<li>
+									<label>请输入手机号：</label>
+									<input type="text" id="phone" >
+								</li>
+
+								
+								<div class="clear"></div>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<!-- 服务类型 结束 -->
+					<div id="next-btn">
+						<a href="" value="">下一步</a>
+					</div>
+				</div>
+			</div>
+			</div>
+			<!-- Main Page End -->
+			
+		</div>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+		(function(){
+			var count = $("#coupon-count-value"),
+				minusBtn = $("#count-minus"),
+				plusBtn = $("#count-plus"),
+				singlePrice = parseInt($("#single-price span").html()),
+				finalPrice = $("#final-price span");
+
+			minusBtn.on("click", function(){
+				var countValue = count.val();
+				countValue >1 ? count.val(--countValue) : 1
+				finalPrice.html(countValue*singlePrice);
+			})
+
+			plusBtn.on("click", function(){
+				var countValue = count.val();
+				count.val(++countValue);
+				console.log(countValue);
+				console.log(singlePrice)
+				finalPrice.html(countValue*singlePrice);
+			})
+
+		}())
+	</script>
+	</body>
+</html>

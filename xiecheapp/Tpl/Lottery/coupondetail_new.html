@@ -1,0 +1,238 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/sales.css?v={$Think.config.VERSION_DATE}" />
+	<style>
+		.article a{margin: 2px 0 0 0; font-size: 14px; color: #0066cc; text-decoration:none}
+		.article a:visited{color: #0066cc}
+		.article a:hover{text-decoration: underline; cursor:pointer}
+		.ul2{padding: 10px 0; display: block; width: 580px; height: 122px; display: none;}
+		.ul2 li{margin-bottom: 5px; display: block; width: 250px; height: 30px; line-height: 30px; width: 340px; height: 30px; padding: 0 10px;}
+		.ul2 li label{font-size: 14px;}
+		.ul2 li .input-text{width: 160px; height: 20px; line-height: 20px; display: inline-block; }
+		
+		.ul2 li #btn_login{width: 80px; height: 20px; line-height: 20px; font-size: 14px; color: #777; display: inline-block; margin-left: 10px}
+		.ul2 li #send_verify{width: 80px; height: 20px; line-height: 20px; font-size: 14px; color: #777;display: inline-block; margin-left: 10px;}
+		.getTickets:hover{cursor: pointer;}
+	</style>
+
+
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="__APP__/coupon">4S店售后团购</a></li>
+			<li>></li>
+			<li>促销抵用券</li>
+			<li>></li>
+			<li>{$coupon.coupon_name}</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="w1200 content">
+		<div class="w830 content-left">
+			<!-- Ticlet Start-->
+			<div class="w830 ticket">
+				<h2 class="title">{$coupon.coupon_name}</h2>
+				<div class="w830 ticket-info">
+					<div class="img-con">
+						<img src="/UPLOADS/Coupon/Logo/{$coupon.coupon_pic}"  width="450" height="338" title="{$coupon.coupon_name}" alt="{$coupon.coupon_name}">
+					</div>
+					<div class="info-con">
+						<div class="f-price">
+							¥{$coupon.coupon_amount}
+						</div>
+						<div class="add-info2">
+							<span class="ad">{$coupon.coupon_summary}</span>
+						</div>
+						<!--
+						<div class="buy-ticket">
+							<a href="###" class="getTickets"><span >点击领取</span></a>				
+							
+						</div>-->
+
+						<ul class="ul2">
+							<li id="li_mobile">
+								<label for="">手机号：</label>
+								<input type="text" id="mobile" name="mobile"  class="input-text"> 
+								<input type="button" value="获取验证码" id="send_verify">
+							</li>
+							<li id="li_mobile_verify_lottery">
+								<label for="">验证码：</label>
+								<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" class="input-text">
+								<input type="button" id="btn_login" name="btn_login" value="点击领取" onclick="login();">
+							</li>
+							<li id="li_mobile_verify_lottery">
+								<a href="__APP__/myhome/my_salecoupon.html">我的抵用券</a>
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+			<input type="hidden" id="hiden_sessuser" name="hiden_sessuser" value={$Think.session.mobile}>
+			<input type="hidden" id="hide_mobile" name="hide_mobile" value={$Think.session.mobile}>
+			<input type="hidden" id="hide_mobile" name="hide_mobile" value={$Think.session.mobile}>
+			
+			<!-- Ticket End-->
+			<!-- Ticket Related Info Start-->
+			
+
+			<div class="clear"></div>
+			
+			<div class="w830 ticket-detail">
+				<div class="cate-title">
+					<h3>关于本抵用券</h3>
+				</div>
+				<div class="article">
+					{$coupon.coupon_des}
+				</div>
+			</div>
+		</div>
+		<div class="w350 content-right">
+			<div class="tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					</volist>
+				</ul>
+
+			</div>
+			<div class="tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+		</div>
+	</div>
+		<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+
+<script type="text/javascript">
+   
+
+
+$(function(){ 
+	$("#send_verify").attr("disabled",false);
+		$("#send_verify").on("click",function(){
+			var mobile = $('#mobile').val();
+			var second = "60";
+			
+			if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Lottery-send_verify",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							$("#send_verify").show();
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						$("#send_verify").show();
+						send_verify_show(second);
+					}
+				})
+			}
+		})
+
+}); 
+
+function ajax_app(){
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Lottery-ajaxapp",
+		cache: false,
+		data:"mobile=1",
+		dataType: "json",
+		success: function(data){
+		},
+		error: function(){
+			
+		}
+	})
+
+
+
+}
+function send_verify_show(i){
+	if(i>='0'){
+		$("#send_verify").attr("disabled",true); 
+		$("#send_verify").attr("value",i+"秒后重新发送");
+		i--;
+		setTimeout(function(){send_verify_show(i);},1000);
+	}else{
+		$("#send_verify").attr("disabled",false); 
+		$("#send_verify").attr("value","发送手机验证码");
+	}
+}
+
+
+ $.getScript("http://www.skygq.com/ci/jquery_ajax_json_php/search_server_2.html?letter="+$.val(),function(){ 
+
+
+ }); 
+
+function login(){
+	var mobile = $('#mobile').val();
+	var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Lottery-lotterylogin_sale",
+		cache: false,
+		data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery,
+		dataType: "json",
+		success: function(data){
+			if(data=='1'){
+				alert('领取成功！');
+			}else{	
+				alert('您已领取过此券只能领取1次！');
+			}
+		},
+		error: function(){
+			
+		}
+	})
+}
+
+</script>
+	<script type="text/javascript">
+		$(".getTickets").on("click", function(e){
+			e.preventDefault();
+			$(".ul2").slideDown('fast');
+		})
+	</script>
+	

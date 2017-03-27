@@ -1,0 +1,41 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title">新增分组 [ <A HREF="__URL__">返回列表</A> ]</div>
+        <FORM METHOD=POST id="form1" >
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight" >名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="medium bLeftRequire" check='^\S+$' warning="不能为空,且不能含有空格" NAME="name"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">说明：</TD>
+                    <TD class="tLeft"><input TYPE="text" class="medium bLeftRequire"  NAME="title"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight">显示：</TD>
+                    <TD class="tLeft"><SELECT class="small bLeft" NAME="show">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </SELECT></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight">状态：</TD>
+                    <TD class="tLeft"><SELECT class="small bLeft" NAME="status">
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </SELECT></TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <input TYPE="hidden" name="ajax" value="1">
+                        <div class="impBtn fLeft"><input TYPE="button" value="保存" onclick="sendForm('form1','__URL__/insert/','tips')" class="save imgButton"></div>
+                        <div class="impBtn fRig"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

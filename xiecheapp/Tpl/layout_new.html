@@ -1,0 +1,10 @@
+
+<if condition="$Think['const'].TOP_CSS eq 'xc'">
+<include file="Public:header_new"/>
+{__CONTENT__}
+<include file="Public:footer_new"/>
+<else/>
+<include file="Public:pa_head"/>
+{__CONTENT__}
+<include file="Public:pa_foot"/>
+</if>

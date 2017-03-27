@@ -1,0 +1,137 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">促销信息列表  </div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <html:imageBtn name="add" value="新增" click="add()" style="impBtn hMargin fLeft shadow" />
+            <html:imageBtn name="edit" value="编辑" click="edit()" style="impBtn hMargin fLeft shadow" />
+            <!-- 查询区域 -->
+            <div class="fRig">
+                <FORM METHOD=POST ACTION="__URL__">
+                    <div class="fLeft"><span id="key"><input TYPE="text" NAME="title" title="促销信息查询" value="{$Think.post.title}" class="medium" ></span></div>
+                    <html:imageBtn type="submit" name="search" value="查询" style="impBtn hMargin fLeft shadow" />
+            </div>
+            </FORM>
+        </div>
+        <!-- 功能操作区域结束 -->
+
+        <!-- 列表显示区域  -->
+        <div class="list">
+			<table id="checkList" class="list" cellpadding=0 cellspacing=0 >
+                <tr>
+                    <td height="5" colspan="11" class="topTd" ></td>
+                </tr>
+                <tr class="row" >
+                    <th width="8"><input type="checkbox" id="check" onclick="CheckAll('checkList')"></th>
+                    <th width="10%">
+                        <if condition="$order eq 'id'">
+                            <a href="javascript:sortBy('id','{$sort}','index')" title="按照编号{$sortType}">编号<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('id','1','index')" title="按照编号升序排列 ">编号</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'title'">
+                            <a href="javascript:sortBy('title','{$sort}','index')" title="按照标题{$sortType}">标题<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('title','1','index')" title="按照标题升序排列 ">标题</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'cate_id'">
+                            <a href="javascript:sortBy('city_id','{$sort}','index')" title="按照城市{$sortType}">城市<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('city_id','1','index')" title="按照城市升序排列 ">城市</a>
+                        </if>
+                    </th>
+					<th>
+                        <if condition="$order eq 'cate_sid'">
+                            <a href="javascript:sortBy('user_id','{$sort}','index')" title="按照发布人{$sortType}">发布人<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('user_id','1','index')" title="按照发布人升序排列 ">发布人</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'author'">
+                            <a href="javascript:sortBy('is_top','{$sort}','index')" title="按照置顶推荐{$sortType}">置顶推荐<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('is_top','1','index')" title="按照置顶推荐升序排列 ">置顶推荐</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'start_time'">
+                            <a href="javascript:sortBy('start_time','{$sort}','index')" title="按照开始时间{$sortType}">开始时间
+							<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('start_time','1','index')" title="按照开始时间升序排列 ">开始时间</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'end_time'">
+                            <a href="javascript:sortBy('end_time','{$sort}','index')" title="按照结束时间{$sortType}">结束时间
+							<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('end_time','1','index')" title="按照结束时间升序排列 ">结束时间</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'status'">
+                            <a href="javascript:sortBy('status','{$sort}','index')" title="按照状态{$sortType}">状态
+							<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('status','1','index')" title="按照状态升序排列 ">状态</a>
+                        </if>
+                    </th>
+                    <th>
+                        <if condition="$order eq 'remark'">
+                            <a href="javascript:sortBy('remark','{$sort}','index')" title="按照备注{$sortType}">备注<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('remark','1','index')" title="按照备注升序排列 ">备注</a>
+                        </if>
+                    </th>
+                    <th >操作</th>
+                </tr>
+                <volist name="list" id="vo">
+					<tr class="row" onmouseover="over(event)" onmouseout="out(event)" onclick="change(event)" >
+						<td><input type="checkbox" name="key" value="{$vo.id}"></td>
+						<td>{$vo.id}</td>
+						<td><a href="javascript:edit('{$vo.id}')">{$vo.title}</a></td>
+						<td>{$city[$vo['city_id']]}</td>
+						<td>{$vo.user_name}[{$vo.user_id}]</td>
+						<td>{$vo.is_top}</td>
+						<td>{$vo.start_time|date='Y-m-d',###}</td>
+						<td>{$vo.end_time|date='Y-m-d',###}</td>
+						<td>
+							<if condition="$vo['status'] eq 1"><IMG SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="正常"><else/><IMG SRC="__PUBLIC__/Images/locked.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="正常"></if>
+						</td>
+						<td>{$vo.remark}</td>
+						<td>
+							&nbsp;<a href="javascript:read('{$vo.id}')">详情</a>&nbsp;
+							<if condition="$vo['status'] eq 1"><a href="javascript:forbid({$vo.id})">禁用</a><else/><a href="javascript:resume({$vo.id})">恢复</a></if>
+							&nbsp;<a href="javascript:edit('{$vo.id}')">编辑</a>&nbsp;
+						</td>
+					</tr>
+				</volist>
+            </table>
+        </div>
+        <!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+        <!-- 列表显示区域结束 -->
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

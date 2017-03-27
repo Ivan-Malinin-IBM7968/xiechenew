@@ -1,0 +1,252 @@
+<layout name='layout' />
+<link rel="stylesheet" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+
+<div id="xz" style="width:958px; height:auto; margin:10px auto 10px auto; padding:0px; border-top:1px solid #ccc; border-bottom:1px solid #CCC; border-left:1px solid #CCC;border-right:1px solid #CCC;background-color:#FFF"> 
+
+		<div class="catelist">
+        	<span class="lable">类型：</span>
+        		<ul>
+        			<!--<li <if condition="($coupon_type eq 'all') OR ($coupon_type eq '')">class="current"</if> ><a href="__URL__/index{$brand_url}{$series_url}{$model_url}/coupon_type/all">全部</a></li>-->
+
+					<li <if condition="($coupon_type eq 'all') OR ($coupon_type eq '')">class="current"</if> ><a href="{:URL('/coupon/index',array('coupon_type'=>'all','brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部</a></li>
+
+        				<!--<li <if condition="$coupon_type eq 1">class="current"</if>><a href="__URL__/index/coupon_type/1">现金券</a></li>
+        				<li <if condition="$coupon_type eq 2">class="current"</if>><a href="__URL__/index/coupon_type/2">套餐券</a></li>-->
+
+						<li <if condition="$coupon_type eq 1">class="current"</if>>
+							<a href="{:URL('/coupon/index',array('coupon_type'=>1))}{:C('HTML_URL_SUFFIX')}">现金券</a>
+						</li>
+        				<li <if condition="$coupon_type eq 2">class="current"</if>>
+							<a href="{:URL('/coupon/index',array('coupon_type'=>2))}{:C('HTML_URL_SUFFIX')}">套餐券</a>
+						
+						</li>
+        		</ul>
+        </div>
+		
+		<div class="catelist">
+        	<span class="lable">品牌：</span>
+        		<ul>  
+				
+        			<!--<li <if condition="($brand_id eq 'all') OR ($brand_id eq '')">class="current"</if>><a href="__URL__/index{$coupon_type_url}/brand_id/all">全部</a></li>-->
+					<li <if condition="($brand_id eq 'all') OR ($brand_id eq '')">class="current"</if>><a href="{:URL('/coupon/index',array('coupon_type'=>$coupon_type,'brand_id'=>'all'))}{:C('HTML_URL_SUFFIX')}">全部</a></li>
+        			<volist name="brands" id="vo">
+        				<!--<li <if condition="$vo[brand_id] eq $brand_id">class="current"</if>><a href="__URL__/index{$coupon_type_url}/brand_id/{$vo.brand_id}">{$vo.brand_name}</a></li>-->
+
+						<li <if condition="$vo[brand_id] eq $brand_id">class="current"</if>><a href="{:URL('/coupon/index',array('coupon_type'=>$coupon_type,'brand_id'=>$vo['brand_id']))}{:C('HTML_URL_SUFFIX')}">{$vo.brand_name}</a></li>
+        			</volist>
+        		</ul>
+        </div>	
+        <present name="series">
+		<div class="catelist">
+        	<span class="lable">车系：</span>
+        		<ul>
+					<!--
+        			<li <if condition="($series_id eq 'all') OR ($series_id eq '')">class="current"</if> ><a href="__URL__/index{$coupon_type_url}{$brand_url}/series_id/all">全部</a></li>
+					-->
+					<li <if condition="($series_id eq 'all') OR ($series_id eq '')">class="current"</if> ><a href="{:URL('/coupon/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>'all'))}{:C('HTML_URL_SUFFIX')}">全部</a></li>
+
+        			<volist name="series" id="voo">
+        				<!--<li <if condition="$voo[series_id] eq $series_id">class="current"</if>><a href="__URL__/index{$coupon_type_url}{$brand_url}/series_id/{$voo.series_id}">{$voo.series_name}</a></li>-->
+
+						<li <if condition="$voo[series_id] eq $series_id">class="current"</if>><a href="{:URL('/coupon/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>$voo['series_id']))}{:C('HTML_URL_SUFFIX')}">{$voo.series_name}</a></li>
+        			</volist>
+        		</ul>
+        </div>
+        </present>
+        <present name="carmodel">
+		<div class="catelist">
+        	<span class="lable">车型：</span>
+        		<ul>
+        			<!--<li <if condition="($model_id eq 'all') OR ($model_id eq '')">class="current"</if> ><a href="__URL__/index{$coupon_type_url}{$brand_url}{$series_url}/model_id/all">全部</a></li>-->
+
+					<li <if condition="($model_id eq 'all') OR ($model_id eq '')">class="current"</if> ><a href="{:URL('/coupon/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>$series_id,'model'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部</a></li>
+
+
+        			<volist name="carmodel" id="vooo">
+        				<!--<li <if condition="$vooo[model_id] eq $model_id">class="current"</if>><a href="__URL__/index{$coupon_type_url}{$brand_url}{$series_url}/model_id/{$vooo.model_id}">{$vooo.model_name}</a></li>
+						-->
+
+						<li <if condition="$vooo[model_id] eq $model_id">class="current"</if>><a href="{:URL('/coupon/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$vooo['model_id']))}{:C('HTML_URL_SUFFIX')}">{$vooo.model_name}</a></li>
+        			</volist>
+        		</ul>
+        </div>
+        </present>
+		
+</div>
+
+<div class="pgm">
+
+<div class="main_w" dealListHealthCheck="2012-12-03 09:18:10.739|3874">
+
+
+<div class="tuan-content" >
+
+<ul class="index-deal-list Fix">
+
+<!--团购产品页面-->
+<volist name="tuangous" id="tg">
+	<li class="J_dealbox">
+        <div class="deal-box">
+            <div class="deal-main">
+                <div class="deal-dt-img">
+                    <a href="__URL__/{$tg.id}" target="_blank" class="nohover" title="{$tg.coupon_name}">
+					<!--<a href="{:URL('/coupon/coupondetail',array('coupon_id'=>$tg['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" class="nohover" title="{$tg.coupon_name}">-->
+					
+    				<img class="imgloading" alt="{$tg.coupon_name}" title="{$tg.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon1_{$tg.coupon_pic}" /></a>
+                    <div class="state-box"></div>
+				</div>
+                <h2 class="deal-title">
+				<a href="__URL__/{$tg.id}" target="_blank" title="{$tg.coupon_name}">
+				<!--	<a href="{:URL('/coupon/coupondetail',array('coupon_id'=>$tg['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="{$tg.coupon_name}">-->
+    					{$tg.coupon_name}
+					</a>
+				</h2>
+                <div class="buy">
+                	<div class="l-buy">
+                        <div class="Price-font">
+							<div>&#165;{$tg.coupon_amount}</div>
+							<div class="listPrice">价值：&#165;{$tg.cost_price}</div>
+						</div>
+                    </div>
+    					<a href="__URL__/{$tg.id}" class="m-rbtn"  target="_blank" title="{$tg.coupon_name}">
+						<!--<a href="{:URL('/coupon/coupondetail',array('coupon_id'=>$tg['id']))}{:C('HTML_URL_SUFFIX')}" class="m-rbtn"  target="_blank" title="{$tg.coupon_name}">-->
+    						<span>查看详情</span>
+    					</a>
+                </div>
+                <div class="deal-infor Fix">
+				<p class="count">
+					<span class="deal-count J_dealCount" >
+						{$tg.pay_count}
+					</span>人已购买
+				</p>
+				<!-- <div class="lavetime">剩余3天以上</div> -->
+                </div>
+            </div>
+        </div>
+    </li>
+</volist>
+</ul>	
+<div class="pages-wrap">
+<div class="Pages">
+		{$page}
+		</div>
+
+	</div>
+
+</div>
+
+	<div class="sidebar">
+<!--焦点图轮播-->
+<div class="index_switch J_switch">
+
+	<ul class="wrap fade J_wrap">
+
+		<li><a target='_blank' href='__APP__/coupon/24' ><img src='__PUBLIC__/new/images/U6652P33DT20121203093133.jpg'></a></li>
+
+	</ul>
+
+	<!-- <ul class="ctrl J_ctrl">
+
+		<li>1</li>
+
+		<li>2</li>
+
+	</ul> -->
+
+</div>
+<!--焦点图轮播-->
+
+<!--每日团购好评榜-->
+<div class="M-invite side-box">
+<h3>现金券推荐</h3>
+<ol class="assess-list">
+<volist name="tuijian_coupon1" id="tcoupon1" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon1.id}" >
+								<img width="105" alt="{$tcoupon1.coupon_name}" title="{$tcoupon1.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon1.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+<h3>套餐券推荐</h3>
+<ol class="assess-list">
+<volist name="tuijian_coupon2" id="tcoupon2" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon2.id}" >
+								<img width="105" alt="{$tcoupon2.coupon_name}" title="{$tcoupon2.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon2.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+</div>
+<!--每日团购好评榜-->
+    	
+
+<!-- <div class="M-invite side-box">
+    <h3>意见反馈</h3>
+    <div class="Fix icon-box">
+        <span class="im-opinion Cont-icon"></span>
+        <div class="Noflow cont-txt">携车纵横网希望听到你的声音
+
+            <p class="click">
+                <a track="dp_tuangou_refund" rel="nofollow" href="http://www.dianping.com/contactus">» 提交意见反馈</a>
+            </p>
+        </div>
+    </div>
+</div> -->
+	</div>

@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>新大洲本田-摩托迷-CBF125抢购活动</title></head>
+<script type="text/javascript" src="http://www.motorfans.com.cn/js/jquery-1.3.2.min.js"></script>
+<style>
+form{padding: 0px;margin: 0px;}
+body,table,td,tr{size: 14px;}
+.rightnav {
+position:fixed;
+right:0;
+bottom:0;
+border: 1px solid #d7d7d7;
+width: 300px;
+height: 250px;
+background-color: #ffffff;
+text-align: center;
+}
+ .cssrain{
+	background:#BBB;
+	border:2px double #000000;
+	height:200px;
+	width:200px;
+	padding:10px; /*加了padding 也无影响.*/
+ }
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+;(function($) {
+$.fn.extend({
+	"followDiv":function(str){
+		var _self = this;
+		var pos; //层的绝对定位位置
+		switch(str){
+			case("rightbottom")://右下角
+				pos={"right":"0px","bottom":"0px"};
+				break;
+			case("leftbottom")://左下角
+				pos={"left":"0px","bottom":"0px"};
+				break;	
+			case("lefttop"): //左上角
+				pos={"left":"0px","top":"0px"};
+				break;
+			case("righttop")://右上角
+				pos={"right":"0px","top":"0px"};
+				break;
+			default :   //默认为右下角
+				pos={"right":"0px","bottom":"0px"};
+				break;
+		}
+		/*FF和IE7可以通过position:fixed来定位，*/
+		_self.css({"position":"fixed","z-index":"9999"}).css(pos);
+		/*ie6需要动态设置距顶端高度top.*/
+		if($.browser.msie && $.browser.version == 6) {
+				_self.css('position','absolute');						
+				$(window).scroll(function(){
+					var topIE6;
+					if(str=="rightbottom"||str=="leftbottom"){
+						topIE6=$(window).scrollTop() + $(window).height() - _self.outerWidth();
+					}else if(str=="lefttop"||str=="righttop"){
+						topIE6=$(window).scrollTop();
+					}else{
+						topIE6=$(window).scrollTop() + $(window).height() - _self.outerWidth();
+					}
+					_self.css( 'top' , topIE6 );
+				});
+		}
+		return _self;  //返回this，使方法可链。
+	}
+});
+})(jQuery);
+$(document).ready(function(){
+   $('#rightnav').followDiv();
+});
+
+//-->
+</SCRIPT>
+<body>
+<div style="display: none;">
+<iframe id="bound_frame" name="bound_frame" src="about:blank" width=99% height=99% border=0 frameborder=0></iframe>
+</div>
+
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="1.jpg" width="800" height="434" /></td>
+  </tr>
+  <tr>
+    <td><img src="http://auction.motorfans.com.cn/CBF125/intro/{$intro_pic}.jpg" /></td>
+  </tr>
+
+
+
+  <tr>
+    <td height="520" align="center" valign="top" style="background: url(2.jpg);background-repeat: no-repeat;background-position: center center;">
+	
+	<table width="800" border="0" cellspacing="0" cellpadding="10">
+      <tr>
+        <td align="center" valign="middle">
+		
+<!--if:joined-->
+	您已经参加过本次团购，请等待本站公布的抢购结果。<br>
+	请保持您的电话开机，汇款及时，否则您的抢购会作废处理<br>
+<!--else:joined-->
+
+	<!--if:is_login-->
+	<SCRIPT LANGUAGE="JavaScript">
+	<!--
+		function check_profile(theform){
+			if(theform.truename.value.length<2){
+				alert("请输入真实姓名");
+				return false;
+			}
+			if(theform.tel.value.length<6){
+				alert("请输入联系电话");
+				return false;
+			}
+			if(theform.idcard.value.length<15){
+				alert("请输入身份证号码");
+				return false;
+			}
+			if(theform.address.value.length<6){
+				alert("请输入收货地址");
+				return false;
+			}
+			if(theform.zipcode.value.length<6){
+				alert("请输入邮政编码");
+				return false;
+			}
+			return true;
+		}
+	//-->
+	</SCRIPT>
+			<FORM METHOD=POST ACTION="http://www.xieche.net/cbf125/index.php?action=save">
+			<table width="100%" border="0" cellspacing="0" cellpadding="10">
+			  <tr>
+				<td>&nbsp;</td>
+				<td>你好，{$sess.user_name}，请核对/补充您的个人资料</td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>真实姓名:</td>
+				<td><label>
+				  <input type="text" name="truename" id="truename" VALUE="{$user.truename}"/>
+				</label></td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>联系电话：</td>
+				<td><input type="text" name="tel" id="tel" VALUE="{$user.tel}"/></td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>身 份 证：</td>
+				<td><input name="idcard" type="text" id="idcard" size="32" maxlength="32" VALUE="{$user.idcard}"/></td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>收货地址：</td>
+				<td><label>
+				  <textarea name="address" id="address" cols="60" rows="2">{$user.address}</textarea>
+				</label></td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>邮编：</td>
+				<td><input type="text" name="zipcode" id="zipcode" VALUE="{$user.zipcode}"/></td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>其他：</td>
+				<td><INPUT TYPE="checkbox" NAME="acceptad" VALUE="1"{$user.acceptad}>接受新大洲本田的促销信息资料</td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" name="button2" id="button2" value=" 保存个人资料 " /></td>
+				<td>&nbsp;</td>
+			  </tr>
+			</table> 
+			  </form>
+
+您打开本页面时服务器时间是：{$server_time}<br>
+
+	<!--if:have_profile-->
+	<font color=blue size=3>您的资料已经补充完毕，可以参加团购，请确保资料的正确性和实时性。</font><br>
+
+		<!--if:qg_start-->
+		<FORM METHOD=POST ACTION="index.php?action=update" target="bound_frame">
+		<INPUT TYPE="submit" VALUE=" 我要抢购！ " style="height: 48px;font-size: 32px;font-family: bold;">
+		</FORM>
+		<!--else:qg_start-->
+		<p><br />
+		<font color=red><B>当前时间不可以抢购。下一轮抢购时间是 11月20日 20:00—22:00，请密切关注。</B></font>
+		</p>
+		<!--/if:qg_start-->
+
+	<!--else:have_profile-->
+	<font color=red size=5><br>您的资料尚不完整，无法参与抢购，请赶快补充您的资料。</font>
+
+	<!--/if:have_profile-->
+
+
+
+
+	<!--else:is_login-->
+	<a href="http://www.xieche.net/index.php/public/login">登录</a> <a href="http://www.xieche.net/index.php/member/add" target=_blank>注册</a><br>
+	<!--/if:is_login-->
+
+
+
+
+
+
+<!--/if:joined-->
+
+		
+		</td>
+      </tr>
+    </table></td>
+  </tr>
+
+
+
+
+
+</table>
+
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+<TR>
+	<TD align=center>
+	Copyright 2005—2009 motorfans.com.cn All rights reserved. 中国摩托迷网 版权所有 <br>
+在法律允许范围内，中国摩托迷网保留对活动条款进行即时更改的最终解释权<img src=http://www.motorfans.com.cn/bbs/f_127.htm height=0 width=0>
+	</TD>
+</TR>
+</TABLE>
+
+<!-- <div id="rightnav" class="rightnav">
+<embed src="http://player.youku.com/player.php/sid/XMTI4MTI3NzEy&isAutoPlay=true&/v.swf" quality="high" width="300" height="250" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
+</div> -->
+
+
+</body>
+</html>

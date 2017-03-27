@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=10;IE=9;IE=8;IE=7;" />
+	<title><notempty  name="title">{$title}<else/>平安好车,汽车保养维修预约,4S店折扣优惠,事故车维修预约</notempty></title>
+	<empty name="meta_keyword">
+	<meta content="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修" name="keywords">
+	<else/>
+	<meta content="{$meta_keyword}" name="keywords">
+	</empty>
+	<empty name="description">
+	<meta content="汽车保养维修,事故车维修-首选携车网,全国唯一4S店汽车保养维修折扣的网站,最低5折起,还有更多团购套餐任您选,事故车维修预约,不花钱,还有返利拿4006602822"  name="description">
+	<else/>
+	<meta content="{$description}" name="description">
+	</empty>
+	
+
+	<script type="text/javascript" src="__PUBLIC__/Js/DatePicker/WdatePicker.js?v={$Think.config.VERSION_DATE}"></script><!--加载时间控件插件-->
+	<script type="text/javascript" src="__PUBLIC__/Js/com.js?v={$Think.config.VERSION_DATE}"></script>
+
+	<link rel="shortcut icon" href="http://www.pahaoche.com/favicon.ico" type="image/x-icon">   
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_pa/css/basic.css?v={$Think.config.VERSION_DATE}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_pa/css/common.css?v={$Think.config.VERSION_DATE}" />
+	
+	<script src="__PUBLIC__/new_pa/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_pa/js/jquery-ui-1.9.2.custom.min.js" ></script>
+	<link rel="stylesheet" href="__PUBLIC__/new_pa/css/redmond/jquery-ui-1.9.2.custom.css">
+	<script src="__PUBLIC__/new_pa/js/base.js"></script>
+	<!-- GA Track Code Start -->
+	<script src="__PUBLIC__/new_pa/js/pa_ga.js"></script>
+	<!-- GA Track Code End -->
+	<script type="text/javascript">		 
+		 $(document).ready(function(){
+				paMenu();
+		 });
+		 function paMenu()
+		 {
+		 	$(".navbar>li:eq(1)").mouseover(function(){
+				$(".navbar>li>ul").css("display","block");
+			});
+			$(".navbar>li:eq(1)").siblings().mouseover(function(){
+				$(".navbar>li>ul").css("display","none");
+				$(".navbar>li:eq(1) a").attr("class","");
+			});
+			$(".navbar>li>ul").mouseover(function(){
+				$("#m1").attr("class","subNavMouseOut");
+			});
+			$(".navbar>li>ul").mouseout(function(){
+				$(".navbar>li>ul").css("display","none");
+				$(".navbar>li:eq(1) a").attr("class","");
+			});
+		 }
+</script>
+
+</head>
+<body>
+<div class="topContainer">
+	<!-- topContent Start -->
+	<div class="topContent">
+		<div class="Header">
+		   <a href="http://www.pahaoche.com" target="_top" class="logo"></a>
+		   <div class="Head_r">
+			
+			   <div class="log_buyer"><a href="http://jp.pahaoche.com/jp/perCenter.do" target="_top">经销商登录</a></div>
+			   <div class="top_cx"><a href="http://jp.pahaoche.com/jp/seller/seller.do" target="_top">竞价查询</a></div>
+			   <div class="hotline" style="margin-top: 30px;"><img src="__PUBLIC__/new_pa/images/hotline.png" /></div>
+		   </div>
+		</div>
+		
+		<!--  导航   -->
+  	  	<div class="subNav">
+			<ul class="navbar">
+			<li><a href="http://www.pahaoche.com/" target="_top">首页</a></li>
+			<li><a href="http://www.pahaoche.com/yuyue.w" id="m1" target="_blank">我要卖车</a>
+	            	<ul style="display:none;">
+	                	<li><a href="http://www.pahaoche.com/yuyue.w" target="_blank">预约卖车</a></li>
+	                    <li><a href="http://www.pahaoche.com/helpQA.w">卖车流程</a></li>
+	                </ul>
+            	</li>
+			<li><a href="http://baoyang.pahaoche.com">我要养车</a></li>
+			<li><a href="http://www.pahaoche.com/mapStore.w" target="_top">门店地图</a></li>
+			<li><a href="http://www.pahaoche.com/consulting.w" target="_top">好车资讯</a></li>
+			<li><a href="http://www.pahaoche.com/yuyue.w" target="_blank">好车活动</a></li>
+			<li>
+				<a id="chexianhead" style="float:left;display:block;width:45px;text-align:right;" href="http://www.4008000000.com/cpchexian/bd/bd.shtml?WT.mc_id=ec03-pahaoche-001" target="_blank">车险</a>
+				<a id="chedaihead" style="float:left;display:block;width:45px;text-align:left;text-indent:5px;" href="http://daikuan.pingan.com/qichedaikuan.shtml?WT.mc_id=ec03-pahaoche-001" target="_blank">车贷</a>
+			</li>
+			<li><a href="http://www.pahaoche.com/about.w" target="_top">关于我们</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- topContent End -->
+</div>

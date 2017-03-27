@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+ 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no">
+	<title>我的机油桶</title>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+	<style type="text/css">
+	*{margin: 0; padding: 0; list-style: none; text-decoration: none; font-family: "微软雅黑";}
+	body{background: url(/Public/mobile/images/castrol/newbg.jpg) top center no-repeat #4a9cc4; background-size: 100%; color: #FFFFFF;}
+	.botborder{background: rgba(255,255,255,0.5); height: 1px; overflow: hidden; width: 100%;}
+	.wrap{overflow: hidden;}
+	a{color: #FFFFFF;}
+	.youname{padding: 30px 20px; line-height: 1.5em; font-size: 16px;}
+	.yousum{margin: 0px auto; width: 280px; height: 280px; overflow: hidden;position: relative;}
+	.yousum #clock{position: absolute; top: 0; left: 0; z-index: 1;}
+	.yousum .sumdes{position: absolute; width: 280px; height: 280px; z-index: 2; text-align: center;}
+	.yousum .sumdes p{height: 40px; margin-top: 50px; font-size: 16px; overflow: hidden;}
+	.yousum .sumdes p b{font-size: 24px;}
+	.yousum .sumdes img{height: 142px;}
+	.youcount{margin: 25px 0 0; overflow: hidden; padding:0 20px; font-size: 14px;}
+	.youcount span{display: inline-block; background: url(/Public/mobile/images/castrol/oildrum.png) left center no-repeat; background-size:auto 18px; padding-left: 16px; margin-left: 5px;}
+	.tigong{font-size: 14px; padding:0 20px; margin: 25px 0 15px;}
+	.tigong span{display: inline-block; background: url(/Public/mobile/images/castrol/slogo.png) center center no-repeat; padding-left: 30px;}
+	.onetop{margin: 15px 20px 10px; padding-left: 25px; height: 20px; font-size: 16px; line-height: 20px;}
+	.lipinico{background: url(/Public/mobile/images/castrol/libao.png) left center no-repeat; background-size: 19px;}
+	.dynamicico{background: url(/Public/mobile/images/castrol/dynamicicon.png) left center no-repeat; background-size: 19px;}
+	.activityico{background: url(/Public/mobile/images/castrol/activityicon.png) left center no-repeat; background-size: 19px;}
+	.stipsico{background: url(/Public/mobile/images/castrol/stipsicon.png) left center no-repeat; background-size: 19px;}
+	.lipinlist{padding: 0 20px; font-size: 14px;}
+	.lipinlist a#exchange{display: block; width: 100%; height: 35px; line-height: 33px; background: url(/Public/mobile/images/castrol/tmicon.png) 0 0 repeat;}
+	.dynamiclist{font-size: 14px; padding: 10px 20px;}
+	.activitycon{padding: 5px 20px; font-size: 14px;}
+	.activitycon p{line-height: 1.7em; margin: 15px 0; overflow: hidden;}
+	</style>
+</head>
+		<script type="text/javascript">
+        //禁掉分享
+        function onBridgeReady(){
+        WeixinJSBridge.call('hideOptionMenu');
+        }
+
+        if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+        }else{
+        onBridgeReady();
+        }
+		</script>
+<body>
+	<div class="wrap">
+		<div class="youname">
+			<p>Hi {$userinfo.nickname}</p>
+			<p>您的机油还不够多，点击微信菜单，生成我的机油桶，然后把你的代言图片转发给朋友，让小伙伴们都为您加油吧！</p>
+		</div>
+		<div class="yousum">
+			<canvas id="clock" width="280" height="280"></canvas>
+			<div class="sumdes">
+				<p>油量<b>{$list.curOilNum}ml</b></p>
+				<img src="/Public/mobile/images/castrol/oildrum.png" alt="">
+				<small style="display:block">第{$list['oil_bucket']+1}个油桶</small>
+			</div>
+		</div>
+		<div class="youcount">您的总油量{$list.oil_num}ml&nbsp;&nbsp;&nbsp;<notempty name="list.oil_bucket">已积满{$list.oil_bucket}个油桶<!-- <span>×</span>  --></notempty></div>
+		<div class="tigong"><a href="/mobilecar-newoildes" style="display:block;"><b style="float:right; font-weight:normal">>></b>活动由<span>&nbsp;</span>携车网府上养车提供</a></div>
+		<div class="botborder">&nbsp;</div>
+		<div class="onetop lipinico">礼品兑换列表</div>
+		<div class="botborder">&nbsp;</div>
+		<div class="lipinlist">
+			<table width="100%">
+				<tbody>
+					<tr height="35">
+						<td width="80">400ml</td>
+						<td align="right">10元打车代金券</td>
+					</tr>
+					<tr height="35">
+						<td>600ml</td>
+						<td align="right">上门汽车安全检测</td>
+					</tr>
+					<tr height="35">
+						<td>1000ml</td>
+						<td align="right">上门汽车保养专业服务</td>
+					</tr>
+					<tr height="35">
+						<td>2500ml</td>
+						<td align="right">府上养车-壳牌黄喜力机油套餐</td>
+					</tr>
+					<tr height="35">
+						<td>4000ml</td>
+						<td align="right">府上养车-壳牌蓝喜力机油套餐</td>
+					</tr>
+					<tr height="35">
+						<td>6000ml</td>
+						<td align="right">府上养车-壳牌灰喜力机油套餐</td>
+					</tr>
+					<tr height="35">
+						<td>10000ml</td>
+						<td align="right">1000元加油卡</td>
+					</tr>
+					<tr height="10"></tr>
+					<tr height="35">
+						<td colspan="2" align="center"><a href="/mobilecar-ech_testimonial-wx-{$weixin_id}" id="exchange">兑换奖品</a></td>
+					</tr>
+					<tr height="10"></tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="onetop dynamicico">最新动态</div>
+		<div class="botborder">&nbsp;</div>
+		<div class="dynamiclist">
+			<table width="100%">
+				<tbody>
+					<volist name="otherDatas" id="vo">
+						<notempty name="vo.tag">
+							<tr height="35">
+								<td>"{$vo.nickname}"今天签到1次</td>
+								<td width="100">机油增加{$vo.oil_num}ml</td>
+								<td width="35">{$vo.create_time|date="H:i",###}</td>
+							</tr>
+						<else />
+					    	<tr height="35">
+								<td>"{$vo.nickname}"加入携车网</td>
+								<td width="100">机油增加100ml</td>
+								<td width="35">{$vo.create_time|date="H:i",###}</td>
+							</tr>
+						</notempty>
+				    </volist>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="onetop activityico">活动规则</div>
+		<div class="botborder">&nbsp;</div>
+		<div class="activitycon">
+			<p>2014/12/04 10:00-2014/12/31 23:59</p>
+			<p>1.活动期间，通过专属加油图片关注携车网公众号的粉丝每增加1位 您的油桶即增100ml（仅限新用户）每天签到，油桶即增5-10ml（所有用户均可参加）</p>
+			<p>2.根据相应的积油量可根据兑换列表兑换相应的奖品</p>
+			<p>3.在本次活动期间，如您存在违规行为（包括但不限于恶意套现、机器作弊、借用他人获奖结果）携车网将取消您的奖品兑换资格</p>
+			<p>4.携车网可在法律法规允许范围内对本次活动规则进行解释</p>
+		</div>
+
+		<div class="onetop stipsico">小提示</div>
+		<div class="botborder">&nbsp;</div>
+		<div class="activitycon">
+			<p>1.信息填写完毕后，客服会在24小时内与您联系，请保持手机畅通</p>
+			<p>2.仅限上海用户兑换的“府上养车服务”，会根据您的预约时间、地点，上门为您服务</p>
+			<p>3.可全国兑换的“快的打车券”，将已短信形式发送；“油卡”将快递至您填写的地址</p>
+		</div>
+
+
+	</div>
+
+
+	<script>
+		var clock=document.getElementById('clock');
+		var Nuu = document.getElementById('num');
+		var cxt=clock.getContext('2d');
+		var jindu;
+		var j=1;
+		var mynum = {$list['curOilNum']/40};
+		mynum = mynum*1.8;
+		/* if(mynum <34){
+			mynum = 10;//默认三分之一
+		} */
+		mymun = 360;
+		function drawbgClock(){
+			//清除画布
+			cxt.clearRect(0,0,280,280);
+			
+			for(var i=0;i<180;i++){
+				cxt.save();
+				//设置粗细
+				cxt.lineWidth=1;
+				//设置颜色(使用时刻度的颜色)
+				// cxt.fillStyle="rgba(255,255,255,5)";
+				cxt.strokeStyle="rgba(255,255,255,0.25)";
+
+				//设置或者重置画布的0，0点
+				cxt.translate(140,140);
+				//设置旋转角度
+				cxt.rotate(i*2*Math.PI/180);
+				//画
+				cxt.beginPath();
+				cxt.moveTo(0,-130);
+				cxt.lineTo(0,-140);
+				cxt.closePath();
+				cxt.stroke();
+				cxt.restore();
+			}
+		}
+		function drawClock(){
+			//清除画布
+			cxt.clearRect(0,0,280,280);
+			
+			for(var i=0;i<180;i++){
+				cxt.save();
+				//设置粗细
+				cxt.lineWidth=1;
+				//设置颜色(使用时刻度的颜色)
+				// cxt.fillStyle="rgba(255,255,255,5)";
+				cxt.strokeStyle="rgba(255,255,255,0.25)";
+
+				//设置或者重置画布的0，0点
+				cxt.translate(140,140);
+				//设置旋转角度
+				cxt.rotate(i*2*Math.PI/180);
+				//画
+				cxt.beginPath();
+				cxt.moveTo(0,-130);
+				cxt.lineTo(0,-140);
+				cxt.closePath();
+				cxt.stroke();
+				cxt.restore();
+			}
+
+
+			//当前刻度
+			for(var i=0;i<j;i++){
+				cxt.save();
+				//设置粗细
+				cxt.lineWidth=1;
+				//设置颜色(使用时刻度的颜色)
+				// cxt.fillStyle="rgba(255,255,255,5)";
+				cxt.strokeStyle="rgb(255,255,255)";
+
+				//设置或者重置画布的0，0点
+				cxt.translate(140,140);
+				//设置旋转角度
+				cxt.rotate(i*2*Math.PI/180);
+				//画
+				cxt.beginPath();
+				cxt.moveTo(0,-130);
+				cxt.lineTo(0,-140);
+				cxt.closePath();
+				cxt.stroke();
+				cxt.restore();
+			}
+
+
+			if(j<mynum){
+				j++;
+			}else{
+				clearInterval(jindu);
+			}
+			}
+			var bgdraw = setInterval(drawbgClock,5);
+			//使用setInterval(代码,毫秒时间)  让时钟动起来
+			// drawClock();
+			setTimeout(function(){clearInterval(bgdraw); var jindu = setInterval(drawClock,5);},500);
+		</script>
+		<script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+
+	</script>
+
+
+</body>
+</html>

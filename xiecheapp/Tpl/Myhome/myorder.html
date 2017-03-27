@@ -1,0 +1,186 @@
+<layout name='layout_new' />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+<script>
+		function search_order(){		
+			var order_date = $("#order_date").val();
+			location.href="__APP__/myhome/myorder-order_date-"+order_date;
+		}
+
+		function cancel(id){
+			if(window.confirm("您选择的订单将会被取消，若订单使用抵用券会一同作废~")){
+					location.href="__APP__/order/editstate-order_id-"+id+"-order_state-cancel";
+			}
+		}
+</script>
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title">
+				我的维修保养订单:
+				<select name="order_date" size="1" id="order_date" onChange="search_order();">
+					<option value="1" <if condition="$order_date eq 1"> selected </if>>最近一个月的订单</option>
+					<option value="2" <if condition="$order_date eq 2"> selected </if>>一个月之前的订单</option>
+				</select>
+			</h2>
+			<div class="table-con">
+				<ul class="filter">
+					<volist name="Think.config.NEWORDER_STATE" id="vo_os">
+						<li>
+							<a href="{:URL('/Myhome/myorder',array('order_state'=>$key,'order_date'=>$order_date))}{:C('HTML_URL_SUFFIX')}"<if condition="($order_state eq $key) AND ($order_state neq 'all')">  </if> >{$vo_os}</a>
+						</li>
+					</volist>
+				</ul>
+				<table width="948">
+					<tr >
+						<th>订单编号</th>
+						<th>预约时间</th>
+						<th>优惠类型</th>
+						<th>订单状态</th>
+						<th>投诉状态</th>
+						<th>操作</th>
+						<th>查看</th>
+					</tr>
+					<volist name="list" id="vo" key="key">
+					<tr <if condition="$key%2 eq 0">class="bg-blue"</if>>
+						<td>{$vo.order_id}</td>
+						<td>{$vo['order_time']|date="Y-m-d H:s",###}</td>
+						<td><if condition="$vo.salecoupon_name neq ''">{$vo.salecoupon_name}<else/>---</if></td>
+						<td>
+							<volist name="Think.config.ORDER_STATE" id="vo_os">
+								<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+							</volist>
+						</td>
+						<td>
+							<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+								<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+							</volist>
+						</td>
+						<td>
+						<eq name="vo.order_state" value="0">
+							<!--<a href="__APP__/order/editstate/order_id/{$vo.id}/order_state/-1">取消预约</a>-->
+							<!--<a href="{:URL('/order/editstate',array('order_id'=>$vo['id'],'order_state'=>'cancel'))}{:C('HTML_URL_SUFFIX')}">取消预约</a>-->
+								<a href="###" onclick="cancel({$vo['id']});">取消预约</a>
+						</eq>&nbsp;&nbsp;
+						<eq name="vo.order_state" value="-1">已取消</eq>&nbsp;&nbsp;
+							<if condition="($vo.complain_state == 0) AND ($vo.order_state == 2)">
+							<!--<a href="__URL__/editstate/order_id/{$vo.id}/complain_state/1">投诉</a>-->
+							<a href="{:URL('/order/editstate',array('order_id'=>$vo['id'],'complain_state'=>1))}{:C('HTML_URL_SUFFIX')}">投诉</a>
+						</if>
+						<if condition="($vo.complain_state == 1) AND ($vo.order_state == 2)">
+							
+							<!--<a href="__URL__/editstate/order_id/{$vo.id}/complain_state/2">取消投诉</a>-->
+							<a href="{:URL('/order/editstate',array('order_id'=>$vo['id'],'complain_state'=>2))}{:C('HTML_URL_SUFFIX')}">取消投诉</a>
+						</if>
+							
+						</td>
+						<td>
+							<a href="{:URL('/myhome/orderdetail',array('order_id'=>$vo['order_id']))}{:C('HTML_URL_SUFFIX')}" class=' check'>查看</a>
+							<if condition="($vo.order_state eq 1) and ($vo.iscomment eq 0)" > | <a href="###" class="comment" id="comment" orderid="{$vo.id}" shopid="{$vo.shop_id}" class=' check'>我要评价</a>
+							</if> 
+							<if condition="$vo.iscomment eq 1" > | <a href="###" class="showcomment" id="showcomment" orderid="{$vo.id}" shopid="{$vo.shop_id}" class=' check'>查看评价</a>
+							</if>
+						</td>
+					</tr>
+					</volist>
+				</table>
+				<div class="pagerArea">
+					<ul id="pager">
+						{$page}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>
+	<style>
+		#popup{width: 600px; height: 550px;}
+	</style>
+<div id="popup"></div>
+<div class="blackbox"></div>
+
+<script type="text/javascript">
+
+	$('.showcomment').on('click',function(){
+//			$('.blackbox').show();
+//			$("#popup").css({
+//				"width" : "600px",
+//				"height" : "500px",
+//				"top": "100px",
+//	            "left": ( $(window).width() - parseInt(800)) / 2+$(window).scrollLeft() + "px"
+//			}).show();
+			$("#popup").css({
+				"position" : "relative"
+			}).dialog({
+				 closeOnEscape: true,
+				 height: 700,
+				 width: 700, 
+				 title : "查看评价",
+				 modal: true,
+
+			});
+
+			var orderid = $(this).attr('orderid');
+			var shopid = $(this).attr('shopid');
+			$.ajax({
+				type: "POST",
+				url: "/comment/showcomment",
+				cache: false,
+				data: "orderid="+orderid+"&shopid="+shopid,
+				success: function(data){
+					$("#popup").html("");
+					$("#popup").append("<div style='padding: 10px 10px 8px;height:20;line-height:20px;color: #336699;'>评价</div>");
+					$("#popup").append(data);
+				}
+			});
+	
+	} );
+
+	$('.comment').on('click',function(){
+		//$('.blackbox').show();
+		
+		
+		var orderid = $(this).attr('orderid'),
+			shopid = $(this).attr('shopid'),
+			responseHtml = "";
+		$.ajax({
+			type: "POST",
+			url: "/comment",
+			cache: false,
+			data: "orderid="+orderid+"&shopid="+shopid,
+			success: function(data){
+				$("#popup").html("");
+				$("#popup").append(data);
+			}
+		});
+//		console.log("responseHtml")
+//		console.log(responseHtml)
+
+		$("#popup").css({
+			"position" : "relative"
+		}).dialog({
+			 closeOnEscape: true,
+			 height: 700,
+      		 width: 700, 
+			 title : "我要评价",
+			 modal: true,
+
+		});
+		
+
+	} );
+
+
+	/*$('.blackbox').not("#popup").on('click', function(){
+		$('.blackbox').hide();
+		$("#popup").hide()
+	});*/
+
+
+</script>	

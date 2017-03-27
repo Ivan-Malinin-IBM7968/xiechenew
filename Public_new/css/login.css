@@ -1,0 +1,194 @@
+.logreg{
+	position: relative;
+	margin: 50px auto;
+}
+
+.tbox{
+	position: relative;
+	border: 6px solid #e8e8e8;
+	width: 900px;
+	border-radius: 5px;
+/*	position: absolute;
+	top: 50%;
+	left: 50%;*/
+	margin: 0 auto;
+}
+
+.login{
+	background: url(../images/login/loginbg.png) 0 0 no-repeat;
+	height: 355px;
+	/*margin: -240px 0 0 -450px;*/
+}
+
+.loginform{
+	width: 310px;
+	margin-top: 20px;
+	margin-right: 50px;
+	float: right;
+	overflow: hidden;
+}
+
+.item{
+	margin-top: 15px;
+}
+
+.item-ifo{
+	height: 38px;
+	overflow: hidden;
+	line-height: 38px;
+}
+
+.item span{
+	color: #999999;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+}
+.item input{
+	float: left;
+	color: #666666;
+	font-size: 14px;
+	text-indent: 3px;
+}
+.item1 input{
+	height: 36px;
+	border: 1px solid #cccccc;
+	width: 310px;
+	/*line-height: 36px;*/
+	vertical-align:middle;
+}
+
+.item1 input:focus{
+	border-color: #3fa7df;
+}
+
+input.ibg{
+	background: url(../images/login/inputbg.png) 0 0 no-repeat;
+}
+
+input.ibg.uname{
+	background-position: 280px -29px;
+}
+input.ibg.upwd{
+	background-position: 280px 8px;
+}
+input.ibg.utel{
+	background-position: 280px -72px;
+}
+
+
+.item2 input{
+	width: 150px;
+	height: 36px;
+	margin-right: 10px;
+	border: 1px solid #cccccc;
+	/*line-height: 36px;*/
+	vertical-align:middle;
+}
+
+.submit{
+	width: 304px;
+	height: 36px;
+	color: #FFFFFF;
+	background: #19293b;
+	border: none;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 36px;
+	text-align: center;
+}
+
+input.submit:hover{
+	background: #202c3c;
+}
+
+#go-reg{
+	width: 115px;
+	height: 35px;
+	line-height: 30px;
+	font-size: 14px;
+	background: #3fa7df;
+	color: #FFFFFF;
+	display: inline-block;
+	text-align: center;
+	border: 6px solid #e8e8e8;
+	border-radius: 5px 5px 0 0;
+	border-bottom: none;
+	position: absolute;
+	right: 40px;
+	top: -35px;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+.register{
+	height: 400px;
+	/*margin: -240px 0 0 -450px;*/
+	display: none;
+}
+
+.register input{
+	font-size: 14px;
+}
+.register input:focus{
+	border-color: #3fa7df;
+}
+input.w300{
+	
+}
+
+input.xginput{
+	width: 310px;
+	text-indent: 5px;
+	height: 36px;
+	border: 1px solid #cccccc;
+	color: #555555;
+	line-height: 36px;
+	vertical-align: middle;
+}
+
+
+
+.register span{
+	display: inline-block;
+	width: 250px;
+	height: 36px;
+	line-height: 36px;
+	border: 1px solid #cccccc;
+	font-size: 12px;
+	text-indent: 5px;
+	color: #535353;
+	background: #F8F8F8;
+}
+
+input.verify{
+	width: 160px;
+	text-indent: 5px;
+	height: 36px;
+	border: 1px solid #cccccc;
+	color: #555555;
+	line-height: 36px;
+	vertical-align: middle;
+}
+
+input#send_verify{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	width: 140px;
+	height: 36px;
+	border: 1px solid #cccccc;
+	vertical-align: middle;
+}
+
+#go-login{
+	font-size: 14px;
+	position: absolute;
+	right: 4px;
+	top: -30px;
+}
+
+#go-login a{
+	color: #005aa0;
+}

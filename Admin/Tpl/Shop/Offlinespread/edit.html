@@ -1,0 +1,92 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    function delete_record(id){
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Shop/Offlinespread/delete_spread',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">编辑地推 [ <A HREF="__URL__">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/update/id/{$vo.id}">
+			<table cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >姓名：</TD>
+                    <TD class="tLeft" ><input type="text" id="uname" class="large bLeftRequire" name="uname" value="{$vo.uname}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >手机号码：</TD>
+                    <TD class="tLeft" ><input type="text" id="phone" class="large bLeftRequire" name="phone" value="{$vo.phone}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >邀请码：</TD>
+                    <TD class="tLeft" ><input type="text" id="invite_code" class="large bLeftRequire" name="invite_code" value="{$vo.invite_code}"></TD>
+                </TR>
+                <!--
+				<TR>
+                    <TD class="tRight" >邀请次数：</TD>
+                    <TD class="tLeft" ><input type="text" id="invite_num" class="large bLeftRequire" name="invite_num" value="{$vo.invite_num}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >中奖信息：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="win" class="large bLeftRequire" name="win" value="{$vo.win}"></TD>
+                </TR>
+                -->
+				<TR>
+                    <TD class="tRight" ><input type="hidden" name="id" value="{$vo.id}"></TD>
+                    <TD class="tLeft" ><input TYPE="submit" value="提交"></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+  <!--  <div class="list">
+		<table class="list">
+			<tr class="row">
+				<th width="5%">ID</th>
+				<th width="10%">添加人</th>
+				<th width="20%">添加时间</th>
+				<th width="20%">修改时间</th>
+				<th width="35%">走访内容</th>
+				<th width="10%">操作</th>
+			</tr>
+			<volist name="model" id="voo">
+				<tr>
+					<td>{$voo.id}</td>
+					<td>{$voo.operator_name}</td>
+					<td>{$voo.create_time|date="Y-m-d H:i:s",###}</td>
+					<td>{$voo.update_time|date="Y-m-d H:i:s",###}</td>
+					<td>{$voo.content}</td>
+					<td><a href="__APP__/Shop/Offlinespread/edit/id/{$voo.id}" >编辑</a> | <a href="###" onclick="delete_record({$voo.id});">删除</a></td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+	-->
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

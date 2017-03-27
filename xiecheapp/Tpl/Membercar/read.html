@@ -1,0 +1,116 @@
+<layout name='layout_note' />
+<div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 用户中心</div>
+        <div class="userjzbar12"></div>
+		<div class="Consumebox">
+			<p class="ht01">
+			<a href="__APP__/membercar/add" class="addcarbut"></a>
+			<!-- <a href="#" class="Notebut"></a> -->
+			</p>
+			<div class="clear"></div>
+			<div class="Consumelistbg1"></div>
+			<!-- <script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js"></script> -->
+			<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+			<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+			<form action="__APP__/membercar/update" method="post">
+				<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+					<tr>
+						<th width="40%">品牌</th>
+						<td  width="60%">
+							<select id="get_brand" name="brand_id" style="width:180px;" onchange="comp_brlist('get_brand','get_series', 'get_model');">
+					        </select><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>车系</th>
+						<td>
+							<select id="get_series" name="series_id" style="width:180px;" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+							</select><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>车型</th>
+						<td>
+							<select id="get_model" name="model_id" style="width:180px;" disabled>
+							</select><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>车牌号</th>
+						<td><select name="s_pro">
+								<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+									<option value="{$type}" <if condition="$vo.s_pro eq $type">selected
+<elseif condition="$type eq '沪'" />selected
+<else />
+</if>>{$type}</option>
+								</volist>
+							</select>
+							<input type="text" value="{$vo.car_number}" name="car_number"></input>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>车辆识别代码</th>
+						<td>
+							<input type="text" value="{$vo.car_identification_code}" name="car_identification_code"></input>
+							<span><a href="###" id="how_find_code"><font size="2" color="grey">如何查找您爱车的车辆识别代码？</font></a></span>
+						</td>
+					</tr>
+					<tr>
+						<th>给车取个昵称</th>
+						<td><input type="text" value="{$vo.car_name}" name="car_name"></td>
+					</tr>
+				<tr>
+					<td><input type="hidden" name="u_c_id" value="{$vo.u_c_id}" /></td>
+					<td><input type="submit" value="提交"></td>
+				</tr>
+			</table>
+		</form>
+		<script type="text/javascript">
+			comp_fctlist("get_brand", "get_series", "get_model",{$vo.brand_id},{$vo.series_id},{$vo.model_id});
+		</script>
+	</div>
+	<input type="hidden" id="brand_id" name="brand_id" value="{$vo.brand_id}">
+	<input type="hidden" id="series_id" name="series_id" value="{$vo.series_id}">
+	<input type="hidden" id="model_id" name="model_id" value="{$vo.model_id}">
+    <div class="clear"></div>
+</div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+	$(function(){
+		//初始化
+		Think.init({
+			basePath:"__PUBLIC__/think"
+		});
+		$("#how_find_code").click(function(){
+			popup();
+			$.ajax({
+				type:'POST',
+				url:'__URL__/codehelp',
+				cache:false,
+				datatype:'text',
+				data:"",
+				success: function(data){
+					if(data){
+						$("#code_help").html(data);
+					}
+				}
+			})
+		})
+	})
+	function popup(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>车辆识别代码帮助</em><a close="1"  class="flbc">关闭</a></h3><div style="height:500px; overflow:scroll;" id="code_help"></div>',
+			drag:true,//不可拖动
+			cover:true,//设置笼罩
+			x:0,
+			y:-420
+		});
+	}
+</script>

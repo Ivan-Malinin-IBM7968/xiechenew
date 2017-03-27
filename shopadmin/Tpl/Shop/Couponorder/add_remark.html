@@ -1,0 +1,18 @@
+<load file="__CSS__/newstyle.css" />
+<div id="main">
+	<div id="main-right"><h1>添加备注</h1></div>
+	<div id="main-right2">
+		<form method="post" name="form" id="form" action="__URL__/insert_remark">
+			<input type="hidden" name="membercoupon_id" value="{$membercoupon_id}">
+			<table width="785" border="0" cellspacing="1" cellpadding="1">
+			<tr>
+				<td>备注信息：</td>
+				<td><textarea name="remark" cols="30" rows="3">{$membercoupon.remark}</textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="提交"></td>
+			</tr>
+			</table>
+		</form>
+	</div>
+</div>

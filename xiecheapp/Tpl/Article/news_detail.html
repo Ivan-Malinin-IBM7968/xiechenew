@@ -1,0 +1,148 @@
+<layout name='layout_new' />
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/new_2/js/base.js" ></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+
+
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="__APP__/articlelist">用车心得</a></li>
+			<li>></li>
+			<li>{$articleinfo.title}</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="content w1200">
+		<div class="content-left w780 news ">
+			
+			<div class="bg-blue news-container">
+				<div class="outArticle">
+					<h2>{$articleinfo.title}</h2>
+					<div class="articleInfo">
+						<span><a href="http://www.xieche.com.cn" target="_blank">携车网</a></span>
+						<span>时间: {$articleinfo.create_time|date="Y-m-d H:i:s",###}</span>
+						<span>编辑: 青尧 </span>
+						<span>来源：网上</span>
+					</div> 
+					<p>{$articleinfo.content}</p>
+					<div class="articleLink">
+						<div class="left">
+						<!--	<span>标签：</span><a href="#">标  签</a> | <a href="#">标  签</a> | <a href="#">标  签</a>| <a href="#">标  签</a>-->
+						</div>
+						
+					</div>
+					<!-- Baidu Button BEGIN -->
+					<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+						<span class="bds_more">分享到：</span>
+						<a class="bds_qzone"></a>
+						<a class="bds_tsina"></a>
+						<a class="bds_tqq"></a>
+						<a class="bds_renren"></a>
+						<a class="bds_t163"></a>
+						<a class="shareCount"></a>
+					</div>
+					<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3625391" ></script>
+					<script type="text/javascript" id="bdshell_js"></script>
+					<script type="text/javascript">
+					document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+					</script>
+					<!-- Baidu Button END -->	
+					<div class="clear"></div>
+					<div class="other-article">
+						<span class='left'>
+							上一篇 : <a href="__APP__/article/{$prev_article.id}" >{$prev_article.title}</a>
+						</span>
+						<span class='right'>
+							下一篇 : <a href="__APP__/article/{$prev_article.id}" >{$next_article.title}</a>
+						</span>
+					
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			<!--
+			<div class="pagerArea bg-blue">
+			<ul id="pager">
+						
+					<li >下一篇<a href="__APP__/article/{$prev_article.id}">{$prev_article.title}</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li >上一篇<a href="__APP__/article/{$next_article.id}">{$next_article.title}</a></li>
+				</ul>
+			</div>-->
+			<div class="news-con w780">
+				<div class="sales">
+					<h4>优惠速递</h4>
+					<ul>
+						<volist name="noticeList" id="n_value">
+							<li><a href="{:URL('/shop/favtype',array('shop_id'=>$n_value['shop_id'],'id'=>$n_value['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="{$n_value.noticetitle}">{$n_value.noticetitle|g_substr=34}<em>{$n_value.update_time|date="Y-m-d ",###}</em></a></li>
+						</volist>
+					</ul>
+				</div>
+				<div class="aftermarket">
+					<h4>厂商相关</h4>
+					<ul>
+						<volist name="article_shop_relation" id="value">
+						<li>
+							<a href="__APP__/article/{$value.id}"  target="_blank" title="{$value.title}">{$value.title|g_substr=34}<em>{$value.create_time|date="Y-m-d ",###}</em>
+							</a>
+						</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--右侧开始-->
+		<div class="content-right w400">
+			<div class="w350 tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+			<div class="w350 tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+						<li>
+							<div class='image'>
+								<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+									<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+								</a>
+							</div>
+							<div class='info'>
+								<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+									<strong class="title">{$tcoupon2.coupon_name}</strong>
+								</a>
+								<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+							</div>
+							<div class="clear"></div>
+						</li>
+						
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<!--右侧结束-->
+	</div>  

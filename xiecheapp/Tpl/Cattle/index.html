@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta>
+	<title>携车网-养车惠分享，好事荐成双</title>
+	<link rel="shortcut icon" href="http://statics.xieche.net/new_2/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="http://statics.xieche.net/common/css/reset.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta name="apple-mobile-web-app-title" content="携车网">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<style>
+	  #block1{width: 100%; height: 896px; background: url("http://event.xieche.net/20140508/images/new/bg01.jpg") center center no-repeat;}
+
+
+	  #block2{width: 100%; height: 705px; background: url("http://event.xieche.net/20140508/images/new/bg02.jpg") center center no-repeat;}
+	  #inner-block2{width: 1200px; height: 705px; margin: 0 auto; position: relative;}
+	  .reg-box{position: absolute; width: 387px; height: 320px; overflow: hidden; top:85px; right:240px;  overflow: hidden;}
+	  .reg-box .phone,
+	  .reg-box .verify,
+	  .reg-box .verify-code,
+	  .reg-box .rec-phone-number,
+	  .reg-box .get-number{ margin: 20px auto; width: 387px; height: 42px; overflow: hidden;}
+	  .reg-box .phone input,
+	  .reg-box .verify input,
+	  .reg-box .verify-code input,
+	  .reg-box .rec-phone-number input{  border: 1px solid #cdcdcd; width: 316px; padding-left: 5px; height: 38px; line-height: 38px; margin-right: 10px; font-size: 16px; display: inline-block; float: left;}
+	  .reg-box .phone a,
+	  .reg-box .verify input,
+	  .reg-box .get-ticket a{
+		display: inline-block; background: #f1f1f1; color: #000000; width: 103px; height: 40px; line-height: 40px; text-align: center; text-decoration: none;float: left; margin-right: 20px;
+	  }
+	  .reg-box .verify input{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px 0px no-repeat;}
+	  .reg-box .verify input:visited{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px 0px no-repeat;}
+	  .reg-box .verify input:hover{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -40px no-repeat;}
+	  .reg-box .get-ticket a{color: #f1f1f1; background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -83px repeat-x; width: 152px; background-repeat: repeat-x; }
+	  .reg-box .get-ticket a:visited{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -83px repeat-x; background-repeat: repeat-x;}
+	  .reg-box .get-ticket a:hover{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -120px repeat-x; background-repeat: repeat-x;}
+	
+
+		#block2-1{width: 100%; height: 100px;}
+		#inner-block2-1{width: 1200px; height: 100px; margin: 0 auto; position: relative;}
+		#b1{ display: block; width: 220px; height: 43px; position: absolute; right: 60px; bottom: 40px; background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -220px repeat-x; z-index: 10;}
+		#b2{ width: 320px; height: 218px; position: absolute; bottom: 0px; right: 24px;  background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -280px repeat-x; z-index: 5; display: none;}
+		#b3{width: 40px; height: 40px; display: block; position: absolute;right: 44px; top: -112px; z-index: 8; cursor: pointer; display: none;}
+	  #block3{width: 100%; height: 949px; background: url("http://event.xieche.net/20140508/images/new/bg03.jpg") center center no-repeat; }
+    #black-overlay{position: absolute; top: 0px; left: 0px; background: #000000; opacity: .5; width: 100%; height: 2550px; display: none;}
+	</style>
+  </head>
+  <body style="position: relative">
+  <div id="black-overlay"></div>
+	<div id="block1"></div>
+	<div id="block2">
+	  <div id="inner-block2">
+		  <div class="reg-box">
+			<div class="phone">
+			  <input type="text" id="mobile" name="mobile" value="手机号码">
+
+			</div>
+			<div class="verify">
+			  <input type="button" value="获取验证码" id="send_verify" style="color: black;">
+
+			</div>
+			<div class="verify-code">
+
+			  <input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" value="验证码">
+
+			</div>
+			<div class="rec-phone-number">
+			  <if condition="$mobile neq 0">
+				<input type="text" id="tuijian_mobile" name="tuijian_mobile" value="{$mobile}">
+			  <else/>
+				<input type="text" id="tuijian_mobile" name="tuijian_mobile" value="推荐手机号">
+			  </if>
+			  
+
+			</div>
+			<div class="get-ticket">
+			  <a href="###" id="" onclick="login();" >立即领券</a>
+			  <a href="__APP__/order" id="" style='background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -170px repeat-x;'>立即使用</a>
+			</div>
+		  </div>
+	  </div>
+	</div>
+	<div id="block2-1">
+		<div id="inner-block2-1">
+			<a href="__APP__/cattle-detail" id="b1"></a>
+			<div id="b2"></div>
+			<span id="b3"></span>
+		</div>
+	</div>
+	<div id="block3">
+	</div>
+	<input type="hidden" id="hide_div" name="hide_div">
+	<script src="http://statics.xieche.net/common/js/libs/jquery/jquery-1.11.min.js"></script>
+	<script>
+	function login(){
+		var mobile = $('#mobile').val();
+		var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+		var tuijian_mobile = $('#tuijian_mobile').val();
+		if(mobile == tuijian_mobile){
+			alert('不能自己推荐自己哦~');
+			return false;
+		}
+		if(!tuijian_mobile){
+			alert('请填写手机推荐号码~');
+			return false;
+		}
+
+		if(!mobile_verify_lottery){
+			alert('验证码不能为空~');
+			return false;
+		}
+		if(/^1\d{10}$/.test(mobile)){
+			$.ajax({
+				type: "POST",
+				url: "__APP__/cattle-palogion",
+				cache: false,
+				data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery+"&tuijian_mobile="+tuijian_mobile,
+				dataType: "json",
+				success: function(data){
+		
+					if(data == '1'){
+						alert('验证码填写错误');
+						return false;
+					}else if(data == '3'){
+						alert('领取成功');
+						return false;
+					}
+					else if(data == '5'){
+						alert('请填写手机号码');
+						return false;
+					}else if(data == '7'){
+						alert('此手机号已推荐过~');
+						return false;
+
+					}else if(data == '8'){
+						alert('您填写的手机号不属于推荐号码~');
+						$('#tuijian_mobile').val('推荐手机号');
+						return false;
+					}else if(data == '9'){
+						alert('您是老用户不能填写推荐手机号哦~');
+						return false;
+					}else{
+						alert('您已经领取过优惠券了');
+						$('#hide_div').val(data);
+						$("#black-overlay").show();
+						$("#b2").show();
+						$("#b3").show();
+						
+						return false;
+					}
+				},
+				error: function(){
+
+				}
+			})
+		}else{
+			alert('请填写手机号~');
+			return false;
+		}
+
+
+	}
+
+	function send_verify_show(i){
+		if(i>='0'){
+			$("#send_verify").attr("disabled",true);
+			$("#send_verify").attr("value",i+"秒后重新发送");
+			i--;
+			setTimeout(function(){send_verify_show(i);},1000);
+		}else{
+			$("#send_verify").attr("disabled",false);
+			$("#send_verify").attr("value","发送手机验证码");
+		}
+	}
+
+	 (function(){
+		  $(".reg-box .phone input, .reg-box .verify input, .reg-box .verify-code input, .reg-box .rec-phone-number input")
+			.each(function(index, element) {
+			  var $element = $(element);
+			  var defaultValue = $element.val();
+			  $element.css('color', '#999999');
+			  $element.focus(function() {
+				  var actualValue = $element.val();
+				  if (actualValue == defaultValue) {
+					  $element.val('');
+					  $element.css('color', '#333');
+				  }
+			  });
+			  $element.blur(function() {
+				  var actualValue = $element.val();
+				  if (!actualValue) {
+					  $element.val(defaultValue);
+					  $element.css('color', '#999999');
+				  }
+			  });
+		  });
+
+			$("#b3").click(function() {
+				$("#black-overlay,#b2").hide();
+				$(this).hide();
+			})
+
+		$("#send_verify").attr("disabled",false);
+		$("#send_verify").click(function(){
+			var mobile = $('#mobile').val();
+			var second = "60";
+			if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Cattle/send_verify",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							$("#send_verify").show();
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						$("#send_verify").show();
+						send_verify_show(second);
+					}
+				})
+			}else{
+				alert('请填写手机号~');
+				return false;
+			}
+		})
+
+
+	  }());
+
+	</script>
+  </body>
+</html>

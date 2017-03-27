@@ -1,0 +1,167 @@
+<layout name='layout_repair' />
+    <link type="text/css" href="__PUBLIC__/css/sgc_order.css" rel="stylesheet">
+
+    <div class="snav" id="snav">
+      <ul>
+        <li><a href="/shiguche/">事故车介绍</a></li>
+        <li><a href="/shiguche/order" class="current">事故车维修下单</a></li>
+        <li><a href="/shiguche/repair_order/">故障维修下单</a></li>
+      </ul>
+      <span>
+        <b>您选择的车型是：{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+      </span>
+    </div>
+
+    <div class="shiguche">
+      <div class="sgcform">
+        <form action="/shiguche/create_order" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="user_name" />
+          <input type="hidden" name="proxy_phone" />
+          
+          <input type="hidden" name="brand_id" />
+          <input type="hidden" name="series_id" />
+          <input type="hidden" name="model_id" />
+          
+          <input type="hidden" name="licenseplate" />
+          <input type="hidden" name="series_id" />
+          <input type="hidden" name="model_id" />
+          
+          <p><label><span>定损金额：</span><input type="text" name="loss_price" placeholder="请输入定损金额"></label></p>
+          <p><label><span>保险公司：</span><select name="insurance_name"><volist name="name" id="vo"><option style="color:#666" value="{$vo.name}">{$vo.name}</option></volist></select></label></p>
+          <p><label><span>手机号码：</span><input type="text" name="user_phone" maxlength="11"></label></p>
+          <div>
+          <p>添加车损照片(限四张)</p>
+          <p><img src="__PUBLIC__/images/sgc_order/upimg.png" alt="" id="unloadPic">&nbsp;<span id="chesunshow"></span></p>
+          </div>
+          <div>
+          <p>添加行驶证件照(限一张)</p>
+          <p><img src="__PUBLIC__/images/sgc_order/upimg.png" alt="" id="zhengjianchange">&nbsp;<span id="dringshow"></span></p>
+          <p style="display:block;height:80px; position:relative;"><a type="submit" class="submit" style="cursor:pointer">提交信息</a></p>
+          </div>
+          <input type="hidden" name="car_img" id="car_img" value="">
+          <input type="hidden" name="driving_img" id="driving_img" value="">
+        </form>
+      </div>
+    </div>
+
+<ol id="uploadedName"></ol>
+
+<script type="text/javascript" src="__PUBLIC__/js/ajaxupload.js"></script>
+
+
+
+
+
+
+    <script type="text/javascript">
+      $(function(){
+        $(".submit").click(function(){
+          var loss_price = $('input[name=loss_price]').val();
+          if(!loss_price){
+           alert('请输入定损金额');
+           return false;
+          }
+          var user_phone = $('input[name=user_phone]').val();
+          if(!user_phone){
+           alert('请输入电话号码');
+           return false;
+          }
+          var mobileRegExp = /^1[3|4|5|7|8][0-9]\d{4,8}$/;
+          if(!mobileRegExp.test(user_phone)){
+            alert('请输入正确的电话号码');
+           return false;
+          }
+          var pic1 = $('#car_img').val();
+          if(!pic1){
+              alert('请添加车损照片');
+              return false;
+           }
+          var pic2 = $('#driving_img').val();
+          if(!pic2){
+              alert('请添加行驶证照片');
+              return false;
+           }
+
+          // $('form').submit();
+          
+          var data = $('form').serialize();
+          $.post('/shiguche/create_order',data,function(data){
+            if(data.status){
+              alert('信息提交成功，携车网客服会尽快与您联系,您也可以拨打4006602822咨询');
+              window.location.href = '/myhome';
+            }else{
+              alert(data.info)
+            }
+            
+          },'json')
+          
+          });
+
+  var oBtn = document.getElementById("unloadPic");
+  var oShow = document.getElementById("chesunshow");
+  var CarimgNum=1;var DrimgNum=1;
+  new AjaxUpload(oBtn,{
+    action:"/shiguche/uploadCarImg",
+    name:"upload",
+    onSubmit:function(file,ext){
+      if(!ext||!(/^(jpg|jpeg|png|gif)$/.test(ext))){
+        alert("图片格式错误");
+        return false;
+      }
+      if(CarimgNum>4){
+        alert("只能上传四张");
+        return false;
+      }
+    },
+    onComplete:function(file,response){
+      if(response==1){
+        alert("上传失败");
+      }else{
+        var newChild =  document.createElement("span");
+        newChild.innerHTML = '<img src="{:C(WEB_ROOT)}/UPLOADS/Driving/'+response+'" height="90" width="90"/>';
+        oShow.appendChild(newChild);
+        if(CarimgNum>1){
+          $("#car_img").val($("#car_img").val()+","+response);
+        }else{
+          $("#car_img").val(response);
+        }
+        CarimgNum++;
+      }
+      
+    }
+  });
+
+  var oBtn2 = document.getElementById("zhengjianchange");
+  var oShow2 = document.getElementById("dringshow");
+  new AjaxUpload(oBtn2,{
+    action:"/shiguche/uploadDrvingImg",
+    name:"upload",
+    onSubmit:function(file,ext){
+      if(!ext||!(/^(jpg|jpeg|png|gif)$/.test(ext))){
+        alert("图片格式错误");
+        return false;
+      }
+      if(DrimgNum>1){
+        alert("只能上传1张");
+        return false;
+      }
+    },
+    onComplete:function(file,response){
+      if(response==1){
+        alert("上传失败");
+      }else{
+        var newChild =  document.createElement("span");
+        newChild.innerHTML = '<img src="{:C(WEB_ROOT)}/UPLOADS/Driving/'+response+'" height="90" width="90"/>';
+        oShow2.appendChild(newChild);
+        $("#driving_img").val(response);
+        DrimgNum++;
+      }
+    }
+  });
+
+        
+      });
+    </script>
+    
+  </body>
+</html>

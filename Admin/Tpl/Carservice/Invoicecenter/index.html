@@ -1,0 +1,113 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<style> 
+    .large{
+        width:100px ;
+    }
+
+</style>
+<!-- 菜单区域  -->
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title"> 发票列表</div>
+
+		<div>
+			<FORM METHOD=POST ACTION="__URL__">
+			<table cellspacing="0" cellpadding="10" >
+				<tr>	
+					<td>
+					订单号：<input type="text" name="order_id" id="order_id" value="{$order_id}">
+					</td>
+                    <td colspan="3">  
+                      订单开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" readonly="readonly">
+                      订单结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" readonly="readonly">
+                    </td>
+                    
+					<td>
+					开票状态：
+					<select name="invoice_status" id="invoice_status">
+						<option value="all" <if condition="$invoice_status eq 'all'">selected</if>>全部</option>
+						<option value="1" <if condition="$invoice_status eq '1'">selected</if>>待开票</option>
+						<option value="2" <if condition="$invoice_status eq '2'">selected</if>>已开票已寄出</option>
+					</select>
+					</td>
+				</tr>
+				<tr>	
+					<td colspan="3" align="center">	
+						<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">
+					</td>
+				</tr>
+			</table>
+			</FORM>
+		</div>
+        <!-- 列表显示区域  -->
+        <div class="list" >
+        	<table class="list">
+        		<tr>
+					<th>订单号</th>
+        			<th>开票状态</th>
+        			<th>预约状态</th>>
+        			<th>订单完成时间</th>
+                    <th>订单预约时间</th>
+					<th>技师</th>
+					<th>金额</th>
+					<th>收票人姓名</th>
+					<th>收票人电话</th>
+					<th>收票人地址</th>
+					<th>操作</th>
+        		</tr>
+        	<volist name="invoice_info" id="vo">
+        		<tr>
+					<td>{$vo.true_id}</td>
+					<td><if condition='$vo.invoice_status eq 1'>待开票</if><if condition='$vo.invoice_status eq 2'>已开票已寄出</if></td>
+					<td>{$vo.status}</td>
+        			<!-- <td><a href="__WEB__/Admin/index.php/Carservice/carserviceorder/detail?id={$vo.order_id}">{$vo.show_id}</a></td> -->
+        			<td>
+                        <if condition='$vo[complete_time]'>
+                        {$vo.complete_time|date="Y-m-d H:i:s",###}
+                        </if>
+                    </td>
+                    <td>
+                        <if condition='$vo[order_time]'>
+                            {$vo.order_time|date="Y-m-d H:i:s",###}
+                        </if>
+                    </td>
+					<td>{$vo.name}</td>
+					<td>{$vo.amount}</td>
+					<td>{$vo.receiver_name}</td>
+					<td>{$vo.receiver_phone}</td>
+					<td>{$vo.receiver_address}</td>
+        			<td><a href="__WEB__/Admin/index.php/Carservice/carserviceorder/detail?id={$vo.order_id}">完善开票信息</a></td>
+        		</tr>
+        	</volist>
+                <tr> 
+                    <td colspan="3">
+                        <if condition='$total_amount'>
+                        选择时间段内上门保养总金额￥{$total_amount} <br>
+                        </if>
+                        <if condition='$wait_invoice'>
+                         待开票金额￥{$wait_invoice}  <br> 
+                        </if>
+                        <if condition='$has_invoice'>
+                         已开票已寄出金额￥{$has_invoice}<br>
+                        </if>
+                        <if condition='$no_invoice'>
+                         客户不需要开票金额￥{$no_invoice}
+                        </if>
+                    </td>
+                </tr>
+        	</table>
+        </div>
+		<!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+

@@ -1,0 +1,4 @@
+.ic-single{}
+.ic-single > img {  float: left; margin-right: 10px; }
+.ic-single > strong { float: left; display: inline-block; width: auto; height: 40px; line-height: 40px;  }
+.ic-single > span {float: right; }

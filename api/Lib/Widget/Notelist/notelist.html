@@ -1,0 +1,19 @@
+
+<div class="ContactTxt">
+				<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody none">
+			  <tr>
+                <th class="w1" width="30%">日期</th>
+                <th width="35%">金额 (元)</th>
+                <th width="20%">费用类型</th>
+                <th width="15%"><a href="__APP__/detail/listnoterows/u_c_id/{$u_c_id}/note_type/{$note_type}" style="color:#7EA52E;float: right;font-weight: normal;">更多...</a></th>
+				</tr>
+				<volist name="list" id="vo">
+					<tr>
+							<td class="w1"><a href="__APP__/note/editnote/type/{$Think.config.NOTE_TYPE_TITLE.$note_type}/note_id/{$vo.note_id}" class="link01">{$vo.happen_time|date="Y-m-d",###}</a></td>
+						<td><strong>{$vo.total_cost}</strong></td>
+						<td colspan='2'>{$name}</td>
+					</tr>
+					
+					</volist>
+					</table>
+				</div>

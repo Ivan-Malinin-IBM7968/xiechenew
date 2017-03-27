@@ -1,0 +1,70 @@
+/*ask page css*/
+
+.askbanner{
+	width: 100%;
+	height: 800px;
+	background: url(../images/ask/banner.jpg) top center no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.asktitle{
+	color: #FFFFFF;
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.asktitle h1{
+	font-size: 48px;
+	margin: 150px 0 80px 0;
+}
+
+.asktitle p{
+	font-size: 20px;
+	line-height: 2em;
+}
+
+.asktitle img{
+	margin-top: 100px;
+}
+
+.ask2{
+	width: 100%;
+	height: 2022px;
+	overflow: hidden;
+}
+
+
+.ask2 .c2{
+	background: url(../images/ask/ask2bg.jpg) top center #efefef no-repeat;
+	height: 100%;
+	overflow: hidden;
+}
+
+.ask2con{
+	width: 1200px;
+	height: 100%;
+	margin: 250px auto 0;
+	overflow: hidden;
+}
+
+.ask3{
+	width: 100%;
+	height: 1522px;
+	background: #e7d1ae url(../images/ask/ask3bg.jpg) top center no-repeat;
+	overflow: hidden;
+}
+
+.ask3con{
+	overflow: hidden;
+	margin: 250px auto 0 250px;
+}
+
+
+
+
+
+
+
+

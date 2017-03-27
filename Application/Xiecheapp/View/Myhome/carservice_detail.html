@@ -1,0 +1,202 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="orderdetail">
+			<div class="orderdetailtop">
+				<table height="40">
+					<tr>
+						<td width="20"></td>
+						<td width="200">订单编号：{$order_info['id']}</td>
+						<td width="200">交易状态：
+							<switch name="order_info.status">
+						    <case value="0">等待处理</case>
+						    <case value="1">预约已确认</case>
+						    <case value="2">已分配技师</case>
+						    <case value="8">已作废</case>
+						     <case value="9">服务已完成</case>
+    						</switch>
+						</td>
+						<td>
+							<if condition="($order_info.pay_status eq 0 and $order_info.pay_type eq 2 and $order_info.status eq 0)"><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$order_info.id}&all_amount={$order_info['amount']}&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></if>
+						</td>
+
+					</tr>
+				</table>
+			</div>
+
+			<div class="orderdetailcon">
+				<dl>
+					<!-- <dt>订单详情</dt> -->
+					<!-- <dt>查看视频</dt>
+					<dd>直播暂未开始</dd> -->
+					<dt>订单类型</dt>
+					<dd>上门保养订单</dd>
+					<dt>下单人信息</dt>
+					<dd>
+						<ul>
+							<li>姓名：{$order_info.truename}</li>
+							<li>地址：{$order_info.address}</li>
+							<li>手机号：{$order_info.mobile}</li>
+							<li>预约时间：<if condition ="$order_info.status eq 0" >稍后客服电话与你联系！<else/>{$order_info.order_time|date="Y-m-d H:i",###}-{$order_info.order_time|date="H",###}:59</if></li>
+						</ul>
+					</dd>
+					<dt>车辆信息</dt>
+					<dd>
+						<ul>
+							<li>车型：{$order_info.car_name}</li>
+							<li>车牌号：{$order_info.licenseplate}</li>
+						</ul>
+					</dd>
+					<dt>优惠信息</dt>
+					<dd>
+						<ul>
+							<li>抵用券：<empty name="order_info['replace_code']">无 <else />{$order_info['replace_code']}</empty></li>
+						</ul>
+					</dd>
+					<dt>其他</dt>
+					<dd>
+						<ul>
+							<li>预约状态：
+								<switch name="order_info.status">
+							    <case value="0">等待处理</case>
+							    <case value="1">预约已确认</case>
+							    <case value="2">已分配技师</case>
+							    <case value="8">已作废</case>
+							     <case value="9">服务已完成</case>
+	    						</switch>
+							</li>
+							<li>分配技师：
+								    <if condition="($order_info.status eq 2) OR ($order_info.status eq 9)">{$technician['truename']}<else /> 未分配技师</if>
+							</li>
+						</ul>
+					</dd>
+
+					<dt>保养项目</dt>
+					<dd class="dboder">
+						<table width="100%" style="font-size:14px;">
+							<tr bgcolor="#f6f6f6" height="60">
+								<td width="20%" style="text-indent:20px;">保养类型</td>
+								<td width="50%">保养项目</td>
+								<td width="20%">价格</td>
+								<td width="10%">总价</td>
+							</tr>
+							<empty name="item_list">
+								<empty name="replace_code">
+									<tr>
+										<td bgcolor="#FFFFFF" style="text-indent:20px;">上门保养</td>
+										<td height="40" bgcolor="#F8F8F8">服务费</td>
+										<td bgcolor="#F8F8F8"> ￥{$order_info['amount']}</td>
+										<td bgcolor="#F8F8F8"> ￥{$order_info['amount']}</td>
+									</tr>
+								<else />
+									<tr>
+										<td bgcolor="#FFFFFF" rowspan="2" style="text-indent:20px;">上门保养</td>
+										<td height="40" bgcolor="#F8F8F8">服务费</td>
+										<td bgcolor="#F8F8F8"> ￥99</td>
+										<td bgcolor="#F8F8F8" rowspan="2"> ￥{$order_info['amount']}</td>
+									</tr>
+									<tr>
+										<td height="40" bgcolor="#F8F8F8">抵用券</td>
+										<td bgcolor="#F8F8F8"> ￥-{$replace_value}</td>
+									</tr>
+								</empty>
+							<else />
+							  <empty name="replace_code">
+								  <foreach name="item_list" item="value" key="key">
+								  <tr>
+								    <if condition="$key eq 0">
+								    <td rowspan="{$item_num}" bgcolor="#FFFFFF" style="text-indent:20px;">上门保养</td>
+								    </if>
+								    <td height="40" bgcolor="#F8F8F8">
+								    	<if condition="$key eq 0">
+								        [机油]
+								        <elseif condition="$key eq 1" />
+								        [机油滤清器]
+								        <elseif condition="$key eq 2" />
+								        [空气滤清器]
+								        <elseif condition="$key eq 3" />
+								        [空调滤清器]
+								        </if>  
+								    	{$value['name']}
+								    </td>
+								    <td bgcolor="#F8F8F8"> ￥{$value['price']}</td>
+								    <if condition="$key eq 0">
+								    <td rowspan="5" bgcolor="#F8F8F8"> ￥{$order_info['amount']}</td>
+								    </if>
+								  </tr>
+								  </foreach>
+							  	  <tr>
+							    	<td height="40" bgcolor="#F8F8F8">服务费</td>
+							    	<td bgcolor="#F8F8F8"> ￥99</td>
+							  	  </tr>
+							  <else />
+							  		<foreach name="item_list" item="value" key="key">
+								  <tr>
+								    <if condition="$key eq 0">
+								    <td rowspan="{$item_num+1}" bgcolor="#FFFFFF" style="text-indent:20px;">上门保养</td>
+								    </if>
+								    <td height="40" bgcolor="#F8F8F8">
+								    	<if condition="$key eq 0">
+								        [机油]
+								        <elseif condition="$key eq 1" />
+								        [机油滤清器]
+								        <elseif condition="$key eq 2" />
+								        [空气滤清器]
+								        <elseif condition="$key eq 3" />
+								        [空调滤清器]
+								        </if>  
+								    	{$value['name']}
+								    </td>
+								    <td bgcolor="#F8F8F8"> ￥{$value['price']}</td>
+								    <if condition="$key eq 0">
+								    <td rowspan="6" bgcolor="#F8F8F8"> ￥{$order_info['amount']}</td>
+								    </if>
+								  </tr>
+								  </foreach>
+							  	  <tr>
+							    	<td height="40" bgcolor="#F8F8F8">服务费</td>
+							    	<td bgcolor="#F8F8F8"> ￥99</td>
+							  	  </tr>
+							  	  <tr>
+							    	<td height="40" bgcolor="#F8F8F8">抵用券</td>
+							    	<td bgcolor="#F8F8F8"> ￥-{$replace_value}</td>
+							  	  </tr>
+							 </empty>
+							 </empty>
+						</table>
+					</dd>
+					<dd style="padding:0;"><if condition="($order_info.pay_status eq 0 and $order_info.pay_type eq 2 and $order_info.status eq 0)"><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$order_id}&all_amount={$order_info['amount']}&coupon_name=上门保养套餐" class="btn btn-comment fr" style="padding: 15px 40px;">去支付</a></if></dd>
+				</dl>
+				
+			</div>
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.orderdetail{background: #fbfaf8;}
+	.orderdetailtop{background: #eaeeed; font-size: 16px; overflow: hidden; margin:0 0 20px;}
+	.orderdetailtop b{font-size: 24px; color: #ff4a00;}
+	.orderdetailtop span{font-size: 14px;}
+	.orderdetailtop span a{display: inline-block; width: 60px; height: 24px; line-height: 24px; margin-left: 20px; background: #38558b; color: #FFFFFF; text-align: center;}
+	.orderdetailcon{border: 1px solid #ebefee; overflow: hidden; margin:0 0 20px; padding: 20px 15px;}
+	.orderdetailcon dl{overflow: hidden; margin: 0 0 20px 0;}
+	.orderdetailcon dl dt{font-size: 14px; font-weight: bold; background: #EAEEED; height: 30px; padding: 0 20px; line-height: 30px;}
+	.orderdetailcon dl dd{padding: 20px; font-size: 14px; line-height: 2em;}
+	.orderdetailcon dl dd.dboder{border: 1px solid #ccc; margin: 20px 0; padding: 0; text-indent: 20px;}
+</style>

@@ -1,0 +1,84 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    function check_cardid(){
+        var cardid = $("#cardid").val();
+        if(cardid == ''){
+        	//$("#card_exist").html("请输入卡号！");
+        	//$("#cardid").focus();
+            return false;
+        }
+    	$.ajax({
+			type: "POST",
+			url: "__URL__/check_cardid",
+			cache: false,
+			data: "cardid="+cardid,
+			success: function(data){
+				if(data > '1'){
+					$("#card_exist").html("该卡号已绑定了手机"+data+",(<a href='__URL__/read/phonenum/"+data+"'>使用这个手机号下单</a>)");
+				}else if(data == '1'){
+					$("#card_exist").html("该卡号可以使用！");
+				}else if(data == '-1'){
+					$("#card_exist").html("该卡号不存在！");
+				}else if(data == '-2'){
+					$("#card_exist").html("数据错误！");
+				}
+			}
+		})
+    }
+    
+    function sendsms(){
+        var mobile = $("#mobile").val();
+        if(!/^1\d{10}$/.test(mobile)){
+            alert("手机号格式不正确！");
+            return false;
+        }
+    	$.ajax({
+			type: "POST",
+			url: "__URL__/sendsms",
+			cache: false,
+			data: "mobile="+mobile,
+			success: function(data){
+				if(data == 1){
+					alert("发送成功！");
+				}else{
+					alert("发送失败！");
+				}
+			}
+		})
+    }
+    
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增用户 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/insert">
+			<table cellpadding=3 cellspacing=3>
+				<!-- <TR>
+                    <TD class="tRight" >来电号码：</TD>
+                    <TD class="tLeft" >{$Think.get.mobile}</TD>
+                </TR> -->
+				<TR>
+                    <TD class="tRight" >手机号码：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="mobile" value="{$mobile}" class="large bLeftRequire" check='^\S+$' warning="号码不能为空" NAME="mobile"><font color="red">*手机号码必填</font><input type="button" id="send_sms" value="发送短消息" onclick="sendsms();" /></TD>
+                </TR>
+				<TR>
+                    <TD colspan="2"><input type="submit" value="添加并进入下优惠券页面">
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

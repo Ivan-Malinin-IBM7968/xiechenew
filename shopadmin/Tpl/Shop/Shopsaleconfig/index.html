@@ -1,0 +1,73 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<load file="__CSS__/newstyle.css" />
+<div id="main" class="main" >
+<div class="content">
+<div id="main-right"><h1 style="text-shadow: none;">竞价配置</h1>
+</div>
+
+<div class="fLeft" style="width:90%;float:left">
+<FORM METHOD=POST  id="form1" >
+<TABLE cellpadding=3 cellspacing=3>
+<TR>
+	<TD class="tRight" >返利金额：</TD>
+	<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="rebate" value="{$list.rebate}"></TD>
+</TR>
+<TR>
+	<TD class="tRight">维修天数：</TD>
+	<TD class="tLeft">
+		<select name="servicing_time" id="servicing_time">
+			<option value="当天" <if condition="$list['servicing_time'] eq '当天'">selected</if>>当天</option>
+			<option value="1天" <if condition="$list['servicing_time'] eq '1天'">selected</if>>1天</option>
+			<option value="2天" <if condition="$list['servicing_time'] eq '2天'">selected</if>>2天</option>
+			<option value="3天" <if condition="$list['servicing_time'] eq '3天'">selected</if>>3天</option>
+			<option value="4天" <if condition="$list['servicing_time'] eq '4天'">selected</if>>4天</option>
+			<option value="5天" <if condition="$list['servicing_time'] eq '5天'">selected</if>>5天</option>
+			<option value="6天" <if condition="$list['servicing_time'] eq '6天'">selected</if>>6天</option>
+			<option value="7天" <if condition="$list['servicing_time'] eq '7天'">selected</if>>7天</option>
+			<option value="8天" <if condition="$list['servicing_time'] eq '8天'">selected</if>>8天</option>
+			<option value="9天" <if condition="$list['servicing_time'] eq '9天'">selected</if>>9天</option>
+			<option value="10天" <if condition="$list['servicing_time'] eq '10天'">selected</if>>10天</option>
+			<option value="10天以上" <if condition="$list['servicing_time'] eq '10天以上'">selected</if>>10天以上</option>
+			<option value="到店确认天数" <if condition="$list['servicing_time'] eq '到店确认天数'">selected</if>>到店确认天数</option>
+		</select>
+	</TD>
+</TR>
+<TR>
+	<TD class="tRight" >是否有代步车：</TD>
+	<TD class="tLeft" >
+		<input type="radio" name="scooter" value="0" <if condition="$list.scooter eq 0"> checked</if>>无&nbsp;&nbsp;
+		<input type="radio" name="scooter" value="1" <if condition="$list.scooter eq 1"> checked</if>>有
+	</TD>
+</TR>
+<TR>
+	<TD class="tRight tTop">备  注：</TD>
+	<TD class="tLeft"><TEXTAREA class="large bLeft"  NAME="remark" ROWS="5" COLS="57">{$list.remark}</TEXTAREA></TD>
+</TR>
+<TR>
+	<TD class="tRight" >是否自动竞价：</TD>
+	<TD class="tLeft" >
+		<input type="radio" name="auto" value="0" <if condition="$list.auto eq 0"> checked</if>>否&nbsp;&nbsp;
+		<input type="radio" name="auto" value="1" <if condition="$list.auto eq 1"> checked</if>>是
+	</TD>
+</TR>
+
+<TR>
+	<TD ></TD>
+	<TD class="center">
+	<INPUT TYPE="hidden" name="id" value="{$list.id}">
+	<INPUT TYPE="hidden" name="shop_id" value="{$shop_id}">
+	<INPUT TYPE="hidden" name="ajax" value="1">
+	<empty name="list.id">
+		<INPUT TYPE="button" value="保 存" onclick="sendForm('form1','__URL__/insert/')" class="submit small">
+	<else/>
+		<INPUT TYPE="button" value="保 存" onclick="sendForm('form1','__URL__/update/')" class="submit small">
+	</empty>
+	<INPUT TYPE="reset" class="small submit hMargin" value="清 空" >
+	</TD>
+</TR>
+</TABLE>
+</FORM>
+</div>
+</div>
+</div>

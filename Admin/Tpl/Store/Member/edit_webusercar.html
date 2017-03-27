@@ -1,0 +1,68 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script type="text/javascript" src="/Public/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="/Public/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">备注用户车型[ <A HREF="javascript:history.back();">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/edit_webusercar_do">
+			<table cellpadding=3 cellspacing=3>
+
+               
+                 <tr>
+					<TD class="tRight" >品牌：</td>
+					<TD class="tLeft" >
+						<select id="get_brand" name="brand_id" style= "width:120px" onchange="comp_brlist('get_brand','get_series', 'get_model');"></select>
+					</td>
+				</tr>
+				<tr>
+					<TD class="tRight" >车系：</td>
+					<TD class="tLeft" >
+						<select id="get_series" name="series_id" style= "width:120px" onchange="comp_yearlist('get_brand', 'get_series', 'get_model');" disabled></select>
+					</td>
+				</tr>
+				<tr>
+					<TD class="tRight" >车型：</td>
+					<TD class="tLeft" >
+					<select id="get_model" name="model_id" style= "width:120px" disabled></select>
+					</td>
+				</tr>
+				<TR>
+                    <TD class="tRight" >车牌号：</TD>
+                    <TD class="tLeft" >
+						<select name="s_pro">
+							<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+								<option value="{$type}" <if condition="$type eq $webusercar_info[s_pro]" >selected</if>>{$type}</option>
+							</volist>
+						</select>
+						<input type="text" name="car_number" value="{$webusercar_info[car_number]}"></input>
+                   </TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" clospan="2">
+                    <input type="hidden" name="id" value="{$id}" />
+					<input type="hidden" name="uid" value="{$uid}" />
+                    <input type="submit" value="确认"></TD>
+                </TR>
+				
+			</table>
+		 </form>
+		 <script type="text/javascript">
+			comp_fctlist("get_brand", "get_series", "get_model",{$webusercar_info.brand_id},{$webusercar_info.series_id},{$webusercar_info.model_id});
+		</script>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

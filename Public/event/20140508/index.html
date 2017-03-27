@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta >
+    <title>携车网-百纳璐诗合作活动</title>
+    <link rel="shortcut icon" href="http://statics.xieche.net/new_2/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://statics.xieche.net/common/css/reset.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <meta name="apple-mobile-web-app-title" content="携车网">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-itunes-app" content="app-id=588144466" />
+    <style>
+      #block1{width: 100%; height: 896px; background: url("images/new/bg01.jpg") center center no-repeat;}
+
+
+      #block2{width: 100%; height: 705px; background: url("images/new/bg02.jpg") center center no-repeat;}
+      #inner-block2{width: 1200px; height: 705px; margin: 0 auto; position: relative;}
+      .reg-box{position: absolute; width: 387px; height: 320px; overflow: hidden; top:85px; right:240px;  overflow: hidden;}
+      .reg-box .phone,
+      .reg-box .verify,
+      .reg-box .verify-code,
+      .reg-box .rec-phone-number,
+      .reg-box .get-number{ margin: 20px auto; width: 387px; height: 42px; overflow: hidden;}
+      .reg-box .phone input,
+      .reg-box .verify input,
+      .reg-box .verify-code input,
+      .reg-box .rec-phone-number input{  border: 1px solid #cdcdcd; width: 316px; padding-left: 5px; height: 38px; line-height: 38px; margin-right: 10px; font-size: 16px; display: inline-block; float: left;}
+      .reg-box .phone a,
+      .reg-box .verify a,
+      .reg-box .get-ticket a{
+        display: inline-block; background: #f1f1f1; color: #000000; width: 103px; height: 40px; line-height: 40px; text-align: center; text-decoration: none;float: left; margin-right: 20px;
+      }
+      .reg-box .verify a{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px 0px no-repeat;}
+      .reg-box .verify a:visited{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px 0px no-repeat;}
+      .reg-box .verify a:hover{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -40px no-repeat;}
+      .reg-box .get-ticket a{color: #f1f1f1; background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -83px repeat-x; width: 152px; background-repeat: repeat-x; }
+      .reg-box .get-ticket a:visited{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -83px repeat-x; background-repeat: repeat-x;}
+      .reg-box .get-ticket a:hover{background: url("http://event.xieche.net/20140508/images/new/sprite.png") 0px -120px repeat-x; background-repeat: repeat-x;}
+
+      #block3{width: 100%; height: 949px; background: url("images/new/bg03.jpg") center center no-repeat;}
+
+    </style>
+  </head>
+  <body>
+    <div id="block1">
+    </div>
+    <div id="block2">
+      <div id="inner-block2">
+          <div class="reg-box">
+            <div class="phone">
+              <input type="text" value="手机号码">
+
+            </div>
+            <div class="verify">
+                <a href="javascript:void(0);">获取验证码</a>
+            </div>
+            <div class="verify-code">
+
+              <input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" value="验证码">
+
+            </div>
+            <div class="rec-phone-number">
+
+              <input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" value="验证码">
+
+            </div>
+            <div class="get-ticket">
+              <a href="javascript:void(0);" id="">立即验证</a>
+              <a href="javascript:void(0);" id="" style='background: url("http://event.xieche.net/20140508/images/sprite.png") 0px -170px repeat-x;'>立即验证</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div id="block3">
+
+    </div>
+
+    <script src="http://statics.xieche.net/common/js/libs/jquery/jquery-1.11.min.js"></script>
+    <script>
+      (function(){
+          $(".reg-box .phone input, .reg-box .verify input, .reg-box .verify-code input, .reg-box .rec-phone-number input")
+            .each(function(index, element) {
+              var $element = $(element);
+              var defaultValue = $element.val();
+              $element.css('color', '#999999');
+              $element.focus(function() {
+                  var actualValue = $element.val();
+                  if (actualValue == defaultValue) {
+                      $element.val('');
+                      $element.css('color', '#333');
+                  }
+              });
+              $element.blur(function() {
+                  var actualValue = $element.val();
+                  if (!actualValue) {
+                      $element.val(defaultValue);
+                      $element.css('color', '#999999');
+                  }
+              });
+          });
+      }());
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>携车网-上门保养</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  	 	 <meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no">
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" />
+		<style type="text/css">
+			body {
+			    font-family: "微软雅黑", sans-serif;
+			    color: #333333;
+			    min-height:568px;
+				overflow-x:hidden;
+				width:100%;
+				display:block;
+				position:relative;
+				overflow:hidden
+			}
+			.bg{max-width: 100%;}
+			.rl{position:relative}
+			.ab{position:absolute}
+			.input{top:0em;left:1em;width:98%;height:4em;}
+			.tel{top:2em;right:1em;display:block;width:10em;height:4em;}
+			.brand{right:0em;top:0em;z-index:10;width:0em;display:none}
+			.pic{width:100%;overflow:hidden}
+		</style>
+	</head>
+	<body>
+		<div class="pic" id="pic">
+			<div class="rl test">
+				<img src="__APP__Public/mobile/images/carservice/by_bg_01.png" class="bg" />
+				<a class="ab tel" href="tel:4006602822">&nbsp;</a>
+			</div>
+			<div class="rl">
+				<img src="__APP__Public/mobile/images/carservice/by_bg_02.png" class="bg" />
+				<div class="ab input" id="brand_show">&nbsp;</div>
+			</div>
+		</div>
+		<table class="table table-hover brand ab" id="brand">
+			<volist name="brand_list" id="vo">
+				<tr class="brand-list" data-id="{$vo.brand_id}">
+					<td>{$vo.word}&nbsp;{$vo.brand_name}</td>
+					<td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td>
+				</tr>
+			</volist>
+			
+		</table>
+		<table class="table table-hover brand ab" id="series">
+			
+		</table>
+		<table class="table table-hover brand ab" id="model">
+			
+		</table>
+		<script type="text/javascript">
+		var brand_id = series_id = model_id = '' ;
+		$(function(){
+			$('#brand_show').click(function(){
+				$('#pic').hide();
+				$('#brand').css('display',"table").animate({
+					'width' : "100%",
+				}, 500);
+				$('body').scrollTop(0);
+			})
+			$('.brand-list').click(function(){
+				brand_id = $(this).attr('data-id');
+				$.post('__APP__/mobiletmp/ajax_car_style',{'brand_id':brand_id},function(data){
+					 data = data.data;
+	                 if(data.errno == 0){
+	                	 
+	                    var html = '';
+	                    $.each(data.result.style_list, function(k, v){
+	                    	html += '<tr class="series-list" onClick="getModel(this)" data-id="'+v['series_id']+'"><td>'+v['word'].substr(1,1)+'&nbsp;'+v['series_name']+'</td><td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td></tr>';
+	                    });
+	                    $('#brand').hide();
+	    				$('#series').html(html).css('display',"table").animate({
+	    					'width' : "100%",
+	    				}, 500);
+	    				$('body').scrollTop(0);
+	                }else{
+	                    alert(data.errmsg);
+	                    return false;
+	                }
+				},'json')
+				
+			})
+		})
+		function getModel(ts){
+				series_id = $(ts).attr('data-id');
+				$.post('__APP__/mobiletmp/ajax_car_model',{'series_id':series_id},function(data){
+					 data = data.data;
+	                 if(data.errno == 0){
+	                	 
+	                    var html = '';
+	                    $.each(data.result.model_list, function(k, v){
+	                    	html += '<tr class="model-list" onClick="subData(this)"  data-id="'+v['model_id']+'"><td>'+v['model_name']+'</td><td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td></tr>';
+	                    });
+	                    $('#brand,#series').hide();
+	    				$('#model').html(html).css('display',"table").animate({
+	    					'width' : "100%",
+	    				}, 500);
+	    				$('body').scrollTop(0);
+	                }else{
+	                    alert(data.errmsg);
+	                    return false;
+	                }
+				},'json')
+				
+     	 }
+		function subData(ts){
+			 model_id = $(ts).attr('data-id');
+			 if(!brand_id){
+		        	alert('请选择品牌');
+		            return false;
+		     }
+			 if(!series_id){
+		        	alert('请选择车系');
+		            return false;
+		        }
+	        if(!model_id){
+	        	alert('请选择车型');
+	            return false;
+	        }
+	        window.location.href='__APP__/mobiletmp/sub_car?brand_id='+brand_id+'&model_id='+model_id+'&series_id='+series_id;
+	    }
+		</script>
+	</body>
+	
+	
+	
+	
+	
+</html>

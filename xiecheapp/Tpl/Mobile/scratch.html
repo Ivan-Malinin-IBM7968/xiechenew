@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta>
+	    <title>携车刮奖</title>
+	    <meta charset="utf-8">
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+
+		<include file="Public:wapfoot" />
+		<style type="text/css">
+			.bg{position:relative}
+			.canvas{
+				background:url(__PUBLIC__/mobile/images/prize_win.jpg) scroll no-repeat center center;
+				cursor:pointer;
+				z-index:100;
+				position:absolute;
+				top:40px;
+				left:80px;
+				display:block;
+				background-color:#fef102;
+			}
+			.s{
+				position:absolute;
+				top:180px;
+				left:300px;
+				z-index:101;
+				background-color:#e70012;
+				padding:10px;
+				color:#ffffff;
+				font-size:4em;
+			}
+			img{display:block}
+		</style>
+
+	</head>
+
+<body style="background:#f1f1f1;">
+	<img src="__PUBLIC__/mobile/images/head.jpg" style="width:100%" />
+	<div class="bg">
+	<img src="__PUBLIC__/mobile/images/prize_bg.jpg" style="width:100%" />
+	<p class="s">开始刮奖</p>
+        <canvas class="canvas" id="myCanvas" width="800" height="600">
+        	您的浏览器不支持html5标签，您可以尝试换个浏览器。
+        </canvas>
+	</div>
+	<div style="display:none" id="weixinId">{$weixinId}</div>
+	<div style="display:none" id="mobile">{$mobile}</div>
+	<script type="text/javascript">
+	var i = 0;
+	$(function(){
+		var start = true;
+		var canvas=document.getElementById('myCanvas');
+		var ctx=canvas.getContext('2d');
+		ctx.fillStyle='#aaaaaa';	//设置覆盖层的颜色
+		ctx.fillRect(0,0,800,600);	//设置覆盖的区域
+
+		$('#myCanvas').on('touchstart',function(e) {
+			var touch = e.originalEvent.targetTouches[0];
+			var x = touch.pageX ;
+			var y = touch.pageY;
+			mouseMove(x,y);
+		});
+		$('#myCanvas').on('touchmove',function(e) {
+			var touch = e.originalEvent.targetTouches[0];
+            var y = touch.pageY;
+            var x = touch.pageX;
+            mouseMove(x,y);
+        });
+		$('#myCanvas').on('touchover',function(e) {
+            var touch = e.originalEvent.targetTouches[0];
+            var y = touch.pageY;
+            var x = touch.pageX;
+            mouseMove(x,y);
+        });
+		function mouseMove(x,y)
+		{
+			$('.s').hide();
+			if(start){
+				x = x-40;
+				y = y-400;
+				ctx.clearRect(x,y,800,600);
+				if(navigator.userAgent.match(/Android/i)) { 
+					canvas.style.display = 'none';
+					canvas.offsetHeight;
+					canvas.style.display = 'inherit';	
+				}
+				if(i == 5){
+					setOverPrise();
+				}
+				i++;
+			}
+		}
+		
+		function setOverPrise(){
+			var weixinId = $('#weixinId').text();
+			var mobile = $('#mobile').text();
+			$.post("__APP__/Mobile/SetOverPraise",{'weixinId':weixinId,'mobile':mobile},function(data){
+				if(data.status != 1){
+					alert(data.info);
+					//document.location.href="Mobile-index";
+				}else{
+					//直接刮掉
+					ctx.clearRect(-40,-400,800,600);
+					$.post("__APP__/test/gualogion",{'mobile':$('#mobile').text()},function(data){
+							
+					});
+				}
+			},"json");
+		}
+	});
+	
+
+
+</script>
+	</body>
+</html>

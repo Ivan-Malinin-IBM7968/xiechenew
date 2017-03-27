@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>『{$Think.config.web_name}管理平台』By ThinkPHP {$Think.version}</TITLE>
+<load file="__CSS__/blue.css" />
+<load file="__JS__/common.js" />
+<import file="Js.Base,Js.prototype,Js.mootools,Js.Think.ThinkAjax,Js.Form.CheckForm,Js.Util.ImageLoader"  basepath="__PUBLIC__" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+//指定当前组模块URL地址 
+var URL = '__URL__';
+var APP	 =	 '__APP__';
+var PUBLIC = '__PUBLIC__';
+ThinkAjax.image = [	 '__IMG__/loading2.gif', '__IMG__/ok.gif','__IMG__/update.gif' ]
+ImageLoader.add("__IMG__/bgline.gif","__IMG__/bgcolor.gif","__IMG__/titlebg.gif");
+ImageLoader.startLoad();
+//-->
+</SCRIPT>
+</HEAD>
+
+<body onload="loadBar(0)">
+<div id="loader" >页面加载中...</div>

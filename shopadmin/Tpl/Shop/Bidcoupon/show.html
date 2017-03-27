@@ -1,0 +1,166 @@
+<load file="__CSS__/newstyle.css" />
+
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<script language="JavaScript">
+	function check(){
+		var type = $('#hide_type').val();
+		var status = jQuery("#status  option:selected").val();
+		window.location.href="__URL__/show/status/"+status+"/type/"+type;
+	}
+  	
+	function typechek(type){
+		window.location.href="__URL__/show/type/"+type;
+	}
+</script>
+<div id="main">
+<div id="main-right"><h1>事故车返利记录</h1>
+</div>
+<div id="main-right2" >
+		<table width="785" >
+			<tr>
+				<td >事故维修车,返给用户的现金券</td>
+
+				
+			</tr>
+			<tr>
+				<td >共给用户返券:
+				<if condition="$data.getcoupon eq ''">
+					0
+				<else/>
+					{$data.getcoupon}
+				</if>
+					张共
+				<if condition="$data.getprice eq ''">
+					0
+				<else/>
+					{$data.getprice}
+				</if>
+				元,
+				已使用:
+				<if condition="$data.allcoupon eq ''">
+					0
+				<else/>
+					{$data.allcoupon}
+				</if>
+					张共
+				<if condition="$data.allprice eq ''">
+					0
+				<else/>
+					{$data.allprice}
+				</if>
+					元
+				</td>
+			</tr>
+		</table>
+		<br>
+	<div>
+	<FORM METHOD=POST ACTION="__URL__/show/">
+		<table class="list"  width="785">
+			<tr>
+				<td>车牌号:
+
+				<select name="licenseplate_title">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+					<option value="{$vo_os}"<if condition="$data.licenseplate_title eq $vo_os">selected</if>>{$vo_os}</option>
+				</volist>
+				</select>
+				<input type="text"  name="licenseplate" id="licenseplate" value="{$data.licenseplate}" />
+				
+			
+			</tr>
+			<tr>
+				<td >
+				<input type="radio" id="type" name="type" value="" <if condition="$data.type eq ''">checked</if>>给用户返券的记录
+				<input type="radio" id="type" name="type" value="2" <if condition="$data.type eq '2'">checked</if>>用户使用返券的记录
+				<input type="radio" id="type" name="type" value="1" <if condition="$data.type eq '1'">checked</if>>未使用返券的用户记录
+				</td>
+			</tr>
+			<tr>
+				<td>返券时间搜索：
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly"></td>
+			</tr>
+			<tr>
+			<td><input type="submit" name="btn_ok" id="btn_ok" value="确认提交"></td>
+			</tr>
+			<!--<tr>
+				<td>
+					<input type="button" value="最近30天给用户返券的记录" onclick="typechek(1);">
+				</td>
+				<td>
+					<input type="button" value="最近30天用户消费返券的记录" onclick="typechek(2);">
+				</td>
+			</tr>-->
+		</table>
+	</FORM>
+</div>
+
+<FORM METHOD=POST ACTION="__URL__/show/" name="show" id="show">
+	<input type="hidden" id="hide_type" name="hide_type" value="{$data.type}">
+  <table width="785" border="0" cellspacing="1" cellpadding="1" bgcolor="#E4E4E4">
+    <tr>  
+      <td align="center" bgcolor="#EEEEEE">返券日期</td>
+      <td align="center" bgcolor="#EEEEEE">返券订单</td>
+      <td align="center" bgcolor="#EEEEEE">返券名</td>
+      <td align="center" bgcolor="#EEEEEE">金额</td>
+	  <td align="center" bgcolor="#EEEEEE">车牌号</td>	 
+	  <td align="center" bgcolor="#EEEEEE">券状态
+	  	<!--<if condition="$data.type eq '1'">
+			<select onchange="check();" id="status" name="status">
+				<option value="">验证状态</option>
+				<option value="0" <if condition="$data.status eq '0'">selected</if>>已使用</option>
+				<option value="1" <if condition="$data.status eq '1'">selected</if>>未使用</option>
+			</select>
+		</if>-->
+	  </td>
+	  <td align="center" bgcolor="#EEEEEE">
+		<if condition="$data.type eq ''">
+			添加日期
+		</if>
+		<if condition="$data.type eq '1'">
+			有效期
+		</if>
+		<if condition="$data.type eq '2'">
+			使用日期
+		</if>
+		</td>	 
+    </tr>
+
+
+   <volist name="data.BidOrder" id="list">
+    <tr>
+      <td align="center" bgcolor="#FFFFFF">{$list.create_time|date="Y-m-d H:i:s",###}</td>
+      <td align="center" bgcolor="#FFFFFF">
+		<a href="http://www.xieche.com.cn/shopadmin/index.php/Shop/Safeorder/bidorder/id/{$list.ture_orderid}/type/1" target="_blank">
+      	{$list.order_id}
+		</a>
+      </td>
+	  <td align="center" bgcolor="#FFFFFF">保险返利现金券</td>
+      <td align="center" bgcolor="#FFFFFF">{$list.price}</td>
+      <td align="center" bgcolor="#FFFFFF">
+		{$list.licenseplate}
+	  </td> 
+	  <td align="center" bgcolor="#FFFFFF">	<if condition="$list.status eq '0'">已使用<else/>未使用</if></td>
+	  <td align="center" bgcolor="#FFFFFF">
+	  <if condition="$data.type eq ''">
+		  {$list.create_time|date="Y-m-d",###}   
+	  </if>
+	  <if condition="$data.type eq '1'">
+		{$list.start_time|date="Y-m-d",###}---{$list.end_time|date="Y-m-d",###}
+	</if>
+	<if condition="$data.type eq '2'">
+		{$list.use_time|date="Y-m-d",###}   
+	</if>
+
+	  
+	  </td>
+    </tr>
+	</volist>
+  </table>
+  </FORM>
+   <div id="main-right3">{$page}</div>
+</div>
+	 
+</div>

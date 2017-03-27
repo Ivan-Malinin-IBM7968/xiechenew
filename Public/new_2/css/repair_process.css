@@ -1,0 +1,41 @@
+.progress_c{margin:0px 20px;padding:0px 20px 20px 20px;border-left:4px solid #dadada;position:relative}
+.progress_c_a{background:url('../images/repair_process/bg1.jpg') scroll no-repeat 0px 0px;height:100px;padding:10px 40px}
+.progress_c_a_a{padding-top:10px}
+.progress_c_a_b{font-size:22px;color:#005fac;font-weight:bold;padding-right:20px}
+.progress_c_b{background:url('../images/repair_process/bg2.jpg') scroll no-repeat 0px 0px;height:420px;padding:20px;position:relative}
+.ab{position:absolute;top:20px}
+.progress_c_b_b{left:470px;}
+.progress_c_b_d{left:500px;top:22px}
+.progress_c_b_a{padding:0px 0px 20px 20px}
+.progress_c_b_c p{position:absolute;bottom:60px;left:80px}
+.ab-t{position:absolute;left:-12px}
+.ab-t-1{top:40px}
+.ab-t-2{top:330px}
+.ab-t-3{top:790px}
+.ab-t-4{top:1250px}
+.ab-t-5{top:1710px}
+.ab-t-6{top:2170px}
+.ab-t-7{top:2630px}
+.ab-t-8{top:3090px}
+.ab-t-9{top:3550px}
+.progress_c_a_1{font-size:16px}
+.style-list-slide-prev {
+    background: url("../images/repair_process/index_border_collocation_left.gif") no-repeat scroll center center transparent;
+    display: block;
+    float: left;
+    height: 330px;
+    width: 50px;
+}
+.style-list-slide .slide-container {
+    float: left;
+    height: 352px;
+    width: 400px;
+}
+.style-list-slide-next {
+    background: url("../images/repair_process/index_border_collocation_right.gif") no-repeat scroll center center transparent;
+    display: block;
+    float: left;
+    height: 330px;
+    width: 50px;
+}
+.pagination{display:none}

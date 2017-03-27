@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传车损照片</title>
+</head>
+<body>
+
+<input id="unloadPic" type="button" value="上传图片" />
+<ol id="uploadedName"></ol>
+
+<script type="text/javascript" src="__PUBLIC__/js/ajaxupload.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var oBtn = document.getElementById("unloadPic");
+	var oShow = document.getElementById("uploadedName");
+	new AjaxUpload(oBtn,{
+		action:"/shiguche/uploadCarImg",
+		name:"upload",
+		onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//ext是后缀名
+				oBtn.value = "正在上传…";
+				oBtn.disabled = "disabled";
+			}else{	
+				alert("图片格式错误");
+				return false;
+			}
+		},
+		onComplete:function(file,response){
+			console.log(file);
+			console.log(response);
+			oBtn.disabled = "";
+			oBtn.value = "再上传一张图片";
+			var newChild =  document.createElement("li");
+			newChild.innerHTML = file;
+			oShow.appendChild(newChild);
+		}
+	});
+};
+</script>
+</body>
+</html>

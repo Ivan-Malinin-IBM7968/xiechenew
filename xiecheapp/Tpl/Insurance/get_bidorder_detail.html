@@ -1,0 +1,70 @@
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/shop4s.css?v={$Think.config.VERSION_DATE}" />
+<div style="margin: 0px 465px 10px;"><a href="__URL__/">首页</a> -->> <a href="__URL__/my_order">保险订单查询</a> -->> 订单详细</div>
+
+<table border="0" align="center" cellpadding="1" cellspacing="0">
+<tr>
+	<td>订单ID</td>
+	<td>驾驶员姓名</td>
+	<td>驾驶员手机号</td>
+	<td>车牌号</td>
+	<td>品牌名称</td>
+	<td>订单添加时间</td>
+</tr>
+<tr>
+	<td>{$list.order_id}</td>
+	<td>{$list.truename}</td>
+	<td>{$list.mobile}</td>
+	<td>{$list.licenseplate}</td>
+	<td>{$list.insurance_info.fsname}</td>
+	<td>{$list.create_time|date="Y-m-d H:i:s",###}</td>
+</tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+<tr>
+	<td>保险公司名称</td>
+	<td>定损金额</td>
+	<td>维修4S店</td>
+	<td>车辆描述</td>
+	<td>订单状态</td>
+	<td>发起竞价时间</td>
+</tr>
+
+<tr>
+	<td>{$list.insurance_info.insurance_name}</td>
+	<td>{$list.insurance_info.loss_price}</td>
+	<td>{$list.shop_name}</td>
+	<td>{$list.insurance_info.description}</td>
+	<td>{$list.order_status}</td>
+	<td>{$list.insurance_info.create_time|date="Y-m-d H:i:s",###}</td>
+</tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr>
+	<td>预约到店时间</td>
+	<td>维修时间</td>
+	<td>取车时间</td>
+	<td>有无代步车</td>
+	<td colspan="2">返利现金</td>
+</tr>
+
+<tr>
+	<td>{$list.tostore_time|date="Y-m-d日 H",###}点</td>
+	<td>{$list.shopbidding_info.servicing_time}天</td>
+	<td>{$list.takecar_time|date="Y-m-d日 H",###}点</td>
+	<td><eq name="list.shopbidding_info.scooter" value="1">有<else/>无</eq></td>
+	<td colspan="2">{$list.shopbidding_info.rebate}</td>
+</tr>	
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr>
+	<td colspan="2">车型</td>
+	<td colspan="2">店铺备注</td>
+	<td colspan="2">操作</td>
+</tr>
+<tr>
+	<td colspan="2">{$list.car_info}</td>
+	<td colspan="2">{$list.shopbidding_info.remark}</td>
+	<td>{$list.pay_status}&nbsp;&nbsp;&nbsp;<a href="###">支付</a></td>
+	<td><a href="__URL__/get_car_imgs/insurance_id/{$list.id}" target="_blank">查看车辆图片</a></td>
+</tr>
+</table>

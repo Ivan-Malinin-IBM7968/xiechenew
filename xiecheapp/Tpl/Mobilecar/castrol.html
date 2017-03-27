@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>送机油啦~！</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+ 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no">
+	<script src="{:C('WEB_ROOT')}/Public//mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+	<script src="{:C('WEB_ROOT')}/Public//mobile/bootstrap/js/weixin-api.js"></script>
+	<style type="text/css">
+	*{margin: 0; padding: 0;}
+	span.kquan{width: 15px; height: 15px; border-radius: 50%; border: 1px solid #FFFFFF; display: inline-block; position: relative; top: 3px;}
+	span.squan{width: 15px; height: 15px; border-radius: 50%; background: #4c66a4; display: inline-block; position: relative; top: 2px;}
+	.wrap{width:100%; min-width: 320px; background: url(/Public/mobile/images/castrol/ibg.jpg) center bottom no-repeat; background-size: cover; height: 1250px; font-size: "微软雅黑"; overflow: hidden; color: #FFFFFF; font-size: 14px;}
+	.top{background: url(/Public/mobile/images/castrol/topbg.jpg) top center repeat-x; height: 44px; line-height: 44px; font-size: 16px; color: #FFFFFF; text-align: center; overflow: hidden; margin: 34px 0;}
+	.top span{font-size: 20px;}
+	.userdiv{width:320px; margin: 0 auto; overflow: hidden; padding-left: 30px;}
+	.touxiang{float: left; width: 60px; height: 60px; border: 1px solid #FFFFFF; border-radius: 50%; overflow: hidden;}
+	.touxiang img{width: 60px; height: 60px;}
+	.name{float: left; padding-left: 20px; overflow: hidden; font-size: 14px;}
+	.name p{height: 30px; line-height: 30px; overflow: hidden; margin: 0;}
+	.name p span{margin-right: 10px;}
+
+	.myoil{width:295px; padding-left: 25px; margin: 34px auto; position: relative; height: 210px; overflow: hidden;}
+	.myoil i{font-size: 30px; padding: 0 3px; font-style: normal;}
+	.myoil b{font-weight: normal; color: #fb381d;}
+	.myoil img{position: absolute; right: 15px; top: 20px;}
+
+	.carservice{width: 320px; overflow: hidden; margin: 34px auto 20px; text-align: center;}
+	.carservice a{display: block; margin: 0 20px;  height: 35px; color: #FFFFFF; line-height: 35px; text-decoration: none; background: #4c66a4; border-radius: 5px;}
+	
+	.giveme{text-align: center; margin-bottom: 20px;}
+	.givemecon{width: 100%; background: url(/Public/mobile/images/castrol/inputbg.png) center top no-repeat; background-size: 100% 1px;}
+	.givemecon tr{height: 40px; padding: 0 20px;}
+	.givemecon tr.line{background: url(/Public/mobile/images/castrol/inputbg.png) center bottom no-repeat; background-size: 100% 1px; height: 1px;}
+	.stouxiang{float: left; width: 30px; height: 30px; border: 1px solid #FFFFFF; border-radius: 50%; overflow: hidden;}
+	.stouxiang img{width: 30px; height: 30px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="top">携车网府上养车硬要给我 <span>送机油</span></div>
+		<div class="userdiv">
+			<div class="touxiang">
+				<img src="/{$me.face}" alt="">
+			</div>
+			<div class="name">
+				<p><span class="kquan"></span>Hi {$me.nickname}</p>
+				<p><span class="kquan"></span>这是你的机油桶</p>
+			</div>
+		</div>
+		<div class="myoil">还差<i>5</i>位/ml<br />就可以拿到<br /><b>4L嘉持多机油</b>啦！<img src="/Public/mobile/images/castrol/oilbox.png" alt=""></div>
+		<div class="carservice"><a href="./castrol_fsyc">什么是府上养车</a></div>
+		<div class="giveme"><span class="kquan"></span> 为我加油的好友</div>
+		<table class="givemecon" border="0" cellpadding="2" cellspacing="0">
+			<volist name="list" id="vo">    
+			<tr>
+				<td width="20"></td>
+				<td width="40"><div class="stouxiang"><img src="/{$vo.face}" alt=""></div></td>
+				<td>{$vo.nickname}</td>
+				<td width="45">{$vo.cteate_time|date="m-d",###}</td>
+				<td width="45">{$vo.cteate_time|date="H:s",###}</td>
+				<td width="20"></td>
+			</tr>
+			<tr class="line">
+				<td colspan="6"></td>
+			</tr>
+			</volist>
+		</table>
+
+	</div>
+	<script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+	</script>
+</body>
+</html>

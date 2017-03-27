@@ -1,0 +1,185 @@
+/*carservice page css*/
+body{
+	/*overflow: hidden;*/
+}
+
+.fushangyangche{
+	background: #edeae5 url(../images/carservice/fs-bottom-bg.png) center bottom no-repeat;
+	background-size: 100% ;
+	width: 100%;
+	height: 815px;
+	overflow: hidden;
+	position: relative;
+}
+
+.videobox{
+	position: absolute;
+	left: 10.4%;
+	top: 50%;
+	width: 654px;
+	margin-top: -231px;
+	overflow: hidden;
+}
+
+.video{
+	background: url(../images/carservice/videobox.jpg) 0 0 no-repeat;
+	width: 654px;
+	height: 462px;
+	overflow: hidden;
+}
+
+.videocon{
+	width: 640px;
+	height: 360px;
+	overflow: hidden;
+	margin: 5px auto 0;
+}
+
+.videobox p a{
+	font-size: 18px;
+}
+
+.xiaobaoyang{
+	position: absolute;
+	left: 65%;
+	top: 50%;
+	margin-top: -231px;
+	width: 350px;
+}
+.xiaobaoyang p{
+	line-height: 30px;
+	font-size: 18px;
+	padding-top: 20px;
+}
+.xiaobaoyang p span{
+	color: #ff4a00;
+	font-size: 28px;
+	line-height: 30px;
+	display: inline-block;
+}
+
+.xiaobaoyang p a{
+	display: inline-block;
+	width: 178px;
+	height: 40px;
+	text-align: center;
+	background: #000000;
+	color: #FFFFFF;
+	line-height: 40px;
+}
+
+.showlc{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -171px;
+	overflow: hidden;
+}
+
+.liucheng{
+	width: 100%;
+	background: #202020;
+	overflow: hidden;
+	position: relative;
+	color: #FFFFFF;
+}
+
+.showfs{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -171px;
+	z-index: 99;
+}
+
+.lccon{
+	overflow: hidden;
+	height: 100%;
+}
+
+.lcslide{
+	overflow: hidden;
+	display: none;
+	height: 100%;
+}
+
+.lcsdes{
+	width: 35%;
+	padding-top: 240px;
+	padding-left: 110px;
+	height: 100%;
+}
+
+.lcsdes p{
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+
+.lcsdes p.lcptitle{
+	font-size: 24px;
+	margin-bottom: 60px;
+	font-weight: normal;
+}
+
+.lcsimg{
+	width: 65%;
+	height: 95%;
+	overflow: hidden;
+}
+
+.lcsimg img{
+	/*width: 100%;*/
+}
+
+.lcbotton{
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -50px;
+	height: 40px;
+	line-height: 40px;
+	width: 100px;
+}
+
+.lcbotton span{
+	display: inline-block;
+	
+	text-align: center;
+	font-size: 18px;
+	height: 40px;
+}
+
+.lcbotton span#lcprev,.lcbotton span#lcnext{
+	cursor: pointer;
+	width: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

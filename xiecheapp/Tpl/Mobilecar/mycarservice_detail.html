@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>携车网-订单详情</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="pagetop">
+      <div class="reindex" id="reindex">&nbsp;</div>
+      <div class="thispage">订单详情</div>
+    </div>
+    <div class="container huise row" style="display:none;">
+        <div class="Ftitle m5"><strong>府上养车</strong> <span>{$order_info['pay_status_name']}</span></div>
+        <div class="row fl-one fl-bt">
+          <div class="col-xs-12">订单号：{$orderid}<notempty name="live"><span style="float:right;padding-right:0.5em;margin-top:-2px"><a class="btn btn-primary" href="/mobilecar-live-order_id-{$live_id}">查看视频</a></span></notempty></div>
+        </div>
+        <div class="row fl-one fl-bt">
+          <div class="col-xs-12">预约时间：{$order_info['order_time']|date="Y-m-d H:i", ###}-{$order_info['order_time']|date="H", ###}:59</div>
+        </div>
+
+        <table width="100%" class="table-bordered" style="margin-bottom:0;" cellpadding="8">
+          <tbody>
+          <foreach name="item_list" item="value" key="key">
+                
+              <if condition="$key eq 0">
+                      <empty name="value.oil_2_name">
+                            <tr><td>机油</td><td colspan="2">{$value['name']}</td><td> ￥0</td></tr>
+                      <else />
+                          <empty name="value.oil_2_name">
+                            <tr><td>机油</td><td>{$value['oil_1_name']}</td><td>
+                                  <if condition="$value.oil_1_num eq 1">
+                                    {$value['oil_1_num']}L
+                                  <else />
+                                   1L×{$value['oil_1_num']}
+                                  </if>
+                            </td><td> ￥{$value['oil_1_price']}</td></tr>
+                            <else />
+                            <tr>
+                            	<notempty name="value.oil_1_name">
+	                            	<td rowspan="2">机油</td><td>{$value['oil_1_name']}</td>
+	                            	<td>
+	                                  <if condition="$value.oil_1_num eq 1">
+	                                    {$value['oil_1_num']}L
+	                                  <else />
+	                                   1L×{$value['oil_1_num']}
+	                                  </if>
+	                            	</td>
+	                            	<td> ￥{$value['oil_1_price']}</td>
+	                            <else />
+	                            	<td>机油</td>
+	                            	<td>{$value['oil_2_name']}</td>
+	                            	<td>
+	                                  <if condition="$value.oil_2_num eq 1">
+	                                    4L
+	                                  <else />
+	                                   4L×{$value['oil_2_num']}
+	                                  </if>
+	
+	                           		</td>
+	                           		<td> ￥{$value['oil_2_price']}</td>
+                            	</notempty>
+                            </tr>
+                            <notempty name="value.oil_1_name">
+                            <tr>
+                            	<td>{$value['oil_2_name']}</td>
+                            	<td>
+                                  <if condition="$value.oil_2_num eq 1">
+                                    4L
+                                  <else />
+                                   4L×{$value['oil_2_num']}
+                                  </if>
+
+                           		</td>
+                           		<td> ￥{$value['oil_2_price']}</td>
+                            </tr>
+                            </notempty>
+                          </empty>
+                      </empty>
+              
+
+              <elseif condition="$key eq 1" />
+              <tr><td>机油滤清器</td><td colspan="2">{$value['name']}</td><td> ￥{$value['price']}</td></tr>
+              <elseif condition="$key eq 2" />
+              <tr><td>空气滤清器</td><td colspan="2">{$value['name']}</td><td> ￥{$value['price']}</td></tr>
+              <elseif condition="$key eq 3" />
+              <tr><td>空调滤清器</td><td colspan="2">{$value['name']}</td><td> ￥{$value['price']}</td></tr>
+              </if>  
+              
+            </foreach>
+            
+            <tr>
+              <td>服务费</td>
+              <td colspan="2">服务费</td>
+              <td>￥99</td>
+            </tr>
+
+            
+
+            <notempty name="replace_code">
+              <tr>
+                  <td>抵用卷</td>
+                  <td colspan="2">已使用</td>
+                  <td>￥-{$replace_value}</td>
+              </tr>
+            </notempty>
+            <tr>
+              <td>总价</td>
+              <td colspan="2"></td>
+              <td>￥{$order_info['dikou_amount']+$order_info['amount']}</td>
+            </tr>
+            <tr>
+              <td>抵扣金额</td>
+              <td colspan="2"></td>
+              <td>￥-{$order_info['dikou_amount']}</td>
+            </tr>
+
+            <notempty name="order_info.dikou_amount">
+            <tr>
+              <td><strong>支付金额</strong></td>
+              <td colspan="2"></td>
+              <td><strong>￥{$order_info['amount']}</strong></td>
+            </tr>
+            </notempty>
+
+
+          </tbody>
+        </table>
+
+        <div class="row fl-one fl-bb">
+          <div class="col-xs-12">姓  名：{$order_info['truename']}</div>
+        </div>
+        <div class="row fl-one fl-bb">
+          <div class="col-xs-12">车  牌：{$order_info['licenseplate']}</div>
+        </div>
+        <div class="row fl-one fl-bb">
+          <div class="col-xs-12">联系方式：{$order_info['mobile']}</div>
+        </div>
+        <div class="row fl-one fl-bb">
+          <div class="col-xs-12">详细地址：{$order_info['address']}</div>
+        </div>
+        <div class="row fl-one fl-bb">
+          <div class="col-xs-12">支付金额：<span class="c00aaf1">{$order_info['amount']}元（含服务费99元）</span></div>
+        </div>
+        <div class="row fl-one2">
+          <div class="col-xs-12">
+                <p>备注：如需撤销订单，请与客服联系</p>
+                <p>电话：400-660-2822</p>
+          </div>
+        </div>
+		<eq name="order_info.pay_status_name" value="未支付">
+			<button type="button" class="btn btn-default btnzf">去支付</botton>
+		</eq>
+      
+    </div>
+
+    <div class="container huise">
+      <div class="row rowmb10">
+        <table class="table">
+          <tr>
+            <td style="background:url({:C('WEB_ROOT')}/Public/mobile/images/tico.png) 8px center no-repeat; background-size:15px; text-indent:18px;font-weight:bold; font-size:16px;">携车网府上养车</td>
+            <td align="right" style="color:#FF0000;">{$order_info['pay_status_name']}</td>
+          </tr>
+          <tr>
+            <td colspan="2">订单号：{$orderid}</td>
+          </tr>
+        </table>
+      </div>
+      <style type="text/css">
+      .rowmb10{margin-bottom: 10px;}
+      table{background: #FFFFFF;}
+      .table{margin-bottom: 0;}
+      .grxx td{padding: 8px;}
+      .grxx th{padding: 5px 8px; font-size: 16px;}
+      </style>
+      <div class="row rowmb10">
+        <table width="100%" class="grxx">
+          <tr>
+            <th>个人信息</th>
+          </tr>
+          <tr>
+            <td>姓名：<span style="color:#999999;">{$order_info['truename']}</span></td>
+          </tr>
+          <tr>
+            <td>手机：<span style="color:#999999;">{$order_info['mobile']}</span></td>
+          </tr>
+          <tr>
+            <td>地址：<span style="color:#999999;">{$order_info['address']}</span></td>
+          </tr>
+          <tr>
+            <td>车型：<span style="color:#999999;">{$order_info['car_name']}</span></td>
+          </tr>
+          <tr>
+            <td>车牌：<span style="color:#999999;">{$order_info['licenseplate']}</span></td>
+          </tr>
+          <tr>
+            <td>预约时间：<span style="color:#999999;">{$order_info['order_time']|date="Y-m-d H:i", ###}-{$order_info['order_time']|date="H", ###}:59</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="row">
+        <table width="100%" class="grxx">
+          <tr>
+            <th colspan="2">订单信息</th>
+          </tr>
+          
+          <foreach name="item_list" item="value" key="key">
+                
+              <if condition="$key eq 0">
+                      <empty name="value.oil_2_name">
+                            <tr><td>[机油]&nbsp;{$value['name']}</td><td> ￥0</td></tr>
+                      <else />
+                          <empty name="value.oil_2_name">
+                            <tr>
+                              <td>
+                                [机油]&nbsp;<span style="color:#999999;">{$value['oil_1_name']}&nbsp;<if condition="$value.oil_1_num eq 1">{$value['oil_1_num']}L<else />1L×{$value['oil_1_num']}</if></span>
+                              </td>
+                              <td>
+                                ￥{$value['oil_1_price']}
+                              </td>
+                            </tr>
+                            <else />
+                            <tr>
+                              <notempty name="value.oil_1_name">
+                                <td>[机油]&nbsp;<span style="color:#999999;">{$value['oil_1_name']}&nbsp;
+                                    <if condition="$value.oil_1_num eq 1">
+                                      {$value['oil_1_num']}L
+                                    <else />
+                                     1L×{$value['oil_1_num']}
+                                    </if></span>
+                                </td>
+                                <td> ￥{$value['oil_1_price']}</td>
+                              <else />
+                                <td>[机油] &nbsp;<span style="color:#999999;">{$value['oil_2_name']}&nbsp;
+                                    <if condition="$value.oil_2_num eq 1">
+                                      4L
+                                    <else />
+                                     4L×{$value['oil_2_num']}
+                                    </if></span>
+                                </td>
+                                <td> ￥{$value['oil_2_price']}</td>
+                              </notempty>
+                            </tr>
+                            <notempty name="value.oil_1_name">
+                            <tr>
+                              <td>[机油] &nbsp;<span style="color:#999999;">{$value['oil_2_name']}&nbsp;
+                                  <if condition="$value.oil_2_num eq 1">
+                                    4L
+                                  <else />
+                                   4L×{$value['oil_2_num']}
+                                  </if></span>
+                              </td>
+                              <td>￥{$value['oil_2_price']}</td>
+                            </tr>
+                            </notempty>
+                          </empty>
+                      </empty>
+              
+              <elseif condition="$key eq 1" />
+              <tr><td>[机油滤清器] <span style="color:#999999;">{$value['name']}</span></td><td> ￥{$value['price']}</td></tr>
+              <elseif condition="$key eq 2" />
+              <tr><td>[空气滤清器] <span style="color:#999999;">{$value['name']}</span></td><td> ￥{$value['price']}</td></tr>
+              <elseif condition="$key eq 3" />
+              <tr><td>[空调滤清器] <span style="color:#999999;">{$value['name']}</span></td><td> ￥{$value['price']}</td></tr>
+              </if>  
+              
+            </foreach>
+
+            <tr>
+              <td>服务费</td>
+              <td>￥99</td>
+            </tr>
+
+            <notempty name="replace_code">
+              <tr>
+                  <td>抵用卷</td>
+                  <td>￥-{$replace_value}</td>
+              </tr>
+            </notempty>
+            <tr>
+              <td>总价</td>
+              <td>￥{$order_info['dikou_amount']+$order_info['amount']}</td>
+            </tr>
+            <tr>
+              <td>抵扣金额</td>
+              <td>￥-{$order_info['dikou_amount']}</td>
+            </tr>
+
+            <notempty name="order_info.dikou_amount">
+            <tr>
+              <td><strong>支付金额</strong></td>
+              <td><strong>￥{$order_info['amount']}</strong></td>
+            </tr>
+            </notempty>
+
+            <tr><td align="right" colspan="2">共1单，总额<strong style="color:#d62b21;">￥{$order_info['amount']}</strong></td></tr>
+            <tr>
+              <td colspan="2" align="right">
+                <if condition="$order_info.pay_status eq 1">
+                <a href="/mobilecar-live-order_id-{$live_id}" style="display:inline-block; border:1px solid #e8e8e8; border-radius:3px; text-align:center; color:#999; width:90px; height:35px; line-height:35px;">查看视频</a>
+                <else />
+                <a href="{:C('WEB_ROOT')}/weixinpay/wxpay.php?order_id={$orderid}&showwxpaytitle=1" style="display:inline-block; border:1px solid #D62B21; border-radius:3px; text-align:center; color:#FFFFFF; width:90px; height:35px; line-height:35px; background:#D62B21;">去支付</a>
+              </if>
+                &nbsp;<a href="/mobilecar/commentList" style="display:inline-block; border:1px solid #e8e8e8; border-radius:3px; text-align:center; color:#999; width:90px; height:35px; line-height:35px;">查看评价</a>
+              </td>
+            </tr>
+        </table>
+      </div>
+      <div class="row" style="line-height:2em; padding:5px 8px; color:#999999;">注:如需撤销订单,请与客服联系400-660-2822</div>
+    </div>
+
+    
+      
+    <script>
+    $(function(){
+
+      $("#reindex").click(function(){
+          window.location.href='__APP__/mobilecar/mycarservice?pa_id={$pa_id}';
+      });
+      $(".btnzf").click(function(){
+        window.location.href='__APP__/weixinpay/wxpay.php?order_id={$orderid}&showwxpaytitle=1';
+      });
+    });
+    </script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?60969e039f9a2a7252a22e6e27e9f16f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  </body>
+</html>

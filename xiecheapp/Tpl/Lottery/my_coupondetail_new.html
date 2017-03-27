@@ -1,0 +1,98 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/sales.css?v={$Think.config.VERSION_DATE}" />
+
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="__APP__/coupon">4S店售后团购</a></li>
+			<li>></li>
+			<li>促销抵用券</li>
+			<li>></li>
+			<li>{$coupon.coupon_name}</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="w1200 content">
+		<div class="w830 content-left">
+			<!-- Ticlet Start-->
+			<div class="w830 ticket">
+				<h2 class="title">{$coupon.coupon_name}</h2>
+				<div class="w830 ticket-info">
+					<div class="img-con">
+						<img src="/UPLOADS/Coupon/Logo/{$coupon.coupon_pic}"  width="450" height="338" title="{$coupon.coupon_name}" alt="{$coupon.coupon_name}">
+					</div>
+					<div class="info-con">
+						<div class="f-price">
+							¥{$coupon.coupon_amount}
+						</div>
+						<div class="add-info2">
+							<span class="ad">{$coupon.coupon_summary}</br></br></br>您的抵用券验证码</span>
+						</div>
+						<div class="buy-ticket">
+							<a href="###"><span>{$coupon.coupon_code}</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Ticket End-->
+			<!-- Ticket Related Info Start-->
+			
+
+			<div class="clear"></div>
+			
+			<div class="w830 ticket-detail">
+				<div class="cate-title">
+					<h3>关于本抵用券</h3>
+				</div>
+				<div class="article">
+					{$coupon.coupon_des}
+				</div>
+			</div>
+		</div>
+		<div class="w350 content-right">
+			<div class="tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+
+			</div>
+			<div class="tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+		</div>
+	</div>

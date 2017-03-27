@@ -1,0 +1,481 @@
+<div class="footer">
+	  <div id="go" style="display:none"></div>
+      <div class="foot">
+        <div class="footabout">
+          <dl>
+            <dt><a href="/public/aboutus" target="_blank">关于我们</a></dt>
+            <dd><a href="/public/aboutus#jianjie" target="_blank">平台简介</a></dd>
+            <dd><a href="/public/aboutus#lianxi" target="_blank">联系方式</a></dd>
+            <dd><a href="/public/aboutus#fazhan" target="_blank">发展历程</a></dd>
+            <dd><a href="/public/aboutus#wenhua" target="_blank">企业文化</a></dd>
+          </dl>
+          <dl>
+            <dt><a href="/shopservice/agreement" target="_blank">服务支持</a></dt>
+            <!-- <dd><a href="#">服务保障</a></dd>
+            <dd><a href="#">服务说明</a></dd> -->
+            <dd><a href="/shopservice/agreement" target="_blank">服务协议</a></dd>
+          </dl>
+          <dl>
+            <dt><a href="/public/honour" target="_blank">媒体报道</a></dt>
+            <dd><a href="/public/honour#rongyu" target="_blank">携车网相关荣誉</a></dd>
+            <dd><a href="/public/honour#baodao" target="_blank">携车网媒体相关报道</a></dd>
+          </dl>
+          <dl class="fweixin">
+            <dt>携车网微信服务号</dt>
+            <dd><img src="__PUBLIC__/images/weixin.jpg" alt=""></dd>
+          </dl>
+
+          <div class="renzheng">
+            <a href="http://www.miitbeian.gov.cn" rel="nofollow" target="_blank"><img src="__PUBLIC__/images/common/safe1.png"></a>
+            <a href="http://webscan.360.cn/" rel="nofollow" target="_blank"><img src="__PUBLIC__/images/common/safe2.png"></a>
+            <a href="http://www.zx110.org/" rel="nofollow" target="_blank"><img src="__PUBLIC__/images/common/safe3.png"></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">Copyright © 2015 WWW.XIECHE.COM.CN <a href="http://www.miibeian.gov.cn">沪ICP备12017241号</a> 携车网 版权所有 </div>
+</div>
+
+
+<style type="text/css">
+.clearfix:after {clear: both; content: "​"; display: block; height: 0;}
+.changecarbox{width: 820px; padding: 10px; background: #eaeeed; position: fixed; left: 50%; top: 50%; z-index: 9999; display: none;}
+.changecarboxbg{background: #000000; width: 100%; height: 100%; position: absolute; top: 0; z-index: 9998; opacity: 0.7; display: none;}
+.historycar{background: #FFFFFF; margin-bottom: 10px;}
+.changecar{background: #FFFFFF;}
+#changecarclose{position: absolute; top: 10px; right: 40px; cursor: pointer; height: 65px; line-height: 65px;}
+.changecar-title{height: 65px; line-height: 65px; border-bottom: 2px solid #eaeeed; font-weight: bold; text-indent: 30px;}
+
+.historycarcon{padding: 20px 30px 10px 30px; font-size: 12px; font-family: "微软雅黑", "Microsoft yahei";}
+.changecarcon{padding: 20px 30px 60px;}
+.mt-d-step{overflow: hidden; margin-bottom: 20px;}
+.mitem{background: url(__PUBLIC__/images/bzbg1.png) left center no-repeat; width: 210px; padding: 13px 0; float: left; text-align: center; font-size: 12px; color: #FFFFFF;}
+.mitem.current{background: url(__PUBLIC__/images/bzbg2.png) left center no-repeat;}
+.mitem.mstep2{margin: 0 55px;}
+.mitem i{display: inline-block; width: 16px; height: 16px; background: #FFFFFF; border-radius: 50%; font-style: normal; color: #35548c;}
+
+.c-step-1{overflow: hidden; font-size: 12px;}
+.hot-brand-slect{overflow: hidden; margin-bottom: 20px;}
+.car-change-title{float: left; padding-right: 5px; font-size: 14px;}
+.car-change-kind{float: left; overflow: hidden;}
+.car-change-kind .car-kind{float: left; line-height: 18px; border: 1px solid #eeeeee; color: #35548c; padding: 1px 6px; cursor: pointer; margin-right: 5px;}
+.car-change-kind .car-kind.current{background: #35548c; color: #FFFFFF; border: 1px solid #35548c;}
+
+.car-c-con{overflow: auto; height: 150px;}
+.car-c-con li{overflow: hidden;}
+.cars-brand{float: left; overflow: hidden; width: 130px; height: 43px; border: 1px solid #eeeeee; line-height: 40px; cursor: pointer; margin:0 10px 10px 0;}
+.cars-brand:hover{border: 1px solid #72a3d4; color: #72a3d4;}
+.cars-brand .cars-icon{background: center center no-repeat; float: left; height: 30px; margin: 5px 20px 0; overflow: hidden; width: 30px; background-size: cover;}
+
+.c-step-2{clear: both;}
+
+.has-select{font-size: 12px; line-height: 30px; clear: both; }
+
+.car-change-con{}
+
+.has-select .cars{background: none repeat scroll 0 0 #fffcee; border: 1px solid #72a3d4; float: left; height: 28px; line-height: 28px; margin-right: 30px; padding: 0 25px; position: relative;}
+.del{background: none repeat scroll 0 0 #72a3d4; border-radius: 10px; color: #fff; cursor: pointer; height: 18px; line-height: 18px; position: absolute; right: -8px; text-align: center; top: -8px; width: 18px;}
+.has-select {border-bottom: 1px solid #333; margin-bottom: 15px; padding-bottom: 15px;}
+.has-select-con h5{margin-bottom: 5px;}
+.has-select-con .cars {border: 1px solid #eae9ea; cursor: default; float: left; font-size: 14px; height: 28px; line-height: 28px; margin: 0 25px 10px 0; padding: 0 25px; white-space: nowrap;}
+.has-select-con .cars:hover{border: 1px solid #72a3d4; color: #72a3d4;}
+.has-select-con{}
+.has-con-box{height: 150px; overflow: auto;}
+
+.c-step-4{overflow: hidden;}
+.c-step-4 .notice{border-bottom: 1px solid #000; font-size: 18px; line-height: 40px; padding: 25px 0 30px; text-align: center;}
+.c-step-4 .notice i{background: url(__PUBLIC__/images/s.jpg) no-repeat 0 0 ; display: inline-block; height: 40px; vertical-align: bottom; width: 40px;}
+.c-step-4 .carresult{font-size: 14px; margin-top: 30px; text-align: center;}
+.c-step-4 .carresult span{color: #66a5e1;}
+.c-step-4 .carbtn{margin-top: 20px; text-align: center;}
+#mt_c_next {background: none repeat scroll 0 0 #66a5e1; color: #fff; cursor: pointer; display: inline-block; font-size: 16px; height: 30px; line-height: 30px; width: 120px;}
+.car-a{ background:url(__PUBLIC__/images/circle-bg.png) no-repeat 0 3px ; margin: 0; width: 340px; display: block; overflow: hidden;
+  text-overflow:ellipsis; text-indent: 18px; word-break:keep-all;white-space:nowrap; margin-right:60px;margin-bottom: 10px; float: left;}
+.scoll_speak{ text-indent: 30px; margin-top:-30px; padding-bottom:30px; font-size: 12px; font-family: "微软雅黑", "Microsoft yahei";}
+</style>
+<div class="changecarbox" id="changecarbox" style='<empty name="carHistory">margin: -210px 0 0 -410px;<else />margin: -280px 0 0 -410px;</empty>'>
+  <notempty name="carHistory">
+  <div class="historycar">
+    <div class="changecar-title">选择历史车型</div>
+    <div class="historycarcon">
+      <volist name="carHistory" id="voc" offset="0" length='4' >
+        <div class="car-a" id="{$i}"><a href="javascript:;" brandId="{$voc.brandId}" seriesId="{$voc.seriesId}" modelId="{$voc.modelId}" onclick="carHistory(this)">{$voc.carName}</a></div>
+      </volist>
+      <div style="clear: both;margin-bottom:0;"></div>
+    </div>
+  </div>
+  </notempty>
+  <div class="changecar">
+    <div class="changecar-title">选择新车型</div>
+    <div class="changecarcon">
+      <div class="mt-d-step">
+        <div class="mitem mstep1 current">
+          <i>1</i>
+          选择品牌
+        </div>
+        <div class="mitem mstep2">
+          <i>2</i>
+          选择车系
+        </div>
+        <div class="mitem mstep3">
+          <i>3</i>
+          选择年款
+        </div>
+      </div>
+      <div class="c-step-1">
+        <div class="hot-brand-slect">
+          <div class="car-change-title">品牌首字母选择：</div>
+          <div class="car-change-kind">
+            <div class="car-kind current">热门</div>
+            <div class="car-kind">A</div>
+            <div class="car-kind">B</div>
+            <div class="car-kind">D</div>
+          </div>
+        </div>
+        <ul class="car-c-con">
+          <li>
+            <div class="cars-brand">
+              <i class="cars-icon" style="background-image: url({:C('UPLOAD_ROOT')}/Brand/Logo/aodi.jpg)">&nbsp;</i>
+              <span>奥迪</span>
+            </div>
+          </li>
+          <li>
+            <div class="cars-brand">
+              <i class="cars-icon" style="background-image: url({:C('UPLOAD_ROOT')}/Brand/Logo/aodi.jpg)">&nbsp;</i>
+              <span>大众</span>
+            </div>
+          </li>
+          <li>
+            <div class="cars-brand">
+              <i class="cars-icon" style="background-image: url({:C('UPLOAD_ROOT')}/Brand/Logo/aodi.jpg)">&nbsp;</i>
+              <span>福特</span>
+            </div>
+          </li>
+          <li>
+            <div class="cars-brand">
+              <i class="cars-icon" style="background-image: url({:C('UPLOAD_ROOT')}/Brand/Logo/aodi.jpg)">&nbsp;</i>
+              <span>别克</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="c-step-2" style="display:none;">
+        <div class="has-select clearfix">
+          <div class="car-change-title"><b>已选车型:</b></div>
+          <div class="car-change-con clearfix">
+            <div class="cars">别克<b class="del" data="别克" step="1">×</b></div>
+          </div>
+        </div>
+        <div class="has-con-box">
+          <div class="has-select-con clearfix">
+            <h5>通用别克:</h5>
+            <div class="cars">君威</div>
+            <div class="cars">别克GL8</div>
+            <div class="cars">昂科拉ENCORE</div>
+            <div class="cars">林荫大道</div>
+            <div class="cars">君越</div>
+            <div class="cars">凯越</div>
+            <div class="cars">英朗</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-step-3" style="display:none;">
+        <div class="has-select clearfix">
+          <div class="car-change-title"><b>已选车型:</b></div>
+          <div class="car-change-con clearfix">
+            <div class="cars">
+              别克
+              <b class="del" data="别克" step="1">×</b>
+            </div>
+            <div class="cars">
+              君威
+              <b class="del" data="别克" step="1">×</b>
+            </div>
+          </div>
+        </div>
+        <div class="has-con-box">
+          <div class="has-select-con clearfix">
+            <h5>通用别克:</h5>
+            <div class="cars">君威</div>
+            <div class="cars">别克GL8</div>
+            <div class="cars">昂科拉ENCORE</div>
+            <div class="cars">林荫大道</div>
+            <div class="cars">君越</div>
+            <div class="cars">凯越</div>
+            <div class="cars">英朗</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-step-4" style="display:none;">
+        <p class="notice">
+          <i></i>
+          车型选择成功
+        </p>
+        <div class="carresult">
+          <strong>已选车型</strong>
+          <span class="r-pinpai">福特</span>
+          <span class="r-chexi">福克斯</span>
+          <span class="r-pailiang">福克斯 福克斯三厢 2012款 新一代1.6双离合 舒适型</span>
+        </div>
+        <div id="tofilldistance" class="carbtn">
+          <span id="mt_c_next">下一步</span>
+        </div>
+      </div>
+    </div>
+    <div class="scoll_speak">没找到我的车型？滚动查看更多</div>
+  </div>
+  <div id="changecarclose">关闭</div>
+</div>
+<div class="changecarboxbg"></div>
+
+<script type="text/javascript">
+
+  $(function(){
+    $("#2").css("margin-right","0");
+    $("#4").css("margin-right","0");
+    $("#6").css("margin-right","0");
+    $("#8").css("margin-right","0");
+    $(".scoll_speak").show();
+
+    $(".changecarboxbg").height($(document).height());
+
+    var brand_id,series_id,model_id,car_name,series_name;
+
+    $(".car-select").click(function(){
+      $.ajax({
+        type: "GET",
+        url: "/index/getCarBrand",
+        cache: false,
+        dataType:"json",
+        
+        success: function(data){
+            
+             var html = '';
+             
+             var lihtml = '';
+             $.each(data,function(i,v){
+                
+                if(i!="A"){
+                  html += '<div class="car-kind">'+i+'</div>';
+                  lihtml += '<li style="display:none;">';
+                }else{
+                  html += '<div class="car-kind current">'+i+'</div>';
+                  lihtml += '<li>';
+                }
+                $.each(v,function(k,u){
+                  lihtml += '<div class="cars-brand" brand-id="'+u.brand_id+'"><i class="cars-icon" style="background-image: url({:C('UPLOAD_ROOT')}/Brand/Logo/'+u.brand_logo+')">&nbsp;</i><span>'+u.brand_name+'</span></div>';
+                })
+                lihtml +='</li>';
+             })
+             $(".car-change-kind").html(html);
+             $(".car-c-con").html(lihtml);
+        }
+      });
+      $(".c-step-1").show().siblings().hide();
+      $(".mt-d-step").show();
+      $(".changecarboxbg").show();
+      $("#changecarbox").slideDown();
+
+    });
+    
+
+    
+
+    $(document).on("click",".car-change-kind .car-kind",function(){
+      $(this).addClass("current").siblings().removeClass("current");
+      $(".car-c-con li").eq($(this).index()).show().siblings().hide();
+      
+    });
+
+    $(document).on("click",".c-step-1 .cars-brand",function(){
+      $(".c-step-2 .car-change-con .cars").eq(0).html($(this).find("span").text()+'<b class="del" data="'+$(this).find("span").text()+'" step="1">×</b>');
+      $(".c-step-3 .car-change-con .cars").eq(0).html($(this).find("span").text()+'<b class="del" data="'+$(this).find("span").text()+'" step="1">×</b>');
+      var html = '';
+      brand_id = $(this).attr("brand-id");
+      car_name = $(this).find("span").text();
+      $.ajax({
+        type: "POST",
+        url: "/index/getCarSeries",
+        cache: false,
+        dataType:"json",
+        data:{brand_id:brand_id},
+        success: function(data){
+            
+          html += '<div class="has-select-con clearfix">';
+          $.each(data,function(i,v){
+            html += '<div class="cars" series-id="'+v.series_id+'">'+v.series_name+'</div>';
+          })
+          html += '</div>';
+           
+          $(".c-step-2 .has-con-box").html(html);
+        }
+      });
+      $(".mt-d-step .mitem").eq(1).addClass("current").siblings().removeClass("current");
+      $(".c-step-1").hide();
+      $(".c-step-2").show();
+      
+    });
+
+    $(document).on("click",".c-step-2 .has-select-con .cars",function(){
+      $(".c-step-3 .car-change-con .cars").eq(1).html($(this).text()+'<b class="del" data="'+$(this).text()+'" step="2">×</b>');
+      series_id = $(this).attr("series-id");
+      series_name = $(this).text();
+      var html = '';
+      $.ajax({
+        type: "POST",
+        url: "/index/getCarModel",
+        cache: false,
+        dataType:"json",
+        data:{series_id:series_id},
+        success: function(data){
+
+          html += '<div class="has-select-con clearfix">';
+          $.each(data,function(i,v){
+            html += '<div class="cars" model-id="'+v.model_id+'">'+v.model_name+'</div>';
+          })
+          html += '</div>';
+           
+          $(".c-step-3 .has-con-box").html(html);
+        }
+      });
+      $(".mt-d-step .mitem").eq(2).addClass("current").siblings().removeClass("current");
+      $(".c-step-2").hide();
+      $(".c-step-3").show();
+      
+    });
+
+    $(document).on("click",".c-step-3 .has-select-con .cars",function(){
+      model_id = $(this).attr("model-id");
+      $(".c-step-4 .r-pinpai").text(car_name);
+      $(".c-step-4 .r-chexi").text(series_name);
+      $(".c-step-4 .r-pailiang").text($(this).text());
+      $(".c-step-3").hide();
+      $(".c-step-4").show();
+      $(".scoll_speak").hide();
+      
+      car_name = car_name+' '+series_name+' '+$(this).text();
+    });
+
+    $(document).on("click",".del",function(){
+		var step = $(this).attr("step")*1+1*1;
+		$(".c-step-"+$(this).attr("step")).show().siblings().hide();
+		$(".mt-d-step").show();
+		$(".mt-d-step .mitem").eq($(this).attr("step")-1).addClass("current").siblings().removeClass("current");
+		//干掉之前选择品牌下的车系数据
+		$(".c-step-"+step+" .has-con-box").html(''); 
+    });
+
+    $("#mt_c_next").click(function(){
+      $.ajax({
+        type: "POST",
+        url: "/index/saveCarData",
+        cache: false,
+        dataType:"json",
+        data:{series_id:series_id,brand_id:brand_id,model_id:model_id,car_name:car_name},
+        success: function(data){
+          if(data.status){
+            
+            $("#changecarbox").hide();
+            $(".changecarboxbg").hide();
+            var go = $('#go').text();
+            if(go){
+            	document.location.href=go;	
+            }else{
+            	window.location.reload();
+            }
+          }else{
+            alert(data.msg);
+            $(".c-step-1").show().siblings().hide();
+            $(".mt-d-step").show();
+          }
+        }
+      });
+      
+    });
+
+
+
+    $("#changecarclose").click(function(){
+      $("#changecarbox").slideUp();
+      $(".changecarboxbg").hide();
+    });
+    //修改车型
+    $('#snav u').click(function(){
+    	$('.car-select').click();
+    })
+
+  });
+	
+
+      function carHistory(e){
+      $.ajax({
+        type: "POST",
+        url: "/index/saveCarData",
+        cache: false,
+        dataType:"json",
+        data:{series_id:$(e).attr("seriesId"),brand_id:$(e).attr("brandId"),model_id:$(e).attr("modelId"),car_name:$(e).text()},
+        success: function(data){
+          if(data.status){
+            $("#changecarbox").hide();
+            $(".changecarboxbg").hide();
+            var go = $('#go').text();
+            if(go){
+              document.location.href=go;  
+            }else{
+              window.location.reload();
+            }
+          }else{
+            alert(data.msg);
+            $(".c-step-1").show().siblings().hide();
+            $(".mt-d-step").show();
+          }
+        }
+      });
+    }
+</script>
+
+<empty name="carHistory">
+    <script type="text/javascript">
+      //检测有无选过车型
+    function checkCar(go){
+      $('#go').text(go);
+      $("#changecarclose").hide(); 
+      $('.car-select').click();
+    }
+  </script> 
+  <else />
+  <script type="text/javascript">
+      //检测有无选过车型
+    function checkCar(go){
+      document.location.href = go;
+    }
+  </script>
+</empty>
+
+<notempty name="choseCar">
+<empty name="noshow">
+  <script type="text/javascript">
+      $(function(){
+          $(".car-select").click();
+      });
+  </script>
+</empty>
+
+<empty name="noclose">
+  <script type="text/javascript">
+    $(function(){
+      $("#changecarclose").hide(); 
+    });
+  </script>
+</empty>
+</notempty>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?60969e039f9a2a7252a22e6e27e9f16f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  </body>
+</html>

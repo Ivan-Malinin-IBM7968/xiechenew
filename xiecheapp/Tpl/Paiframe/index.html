@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>
+			好车嵌入
+		</title>
+		<link rel="stylesheet" href="__PUBLIC__/common/css/reset.css">
+		<link rel="stylesheet" href="__PUBLIC__/new_pa/css/selectize.css">
+		
+		<style>
+			body{background: #eeeeee; }
+			*{font-family: "微软雅黑","Microsoft Yahei","宋体",sans-serif;}
+			a{text-decoration: none;}
+			#wrapper{ width: 998px; height: 378px; margin: 0 auto; font-family: "微软雅黑","Microsoft Yahei","宋体",sans-serif; background: white; border: 1px solid #ccc8c3; overflow: hidden;}
+			.subtitle{ width: 958px; height: 50px; padding: 20px; background: url("__PUBLIC__/new_pa/images/ibanner/xc.jpg") 0px 0px repeat;  line-height: 70px; }
+			#inner-wrapper{width: 958px; height: 310px; padding: 20px;}
+			.service{width: 610px; height: 270px;  font-size: 14px;position: relative; overflow: hidden; float: left;}
+			.service .tabs{display: block;width: 625px;height: 60px;line-height: 60; }
+			.service .tabs li{display: block; width: 200px;background: #e0e0e0; height: 40; line-height: 40px; margin-right: 6px; float: left; text-align: center;z-index: 1; cursor: pointer; color: #101010;}
+			.service .tabs li.current {height: 50px; background: #ff6600; color: white; background: url("__PUBLIC__/new_pa/images/h.png") 0px 0px no-repeat;}
+			.service .con{ background: white; width: 610px; height: 225px; }
+			
+
+			.search{ display: block; width: 620px; height: 225px; }
+			.search ul{display: block; width: 610px; height: 210px; overflow: hidden;}
+			.search li{ display: block; width: 610px; height: 40px; line-height: 40px; font-size: 16px; margin-bottom: 10px;  } 
+			.search li label{width: 85px; height: 40px;}
+			.search li label, .search li select{float: left; display: block;}
+			.search li select{padding: .5em .6em; }
+			.car_series,
+			.car_model{width: 210px; }
+			.car_series{margin-right: 20px;}
+			.con select{ height: 38px; line-height: 38px; background: white; border: 1px solid #cdcdcd; border-radius: 0px; font-size: 16px;}
+			.search .submit{width: 363px; height: 40px; }
+			.search .input-text{ padding: 0px 0px 0px 10px; font-size: 15px; width:358px; height: 38px; line-height: 38px; background: white; border: 1px solid #cdcdcd;}
+			.search .submit-btn{width: 120px; height: 40px;  line-height: 40px; background: #ff6600; text-align: center; cursor: pointer; color: white; font-size: 18px; border: 0px;}
+			
+			.brand-filter{width: 640px; height: 40px; line-height: 40px; overflow: hidden;}
+			.brand-filter .title{float: left; font-size: 16px; height: 30px; line-height: 30px; display: inline-block; width: 55px;}
+			.brand-filter ul{float: left;width: 505px; height: 30px; line-height: 30px; overflow: hidden}
+			.brand-filter ul li{float: left; font-size: 14px; margin-right: 5px; font-size: 16px;height: 30px; padding: 0px 5px; line-height: 30px; cursor: pointer; }
+			.brand-filter ul li.current{background: #ff6600; color: white;}
+			.brand-filter ul li a{color: black;}
+			.brand-filter ul li a:visited{color: black;}
+			.brand-filter ul li a:hover{color: black;}
+			.brand-filter ul li.current a{background: #ff6600; color: white;}
+			.brand-filter ul li.current a:visited{color: white;}
+			.brand-filter ul li.current a:hover{color: white;}
+			.brand-filter .more{display: inline-block; float: left; width: 60px; height: 30px; line-height: 30px; font-size: 14px; color: #ff6600;text-decoration: none;}
+			.brand-filter .more:visited{ color: #ff5500; }
+			.brand-filter .more:hover{text-decoration: underline;}
+			.brand-sale{width: 630px;}
+			.brand-sale ul{display: block; width: 620px; height: 155px;}
+			.brand-sale ul .single-con{width: 290px; height: 70px; display: inline; float: left; margin: 5px 15px 10px 0px;}
+			.single-con a{width: 100%; height: 100%; }
+			.single-con img{display: block; float: left; width: 86px; height: 64px; color: black}
+			.single-con .desc{width: 190px; height: 65px; float: right; position: relative;}
+			.single-con .desc h4{font-size: 14px; height: 40px; line-height: 19px; color: black; overflow: hidden; margin-bottom: 2px;}
+			.single-con .desc div{position: absolute; bottom: 0px;}
+			.single-con .desc div strong{font-size: 18px; color: #ff6600;}
+			.single-con .desc div span{font-size: 12px; color: #737373; text-decoration: line-through;}
+			.banner{width: 300px; height: 266px; float: right;}
+
+			/*select helper style*/
+			.selectize-control{float: left; }
+			.selectize-dropdown-content{max-height: 110px;}
+
+			/* focus */
+			#focus{width:300px;height: 234px;overflow:hidden;position:relative;float:right;margin:0 auto; margin-right: -10px;}
+			#focus ul{height:380px;position:absolute;}
+			#focus ul li{float:left;width:300px;height:266px;overflow:hidden;position:relative;background:#000;}
+			#focus ul li div{position:absolute;overflow:hidden;}
+			#focus .btnBg{position:absolute;width:300px;height:20px;left:0;bottom:0;background:#000;}
+			#focus .btn{position:absolute;width:300px;height:15px;padding:5px 10px;right:0;bottom:0;text-align:right;}
+			#focus .btn span{display:inline-block;_display:inline;_zoom:1;width:25px;height:10px;_font-size:0;margin-left:5px;cursor:pointer;background:#fff;}
+			#focus .btn span.on{background:#fff;}
+
+		</style>
+		<!--[if IE 8]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
+		<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+
+
+		<script src="__PUBLIC__/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script src="__PUBLIC__/new_pa/js/selectize.js"></script>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<div class="subtitle">
+				<!-- <div style="height: 50px; width: 430px; display: block; float: left;" >
+					<div style="height: 20px; line-height: 20px;">
+						<span class="sign" style="width: 5px; height: 20px; background: #ff9900; display: inline-block; vertical-align: middle; margin-right: 10px;"></span>
+						<span style="width:auto; height:20px; display: inline-block; line-height: 20px; vertical-align: middle; font-weight: bolder; font-size: 22px; letter-spacing: 1px">4S店铺优惠预约</span>
+					</div>
+					<div style="height: 30px; line-height: 30px; width: 260px; font-size: 17px; color: #858585; padding-left: 14px; margin-top: 5px;">上海市514家4S店优惠预约养车</div>
+				</div>
+				<div style="height: 50px; line-height: 50px; width: 300px; float: left; text-align: center; background: url('__PUBLIC__/new_pa/images/ibanner/pa-xieche-logo.png') right center no-repeat; float:left; height: 50px; width: 528px; ">
+					携车网热线：400-660-2822
+				</div> -->
+				
+				
+				
+			</div>
+			<div id="inner-wrapper">
+				<div class="service" id="">
+					<ul id="tabs1" class="tabs">
+						<li class="current">搜索4S店铺维修保养</li>
+						<li >现金抵用券团购</li>
+						<li >保养套餐券团购</li>
+					</ul>
+					<div id="con1" class="con">
+						<!-- 搜索4S店铺维修保养 开始 -->
+						<div style="display: none;" class='current'>
+							 <form class="search"  name="form2" method="POST" action="__APP__/shopservice" target="_blank">
+								<ul>
+									<li id="pinpai">
+										<label>选择品牌:</label>
+										 <select id="get_brand" name="brand_id" placeholder="选择品牌" style="width:525px; float: left;">
+										 	
+										</select>
+									</li>
+									<li id="chexing">
+										<label>选择车系:</label>
+										<select class="car_series"id="get_series" placeholder="选择车系" name="series_id" style="float: left;">
+											
+										</select>
+										<label >选择车型:</label>
+										<select class="car_model" id="get_model" placeholder="选择车型" name="model_id" style="float: left;">
+											
+										</select>
+									</li>
+									<li id="diqu" style="overflow: hidden; height: 30px; margin-bottom: 15px;">
+										<label style="height: 28px; line-height: 28px;">所在地区:</label>
+										<input type="text" id="area_name" name="area_name" class="input-text"  style="width: 512px; height: 28px; line-height: 28px; float: left;" value="例:徐汇区">
+										
+									</li>
+									<li id="guanjianzi" style="overflow: hidden; height: 30px;">
+										<label style="height: 28px; line-height: 28px;">4S店铺名:</label>
+										<input type="text" id="shop_name" name="shop_name" class="input-text" style="float: left; margin-right: 15px; width: 377px ; height: 28px; line-height: 30px;"  value="可选填" >
+										<input type="submit" value="提 交 搜 索" class="submit-btn" style="float: left;  height: 28px; line-height: 26px; font-size: 16px;">
+									</li>
+									
+								</ul>
+								
+							</form>
+						</div>
+						<!-- 搜索4S店铺维修保养 结束 -->
+						<!-- 现金抵用券团购 开始-->
+						<div style="display: none; overflow: hidden;" class='quick-access'>
+							<div class="brand-filter">
+								<span class="title">品 牌:</span>	
+								<!-- 包括“全部”，ul一共可以展示8个 <li> -->						
+								<ul class="tabs2">
+									<li  class="current"><a href="{:URL('/coupon/index',array('coupon_type'=>'all'))}{:C('HTML_URL_SUFFIX')}" target="_blank">全部</a></li>  
+									<volist name="data_Pcoupon.Coupon" id="list" >
+										<li><a href="{:URL('/coupon/index',array('coupon_type'=>1,'brand_id'=>$list['brand_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$list.brand_name}</a>
+									</li>
+									</volist>
+								</ul>
+								<a href="__APP__/coupon/type/id/3" class="more" target="_blank">更多>></a>
+							</div>
+							
+							<div class="brand-sale con2">
+								<div>
+									<ul>
+									<volist name="data_AllPcoupon" id="arr" >
+										<li class="single-con">
+											<a href="__APP__/coupon/detail/id/{$arr.id}" target="_blank"> 
+												<img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="优惠券" width="86" height="64">
+												<div class="desc">
+													<h4>{$arr.coupon_name}</h4>
+													<div>
+														<strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+													</div>
+												</div>
+											</a>
+										</li>
+									</volist>
+									</ul>
+								</div>
+								<volist name="data_Pcoupon.Coupon" id="voc1" >
+									<div>
+										<ul>
+											<volist name="voc1.Pcoupon" id="arr" >
+												<li class="single-con">
+													<a href="__APP__/coupon/detail/id/{$arr.id}" target="_blank"> 
+														<img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="优惠券" width="86" height="64">
+														<div class="desc">
+															<h4>{$arr.coupon_name}</h4>
+															<div>
+																<strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+															</div>
+														</div>
+													</a>
+												</li>
+											</volist>
+										</ul>
+									</div>
+								</volist>
+							</div>
+						</div>
+
+
+
+						<!-- 现金抵用券团购 结束 -->
+						<!-- 保养套餐券团购 开始 -->
+						<div style="display: none;" class='my-cars'>
+							<div class="brand-filter">
+								<span class="title">品 牌:</span>	
+								<!-- 包括“全部”，ul一共可以展示8个 <li> -->		
+							
+								<ul class="tabs3">
+									<li  class="current"><a href="{:URL('/coupon/index',array('coupon_type'=>'all'))}{:C('HTML_URL_SUFFIX')}" target="_blank">全部</a></li>
+									<volist name="data_Gcoupon.Coupon" id="list" >
+										<li>
+										<a href="{:URL('/coupon/index',array('coupon_type'=>2,'brand_id'=>$list['brand_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$list.brand_name}
+										</a>
+									</li>
+									</volist>
+
+								</ul>
+								<a href="__APP__/coupon/type/id/2" class="more" target="_blank">更多>></a>
+							</div>
+
+							<div class="brand-sale con3">
+								<div>
+									<ul>
+										<volist name="data_AllGcoupon" id="arr" >
+											<li class="single-con">
+												<a href="__APP__/coupon/detail/id/{$arr.id}" target="_blank"> 
+													<img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="套餐券" width="86" height="64">
+													<div class="desc">
+														<h4>{$arr.coupon_name}</h4>
+														<div>
+															<strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+														</div>
+													</div>
+												</a>
+											</li>
+										</volist>
+									</ul>
+								</div>
+								
+							<volist name="data_Gcoupon.Coupon" id="voc1" >
+
+								<div>
+									<ul>
+									<volist name="voc1.Gcoupon" id="arr" >
+										<li class="single-con">
+											<a href="__APP__/coupon/detail/id/{$arr.id}" target="_blank"> 
+												<img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="套餐券" width="86" height="64">
+												<div class="desc">
+													<h4>{$arr.coupon_name}</h4>
+													<div>
+														<strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+													</div>
+												</div>
+											</a>
+										</li>
+									</volist>
+									</ul>
+								</div>
+
+							</volist>
+
+								
+							</div>
+						</div>
+						<!-- 保养套餐券团购 结束 -->
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="banner">
+					<!-- <img src="http://placehold.it/350x270" alt="" width="350" height="270" > -->
+					<div class="slideshow" id="focus">
+					<ul id="innerSlide">
+						<li><a href="__APP__/coupon/detail/id/227" target="_blank"><img width="300" height="266" alt="image" src="UPLOADS/Coupon/Logo/5492ad9554b9c.png"/></a></li>
+						<li><a href="__APP__/coupon/detail/id/61" target="_blank" rel="nofollow"><img width="300" height="266" alt="image" src="UPLOADS/Coupon/Logo/5492ae658c1fb.png"/></a></li>
+						<li><a href="__APP__/coupon/detail/id/231" target="_blank"><img width="300" height="266" alt="image" src="UPLOADS/Coupon/Logo/5492b09929a51.png"/></a></li>
+						<li><a href="__APP__/coupon/detail/id/55" target="_blank"><img width="300" height="266" alt="image" src="__PUBLIC__/new_pa/images/ibanner/4.jpg"/></a></li>
+					</ul>
+				</div>
+			</div>
+			
+			</div>
+			
+
+			
+		</div>
+		<script src="__PUBLIC__/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script src="__PUBLIC__/new_pa/js/selectize.js"></script>
+		<script>
+			
+
+		function showid(id,name){
+			$('#address').val(name);
+			$('#shop_area').val(id);
+			$('#address_Shop').hide();
+			$('#ShopAddressDiv').hide();
+		}
+			
+			$(document).ready(function(){
+
+				$("#shop_name, #area_name").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+						
+				//Paiframe-PostCar_series  传入brand_id变量名字
+				//Paiframe-PostCar_model  传入series_id变量名字 返回车型内容
+
+				var brandData = get_car_info("/Paiframe-PostCar_brand");
+				
+				var $getBrand, getBrand,
+					$getSeries, getSeries,
+					$getModel, getModel;
+
+				function managerAjaxdata(data){
+					return data
+				}
+
+				function get_car_info(url){
+					$.ajax({
+						url : url ,
+						dataType : "json",
+						success : function(data){
+							managerAjaxdata(data)
+						}
+					});
+				};
+
+				function hTab(tab_controler,tab_con){
+					this.tab_controler = tab_controler;
+					this.tab_con = tab_con;
+					var tabs = $(tab_controler).children("li");
+					var panels = $(tab_con).children("div");
+					$(tab_con).children("div").css("display","none");
+					$(tab_con).children("div:first").css("display","block");
+					$(tabs).hover(function(){
+						var index = $.inArray(this,tabs);
+						tabs.removeClass("current").eq(index).addClass("current");
+						panels.css("display","none").eq(index).css("display","block");
+					});
+				};
+
+				hTab('#tabs1','#con1');
+				hTab(".tabs2",".con2");
+				hTab(".tabs3",".con3");
+
+				//get car brand 
+
+				 $getBrand = $("#get_brand").selectize({
+					"create": false,
+				   	"labelField" : "brand_name",
+				   	"valueField" : "brand_id",
+				   	"searchField" : ["brand_name"],
+				   	"sortField": [
+			            {"field": "word", "direction": "asc"}
+			        ],
+				   	onChange : function(value){
+				   		if (!value.length) return;
+				   		 	getSeries.disable();
+        					getSeries.clearOptions();
+        					getSeries.load(function(cb){
+        						getSeries.enable();
+        						getSeries.addOption({"series_name":"选择车系","series_id":""});
+        						$.ajax({
+									url : "Paiframe-PostCar_series-brand_id-"+ value,
+									dataType : "json",
+									success : function(data){
+										cb(data)
+									}
+								});
+        					})
+				   		}
+					}); 
+
+				//get car series
+				$getSeries = $("#get_series").selectize({
+				   "creat" : false,
+				   "labelField" : "series_name",
+				   "valueField" : "series_id",
+				   "searchField" : ["series_name"],
+				   "sortField": [
+			            {"field": "word", "direction": "asc"}
+			        ],
+				   onChange : function(value){
+				   		if (!value.length) return;
+				   		 	getModel.disable();
+        					getModel.clearOptions();
+        					getModel.load(function(cb){
+        						getModel.enable();
+        						getSeries.addOption({"model_name":"选择车型","model_id":""});
+        						$.ajax({
+									url : "Paiframe-PostCar_model-series_id-"+ value,
+									dataType : "json",
+									success : function(data){
+										cb(data)
+									}
+								});
+        					})
+				   		}
+				}); 
+
+				// get car model
+				$getModel = $("#get_model").selectize({
+					"create" : false,
+					"searchField" : ["model_name"],
+				   	"labelField" : "model_name",
+				   	"valueField" : "model_id",
+				   	"sortField": [
+		            	{"field": "word", "direction": "asc"}
+		        	]
+				}); 
+
+				
+
+				getBrand = $getBrand[0].selectize;
+				getBrand.load(function(cb){
+					$.ajax({
+						url : "Paiframe-PostCar_brand",
+						dataType : "json",
+						success : function(data){
+							cb(data)
+						}
+					});
+				});
+				getSeries = $getSeries[0].selectize;
+				getModel = $getModel[0].selectize;
+
+				getSeries.disable();
+				getModel.disable();
+
+			});
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				var sWidth = $("#focus").width(); //获取焦点图的宽度（显示面积）
+				var len = $("#focus ul li").length; //获取焦点图个数
+				var index = 0;
+				var picTimer;
+				
+				//以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
+				var btn = "<div class='btnBg'></div><div class='btn'>";
+				for(var i=0; i < len; i++) {
+					btn += "<span></span>";
+				}
+				btn += "</div>";
+				$("#focus").append(btn);
+				$("#focus .btnBg").css("opacity",0.5);
+
+				//为小按钮添加鼠标滑入事件，以显示相应的内容
+				$("#focus .btn span").css("opacity",0.4).mouseover(function() {
+					index = $("#focus .btn span").index(this);
+					showPics(index);
+				}).eq(0).trigger("mouseover");
+
+				//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
+				$("#focus ul").css("width",sWidth * (len));
+				
+				//鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
+				$("#focus").hover(function() {
+					clearInterval(picTimer);
+				},function() {
+					picTimer = setInterval(function() {
+						showPics(index);
+						index++;
+						if(index == len) {index = 0;}
+					},4000); //此4000代表自动播放的间隔，单位：毫秒
+				}).trigger("mouseleave");
+				
+				//显示图片函数，根据接收的index值显示相应的内容
+				function showPics(index) { //普通切换
+					var nowLeft = -index*sWidth; //根据index值计算ul元素的left值
+					$("#focus ul").stop(true,false).animate({"left":nowLeft},500); //通过animate()调整ul元素滚动到计算出的position
+					//$("#focus .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
+					$("#focus .btn span").stop(true,false).animate({"opacity":"0.4"},500).eq(index).stop(true,false).animate({"opacity":"1"},500); //为当前的按钮切换到选中的效果
+				}
+			});
+		</script>
+	</body>
+</html>

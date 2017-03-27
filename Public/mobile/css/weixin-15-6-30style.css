@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font-size:26px;color:#333;font-family:"Microsoft Yahei","宋体";background:#05181c;}
+ul,ol,li,dl,dt,dd,p,h1,h2,h3,h4,h5,h6{list-style:none;padding:0;margin:0;}
+a{font-size:26px;color:#333; text-decoration:none;}
+a:hover{font-size:22px;color:#333; text-decoration:none;}
+img{border:0;}
+.clear{height:0px;line-height:0;font-size:0px;overflow:hidden;clear:both;}
+
+.header{height:auto; overflow:hidden;width:100%;margin:0 auto; text-align:center;}
+.header img{width:100%;}
+
+.title{height:70px;width:100%;margin:0 auto;border-bottom:1px solid #00ffff;}
+.title strong{background:#05181c; display:block;width:365px;margin:0 auto;height:143px; line-height:143px; text-align:center;color:#00ffff;font-size:36px;}
+.title strong img{vertical-align:middle;margin:0 10px;}
+
+.listbox{height:auto; overflow:hidden;width:100%;margin:0 auto;padding-top:80px;}
+.fw_list{ display:block;height:auto; overflow:hidden;width:100%;margin:0 auto;background:#fff;margin-bottom:26px;}
+.fw_list dt{width:665px; display:inline-block; float:left;height:auto; overflow:hidden;}
+.fw_list dt img{width:100%;display:block;}
+.fw_list dd{display:inline-block; position:relative;height:430px; overflow:hidden;width:340px; float:left;padding-left:50px;}
+.fw_list dd strong,.fw_list dd font,.fw_list dd del{ display:block;height:auto; overflow:hidden;}
+.fw_list dd strong{padding-bottom:10px;font-size:30px;color:#29aae1;}
+.fw_list dd font span{font-size:30px;color:#28a9e0;}
+.dd_top{height:auto; overflow:hidden;padding-top:30px;}
+
+.dd_btm{ position:absolute;bottom:0;padding-bottom:30px;}
+.dd_btm a{ display:block;height:49px;width:203px;margin-top:10px;}
+

@@ -1,0 +1,91 @@
+/*事故车WAP Style Files*/
+
+/* 事故车 WAP 首页 index.html 页面 START */
+#main-banner{padding:10px; background: #f5f5f5;  }
+.banner-con{position: relative;}
+.banner-con .main-title{background: rgba(0,0,0,.6); color: #ffffff; position: absolute;bottom: 0px; left: 0px; width: 100%; padding: 5px; box-sizing: border-box; font-size: 1.25em; text-align: center; letter-spacing: 2px; }
+.banner-con .sub-title{background: white; box-sizing: border-box; font-size: 1.15em; padding: 5px; }
+#cate-menu{ background: #ffffff;}
+#cate-menu > a{ margin: 0px;} 
+#cate-menu li{display: block; width: 100%; height: auto; font-size: 1.3em; }
+#cate-menu .menu-con{height: auto; padding: 10px; width: 100%; width:70%}
+#cate-menu .menu-con > strong{ display: block; font-size: 1.1em; color: #22272a; white-space: normal;}
+#cate-menu .menu-con > span{ display: block; font-size: 0.9em; color: #a7a7a7; }
+
+#header #left-trigger a {background:  url("../../images/ac-btn-back.png") center center no-repeat; background-size: 30px;}
+
+/* 事故车 WAP 首页 index.html 页面 END */
+
+
+/* 事故车 WAP 保险公司列表页面 ic_list.html START */
+#ic-list{}
+#ic-container{background: #f5f5f5; }
+#ic-list #ic-container .ic-single{ width: 100%; height: 40px; line-height: 40px; overflow: hidden; border-bottom: 1px solid #d0d0d0; border-top: 1px solid #fafafa; padding: 5px 10px;}
+#ic-list #ic-container .ic-single:after { content: ""; display: table; clear: both; width: 0px; height: 0px;}
+#ic-list #ic-container .ic-single .ic-img { width: 40px; height: 40px;  margin-right: 10px; display: inline-block; position: relative;}
+#ic-list #ic-container .ic-single .ic-name {  display: inline-block; width: auto; height: 40px; line-height: 40px; padding-left: 10px;  }
+#ic-list #ic-container .ic-single .ic-sign { }
+#ic-list #ic-container .ic-single .ic-pn { padding-left: 40px; color: #0046b4; display: inline-block; height: 40px; line-height: 40px;  float: left; background: url("../../images/ic-phone-bg.png") 10% 10px no-repeat; background-size: 20px; text-align: left; }
+#ic-list #ic-container .ic-single .ic-pn:visited{ color: #0046b4;}
+#ic-list #ic-container .ic-single .ic-pn:hover{ color: #0046b4;}
+/* 事故车 WAP 保险公司列表页面 ic_list.html END */
+
+
+
+/*事故车guide 页面 START*/
+#guide-list{ background: #f5f5f5;}
+#guide-list > a{ margin: 0px;  } 
+#guide-list li{display: block; width: 100%; height: auto; font-size: 1.3em; background: #ffffff; margin-bottom: 10px;}
+#guide-list .guide-single{height: auto; padding: 10px; width:70%; box-sizing: border-box;}
+#guide-list .guide-single.guide-main{width: 100%;}
+#guide-list .guide-single > strong{ display: block; font-size: 1.1em; color: #22272a; white-space: normal;}
+#guide-list .guide-single > strong > a{color: #0046b4; display: inline;}
+#guide-list .guide-single > strong > a:visited{color: #0046b4;}
+#guide-list .guide-single > strong > a:hover{color: #0046b4;}
+#guide-list .guide-single > span{ display: block; font-size: 0.9em; color: #a7a7a7; }
+
+.guide-sign{width: 30%;}
+.guide-sign > img{width: 60%; display: block; margin: 10px auto;}
+/*事故车guide 页面 END*/
+
+
+/* 上海机动车物损交通事故保险理赔中心详情 START */
+
+#f-list{ background: #f5f5f5;}
+#f-list > a{ margin: 0px;  } 
+#f-list li{display: block; width: 100%; height: auto; font-size: 1.3em; background: #ffffff; margin-bottom: 10px; padding-bottom: 10px;}
+#f-list .guide-single{height: auto; padding: 10px; width:70%; box-sizing: border-box;}
+#f-list .guide-single.guide-main{width: 100%;}
+#f-list .guide-single > strong{ display: block; font-size: 1.1em; color: #22272a; white-space: normal; }
+#f-list .guide-single > strong > a{color: #0046b4; display: inline;}
+#f-list .guide-single > strong > a:visited{color: #0046b4;}
+#f-list .guide-single > strong > a:hover{color: #0046b4;}
+#f-list .guide-single > span{ display: block; font-size: 0.9em; color: #a7a7a7; }
+
+.f-map-sign{width: 30%;}
+.f-map-sign a{display: block;}
+.f-map-sign a img{width: 60%; display: block; margin: 10px auto;}
+.f-info-distance,
+.f-info-phone, 
+.f-info-worktime{font-size: 0.9em; color: #676767;padding: 5px 10px 5px 35px; margin-left: 10px; line-height: 1.5em; background-size: 25px;}
+.f-info-distance{background: #ffffff url("../../images/ac-map-icon.png") left center no-repeat; background-size: 25px;}
+.f-info-phone{background: #ffffff url("../../images/ac-phonecall-icon.png") left center no-repeat; background-size: 25px;}
+.f-info-worktime{background: #ffffff url("../../images/ac-worktime-icon.png") left center no-repeat; background-size: 25px;}
+.f-accar-bg{background: #F1F1F1 url("../../images/ac-bg.png") center bottom repeat-x; margin-bottom: -10px; height: 20px;}
+
+.f-info-phone a{color: #0046b4; display: inline;}
+.f-info-phone a:visited{color: #0046b4;}
+.f-info-phone a:hover{color: #0046b4;}
+
+/* 上海机动车物损交通事故保险理赔中心详情 END */
+
+
+
+.from-field{padding: 1em 0 .4em 0;}
+.from-field > label {height: 30px; line-height: 30px; display: block; font-size: 1.2em; font-weight: 500; color: #707070;}
+
+#ac-form-textarea{height: 7em !important; border: 1px solid #eeeeee; font-size: 1.1em; padding-bottom: 90px;}
+#select-brand-btn{display: inline-block;height: 30px; line-height: 30px; float: right; color: #acacac; width: 70%;
+text-align: right;}
+#form-subtitle{font-size: 0.8em; color: #acacac; font-size: 0.9em; color: #acacac; height: 40px; line-height: 40px;}
+#ac-form-submit-btn{background: #00aff2; font-size: 1.1em; opacity: 1; color: #ffffff;}

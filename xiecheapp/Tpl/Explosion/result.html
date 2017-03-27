@@ -1,0 +1,180 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta>
+	    <title>查看竞猜结果</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/reset.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/main.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/app.css">
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.js"></script>
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body style="position: relative; background: #f5f5f5;">
+	<div id="warpper" style="background:#f1f1f1;">
+		<!-- Header Start -->
+		<header id="header" data-role="header">
+			<h1>查看竞猜结果</h1>
+			<span id="left-trigger">
+			<!-- 	<a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+			</span>
+			<span id="right-trigger" >
+				<a href="tel:4006602822" class="service-call"></a>
+			</span>
+		</header>
+		<!-- Header End -->
+		
+		<!-- Content Wrapper Start -->
+		<div id="content-wrapper" data-role="content" style="background:#f5f5f5; padding: 10px;">
+			<div data-role="tabs" id="tabs" style="background: #ffffff; padding: 0px; margin-top: 10px;" >
+				<div data-role="navbar" class="result-container">
+				    <ul class="ui-tabs-ul">
+					    <li style="width: 50%" >
+					    	<a href="#all-result" id="all-result-btn" data-ajax="false" >竞猜结果</a>
+					    </li>
+					    <li style="width: 50%">
+					    	<a href="#my-result" id="my-result-btn" data-ajax="false">我的竞猜</a>
+					    </li>
+					    <div class="clear"></div>		
+				    </ul>
+				</div>
+				<div id="all-result" data-inset="true" class="tabs-content">
+				  
+				   <div class="no-result">
+				   		<div class="ui-grid-solo no-result-notice">
+				   			截止现在，还有 <strong>{$count}</strong> 张券未送出！
+				   		</div>
+				   		<div class="ui-grid-solo no-result-link">
+				   			<a href="/Explosion-playground" style="display: block; margin: 0 auto;" rel="external">点击参与竞猜活动！</a>
+				   		</div>
+				   </div>
+
+				   <div class="all-result">
+				   		<div class="ui-grid-solo all-result-notice">
+				   			 截止现在，还有 <strong>{$count}</strong> 张券未送出！赶紧分享给好友，快来参与吧！
+				   		</div>
+				   		<h3 class="all-result-title">中奖名单如下：</h3>
+				   		<div class="all-resule-table">
+				   			<table width="100%">
+				   				<tr>
+				   					<th>排行</th>
+				   					<th>竞猜者</th>
+				   					<th>中奖时间</th>
+				   				</tr>
+								<volist name="explosion" id="list" key="key">
+								<tr>
+				   					<td><span class="num num{$key}">{$key}</span></td>
+				   					<td><span>{$list.mobile}</span></td>
+				   					<td><span>{$list.use_time|date="y-m-d H:i:s",###}</span></td>
+				   				</tr>
+								</volist>
+
+				   			</table>
+				   		</div>
+				   		<div class="ui-grid-solo all-result-notice2">
+				   			已领取的车主们，请致电<a href="tel:4006602822">4006602822</a>,提前两天预约！
+				   		</div>
+				   </div>
+				</div>
+
+				<div id="my-result" class="tabs-content" >
+				  	<ul>
+				  		<volist name="Quiz" id="list">
+				        <li class="my-single-result" >
+				  			<div class="ui-grid-solo" >
+								<h3 class="coupon-title" >{$list.coupon_name}</h3>
+							</div>
+							<div class="ui-grid-a">
+								<div class="ui-block-a" style="width: 65%;">
+									<input type="hidden" id="coupon_id" name="coupon_id" value={$list.coupon_id}>
+									<div class="ui-grid-solo coupon-num">
+										优惠券券码:{$list.coupon_code}
+										<em></em>	
+									</div>
+									<div class="ui-grid-solo related-info" style="padding: 0">
+										<span class="ui-block-a" >电话:<strong>{$list.mobile}</strong>      
+										</span>
+									</div>
+									<div class="ui-block-b related-info" style='width: 100%'>
+										<div class="ui-grid-a" >
+											<span class="ui-block-a" >竞猜:<strong>{$list.cai_count}次</strong>
+											</span>
+											<span class="ui-block-b" >猜价:<strong>{$list.coupon_amount} 元</strong>
+											</span>
+										</div> 
+									</div>
+								</div>
+								<div class="ui-block-b" style="width: 35%;">
+										<if condition="$list['huan_count'] neq '0'">
+											<a href="" class="buy-btn disable">已领取</a>
+										<else/>
+											<a href="###" id="receive" class="buy-btn">点击领取</a>	
+										</if>
+								</div>
+							</div>
+				        </li>
+						</volist>
+
+				  	</ul>
+				</div>
+
+			</div>
+		</div>
+		<!-- Content Wrapper End -->
+	</div>
+	<input type="hidden" id="hide_wx_id" name="hide_wx_id" value="{$weixin.id}">
+	<include file="Public:wapfoot" />
+	<script>
+		$( document ).on( "mobileinit", function() {
+			$.mobile.linkBindingEnabled = false;
+			$.mobile.hashListeningEnabled = false;
+			
+		});
+		document.addEventListener("touchstart", function() {},false);
+		$(function(){
+			$("#all-result-btn").trigger("click");
+				
+
+			$(function(){
+				$('#receive').click(function(){
+					var coupon_id = $('#coupon_id').val()
+					$.ajax({
+						type: "POST",
+						url: "__APP__/Explosion/add_explosion",
+						cache: false,
+						data:"coupon_id="+coupon_id,
+						dataType: "json",
+						success: function(data){
+							
+							if(data == '1'){
+								alert('领取成功！');
+								location.reload();
+								return false;
+							}else if(data == '3'){
+								alert('对不起，您已经领取过了！');
+								return false;
+							}else{
+								alert('对不起5张优惠券已经被领完啦！');
+								return false;
+							}
+						},
+						error: function(){
+						}
+					})
+						
+				})
+			})
+		})
+
+
+
+	</script>
+</body>

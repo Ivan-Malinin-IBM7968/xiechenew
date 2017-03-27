@@ -1,0 +1,105 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<div id="main" class="main" >
+    <script language="JavaScript">
+        <!--
+        function addRow(){   
+            curFileNum++;
+            rowsnum++;
+            var row=tbl.insertRow(-1);
+            //var td = arow.insertCell();
+            var cell = document.createElement("td");
+            cell.innerHTML='<div class="fLeft hMargin"><IMG SRC="../Public/images/del.gif"  style="cursor:hand" onfocus="javascript:getObject(this)" onclick="deleteRow();" WIDTH="20" HEIGHT="20" BORDER="0" ALT="删除" align="absmiddle"></div> <div class="impBtn  fLeft" ><INPUT TYPE="file"  name="file'+ curFileNum +'" class="file  large"></div><div class="fLeft hMargin "> 描述：</div><div class="fLeft "><input type="text" name="remark[]" class="huge"></div> ';
+            cell.align="center"
+            row.appendChild(cell); 
+            //addFileForm.num.value=rowsnum;
+        }
+        function deleteRow(){
+            if(tbl.rows.length>0){
+                tbl.deleteRow(rindex); //删除当前行
+                rowsnum--;    
+            }else{
+                return;
+            }
+            rindex="";
+        }
+        function getObject(obj){ 
+            rindex=obj.parentElement.parentElement.rowIndex;/*当前行对象*/
+        }
+
+        function uploading(msg){
+            $('result').style.display = 'block';
+            $('result').innerHTML	=	'<IMG SRC="../Public/images/ajaxloading.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="" align="absmiddle"> 文件上传中～';
+            return true;
+        }
+        function sort(){
+            var keyValue;
+            keyValue = getSelectCheckboxValues();
+            location.href = URL+"/sortDown/id/{$_GET['id']}sortId/"+keyValue;
+        }
+        //-->
+    </script>
+    <div class="content">
+        <div class="title">附件列表 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <html:imageBtn name="delete" value="删除" click="del()" style="impBtn hMargin fLeft shadow" />
+        </div>
+        <div class="list" >
+            <html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="extension|showExt:类型|35px,name:文件名,savename:保存名,remark:备注,size|byte_format:大小,download_count:下载,is_top|getTop:置顶,create_time|toDate='y-m-d H#i':添加时间" actionlist="edit:编辑,del:删除:id" /> 
+        </div>
+        <!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+        <div class="cBoth">
+            <div id="result" class="result none"></div>
+            <form id="upload" METHOD=POST action="__URL__/multiupload/" onsubmit="return CheckForm(this);" enctype="multipart/form-data" target="iframeUpload">
+                <TABLE cellpadding=3 cellspacing=3 > 
+                    <TR>
+                        <TD class="tLeft tTop">
+                            <INPUT TYPE="hidden" name="ajax" value="1">
+                            <iframe name="iframeUpload" src="" width="350" height="35" frameborder=0  SCROLLING="no" style="display:none"></iframe>
+                            <INPUT TYPE="hidden" name="_uploadFileResult" value="result">
+                            <INPUT TYPE="hidden" name="_uploadFormId" value="upload">
+                            <INPUT TYPE="hidden" name="_uploadRecordId" value="{$Think.get.id}">
+                            <INPUT TYPE="hidden" name="_uploadResponse" value="uploadComplete">
+                            <INPUT TYPE="button" value="增 加" onclick="addRow();" class="button small">
+                            <INPUT TYPE="submit" value="上 传" onclick="uploading();" class="small button ">
+                            请选择附件和填写描述信息 ( <span style="color:red">上传文件限制 {:byte_format(C('UPLOAD_MAX_SIZE'))}</span> )
+                            <TABLE id='tbl' style="clear:both"></TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </form>
+        </div>
+    </div>
+    <SCRIPT LANGUAGE="JavaScript">
+        <!--
+        var curFileNum = 0;
+        var rowsnum=0;  //记录行数
+        var rindex="";       //列索引
+        var tbl	=	$('tbl');
+        addRow();
+        function del(id){
+            var keyValue;
+            if (id)
+            {
+                keyValue = id;
+            }else {
+                keyValue = getSelectCheckboxValues();
+            }
+            if (!keyValue)
+            {
+                alert('请选择删除项！');
+                return false;
+            }
+
+            if (window.confirm('确实要删除选择项吗？'))
+            {
+                ThinkAjax.send("__URL__/delAttach/","id="+keyValue+'&ajax=1&record_id={$Think.get.id}',doDelete);
+            }
+        }
+        function edit(id){
+            window.location.href = '__URL__/editAttach/id/'+id;
+        }
+        //-->
+    </SCRIPT>

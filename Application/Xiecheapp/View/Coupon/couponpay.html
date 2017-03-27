@@ -1,0 +1,134 @@
+<layout name='layout_maintenance' />
+ <link type="text/css" href="__PUBLIC__/css/pay.css" rel="stylesheet">
+   <div class="zhifu_page">
+    <div class="snav" id="snav">
+      <ul>
+        <li><a href="/carservice">府上养车</a></li>
+        <li><a href="/shopservice">4S店预约保养</a></li>
+        <li><a href="/coupon" class="current">团购保养</a></li>
+      </ul>
+      <span>
+        <b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+      </span>
+    </div>
+	<div class="">
+		<div class="col-md-1">&nbsp;</div>
+		<div class="col-md-10 pay-1">
+			<p class="pay-1-1">首页 > <a href="/coupon/">团购</a> > 支付</p>
+			<div class="pay">
+			<form method="post" action="{:U('/coupon/do_couponpay',array('membercoupon_id'=>$membercoupon_id))}" >
+				<p style="padding-bottom:15px">订单总价<font style="color:#fe5a23">￥</font><font id="amount" style="font-size:28px;color:#fe5a23">{$all_amount}</font><font style="color:#fe5a23">元</font></p>
+				<ul class="pay_ul clearfix">
+					<li class="pay_li cur" id="bank">网银支付</li>
+					<li class="pay_li" id="platform">支付平台</li>
+					<li class="pay_li" id="weixin" onclick="weixin_pay();">微信支付</li>
+				</ul>
+				<div class="bank clearfix">
+					<ul class="clearfix">
+						<li class="bank_li pay_cur">
+							<div class="pay_bg bank_li1"><input type="radio" name="sel_online_pay" checked value="19" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li2"><input type="radio" name="sel_online_pay" value="31" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li3"><input type="radio" name="sel_online_pay" value="17" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li4"><input type="radio" name="sel_online_pay" value="18" />&nbsp;</div>
+						</li>
+					</ul>
+					<ul class="clearfix">
+						<li class="bank_li">
+							<div class="pay_bg bank_li5"><input type="radio" name="sel_online_pay" value="20" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li6"><input type="radio" name="sel_online_pay" value="74" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li7"><input type="radio" name="sel_online_pay" value="501" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li8"><input type="radio" name="sel_online_pay" value="34" />&nbsp;</div>
+						</li>
+					</ul>
+					<ul class="clearfix">
+						<li class="bank_li">
+							<div class="pay_bg bank_li9"><input type="radio" name="sel_online_pay" value="35" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li10"><input type="radio" name="sel_online_pay" value="36" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li11"><input type="radio" name="sel_online_pay" value="37" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li12"><input type="radio" name="sel_online_pay" value="38" />&nbsp;</div>
+						</li>
+					</ul>
+					<ul class="clearfix">
+						<li class="bank_li">
+							<div class="pay_bg bank_li13"><input type="radio" name="sel_online_pay" value="39" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li14"><input type="radio" name="sel_online_pay" value="41" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg bank_li15"><input type="radio" name="sel_online_pay" value="42" />&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+				<div class="payc clearfix hide">
+					<ul class="clearfix">
+						<li class="bank_li pay_cur">
+							<div class="pay_bg pay_1"><input type="radio" name="sel_online_pay" value="100" />&nbsp;</div>
+						</li>
+						<li class="bank_li">
+							<div class="pay_bg pay_2"><input type="radio" name="sel_online_pay" value="8" />&nbsp;</div>
+						</li>
+					</ul>
+				</div>
+				<div class="weixin clearfix hide">weixin</div>
+				<div class="clearfix pay_3">
+					<input type="submit" class="gopay" value="立即支付" />
+				</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-1">&nbsp;</div>
+	</div>
+   </div>
+<style type="text/css">
+	.zhifu_page{
+		background-color: #ffffff;
+		height: 690px;
+	}
+	.clearfix:after {clear: both; content: "​"; display: block; height: 0;}
+</style>
+	<script type="text/javascript">
+		function weixin_pay(){
+			document.location.href = "{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$membercoupon_id}&all_amount={$all_amount}&coupon_name={$coupon_name}";
+		}
+		$('#bank').click(function(){
+			$('.pay_li').removeClass('cur');
+			$(this).addClass('cur');
+			$('.bank').removeClass('hide');
+			$('.payc,.weixin').addClass('hide');
+			$('input[type=radio]').prop('checked',false);
+			$('.bank_li1').children().prop('checked',true);
+		})
+		$('#platform').click(function(){
+			$('.pay_li').removeClass('cur');
+			$(this).addClass('cur');
+			$('.payc').removeClass('hide');
+			$('.bank,.weixin').addClass('hide');
+			$('input[type=radio]').prop('checked',false);
+			$('.pay_1').children().prop('checked',true);
+		})
+		$('.bank_li').click(function(){
+			$('.bank_li').removeClass('pay_cur');
+			$(this).addClass('pay_cur');
+			$('input[type=radio]').prop('checked',false);
+			$(this).children().children().prop('checked',true);
+		})
+	</script>

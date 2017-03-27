@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>携车网-府上养车在线直播</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	 	<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no">
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<link href="__PUBLIC__/mobile/movie/video_js/video-js.min.css" rel="stylesheet" type="text/css">
+		<script src="__PUBLIC__/mobile/bootstrap/js/weixin-api.js"></script>
+		<script src="__PUBLIC__/mobile/movie/video_js/video.js"></script>
+		<script type="text/javascript">  
+		  _V_.options.flash.swf = "__PUBLIC__/mobile/movie/video_js/video-js.swf";
+		  function IsPC() {
+		    var userAgentInfo = navigator.userAgent;
+		    var Agents = ["Android","iPhone","SymbianOS","Windows Phone","iPad","iPod"];
+		    var flag = true;
+		    for (var v = 0; v < Agents.length; v++) {
+			    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+			    	flag = false;
+			    	break;
+			    }
+		    }
+		    	return flag;
+		    }
+		</script>
+	</head>
+	<body>
+	<notempty name="status">
+	<style>
+	*{margin: 0; padding: 0; list-style: none;}
+	.nozhibo{width: 100%; max-width:640px; margin: 0 auto; background: url(__PUBLIC__/mobile/images/wapvbg.jpg) 0 0 no-repeat; background-size: 100% 100%; overflow: hidden;}
+	.wapvbox{width: 223px; height: 223; margin: 20px auto; background: url(__PUBLIC__/mobile/images/wapvboxbg.png) 0 0 no-repeat;  background-size: 100% 100%; overflow: hidden;}
+	.wapvboxC{width: 213px; height: 213px; overflow: hidden; position: relative; margin: 5px;}
+	.wapvboxC ul{position: absolute; top: 0; left: 0;}
+	.wapvboxC ul li{width: 213px; height: 213px; overflow: hidden;}
+	.wapvboxC ul li img{width: 213px; height: 213px; display: block;}
+
+	.wapvbtn{height: 42px; overflow: hidden;}
+	.wapvbtn span{background: url(__PUBLIC__/mobile/images/btnud.png) no-repeat; display: block; height: 42px;}
+	.wapvbtn#btnup span{background-position: center 10px;}
+	.wapvbtn#btndown span{background-position: center -50px;}
+	.wapboxdes{width: 213px; height: 70px; margin: 20px auto; color: #FFF; font-size: 14px; overflow: hidden;}
+	.wapboxdes ul li{display: none;}
+    </style>
+	<div class="nozhibo">
+		<div class="wapvbtn" id="btnup"><span style="display:none;">&nbsp;</span></div>
+		<div class="wapvbox">
+			<div class="wapvboxC">
+				<ul>
+					<li><img src="__PUBLIC__/mobile/images/wvpic1.png" /></li>
+					<li><img src="__PUBLIC__/mobile/images/wvpic2.jpg" /></li>
+					<li><img src="__PUBLIC__/mobile/images/wvpic3.png" /></li>
+					<li><img src="__PUBLIC__/mobile/images/wvpic4.png" /></li>
+				</ul>
+			</div>
+		</div>
+		<div class="wapvbtn" id="btndown"><span>&nbsp;</span></div>
+		<div class="wapboxdes">
+			<ul>
+				<li style="display:block;">注：当保养进行中，才能观看直播</li>
+				<li>我们在现场全程架设视频拍摄，让您足不出户看到爱车保养全过程。</li>
+				<li>您只要打开微信点击“视频直播”，就可以观看正在进行的直播啦！</li>
+				<li>接下来你就可以在手机上观看府上养车视频直播了o(^▽^)o</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var i=0;
+			var oHeight = $(".wapvboxC ul li").outerHeight(true);
+			var oLength = $(".wapvboxC ul li").size();
+			$(".nozhibo").height($(window).height());
+			if($(window).height()>377){
+				$("#btnup").css('margin-top',($(window).height()-377)/2+'px')
+			}
+			function wapvslide(){
+				$(".wapvboxC ul").animate({"top":"-"+oHeight*i+"px"},500);
+				$(".wapboxdes ul li").eq(i).fadeIn().siblings().hide();
+				if(i<1){
+					$("#btnup span").hide();
+				}else{
+					$("#btnup span").fadeIn();
+				}
+				if(i>=oLength-1){
+					$("#btndown span").hide();
+				}else{
+					$("#btndown span").fadeIn();
+				}
+			}
+
+			$("#btnup span").click(function(){
+				i--;
+				if(i<0){
+					i=0;
+				}
+				wapvslide();
+			});
+
+			$("#btndown span").click(function(){
+				i++;
+				if(i>=oLength){
+					i=oLength-1;
+				}
+				wapvslide();
+			});
+
+		});
+	</script>
+	<else />
+		<notempty name="isMobile">
+			<style type="text/css">
+			body{background-color:#000000}
+			.content{max-width:640px;min-width:320px;overflow-x:hidden;display:block;margin:0 auto;}
+			.content .video{width:100%;background-color:#000;text-align:center}
+			.content .row{margin:0px;color:#3a3a3a}
+			.content p{color:#3b3b3b;}
+			.content .vjs-poster{background-size: cover;}
+			</style>
+			<div class="content">
+				<div class="video">
+					<video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" controls="controls" preload="auto" width="100%" height="264" data-setup='{"example_option":true}' poster="/Public/mobile/images/liveimg.jpg">
+					  <source src="{$url}" type='application/vnd.apple.mpegurl' />
+					</video>
+				</div>
+				<div class="row c">
+					<img src="/Public/mobile/images/livedes2.jpg" width="100%">
+				</div>
+			</div>
+		<else />
+			<div style="width: 480px; height: 380px; margin:0 auto;">
+			<script type="text/javascript" src="/player/sewise.player.min.js"></script>
+			<script type="text/javascript">
+					SewisePlayer.setup({
+					server: "vod",
+					type: "m3u8",
+					autostart: "true",
+					poster: "http://jackzhang1204.github.io/materials/poster.png",
+					videourl: "{$url}",
+			        skin: "vodWhite",
+			        title: "Live M3U8",
+			        lang: 'zh_CN'
+				});
+			</script>
+			</div>
+		</notempty>
+	</notempty> 
+	<script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+	</script>
+</body>
+</html>

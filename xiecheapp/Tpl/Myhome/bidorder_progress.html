@@ -1,0 +1,76 @@
+<layout name='layout_new' />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/repair_process.css?v={$Think.config.VERSION_DATE}" />
+<script type="text/javascript" src="__PUBLIC__/{$Think.const.TOP_NAME}/js/slides.min.jquery.js?v={$Think.config.VERSION_DATE}"></script>
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<!--right conntent start-->
+
+		<div class="content-right main">
+			<div class="progress_c">
+				<if condition="($order_status eq 0)"> 
+					<div class="ab-t ab-t-1"><img src="/Public/new_2/images/repair_process/icon1.gif"></div>
+					<div class="progress_c_a">
+						<p>{$complete_time|date="Y-m-d H:i:s",###}</p>
+						<div class="progress_c_a_a">
+							<span class="progress_c_a_b">已完成</span><span class="progress_c_a_1">已提车</span>
+						</div>
+					</div>
+					<else />
+					<style>
+						.ab-t-2{top:210px}.ab-t-3{top:670px}.ab-t-4{top:1130px}.ab-t-5{top:1590px}.ab-t-6{top:2050px}.ab-t-7{top:2510px}.ab-t-8{top:2970px}.ab-t-9{top:3430px}
+					</style>
+				</if>
+				<empty name="data">暂时没有进度</empty>
+				<volist name="data" id="list" key="k" empty="暂时没有进度">
+					<div class="ab-t ab-t-{$k+1}"><img src="/Public/new_2/images/repair_process/icon2.gif"></div>
+					<div class="progress_c_b">
+						<p class="progress_c_b_a">{$list.up_time|date="Y-m-d H:i:s",###}</p>
+						<div class="progress_c_b_b ab">
+							<img src="/Public/new_2/images/repair_process/icon3.gif">
+						</div>
+						<div class="progress_c_b_d ab">{$list.count}</div>
+						<div class="progress_c_b_c">
+							<div class="style-list-slide style-list-slide-{$k}">
+								<a class="style-list-slide-prev prev-{$k}" href="#"></a>
+								<div class="slide-container">
+									<volist name="list['describe']" id="des">
+										<div>
+											<img src="{$des.url}" style="width:480px;height:300px"/>
+										</div>
+									</volist>
+									
+								</div>
+							
+								<a class="style-list-slide-next next-{$k}" href="#"></a>
+							</div>
+							<p>{$list.des_t}</p>
+						</div>
+					</div>
+					<script type="text/javascript">
+						$('.style-list-slide-{$k}').slides({
+							preload: true,
+							generatePagination: true,
+							play: 3000,
+							pause: 2500,
+							hoverPause: true,
+							container: 'slide-container',
+							// Get the starting slide
+							start: 1,
+							prev: 'prev-{$k}',
+							next: 'next-{$k}'
+						});
+					</script>
+				</volist>
+			</div>
+		</div>
+		
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>

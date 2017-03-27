@@ -1,0 +1,127 @@
+<layout name='layout_order' />
+   <!--左边-->
+<div id="main-right" style="width:620px; margin:0; padding:0px; float:right; border:1px solid #efefef; background-color:#FFF;">
+<div id="cx">
+  <ul>
+    <li ><a href="__URL__/index"><font color="#333333">区 域 ：</font></a></li>
+    <volist name="Think.config.AREAS" id="area">
+    <li><a href="__URL__/index/shop_area/{$key}">{$area}</a></li>
+    </volist>
+  </ul>
+</div>
+<div id="pp">
+  <ul>
+    <li>品 牌 :</li>
+    <volist name="Think.config.BRANDS" id="brand">
+    	<li><a href="__URL__/index/brand_id/{$key}">{$brand}</a></li>
+    </volist>
+  </ul>
+</div>
+<div id="xz_yuyue">
+<div id="xz-yy"></div>
+<div id="xz-yy1">输入预约信息</div>
+<div id="xz-bg">
+<form action="__URL__/insert" method="post">
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle" width="100%">
+				<tr>
+					<td width="30%">预约时间</td>
+					<td><input type="text" name="order_date" class="Wdate" type="text" onfocus="WdatePicker({ <notempty name="sale_check"> disabledDays:[{$sale_check}],</notempty>enableKeyboard:false,doubleCalendar:<?php echo ($doubleCalendar);?>,dateFmt:'yyyy-MM-dd',minDate:'{$minday}',maxDate:'{$maxday}'})" />日<select name="order_hours" onclick="get_minute();" id="order_hours">
+			<option value="0">小时</option>
+			<volist name="Think.config.ORDER_HOURS" id="hours">
+			<if condition="($hours egt $min_hours) AND ($hours elt $max_hours)"> 
+			<option value="{$hours}">{$hours}</option>
+			</if>
+			</volist>
+			</select>时
+			<select name="order_minute" id="order_minute">
+				<option value="">分钟</option>
+			</select>
+			分 <span><font color="red">*</font></span>
+					</td>
+				</tr>
+			<tr>
+			<td>姓名</td><td><input type="text" value="{$list.truename}" name="truename"> <span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>手机号码</td><td><input type="text" value="{$list.mobile}" name="mobile"> <span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>车牌号</td><td><select name="cardqz">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+					<option value="{$type}" <if condition="$my_car.s_pro eq $type">selected<elseif condition="$type eq '沪'" />selected<else /></if> >{$type}</option>
+				</volist>
+					</select>
+					<input type="text" name="licenseplate" value="{$my_car.car_number}"><span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>已行驶公里数</td><td><input type="text" value="" name="miles"></td>
+			</tr>
+			<tr>
+				<td>车辆识别代码</td>
+				<td>
+					<input type="text" value="{$my_car.car_identification_code}" name="car_sn">
+					<span><a href="###" id="how_find_code"><font size="2" color="grey">如何查找您爱车的车辆识别代码？</font></a></span>
+				</td>
+			</tr>
+			<tr>
+			<td>备注</td><td><textarea name="remark" cols=50 rows=6 ></textarea></td>
+			</tr>
+			
+	<tr><td align="center" colspan="2">
+		<input type="hidden" name="shop_id" value="{$shop_id}" />
+		<input type="hidden" name="model_id" value="{$Think.request.model_id}" />
+		<input type="hidden" name="service_str" value="{$Think.request.service_str}" />
+		<input type="hidden" name="timesaleversion_id" value="{$Think.request.timesaleversion_id}" />
+	</td>
+	</tr>
+			</table>
+			<div class="server_agree" >
+				<input type="checkbox" name="xcagreement" value="1" checked="checked">
+				<label id="server_order" style="cursor:pointer;"> 同意携车网维修保养预约协议</label>
+			</div>
+			<div class="submit_agree"><input type="submit" class="button-yellow" value="预约下单"></div>
+			<div class="yuyuetishi">
+				<h5>预约提示：</h5><br>
+				1、	我们目前只接受隔天预约，且只接受15天之内的预约。如果您预约第二天的维修保养服务，您需要在当天下午4点之前进行预约，以让我们的客服有时间与4S店确认您第二天的预约；
+				<br>
+				2、	如果您选择的是分时折扣，则只能在您选择的折扣时段内进行预约；
+				<br>
+				3、	请填入您的手机号，以接收预约确认的短信，该短信同时也是您到店后享受折扣的凭证；
+				<br>
+				4、	车牌号、已行驶里程数、车辆识别代码（<a href="###" id="how_find_code2">如何找到您爱车的车辆识别代码</a>）能方便4S店在您到店前获知您爱车的详细信息，提前做好准备，以更好地为您服务；
+				<br>
+				5、	如果您的爱车还有别的情况需要说明，请在备注中留言告诉我们。
+			</div>
+	</form>	
+</div>
+</div>
+
+</div>
+</div>
+<script>
+	function get_minute(){
+		var sel_hours = $("#order_hours").val();
+		var min_hours = '{$min_hours}';
+		var min_minute ='{$min_minute}';
+		var max_hours = '{$max_hours}';
+		var max_minute = '{$max_minute}';
+		$("#order_minute").html("");
+		$("#order_minute").append("<option value='0'>分钟</option>");
+		for(i=0; i<6; i++){
+			var m = i*10;
+			if(m==0){
+				m='00';
+			}
+			if(sel_hours==min_hours || sel_hours==max_hours){
+				if(sel_hours==min_hours && sel_hours!=max_hours && min_minute<=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+				if(sel_hours==max_hours && max_minute>=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+			}else{
+				$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+			}
+		}
+	}
+</script>

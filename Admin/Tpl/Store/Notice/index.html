@@ -1,0 +1,93 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    jQuery(document).ready(function(){
+        $('#city_id').change(function(){
+            var city_id = jQuery(this).val();
+            jQuery.getJSON(
+            '__URL__/ajaxCityClassfy',
+            {
+                'city_id':city_id
+            },
+            function(data) {
+                var option="";
+                jQuery("#classfy_id").empty();
+                option = '<option value="">请选择分类</option>';
+                jQuery.each(data['data'], function(k, v) {
+                    option += '<option value="'+v.id+'">'+v.name+'</option>';
+                })
+                jQuery("#classfy_id").html(option);
+            });
+        });
+    });
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">优惠速递列表  </div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <html:imageBtn name="add" value="新增" click="add({$Think.request.shop_id})" style="impBtn hMargin fLeft shadow" />
+            <!-- 查询区域 -->
+            
+            
+        </div>
+        <!-- 功能操作区域结束 -->
+
+        <!-- 列表显示区域  -->
+        <div class="list" >
+            <table id="checkList" class="list" cellpadding=0 cellspacing=0 >
+                <tr>
+                    <td height="5" colspan="11" class="topTd" ></td>
+                </tr>
+                <tr class="row" >
+                    <th width="8"><input type="checkbox" id="check" onclick="CheckAll('checkList')"></th>
+                    <th>
+                        <if condition="$order eq 'id'">
+                            <a href="javascript:sortBy('id','{$sort}','index')" title="按照编号{$sortType}">编号<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+                        <else />
+                            <a href="javascript:sortBy('id','1','index')" title="按照编号升序排列 ">编号</a>
+                        </if>
+                    </th>
+                    <th>标题</th>
+                    <th>网页标题（seo）</th>
+                    <th>网页关键字（seo）</th>
+                    <th>网页描述（seo）</th>
+                    <th>内容</th>
+                    <th >操作</th>
+                </tr>
+                <volist name="list" id="notice">
+                <tr class="row" onmouseover="over(event)" onmouseout="out(event)" onclick="change(event)" >
+                    <td><input type="checkbox" name="key" value="{$notice.id}"></td>
+                    <td>{$notice.id}</td>
+                    <td><a href="javascript:edit('{$notice.id}')">{$notice.noticetitle}</a></td>
+                    <td>{$notice.seo_title}</td>
+                    <td>{$notice.keyword}</td>
+                    <td>{$notice.summary}</td>
+                    <td>{$notice.noticedescription}</td>
+                    <td>
+                        <if condition="$notice['status'] eq 1"><a href="__APP__/Store/notice/delete_notice/id/{$notice.id}">删除</a><else/></if>
+                        &nbsp;<a href="javascript:edit('{$notice.id}')">编辑</a>&nbsp;</td>
+                </tr>
+                </volist>
+            </table>
+        </div>
+        
+        <!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+        <!-- 列表显示区域结束 -->
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+

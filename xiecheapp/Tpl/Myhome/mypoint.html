@@ -1,0 +1,31 @@
+<layout name='layout_myhome' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+
+<div id="wddd-right">积分查询</div>
+<div id="wddd-right2"><br/>
+ <table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#e4e4e4">
+  <tr>
+    <td height="30" colspan="2" align="left" valign="middle" bgcolor="#FFFFFF">&nbsp;&nbsp;我的积分：总共<font color="#990000">{$Memberinfo.point_number}</font>分</td>
+    <td colspan="2" align="right" valign="middle" bgcolor="#FFFFFF"><a href="__APP__/Gift/index" target="_blank">积分兑换</a> &nbsp;&nbsp; <a href="__APP__/myhome/pointrule">积分规则</a>&nbsp;&nbsp; </td>
+    </tr>
+  <tr>
+    <td width="12%" height="30" align="center" valign="middle" bgcolor="#EBEBEB"> 订单号 </td>
+    <td width="18%" align="center" valign="middle" bgcolor="#EBEBEB"> 完成时间 </td>
+    <td width="23%" align="center" valign="middle" bgcolor="#EBEBEB"> 增加(扣除)积分 </td>
+    <td align="center" valign="middle" bgcolor="#EBEBEB"> 积分备注 </td>
+    </tr>
+  <volist name="point_info" id="mypoint">
+  <tr>
+    <td height="35" align="center" bgcolor="#FFFFFF"><strong>{$mypoint.order_id}</strong></td>
+    <td align="center" bgcolor="#FFFFFF"> {$mypoint.create_time|date="Y-m-d H:i",###} </td>
+    <td align="center" bgcolor="#FFFFFF"> {$mypoint.point_number}</td>
+    <td align="center" bgcolor="#FFFFFF"> {$mypoint.point_memo}</td>
+    </tr>
+  </volist>
+  <tr>
+    <td height="45" colspan="4" align="right" bgcolor="#FFFFFF">{$page}</td>
+  </tr>
+</table>
+
+</div>

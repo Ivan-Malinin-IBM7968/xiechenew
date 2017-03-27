@@ -1,0 +1,174 @@
+<layout name='layout_new' />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/fp.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	<style type="text/css">
+	.personal-info{width: 908px; height: 10px; background: #ffffff; border: 1px solid #dadada;padding: 20px; font-size: 14px;}
+	.strong{font-family: 微软雅黑;font-size: 18px;text-align: left;}
+	
+	.fp-progress{width: 950px; height: 50px; margin: 0px;}
+	.progress-1{background: url('http://statics.xieche.com.cn/new_2/images/myhome/zh-1.jpg') 0px 0px no-repeat;}
+
+	</style>
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		
+		<div class="content-right main">
+			<div class="fp-progress progress-1"></div>
+			<div class="form-container">
+				<div class="fp-form" autocomplete="off">
+					<ul>
+						<li>
+							<label for="">手机号：</label>
+							<div style="font-size: 16px;">
+								<input class="text phone-input" id="mobile">
+								<!-- <button style="margin-left: 10px; background: #f1f1f1; width: 90px; height: 30px; border: 1px solid #d9d9d9;">获取验证码</button> -->
+								<input  style="margin-left: 10px; background: #f1f1f1; width: 90px; height: 30px; border: 1px solid #d9d9d9;" type="button" id="send_verify" class="input-login" value="获取手机验证码" id="send_verify" > 
+							</div>
+						</li>
+
+						<li>
+							<label for="">短信验证码：</label>
+							<div>
+								<input type="text" name="username" class="text phone-input" style="width: 400px;" value="请输入用户名/手机号" id="username-input" disabled="disabled" data-filled="0">
+							<div id="code_error" class="msg-error"></div>
+							</div>
+						</li>
+						<li>
+							<label for="">验证码：</label>
+							<div class="ver-img">
+								<input type="text" name="verify" class="text code-input" style="width: 200px;" value="请输入验证码" id="code-input" data-filled="0">
+								<div class="tips"></div>
+								<div class="error">验证码不能为空</div>
+								<img id="verifyImg" src="__APP__/common/verify/"  alt="点击刷新验证码" title="点击刷新验证码">
+								<a href="#" id="refreshCode">看不清，换一张</a>
+								<div id="authCode_error" class="msg-error"></div>
+							</div>
+						</li>
+						<li>
+							<div class="next-trigger">
+								<a id="submitCode" href="javascript:void(0);" class="disable" onclick="check()">下一步</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+
+	<div id="popup"></div>
+	<div class="blackbox"></div>
+
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>
+	<script type="text/javascript">
+	$(function(){
+        $("#send_verify").attr("disabled",false);
+        $("#send_verify").click(function(){
+			        $("#username-input").attr("disabled",false);
+                    var mobile = $('#mobile').val();
+					var regPartton=/^1[0-9]{10}$/;
+					if(!regPartton.test(mobile)){
+						alert('手机号码格式不正确');
+						return false;
+					}
+                    var second = "60";
+                     $.ajax({
+                            type: "POST",
+                            url: "__APP__/Myhome/send_verify",
+                            cache: false,
+                            data:"mobile="+mobile,
+                            dataType: "json",
+                            success: function(data){
+								//alert(data);
+                                if(data == '1'){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                                }else if(data == '-1'){
+                                    send_verify_show(second);
+                                    alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+                                    return false;
+                                }
+                            },
+                                error: function(){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                            }
+                         })
+      
+               })   
+			
+				
+			$.getUrlParam = function(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) return unescape(r[2]); return null;
+			}	
+			var jumpUrl = $.getUrlParam("jumpUrl");
+			$("#jumpUrl1").val(jumpUrl);
+			$("#jumpUrl2").val(jumpUrl);
+        })        
+		
+
+	function send_verify_show(i){
+		if(i>='0'){
+			$("#send_verify").attr("disabled",true); 
+			$("#send_verify").attr("value",i+"秒后重新发送");
+			i--;
+			setTimeout(function(){send_verify_show(i);},1000);
+		}else{
+			$("#send_verify").attr("disabled",false); 
+			$("#send_verify").attr("value","发送手机验证码");
+		}
+	}
+
+	$("#refreshCode, #verifyImg").on("click", function(e){
+    	e.preventDefault();
+    	var newTime = new Date().getTime();
+    	$("#verifyImg").attr("src","http://www.xieche.com.cn/common/verify/" + newTime);
+    });
+
+	function check(){
+		authCode=$("#code-input").val();
+		code=$("#username-input").val();
+		$.ajax({
+			type: "POST",
+			url: "__APP__/Myhome/do_verifymobile",
+			cache: false,
+			data:"authCode="+authCode+"&code="+code,
+			dataType: "json",
+			success: function(data){
+				//alert(data);
+				if(data == '1'){
+					$('#authCode_error').text('验证码错误');
+				}
+				if(data == '2'){
+					$('#code_error').text('手机验证码错误');
+				}
+				if(data == '12'){
+					$('#authCode_error').text('验证码错误');
+					$('#code_error').text('手机验证码错误');
+				}
+				if(data == '3'){
+					window.location="__APP__/Myhome/insert_paycode";
+				}
+			}
+		})
+	}
+
+	$(document).ready(function(){
+		$("#code-input").keydown(function(){
+			$('#authCode_error').empty();
+		});
+		$("#username-input").keydown(function(){
+			$('#code_error').empty();
+		});
+	});
+	</script>

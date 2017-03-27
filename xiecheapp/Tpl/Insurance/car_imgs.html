@@ -1,0 +1,17 @@
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/shop4s.css?v={$Think.config.VERSION_DATE}" />
+<div style="margin: 0px 465px 10px;"><a href="__URL__/">首页</a> -->> 查看车辆图片</div>
+
+<table border="0" align="center" cellpadding="1" cellspacing="0">
+<tr>
+	<td>受损位置</td>
+	<td>图片信息</td>
+</tr>
+<volist name="img_list" id="vo">
+<tr>
+	<td>{$vo.car_location}</td>
+	<td><a href="/UPLOADS/Driving/{$vo.car_img}" target="_blank"><img src="/UPLOADS/Driving/{$vo.car_img}" width=300 height=200></a></td>
+</tr>
+</volist>
+
+</table>

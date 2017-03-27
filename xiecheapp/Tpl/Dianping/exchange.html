@@ -1,0 +1,304 @@
+<layout name='layout_nonejs' />
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/common/css/libs/jquery-ui.min.css">
+		
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/common/css/reset.css" >	
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/new_pa/css/selectize.css">
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/event/dp/css/dp.css">
+		<style>
+			.selectize-control{float: left;}
+			.datepicker-container{ }
+			.ui-datepicker{font-size: 13px;}
+			.ui-widget-header{background: #0066cc;border: 1px solid #ffffff;}
+			.ui-state-default{border: 1px solid #ffffff; background: #ffffff;}
+		</style>
+
+		<div class="container">
+			<div class="dp-progress dp-progress-2">
+				
+			</div>
+			<div class="dp-notice">
+				<span>券  码：</span>用户在团购网站下单购买携车网的产品后，从团购网站获取的凭证码，用户可以使用该凭证码在此进行预约。预约成功后携车网会向用户发送去4S店时使用的电子票券。
+			</div>
+			<div class="form-container">
+				<form action="__APP__/Dianping-info_add" class="fp-form" name="form2" method="POST">
+					<input type="hidden" name="dianping_id" id="dianping_id" value="{$dianping_coupon.id}">
+					<ul>
+						<li>
+							<label for="">券&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+							<div class="ver-img form-field">
+								<input type="text" id="coupon_code" name="coupon_code"  class="text code-input" style="width: 380px;" value="{$dianping_coupon.coupon_code}">
+							</div>
+						</li>
+						<li class="datepicker-container" style="display: block; width: 900px; overflow: hidden; height: 300px;">
+							<label for="">预&nbsp;约&nbsp;时&nbsp;间：</label>
+							<div class="ver-img form-field">
+								<input type="text" class="text code-input"  style="width: 380px;" id="getdate" name="date" value="请选择时间">
+							</div>
+							<div  id="datepicker" style="width:700px; float: left; margin-left: 110px;"></div>
+							<div style="clear:both"></div>
+						</li>
+						<li>
+							<label for="">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</label>
+							<select id="get_brand" name="brand_id" placeholder="选择品牌" style="width:400px; float: left;"></select>
+							<div class="check-sign error"></div>
+							
+						</li>
+						<li>
+							<label>选&nbsp;择&nbsp;车&nbsp;系:</label>
+							<select class="car_series" id="get_series" placeholder="选择车系" name="series_id" style="width: 135px; float: left;">
+								
+							</select>
+							<label >选&nbsp;择&nbsp;车&nbsp;型:</label>
+							<select class="car_model" id="get_model" placeholder="选择车型" name="model_id" style="width: 135px; float: left;">
+								
+							</select>
+						</li>
+						<li>
+							<label >选&nbsp;择&nbsp;4S&nbsp;店:</label>
+							<select id="get_4s" name="shop_id" placeholder="选择4S店" style="width:400px; float: left;">
+								<option value="">请选择店铺<option>
+								<volist name="shop" id="list">
+									<option value="{$list.id}" <if condition="($list.id eq $shop_id)" > selected </if>>{$list.shop_name}<option>
+								</volist>
+							</select>
+						</li>
+						<li>
+							<label for="">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+							<div class="ver-img form-field">
+								<input type="text" class="text code-input" style="width: 380px;" name="truename" value="请输入姓名">
+							</div>
+						</li>
+						<li>
+							<label for="">车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌 ：</label>
+
+							<div class="ver-img form-field">
+								<select id="get_brand_name" name="car_pai_1" placeholder="请选择" style="width:140px; float: left; ">
+								    <volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="list">
+										<option value="{$list}"> {$list}</option>
+									</volist>
+								</select>
+								<input type="text" class="text code-input" name="car_pai_2" style="width: 220px; margin-left: 20px; height: 34px; line-height: 34px;" value="请输入车牌号">
+							</div>
+						</li>
+						<li>
+							<div class="next-trigger form-field">
+								<input type="submit"  value="下一步">
+							</div>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+		<script src="http://statics.xieche.com.cn/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script src="http://statics.xieche.com.cn/common/js/libs/jquery/jquery-ui.min.js"></script>
+		<script src="http://statics.xieche.com.cn/new_pa/js/selectize.js"></script>
+		<script>		 	
+		  (function($){
+
+
+		  	// jquery UI datepicker
+			    $( "#datepicker" ).datepicker({
+			    	minDate : 0,
+			    	maxDate : 30,
+			    	currentText: "今天", 
+				    numberOfMonths: 2,
+				    showButtonPanel: true,
+				    dayNames: [ "一", "二", "三", "四", "五", "六", "日" ],
+				    dayNamesMin : [ "一", "二", "三", "四", "五", "六", "日" ],
+				    monthNames : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+					monthNamesShort : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+					autoSize: true,
+					onSelect : function(date,obj){
+						console.log(date);
+						console.log(obj);
+						$("#getdate").val(date)
+							.css("color","#000000;");
+					}
+			    });
+			 
+
+		      $(".phone-input, .code-input").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+		  })(jQuery)
+  
+		</script>
+
+		
+		<script>
+		$("#get_4s, #get_brand_name").selectize()
+
+		function showid(id,name){
+			$('#address').val(name);
+			$('#shop_area').val(id);
+			$('#address_Shop').hide();
+			$('#ShopAddressDiv').hide();
+		}
+			
+			$(document).ready(function(){
+
+				$("#shop_name, #area_name").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+						
+				//Paiframe-PostCar_series  传入brand_id变量名字
+				//Paiframe-PostCar_model  传入series_id变量名字 返回车型内容
+
+				var brandData = get_car_info("/Paiframe-PostCar_brand");
+				
+				var $getBrand, getBrand,
+					$getSeries, getSeries,
+					$getModel, getModel;
+
+				function managerAjaxdata(data){
+					return data
+				}
+
+				function get_car_info(url){
+					$.ajax({
+						url : url ,
+						dataType : "json",
+						success : function(data){
+							managerAjaxdata(data)
+						}
+					});
+				};
+
+				function hTab(tab_controler,tab_con){
+					this.tab_controler = tab_controler;
+					this.tab_con = tab_con;
+					var tabs = $(tab_controler).children("li");
+					var panels = $(tab_con).children("div");
+					$(tab_con).children("div").css("display","none");
+					$(tab_con).children("div:first").css("display","block");
+					$(tabs).hover(function(){
+						var index = $.inArray(this,tabs);
+						tabs.removeClass("current").eq(index).addClass("current");
+						panels.css("display","none").eq(index).css("display","block");
+					});
+				};
+
+				hTab('#tabs1','#con1');
+				hTab(".tabs2",".con2");
+				hTab(".tabs3",".con3");
+
+				//get car brand 
+
+				 $getBrand = $("#get_brand").selectize({
+					"create": false,
+				   	"labelField" : "brand_name",
+				   	"valueField" : "brand_id",
+				   	"searchField" : ["brand_name"],
+				   	"sortField": [
+			            {"field": "word", "direction": "asc"}
+			        ],
+				   	onChange : function(value){
+				   		if (!value.length) return;
+				   		 	getSeries.disable();
+        					getSeries.clearOptions();
+        					getSeries.load(function(cb){
+        						getSeries.enable();
+        						getSeries.addOption({"series_name":"选择车系","series_id":""});
+        						$.ajax({
+									url : "Paiframe-PostCar_series-brand_id-"+ value,
+									dataType : "json",
+									success : function(data){
+										cb(data)
+									}
+								});
+        					})
+				   		}
+					}); 
+
+				//get car series
+				$getSeries = $("#get_series").selectize({
+				   "creat" : false,
+				   "labelField" : "series_name",
+				   "valueField" : "series_id",
+				   "searchField" : ["series_name"],
+				   "sortField": [
+			            {"field": "word", "direction": "asc"}
+			        ],
+				   onChange : function(value){
+				   		if (!value.length) return;
+				   		 	getModel.disable();
+        					getModel.clearOptions();
+        					getModel.load(function(cb){
+        						getModel.enable();
+        						getSeries.addOption({"model_name":"选择车型","model_id":""});
+        						$.ajax({
+									url : "Paiframe-PostCar_model-series_id-"+ value,
+									dataType : "json",
+									success : function(data){
+										cb(data)
+									}
+								});
+        					})
+				   		}
+				}); 
+
+				// get car model
+				$getModel = $("#get_model").selectize({
+					"create" : false,
+					"searchField" : ["model_name"],
+				   	"labelField" : "model_name",
+				   	"valueField" : "model_id",
+				   	"sortField": [
+		            	{"field": "word", "direction": "asc"}
+		        	]
+				}); 
+
+				
+
+				getBrand = $getBrand[0].selectize;
+				getBrand.load(function(cb){
+					$.ajax({
+						url : "Paiframe-PostCar_brand",
+						dataType : "json",
+						success : function(data){
+							cb(data)
+						}
+					});
+				});
+				getSeries = $getSeries[0].selectize;
+				getModel = $getModel[0].selectize;
+
+				getSeries.disable();
+				getModel.disable();
+
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<layout name='layout_note' />  
+	<script>
+		function delbut(id){
+			$.ajax({
+				type:'POST',
+				url:'__APP__/note/delnote',
+				cache:false,
+				dataType:'text',
+				data:'note_id='+id,
+				success:function(data){
+					if(data == 1){
+						alert("删除成功");
+						window.location.reload();
+					}else{
+						alert("删除失败");
+						//window.location.reload();
+					}
+				}
+			})
+		}
+	</script>
+
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 费用明细</div>
+        <div class="userjzbar15"></div>
+		<div class="Consumebox">
+			<!-- <p class="ht01">
+			<a href="__APP__/membercar/add" class="addcarbut"></a>
+			<a href="__APP__/note" class="Notebut"></a>
+			</p> -->
+			<div class="clear"></div>
+			<div class="Consumelistbg1"></div>
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+			  <tr>
+				<td class="w1">日期</td>
+				<td>金额</td>
+				<td>类型</td>
+				<td>操作</td>
+			  </tr>
+			</table>
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody">
+			<volist name="list" id="vo">
+			  <tr>
+				<td class="w1">{$vo.happen_time|date="Y-m-d",###}</td>
+				<td><strong>{$vo.total_cost}</strong><span class="f6">元</span></td>
+				<td><strong>{$Think.config.NOTE_TYPE_NAME.$vo[note_type]}</strong></eq><span class="f6"></span></td>
+				<td><a href="__APP__/note/editnote/type/{$Think.config.NOTE_TYPE_TITLE.$vo[note_type]}/note_id/{$vo.note_id}" class="editbut"></a><a href="#" class="Delbut" onclick="delbut({$vo.note_id});"></a></td>				
+			  </tr>
+			</volist>
+
+			<tr>
+				<td class="w2" colspan="4">{$page} </td>
+
+			  </tr>		
+			</table>
+		</div>
+		
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

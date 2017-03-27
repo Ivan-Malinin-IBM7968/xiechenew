@@ -1,0 +1,36 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script type="text/javascript" src="/Public/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="/Public/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+	<div style="height:20px;"></div>
+	<div class="list">
+		<table class="list">
+			<th>服务名称</th>
+			<th>品牌</th>
+			<th>车系</th>
+			<th>车型</th>
+			<th>价格明细</th>
+			<volist name="productlist" id="vo">
+				<tr>
+					<td>{$vo.service_name}</td>
+					<td>{$vo.brand_name}</td>
+					<td>{$vo.series_name}</td>
+					<td>{$vo.model_name}</td>
+					<td>
+					<volist name="vo.detail_list" id="detaillist">
+						{$detaillist.Midl_name}:&nbsp;&nbsp;{$detaillist.price}x{$detaillist.quantity}{$detaillist.unit}={:template_multiplication($detaillist[price],$detaillist[quantity])}元<br>
+					</volist>
+					</td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+		
+	</div>
+</div>

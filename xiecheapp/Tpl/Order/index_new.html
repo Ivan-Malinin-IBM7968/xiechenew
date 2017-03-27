@@ -1,0 +1,590 @@
+<layout name='layout_new' />
+	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/shop_list.css" />
+
+
+	<script src="__PUBLIC__/new_2/js/base.js?v={$Think.config.VERSION_DATE}" ></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+	
+	<script src="http://api.map.baidu.com/api?v=1.5&ak=3db05159a3e3c55937fbf0160e2d8933" type="text/javascript"></script>  
+
+	<style>
+		#popup-sl-map{ position: fixed; width: 700px;  height: 500px; top: 100px; overflow: hidden; display: none;  z-index: 1113; background: white; }
+		#popup-sl-map #baidu-map{ width: 700px;  height: 500px;}
+		#map{height: 630px;}
+		.pa-banner{position: absolute; top: 420px;}
+	</style>
+	<div style="display:none">{$current}</div>
+	<div class="w1200 content" style="margin-top: 10px;">
+		<div class="w780 content-left">
+			<div class="w780 pa_xieche-banner">
+				
+			</div>
+			<div class="result">
+				<strong>{$count}</strong>家符合您条件的4S维修店铺
+				<if condition="$Think['const'].TOP_CSS eq 'xc'">
+
+				<else/>
+				
+					<notempty name="Think.session.uid">
+						<span class="my-order-entrance">
+							[ <a  href="__APP__/myhome">我的订单</a> | <a href="__APP__/public/logout" target="_self">退出</a> ]
+						</span>	
+						
+					<else/>
+						<a class="my-order-entrance" href="__APP__/Public/login?jumpUrl=%2Fmyhome">[我的订单]</a>
+					</notempty>
+
+				</if>
+					
+
+
+			</div>
+			<div class="w780 search-box">
+				<div class="inner-search-box">
+					<div class="filter">
+						<dl>
+							<dt>区 域:</dt>
+							<dd <if condition="$shop_area eq ''">class="current"</if>><a href="{:URL('/order/index',array('fsid'=>$fsid,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部区域</a></dd>
+							<volist name="Carea[$sessarea]" id="area">
+								<dd <if condition="$shop_area eq $key">class="current"</if>>
+								<empty name="fsid">
+									<a href="{:URL('/order/index',array('shop_area'=>$key,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">{$area}</a>
+								<else/>
+									<a href="{:URL('/order/index',array('shop_area'=>$key,'fsid'=>$fsid,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">{$area}</a>
+								</empty>
+								</dd>
+							</volist>
+							<div class="clear"></div>
+						</dl>
+						<dl class="fs_filter">
+							<dt>品 牌:</dt>
+							<dd id="all_fsid" <if condition="$fsid eq ''">class="current"</if>><a href="{:URL('/order/index',array('shop_area'=>$shop_area,'series_id'=>series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部品牌</a></dd>
+							
+							<volist name="Think.config.BRANDS" id="brand">
+								<dd <if condition="$fsid eq $key">class="current"</if>>
+									<empty name="shop_area">
+										<a href="{:URL('/order/index',array('fsid'=>$key))}{:C('HTML_URL_SUFFIX')}">{$brand}</a>
+									<else/>
+										<a href="{:URL('/order/index',array('shop_area'=>$shop_area,'fsid'=>$key))}{:C('HTML_URL_SUFFIX')}">{$brand}</a>
+									</empty>
+								</dd>
+							</volist>
+							<div class="clear"></div>
+						</dl>
+					</div>
+					<div class="search">
+						<form action="{:URL('/order/index')}" method="POST">
+							<input type="hidden" id="shop_area" name="shop_area" value="{$shop_area}">
+							<input type="hidden" id="fsid" name="fsid" value="{$fsid}">
+							
+
+							<ul>
+								<notempty name="list_membercar">
+									<li class='my-cars'>
+										<input type="radio" name="select_car" id="own_car" checked>
+										<label>我的车型:</label>
+										<select name="u_c_id" style="width:auto;" id="u_c_id">
+											<volist name="list_membercar" id="vo">
+												<option value="{$vo.u_c_id}" <if condition="($vo.u_c_id eq $u_c_id)" > selected </if>>{$vo.car_name}&nbsp;{$vo.brand_name}-{$vo.series_name}-{$vo.model_name}</option>
+											</volist>
+										</select>
+									</li>
+								</notempty>
+
+								<li id="brand" class='brand'>
+									<input type="radio" name="select_car" id="other_car" <notempty name="brand_id">checked</notempty>>
+									<label>选择品牌:</label>
+									<select id="get_brand" name="brand_id"  onchange="comp_brlist('get_brand','get_series', 'get_model');"></select>
+									<label>选择车系:</label>
+									<select id="get_series" name="series_id" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');"></select>
+									<label>选择车型:</label>
+									<select id="get_model" name="model_id" disabled></select>
+								</li>
+								
+								<li id="diqu">
+									<label>4S店铺名:</label>
+									<input type="text"  name="shop_name" value="{$shop_name}">
+								</li>	
+								<div class="clear"></div>
+							</ul>
+							<input type="submit" value="重 新 搜 索" class="submit-btn">
+							<div class="clear"></div>
+						</form>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class='clear'></div>
+			</div>
+
+
+
+			<!-- 多品牌多店铺券 开始-->
+			<div class="w780 ">
+				<div class='sale-con cross-brand-container' style="padding-bottom:0px; margin-top: 40px;">
+					<h3 class="caption" style="">跨品牌保养套餐券</h3>
+					<span class="more-crossbrand">
+						<a href="http://www.xieche.com.cn/coupon-explosion">更多</a>
+					</span>
+					<div class="clear"></div>
+					<table class="w780 sale-info" style="width: 777px; ">
+						<tr bgcolor='#f1f1f1' >
+							<th width='240' class="yhq-title-con">
+								<span class="yhq-title">优惠券</span>	
+								名称
+							</th>
+							<th width="125">类型</th>
+							<th width="150">现价/原价</th>
+							<th width="150">已购数量</th>
+							<th width="110">操作</th>
+						</tr>
+						<volist name="ex_coupon" id="voc">
+						<tr class="<eq name='mod' value='1'>bg-blue</eq> <gt name='c_k' value='2'>&nbsp;coupon_hide_{$vo.id}</gt>" <gt name='c_k' value='2'> style="display:none;"</gt>>
+							<td class="yhq-name-con">
+								<eq name="voc.coupon_type" value="1"><span class="yhq-icon-xianjin"></span><else/><span class="yhq-icon-taocan"></span></eq>
+								
+								<span class="yhq-name"><a target="_blank" href="__APP__/tuangou/{$voc.id}" title="{$voc.coupon_name}" >{$voc.coupon_name} 优惠券名词</a></span>
+							</td>
+							<td><eq name="voc.coupon_type" value="1">现金券<else/>套餐券</eq></td>
+							<td class="yhq-price-con"><span class="yhq-price-icon">¥</span><span class="yhq-price-current">{$voc.coupon_amount} </span> / <span class="yhq-price-prev">{$voc.cost_price}</span></td>
+							<td>{$voc.pay_count}人已购</td>
+							<td><a href="__APP__/coupon/{$voc.id}" target="_blank" class='check'>查看</a></td>
+						</tr>
+						</volist>
+						
+					</table>
+					<gt name='c_k' value='2'>
+						<!-- <a class="more coupon_shop_{$vo.id}" onclick="toggle_coupon({$vo.id});" href="javascript:;">点击查看更多 <b></b></a> -->
+						<a  class="more" href="__APP__/shop/{$vo.id}.html#coupon" target="_blank">点击查看更多<!--  <b></b> --></a>
+					</gt>
+					<div class='clear'></div>
+				</div>
+			</div>
+
+			<!-- 多品牌多店铺券 结束-->
+
+
+			<ul class="w780 shop-list">
+				<volist name="shops" id="vo" key="k">
+				<li class='single-shop' data-index="{$k}" data-lng="{$vo.shop_maps}" data-name="{$vo.shop_name}" data-address="{$vo.shop_address}" data-href="__APP__/shop/{$vo.id}" id="list-id-{$vo.id}">
+					<div class="shop-list-top">
+						<div class="number">{$shop_num+$k}</div>
+						<div class="info">
+							<h3 class="shop-name"><a href="__APP__/shop/{$vo.id}" target="_blank">{$vo.shop_name}</a></h3>
+							
+						</div>
+						
+					</div>
+					<div class="shop-list-center">
+						<div class="shop-img">
+							<a href="__APP__/shop/{$vo.id}" target="_blank">
+								<img  src="{$vo.shop_pic}" title="{$vo.shop_name}" width="200" height="150" alt="{$vo.shop_name}">
+							</a>
+							<if condition="$vo.shop_class eq 1">
+								<span class='speacial-banner'></span>
+							</if>
+						</div>
+						<div class="shop-info">
+							<span <php>echo "class='rating-".round($vo[comment_rate]/10)." rating-img shop-rating'";</php>><strong>{$vo[comment_rate]/10}</strong></span>
+							 
+						<!--胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评胡椒这里是你要用的好中差评
+						百分比   {$vo[comment_rate]} 
+						总评：{$vo.comment_rate_new}
+						好评：{$vo.good}
+						中评：{$vo.normal}
+						差评：{$vo.bad}-->
+							<span class="shop-comment"><a href="__APP__/shop/{$vo.id}.html#comment" target="_blank">{$vo.comment_number}</a>人评论</span>
+							<span class="shop-desc">{$vo.shop_account}</span>
+							<ul class="info-list">
+								<li class='phone'>400 660 2822</li>
+								<li class='address'>{$vo.shop_address}
+								[<a href="javascript:;"  lng="{$vo.shop_maps}" class="point" desc="商家名称：{$vo.shop_name} ^^地址：{$vo.shop_address} ^^电话：400-660-2822">查看地图</a>]
+								
+								</li>
+							</ul>
+						</div>
+						<!-- 服务顾问开始 -->
+						<notempty name="vo.Servcemember">
+						<div class="consultant-con">
+							<h3>服务顾问</h3>
+							<ul class="consultant">
+							<volist name="vo.Servcemember" id="list">
+								<li class="single-consultant">
+								<!--f服务态度 z专业JN c诚信-->
+									<if condition="$list.service eq 0.0">
+										<a href="javascript: void(0)" class="consultant-tooltips" data-f="暂无" data-z="暂无" data-c="暂无">
+									<else/>
+										<a href="javascript: void(0)" class="consultant-tooltips" data-f="{$list.service}分" data-z="{$list.profession}分" data-c="{$list.sincerity}分">
+									</if>
+										<img src="/UPLOADS/Service/logo200_{$list.logo}" alt="" class="consultant-img" />
+										<span class="consultant-name">{$list.name}</span>		
+									</a>
+								</li>
+							</volist>
+								<!--
+								<li class="single-consultant">
+									<a href="javascript: void(0)"  class="consultant-tooltips" data-f="5" data-z="5" data-c="5">
+										<img src="http://www.placehold.it/60x60/E8117F/ffffff&text=consultant" alt="" class="consultant-img" />						
+										<span class="consultant-name">Yeah! </span>	
+											 	
+									</a>
+								</li>
+								<li class="single-consultant">
+									<a href="javascript: void(0)"  class="consultant-tooltips" data-f="5" data-z="5" data-c="5">
+										<img src="http://www.placehold.it/60x60/E8117F/ffffff&text=consultant" alt="" class="consultant-img" />
+										<span class="consultant-name">Yeah! </span>
+										
+									</a>
+								</li>-->
+							</ul>
+						</div>
+						</notempty>
+						<!-- 服务顾问结束 -->
+						<div class="clear"></div>
+					</div>
+					<script>
+						$(function() {
+							$( document ).tooltip({ 
+									items : $(".single-consultant a"),
+									track: true,
+						    		content: function(){
+						    			var element = $(this);
+						    			return "<ul class='tooltips'><li>服务态度: "+element.data("f")+"</li><li>专业技能: "+element.data("z")+"</li><li>服务诚信: "+element.data("c")+"</li></ul>"
+						    		}
+						    	});
+
+						  });
+					</script>
+					
+					
+					<notempty name="vo.timesale">
+					<div class='sale-con'>
+						<table class="w780 sale-info" style="width: 777px">
+							<tr bgcolor='#f1f1f1' >
+								<th width='240' class="gszk-title-con">
+									<span class="gszk-title">预约折扣</span>
+									星期
+								</th>
+								<th width="125">时段</th>
+								<th width="150">工时折扣率</th>
+								<th width="150">零件折扣率</th>
+								<th width="110">操作</th>
+							</tr>
+							<volist name="vo.timesale" id="sale_item" mod="2" key="t_k">
+							 <tr class="<eq name='mod' value='1'>bg-blue</eq> <gt name='t_k' value='2'>&nbsp;time_hide_{$vo.id}</gt>" <gt name='t_k' value='2'> </gt>>
+							   <td>{$sale_item.week_name_s}</td>
+							   <td >{$sale_item.begin_time} - {$sale_item.end_time}</td>
+							   <td style=" color: #10A200; font-weight: normal">{$sale_item.workhours_sale_str}</td>
+							   <td>{$sale_item.product_sale_str}</td>
+							   <td><a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$sale_item['id'],'model_id'=>$model_id,'u_c_id'=>$u_c_id,'shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" class='operate'>查看并预约</a>
+							
+
+							 </tr>
+							 </volist>
+						</table>
+						<gt name='t_k' value='2'>
+						<!--<a class="more time_shop_{$vo.id}" onclick="toggle_time({$vo.id});" href="javascript:;">点击查看更多 <b></b></a>-->
+						</gt>
+						<div class='clear'></div>
+					</div>
+					</notempty>
+					
+					<notempty name="vo.coupon_list">
+					<div class='sale-con' style="padding-bottom:0px">
+						<table class="w780 sale-info" style="width: 777px">
+							<tr bgcolor='#f1f1f1' >
+								<th width='240' class="yhq-title-con">
+									<span class="yhq-title">优惠券</span>	
+									名称
+								</th>
+								<th width="125">类型</th>
+								<th width="150">现价/原价</th>
+								<th width="150">已购数量</th>
+								<th width="110">操作</th>
+							</tr>
+							<volist name="vo.coupon_list" id="voc" mod="2" key="c_k">
+							<tr class="<eq name='mod' value='1'>bg-blue</eq> <gt name='c_k' value='2'>&nbsp;coupon_hide_{$vo.id}</gt>" <gt name='c_k' value='2'> style="display:none;"</gt>>
+								<td class="yhq-name-con">
+									<eq name="voc.coupon_type" value="1"><span class="yhq-icon-xianjin"></span><else/><span class="yhq-icon-taocan"></span></eq>
+									
+									<span class="yhq-name"><a target="_blank" href="__APP__/coupon/{$voc.id}" title="{$voc.coupon_name}" >{$voc.coupon_name}</a></span>
+								</td>
+								<td><eq name="voc.coupon_type" value="1">现金券<else/>套餐券</eq></td>
+								<td class="yhq-price-con"><span class="yhq-price-icon">¥</span><span class="yhq-price-current">{$voc.coupon_amount}</span> / <span class="yhq-price-prev">{$voc.cost_price}</span></td>
+								<td>{$voc.pay_count}人已购</td>
+								<td><a href="__APP__/coupon/{$voc.id}" target="_blank" class='check'>查看</a></td>
+							</tr>
+							</volist>
+
+						</table>
+						<gt name='c_k' value='2'>
+							<!-- <a class="more coupon_shop_{$vo.id}" onclick="toggle_coupon({$vo.id});" href="javascript:;">点击查看更多 <b></b></a> -->
+							<a  class="more" href="__APP__/shop/{$vo.id}#coupon" target="_blank">点击查看更多<!--  <b></b> --></a>
+						</gt>
+						<div class='clear'></div>
+					</div>
+					</notempty>
+				</li>
+				</volist>
+			</ul>
+			<div class="clear"></div>
+			<div class="pagerArea">
+				<ul id="pager">
+				{$page}
+				</ul>
+			</div>
+		</div>
+		<div class="w400 content-right">
+			<div class="map" id="map">
+				<div id='inner-map'>
+					
+				</div>
+					
+				<div class="pa-banner">
+					<if condition="$Think['const'].TOP_CSS neq 'xc'">
+						<a href="__APP__/Coupon"><img src="__PUBLIC__/new_pa/images/banner/pa-banner.jpg" alt=""></a>
+					</if>
+				</div>
+
+			</div>
+			
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div id="popup-sl-map">
+		<div></div>
+		<div id='baidu-map' ></div>
+	</div>
+	<div class="blackbox"></div>
+	<style>
+		.floatCurrent {
+			position: absolute;
+			_position: absolute; 
+			_top: expression(eval(document.documentElement.scrollTop) );
+			z-index: 20;
+
+		}
+	</style>
+
+	<script type="text/javascript">
+
+
+		$(".bg-blue").css({
+			"background" : "#effaff"
+		})
+			
+		comp_fctlist("get_brand", "get_series", "get_model", '{$brand_id}', '{$series_id}', '{$model_id}');
+		$(function(){
+			if ($("#own_car").attr('checked')){
+				$("#get_brand").attr("disabled", "disabled");
+				$("#get_series").attr("disabled", "disabled");
+				$("#get_model").attr("disabled", "disabled");
+			}else{
+				$("#other_car").attr('checked','checked');
+				$("#u_c_id").attr("disabled", "disabled");
+			}
+
+			if ($("#other_car").attr('checked')){
+				$("#u_c_id").attr("disabled", "disabled");
+			}
+		});
+
+		$("#own_car").click(function(){
+			$("#u_c_id").removeAttr("disabled");
+			$("#get_brand").attr("disabled", "disabled");
+			$("#get_series").attr("disabled", "disabled");
+			$("#get_model").attr("disabled", "disabled");
+
+
+			$(".fs_filter dd").each(function(i){
+			   $(this).removeClass("current");
+			 });
+			$("#all_fsid").attr("class","current");
+			$("#fsid").val("");
+		})
+
+		$("#other_car").click(function(){
+			$("#get_brand").removeAttr("disabled");
+			$("#get_series").removeAttr("disabled");
+			$("#get_model").removeAttr("disabled");
+
+			$("#u_c_id").attr("disabled", "disabled");
+
+			$(".fs_filter dd").each(function(i){
+			   $(this).removeClass("current");
+			 });
+			$("#all_fsid").attr("class","current");
+			$("#fsid").val("");
+		})
+
+		function toggle_time(shop_id){
+			$(".time_hide_"+shop_id).toggle();
+			if ($(".time_hide_"+shop_id).css("display") == "table-row" )
+			{
+				$(".time_shop_"+shop_id).html("收起");
+			}else {
+				$(".time_shop_"+shop_id).html("点击查看更多<b></b>");
+			}
+		}
+
+		function toggle_coupon(shop_id){
+		
+			$(".coupon_hide_"+shop_id).toggle();
+			if ($(".coupon_hide_"+shop_id).css("display") == "table-row" )
+			{
+				$(".coupon_shop_"+shop_id).html("收起");
+			}else {
+				$(".coupon_shop_"+shop_id).html("点击查看更多<b></b>");
+			}
+		}
+	</script>
+
+
+<script type="text/javascript">
+
+	$(function(){ 
+		$(".point").click(function(){
+			
+			$('.blackbox').show();
+			$("#popup-sl-map").css({
+	            "left": ( $(window).width() - parseInt(600)) / 2+$(window).scrollLeft() + "px"
+			}).show();
+			
+			 var map = new BMap.Map("baidu-map");
+			 var lng=$(this).attr('lng');
+			 //var lat=$(this).attr('lat');
+			 arr=lng.split(',');//分割
+				
+			 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+			  //var point = new BMap.Point(121.457314,31.158372); // 创建点坐标
+			  
+			 //alert(lng);
+			 var text=$(this).attr('desc');
+			 var textArr=text.split('^^');
+				map.centerAndZoom(point,15);
+				map.addControl(new BMap.NavigationControl());
+				map.addControl(new BMap.MapTypeControl());
+				map.addControl(new BMap.ScaleControl());
+				map.addControl(new BMap.OverviewMapControl());
+				map.setDefaultCursor("url('bird.cur')");  
+				map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+				map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}));  //右上角，仅包含平移和缩放按钮
+				addMarker(point);
+
+			 function addMarker(point)
+			 {
+				var html='';
+				for(var i=0;i<textArr.length;i++)
+				{
+					html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+				}
+				var marker = new BMap.Marker(point);  // 创建标注
+				map.addOverlay(marker);              // 将标注添加到地图中
+				var infoWindow = new BMap.InfoWindow(html);
+				marker.openInfoWindow(infoWindow);
+				
+			  }
+		
+		 });	
+
+	   	$('.blackbox').not("#popup-sl-map").on('click', function(){
+			$('.blackbox').hide();
+			$("#popup-sl-map").hide()
+		});
+
+
+		
+
+		var pos = $(".inner-search-box").css('position'), 
+			top = $('.inner-search-box').offset().top,
+			mapPos = $("#inner-map").css('position'), 
+			mapTop = $('#inner-map').offset().top,
+			mapLeft = $('#inner-map').offset().left,
+			paBannerLeft = $(".pa-banner").offset().left,
+			paBannerTop = $(".pa-banner").offset().top;
+
+		$(window).resize(function(){
+			mapLeft = $('#inner-map').offset().left;
+		})
+
+		window.onscroll = function() {
+			// Calculate the search-box
+			if ($(document).scrollTop() > top) {
+				if ($.browser.msie && $.browser.version == "6.0") {
+					$('.search-box').addClass("floatCurrent")
+				} else {
+					$(".inner-search-box").css({
+						"position" : "fixed",
+						"top" : '0',
+						"z-index" : '8'
+					});
+					
+
+				}
+
+			} else {
+				if ($.browser.msie && $.browser.version == "6.0") {
+					$('.search-box').removeClass("floatCurrent")
+				} else {
+					$(".inner-search-box").css({
+						"position" : "relative",
+						"top" : "0"
+					})
+				}
+
+			};
+
+			//Calculate the map 
+			if ($(document).scrollTop() > mapTop) {
+				if ($.browser.msie && $.browser.version == "6.0") {
+					$('#map').addClass("floatCurrent")
+				} else {
+					$("#inner-map").css({
+						"position" : "fixed",
+						"top" : '0',
+						"left" : mapLeft,
+						"z-index" : '8'
+					});
+					$(".pa-banner").css({
+						"position" : "fixed",
+						"top" : 420,
+						"left" : mapLeft,
+						"z-index" : '8'
+					})
+				}
+
+			} else {
+				if ($.browser.msie && $.browser.version == "6.0") {
+					$('#map').removeClass("floatCurrent")
+				} else {
+					$("#inner-map").css({
+						"position" : "relative",
+						"float":"left",
+						"left" : "0",
+						"height" : 400
+
+					});
+					$(".pa-banner").css({
+						"position" : "absolute",
+						"left" : "0",
+						"top" : 420,
+						/*"margin-top" : '20',
+						"float":"left",*/
+						"z-index" : '8'
+					})
+				}
+
+			}
+		};
+
+	
+
+		/********************  Fix Position Searchebox & Map Container END ****************/
+
+});
+
+
+
+</script>
+<script src="__PUBLIC__/new_2/js/list_map.js?v={$Think.config.VERSION_DATE}" ></script>

@@ -1,0 +1,52 @@
+html{min-height:100%}
+*{margin:0;padding:0;font-weight: normal;}
+body{font: normal 14px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft YaHei",hei;}
+#header{width: 100%; height: 60px; background-color: #00aff1; text-align: center; position: relative; line-height: 60px;}
+#header h1{color: #fff; font: 600 1.286em/3.6 "STXihei";}
+#list-sort{width:100%;height: 50px; background-color: #eeeeee;overflow: hidden; }
+
+li{list-style: none;}
+.clear{clear: both;}
+#content-wrapper{position: relative; padding: 10px 10px 10px 10px; }
+#inner-content-wrapper{border-left: 2px solid #e2e2e2; min-height: 480px;}
+.title {margin-bottom: 5px;}
+.title .circle{display: inline-block; width: 15px; height: 15px; border: 1px solid #ffffff; background: #00b0f1; border-radius: 50%; margin-right: 4px;float: left;}
+.title h3{font-size: .9em; color: #444444; display: inline-block; float: left;}
+.sl{width: 100%; margin-left: -9px; margin-bottom: 10px;}
+.sl .s-list{margin-left: 20px; background: #ffffff; }
+.sl .s-list li{padding: 15px; border-bottom: 1px solid #f2f2f2; float: left; box-sizing: border-box;  position: relative; -webkit-tap-highlight-color: #444 ;}
+.sl .s-list li strong{position: relative; font-size: 1em; color: #333333; z-index: 3;}
+.sl .s-list li.selected strong{ color: #00b0f1; font-weight: 400;}
+.sl .s-list li .selected-sign{ position: absolute; right: 0px; top: 0px;  border-width:15px; border-style:solid; border-color:#00b0f1 #00b0f1 #ffffff #ffffff;  background: #00b0f1; display: none; z-index: 0;}
+.sl .s-list li .selected-font{position: absolute; right: 4px; top: 1px; font-size: .8em; color: white; display: none; z-index: 3;}
+
+#s-t ul li{width: 100%;}
+#si1 .s-list ul li,
+#si2 .s-list ul li{width: 50%; text-align: center }
+#si1 .s-list ul li:nth-child(odd),
+#si2 .s-list ul li:nth-child(odd){border-right: 1px solid #f2f2f2;}
+
+.s-c-c{margin-left: 20px; width: 90%; }
+.s-c-c > div{padding: 5px; width: 100%}
+.s-c-c .info{background: #e7e7e7; padding: 5px; font-size: .9em; }
+.s-c-c .info > span{display: block;}
+.s-c-c .info > span.lookout{color: #cc3300;}
+.s-c-c .info > span.example{font-style: italic; color: #777777;}
+
+#no-s{position: relative; margin-top: 10px; height: 40px; background: #e7e7e7; }
+#no-s #no-s-c{ display: inline-block; width: 16px; height: 16px; position: absolute; top: 7px; left: 5px;}
+#no-s label{ font-size: .9em; position: absolute; top: 5px; left: 25px;}
+
+#next-btn{margin-top: 10px; margin-left: 10px;}
+#next-btn a{width: 100%; height: 40px; display: block; border: none; border-radius: 5px; background: #ff9913; color: #ffffff; font-size: 1.1em; text-align: center; line-height: 40px; text-decoration: none; } 
+
+
+.i-list{margin-left: 20px; background: #ffffff;; width: 100%;}
+.i-list ul li{width: 100%; padding: 15px;  float: left; box-sizing: border-box;  position: relative; -webkit-tap-highlight-color: #444 ;}
+.i-list ul li label{display: block; width: 25%; color: #444444; text-align: center;}
+.i-list ul li input,.i-list ul li textarea{display: inline-block; width: 100%; border: none; border-bottom: 1px solid #f2f2f2; height: 30px; line-height: 30px; font-size: 1.1em; color: #000000;}
+
+
+
+#date-input-inline{font-size: 1.2em; border: none; padding: 5px;}
+#btn_ok, #btn_yz{background: #f1f1f1; text-align: center; height: 40px; border: none; display: block; color: black; line-height: 40px;}

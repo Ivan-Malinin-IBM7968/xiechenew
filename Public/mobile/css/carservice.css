@@ -1,0 +1,48 @@
+html { font-size: 62.5%; }
+body {
+    font-family: simhei;
+    font-size: 1.4rem;
+    margin: 0;
+    height: 100%;
+    background-color: #F6F6F6;
+}
+html{ height:100%} 
+
+#toptd { height:50px; background:#00AAF1;valign:middle;}
+.toptdleft{ position:absolute;margin-left: 20px;  width:24px; height:41;}   
+#toptdright{
+    font-size: 2.0rem;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: simhei;}  
+#toptd1 { height:40px;valign:middle;font-size: 1.6rem;font-family: simhei;}
+#ccc1 { width: 98%;
+    background: #ffffff;
+    font-size: 1.4rem;
+    font-family: simhei;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;}
+#jiage {color: #FF672D;text-align: right;}
+#data { color: #8D8D8D;text-align: right;}
+#xiangmu1 {color: #8D8D8D;line-height:25px;font-size: 1.4rem;}
+#cc0 { height:10px; }
+#cc1 { height:25px;}
+#cc2 { width: 96%;height:1px; background:#00AAF1;valign:middle;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;}
+#cc3 { height:50px;line-height:50px}
+#cc5 { width: 96%;height:20px; MARGIN-RIGHT: auto; MARGIN-LEFT: auto;}
+#xingqinfont1 {
+    font-size: 1.4rem;
+    font-family: simhei;
+    color: #00A9F1;
+}
+.Img{ float:middle; background:url(../images/carservice/blueBtn.png) no-repeat; width:300px; height:66px; line-height:66px; color: #ffffff;}
+.Img1{ float:left; background:url(../images/carservice/baoyangBtn.png) no-repeat; font-size: 1.4rem;text-align: center; width:99%; height:33px; line-height:33px;color: #ffffff;}
+.Img2{ float:middle; background:url(../images/carservice/yudingBtn.png) no-repeat; font-size: 1.2rem; width:300px; height:66px; line-height:66px;color: #ffffff;}
+#xiangmu2{  color: #FFFFFF;}
+#xiangmu3 { color: #FFFFFF;font-size: 2.4rem;}
+#xiangmu4{  color: #797979;}
+.tbbg {  background:#ECECEC;text-align: center;}
+.tbbg1 {  background:#F6F6F6;text-align: center;}
+
+.order_text { width:99%;height:99%;border:0;background:transparent; }

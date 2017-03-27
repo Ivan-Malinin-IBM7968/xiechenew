@@ -1,0 +1,79 @@
+<layout name='layout_note' />
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <div class="userjzbar01"></div>
+       <form action="__URL__/add_note/type/Noteoil" method="post">
+        <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+          <tr>
+            <td class="tdright w1">车辆：</td>
+            <td>
+				<select style="width:105px;" id="sel_Cars" name="u_c_id">
+					<volist name="select_u_c_id" id="k">
+						<option value="{$k.u_c_id}">{$k.car_name}</option>
+					</volist>
+				</select>
+            </td>
+            <td class="tdright w2">日期：</td>
+            <td>
+            <input type="text" class="left fgre inp01" onclick="WdatePicker()" value="{$Think.now}" name="happen_time">
+              <a class="Selecttime"></a> </td>
+          </tr>
+          <tr>
+            <td class="tdright">油品：</td>
+			<td>
+				<select name="oil_type">
+					<volist name='Think.config.OIL_TYPE' id="type" key="title_key">
+					<option value="{$type}">{$type}</option>
+					</volist>
+				</select>		
+            </td>
+			<td class="tdright">总里程表读数：</td>
+			<td><input type="text" value=""  id="txt_Mileage" name="odometer"> 公里</td>
+
+          </tr>
+        </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+          <tr>
+            <td class="tdright w1">单价：</td>
+            <td>
+            <input type="text" onblur="FillQuantity();" class="w3 inp01"  value="" id="unit_price" name="unit_price"> 元</td>
+ 			<td class="tdright w1">数量：</td>
+            <td>
+            	<input type="text" value="" class="w3 inp01" onblur="FillPrice();" id="quantity" name="quantity"> 升</td>
+			<td class="tdright w1">总价：</td>
+            <td>
+            <input type="text" value=""  class="w3 inp01" onblur="FillTotal();" id="total_cost" name="total_cost"> 元</td>
+            <td><input type="checkbox" name="isfull" value="1" />是否加满</td>
+          </tr>
+        </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr class="none">
+             <td class="tdright w1 tdtop">备注：</td>
+		     <td><textarea name="remark"></textarea></td>
+	       </tr>
+         <!--<tr class="none">
+            <td class="tdright w1 pad01">保密：</td>
+            <td class="pad01">
+        <input type="radio" name="access" value="0" checked="checked">
+      完全公开
+
+      <input type="radio" name="access" value="1">
+      仅好友可见
+  
+      <input type="radio" name="access" value="2">
+      完全保密</td>
+          </tr>-->
+		    <tr class="none">
+            <td ></td>
+            <td > <input type="submit" class="button-yellow" value="保存"></td>
+          </tr>
+        </table>
+       </form>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

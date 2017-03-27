@@ -1,0 +1,429 @@
+<layout name='layout' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+})
+function popup(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+		drag:true,//不可拖动
+		cover:true//设置笼罩
+	})
+}
+</script>
+<link rel="stylesheet" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+
+<div id="xz" style="width:960px; height:35px; margin:10px auto; padding:0px; border:1px solid #CCC; background-color:#FFF"> 
+<p class="p1" style="width:950px; height:26px; margin:0 auto; padding:0px; line-height:26px; border-bottom:1px solid #efefef;">
+选 择： {$brand.brand_name}  |  {$series.series_name} |  {$model.model_name}
+</p></div>
+
+<div class="pgm">
+
+	<div class="main_w page-index">
+
+		<div class="tuan-content">
+
+	<div class="main-Box">
+
+	<div class="box-wrap">
+
+		<div class="box-cont">
+
+	<div class="deal-title"><h1>纵横携车网</h1>
+
+		<p class="deal-des">{$coupon.coupon_name}</p></div>
+
+<div class="main main-text">
+
+<div class="buy">
+
+	<div class="Price-font Price-font-s">
+
+		<span class="price-rel">&#165;{$coupon.coupon_amount}	
+		</span>
+
+	</div>
+
+	<div class="originalPrice Clear"><strong>价值</strong><span class="num">{$coupon.cost_price}</span></div>
+
+	<div class="Fix">
+		<!--<a class="b-rbtn" rel="nofollow" 
+
+		track="dp_tg_deal_upbuy_detail_87705_上海"
+
+		href="__APP__/coupon/couponbuy/coupon_id/{$coupon.id}"><span>立即抢购</span></a>-->
+
+		<if condition="$coupon.is_delete eq 1">
+		<a class="b-rbtn" rel="nofollow" track="dp_tg_deal_upbuy_detail_87705_上海" href="###"><span>已下架</span></a>
+		<else/>
+		<a class="b-rbtn" rel="nofollow" track="dp_tg_deal_upbuy_detail_87705_上海" href="{:URL('/coupon/couponbuy',array('coupon_id'=>$coupon['id']))}{:C('HTML_URL_SUFFIX')}"><span>立即抢购</span></a>
+		</if>
+	</div>
+
+    <div class="feature-list Fix">
+
+        <div class="feature-day">
+
+
+	        	<div class="icon icon-day"></div>
+
+	        	<p>支持<br>"15天内退款"</p>
+
+
+        </div>
+
+        <div class="feature-exp">        
+
+
+	        	<div class="icon  icon-exp"></div>
+
+	        	<p>支持<br>"过期退款"</p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tg-status">
+
+	<p class="count"><span class="num J_dealCount" >{$coupon.pay_count}</span>人已购买</p>
+
+	<p class="note">团购数量有限，下单要快哟</p>
+
+</div>
+
+
+</div>
+
+	<div class="side">
+
+<div class="slide J_switch J_switch_carousel">
+
+	<div class="img-wrap J_wrap">
+			<img src="/UPLOADS/Coupon/Logo/{$coupon.coupon_pic}" width="450" height="338" style="float:left;">		
+	</div>
+
+	<ul class="sideTrigger "><li class="before Hide J_before"><span>向前</span></li><li class="after Hide J_after"><span>向后</span></li></ul>
+
+    <div class="imgctrl J_ctrl">
+
+			<span></span>	
+
+			<span></span>	
+
+			<span></span>	
+
+	</div>
+
+</div>
+
+<div class="share-wrap">
+	<!-- 
+	<div class="favorites-box Fix">
+
+		<a class="favorites-btn" href="javascript:void(0);"
+
+			deal_group_id="87705"  id="J_collect" track="dp_tg_deal_collect|1|module#5_button_collect,action#click">收藏这单</a>
+
+		<div class="favorites-btn favorites-btn-off Hide" id="J_collected" title="取消收藏">已收藏</div>
+
+	</div>-->
+
+    <div class="Share">
+		<!-- Baidu Button BEGIN -->
+		<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+		<span class="bds_more">分享到：</span>
+		<a class="bds_qzone"></a>
+		<a class="bds_tsina"></a>
+		<a class="bds_tqq"></a>
+		<a class="bds_renren"></a>
+		<a class="bds_t163"></a>
+		<a class="shareCount"></a>
+		</div>
+		<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3625391" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+		</script>
+		<!-- Baidu Button END -->
+     
+
+    </div>
+
+
+</div>	</div></div></div>
+
+
+</div>
+
+
+
+	<div class="other-deal-box">
+
+<div class="clear"></div>
+		<div class="tit"><h3>该商户其他团购</h3></div>
+
+	    <div class="cont">
+
+	    <ul class="other-deal-list">
+			<volist name="other_coupon" id="other_c">
+		    <li >
+		        <a class="Fix" target="_blank" href="__APP__/coupon/{$other_c.id}" >
+		        <span class="price Price-font">&#165;{$other_c.coupon_amount}</span>
+		        <span class="sellprice">价值{$other_c.cost_price}元</span>
+		        <span class="infor">{$other_c.coupon_name}</span>
+				<span class="num">{$other_c.pay_count}人已购买</span></a>
+		    </li>
+		</volist>
+	    </ul>
+
+	    </div>
+
+	</div>
+
+
+
+	<div class="box content" style="width:710px">
+		<div class="box Tabs-box switch-box">
+			<div class="box-wrap">
+				<ul class="switch-Tabs Fix J_Tabs">
+					<li data-type="1" class="this"><a href="javascript:" track="dp_tg_deal_detail_87705_shanghai"><span>关于本团购</span></a></li>
+					<!-- <li data-type="3" ><a href="javascript:" track="dp_tg_deal_question_87705_shanghai"><span>交易问答</span></a></li> -->
+				</ul>
+				<div class="box-cont tradingQA" id="J_tabcont">
+					<div class="J_tab J_tab_1">
+					<div>
+						<div class="dptg-intro">
+							<style type="text/css">
+								.detail p {margin-top:20px;}
+								.detail table p {margin-top:0px;}
+							</style>
+							<div class="detail">
+								{$coupon.coupon_des}
+							</div>	
+							<div class='staff Fix'>  </div>	
+						</div>
+	<div class="dptg-info">
+    		<!-- <div class="deal-guide">
+            	<div class="Fix">
+                    <span class="im-kaituan Cont-icon"></span>
+                    <div class="Fix">
+                    	<p class="txt">喜欢该商户的团购？</p>
+                            <a track="dp_tg_shanghai_deal_notify|1|module#5_tag_notify,action#click,dealgrp_id#87705"
+								href="javascript:;" class="site-rbtn site-btn J_reminder"><span>下次开团提醒</span></a>
+					</div>
+                </div>
+            </div> -->
+			<div class='contact'> 
+				<div style="margin-top:20px"><p><a style="font-weight: normal;" href="__APP__/shop/{$shopinfo.id}" target="_blank">
+				<span style="color:#08c; font-size:14px;">{$shopinfo.shop_name}</span></a></p>
+				<p></p><p>{$shopinfo.shop_address}</p><p><b>预约电话：</b>{$phone}</p>
+				<p><span style="color:#08c;">
+				<a href="javascript:;" lng="{$shopinfo.shop_maps}" class="point" desc="商家名称：{$shopinfo.shop_name} ^^地址：{$shopinfo.shop_address} ^^客服电话：{$shopinfo.shop_phone} ">查看地图&gt;&gt;</a>
+				</span></p></div>
+			</div>
+			<p style="font-size:14px;color:#0088CC"><if condition="$coupon_type eq 2">套餐<else />现金</if>券可使用车型：</p>{$Direction}
+		<div class='member-dp'>  </div>		
+		    <textarea class="J_auto-load" data-type="self">	
+	            <div style="text-align:center;">
+	                <iframe id="weiboframe" width="150" height="230" frameborder="0" scrolling="no" src="http://widget.weibo.com/relationship/bulkfollow.php?uids=1752484533,2771030333&amp;wide=1&amp;color=FFFFFF,FFFFFF,0082CB,333333&amp;showtitle=0&amp;showinfo=0&amp;sense=0&amp;verified=1&amp;count=5&amp;refer=' + encodeURIComponent(location.href) + '&amp;dpc=1"></iframe>
+	                <div style="margin-left:14px;">获得粉丝专属福利！</div>
+	            </div>
+			</textarea>
+	</div>	
+</div>
+					</div>
+				</div>
+			</div>
+				<div class="box-buy-bottom Fix">
+<div class="buy-bottom-btn">
+	
+	<if condition="$coupon.is_delete eq 1">
+		<a id="J_downbuy" class="b-rbtn" rel="nofollow" track="dp_tg_deal_downbuy_detail_87705_上海" href="###"><span>已下架</span></a>
+	<else/>
+		<a id="J_downbuy" class="b-rbtn" rel="nofollow" track="dp_tg_deal_downbuy_detail_87705_上海" href="{:URL('/coupon/couponbuy',array('coupon_id'=>$coupon['id']))}{:C('HTML_URL_SUFFIX')}"><span>立即抢购</span></a>
+	</if>
+</div><div class="Price-font buy-bottom-price">&#165;{$coupon.coupon_amount}</div>
+<div class="buy-bottom-tab">
+	<table cellpadding="0" cellspacing="0">
+    	<tbody><tr><th>价值</th><th width="50"></th><th>已购买</th><th width="50"></th></tr>
+        <tr><td class="Price-font">&#165;{$coupon.cost_price}</td>
+            <td width="50"></td><td><span class="J_dealCount">{$coupon.pay_count}</span>人</td><td width="50"></td>
+        </tr>
+		</tbody>
+	</table>
+</div>				</div>
+			</div>
+		</div>
+</div>
+<div class="sidebar">
+<div class="index_switch J_switch">
+	<ul class="wrap fade J_wrap">
+		<li><a target='_blank' href='__APP__/coupon/24' ><img src='__PUBLIC__/new/images/U6652P33DT20121203093133.jpg'></a></li>
+	</ul>
+	<!-- <ul class="ctrl J_ctrl">
+
+		<li>1</li>
+
+		<li>2</li>
+
+	</ul> -->
+
+</div>
+
+	<div class="M-today side-box">
+<h3>现金券推荐</h3>
+<ol class="assess-list">
+<volist name="tuijian_coupon1" id="tcoupon1" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon1.id}" >
+								<img width="105" alt="{$tcoupon1.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon1.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon1.id}">{$tcoupon1.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+<h3>套餐券推荐</h3>
+<ol class="assess-list">
+<volist name="tuijian_coupon2" id="tcoupon2" offset="0" length="3">
+		 <li>
+         <div class="title">
+			<span class="num">{$i}</span>
+			<a target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.coupon_name}</a>
+		 </div>
+		 <div class="assess">
+			<table width="100%" cellspacing="0" cellpadding="0" class="deal-table">
+				<tbody>
+					<tr>
+						<td align="left" width="115">
+							<a href="__APP__/coupon/{$tcoupon2.id}" >
+								<img width="105" alt="{$tcoupon2.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}">
+							</a>
+						</td>
+						<td>
+							<div class="price Price-font">
+								&#165;{$tcoupon2.coupon_amount}
+							</div>
+							<div class="num">
+								<a class="num" target="_blank" href="__APP__/coupon/{$tcoupon2.id}">{$tcoupon2.pay_count}人购买</a>
+							</div>
+							<div>
+								<span class="msstar45"></span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        </li>
+</volist>
+
+</ol>
+
+	</div>
+
+
+
+<!-- <div class="M-invite side-box">
+    <h3>意见反馈</h3>
+    <div class="Fix icon-box">
+        <span class="im-opinion Cont-icon"></span>
+        <div class="Noflow cont-txt">携车纵横网希望听到你的声音
+
+            <p class="click">
+                <a track="dp_tuangou_refund" rel="nofollow" href="http://www.dianping.com/contactus">» 提交意见反馈</a>
+            </p>
+        </div>
+    </div>
+</div>
+	<div class="rss-wrap"><span class="i-rss"></span>
+
+		<a class="B" href="/rss/shanghai" rel="nofollow" target="_blank" class="B" track="dp_tuangou_follow_rssdown">
+
+			订阅携车纵横网RSS
+
+		</a>
+
+	</div>
+ -->
+</div>
+</div>
+<style type="text/css">
+	#dialogmap{display:none; position:absolute; width:520px; height:340px;}
+	#containermap{width:520px; height:340px;}
+	#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+ 
+<script type="text/javascript" src="__PUBLIC__/Js/jq_openDialog.js?v={$Think.config.VERSION_DATE}"></script> 
+			<script type="text/javascript">
+						$(function(){ 
+							$(".point").click(function(){
+								//$("#dialogmap").openDialog();
+								popup();
+								 var map = new BMap.Map("containermap");
+					 			 var lng=$(this).attr('lng');
+								 //var lat=$(this).attr('lat');
+								 arr=lng.split(',');//分割
+									
+								 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+								 //alert(lng);
+								 var text=$(this).attr('desc');
+								 var textArr=text.split('^^');
+								 map.centerAndZoom(point,15);
+								 map.addControl(new BMap.NavigationControl());
+								 map.addControl(new BMap.MapTypeControl());
+								 map.addControl(new BMap.ScaleControl());
+								 map.addControl(new BMap.OverviewMapControl());
+								 addMarker(point);
+								 function addMarker(point)
+								 {
+									var html='';
+									for(var i=0;i<textArr.length;i++)
+									{
+										html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+									}
+								 	var marker = new BMap.Marker(point);  // 创建标注
+ 								 	map.addOverlay(marker);              // 将标注添加到地图中
+									var infoWindow = new BMap.InfoWindow(html);
+									marker.openInfoWindow(infoWindow);
+									
+								  }	 
+							   });					   
+})
+</script>
+<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>

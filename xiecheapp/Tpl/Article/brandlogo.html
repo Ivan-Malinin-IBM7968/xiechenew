@@ -1,0 +1,25 @@
+<layout name='layout' />
+
+<div class="bodybgwrap">
+	<div class="wrapbox">
+		<div class="brand">
+			<div class="brandlogo_list">
+				<h3><span>纵横携车网签约4S店品牌，更多品牌还在持续签约<a href="__APP__/shop/shoplist">中</a></span></h3>
+				<div class="brandlogo">
+					<ul class="pic_list">
+						<volist name="Think.config.BRAND_LOGO" id="brand">
+						<li>
+							<img width="100px" height="100px" src="__PUBLIC__/note/images/shoplog/{$brand.pic}" alt="{$brand.name}" />
+								<div class="brand_name">
+								<span>{$brand.name}</span><br>
+								<present name="brand.name2"><span>{$brand.name2}</span></present>
+								</div>
+						</li>
+						</volist>
+					</ul>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

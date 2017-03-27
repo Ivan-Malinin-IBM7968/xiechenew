@@ -1,0 +1,111 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+	function checkname(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+	}
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增退货单 [ <A HREF="__URL__">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/do_return">
+			<table cellpadding=3 cellspacing=3>
+				<tr>
+				<td class="tRight" >商品类别：</td>
+					<td class="tLeft" >
+						<select name="super_cate" class="large bLeftRequire">
+							<option value="1">机油</option>
+							<option value="2">机滤</option>
+							<option value="3">空气滤清器</option>
+							<option value="4">空调滤清器</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="tRight" >商品名称：</td>
+					<td class="tLeft" >
+					<select name="id" class="large bLeftRequire">
+						<volist name="list" id="o">
+							<option value="{$o.id}">{$o.name}</option>
+						</volist>
+					</select>
+					</td>
+				</tr>
+				
+				
+				<TR>
+                    <TD class="tRight" >退货数量：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="num" class="large bLeftRequire" name="num">&nbsp;&nbsp;&nbsp;&nbsp;例如：10</TD>
+                </TR>
+                <td class="tRight" >退货状态：</td>
+					<td class="tLeft" >
+						<select name="store_status" class="large bLeftRequire">
+							<option value="0">请选择</option>
+							<option value="4">退货未退款</option>
+							<option value="5">退货已退款</option>
+						</select>
+					</td>
+				</tr>
+                <TR>
+                    <TD class="tRight" ></TD>
+                    <TD class="tLeft" ><input TYPE="button" value="提交" onclick="check()"></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+$('select[name=super_cate]').change(function(){
+	var item = $(this).val();
+	$.post('__APP__/Storehouse/Storehousemanage/get_name_by_item',{'item':item},function(data){
+		if(data.length){
+			var html = '';
+			$.each(data,function(k,v){
+				html += '<option value="'+v.id+'">'+v.name+'</option>';
+			})
+			$('#name').html(html);
+		}
+	},'json')
+})
+
+function check(){
+	var name = $('select[name=id]').val();
+	if(!name){
+		alert('请选择商品名称');
+		return false;
+	}
+	
+	
+	var num = $('input[name=num]').val();
+	
+	if(!num){
+		alert('必须填写退货数量');
+		return false;
+	}
+	if( parseInt(num) != num ){
+		alert('退货数量必须填整数');
+		return false;
+	}
+	
+	var store_status = $('select[name=store_status]').val();
+	if(store_status == '0'){
+		alert('请选择退货状态');
+		return false;
+	}
+	$('#form1').submit();
+}
+</script>

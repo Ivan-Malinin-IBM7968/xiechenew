@@ -1,0 +1,75 @@
+<layout name='layout' />
+
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="myxinxi">
+			<div class="myxxtop">
+				<ul>
+					<li><a href="/myhome/myinfo.html">我的信息</a></li>
+					<li class="current"><a href="/myhome/my_safe.html">账户安全</a></li>
+				</ul>
+			</div>
+			<div class="myxxcon">
+				<table class="xxsafe">
+					<tbody>
+						<tr height="70">
+							<td width="80" align="center"><img src="__PUBLIC__/images/home/xxkey.png" alt=""></td>
+							<td>
+								<b>登录密码</b><br/>
+								<span>互联网账号存在被盗风险，建议您定期更改密码已保护账户安全</span>
+							</td>
+							<td width="210" align="center"><img src="__PUBLIC__/images/home/openok.png" alt=""> 启用成功</td>
+						</tr>
+						<tr height="70">
+							<td width="40" align="center"><img src="__PUBLIC__/images/home/xxmobile.png" alt=""></td>
+							<td>
+								<b>手机验证</b><br/>
+								<span>验证后，可用于快速找回登录密码及支付密码，接收账户余额变动提醒</span>
+							</td>
+							<td width="150" align="center"><img src="__PUBLIC__/images/home/openok.png" alt=""> 启用成功</td>
+						</tr>
+						<!-- <tr height="70">
+							<td width="40" align="center"><img src="__PUBLIC__/images/home/xxpwd.png" alt=""></td>
+							<td>
+								<b>支付密码</b><br/>
+								<span>启用支付密码后，在使用账户资产时，需通过支付密码进行身份认证</span>
+							</td>
+							<td width="150" align="center"><input type="button" value="立即启用" id="qiyong"/></td>
+						</tr>
+						 -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.myxinxi{background: #f6f6f6; overflow: hidden; margin-bottom: 20px;}
+	.myxxtop{height: 40px; background: #dee4eb;}
+	.myxxtop ul{overflow: hidden;}
+	.myxxtop ul li{float: left; width: 100px; text-align: center;}
+	.myxxtop ul li.current{background: #ff5651;}
+	.myxxtop ul li a{display: inline-block; width: 100px; height: 37px; margin-top: 3px; line-height: 36px;}
+	.myxxtop ul li.current a{ background: #f6f6f6;}
+
+	.myxxcon{padding: 60px 0; overflow: hidden; height: 500px;}
+	.xxsafe{font-size: 16px;}
+	.xxsafe span{font-size: 12px;}
+	.xxsafe input#qiyong{width: 130px; height: 30px; border: none; background: #ff5651; color: #FFFFFF;}
+</style>

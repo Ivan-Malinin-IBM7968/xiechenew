@@ -1,0 +1,88 @@
+<include file="Public:header_none" />
+<style type="text/css">
+*{ margin:0px; padding:0px; text-decoration:none;}
+.citycon{line-height: 2em;min-height:600px;}
+.citytitle{float: left; width: 83px; color: orange; font-size: 14px; line-height: 33px;}
+.citymenu{float: right; width: 1100px;}
+.citymenu ul{overflow: hidden;}
+.citymenu ul li{float: left; width: 75px; height: 33px; line-height: 33px; border: 1px solid #ccc; text-align: center; margin-right: 10px;}
+.ordernav{border-top: 1px solid #efefef;}
+
+.footer2 {
+        width: 100%;
+        height: auto;
+        background-color: #333333;
+        margin-top: 30px;
+    }
+    .footer_contents {
+        width: 1000px;
+        margin: 0 auto;
+		height:auto;
+		overflow:hidden;
+		padding:25px 0;
+    }
+    .zhichi {
+        padding-top:42px;
+        font-size: 12px;
+        color: #ffffff;
+    }
+    .zhichi p a {
+        font-size: 14px;
+        color: #ffffff;
+    }
+    .fenxiangicon {
+        height:auto;
+		overflow:hidden;
+		text-align:center;
+    }
+    .fenxiangicon p {
+        font-size: 14px;
+        color: #ffffff;
+        padding-bottom: 10px;
+    }
+    .fenxiangicon img {
+        width: 100px;
+        height: 100px;
+    }
+    .p_bottom {
+        padding-bottom: 10px;
+    }
+</style>
+<div class="ordernav">
+  <div class="onavtip">&nbsp;</div>
+</div>
+<div class="citycon w1183" id="citycon">
+    <div class="citytitle">选择城市：</div> 
+    <div class="citymenu">
+      <ul>
+          <volist name="city_info" id="vo">
+            <li><a href="/Public/changecity/citynum/{$vo.id}">{$vo.name}</a></li>
+          </volist>
+      </ul>
+    </div>
+</div>
+
+<div class="clearf"></div>
+
+<div class="footer2" >
+        <div id="go" style="display:none"></div>
+        <div class="footer_contents">
+            <div class="zhichi fl">
+                <p class="p_bottom"><a href="/public/aboutus" target="_blank">关于我们</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a
+                        href="/shopservice/agreement" target="_blank">服务支持 </a>&nbsp;&nbsp; |&nbsp;&nbsp; <a
+                        href="/public/honour" target="_blank">媒体报道</a></p>
+
+                <p>Copyright © 2015 WWW.XIECHE.COM.CN 沪ICP备12017241号 携车网 版权所有</p>
+            </div>
+            <div class="fr fenxiangicon">
+                <p>扫二维码下载安卓app</p>
+                <img src="__PUBLIC__/images/index_new/xc-android-app.jpg"/>
+                <!-- <img src="__PUBLIC__/images/index_new/fenxiang_01.jpg"/>
+                    <img src="__PUBLIC__/images/index_new/fenxiang_02.jpg"/>
+                    <img src="__PUBLIC__/images/index_new/fenxiang_03.png"/>-->
+            </div>
+            <div class="clearf"></div>
+        </div>
+    </div>
+</body>
+</html>

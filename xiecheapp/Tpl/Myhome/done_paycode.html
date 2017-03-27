@@ -1,0 +1,135 @@
+<layout name='layout_new' />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/user.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/user_002.css" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	<style type="text/css">
+	.fp-progress{width: 950px; height: 50px; margin: 0px;}
+	.progress-3{background: url('http://statics.xieche.com.cn/new_2/images/myhome/zh-3.jpg') 0px 0px no-repeat;}
+	</style>
+
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<div class="content-right main">
+			<div class="fp-progress progress-3"></div>
+			<div class="form-container">
+				<img src='http://statics.xieche.com.cn/new_2/images/myhome/zh-4.jpg' alt="" width="980" height='171' />
+			</div>
+
+		</div>
+	</div>
+
+	<div id="popup"></div>
+	<div class="blackbox"></div>
+
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>
+	<script type="text/javascript">
+	$(function(){
+        $("#send_verify").attr("disabled",false);
+        $("#send_verify").click(function(){
+			        $("#code").attr("disabled",false);
+                    var mobile = $('#mobile').val();
+                    var second = "60";
+                     $.ajax({
+                            type: "POST",
+                            url: "__APP__/Myhome/send_verify",
+                            cache: false,
+                            data:"mobile="+mobile,
+                            dataType: "json",
+                            success: function(data){
+                                if(data == '1'){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                                }else if(data == '-1'){
+                                    send_verify_show(second);
+                                    alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+                                    return false;
+                                }
+                            },
+                                error: function(){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                            }
+                         })
+      
+               })   
+			
+				
+			$.getUrlParam = function(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) return unescape(r[2]); return null;
+			}	
+			var jumpUrl = $.getUrlParam("jumpUrl");
+			$("#jumpUrl1").val(jumpUrl);
+			$("#jumpUrl2").val(jumpUrl);
+        })        
+		
+
+	function send_verify_show(i){
+		if(i>='0'){
+			$("#send_verify").attr("disabled",true); 
+			$("#send_verify").attr("value",i+"秒后重新发送");
+			i--;
+			setTimeout(function(){send_verify_show(i);},1000);
+		}else{
+			$("#send_verify").attr("disabled",false); 
+			$("#send_verify").attr("value","发送手机验证码");
+		}
+	}
+
+	$("#refreshCode, #img-code").on("click", function(e){
+    	e.preventDefault();
+    	var newTime = new Date().getTime();
+    	$("#img-code").attr("src","http://www.xieche.com.cn/common/verify/" + newTime);
+    });
+
+	function check(){
+		payPwd=$("#payPwd").val();
+    	var length = payPwd.length;
+    	//假设长度限制为10
+    	if(length<6){
+			alert('为保证您密码安全强度，请输入6位以上密码');
+			$("#payPwd").focus();
+			return false;
+		}
+		rePayPwd=$("#rePayPwd").val();
+		authCode=$("#authCode").val();
+		code=$("#code").val();
+		$.ajax({
+			type: "POST",
+			url: "__APP__/Myhome/do_insertpaycode",
+			cache: false,
+			data:"authCode="+authCode+"&code="+code+"&payPwd="+payPwd+"&rePayPwd="+rePayPwd,
+			dataType: "json",
+			success: function(data){
+				alert(data);
+				if(data == '1'){
+					$('#authCode_error').text('验证码错误');
+				}
+				if(data == '2'){
+					$('#rePayPwd_error').text('两次输入支付密码不符，请重新输入');
+				}
+				if(data == '3'){
+					alert('111111');
+					window.location="__APP__/Myhome/done_paycode";
+				}
+			}
+		})
+	}
+
+	$(document).ready(function(){
+		$("#authCode").keydown(function(){
+			$('#authCode_error').empty();
+		});
+		$("#rePayPwd_error").keydown(function(){
+			$('#rePayPwd_error').empty();
+		});
+	});
+	</script>

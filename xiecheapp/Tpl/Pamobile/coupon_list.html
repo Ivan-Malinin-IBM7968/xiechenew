@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta>
+	    <title>微门店－购买优惠券</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/coupon_list.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/main.css?v={$Think.config.VERSION_DATE}" />
+		
+		
+		<script src="__PUBLIC__/mb/js/libs/require.js" data-main="__PUBLIC__/mb/js/pamobile"></script>
+		
+	</head>
+	
+</head>
+	<body>
+		<div id='loading-overlay'>
+	        <div class="loading" id="loading-con">
+	            <img src="__PUBLIC__/mb/images/ajax-loader.gif" alt="Loading..."/>  
+	            <div class="loading-text">努力加载中...</div>
+	        </div>
+	    </div>
+		<div id="wrapper">
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>微门店－购买优惠券</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<!-- Header End -->
+
+				<input type="hidden" id="hide_fsid" name="hide_fsid" value="{$fs_id}">
+				<input type="hidden" id="hide_fsname" name="hide_fsname" value="{$fs_Name}">
+				<nav id="list-sort">
+					<ul>
+						<li id="sort-block-a" style="width: 50%">
+						<a href="#select-brand" data-transition="slidefade" >
+							<if condition="$fs_Name eq ''">
+								全部品牌
+							<else/>
+								{$fs_Name}
+							</if>
+						</a>
+						</li>
+						<li id="sort-block-c" class="hover" style="width: 50%">距离优先</li>
+					</ul>
+				</nav>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+						<volist name="couponlist" id="list">
+						<a href="__APP__/Pamobile-coupon_detail-coupon_id-{$list.id}"  rel="external">
+				         <li class="ui-grid-a single-coupon" >
+							
+							<div class="ui-block-a" style="width: 20%">
+								<img src="{$list.coupon_logo}" alt="{$list.coupon_name}" style="width: 90%; margin: 0 auto; display:block;">
+							</div>
+							
+							<div class="ui-block-b" style="width: 80%; padding-left: 5px;">
+								<div class="ui-grid-a" >
+									<div class="ui-block-a" style="width: 70%">
+										<h3 class="coupon-name" style="">{$list.coupon_name}</h3>
+									</div>
+									<div class="ui-block-b coupon-price" style="width: 30%">
+										<strong>¥{$list.coupon_amount}</strong>
+										<em>¥{$list.cost_price}</em>
+									</div>
+								</div>
+								<div class="ui-grid-a" style="margin:2px 0px 7px 0px;">
+									<div class="ui-block-a" >
+										<if condition="$list.coupon_type eq '1'">
+											<span class="coupon-type xj">现金券</span>
+										<else/>
+											<span class="coupon-type tc">套餐券</span>
+										</if>
+									</div>
+									<div class="ui-block-b coupon-distance" style="text-align: right; padding-right: 5px;">
+										<span><if condition="($long neq '') AND ($lat neq '')">{$list.distance}km</if></span>
+									</div>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a" >
+										<span class="bought-count">{$list.pay_count}人已经购买</span>
+									</div>
+									<div class="ui-block-b coupon-last-date" style="text-align: right;padding-right: 5px;">
+										<span>{$list.show_e_time|date="Y-m-d",###}到期</span>
+									</div>
+								</div>						
+							</div>
+				        </li>
+						</a>
+						</volist>
+				    </ul>
+				</div>
+				<div id="pagination">
+				{$page}
+				</div>
+
+				<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+				<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+					 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-transition="slidedown">关闭</a>
+			        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+			            <li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+			            	<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+						</li>
+			            <li><a href="__APP__/Pamobile" rel="external">预约维修保养</a></li>
+						<li><a href="__APP__/Pamobile-coupon_list" rel="external">优惠券</a></li>
+						<li><a href="__APP__/Pamobile-my_account" rel="external">我的账户</a></li>
+			        </ul>
+				</div>
+			</div>
+			
+			<!-- Main Page End -->
+			<!-- Navigation Start -->
+			<div data-role="page" id="select-brand">
+				<header id="header" data-role="header">
+					<span id="left-trigger" >
+						<a href="#coupon-list-main" data-transition="slidefade" class="back"></a>
+					</span>
+					<span id="right-trigger" data-role="ui-btn-icon-right"></span>
+					<h1>请选择品牌</h1>
+				</header>
+			
+				<ul data-role="listview" id="brand-list">
+					<li><a href="#" data-fsid="" data-fsname="" rel="external" data-index="false">全部品牌</a></li>
+					<volist name="FSdata" id="list">  
+						<li>
+						<a href="#" data-fsid="{$list.fsid}" data-fsname="{$list.fsname}" rel="external" data-index="false">{$list.word}&nbsp;&nbsp;&nbsp;&nbsp;{$list.fsname}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<!-- Navigation End -->
+		</div>
+		<include file="Public:wapfoot" />
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="orderdetail">
+			<div class="orderdetailtop">
+				<table height="40">
+					<tr>
+						<td width="20"></td>
+						<td width="200">订单编号：{$list.membercoupon_id}</td>
+						<td width="200">交易状态：
+							<switch name="list.is_pay">
+						    <case value="0">未付款</case>
+						    <case value="1">已付款</case>
+    						</switch>
+    					</td>
+					</tr>
+				</table>
+			</div>
+			<div class="orderdetailcon">
+				<!-- <dl><dt>订单详情</dt></dl> -->
+				<dl>
+					<dt>订单类型</dt>
+					<dd>团购订单</dd>
+					<dt>下单人信息</dt>
+					<dd>
+						<ul>
+							<li>姓名：{$list.username}</li>
+							<li>手机号：{$list.mobile}</li>
+							<li>预约时间：{$list.order_time|date="Y-m-d H:i:s",###}</li>
+							<li>下单时间：{$list.create_time|date="Y-m-d H:i:s",###}</li>
+						</ul>
+					</dd>
+					<dt>图购券信息</dt>
+					<dd>
+						<ul>
+							<li>名称：{$list.coupon_name}</li>
+							<li>类型：<if condition="($list.coupon_type eq 1)">现金卷<else /> 团购卷</if></li>
+							<li>金额：{$list.coupon_amount}</li>
+						</ul>
+					</dd>
+					<dt>店铺信息</dt>
+					<dd>
+						<ul>
+							<li>4S店：{$list.shop_name}</li>
+							<li>地址：{$list.shop_address}</li>
+						</ul>
+					</dd>
+					<dt>其他</dt>
+					<dd>
+						<ul>
+							<li>备注：{$list.remark}</li>
+						</ul>
+					</dd>
+
+				</dl>
+				<div class="clearfix">
+					<span>应付总额：</span><span>￥</span><span>{$list.coupon_amount}</span>
+					&nbsp;&nbsp;<if condition="($list.is_pay eq 0)"><a class="btn btn-primary" href="{:U('/coupon/couponpay',array('membercoupon_id'=>$list['membercoupon_id']))}">付款</a></if>
+				</div>
+			</div>
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.orderdetail{background: #fbfaf8;}
+	.orderdetailtop{background: #eaeeed; font-size: 16px; overflow: hidden; margin:0 0 20px;}
+	.orderdetailtop b{font-size: 24px; color: #ff4a00;}
+	.orderdetailtop span{font-size: 14px;}
+	.orderdetailtop span a{display: inline-block; width: 60px; height: 24px; line-height: 24px; margin-left: 20px; background: #38558b; color: #FFFFFF; text-align: center;}
+	.orderdetailcon{border: 1px solid #ebefee; overflow: hidden; margin: 0 0 20px; padding: 20px 15px;}
+	.orderdetailcon dl{overflow: hidden; margin: 0 0 20px 0;}
+	.orderdetailcon dl dt{font-size: 14px; font-weight: bold; background: #EAEEED; height: 30px; padding: 0 20px; line-height: 30px;}
+	.orderdetailcon dl dd{padding: 20px; font-size: 14px; line-height: 2em;}
+	.orderdetailcon dl dd.dboder{border: 1px solid #ccc; margin: 20px 0; padding: 0; text-indent: 20px;}
+</style>

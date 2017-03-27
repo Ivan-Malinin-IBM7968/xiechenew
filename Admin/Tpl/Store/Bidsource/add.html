@@ -1,0 +1,351 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/DatePicker/WdatePicker.js?v={$Think.config.VERSION_DATE}"></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+
+<div class="title">新增事故车车源[ <A HREF="__URL__">返回列表</A> ]</div>
+
+<!-- 列表显示区域  -->
+<div >
+<form name="detailForm" id="detailForm" action="__URL__/edit" method="post">
+<table style="line-height:50px;">
+	
+<tr>
+	<td>来源方式：</td>
+	<td>
+		<select name="source">
+			<option value="1">定损点</option>
+			<option value="2">地推</option>
+			<option value="3">其他</option>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td>事故车发生时间：</td>
+	<td><input name="accident_time" value="{$order_info.accident_time}" onclick="new Calendar().show(this);" /></td>
+</tr>
+
+<tr>
+	<td>当事人姓名：</td>
+	<td><input name="truename" value="{$order_info.truename}" /></td>
+</tr>
+
+<tr>
+	<td width="150">车型</td>
+	<td>
+		<input name="carmodel" value="" />
+		<!-- <select name="brand_id" id="brand_id">
+			<option value="">选择品牌</option>
+			<volist name="brand_list" id="vo">
+			<option value="{$vo.brand_id}">{$vo.word}&nbsp;{$vo.brand_name}</option>
+			</volist>
+		</select>
+
+		<select name="model_id" id="model_id">
+			<option value="">选择车型</option>
+		</select>
+
+		<select name="style_id" id="style_id">
+			<option value="">选择款式</option>
+		</select> -->
+	</td>
+</tr>
+
+<tr>
+  <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 车 牌 号 ：</td>
+  <td>
+	<select name="licenseplate_type" id="licenseplate_type" style="font-size:14px">
+	  <volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+		<option value="{$vo_os}">{$vo_os}</option>
+	  </volist>
+	</select>
+	<input name="licenseplate" type="text" id="licenseplate" value="" style="width:196px" />
+  </td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+
+<tr>
+	<td>联系电话：</td>
+	<td><input name="mobile" value="{$order_info.mobile}" /></td>
+</tr>
+
+<tr>
+	<td>保险公司：</td>
+	<td>
+		<select name="insurance_name">
+			<volist name="insurance_name" id="vo_in">
+				<option value="{$vo_in.name}">{$vo_in.name}</option>
+			</volist>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td>到店时间：</td>
+	<td>
+		<input name="tostore_time" onclick="new Calendar().show(this);" value="" />
+		<select name="tostore_hours">
+			<option value="{$order_info.order_hours}" selected>{$order_info.tostore_hours}</option>
+			<option value="9" >9</option>
+			<option value="10" >10</option>
+			<option value="11" >11</option>
+			<option value="12" >12</option>
+			<option value="13" >13</option>
+			<option value="14" >14</option>
+			<option value="15" >15</option>
+			<option value="16" >16</option>
+			<option value="17" >17</option>
+		</select>
+		<select name="tostore_minutes">
+			<option value="{$order_info.order_minutes}" selected>{$order_info.tostore_minutes}</option>
+			<option value="00" >00</option>
+			<option value="10" >10</option>
+			<option value="20" >20</option>
+			<option value="30" >30</option>
+			<option value="40" >40</option>
+			<option value="50" >50</option>
+		</select>
+	</td>
+</tr>
+
+<tr>	
+	<td>搜索4S店：</td>
+	<td>
+		<input type="text" name="shopname" id="shopname" value=""><input type="button" id="btn_ok" value="查询" onclick="GetShopname();">	
+	</td>
+</tr>
+<tr>
+	<td>4S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店：</td>
+	<td>
+		<select name="shop_id" id="shop_id">
+		<option value="">--请选择4S店--</option>
+		<volist name="shop_list" id="shopvo">
+		<option value="{$shopvo.id}" <if condition="$shopvo['id'] eq $data['shop_id']">selected</if>>{$shopvo.shop_name}</option>
+		</volist>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td>定损金额：</td>
+	<td><input name="loss_price" value="{$order_info.loss_price}" /></td>
+</tr>
+
+<tr>
+	<td>定损人员：</td>
+	<td><input name="loss_man" value="{$order_info.loss_man}" /></td>
+</tr>
+
+<tr>
+	<td>备注:</td>
+	<td>
+		<textarea name="remark" id="operator_remark" style="width:300px;height:150px;">{$order_info.remark}</textarea>
+	</td>
+</tr>
+
+<tr class='sms'>
+	<td>4S短信：</td>
+	<td style="text-align:left;">
+		<textarea name="sale_sms_content" id="sale_sms_content" rows="6" cols="40">您好，携车网已成功为您预约了一辆事故车，车主姓名{$insurance.user_name}，车牌号{$insurance.licenseplate}，联系方式{$insurance.user_phone}，于今天下午到店维修。（维修天数共xxx天、返券xxx元现金券、提供代步车），如有问题请致电携车网4006602822。
+		</textarea>
+	</td>
+</tr>
+<tr class='sms'>
+	<td>用户短信：</td>
+	<td style="text-align:left;">
+		<textarea name="member_sms_content" id="member_sms_content" rows="6" cols="50">您的车辆{$insurance.licenseplate}预定的xxx下午到上海*******4S店[地址]进行的事故维修服务已预订成功，预计维修时间为**天，返券金额为***元，有（没有）提供代步车，到了4S店后请告知工作人员您是通过携车网预约的，将会有专人为您提供贴心的服务，结算时请出示此短信以享受上述优惠,如有问题请致电携车网4006602822。
+		</textarea>
+	</td>
+</tr>
+
+<tr>
+	<td>分配客服:</td>
+	<td>
+		<select name="customer_id">
+			<option value="182" >张丹红</option>
+			<option value="234" >张美婷</option>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td>是否给用户注册：</td>
+	<td>
+		<input type="radio" name="is_reg" value="1" checked>是&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="is_reg" value="2">否
+	</td>
+</tr>
+
+<tr>
+	<td>是否发送给外部：</td>
+	<td>
+		<input type="radio" name="is_out" value="1" >是&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="is_out" value="2" checked>否
+	</td>
+</tr>
+
+<tr>
+	<td>是否转成正常订单：</td>
+	<td>
+		<input type="radio" name="is_transfer" value="2" checked>是&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="is_transfer" value="1">否
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2" align="center">
+		<input type="button" name="saveBtn" id="saveBtn" value="确定">&nbsp;&nbsp;
+	</td>
+</tr>
+
+</table>
+</form>
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+	$("#saveBtn").click(function(){
+		//var coordinate = $("#coordinate").val();
+		//if(coordinate == ""){
+			//alert('请填写用户坐标');
+			//$("#coordinate").focus();
+			//return false;
+		//}
+
+		$("#detailForm").attr("action", "__URL__/doadd");
+		$("#detailForm").submit();
+		return true;
+	});
+
+	$("#editBtn").click(function(){
+		var coordinate = $("#coordinate").val();
+		if(coordinate == ""){
+			alert('请填写用户坐标');
+			$("#coordinate").focus();
+			return false;
+		}
+		
+		$("#detailForm").attr("action", "__URL__/process_1?id={$id}");
+		$("#detailForm").submit();
+		return true;
+	});
+
+	$("#delBtn").click(function(){
+		$("#detailForm").attr("action", "__URL__/del?id={$id}");
+		$("#detailForm").submit();
+		return true;
+	});
+	//获取车系
+	$(function(){
+		$("#brand_id").change(function(){
+			var brand_id = $(this).val();
+			$.post('__URL__/ajax_car_model',{'brand_id':brand_id},function(data){
+					data = data.data;
+					if(data.errno == 0){
+						var model_list_html = '<option value="">选择车型</option>';
+						$.each(data.result.model_list, function(k, v){
+							//console.log("%o", v);
+							model_list_html += '<option value="'+v['series_id']+'">'+v['word']+'&nbsp;'+v['series_name']+'</option>';
+						});
+						$("#model_id").html(model_list_html);
+					}else{
+						alert(data.errmsg);
+						return false;
+					}
+			},'json')
+			/*$.ajax({
+				type:'POST',
+				url:'__APP__/Carservice/Carserviceorder/ajax_car_model',
+				cache:false,
+				dataType:'JSON',
+				data:'brand_id='+brand_id,
+				success:function(data){
+
+				}
+			});*/
+		});
+	//获取车型
+		$("#model_id").live("change", function(){
+			var model_id = $(this).val();
+			$.post('__URL__/ajax_car_style',{'model_id':model_id},function(data){
+				data = data.data;
+				if(data.errno == 0){
+					var style_list_html = '<option value="">选择款式</option>';
+					$.each(data.result.style_list, function(k, v){
+						//console.log("%o", v);
+						style_list_html += '<option value="'+v['model_id']+'">'+v['model_name']+'</option>';
+					});
+					$("#style_id").html(style_list_html);
+				}else{
+					alert(data.errmsg);
+					return false;
+				}
+			},'json')
+			/*$.ajax({
+				type:'POST',
+				url:'__APP__/Carservice/Carconfig/ajax_car_style',
+				cache:false,
+				dataType:'JSON',
+				data:'model_id='+model_id,
+				success:function(data){
+
+				}
+			});*/
+		});
+	});
+
+	function GetShopname(){
+		var shopname = $('#shopname').val();
+
+		$.ajax({
+			type: "POST",
+			url: "__URL__/GetShopname",
+			cache: false,
+			data: "shopname="+shopname,
+			success: function(data){
+				if(data!='none'){
+					data = eval("(" + data + ")");
+					$("#shop_id").html("");
+					$("#shop_id").append("<option value=''>请选择4S店</option>");
+					for (i=0; i<data.length; i++ ){
+						$("#shop_id").append("<option value='"+data[i]['id']+"'>"+data[i]['shop_name']+"</option>");
+					}
+				}
+			}
+
+		})
+	}
+	$(function(){
+		$("input[name=is_transfer]").click(function(){
+			checked = $('input[name=is_transfer]:checked').val();
+			if(checked==1){
+				$(".sms").attr('style','display:none;');
+			}else{
+				$(".sms").attr('style','');
+			}
+		});
+	});
+</script>

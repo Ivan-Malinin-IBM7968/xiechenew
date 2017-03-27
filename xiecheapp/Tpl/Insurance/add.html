@@ -1,0 +1,130 @@
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/shop4s.css?v={$Think.config.VERSION_DATE}" />
+
+<div class="insurance">
+<div style="margin: 0px 465px 10px;"><a href="__URL__/">首页</a> -->> 车辆维修询价</div>
+<form method="post" action="__URL__/insert" enctype="multipart/form-data" onSubmit="return check_form();">
+<table border="0" align="center" cellpadding="1" cellspacing="0">
+<tr>
+	<td>姓名：</td>
+	<td><input type="text" name="user_name" id="user_name" value="{$user_name}"><font color="red">姓名请填写该车辆驾驶员</font></td>
+</tr>
+<tr>
+	<td>手机：</td>
+	<td><input type="text" name="user_phone" id="user_phone" value="{$user_phone}"><font color="red">手机号码请填写该车辆驾驶员</font></td>
+</tr>
+<tr>
+	<td>车系品牌：</td>
+	<td>
+		<p>
+			<label for="chexing">品&nbsp;&nbsp;&nbsp;&nbsp;牌：</label>
+			<select class="car_select" id="get_brand" name="brand_id" style= "width:160px" onchange="comp_brlist('get_brand','get_series', 'get_model');">
+			</select>
+		</p>
+
+		<p>
+			<label for="cz">车&nbsp;&nbsp;&nbsp;&nbsp;系：</label>
+			<select class="car_select" id="get_series" name="series_id" style= "width:160px" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+			</select>
+		</p>
+
+		<p>
+			<label for="pingpai">车&nbsp;&nbsp;&nbsp;&nbsp;型：</label>
+			<select class="car_select" id="get_model" name="model_id" style= "width:160px" disabled>
+			</select>
+		</p>
+
+	</td>
+</tr>
+<!-- <tr>
+	<td>竞价方式：</td>
+	<td><label><input type="radio" name="type" value="1" checked>公开竞价</label>&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="type" value="2">指定4S店</label></td>
+</tr> -->
+<!-- <tr>
+	<td>行驶证照片：</td>
+	<td><input type="file" name="driving_img" class="file  large"></td>
+</tr> -->
+<tr>
+	<td>保险公司名称：</td>
+	<td>
+		<select name="insurance_name">
+			<option value="">请选择保险公司</option>
+			<volist name="insurance_name" id="vo">
+				<option value="{$vo}">{$vo}</option>
+			</volist>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td>定损金额：</td>
+	<td><input type="text" name="loss_price" id="loss_price"></td>
+</tr>
+<tr>
+	<td>车辆照片：</td>
+	<td>
+		正面：<input type="file" name="car_img1" class="file  large"></br>
+		左侧面：<input type="file" name="car_img2" class="file  large"></br>
+		右侧面：<input type="file" name="car_img3" class="file  large"></br>
+		背面：<input type="file" name="car_img4" class="file  large"></br>
+		远景图：<input type="file" name="car_img5" class="file  large"></br>
+	</td>
+</tr>
+<tr>
+	<td>车辆描述：</td>
+	<td><textarea name="description" cols="30" rows="3" ></textarea></td>
+</tr>
+<tr>
+	<td colspan="2"><input type="submit" onclick="return check_form();"></td>
+</tr>
+</table>
+
+</form>
+</div>
+
+<script type="text/javascript">
+<!--
+	comp_fctlist("get_brand", "get_series", "get_model");
+
+	function check_form(){
+		if (jQuery('#user_name').val() == ""){
+			alert("请填写姓名");
+			jQuery('#user_name').focus();
+			return false;
+		}
+		if (jQuery('#user_phone').val() == ""){
+			alert("请填写手机号");
+			jQuery('#user_phone').focus();
+			return false;
+		}
+
+		if (jQuery('#loss_price').val() == ""){
+			alert("请填写定损价格");
+			jQuery('#loss_price').focus();
+			return false;
+		}
+
+		if (jQuery('#get_series').val() == 0){
+			alert("请选择车系！");
+			return false;
+		}
+		
+		var fileFlag = true;
+		jQuery(".file").each(function(){
+			if(jQuery(this).val()!="") {
+				fileFlag = false;
+			}
+		});
+		if(fileFlag) {
+			alert("请上传至少一张车辆受损位置图片");
+			return false;
+		} 
+
+		return true;
+	}
+
+//-->
+</script>
+

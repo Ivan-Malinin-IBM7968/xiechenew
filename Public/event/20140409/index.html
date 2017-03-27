@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事故车流程</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<script>document.documentElement.className = 'js';</script>
+		<link rel="stylesheet" href="jquery.parallax.css" />
+		<link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+		<style>
+			
+			a{text-decoration: none;}
+			#menu { position: fixed; top: 0; left: 0; height: 40px; z-index: 70; width: 100%; padding: 0; margin: 0;}
+			#menu li { display: inline-block; margin: 10px; color: #000; background: #fff; background: rgba(255,255,255, 0.5); -webkit-border-radius: 10px; border-radius: 10px; }
+			#menu li a, #menu li.active a { padding: 9px 18px; display: block; color: white; }
+
+			#section0{  background: url("images/s0/s0-bg.png") center center no-repeat; overflow: hidden; background-color: #07b3ea} 
+			#s0-1{margin: 0 auto; display: block; margin-top: 80px; max-width: 429px; width: 100%; }
+			#s0-2{margin: 0 auto; display: block; margin-top: 30px; max-width: 805px; width: 100%; }
+			#s0-3{margin: 0 auto; display: block; margin-top: 20px; max-width: 1280px; width: 100%;}
+			
+			.section{overflow: hidden; background-size: cover;}
+
+			#section1{background: url("images/s1/s1-bg.png") center center no-repeat; overflow: hidden; background-color: #eb4e5c;}
+			
+			#s1-1{position: absolute; top: 60px;  text-align: center; color: white; display: block; max-width: 429px; width: auto;}
+			#s1-2{margin: 0 auto; display: block; margin-top: 30px;max-width: 805px; width: 100%}
+			#section2{ background: url("images/s2/s2-bg.png") center center no-repeat; overflow: hidden;background-color: #fdcd3b; }
+			#s2-1{position: absolute; top: 60px; text-align: center; color: white; display: block;}
+			#s2-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 1267px; width: 100%;}
+			#section3{background: url("images/s3/s3-bg.png") center center no-repeat; overflow: hidden;background-color: #5c397e;}
+			#s3-1{position: absolute; top: 60px; text-align: center; color: white; display: block;}
+			#s3-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 1267px; width: 100%;}
+			#section4{background: url("images/s4/s4-bg.png") center center no-repeat; overflow: hidden;background-color: #2cb37e;}
+			#s4-1{position: absolute; top: 60px; text-align: center; color: white; display: block;}
+			#s4-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 1267px; width: 100%;}
+			#hand{display: none; width: 400px; height: 617px; position: fixed; background: url("images/hand.png") 0px 0px no-repeat;left: 50%; bottom: 1%; margin-left: -200px;}
+
+			#inner-hand{width: 228px; height: 383px; position: relative; overflow: hidden; margin-left: 84px; margin-top: 87px;}
+			#iphone-frame{position: absolute; width: 228px; height: auto; top: 0px; left: 0px; /*background: url("images/iphone.png") 0px 0px no-repeat;*/}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
+		<script src="vendors/jquery.slimscroll.min.js"></script>
+		<script type="text/javascript" src="jquery.fullPage.js"></script>
+		<script type="text/javascript">
+		$.extend($.fx.step, {
+		    backgroundPosition : function(fx) {
+		        if(fx.state === 0 && typeof fx.end == 'string') {
+		            var start = $.curCSS(fx.elem, 'backgroundPosition');
+		            start = toArray(start);
+		            fx.start = [start[0], start[2]];
+		            var end = toArray(fx.end);
+		            fx.end = [end[0], end[2]];
+		            fx.unit = [end[1], end[3]];
+		        }
+		        var nowPosX = [];
+		        nowPosX[0] = ((fx.end[0] - fx.start[0]) * fx.pos) + fx.start[0] + fx.unit[0];
+		        nowPosX[1] = ((fx.end[1] - fx.start[1]) * fx.pos) + fx.start[1] + fx.unit[1];
+		        fx.elem.style.backgroundPosition = nowPosX[0] + ' ' + nowPosX[1];
+		        function toArray(strg) {
+		            strg = strg.replace(/left|top/g, '0px');
+		            strg = strg.replace(/right|bottom/g, '100%');
+		            strg = strg.replace(/([0-9\.]+)(\s|\)|$)/g, "$1px$2");
+		            var res = strg.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);
+		            return [parseFloat(res[1], 10), res[2], parseFloat(res[3], 10), res[4]];
+		        }
+
+		    }
+		});
+			$(document).ready(function() {
+
+
+				var pepe = $.fn.fullpage({
+					
+					'verticalCentered' : true,
+					"css3" : true,
+					'navigation': true,
+					'navigationPosition': 'right',
+					'navigationTooltips': ['携车网事故车', '报案并完成定损', '预约4s店', '查看事故车维修情况','维修完成获得返利'],
+					'fixedElements': '#Menu',
+					'anchors': ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+					'menu': '#menu',
+					'scrollOverflow': true,
+					'fixedElements' : '#hand',
+					'afterLoad' : function(a,index){
+						
+						if(index>1){
+							$("#iphone-frame").animate({
+								"top" : -((index-2)*383)
+							})
+						}else{
+							
+						}
+					},
+					'onLeave': function(index, direction){
+						if (index == 1 && direction == 'down'){
+							$("#hand").fadeIn();
+							$("#iphone-frame").animate({
+								"top" : "0"
+							})
+						}
+						else if(index == 2 && direction == 'up'){
+							$("#hand").fadeOut();
+						}
+					}
+				});
+
+
+
+			});
+		</script>
+	</head>
+	<body>
+		<div id="hand">
+			<div id="inner-hand">
+				<img id="iphone-frame" src="images/iphone.png" />
+			</div>
+		</div>
+		<ul id="menu">
+			<li data-menuanchor="firstPage"><a href="#firstPage">1. 事故车维修</a></li>
+			<li data-menuanchor="secondPage"><a href="#secondPage">2. 报案并定损</a></li>
+			<li data-menuanchor="3rdPage"><a href="#3rdPage">3. 预约4s店</a></li>
+			<li data-menuanchor="4thpage"><a href="#4thpage">4. 查看维修情况</a></li>
+			<li data-menuanchor="lastPage"><a href="#lastPage">5. 维修得返利</a></li>
+		</ul>
+		<div class="section active port" id="section0" style="background-position: center center; ">
+			<img src="images/s0/s0-1.png" alt="" id="s0-1" >
+			<img src="images/s0/s0-2.png" alt="" id="s0-2" >
+			<img src="images/s0/s0-3.png" alt="" id="s0-3" >	
+		</div>
+		<div class="section" id="section1" style="background-position: center center;">
+			<!-- <h1 id="s1-1">如果您的车辆不幸发生事故，正常报案并完成定损。</h1> -->
+			<img src="images/s1/s1-1.png" alt="" id="s1-2" >
+		</div>
+		<div class="section" id="section2" style="background-position: center center; ">
+			<!-- <h1 id="s2-1" style="color: black">预约4s店</h1> -->
+			<img src="images/s2/s2-2.png" alt="" id="s2-2"  >
+		</div>
+		<div class="section" id="section3" style="background-position: center center; ">
+			<!-- <h1 id="s3-1">查看事故车维修情况</h1> -->
+			<img src="images/s3/s3-2.png" alt="" id="s3-2"  >
+		</div>
+		<div class="section" id="section4" style="background-position: center center; ">
+			<!-- <h1 id="s4-1">维修完成获得返利</h1> -->
+			<img src="images/s4/s4-2.png" alt="" id="s4-2"  >
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>携车网-我的优惠券</title>
+        <meta charset="utf-8">
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="telephone=no" name="format-detection">
+        <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="__PUBLIC__/Coupon/css/coupon.css" rel="stylesheet">
+
+        <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+        <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div id="coupon-top">
+        </div>
+        <div id="coupon-list">
+            <if condition="!$couponList">
+                <div id="no-coupon" class="text-center">
+                    您还没有优惠券
+                </div>
+            </if>
+            <volist name="couponList" id="coupon">
+                <if condition="$coupon.is_expired neq 1">
+                <div class="coupon">
+                    <a href="__URL__-detail-id-{$coupon.coupon_code_id}">
+                        <div class="coupon-name text-center">
+                            {$coupon.support_type_name}
+                        </div>
+                        <div class="coupon-amount text-center">
+                            <if condition="$coupon.is_baoyang eq 1">
+                            抵扣金额
+                            <else/>
+                            惠享价
+                            </if>
+                            <span>{$coupon.coupon_amount}</span> 元
+                        </div>
+                        <div class="coupon-time text-center">
+                            有效期：{$coupon.active_time}
+                        </div>
+                        <!-- $coupon.is_expired 过期15天内的优惠券点击使用变成已经过期，黑字 -->
+                    </a>
+                </div>
+                <else />
+                <div class="coupon-expired">
+                    <div class="coupon-expired-left">
+                        <div class="coupon-expired-name">
+                            {$coupon.support_type_name}
+                        </div>
+                        <div class="coupon-expired-amount">
+                            <if condition="$coupon.is_baoyang eq 1">
+                            抵扣金额
+                            <else/>
+                            惠享价
+                            </if>
+                            <span>{$coupon.coupon_amount}</span> 元
+                        </div>
+                        <div class="coupon-expired-time">
+                            有效期：{$coupon.active_time}
+                        </div>
+                    </div>
+
+                    <div class="coupon-expired-right">
+                        已经<p>过期</p>
+                    </div>
+
+                    <div style="clear: both;"></div>
+                </div>
+                </if>
+            </volist>
+        </div>
+    </body>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+        });
+    </script>
+</html>

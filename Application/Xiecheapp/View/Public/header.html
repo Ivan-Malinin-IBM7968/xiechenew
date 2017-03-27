@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title><notempty  name="title">{$title}<else/>携车网,汽车保养维修预约,4S店折扣优惠,事故车维修预约</notempty></title>
+	<empty name="meta_keyword">
+	<meta content="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修" name="keywords">
+	<else/>
+	<meta content="{$meta_keyword}" name="keywords">
+	</empty>
+	<empty name="description">
+	<meta content="汽车保养维修,事故车维修-首选携车网,全国唯一4S店汽车保养维修折扣的网站,最低5折起,还有更多团购套餐任您选,事故车维修预约,不花钱,还有返利拿4006602822"  name="description">
+	<else/>
+	<meta content="{$description}" name="description">
+	</empty>
+
+    <link type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="__PUBLIC__/css/common.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="__PUBLIC__/jquery/jquery.min.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i))) {
+      location.replace("{:C('WEB_ROOT')}/mobilecar-carservice") 
+    }
+    </script>
+  </head>
+  <body>
+    <div class="top">
+        {$carName}
+
+        <a href="javascript:;" class="car-select"><empty name="choseCar">修改车型<else />车型绑定</empty></a>
+        |
+        <empty name="username"><a href="/Public/login">登录/注册</a><else /> <a href="/myhome">{$username}</a> <a href="/public/logout">退出</a></empty>
+    </div>
+    <div class="header">
+
+        <div class="xclogo fl"><a href="/"><img src="__PUBLIC__/images/index/logo.png"></a></div>
+        
+        <div class="city fl">
+          <p>{$new_city_name}</p>
+          <p><a href="/Public/city">[切换城市]</a></p>
+        </div>
+
+        <div class="nav fl">
+          <a href="/">首页</a>
+          <a href="/carservice" onclick="checkCar('/carservice');return false;">养车</a>
+          <eq name="new_city_name" value="上海"><a href="/shiguche">修车</a></eq>
+          <a href="/ask">提问</a>
+        </div>
+        <div class="xctel fr">400-660-2822</div>
+        <eq name="new_city_name" value="上海">
+        <div class="search fr">
+          <form action="/shopservice/index" method="get">
+            <input type="text" name="k" class="search_input" placeholder="输入4S店铺">
+            <input type="submit" value="" class="search_sub fl">
+          </form>
+        </div>
+        </eq>
+    </div>

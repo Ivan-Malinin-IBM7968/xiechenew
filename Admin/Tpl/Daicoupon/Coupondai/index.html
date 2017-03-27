@@ -1,0 +1,48 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<style>
+    .input-blue{background: url("__WEB__/Public/Admin/Images/idx_btnbg.gif") 50% 0% repeat-x; border: 1px solid #316835; text-align: center; cursor: pointer; font-size: bold;}
+</style>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">用户列表</div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+			<html:imageBtn name="add" value="添加" click="add()" style="impBtn hMargin fLeft shadow" />
+            <html:imageBtn name="sort" value="缓存" click="cache()" style="impBtn hMargin fLeft shadow" />
+			<input value="下单记录" class="input-blue" onclick="window.location.href='/Admin/index.php/Daicoupon/Coupondai/daicouponlog'"  name="daicouponlog" />
+            <!-- 查询区域 -->
+           <FORM METHOD=POST ACTION="__URL__">
+            <div class="fRig">
+                    <div class="fLeft">
+                    	<span id="key">
+							电话号码：
+                    		<input TYPE="text" NAME="mobile" title="用户名或密码查询" value="{$mobile}" class="medium" >
+                    	</span>
+                    </div>
+                    <html:imageBtn type="submit" name="search" value="查询" style="impBtn hMargin fLeft shadow" />
+            </div>
+            </FORM>
+        </div>
+        <!-- 功能操作区域结束 -->
+
+        <!-- 列表显示区域<if condition='$fromstatus eq 1'>百度</if>-->
+			<table class="list">
+			<tr>
+				<th>用户名</th>
+				<th>电话</th>
+				<th>操作</th>
+			</tr>
+        	<tr>
+				{$list}
+        	</tr>
+        <!-- 列表显示区域结束 -->
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

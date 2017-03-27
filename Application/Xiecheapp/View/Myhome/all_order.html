@@ -1,0 +1,180 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<link type="text/css" href="__PUBLIC__/css/home_repair.css" rel="stylesheet">
+<style type="text/css">
+	.table tbody > tr > th{ background-color: #F6F6F6; color:#666666;}
+	.table tbody > tr > td{background-color:#FFFFFF; text-align:center; border-right: 1px solid #F6F6F6;border-bottom: 1px solid #F6F6F6; }
+	.table tbody > tr >.td1{border-left: 2px solid #F6F6F6; border-right: none;}
+	.table tbody > tr >.td2{border-right: none;}
+	.table tbody > tr > th,.table tbody > tr >.td1,.table tbody > tr >.td2,.table tbody > tr >.td3{ text-align: left; text-indent:10px;}
+	.repair_li.cur{background-color: #f6f6f6;}
+	.repair_ul{background-color: #dee4eb; padding-left:0;}
+</style>
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+		<tbody>
+		<tr>
+			<td width="200" valign="top">
+
+				<div style="margin-left:20px;">
+					<include file="Public:menu"/>
+				</div>
+			</td>
+			<td style="vertical-align:top">
+				<div style="margin-right:20px;" style="background-color:#f6f6f6;">
+					<ul class="repair_ul clearfix">
+						<li id="all" class="repair_li cur"><a href="/myhome/all_order">全部订单</a></li>
+						<li id="bank" class="repair_li"><a href="/myhome/carservice_order">保养订单</a></li>
+						<li id="platform" class="repair_li"><a href="/myhome/shiguche_order">维修订单</a></li>
+						<li id="weixin" class="repair_li"><a href="/myhome/coupon_order">团购订单</a></li>
+					</ul>
+					<div class="home-c" style="background-color:#ffffff; overflow: hidden;">
+						<div style="padding:0">
+							<table class="table" style="margin-top:20px">
+								<if condition="($carserviceList eq '' and $repairList eq '' and $shigucheList eq '' and $couponinfo eq '')"><tr><td>抱歉，您您暂无此订单！</td></tr></if>
+									<notempty name="carserviceList">
+									<volist name="carserviceList" id="vo">
+										<tr>
+											<th>订单编号:{$vo.id}</th>
+											<th>下单时间:{$vo.create_time|date="y-m-d H:i:s",###}</th>
+											<th colspan="4"></th>
+										</tr>
+										<tr height="77">
+											<td class="td1">府上养车订单</td>
+											<td class="td2">携车网府上养车</td>
+											<td class="td3">订单状态:
+												<if condition="($vo.status eq 0)"> 等待处理
+													<elseif condition="$vo.status eq 1"/>预约已确认
+													<elseif condition="$vo.status eq 2"/>已分配技师
+													<elseif condition="$vo.status eq 7"/>用户终止
+													<elseif condition="$vo.status eq 8"/>订单作废
+													<elseif condition="$vo.status eq 9"/>服务已完成
+													<else />订单状态异常
+												</if>
+											</td>
+											<td>订单金额:￥{$vo.amount}</td>
+											<td>交易状态:
+												<if condition="($vo.pay_status eq 0)"> 未支付
+													<elseif condition="$vo.pay_status eq 1"/>已支付
+												</if>
+											</td>
+											<td>
+												<if condition="($vo.pay_status eq 0 and $vo.pay_type eq 2 and $vo.status eq 0)"><p><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$vo['id']}&all_amount={$vo['amount']}&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></p></if>
+												<a class="color-a" href="{:U('/myhome/carservice_detail',array('order_id'=>$vo['id']))}">订单详情</a>
+											</td>
+										</tr>
+										<tr height="20">
+
+										</tr>
+									</volist>
+								</notempty>
+
+								<notempty name="repairList">
+									<volist name="repairList" id="vo">
+										<tr>
+											<th>订单编号:{$vo.order_id}</th>
+											<th>下单时间:{$vo.create_time|date="y-m-d H:i:s",###}</th>
+											<th colspan="4"></th>
+										</tr>
+										<tr height="77">
+											<td class="td1">故障维修订单</td>
+											<td class="td2">店铺:{$vo.shop_name}</td>
+											<td class="td3">订单状态:
+												<volist name="Think.config.ORDER_STATE" id="vo_os">
+													<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+												</volist>
+											</td>
+											<td>订单金额:￥{$vo.total_price}</td>
+											<td>交易状态:
+												<if condition="($vo.pay_status eq 0)"> 未支付
+													<elseif condition="$vo.pay_status eq 1"/>已支付
+												</if>
+											</td>
+										</tr>
+										<tr height="20"></tr>
+									</volist>
+								</notempty>
+
+								<notempty name="shigucheList">
+									<volist name="shigucheList" id="vo">
+										<tr>
+											<th>订单编号:{$vo.order_id}</th>
+											<th>下单时间:{$vo.create_time|date="y-m-d H:i:s",###}</th>
+											<th colspan="4"></th>
+										</tr>
+										<tr height="77">
+											<td class="td1">事故车维修订单</td>
+											<td class="td2">保险公司:{$vo.insurance_name}</td>
+											<td class="td3">订单状态:
+												<empty name="vo.order_status">
+													<if condition="$vo.insurance_status eq 1">竞价中
+														<elseif condition="$vo.insurance_status eq 2"/>竞价结束
+														<elseif condition="$vo.insurance_status eq 3"/>订单确认
+														<elseif condition="$vo.insurance_status eq 4"/>订单完成
+														<else />订单已提交，等待确认
+													</if>
+													<else />
+													<if condition="$vo.order_status eq 0">已预约
+														<elseif condition="$vo.order_status eq 1"/>已确认
+														<elseif condition="$vo.order_status eq 2"/>维修中
+														<elseif condition="$vo.order_status eq 3"/>已取消
+														<elseif condition="$vo.order_status eq 4"/>已完成
+														<else />订单状态异常
+													</if>
+												</empty>
+											</td>
+											<td>订单金额:￥{$vo.loss_price}</td>
+											<td>交易状态:
+												<if condition="($vo.pay_status eq 0)"> 未支付
+													<elseif condition="$vo.pay_status eq 1"/>已支付
+												</if>
+											</td>
+											<td>
+												<a class="color-a" href="{:U('/myhome/shiguche_detail',array('insurance_order_id'=>$vo['id']))}">订单详情</a>
+											</td>
+										</tr>
+										<tr height="20"></tr>
+									</volist>
+								</notempty>
+
+								<notempty name="couponinfo">
+									<volist name="couponinfo" id="vo">
+										<tr>
+											<th>订单编号:{$vo.membercoupon_id}</th>
+											<th>下单时间:{$vo.create_time|date="y-m-d H:i:s",###}</th>
+											<th colspan="4"></th>
+										</tr>
+										<tr height="77">
+											<td class="td1"><if condition="($vo.coupon_type eq 1)">现金卷<else /> 团购卷</if></td>
+											<td class="td2">4S店:{$vo.shop_name}</td>
+											<td class="td3">&nbsp;</td>
+											<td>订单金额:￥{$vo.coupon_amount}</td>
+											<td>交易状态:
+												<if condition="($vo.is_pay eq 0)"> 未支付
+													<elseif condition="$vo.is_pay eq 1"/>已支付
+												</if>
+											</td>
+											<td>
+												<if condition="($vo.is_pay eq 0)"><a href="/coupon/couponpay/membercoupon_id/{$vo.membercoupon_id}" class="btn btn-comment">去支付</a><br/></if>
+												<a class="color-a" href="{:U('/myhome/coupon_detail',array('coupon_id'=>$vo['membercoupon_id']))}">查看详情</a>
+											</td>
+										</tr>
+										<tr height="20"></tr>
+									</volist>
+								</notempty>
+							</table>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript">
+	$(".quanfenlei div").hover(function(){
+		$(this).find("a").addClass("current current"+$(this).index()).end().siblings().find("a").removeClass("current current0 current1 current2");
+		$(".quanfenleicon .quanfenleicons").eq($(this).index()).show().siblings().hide();
+	});
+</script>

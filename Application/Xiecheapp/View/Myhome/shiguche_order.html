@@ -1,0 +1,187 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<link type="text/css" href="__PUBLIC__/css/home_repair.css" rel="stylesheet">
+<style type="text/css">
+	.table tbody > tr > th{background-color: #F6F6F6;}
+	.table tbody > tr > td{background-color: #FFFFFF;}
+	.repair_li.cur{background-color: #f6f6f6;}
+	.repair_ul{background-color: #dee4eb; padding-left:0;}
+</style>
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr>
+			<td width="200" valign="top">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td style="vertical-align:top">
+	<div style="margin-right:20px;" style="background-color:#f6f6f6;">
+		<ul class="repair_ul clearfix">
+			<li id="all" class="repair_li"><a href="/myhome/all_order">全部订单</a></li>
+			<li id="bank" class="repair_li"><a href="/myhome/carservice_order">保养订单</a></li>
+			<li id="platform" class="repair_li cur"><a href="/myhome/shiguche_order">维修订单</a></li>
+			<li id="weixin" class="repair_li"><a href="/myhome/coupon_order">团购订单</a></li>
+		</ul>
+		<div class="home-c" style="background-color:#F6F6F6; overflow: hidden;">
+			<div class="clearfix">
+				<a href="" class="repair_s repair_s_cur">事故车维修订单</a>
+				<a href="/myhome/repair_order" class="repair_s">故障维修订单</a>
+			</div>
+			<if condition="($shigucheList eq '')"><div style="margin-top: 20px; text-indent: 20px;">抱歉，您您暂无此订单！</div></if>
+		 	<notempty name="shigucheList">
+		 	<div style="padding:0 15px;">
+			<table class="table">
+			 	<tr>
+			 		<th style="text-align:left;">订单编号</th>
+			 		<th>下单时间</th>
+			 		<th>保险公司名称</th>
+			 		<th>预约状态</th>
+			 		<th style="color:#ff4a00">4S店</th>
+			 		<th>订单金额</th>
+			 		<th>操作</th>
+			 	</tr>
+			 	<volist name="shigucheList" id="vo">
+				 	<tr>
+				 		<td style="text-align:left;">{$vo.order_id}</td>
+				 		<td>{$vo.create_time|date="y-m-d",###}</td>
+				 		<td>{$vo.insurance_name}</td>
+				 		<td>
+				 			<empty name="vo.order_status">
+				 			    <if condition="$vo.insurance_status eq 1">竞价中
+							    <elseif condition="$vo.insurance_status eq 2"/>竞价结束
+							    <elseif condition="$vo.insurance_status eq 3"/>订单确认
+							    <elseif condition="$vo.insurance_status eq 4"/>订单完成
+							    <else />订单已提交，等待确认
+							    </if>
+				 			<else />
+				 				<if condition="$vo.order_status eq 0">已预约
+				 				<elseif condition="$vo.order_status eq 1"/>已确认
+							    <elseif condition="$vo.order_status eq 2"/>维修中
+							    <elseif condition="$vo.order_status eq 3"/>已取消
+							    <elseif condition="$vo.order_status eq 4"/>已完成
+							    <else />订单状态异常
+							    </if>
+				 			</empty>
+				 		</td>
+				 		<td><empty name="vo.shop_name">等待4S店确认<else/>{$vo.shop_name}</empty></td>
+				 		<td>￥{$vo.loss_price}</td>
+				 		<td>
+				 			<notempty name="vo.bid_order_id">
+				 				<p><a href="javascript:;" class="btn btn-comment" data-id="{$vo.bid_order_id}" >评价</a></p>
+				 				<p><a class="color-a" href="{:U('/myhome/shiguche_detail',array('insurance_order_id'=>$vo['id']))}">订单详情</a></p>
+				 			<else />
+					 			<p><a class="color-a" href="{:U('/myhome/shiguche_detail',array('insurance_order_id'=>$vo['id']))}">订单详情</a></p>
+				 			</notempty>
+				 		</td>
+				 	</tr>
+				 	<tr><td colspan="7" style="background-color:#f6f6f6">&nbsp;</td></tr>
+			 	</volist>
+			</table>
+			</div>
+			<div class="fenye">
+				<ul>
+					{$page}
+				</ul>
+			</div>
+		 	</notempty>
+			
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div class="Mcomment">
+      <div class="Mcc">
+        <div class="Mcctop">
+          <div class="Mcstar fl"><span class="fl">评价：</span>
+            <div class="fl Mccstar">
+              <ul>
+                <li class="current"></li>
+                <li class="current"></li>
+                <li class="current"></li>
+                <li class="current"></li>
+                <li class="current"></li>
+              </ul>
+            </div>
+          </div>
+          <div class="Mclose fr"><a href="javascript:;">关闭</a></div>
+        </div>
+        <form action="/myhome/comment" method="post">
+	        <div class="Mcccon">
+	        	<input name="type" value="2" type="hidden" />
+	        	<input name="star" type="hidden" value="5" />
+	        	<input name="order_id" type="hidden" />
+	            <textarea name="content"></textarea>
+	            <p><a href="javascript:;" class="fr sub_comment">提交</a></p>
+	        </div>
+        </form>
+      </div>
+    </div>
+
+<script type="text/javascript">
+$(function(){
+  	//评价显示
+  	$(".btn-comment").click(function(){
+  		var order_id = $(this).attr('data-id');
+  		$('input[name=order_id]').val(order_id);
+  		$(".Mcomment").slideDown();
+  	});
+
+  	//定义评价星星等级
+    var istar = 5;
+    //评价星星选择
+    $(".Mccstar ul li").hover(function(){
+      $(".Mccstar ul li").removeClass("current");
+      for(var i=0;i<=$(this).index();i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      
+    },function(){
+      $(".Mccstar ul li").removeClass("current");
+      for(var i=0;i<istar;i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      
+    });
+
+    //点击选定评价级别
+    $(".Mccstar ul li").click(function(){
+      istar = $(this).index()+1;
+      for(var i=0;i<istar;i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      $('input[name=star]').val(istar);
+    });
+
+    //关闭评价
+    $(".Mclose a").click(function(){
+    	$(".Mcomment").slideUp();
+    });
+    //提交评价
+    $(".sub_comment").click(function(){
+    	$.post('/myhome/comment',$('form').serialize(),function(data){
+    		if(data.status){
+    			alert(data.info);
+    			window.location.reload();
+    		}else{
+    			alert(data.info);
+    		}
+    	},'json');
+    	$(".Mcomment").slideUp();
+    });
+	
+    $(".quanfenlei div").hover(function(){
+        $(this).find("a").addClass("current current"+$(this).index()).end().siblings().find("a").removeClass("current current0 current1 current2");
+        $(".quanfenleicon .quanfenleicons").eq($(this).index()).show().siblings().hide();
+      });
+  });
+
+
+</script>

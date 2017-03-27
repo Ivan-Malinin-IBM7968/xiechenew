@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>选择支付方式</title>
+	<meta content="4S店预约保养,保养价格,事故理赔,工时费折扣,保养团购券,代金券,上海大众保养多少钱,奥迪保养多少钱,宝马保养多少钱" name="keywords">
+	<meta content="携车网  (原名纵横携车网) 向广大车主提供汽车保养维修预约享受折扣服务，用车费用记录、油耗统计信息、车辆维修保养价格数据信息等，帮您轻松解决小保养、大保养、机油、机滤、刹车片、火花塞等汽车保养难题，是您选择养车服务的第一网络平台。" name="description">
+	
+	<!-- <if condition="$header eq '4'"> -->
+
+<base target="_blank">
+
+	<!-- </if>
+	<if condition="$header eq '3'">
+	<meta name="viewport" content="initial-scale = 0.5, user-scalable = no">
+	<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+	</if>
+	<if condition="$header eq '2'">
+	<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+	<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
+	</if>
+	<if condition="$header eq '1'">
+	<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+	<meta name="viewport" content="initial-scale=0.5,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
+	</if> -->
+	
+	<style>
+	*{margin: 0; padding: 0;}
+		.wrapper{width: 640px; height: auto; margin: 0 auto; overflow: hidden; padding: 10px; }
+		.choose-paying-method{width: 90%; height: 70px; line-height: 70px; background: #f1f1f1; margin: 0 auto; font-size: 1.3em; border: 1px solid #666;}
+		.submit{width: 90%; height: 50px; background: #0066cc; text-align: center; font-size: 1.1em; border-radius: 4px; border: none;margin-top: 30px; color: #fff; display: block;line-height: 50px; text-decoration: none; font-weight: bold; }
+	</style>
+ </head>
+
+ <body>
+	<table width="100%" >
+		<tr>
+			<td align="center"><br><br><h2 class="title">请选择您的支付方式:</h2><br></td>
+		</tr>
+		<tr>
+			<td align="center">
+				<form method="post" action="__URL__/topay" >
+		 			<select name="pay_type" id="" class="choose-paying-method">
+		 				<option value="1">财付通</option>
+		 				<!-- <option value="2">支付宝</option> -->
+						<!-- <option value="3">银联</option> -->
+						
+		 			</select>
+					
+					<input type="hidden" name="membercoupon_id" value="{$membercoupon_id}">
+					
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td  align="center"><a href="" class="submit" id="submit" value="提交">提 交</a></td>
+		</tr>
+	</table>
+ <!-- 	<div class="wrapper">
+ 		
+ 		
+ 	</div>
+	 -->
+	<script type="text/javascript" src="__PUBLIC__/new_2/js/jquery.min.js"></script>
+	<script>
+		$(".submit").click(function(e){
+			e.preventDefault();
+			$("form").submit()
+		})
+	</script>
+ </body>
+</html>

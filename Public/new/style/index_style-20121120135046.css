@@ -1,0 +1,3887 @@
+@charset "utf-8";
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0
+}
+body {
+	font-size:12px;
+	font-family:\5b8b\4f53, Arial, Helvetica, sans-serif;
+	background:#fff;
+	line-height:150%;
+	color:#484848
+}
+table {
+	border-collapse:separate;
+}
+fieldset, img {
+	border:0
+}
+ins {
+	text-decoration:none
+}
+legend {
+	display:none
+}
+address, caption, cite, code, dfn, em, th, var {
+	font-style:normal;
+	font-weight:normal
+}
+ol, ul {
+	list-style:none
+}
+caption, th {
+	text-align:left
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%;
+	
+}
+q:before, q:after {
+	content:''
+}
+abbr, acronym {
+	border:0
+}
+a:link, a:visited {
+	color:#1E4674;
+	text-decoration:none
+}
+a:hover {
+	color:#c00;
+	text-decoration:underline
+}
+a strong {
+	color:#c00
+}
+.bt_page {
+	width:960px;
+	margin:0 auto;
+	text-align:left;
+	background:#fff
+}
+.clear {
+	clear:both;
+	height:0;
+	overflow:hidden
+}
+a.best:link, a.best:visited {
+	color:#c00
+}
+.col-all {
+	width:960px;
+	float:left
+}
+.col-sub {
+	float:left;
+	margin-right:10px;
+	width:320px;
+	overflow:hidden
+}
+.col-side {
+	float:right;
+	width:220px;
+	overflow:hidden
+}
+.col-main {
+	float:left;
+	width:400px;
+	overflow:hidden
+}
+.col-con {
+	float:left;
+	width:730px
+}
+.bit_top {
+	margin:0 auto 10px;
+	background:#f4f4f4;
+	height:28px;
+	position:relative;
+	z-index:666666;
+	border-bottom:1px #f0f0f0 solid
+}
+.bit_top a:link, .bit_top a:visited {
+	color:#666;
+	text-decoration:none
+}
+.bit_top a:hover {
+	color:#c00;
+	text-decoration:underline
+}
+.bit_top .login_linkbox a:link, .bit_top .login_linkbox a:visited {
+	color:#666
+}
+.bit_top .login_linkbox a:hover {
+	color:#c00
+}
+.bit_top .bit950 {
+	width:960px;
+	margin:0 auto
+}
+.bit950 ul {
+	float:left
+}
+.bit950 ul li {
+	float:left;
+	padding:5px 10px 0 0;
+	display:inline;
+	margin-right:7px;
+	position:relative;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 100% -634px no-repeat;
+	z-index:2
+}
+.bit950 ul li.last {
+	background:0
+}
+.bt_login_box {
+	float:right;
+	position:relative;
+	z-index:10;
+	margin-right:-7px
+}
+.bt_login_box_l {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 100% -634px no-repeat;
+	margin-right:3px
+}
+.bt_login_box ul li {
+	background:0;
+	padding-right:0;
+	height:23px;
+	padding-top:5px;
+	color:#999;
+	border:1px #f4f4f4 solid;
+	border-width:0 1px
+}
+.bt_login_box ul li label {
+	color:#666;
+	margin:0 5px 0 0
+}
+.bt_login_box ul li .bit_loginInput {
+	height:14px;
+	padding:2px 0 0 2px;
+	-moz-box-shadow:1px 1px 1px #ccc inset;
+	-webkit-box-shadow:1px 1px 1px #ccc inset;
+	box-shadow:1px 1px 1px #ccc inset;
+	border:1px solid #cacaca;
+	font-size:12px;
+	width:73px;
+	overflow:hidden;
+	line-height:1.2
+}
+.bt_login_box ul li .bit_logintop {
+	width:45px;
+	height:18px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -429px -107px no-repeat;
+	border:0;
+	text-align:center;
+	font-size:12px;
+	cursor:pointer;
+	padding:0;
+	padding:4px 0 0\9
+}
+.bt_login_box ul li.login {
+	margin-left:-5px
+}
+.bt_login_box ul li.login_0 {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 100% -634px no-repeat;
+	padding-right:10px;
+	margin-right:3px
+}
+.bt_login_box ul li.last {
+	padding:5px 10px 0 0
+}
+.bt_login_box ul li.bit_link {
+	padding:5px 4px 0 5px
+}
+.bt_login_box ul li.bit_link ul {
+	display:none
+}
+.bt_login_box ul li.bit_hover ul {
+	display:block
+}
+.bt_login_box ul li.bit_link strong {
+	display:block;
+	float:left
+}
+.bt_login_box ul li.bit_link a {
+	padding:0 15px 0 0;
+	display:block;
+	position:relative
+}
+.bt_login_box ul li.bit_link a em {
+	height:4px;
+	display:block;
+	overflow:hidden;
+	border:6px solid #06a;
+	border-color:#a6a6a6 #f4f4f4;
+	border-width:4px 4px 0 4px;
+	width:0;
+	position:absolute;
+	right:0;
+	top:7px;
+*top:5px
+}
+.bt_login_box ul li.bit_hover a em {
+	border-color:#1E4674 #fff
+}
+.bt_login_box ul li.bit_hover strong sub {
+	z-index:12;
+	background:#fff;
+	position:absolute;
+	bottom:-1px;
+	left:0;
+	width:100%;
+	_width:auto;
+	height:1px;
+	overflow:hidden
+}
+.bt_login_box ul li.bit_hover {
+	height:23px;
+	border:1px #ccc solid;
+	border-width:0 1px;
+	background:#fff;
+	-moz-box-shadow:1px 0 1px #ccc;
+	-webkit-box-shadow:1px 0 1px #ccc;
+	box-shadow:1px 0 1px #ccc
+}
+.bt_login_box ul li.bit_hover ul {
+	_margin:0 -2px 0 0;
+	display:block;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	_border-top:0;
+	top:28px;
+	left:-1px;
+	width:96px;
+	padding:0 0 9px;
+	z-index:11;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc
+}
+.bt_login_box ul li.bit_hover ul li {
+	border:1px #E9E9E9 solid;
+	border-width:0 0 1px 0;
+	float:left;
+	margin:0 10px;
+	padding:8px 0 0;
+	height:22px;
+	display:block
+}
+.bt_login_box ul li.bit_hover ul li a {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat;
+	padding:0 0 0 25px;
+	display:block;
+	height:16px;
+	line-height:15px
+}
+.bt_login_box ul li.bit_hover ul li a.sina {
+	background-position:-378px -257px
+}
+.bt_login_box ul li.bit_hover ul li a.qq {
+	background-position:-378px -290px
+}
+.bt_login_box ul li.bit_hover ul li a.renren {
+	background-position:-378px -273px
+}
+.bt_login_box ul li.bit_hover ul li a.kaixin {
+	background-position:-378px -307px
+}
+.bt_login_box ul li.bit_hover ul li a.baidu {
+	background-position:-378px -341px
+}
+.bt_login_box ul li.bit_hover ul li a.taobao {
+	background-position:-378px -324px
+}
+.bt_login_box ul li.bit_hover ul li a:hover {
+	text-decoration:underline;
+	color:#c00
+}
+.bt_login_box ul li.bit_hover ul li.last {
+	border:0
+}
+.bt_login_box ul li.bit_hover ul.byname {
+	width:126px;
+	height:151px;
+	overflow:hidden;
+	padding:15px 0 0 0;
+	padding-right:-1px
+}
+.bt_login_box ul li.bit_hover ul.byname li {
+	width:58px;
+	float:left;
+	margin:0 1px 0 0;
+	background:0;
+	padding:0;
+	border:0
+}
+.bt_login_box ul li.bit_hover ul.byname li a {
+	background:0;
+	padding:0 0 0 10px
+}
+.bt_login_box ul li.bit_hover ul.byname li.enteribit {
+	border-top:1px #e9e9e9 solid;
+	display:inline;
+	margin:4px 0 0 10px;
+	padding:8px 0 0;
+	width:106px
+}
+.bt_login_box ul li.bit_hover ul.byname li.enteribit a {
+	padding:0
+}
+.bt_login_box ul li.bitname {
+	background:0;
+	font-family:Arial
+}
+.bt_login_box ul li.bit_hover ul.bbs {
+	width:102px;
+	left:0;
+	right:auto
+}
+.bt_login_box ul li.bit_hover ul.bbs li a {
+	background:0;
+	padding:0
+}
+.bt_login_box ul li a.newmsg {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -474px -106px no-repeat;
+	padding-left:21px;
+	color:#c00;
+	font-family:simsun
+}
+.bt_login_box ul li a.newmsg:link, .bt_login_box ul li a.newmsg:visited {
+	color:#c00
+}
+.bt_login_box ul li a.newmsg:hover {
+	text-decoration:none
+}
+.bt_login_box ul li.bit_hover dl {
+	display:block;
+	margin:0 -1px 0 0;
+	display:block;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	_border-top:0;
+	top:28px;
+	right:0;
+	padding:9px 0 0 10px;
+	z-index:11;
+	width:183px;
+	overflow:hidden;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc
+}
+.bt_login_box ul li.bit_hover dl dt {
+	color:#999;
+	float:left;
+	width:96%;
+	margin:5px 10px 0 0;
+	font-weight:bold;
+	line-height:24px;
+*line-height:26px;
+	height:24px;
+	overflow:hidden;
+	border-top:1px #e9e9e9 solid
+}
+.bt_login_box ul li.bit_hover dl dt.noborder {
+	border:0;
+	margin:0 10px 0 0
+}
+.bt_login_box ul li.bit_hover dl dt.dtmore {
+	font-weight:normal;
+	padding:4px 0 8px 0
+}
+.bt_login_box ul li.bit_hover dl dd {
+	float:left;
+	padding:0 12px 0 0;
+	line-height:22px;
+	white-space:nowrap
+}
+.bt_login_box ul li.bit_hover dl dd a {
+	padding:0
+}
+.bt_login_box ul li.bit_hover dl dt a:link, .bt_login_box ul li.bit_hover dl dt a:visited {
+	color:#56616D
+}
+.bt_login_box ul li.bit_hover dl dt a:hover {
+	color:#c00
+}
+.bt_login_box ul li.bit_hover ul.focuscar {
+	height:auto;
+	overflow:hidden;
+	padding:13px 0 0;
+	width:138px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li {
+	height:auto;
+	border:0;
+	margin:0 0 0 10px;
+	padding:0;
+	display:inline
+}
+.bt_login_box ul li.bit_hover ul.focuscar li a {
+	background:0;
+	padding:0
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b {
+	font-weight:bold;
+	color:#AEAEAE;
+	display:block;
+	width:118px;
+	height:18px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b.mygarage {
+	border-top:1px solid #e9e9e9;
+	padding-top:8px;
+	margin-top:2px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b a:link, .bt_login_box ul li.bit_hover ul.focuscar li b a:visited {
+	color:#56616D
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b a:hover {
+	color:#C00
+}
+.bt_login_box ul li.bit_hover ul.focuscar li p {
+	height:17px
+}
+.bt_login_box ul li.bit_hover ul.focuscar li b, .bt_login_box ul li.bit_hover ul.focuscar li p {
+	margin-bottom:6px;
+	overflow:hidden
+}
+
+
+.publicTabNewask {
+	width:982px;
+	margin:0 auto;
+	height:36px;
+	background-repeat: repeat;
+	background-position: 0 -373px;
+	border: 1px solid #EBEBEB;
+	background-image: url(../images/bg.jpg);
+}
+.publicTabNewask .tab {
+	padding:0 0 0 10px;
+	height:36px;
+	background-repeat: repeat;
+	background-position: -950px 3px;
+	background-image: url(../images/bg.jpg);
+}
+.publicTabNewask .tab li {
+	float:left;
+	font-size:14px;
+	height:35px;
+	color: #1e4674;
+}
+.publicTabNewask .tab li a {
+	padding:0 18px;
+	float:left;
+	color:#FFF;
+	line-height:35px;
+	text-align:center;
+	height:35px;
+	background-repeat: no-repeat;
+	background-position: 100% 3px;
+}
+.publicTabNewask .tab li a:visited {
+	color:#fff
+}
+.publicTabNewask li.last dl {
+	position:relative;
+	color:#fff;
+	padding:0 10px 0 0;
+	z-index:2999
+}
+.publicTabNewask li.last dt {
+	height:35px;
+	line-height:35px;
+	text-align:center;
+	padding:0 10px;
+	cursor:pointer;
+*width:28px
+}
+.publicTabNewask li.last dd {
+	width:78px;
+	border:1px solid #ccc;
+	border-width:0 1px 1px 1px;
+	position:absolute;
+	top:35px;
+	right:0;
+	background:#FFF;
+	z-index:1999
+}
+.publicTabNewask li.last dd a:link, .publicTabNewask li.last dd a:visited {
+	width:63px;
+	height:32px;
+	color:#164A84;
+	text-align:left;
+	padding:0 0 0 15px;
+	border-bottom:1px dotted #B2B5B8;
+	background:0
+}
+.publicTabNewask li.last dd a:hover {
+	color:#c00;
+	background:#ebebeb;
+	text-decoration:underline
+}
+.publicTabNewask li.last dd a.last_a {
+	border:0
+}
+.publicTabNewask li.last dd a.last_a:link, .publicTabNewask li.last dd a.last_a:visited {
+	border:0
+}
+.publicTabNewask li.last dd a.last_a:hover {
+	border:0
+}
+.publicTabNewask .current {
+	padding:0 1px 0 0
+}
+.publicTabNewask .current a {
+	color:#000;
+	font-weight:bold;
+	left:-2px
+}
+.publicTabNewask .current a:visited, .publicTabNewask .current a:hover {
+	color:#000
+}
+.publicTabNewask li.last dt em {
+	display:block;
+	overflow:hidden;
+	border:6px solid #06A;
+	border-color:#fff #3B6076;
+	border-width:5px 5px 0 5px;
+	width:0;
+	position:absolute;
+	top:16px;
+	right:8px;
+	height:0
+}
+
+
+
+.publicTabNew {
+	width:960px;
+	margin:0 auto;
+	height:36px;
+	background-repeat: repeat;
+	background-position: 0 -362px;
+	border: 1px solid #EBEBEB;
+	background-image: url(../images/head.png);
+}
+.publicTabNew .tab {
+	padding:0 0 0 10px;
+	height:36px;
+	background-repeat: repeat;
+	background-position: -950px 3px;
+}
+.publicTabNew .tab li {
+	float:left;
+	font-size:14px;
+	height:35px;
+	color: #1e4674;
+}
+.publicTabNew .tab li a {
+	padding:0 18px;
+	float:left;
+	color:#FFF;
+	line-height:35px;
+	text-align:center;
+	height:35px;
+	background-repeat: no-repeat;
+	background-position: 100% 3px;
+}
+.publicTabNew .tab li a:visited {
+	color:#fff
+}
+.publicTabNew li.last dl {
+	position:relative;
+	color:#fff;
+	padding:0 10px 0 0;
+	z-index:2999
+}
+.publicTabNew li.last dt {
+	height:35px;
+	line-height:35px;
+	text-align:center;
+	padding:0 10px;
+	cursor:pointer;
+*width:28px
+}
+.publicTabNew li.last dd {
+	width:78px;
+	border:1px solid #ccc;
+	border-width:0 1px 1px 1px;
+	position:absolute;
+	top:35px;
+	right:0;
+	background:#FFF;
+	z-index:1999
+}
+.publicTabNew li.last dd a:link, .publicTabNew li.last dd a:visited {
+	width:63px;
+	height:32px;
+	color:#164A84;
+	text-align:left;
+	padding:0 0 0 15px;
+	border-bottom:1px dotted #B2B5B8;
+	background:0
+}
+.publicTabNew li.last dd a:hover {
+	color:#c00;
+	background:#ebebeb;
+	text-decoration:underline
+}
+.publicTabNew li.last dd a.last_a {
+	border:0
+}
+.publicTabNew li.last dd a.last_a:link, .publicTabNew li.last dd a.last_a:visited {
+	border:0
+}
+.publicTabNew li.last dd a.last_a:hover {
+	border:0
+}
+.publicTabNew .current {
+	padding:0 1px 0 0
+}
+.publicTabNew .current a {
+	color:#000;
+	font-weight:bold;
+	left:-2px
+}
+.publicTabNew .current a:visited, .publicTabNew .current a:hover {
+	color:#000
+}
+.publicTabNew li.last dt em {
+	display:block;
+	overflow:hidden;
+	border:6px solid #06A;
+	border-color:#fff #3B6076;
+	border-width:5px 5px 0 5px;
+	width:0;
+	position:absolute;
+	top:16px;
+	right:8px;
+	height:0
+}
+.line_box {
+	border:1px #e9e9e9 solid;
+	margin:0 0 10px 0;
+	position:relative;
+	clear:both;
+	z-index:1
+}
+.line_box h3 {
+	background:#f7f7f7;
+	border-bottom:1px #e9e9e9 solid;
+	font-family:simSun;
+	font-size:14px;
+	font-weight:bold;
+	height:28px;
+	line-height:28px;
+	overflow:hidden
+}
+.col-side .line_box {
+	background:#F7F7F7
+}
+.col-side .line_box h3 a:link, .col-side .line_box h3 a:visited {
+	color:#1E4674
+}
+.col-side .line_box h3 a:hover {
+	color:#c00
+}
+.col-side .line_box h3 {
+	background:#f1f1f1;
+	clear:both
+}
+
+
+.header_styleask {
+	height:40px;
+	width:982px;
+	position:relative;
+	margin:0 auto 10px;
+	z-index:1112
+}
+.header_styleask .bitauto_logo {
+	float:left;
+	position:relative
+}
+.header_styleask h1 {
+	margin:6px 5px 0 4px;
+	float:left;
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+}
+.header_styleask h1 a {
+	line-height:1000px;
+	display:block;
+	width:129px;
+	height:36px;
+	overflow:hidden;
+	background-repeat: no-repeat;
+	background-position: 0 -106px;
+	background-image: url(../images/logo.png);
+}
+.header_styleask .city_name {
+	border:1px #fff solid;
+	border-width:0 1px;
+	_border:0;
+	position:relative;
+	float:left;
+	padding:7px 28px 0 10px;
+	margin:12px 0 0 0;
+	font-size:14px;
+	font-weight:bold;
+	color:#164a84
+}
+.header_styleask .city_name em {
+	display:block;
+	overflow:hidden;
+	border:6px solid #06a;
+	border-color:#a6a6a6 #fff;
+	border-width:5px 5px 0 5px;
+	width:0;
+	position:absolute;
+	top:13px;
+	right:10px
+}
+.header_styleask .city_name ul {
+	margin:0 0 0 -1px;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	top:28px;
+	left:0;
+	padding:12px 0 0 10px;
+	z-index:11;
+	width:298px;
+	height:158px;
+	overflow:hidden;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc
+}
+.header_styleask .city_name ul li {
+	float:left;
+	font-size:12px;
+	font-weight:normal;
+	width:48px;
+	height:24px
+}
+.header_styleask .city_name ul li.lastcity {
+	width:288px;
+	border-top:1px solid #E9E9E9;
+	clear:both;
+	line-height:24px;
+	padding:4px 0 8px 0;
+	margin:1px 0 0 0
+}
+.header_styleask .city_name ul li.lastcity a:link, .header_styleask .city_name ul li.lastcity a:visited {
+	color:#56616D
+}
+.header_styleask .city_name ul li.lastcity a:hover {
+	color:#c00
+}
+.header_styleask .city_name_hover {
+	border:1px #ccc solid;
+	border-width:1px 1px 0;
+	height:21px;
+	_border:1px #fff solid;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc;
+	margin:11px 0 0 0;
+	_padding:7px 28px 0 9px;
+*padding:10px 28px 0 10px;
+	_padding:8px 28px 0 9px;
+*height:18px
+}
+.header_styleask .city_name_hover em {
+	border-color:#1E4674 #fff
+}
+.header_styleask .city_name_hover sub {
+	z-index:12;
+	background:#fff;
+	position:absolute;
+	bottom:-1px;
+	left:0;
+	width:100%;
+	_width:auto;
+	height:1px;
+	overflow:hidden
+}
+
+
+.header_style {
+	height:40px;
+	width:960px;
+	position:relative;
+	margin:0 auto 10px;
+	z-index:1112
+}
+.header_style .bitauto_logo {
+	float:left;
+	position:relative
+}
+.header_style h1 {
+	margin:6px 5px 0 4px;
+	float:left;
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+}
+.header_style h1 a {
+	line-height:1000px;
+	display:block;
+	width:129px;
+	height:36px;
+	overflow:hidden;
+	background-repeat: no-repeat;
+	background-position: 0 -106px;
+	background-image: url(../images/logo.png);
+}
+.header_style .city_name {
+	border:1px #fff solid;
+	border-width:0 1px;
+	_border:0;
+	position:relative;
+	float:left;
+	padding:7px 28px 0 10px;
+	margin:12px 0 0 0;
+	font-size:14px;
+	font-weight:bold;
+	color:#164a84
+}
+.header_style .city_name em {
+	display:block;
+	overflow:hidden;
+	border:6px solid #06a;
+	border-color:#a6a6a6 #fff;
+	border-width:5px 5px 0 5px;
+	width:0;
+	position:absolute;
+	top:13px;
+	right:10px
+}
+.header_style .city_name ul {
+	margin:0 0 0 -1px;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	top:28px;
+	left:0;
+	padding:12px 0 0 10px;
+	z-index:11;
+	width:298px;
+	height:158px;
+	overflow:hidden;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc
+}
+.header_style .city_name ul li {
+	float:left;
+	font-size:12px;
+	font-weight:normal;
+	width:48px;
+	height:24px
+}
+.header_style .city_name ul li.lastcity {
+	width:288px;
+	border-top:1px solid #E9E9E9;
+	clear:both;
+	line-height:24px;
+	padding:4px 0 8px 0;
+	margin:1px 0 0 0
+}
+.header_style .city_name ul li.lastcity a:link, .header_style .city_name ul li.lastcity a:visited {
+	color:#56616D
+}
+.header_style .city_name ul li.lastcity a:hover {
+	color:#c00
+}
+.header_style .city_name_hover {
+	border:1px #ccc solid;
+	border-width:1px 1px 0;
+	height:21px;
+	_border:1px #fff solid;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	box-shadow:1px 1px 1px #ccc;
+	margin:11px 0 0 0;
+	_padding:7px 28px 0 9px;
+*padding:10px 28px 0 10px;
+	_padding:8px 28px 0 9px;
+*height:18px
+}
+.header_style .city_name_hover em {
+	border-color:#1E4674 #fff
+}
+.header_style .city_name_hover sub {
+	z-index:12;
+	background:#fff;
+	position:absolute;
+	bottom:-1px;
+	left:0;
+	width:100%;
+	_width:auto;
+	height:1px;
+	overflow:hidden
+}
+.indexnav {
+	width:960px;
+	margin:0 auto;
+	height:34px;
+	overflow:hidden;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 0 0 no-repeat
+}
+.indexnav a:link, .indexnav a:visited {
+	color:#fff;
+	text-decoration:none
+}
+.indexnav a:hover {
+	color:#fff;
+	text-decoration:underline
+}
+.indexnav dt {
+	float:left
+}
+.indexnav dt a {
+	line-height:1000px;
+	display:block
+}
+.indexnav dd {
+	float:left;
+	line-height:36px;
+	padding-right:12px
+}
+.indexnav dt.sele, .indexnav dt.sele a, .indexnav dt.use, .indexnav dt.use a {
+	width:52px
+}
+.indexnav dt.baa, .indexnav dt.baa a {
+	width:58px;
+	margin-left:-3px
+}
+.indexnav dt.news, .indexnav dt.news a {
+	width:60px
+}
+.indexnav dt.used, .indexnav dt.used a {
+	width:68px
+}
+.indexnav dt.driv {
+	width:74px
+}
+.indexnav dt.sele {
+	margin-right:7px
+}
+.indexnav dt.used {
+	margin-right:10px
+}
+.indexnav dt.use {
+	margin-right:3px
+}
+.indexnav dt.sele a:hover, .indexnav dt.use a:hover, .indexnav dt.baa a:hover, .indexnav dt.news a:hover, .indexnav dt.used a:hover, .indexnav dt.driv a:hover {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 0 -34px no-repeat
+}
+.indexnav dt.used a:hover {
+	background-position:-431px -34px
+}
+.indexnav dt.use a:hover {
+	background-position:-605px -34px
+}
+.indexnav dt.baa a:hover {
+	background-position:-762px -34px
+}
+.indexnav dt.driv a:hover {
+	background-position:-823px -34px
+}
+.indexnav dt.news a:hover {
+	background-position:-897px -34px
+}
+.hot_city {
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 0 repeat-x;
+	height:23px;
+	border:1px solid #e2e2e2;
+	border-top:0;
+	margin:0 auto 10px auto;
+	padding:5px 0 0 5px;
+	width:953px;
+	color:#e9e9e9;
+	font-family:"SimSun";
+	position:relative;
+	z-index:1000
+}
+.hot_city strong {
+	color:#ccc;
+	display:block;
+	float:left;
+	padding:0 16px 0 2px
+}
+.hot_city strong a:link, .hot_city strong a:visited {
+	color:#56616D
+}
+.hot_city strong a:hover {
+	color:#c00
+}
+.hot_city a {
+	margin:0 1px 0 2px
+}
+.hot_city ul li {
+	float:left;
+	padding-left:3px;
+	line-height:29px;
+	margin:-5px 0 0;
+	position:relative
+}
+.hot_city ul li.bordernone {
+	border:0
+}
+.hot_city ul li.f {
+	height:29px;
+	padding:0 15px 0 5px;
+	position:relative
+}
+.hot_city span {
+	margin:0 1px 0 2px;
+	color:#717171
+}
+.hot_city ul li.last a:link, .hot_city ul li.last a:visited {
+	color:#56616D
+}
+.hot_city ul li.last a:hover {
+	color:#c00
+}
+.hot_city li strong em {
+	display:block;
+	overflow:hidden;
+	border:6px solid #06a;
+	border-color:#a6a6a6 #F4F5F6;
+	border-width:4px 4px 0 4px;
+	width:0;
+	position:absolute;
+	top:12px;
+	right:4px;
+	height:3px
+}
+.hot_city li.hot_q_hover strong sub {
+	z-index:12;
+	background:#fff;
+	position:absolute;
+	bottom:-1px;
+	left:0;
+	width:100%;
+	_width:191px;
+	height:2px;
+	_height:1px;
+	overflow:hidden
+}
+.hot_city li.hot_q_hover strong em {
+	border-color:#1E4674 #fff;
+	right:3px
+}
+.hot_city li ul.dropbox {
+	background:#fff;
+	border:1px solid #ccc;
+	display:block;
+	padding:10px 0 0 10px;
+	position:absolute;
+	left:0;
+	top:28px;
+	width:180px;
+	z-index:11;
+	margin:0 0 0 -1px;
+	-moz-box-shadow:1px 0 1px #ccc;
+	-webkit-box-shadow:1px 0 1px #ccc;
+	box-shadow:1px 0 1px #ccc
+}
+.hot_city li ul.dropbox li {
+	width:60px;
+	line-height:24px;
+	height:24px;
+	margin:0;
+	padding-left:0;
+	overflow:hidden
+}
+.hot_city li ul.dropbox li.lastq {
+	width:170px;
+	border-top:1px solid #E9E9E9;
+	clear:both;
+	line-height:24px;
+	margin:1px 0 0;
+	padding:4px 0 8px
+}
+.hot_city li ul.dropbox li.lastq a:link, .hot_city li ul.dropbox li.lastq a:visited {
+	color:#56616D
+}
+.hot_city li ul.dropbox li.lastq a:hover {
+	color:#c00
+}
+.hot_city ul li.hot_q {
+	padding:0 1px
+}
+.hot_city ul li.hot_q_hover {
+	padding:0;
+	height:28px;
+	border:1px #ccc solid;
+	border-width:0 1px;
+	background:#fff;
+	-moz-box-shadow:1px 0 1px #ccc;
+	-webkit-box-shadow:1px 0 1px #ccc;
+	box-shadow:1px 0 1px #ccc;
+*padding:2px 0 0 0;
+*height:26px
+}
+.cartabs_all {
+	width:958px;
+	height:29px;
+	border:1px #e9e9e9 solid;
+	border-width:1px;
+	clear:both;
+	margin:0 auto
+}
+.cartabs_all ul {
+	height:29px
+}
+.cartabs_all ul li {
+	float:left;
+	border-right:1px #e5e7e9 solid
+}
+.cartabs_all ul li a {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat;
+	display:block;
+	height:29px;
+	padding:0 0 0 45px;
+	width:32px;
+	line-height:29px;
+	background-color:#f4f4f4
+}
+.cartabs_all ul li.car1 a {
+	background-position:0 -218px
+}
+.cartabs_all ul li.car2 a {
+	background-position:0 -253px;
+	width:31px;
+	padding:0 0 0 55px
+}
+.cartabs_all ul li.car3 a {
+	background-position:2px -287px;
+	width:45px;
+	padding:0 0 0 59px
+}
+.cartabs_all ul li.car4 a {
+	background-position:2px -322px;
+	width:30px;
+	padding:0 0 0 62px
+}
+.cartabs_all ul li.car5 a {
+	background-position:-112px -217px;
+	width:42px;
+	padding:0 0 0 67px
+}
+.cartabs_all ul li.car6 a {
+	background-position:-112px -253px;
+	width:30px;
+	padding:0 0 0 69px
+}
+.cartabs_all ul li.car7 a {
+	background-position:-112px -288px;
+	width:24px;
+	padding:0 0 0 67px
+}
+.cartabs_all ul li.car8 a {
+	background-position:-112px -321px;
+	width:24px;
+	padding:0 0 0 63px
+}
+.cartabs_all ul li.car9 a {
+	background-position:-232px -217px;
+	width:28px;
+	padding:0 0 0 72px
+}
+.cartabs_all ul li.car10 a {
+	background-position:-227px -250px;
+	width:41px;
+	padding:0 0 0 63px
+}
+.cartabs_all ul li a:link, .cartabs_all ul li a:visited {
+	color:#56616d
+}
+.cartabs_all ul li a:hover {
+	color:#c00
+}
+.cartabs_all ul li.car10 {
+	border:0
+}
+.search_box {
+	position:relative;
+	z-index:2;
+	line-height:36px;
+	color:#fff;
+	width:958px;
+	height:36px;
+	margin:0 auto;
+	border:1px #547d94 solid;
+	border-width:0 1px;
+	background-image: url(../images/bg.jpg);
+	background-repeat: repeat;
+	background-position: 0;
+}
+.search_box input, .search_box select {
+	font-size:12px;
+	line-height:18px
+}
+.search_text label {
+	float:left;
+	line-height:25px;
+	margin:0 10px 0 0;
+	font-weight:bold
+}
+.search_text label a:link, .search_text label a:visited {
+	color:#fff
+}
+.search_text label a:hover {
+	color:#fff
+}
+.search_text .bor {
+	border:1px #4c738b solid;
+	float:left;
+	height:22px;
+	position:relative
+}
+.search_text label a:link, .search_text label a:visited {
+	color:#fff
+}
+.search_text label a:hover {
+	color:#fff
+}
+.search_box dl {
+	margin-left:18px;
+	_margin-left:10px;
+	float:left
+}
+.search_box dl dt {
+	float:left;
+	color:#fff;
+	font-weight:bold
+}
+.search_box dl dd {
+	float:left;
+	padding-left:1px;
+	white-space:nowrap;
+	width:38px;
+	overflow:hidden;
+	color:#7897ae
+}
+.search_box dl dd a {
+	margin-right:3px
+}
+.search_box dl a:link, .search_box dl a:visited {
+	color:#fff;
+	text-decoration:none
+}
+.search_box dl a:hover {
+	color:#fff;
+	text-decoration:underline
+}
+.search_text {
+	float:left;
+	_margin:6px 10px 0 10px;
+	position:relative;
+	margin-top: 7px;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+.search_text form {
+	float:left;
+}
+.search_text .select_t, .search_text .select_m {
+	width:157px;
+	height:20px;
+	line-height:20px;
+	border:0 #6c8fa8 solid;
+	background:#fff;
+	float:left;
+	padding:0 2px
+}
+.search_text .select_m {
+	width:128px;
+	height:20px;
+	padding:0;
+	line-height:14px
+}
+.search_text .bor_b {
+	border-bottom:1px solid #446172;
+	float:left;
+	height:20px;
+	overflow:hidden;
+	padding-left:2px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat -959px -976px
+}
+.search_text .select_b {
+	cursor:pointer;
+	border:0;
+	color:#fff;
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	font-weight:bold;
+	padding:0 12px 2px;
+	overflow:visible;
+	background-image: url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png);
+	background-repeat: repeat-x;
+	background-position: 0 -344px;
+}
+#sug {
+	border:1px solid #817F82;
+	position:absolute;
+	z-index:2;
+	width:159px;
+	left:0;
+	top:18px;
+	background:#fff;
+	display:none;
+	white-space:nowrap;
+	text-align:left;
+	overflow:hidden
+}
+#sug ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	background:#fff
+}
+#sug ul li {
+	color:#000;
+	line-height:21px;
+	padding:0 5px;
+	margin:0 0 1px 0;
+	cursor:default;
+	height:21px;
+	font-size:14px;
+	width:149px;
+	overflow:hidden
+}
+#sug ul li.current {
+	background:#014da2;
+	color:#fff
+}
+#sug strong {
+	font-weight:bold
+}
+.car_model_list_box {
+}
+.car_model_list {
+	width:734px;
+	float:left;
+	height:124px;
+	position:relative;
+	font-family:simSun
+}
+.car_model_list ul {
+	border-top:1px solid #fff;
+	border-bottom:1px solid #e9e9e9;
+	height:27px;
+	background:#f1f1f1;
+*overflow:hidden
+}
+.car_model_list ul li {
+	float:left;
+	border-left:1px solid #fff;
+	border-right:1px solid #e9e9e9;
+	text-align:center;
+	width:75px
+}
+.car_model_list ul li.current {
+	height:26px;
+	position:relative;
+	background:#fff;
+	border-top:2px #c00 solid
+}
+.car_model_list ul li.last {
+	border-right:0
+}
+.car_model_list ul li.hot, .car_model_list ul li.hot a {
+	width:78px
+}
+.car_model_list ul li.suv, .car_model_list ul li.suv a {
+	width:37px
+}
+.car_model_list ul li a {
+	display:block;
+	height:27px;
+	font-weight:bold;
+	line-height:27px;
+	float:left;
+	width:75px
+}
+.car_model_list ul li a:link, .car_model_list ul li a:visited {
+	text-decoration:none
+}
+.car_model_list ul li.current a {
+	color:#C00;
+	line-height:23px
+}
+.car_model_list ul.tab_eight li {
+	width:88px
+}
+.car_model_list ul.tab_eight li a {
+	width:88px
+}
+.car_model_list dl {
+	height:31px;
+	position:static;
+	z-index:1
+}
+.car_model_list dl.fist {
+	border-bottom:1px #e9e9e9 solid
+}
+.car_model_list dl a {
+	line-height:32px;
+	position:relative
+}
+.car_model_list dl dt {
+	float:left;
+	width:77px;
+	padding-right:10px;
+	text-align:right;
+	color:#56616D
+}
+.car_model_list dl dt a:link, .car_model_list dl dt a:visited {
+	color:#56616D
+}
+.car_model_list dl dt a:hover {
+	color:#c00
+}
+.car_model_list dl dt.carn {
+	width:70px;
+	padding-left:17px;
+	padding-right:0;
+	text-align:left
+}
+.car_model_list dl dt.carn a:link, .car_model_list dl dt.carn a:visited {
+	color:#1E4674
+}
+.car_model_list dl dt.carn a:hover {
+	color:#c00
+}
+.car_model_list dl dd {
+	float:left;
+	width:75px;
+	padding-left:17px;
+	height:auto;
+	position:static
+}
+.car_model_list dl dd.more {
+	position:inherit;
+	top:auto;
+	right:auto;
+	padding-right:0
+}
+.car_model_list dl dd.more a {
+	font-family:simSun
+}
+.best_car div {
+	height:124px;
+	width:224px;
+	float:right
+}
+.best_car div.best_car_box {
+	height:95px;
+	width:auto;
+	float:left;
+	border-left:1px solid #e9e9e9
+}
+.line_box .best_car h3 {
+	font-size:12px;
+	padding:0 0 0 10px;
+	line-height:27px;
+	width:auto;
+	background:none repeat scroll 0 0 #F1F1F1;
+	border-bottom:1px solid #e9e9e9;
+	border-top:1px solid #FFF;
+	border-left:1px solid #e9e9e9;
+	height:27px;
+	font-weight:normal;
+	color:#333
+}
+.best_car h3 a {
+	float:none;
+	font-weight:bold
+}
+.best_car img {
+	float:left;
+	display:inline;
+	margin:7px 10px 0 10px;
+	border:1px #E8E8E8 solid
+}
+.best_car2 img {
+	border:0;
+	margin:0
+}
+.best_car ul {
+	float:left;
+	margin:7px 0 0
+}
+.best_car ul li {
+	width:73px;
+	height:21px;
+	border:1px solid #e9e9e9;
+	margin:0 0 5px
+}
+.best_car ul li a {
+	display:block;
+	border:1px solid #fff;
+	text-align:center;
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 -86px repeat-x;
+	height:19px;
+	line-height:19px
+}
+.best_car ul li a:link, .best_car ul li a:visited {
+	color:#56616d;
+	text-decoration:none
+}
+.best_car ul li a:hover {
+	color:#c00;
+	text-decoration:underline
+}
+ul.car_tab_ul {
+	border-right:1px solid #e9e9e9;
+	float:left;
+	height:29px;
+	overflow:hidden;
+	padding-left:10px;
+	position:absolute;
+	left:365px;
+	top:0;
+	_top:1px;
+	background:0
+}
+ul.car_tab_ul li {
+	float:left;
+	border-left:1px #dee2e6 solid;
+	width:52px;
+	height:30px;
+	overflow:hidden;
+	text-align:center;
+	line-height:31px;
+	background:0
+}
+ul.car_tab_ul li.current {
+	color:#333;
+	border-top:2px solid #1F61A0;
+	background:#fff;
+	height:27px;
+	line-height:27px;
+	font-weight:bold
+}
+.hot_model_list {
+	width:958px;
+	height:51px;
+	overflow:hidden
+}
+.hot_model_list dl {
+	border-top:1px #e9e9e9 solid;
+	height:45px;
+	padding-top:5px
+}
+.hot_model_list dl dt {
+	margin:11px 8px 0 0
+}
+.hot_model_list dd.hotlogo {
+	width:40px
+}
+.hot_model_list dd.hotlogo img {
+	margin:0 5px 0 0
+}
+.hot_model_list dl dd {
+	width:172px;
+	padding-left:0;
+	overflow:hidden
+}
+.hot_model_list dd img, .hot_model_list dd em {
+	float:left
+}
+.hot_model_list dd em {
+	margin-top:13px
+}
+.hot_model_list dl a {
+	line-height:16px;
+	cursor:pointer
+}
+.hot_model_list dd img {
+	margin:3px 5px 0 0
+}
+.hot_model_list dd strong {
+	font-weight:bold;
+	color:#999;
+	padding:4px 0 0 0
+}
+.ask_list {
+	margin-top:10px
+}
+.h3_tab {
+	left:0;
+	position:absolute;
+	top:0
+}
+.h3_tab ul {
+	height:28px;
+	margin:0;
+	width:auto;
+	font-size:14px
+}
+.h3_tab ul li.current {
+	background:none repeat scroll 0 0 #fff;
+	font-weight:bold;
+	height:27px;
+	_height:28px;
+	line-height:26px;
+	border-top:2px #1f61a0 solid
+}
+.h3_tab ul li {
+	border-right:1px solid #e9e9e9;
+	float:left;
+	height:28px;
+	line-height:28px;
+	_line-height:30px;
+	padding:0 20px
+}
+.col-side .h3_tab ul li {
+	padding:0 8px
+}
+.col-side .h3_tab ul li.current {
+	background:#f7f7f7
+}
+.col-side .h3_tab ul li a:link, .col-side .h3_tab ul li a:visited {
+	color:#1E4674
+}
+.col-side .h3_tab ul li a:hover {
+	color:#c00
+}
+.focus_line_box {
+	margin:0 0 10px 0;
+	clear:both
+}
+.focus {
+	width:320px;
+	height:280px;
+	text-align:center;
+	overflow:hidden;
+	position:relative;
+	margin: 0px;
+	padding: 0px;
+}
+.focusBox {
+	width:320px;
+	height:250px;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+}
+.focusPic {
+	width:320px;
+	height:213x;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1
+}
+.focusPic li {
+	width:320px;
+	height:213px;
+	position:absolute\0
+}
+.focusTxt {
+	background:#fff url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 -189px repeat-x;
+	width:320px;
+	height:36px;
+	border-top:2px solid #ce0000;
+	font-size:14px;
+	font-weight:bold;
+	line-height:2.4;
+	position:absolute;
+	bottom:0;
+	left:0;
+	z-index:10;
+	overflow:hidden
+}
+.focusTxt a:link, .focusTxt a:visited {
+	color:#1e4674
+}
+.focusTxt a:hover {
+	color:#1e4674
+}
+.focusNum {
+	position:absolute;
+	right:5px;
+	bottom:38px;
+	_bottom:34px;
+	color:#FFF;
+	line-height:2.0;
+	z-index:15
+}
+.focusNum li {
+	width:19px;
+	height:20px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -429px -138px no-repeat;
+	float:left;
+	margin-left:1px;
+	cursor:pointer
+}
+.focusNum li.current {
+	width:21px;
+	height:20px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -429px -167px no-repeat;
+	float:left;
+	font-weight:bold
+}
+.fP, .fPH, .fN, .fNH {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat;
+	width:26px;
+	height:35px;
+	position:absolute;
+	bottom:1px;
+	text-indent:-9999em;
+	cursor:pointer;
+	z-index:11
+}
+.fP {
+	left:0;
+	background-position:-274px -114px;
+	border-left:1px solid #e2e2e2
+}
+.fPH {
+	left:0;
+	background-position:-274px -149px;
+	border-left:1px solid #e2e2e2
+}
+.fN {
+	right:0;
+	background-position:-243px -114px;
+	border-right:1px solid #e2e2e2
+}
+.fNH {
+	right:0;
+	background-position:-244px -149px;
+	border-right:1px solid #e2e2e2
+}
+.focus-2 {
+	width:320px;
+	height:213px;
+	background:#E6EAED;
+	text-align:center;
+	overflow:hidden;
+	margin:0 0 10px 0
+}
+.focusBox-2 {
+	width:320px;
+	height:213px;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative
+}
+.focusPic-2 {
+	width:320px;
+	height:213px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1
+}
+.focusPic-2 li {
+	width:320px;
+	height:213px;
+	position:absolute\0
+}
+.focusTxt-2 {
+	width:320px;
+	height:30px;
+	font-size:14px;
+	font-weight:bold;
+	line-height:2.2;
+	position:absolute;
+	bottom:0;
+	left:0;
+	z-index:16;
+	overflow:hidden
+}
+.focusTxt-2 a:link, .focusTxt-2 a:visited {
+	color:#FFF;
+	text-decoration:none
+}
+.focusTxt-2 a:hover, .focusTxt-2 a:active {
+	color:#FFF;
+	text-decoration:underline
+}
+.focusTxtBg-2 {
+	width:320px;
+	height:30px;
+	background:#365b79;
+	filter:alpha(opacity=60);
+	-moz-opacity:.6;
+	opacity:.6;
+	position:absolute;
+	bottom:0;
+	left:0;
+	z-index:14
+}
+.focusNum-2 {
+	position:absolute;
+	right:5px;
+	bottom:30px;
+	_bottom:26px;
+	color:#FFF;
+	line-height:2.0;
+	z-index:15
+}
+.focusNum-2 li {
+	width:19px;
+	height:20px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -429px -138px no-repeat;
+	float:left;
+	margin-left:1px;
+	cursor:pointer
+}
+.focusNum-2 li.current {
+	width:21px;
+	height:20px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -429px -167px no-repeat;
+	float:left;
+	font-weight:bold
+}
+.focusPic-2 img {
+	width:320px;
+	height:213px
+}
+.pic_t_box {
+	float:left;
+	overflow:hidden;
+	margin-top: 8px;
+	margin-right: 0px;
+	margin-bottom: 0;
+	margin-left: 1px;
+}
+.pic_t_box li {
+	float:left;
+	width:70px;
+	text-align:center;
+	display:inline;
+	margin-top: 0;
+	margin-right: 12px;
+	margin-bottom: 5px;
+	margin-left: 15px;
+}
+.pic_t_box li img {
+	border:1px #e9e9e9 solid
+}
+.pic_t_box li a {
+	display:block
+}
+.pic_t_box li p {
+	height:30px;
+	line-height:30px
+}
+.pic_t_box_posi {
+	position:absolute;
+	left:0;
+	top:0
+}
+.text_list {
+	float:left;
+	margin:4px 9px 0;
+	display:inline
+}
+.col-sub .text_list {
+	width:300px;
+	margin:5px 0 0 9px;
+	padding:5px 0 0
+}
+.text_list_b {
+	border-top:1px #e9e9e9 solid
+}
+.text_list ul {
+	font-size:14px
+}
+.text_list ul li {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -381px -385px no-repeat;
+	height:25px;
+	line-height:25px;
+	padding-left:9px;
+	position:relative;
+	vertical-align:top;
+	color:#666;
+	overflow:hidden
+}
+.col-sub .text_list ul li span a:link, .col-sub .text_list ul li span a:visited {
+	color:#56616d
+}
+.col-sub .text_list ul li span a:hover {
+	color:#c00
+}
+.topnews {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -564px -116px no-repeat
+}
+.topnews p {
+	height:18px;
+	overflow:hidden;
+	color:#ccc;
+	display:block;
+	padding:2px 0 7px 0;
+	text-align:center;
+	border-bottom:1px #f4f4f4 solid
+}
+.topnews p a:link, .topnews p a:visited {
+	color:#56616d
+}
+.topnews p a:hover {
+	color:#c00
+}
+.topnews h2 {
+	display:block;
+	font-family:Microsoft YaHei;
+	font-size:20px;
+	font-weight:bold;
+	line-height:27px;
+	padding:10px 0 0;
+	text-align:center
+}
+.topnews h2 a:link, .topnews h2 a:visited {
+	color:#c00
+}
+.topnews h2 a:hover {
+	color:#c00
+}
+.col-main .text_list {
+	width:420px;
+	margin:4px 0 0 9px
+}
+.topnews .text_list span, .topnews2_height .text_list span {
+	display:block;
+	float:left;
+	overflow:hidden;
+	width:170px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -381px -385px no-repeat;
+	padding:0 18px 0 9px
+}
+.topnews .text_list ul li, .topnews2_height .text_list ul li {
+	background:0;
+	padding-left:0;
+}
+.topnews_pin .text_list ul li {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -381px -385px no-repeat;
+	padding-left:9px
+}
+.list_box {
+	height:130px;
+	padding:4px 0 0 0
+}
+.list_box_2 {
+	height:359px;
+	padding:0;
+	overflow:hidden
+}
+.col-side .list_box_2 .text_list ul li {
+	height:23px;
+	line-height:23px
+}
+.col-side .text_list ul {
+	font-size:12px
+}
+.col-side .text_list ul li {
+	position:static;
+	height:24px;
+	line-height:24px
+}
+.col-side .text_list_f {
+	height:128px;
+	padding:2px 0 0 0
+}
+.col-side .text_list_f .text_list {
+	margin:0 9px 0
+}
+.col-side .text_list_f ul li {
+	height:21px;
+	line-height:21px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -381px -387px no-repeat
+}
+.col-side a:link, .col-side a:visited {
+	color:#56616d
+}
+.col-side a:hover {
+	color:#c00
+}
+.column {
+	width:958px;
+	height:40px;
+	border:1px #E9E9E9 solid;
+	border-width:0 1px 1px 1px;
+	margin-bottom:10px;
+	position:relative;
+	background-image: url(../images/cn.jpg);
+	background-repeat: no-repeat;
+	background-position: 0;
+}
+.column h2 {
+	_width:240px;
+	letter-spacing:2px;
+	height:38px;
+	float:left;
+	line-height:32px;
+	color:#fff;
+	font-weight:bold;
+	font-size:18px;
+	font-family:Microsoft YaHei;
+	background-repeat: no-repeat;
+	background-position: 0;
+}
+.column h2 span {
+	padding:0 55px 0 80px;
+	display:block;
+	height:38px;
+	overflow:hidden;
+	background-image: url(../images/bg.jpg);
+	background-repeat: repeat;
+	background-position: 100%;
+}
+.column h2 span a:link, .column h2 span a:visited {
+	color:#fff;
+	text-decoration:none
+}
+.column h2 span a:hover {
+	color:#fff;
+	text-decoration:underline
+}
+.column .more {
+	height:35px;
+	line-height:38px;
+	z-index:999;
+	color: #FFF;
+}
+.more {
+	position:absolute;
+	top:5px;
+	right:10px;
+	color:#FFF
+}
+.more a:link, .more a:visited {
+	color:#FFF
+}
+.more a:hover {
+	color:#333
+}
+.car_interest_box {
+	margin-top:-10px;
+	width:740px;
+	overflow:hidden
+}
+.car_interest {
+	border-width:0 0 1px 1px;
+	height:568px;
+	width:739px;
+	overflow:hidden
+}
+.car_random {
+	width:210px;
+	float:left;
+	margin:0 5px 0 25px;
+	text-align:center;
+	color:#ccc;
+	display:inline;
+	overflow:hidden
+}
+.car_random p {
+	padding:1px 0 9px 0;
+	clear:both
+}
+.car_random p a:link, .car_random p a:visited {
+	color:#56616D
+}
+.car_random p a:hover {
+	color:#c00
+}
+.car_random img {
+	display:block;
+	width:210px;
+	height:140px
+}
+.car_random h4 {
+	font-size:14px;
+	font-weight:bold;
+	line-height:28px;
+	clear:both;
+	padding:5px 0 0 2px
+}
+.car_random h4.car_ranname {
+	display:inline;
+	padding:0;
+	white-space:nowrap
+}
+.car_random h4 span {
+	font-weight:normal;
+	color:#999;
+	padding:0 0 0 5px;
+	font-size:12px;
+	font-family:Tahoma, Geneva, sans-serif
+}
+.car_random em {
+	color:#c00;
+	line-height:22px;
+	margin:0 0 5px 10px;
+	font-family:Tahoma, Geneva, sans-serif;
+	white-space:nowrap
+}
+.car_random em a:link, .car_random em a:visited, .car_random em a:hover {
+	color:#C00
+}
+.car_random span a {
+	text-align:center;
+	float:left;
+	height:22px;
+	line-height:22px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 -234px repeat-x;
+	color:#fff;
+	padding:0;
+	margin:0 2px;
+	width:66px
+}
+.car_random span a:link, .car_random span a:visited {
+	color:#fff
+}
+.car_random span a:hover {
+	color:#fff
+}
+.car_random h4, .car_random ul li {
+	text-align:left
+}
+.car_random .text_list {
+	margin:0 0 0 4px;
+	height:72px
+}
+.car_random .text_list2 {
+	height:54px
+}
+.car_random .text_list ul {
+	font-size:12px
+}
+.car_random .text_list ul li {
+	position:static;
+	line-height:24px;
+	height:24px;
+	width:195px
+}
+.car_random .text_list ul li a:link, .car_random .text_list ul li a:visited {
+	color:#56616D
+}
+.car_random .text_list ul li a:hover {
+	color:#c00
+}
+.car_random_t {
+	width:210px;
+	overflow:hidden
+}
+.car_random_a {
+	width:15px;
+	height:29px;
+	position:absolute;
+	top:120px
+}
+.car_random_a a {
+	width:15px;
+	height:29px;
+	display:block;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -320px -106px no-repeat
+}
+.car_random_al {
+	left:4px
+}
+.car_random_ar {
+	right:4px
+}
+.car_random_al a {
+	background-position:-320px -106px
+}
+.car_random_al a:hover {
+	background-position:-320px -145px
+}
+.car_random_ar a {
+	background-position:-355px -106px
+}
+.car_random_ar a:hover {
+	background-position:-355px -145px
+}
+.select_car_box {
+	margin-top:-10px
+}
+.col-side .select_car_l {
+	border-width:0 1px;
+	margin-bottom:0;
+	background:#fff
+}
+.car_random_box {
+	clear:both;
+	width:1480px;
+	position:absolute;
+	left:0
+}
+.select_tool {
+	height:262px
+}
+.select_tool h3 {
+	padding:6px 0 0 0
+}
+.select_tool .carselect_icon ul li {
+	margin:21px 1px 0 9px
+}
+.col_tab {
+	float:left;
+	margin-right:5px
+}
+.col_tab ul {
+	background:#ececec;
+	height:279px;
+	width:62px
+}
+.col_tab ul li {
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 -266px repeat-x;
+	border-bottom:1px solid #e9e9e9;
+	border-right:1px solid #e9e9e9;
+	cursor:pointer;
+	height:30px;
+	line-height:30px;
+	_line-height:28px;
+	padding:0 9px;
+	width:43px
+}
+.col_tab ul li.current {
+	background-image:none;
+	padding:0 10px 0 9px;
+	width:43px;
+	overflow:hidden;
+	border-right:0;
+	background-color:#fff
+}
+.col_tab ul li.current a:link, .col_tab ul li.current a:visited {
+	color:#333;
+	font-weight:bold
+}
+.col_tab ul li.current a:hover {
+	font-weight:bold
+}
+.hot_ranking {
+	margin:0 10px;
+	position:relative;
+	float:left;
+	display:inline;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 0 -383px no-repeat;
+	height:279px;
+	overflow:hidden
+}
+.col-side .hot_ranking {
+	width:126px
+}
+.hot_ranking li {
+	height:27px;
+	line-height:27px;
+	position:relative;
+	width:100%;
+	overflow:hidden;
+	float:left;
+	border-bottom:1px #e9e9e9 solid
+}
+.hot_ranking li a {
+	height:27px;
+	line-height:27px;
+	float:left;
+	display:inline;
+	margin-left:25px
+}
+.hot_rank_bside .hot_ranking li span {
+	float:right
+}
+.hot_rank_box {
+	border-bottom:1px #e9e9e9 solid;
+	height:277px;
+	overflow:hidden
+}
+.whatscar {
+	background:#F7F7F7 url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 100% 100% no-repeat;
+	height:100px;
+	padding:14px 0 0 0;
+	width:218px;
+	clear:both
+}
+.whatscar h4 {
+	font-size:14px;
+	font-weight:bold;
+	line-height:30px;
+	padding:0 0 0 15px
+}
+.whatscar h4 a:link, .whatscar h4 a:visited {
+	color:#1E4674
+}
+.whatscar h4 a:hover {
+	color:#c00
+}
+.other_car {
+	float:left;
+	margin:0 0 0 1px;
+	width:956px;
+	display:inline;
+	overflow:hidden;
+	position:relative;
+	height:160px
+}
+.other_car .pic_t_box li {
+	width:162px;
+	margin:0 5px 0 21px;
+	color:#ccc
+}
+.other_car .pic_t_box li img {
+	padding:0;
+	width:160px;
+	height:106px
+}
+.other_car .pic_t_box li a {
+	display:inline
+}
+.other_car .pic_t_box li p {
+	overflow:hidden
+}
+.other_car .pic_t_box li span a:link, .other_car .pic_t_box li span a:visited {
+	color:#999
+}
+.other_car .pic_t_box li span a:hover {
+	color:#c00
+}
+.other_car730 {
+	width:737px;
+	height:164px
+}
+.other_car730 .pic_t_box li {
+	width:153px
+}
+.other_car730 .pic_t_box li img {
+	width:150px;
+	height:100px
+}
+.other_car730 .pic_t_box li p.row2 {
+	margin:-10px 0 0 0
+}
+.other_car_more {
+	color:#484848;
+	right:20px
+}
+.other_car_more strong {
+	font-weight:bold
+}
+.other_car_more strong a label {
+	cursor:pointer
+}
+.other_more_box {
+	position:relative
+}
+.pic_more_arrow {
+	position:absolute;
+	top:59px;
+	width:17px;
+	height:71px
+}
+.pic_more_arrow a {
+	width:17px;
+	height:71px;
+	display:block;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -380px -106px no-repeat
+}
+.pic_more_arrowl {
+	left:-1px
+}
+.pic_more_arrowr {
+	right:-1px
+}
+.pic_more_arrowl a {
+	background-position:-380px -106px
+}
+.pic_more_arrowl a:hover {
+	background-position:-380px -177px
+}
+.pic_more_arrowr a {
+	background-position:-397px -106px
+}
+.pic_more_arrowr a:hover {
+	background-position:-397px -177px
+}
+.yzhjd_height {
+	height:360px;
+	overflow:hidden
+}
+.topnews_height {
+	height:283px;
+	overflow:hidden;
+	margin:0 0 10px 0
+}
+.topnews2_height {
+	height:290px;
+	overflow:hidden;
+	position:relative;
+	margin:10px 0 0 0
+}
+.con_ad {
+	padding:0;
+	height:80px;
+	clear:both;
+	width:960px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+.con_ad .main {
+	width:730px;
+	float:left
+}
+.con_ad .side {
+	width:220px;
+	float:right
+}
+.col-ad {
+	width:360px;
+	float:left;
+	margin:0 10px 0 0
+}
+.col-ad-m {
+	width:360px;
+	float:left
+}
+.col-ad-s {
+	width:220px;
+	float:right
+}
+.col-ad320 {
+	width:320px;
+	float:left;
+	margin:0 10px 0 0
+}
+.col-ad360 {
+	width:360px;
+	float:left;
+	margin:0 10px 0 0
+}
+.col-ad-m360 {
+	width:320px;
+	float:left
+}
+.col-ad-m400 {
+	width:400px;
+	float:left
+}
+.col-ad-s220 {
+	width:220px;
+	float:right
+}
+.ad_w730_80 {
+	width:730px;
+	height:80px;
+	overflow:hidden
+}
+.ad_w220_80 {
+	width:220px;
+	height:80px;
+	overflow:hidden
+}
+.ad_w320_h30 {
+	width:320px;
+	height:30px;
+	border-bottom:1px solid #e9e9e9;
+	clear:both;
+	position:relative
+}
+.col-main .ad_w380_h30 {
+	margin:0 0 0 10px
+}
+.ad_w380_h30 {
+	width:380px;
+	height:30px
+}
+.ad_w700_h40 {
+	float:right;
+	width:700px;
+	height:40px
+}
+.ad_w220_h120 {
+	float:right;
+	width:220px;
+	height:120px
+}
+.ad_w220_h150 {
+	float:right;
+	width:220px;
+	height:150px
+}
+.ad_w318_h40 {
+	height:40px;
+	margin:0 0 10px
+}
+.ad_w220_h155 {
+	float:right;
+	width:220px;
+	height:155px
+}
+.column strong {
+	line-height:48px;
+	color:#666;
+	float:left
+}
+.column strong em {
+	font-weight:800;
+	margin:0 3px
+}
+.line_box h3 span {
+	padding:0 10px
+}
+.more_top_b {
+	top:5px
+}
+.more_top_b span {
+	color:#484848
+}
+.data_box ul.car_tab_ul {
+	left:auto;
+	right:-1px;
+*right:0
+}
+.data_box {
+	height:306px;
+	overflow:hidden
+}
+.data_table {
+	width:728px;
+	overflow:hidden
+}
+.data_table_head {
+	width:732px;
+	float:left;
+	overflow:hidden
+}
+.data_table_head li {
+	width:354px;
+	height:30px;
+	float:left;
+	display:inline;
+	margin:0 1px 0 0;
+	line-height:30px;
+	color:#000;
+	padding:0 5px;
+	overflow:hidden;
+	background:#fff;
+	border-bottom:1px solid #edeeee;
+	border-right:1px solid #edeeee
+}
+.data_table_head li.head {
+	background:#fff;
+	color:#737373
+}
+.data_table_head li span {
+	float:left;
+	white-space:nowrap;
+	overflow:hidden;
+	text-align:left;
+	display:inline
+}
+.data_table_head li strong {
+	float:left;
+	white-space:nowrap;
+	overflow:hidden;
+	text-align:left
+}
+ul.car_tab_ul li.word4 {
+	width:62px
+}
+ul.car_tab_ul li.word2 {
+	width:38px
+}
+.data_table_head li .p01 {
+	text-align:left;
+	width:145px;
+	padding:0 0 0 6px
+}
+.data_table_head li .p02 {
+	text-align:left;
+	width:100px
+}
+.data_table_head li .p03 {
+	text-align:right;
+	width:55px;
+	color:#737373
+}
+.data_table_head li .p04 {
+	text-align:right;
+	width:55px;
+	color:#c00
+}
+.data_table_head li.head .p04 {
+	color:#737373
+}
+.data_table_head li .p05 {
+	text-align:right;
+	width:87px;
+	padding:0 6px 0 0
+}
+.data_table_head li .p05 a:link, .data_table_head li .p05 a:visited {
+	color:#56616d
+}
+.data_table_head li .p05 a:hover {
+	color:#c00
+}
+.dealer_logo {
+	height:277px;
+	background:#fff
+}
+.dealer_logo ul li {
+	color:#666;
+	float:left;
+	height:78px;
+	padding:10px 0 0;
+	text-align:center;
+	width:105px
+}
+.dealer_logo ul li img {
+	margin:0 auto;
+	display:block;
+	width:60px;
+	height:60px
+}
+.dealer_logo2 {
+	clear:both
+}
+.dealer_logo2 dt {
+	color:#666;
+	float:left;
+	height:80px;
+	text-align:center;
+	width:80px;
+	text-align:center;
+	padding:10px 0 0 0;
+	overflow:hidden
+}
+.dealer_logo2 dt p {
+	line-height:1.5
+}
+.dealer_logo2 dd {
+	padding:13px 0 0 0;
+	float:left;
+	width:128px;
+	height:77px;
+	overflow:hidden;
+	color:#666
+}
+.dealer_logo2 dd a {
+	font-size:14px;
+	font-weight:bold;
+	line-height:1.5
+}
+.dealer_logo2 dd a:link, .dealer_logo2 dd a:visited {
+	color:#1E4674
+}
+.dealer_logo2 dd a:hover {
+	color:#c00
+}
+.dealer_logo2 dd em {
+	color:#c00;
+	display:block;
+	line-height:1.5
+}
+.bit_ucar_pic {
+	height:150px
+}
+.bit_ucar_pic .pic_t_box li p {
+	line-height:20px;
+	height:auto
+}
+.bit_ucar_pic .pic_t_box li img {
+	padding:0;
+	display:block;
+	margin:0 auto 3px;
+	width:120px;
+	height:90px
+}
+.bit_ucar_pic ul {
+	margin:12px 0 0 3px;
+	display:inline
+}
+.pic_t_box li p.price {
+	font-weight:800;
+	font-family:Tahoma
+}
+.pic_t_box li p.price strong {
+	color:#c00;
+	font-weight:800
+}
+.pic_box_list .text_list {
+	border-top:1px #e9e9e9 solid
+}
+.main_shop_list {
+	height:204px
+}
+.main_shop_list ul {
+	margin:12px 0 0 3px;
+	display:inline
+}
+.main_shop_list .pic_t_box li p {
+	line-height:20px;
+	height:auto
+}
+.main_shop_list .pic_t_box li p.desc {
+	height:34px;
+	overflow:hidden;
+	line-height:17px
+}
+.main_shop_list .pic_t_box li img {
+	width:120px;
+	height:120px;
+	display:block;
+	margin:0 auto 3px
+}
+.hot_rank_top {
+	margin-top:-11px;
+	width:958px;
+	padding-bottom:10px
+}
+.hot_rank_b {
+	width:189px;
+	float:left;
+	display:inline;
+	overflow:hidden;
+	margin:0 20px 0 30px;
+	height:190px
+}
+.line_box .hot_rank_b h3 {
+	background:0;
+	border:0;
+	margin:12px 0 5px
+}
+.line_box .hot_rank_b h3 span {
+	padding:0
+}
+.col-all .hot_ranking {
+	height:134px;
+	overflow:hidden;
+	margin:0
+}
+.col-all .hot_ranking li a {
+	margin-left:25px
+}
+.col-all .hot_rank_b .hot_ranking li span {
+	float:right;
+	color:#999
+}
+.link .h3_tab ul li {
+	padding:0 15px
+}
+.link .co {
+	clear:both;
+	padding:10px;
+	float:left;
+	overflow:hidden;
+	height:67px
+}
+.co ul li {
+	float:left;
+	padding:0 8px 0 0;
+	margin:2px 0 9px 8px;
+	border-right:1px #ccc solid;
+	display:inline;
+	white-space:nowrap;
+	line-height:14px
+}
+.link a:link, .link a:visited {
+	color:#56616D
+}
+.link a:hover {
+	color:#c00
+}
+.link .current a:link, .link .current a:visited {
+	color:#1E4674
+}
+.link .current a:hover {
+	color:#c00
+}
+.fl {
+	float:left
+}
+.fr {
+	float:right
+}
+.mgt0 {
+	margin-top:0!important
+}
+.w380 {
+	width:380px!important
+}
+.ychdjtj_height {
+	height:268px
+}
+.ychdjtj_height img {
+	width:130px;
+	height:70px
+}
+.bbs_best {
+	height:219px
+}
+.bbs_best p {
+	height:18px;
+	overflow:hidden;
+	color:#999;
+	display:block;
+	padding:2px 0;
+	text-align:center
+}
+.bbs_best p a:link, .bbs_best p a:visited {
+	color:#56616d
+}
+.bbs_best p a:hover {
+	color:#c00
+}
+.bbs_best h2 {
+	display:block;
+	font-family:Microsoft YaHei;
+	font-size:20px;
+	font-weight:bold;
+	line-height:27px;
+	padding:10px 0 0;
+	text-align:center
+}
+.bbs_best h2 a:link, .bbs_best h2 a:visited {
+	color:#c00
+}
+.bbs_best h2 a:hover {
+	color:#c00
+}
+.col-main .bbs_best span {
+	display:inline;
+	float:none;
+	width:auto
+}
+.col-main .bbs_best span a:link, .col-main .bbs_best span a:visited {
+	color:#1E4674
+}
+.col-main .bbs_best span a:hover {
+	color:#C00
+}
+.bbs_best ul {
+	margin:10px 0;
+	padding:7px 0 0 0;
+	border-top:1px #f4f4f4 solid
+}
+.bbs_best ul li small a:link, .bbs_best ul li small a:visited, .bbs_best2 ul li small a:link, .bbs_best2 ul li small a:visited {
+	color:#56616D
+}
+.bbs_best ul li small a:hover, .bbs_best2 ul li small a:hover {
+	color:#c00
+}
+.bbs_best ul li small, .bbs_best2 ul li small {
+	position:absolute;
+	top:0;
+	right:0;
+	font-style:normal;
+	font-size:12px
+}
+.col-main .bbs_best2 .text_list {
+	width:379px
+}
+.pinpai_show {
+	height:237px;
+	overflow:hidden
+}
+.h491 {
+	height:491px
+}
+.h466 {
+	height:466px
+}
+.sheying_pic li {
+	display:inline;
+	float:left;
+	margin:0 4px 6px 9px;
+	text-align:center;
+	width:92px
+}
+.sheying_pic li img {
+	padding:0;
+	width:90px;
+	height:60px
+}
+.carselect_icon {
+	padding:0 5px 0 0
+}
+.carselect_icon ul.ulm {
+	float:left;
+	height:96px;
+	_height:98px
+}
+.carselect_icon ul li {
+	float:left;
+	width:60px;
+	height:82px;
+	overflow:hidden;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) -149px -665px no-repeat;
+	text-align:center;
+	margin:12px 1px 0 10px;
+	display:inline;
+	position:relative
+}
+.carselect_icon_m ul li {
+	margin-top:8px
+}
+.carselect_icon ul li a {
+	display:block;
+	width:60px;
+	height:18px;
+	padding:65px 0 0 0;
+	cursor:pointer
+}
+.carselect_icon ul li a span {
+	border:1px #efefef solid;
+	position:absolute;
+	left:0;
+	top:0;
+	width:58px;
+	height:58px;
+	display:block;
+	overflow:hidden
+}
+.carselect_icon ul li a:hover span {
+	border:1px #164a84 solid
+}
+.carselect_icon ul li.chedb {
+	background-position:-148px -664px
+}
+.carselect_icon ul li.tudb {
+	background-position:-218px -664px
+}
+.carselect_icon ul li.koubeidb {
+	background-position:-288px -664px
+}
+.carselect_icon ul li.chyg {
+	background-position:-356px -664px
+}
+.carselect_icon ul li.weizhang {
+	background-position:-426px -664px
+}
+.carselect_icon ul li.chgj {
+	background-position:-494px -664px
+}
+.carselect_icon ul li.qkjs {
+	background-position:-148px -792px
+}
+.carselect_icon ul li.gcjs {
+	background-position:-218px -792px
+}
+.carselect_icon ul li.gcbx {
+	background-position:-288px -792px
+}
+.bbs_gg {
+	margin:10px 0 0 10px;
+	border:1px #e9e9e9 solid;
+	width:198px;
+	height:58x
+}
+.yonghu_pic li {
+	display:inline;
+	float:left;
+	margin:0 0 6px 9px;
+	text-align:center;
+	width:60px
+}
+.yonghu_pic li img {
+	padding:0;
+	width:60px;
+	height:60px
+}
+.hdgg_box {
+	height:211px;
+	overflow:hidden
+}
+.bbs_best2 {
+	height:237px;
+	width:398px;
+	overflow:hidden
+}
+.yhdr_box {
+	height:237px;
+	overflow:hidden
+}
+.lezhuti_box, .zjy_box, .sheying_box {
+	height:249px;
+	overflow:hidden
+}
+.zjy_box .bbs_best ul {
+	padding:0;
+	border-top:0
+}
+.theme_nav {
+	float:left;
+	width:318px;
+	background:#fff;
+	font-size:14px;
+	height:50px;
+	margin:6px 0 0 0
+}
+.theme_nav ul li {
+	border:1px #e9e9e9 solid;
+	border-width:1px 1px 0 0;
+	width:105px;
+	height:49px;
+	line-height:49px;
+	text-align:center;
+	float:left
+}
+.theme_nav ul li.last {
+	border-right:0;
+	width:106px
+}
+.theme_nav ul li a {
+	width:103px;
+	height:48px;
+	display:block;
+	margin:0 0 0 1px;
+	cursor:pointer
+}
+.theme_nav ul li.last a {
+	width:104px
+}
+.theme_nav ul li a:link, .theme_nav ul li a:visited {
+	color:#333
+}
+.theme_nav ul li a:hover {
+	color:#c00;
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 -418px repeat-x
+}
+.theme_nav ul li a span {
+	width:74px;
+	height:48px;
+	display:block;
+	padding:0 0 0 30px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat
+}
+.theme_nav ul li a.theme2 span {
+	background-position:-140px -936px
+}
+.theme_nav ul li a.theme3 span {
+	background-position:-140px -999px
+}
+.theme_nav ul li a.theme4 span {
+	background-position:-140px -1071px
+}
+.theme_nav ul li a.theme5 span {
+	background-position:-140px -1142px
+}
+.theme_nav ul li a.theme6 span {
+	background-position:-140px -1215px
+}
+.theme_nav ul li a.theme7 span {
+	background-position:-140px -1286px
+}
+.theme_nav ul li a.theme2:hover span {
+	background-position:-296px -936px
+}
+.theme_nav ul li a.theme3:hover span {
+	background-position:-296px -999px
+}
+.theme_nav ul li a.theme4:hover span {
+	background-position:-296px -1071px
+}
+.theme_nav ul li a.theme5:hover span {
+	background-position:-296px -1142px
+}
+.theme_nav ul li a.theme6:hover span {
+	background-position:-296px -1215px
+}
+.theme_nav ul li a.theme7:hover span {
+	background-position:-296px -1286px
+}
+.carselect_icon_box .carselect_icon {
+	padding:0 0 0 10px;
+	color:#999
+}
+.carselect_icon_box .carselect_icon ul li {
+	float:left;
+	width:178px;
+	height:82px;
+	overflow:hidden;
+	text-align:center;
+	margin:15px 1px 0 10px;
+	display:inline;
+	position:relative;
+	background:0
+}
+.carselect_icon_box .carselect_icon ul li span {
+	float:left;
+	width:104px;
+	text-align:left;
+	margin:5px 0 0 10px;
+	line-height:1.2
+}
+.carselect_icon_box .carselect_icon ul li span strong {
+	height:25px;
+	display:block
+}
+.carselect_icon_box .carselect_icon ul li a {
+	display:inline;
+	width:auto;
+	height:auto;
+	padding:0;
+	cursor:pointer
+}
+.carselect_icon_box .carselect_icon ul li a.logo {
+	display:block;
+	float:left;
+	width:60px;
+	height:60px;
+	cursor:pointer;
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat
+}
+.carselect_icon_box .carselect_icon ul li a.logo span {
+	border:1px #efefef solid;
+	position:absolute;
+	left:0;
+	top:0;
+	width:58px;
+	height:58px;
+	display:block;
+	overflow:hidden;
+	margin:0
+}
+.carselect_icon_box .carselect_icon ul li a.logo:hover span {
+	border:1px #164a84 solid
+}
+.carselect_icon_box .carselect_icon ul li.lukuang a.logo {
+	background-position:-357px -793px
+}
+.carselect_icon_box .carselect_icon ul li.weizhang a.logo {
+	background-position:-425px -793px
+}
+.carselect_icon_box .carselect_icon ul li.jizhang a.logo {
+	background-position:-493px -793px
+}
+.carselect_icon_box .carselect_icon ul li.fagui a.logo {
+	background-position:-356px -664px
+}
+.carselect_icon_box .carselect_icon ul li.jiashi a.logo {
+	background-position:-425px -664px
+}
+.more_qichetong {
+	left:100px;
+	color:#999;
+	width:300px
+}
+#footer0904 {
+	width:960px;
+	overflow:hidden;
+	margin:0 auto;
+	padding:20px 0 0 0;
+	color:#999;
+	text-align:center;
+	clear:both
+}
+.footer_c {
+	margin:0 0 7px 0;
+	color:#666
+}
+.footer_about {
+	position:relative;
+	height:26px;
+	margin:0 0 15px 0;
+	border:1px #E9E9E9 solid;
+	background:#F1F1F1;
+	text-align:center;
+	overflow:hidden
+}
+.footer_about .about {
+	float:left;
+	position:relative;
+	left:50%;
+	list-style:none;
+	text-align:center
+}
+.footer_about .about li {
+	position:relative;
+	right:50%;
+	float:left;
+	padding:0 10px;
+	line-height:15px;
+	height:14px;
+	margin-top:6px;
+	cursor:pointer;
+	border-right:1px #ccc solid
+}
+.footer_about .about li a {
+	line-height:15px
+}
+.footer_about .about li.last {
+	border:0
+}
+.footer_logo {
+	position:relative;
+	width:100%;
+	height:30px;
+	margin:0;
+	text-align:center;
+	overflow:hidden
+}
+.footer_logo .logo {
+	float:left;
+	position:relative;
+	left:50%;
+	list-style:none;
+	text-align:center;
+*width:690px
+}
+.footer_logo .logo dt {
+	line-height:32px;
+	margin:0 10px 0 0
+}
+.footer_logo .logo dd {
+	margin:0 20px 0 0
+}
+.footer_logo .logo dt, .footer_logo .logo dd {
+	float:left;
+	position:relative;
+	left:-50%;
+	float:left;
+	height:32px;
+	display:inline
+}
+.footer_logo .logo dd span {
+	display:none
+}
+.footer_logo .logo dd.bitauto, .footer_logo .logo dd.ucar, .footer_logo .logo dd.cys, .footer_logo .logo dd.qchchj, .footer_logo .logo dd.yipai, .footer_logo .logo dd.xinyi, .footer_logo .logo dd.yidongapp {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) no-repeat
+}
+.footer_logo .logo dd.bitauto {
+	width:76px;
+	background-position:0 -665px
+}
+.footer_logo .logo dd.ucar {
+	width:53px;
+	background-position:0 -695px
+}
+.footer_logo .logo dd.qchchj {
+	width:82px;
+	background-position:0 -728px
+}
+.footer_logo .logo dd.yipai {
+	width:71px;
+	background-position:0 -765px
+}
+.footer_logo .logo dd.xinyi {
+	width:73px;
+	background-position:0 -795px
+}
+.footer_logo .logo dd.yidongapp {
+	width:88px;
+	background-position:0 -970px
+}
+.footer_logo .logo dd.last {
+	margin-right:0
+}
+.footer_logo .logo dd a {
+	height:32px;
+	display:block
+}
+.footer_icp {
+	height:48px;
+	line-height:28px;
+	padding:5px 0 0;
+	position:relative;
+	margin-bottom:0
+}
+.footer_icp a.icp {
+	display:block;
+	height:42px;
+	left:111px;
+	position:absolute;
+	top:0;
+	width:35px
+}
+.footer_icp a.icp span {
+	display:none
+}
+.footer_text {
+	width:950px;
+	margin:0 auto 8px;
+	font-family:Arial
+}
+.footer_text a:link, .footer_text a:visited {
+	color:#999
+}
+.footer_text a:hover {
+	color:#c00
+}
+.footer_text p {
+	line-height:24px
+}
+.icpbox {
+	width:264px;
+	margin:0 auto;
+	height:70px
+}
+.icpbox a.icp {
+	background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg120928.png) 6px -841px no-repeat;
+	border:1px solid #F1F1F1;
+	float:left;
+	font-size:12px;
+	height:50px;
+	line-height:20px;
+	margin:6px 4px;
+	padding:0;
+	width:120px
+}
+.icpbox span {
+	padding:5px 3px 0 45px;
+	width:72px;
+	display:block;
+	cursor:pointer
+}
+.icpbox a.net110 span {
+	padding:5px 3px 0 55px;
+}
+.icpbox a.net110 {
+	background:url(/Public/note/images/icon.gif) no-repeat;
+	border:1px solid #F1F1F1;
+	float:left;
+	font-size:12px;
+	height:50px;
+	line-height:20px;
+	margin:6px;
+	padding:0;
+}
+.icpbox a:link, .icpbox a:visited {
+	color:#666
+}
+.icpbox a:hover {
+	color:#c00
+}
+.col-main .text_list_renew {
+	position:absolute;
+	top:150px;
+	left:0;
+	float:none;
+	background:#fff
+}
+.car_interest_top {
+	height:50px;
+	margin:0 20px;
+	padding:15px 0 0 0;
+	position:relative
+}
+.car_interest_top ul {
+	border-bottom:1px #E9E9E9 solid;
+	_border-bottom:0;
+	height:34px
+}
+.car_interest_top ul li {
+	float:left;
+	border:1px #E9E9E9 solid;
+	border-width:1px;
+	font-size:14px;
+	line-height:33px;
+	height:33px;
+	overflow:hidden;
+	background:#f7f7f7
+}
+.car_interest_top ul li a {
+	float:left;
+	display:block;
+	padding:0 20px;
+	height:34px
+}
+.car_interest_top ul li.current {
+	border-top:2px #dde2e6 solid;
+	border-bottom:0;
+	line-height:32px;
+	background:#fff;
+	height:33px
+}
+.car_interest_top ul li.current a {
+	font-weight:bold
+}
+.car_interest_top ul li.current a:link, .car_interest_top ul li.current a:visited {
+	color:#333;
+	text-decoration:none;
+	cursor:default
+}
+.car_interest_top ul li.current a:hover {
+	color:#333;
+	text-decoration:none;
+	cursor:default
+}
+.car_interest_top .tips {
+	position:absolute;
+	right:0;
+	top:25px;
+	color:#999;
+	_border-bottom:1px #E9E9E9 solid;
+	_padding:0 0 5px 0;
+	_width:443px;
+	_text-align:right
+}
+.car_interest_top .tips2 {
+	border:0;
+	background:0;
+	font-size:14px
+}
+.col-con740 {
+	width:740px
+}
+.col-side .newcars {
+	background:#fff;
+	border-left:none;
+	height:193px
+}
+.col-side .newcars h3 {
+	background:#F7F7F7
+}
+.col-side .newcars .text_list {
+	margin:5px 0 0 15px
+}
+.col-side .newcars .text_list ul li {
+	background:0;
+	padding-left:0;
+	line-height:26px;
+	height:26px
+}
+.col-side .newcars .text_list ul li strong {
+	padding-right:10px;
+	color:#999
+}
+.topt {
+	width:950px;
+	margin:0 auto 10px;
+	border:1px solid #f3c16b;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	background:#ffd;
+	color:#333;
+	padding-left:10px;
+	position:relative
+}
+.topt a {
+	color:#c00;
+	font-weight:bold;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:14px
+}
+.topt a.close {
+	height:17px;
+	width:17px;
+	overflow:hidden;
+	background:url(http://image.bitauto.com/uimg/index120401/images/topt.png) no-repeat 0 0;
+	position:absolute;
+	top:7px;
+	right:10px;
+	text-indent:-9999px
+}
+.topt a.close:hover {
+	background-position:0 -17px
+}
+.topt a.linkt {
+	color:#c00;
+	font-size:12px;
+	margin:0 4px;
+	font-weight:normal
+}
+.topt span {
+	font-family:Tahoma, Geneva, sans-serif
+}
+.car_random_add a {
+	display:block;
+	width:208px;
+	height:138px;
+	border:1px dashed #E9E9E9;
+	line-height:138px;
+	text-align:center;
+	margin-bottom:10px
+}
+.baa_login_iframe {
+	border:0;
+	width:739px;
+	height:430px
+}
+.s_member_b {
+	width:285px;
+	float:right;
+	margin:20px 60px 0 0;
+	display:inline;
+	position:relative
+}
+.s_member_b fieldset {
+	background:url(http://img3.baa.bitautotech.com/webpic/login/h2_bg2.gif) repeat-x scroll 0 0;
+	padding:20px 0 0
+}
+.s_member_b fieldset p {
+	height:45px
+}
+.s_member_b fieldset p label {
+	font-size:14px;
+	float:left;
+	margin:5px 0 0
+}
+.s_member_b fieldset p.input_left {
+	padding:0 0 0 57px;
+	height:30px
+}
+.s_member_b fieldset p.input_left input {
+	float:left;
+	margin:2px 5px 0 0;
+	_margin:-1px 1px 0 0
+}
+.s_member_b fieldset p .input {
+	width:210px;
+	height:25px;
+	font-size:12px;
+	border:1px solid #b9b9b9;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	padding:1px;
+	font-size:14px;
+	color:#999
+}
+.s_member_b fieldset p .input_on {
+	color:#333
+}
+.s_member_b fieldset .div_left {
+	padding:0 0 0 57px;
+	height:55px
+}
+.s_member_b fieldset .div_left strong {
+	float:left
+}
+.s_member_b fieldset .div_left strong .a_login {
+	width:130px;
+	height:36px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_input.png) no-repeat 0 0;
+	display:block;
+	line-height:100px;
+	overflow:hidden;
+	margin:0 10px 0 0;
+	float:left
+}
+.s_member_b fieldset .div_left strong .a_login:hover {
+	background-position:0 -41px
+}
+.s_member_b fieldset .div_left a {
+	margin:10px 0 0;
+	float:left
+}
+.s_member_b fieldset .div_left a.password {
+	text-decoration:underline;
+	width:65px
+}
+.s_member_b fieldset .yz {
+	height:60px;
+	position:relative
+}
+.s_member_b fieldset .yz label {
+	font-size:14px;
+	float:left;
+	margin:5px 0 0
+}
+.s_member_b fieldset .yz .input {
+	width:90px;
+	height:25px;
+	font-size:12px;
+	border:1px solid #b9b9b9;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	padding:1px;
+	float:left
+}
+.s_member_b fieldset .yz #pVerifyMessage {
+	color:#f00;
+	padding:5px 0 10px 57px;
+	clear:both
+}
+.s_member_b fieldset .yz .ts_w_lh {
+	clear:both;
+	color:#f00;
+	padding:5px 0 10px 57px;
+	background:0;
+	left:-2px;
+	margin:2px 0
+}
+.s_member_b fieldset .yz .ts_w_lh em {
+	width:auto
+}
+.s_member_b h3 {
+	font-size:14px;
+	font-weight:800
+}
+.s_member_b ul {
+	margin:0 20px 10px
+}
+.s_member_b h2 {
+	display:block;
+	line-height:200px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_input.png) no-repeat 0 -145px;
+	overflow:hidden;
+	height:50px
+}
+.s_member_b .login_other {
+	margin:10px 0 0;
+	padding:0 0 0 30px
+}
+.s_member_b .login_other a {
+	display:block;
+	float:left;
+	height:16px;
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/login/login_ib_other.png) no-repeat 0 0;
+	padding-left:20px;
+	line-height:18px;
+	overflow:hidden;
+	width:100px;
+	margin:0 0 8px
+}
+.s_member_b .login_other a.lo_sina {
+	background-position:0 0;
+	width:115px
+}
+.s_member_b .login_other a.lo_ren {
+	background-position:0 -16px;
+	width:115px
+}
+.s_member_b .login_other a.lo_qq {
+	background-position:0 -32px
+}
+.s_member_b .login_other a.lo_kaixin {
+	background-position:0 -50px
+}
+.s_member_b .login_other a.lo_taobao {
+	background-position:0 -67px;
+	width:115px
+}
+.s_member_b .login_other a.lo_baidu {
+	background-position:0 -84px
+}
+.s_member_b h2.bgb {
+	background:url(http://pic.baa.bitautotech.com/webpic/ibitauto/zh_login_ibg.gif) no-repeat scroll -131px 0;
+	margin-bottom:3px
+}
+.s_member_b .zhijiedenglu {
+	background:url(http://img3.baa.bitautotech.com/webpic/login/h2_bg2.gif) repeat-x scroll 0 0;
+	padding:20px 0 0;
+	height:100px
+}
+.s_member_b .zhijiedenglu h3 {
+	font-size:12px;
+	font-weight:400
+}
+.s_member_b .s_member_b_reg {
+	position:absolute;
+	right:0;
+	top:20px
+}
+.baa_tips {
+	width:354px;
+	height:345px;
+	margin:20px 0 0 0;
+	display:inline;
+	float:left;
+	background:url(http://image.bitauto.com/uimg/index120401/images/baa_tips.png) 0 0 no-repeat;
+	padding:60px 0 0 0
+}
+.baa_tips p {
+	font-size:14px;
+	width:238px;
+	margin:0 auto 20px;
+	line-height:1.7
+}
+.car_random span a, .car_random span span {
+	text-align:center;
+	float:left;
+	height:22px;
+	line-height:22px;
+	background:url(http://image.bitauto.com/uimg/index120401/images/repeat120928.png) 0 -234px repeat-x;
+	color:#fff;
+	padding:0;
+	margin:0 2px;
+	width:48px
+}
+.car_random span span.nolink {
+	background:#a8a8aa
+}
+.hot_model_list dl dd {
+	width:130px
+}
+.hot_model_list dd img {
+	margin:0
+}
+.hot_model_list dd em {
+	margin-top:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	padding:0 0 0 5px;
+	width:40px
+}
+.hot_model_list dd em span {
+	color:#999;
+	font-weight:bold;
+	display:block
+}
+.hot_model_list dd.hotlogo {
+	border-left:1px #e2e2e2 solid;
+	width:35px;
+	padding:0 0 0 5px
+}
+.close_festival {
+	display:none
+}
+
+
+#daohang ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	line-height:30px; height:30px; text-align:center;
+}
+
+#daohang ul li {
+	padding: 0px;
+	float: left;
+	height: 30px;
+	width: 100px;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 0px; line-height:30px; text-align:center; 
+	font-size:14px;
+	
+}
+#daohang ul li.li1 {
+	padding: 0px;
+	float: left;
+	height: 30px;
+	width: 100px;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 0px; line-height:30px; text-align:center; 
+	font-size:13px; background-color:#FFF;
+	
+	
+}
+#daohang ul li a{ color:#FFF; text-decoration:none;
+	
+}
+
+.catelist {
+    margin: 12px 20px 12px 0;
+    overflow: hidden;
+    padding-left: 55px;
+    position: relative;
+}
+.lable {
+    left: 0;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    width: 55px;
+}
+.catelist li {
+    display: inline;
+    list-style: none outside none;
+    margin: 0 10px 3px 0;
+    vertical-align: top;
+}
+.catelist .current a{
+	background-color: #00C7C7;
+    color: #FFFFFF;
+}
+.article {
+	text-align:center;
+}
+
+.header_style .location{
+	float: left;
+    margin: 15px 12px 0 0;
+    position: relative;
+	z-index:535;
+}
+.header_style .phone{
+	float: left;
+	color:#3366ff;
+    margin-top: -4px;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.header_style .loc-btn {
+    background-position: 0 -181px;
+    cursor: pointer;
+    float: left;
+    padding-left: 2px;
+}
+.header_style .loc-btn, .header_style .loc-btn .txt {
+    background-image: url("http://si1.s1.dpfile.com/s/c/app/main/i/base-old/header.85516d44fde589b9564d3fcc48a4bb17.png");
+    background-repeat: no-repeat;
+}
+
+.header_style a {
+    color: #61646E;
+}
+
+.header_style .loc-btn .txt {
+    background-position: right -181px;
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 36px 0 5px;
+}
+
+.pp_location {
+    left: 0;
+    overflow: hidden;
+    top: 26px;
+    width: 150px;/*100px*/
+}
+.pop-panel {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #F8CFA5;
+    color: #61646E;
+    padding: 5px 9px;
+    position: absolute;
+}
+.pp_location dl {
+    border-bottom: 1px dashed #E4E4E4;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+.pp_location dt {
+    color: #999999;
+    float: left;
+    width: 60px;
+}
+.pp_location dd {
+    margin-left: 60px;
+    margin-right: -10px;
+}
+.Fix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+}
+.pp_location li {
+    float: left;
+    margin: 0 5px 1px 0;
+    width: auto;/*48px*/
+}

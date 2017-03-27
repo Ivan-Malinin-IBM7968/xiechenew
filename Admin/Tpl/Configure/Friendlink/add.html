@@ -1,0 +1,29 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <div class="content">
+        <div class="title">新增友情链接[ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1" action="__URL__/insert" enctype="multipart/form-data">
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight tTop">标题：</TD>
+                    <TD class="tLeft"><input type="text" name="name"  class="large bLeftRequire"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">链接地址：</TD>
+                    <TD class="tLeft"><input type="text" name="link"  class="large bLeftRequire"><font color="red">(必须以http:// 开头！！)</font></TD>
+                </TR>
+                <TR>
+                    <TD class="center" cols="2">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

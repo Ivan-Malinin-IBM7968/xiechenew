@@ -1,0 +1,221 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ThinkPHP示例：Hello,ThinkPHP</title>
+    <link href="../Public/css.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/think/jquery-1.6.2.min.js"></script>
+    <script src="__PUBLIC__/think/jquery.think.js"></script>
+
+    <script>
+        $(function(){
+            Think.init({
+                basePath:"__PUBLIC__/think"
+            });
+        });
+
+		function fleshVerify(){ 
+		//重载验证码
+		var timenow = new Date().getTime();
+		$('#verifyImg').attr("src",'__URL__/verify/'+timenow);
+
+}
+
+
+    </script>
+</head>
+<body>
+<div class="main">
+<table align="center">
+    <form action="__APP__/member/register" method="post">
+    <tr>
+        <td>用户名</td><td><input type="text" name="username" id="username"/>
+        × </td>
+    </tr>
+    <tr>
+        <td>密码</td><td><input type="password" name="password" id="password">
+          ×</td>
+
+    </tr>
+        <tr>
+            <td>再输入一次密码</td><td><input type="password" name="repassword" id="repassword">
+              ×</td>
+        </tr>
+    <tr>
+        <td>邮箱</td><td><input type="text" name="email" id="email"/>
+          × </td>
+    </tr>
+    <tr>
+        <td>手机号码</td>
+        <td nowrap><input type="text" name="mobile" id="mobile"/>
+        ×方便您接收订单确认信息 </td>
+    </tr>
+    <tr>
+        <td>选择城市</td>
+        <td>
+            <select location="loc" label="省"  name="prov"></select>
+            <select location="loc" label="市" name="city"></select>
+            <select location="loc" label="区" name="area"></select>
+        </td>
+    </tr>
+	<tr>
+		<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js"></script>
+<div style="display:block;" id="div_SearchCar" class="select_box"><!--当不显示时style="display:none"-->
+<tr>
+<th>品牌</th>
+<td>
+<select onChange="comp_brlist('brandbox','seriesbox','','modelbox');" name="brand_id" id="brandbox">
+        </select>
+</td>
+</tr>
+<tr>
+<th>车系</th>
+<td>
+<select disabled="" onChange="comp_splist('brandbox', 'seriesbox','', 'modelbox');" name="series_id" id="seriesbox">
+			
+		<option value="">选择车系</option></select>
+</td>
+</tr>
+<tr>
+<th>车型</th>
+<td>
+<select disabled="" name="model_id" id="modelbox">
+			
+		<option value="">选择车型</option></select>
+</td>
+</tr>
+</div>
+<tr>
+<th>给车取个昵称</th>
+<td><input type="text" name="car_name"></td>
+</tr>
+	 <script type="text/javascript">
+comp_fctlist("brandbox", "seriesbox", "", "modelbox");
+</script>
+	</tr>
+    <tr>
+        <td>验证码：</td><td><input type="text" class="small bLeftRequire" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__URL__/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle"></td>
+    </tr>
+    <tr>
+        <td colspan=2 align="center"><input type="submit" value="注册"></td>
+    </tr>
+    </form>
+</table>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<layout name='layout' />
+
+<script src="__PUBLIC__/think/jquery.think.js"></script>
+
+    <script>
+		function fleshVerify(){ 
+		//重载验证码
+		var timenow = new Date().getTime();
+		$('#verifyImg').attr("src",'__APP__/common/verify/'+timenow);
+
+		}
+    </script>
+
+<div class="bodybgwrap">
+  <div class="wrapbox">
+    <div class="ht10"></div>
+		<style>
+	.userbox {
+  background: url("") repeat-y scroll 0 0 transparent;
+  border: 1px solid #F18E16;
+  height: auto;
+  margin: 0 auto;
+  width: 958px;
+}
+	</style>
+    <div class="userbox">
+      	<!--<div class="sidebar">
+        <ul class="Menu">
+
+          <eq name="getmenuaction.0" value="note"><li class="act"><else/><li></eq> <a href="__APP__/note"> <img src="__PUBLIC__/note/images/ico01.png" />
+            <div class="left"> <strong class="f16">我要记账</strong> <span class="f6">我要记账</span> </div>
+            </a> </li>
+          <eq name="getmenuaction.0" value="myhome"><li class="act"><else/><li></eq> <a href="__APP__/myhome"> <img src="__PUBLIC__/note/images/ico02.png" />
+            <div class="left"> <strong class="f16">油耗明细</strong> <span class="f6">油耗明细</span> </div>
+            </a> </li>
+          <eq name="getmenuaction.0" value="order"><li class="act"><else/><li></eq> <a href="__APP__/order"> <img src="__PUBLIC__/note/images/ico03.png" />
+            <div class="left"> <strong class="f16">我要预约</strong> <span class="f6">我要预约</span> </div>
+            </a> </li>
+        </ul>
+        <div class="clear"></div>
+      </div>-->
+
+        <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 帐户信息 </div>
+        <div class="userjzbar14"></div>
+		<div class="uc-inner">
+			<ul class="tag01">
+				<li class="act">用户注册</li>
+			</ul>
+			<form action="__APP__/public/logincheck" method="post">
+                                <h2>
+                                    用户注册</h2>
+                                <div class="add-form">
+                                <dl>
+                                    <dt>
+                                        <label>
+                                            用户名</label></dt><dd><input name="username" id="username" type="text"  class="w3 inp01"/></dd></dl>
+                                <dl>
+                                    <dt>
+                                        <label>
+                                            密码</label></dt><dd><input name="password" type="password" id="password" class="w3 inp01" /></dd></dl>
+								<dl>
+                                    <dt>
+                                        <label>
+                                            请确认密码</label></dt><dd><input name="repassword" type="password" id="repassword" class="w3 inp01"/></dd></dl>
+								<dl>
+                                    <dt>
+                                        <label>
+                                            邮箱</label></dt><dd><input type="text" name="email" id="email" class="w3 inp01"/></dd></dl>
+								<dl>
+                                    <dt>
+                                        <label>
+                                            电话</label></dt><dd><input type="text" name="mobile" id="mobile" class="w3 inp01"/></dd></dl>
+								<dl>
+                                    <dt>
+                                        <label>
+                                            请再次输入密码</label></dt><dd><input name="repassword" type="password" id="repassword" class="w3 inp01"/></dd></dl>
+								<dl>
+                                    <dt>
+                                        <label>
+                                            请再次输入密码</label></dt><dd><input name="repassword" type="password" id="repassword" class="w3 inp01"/></dd></dl>
+                                <dl>
+                                    <dt>
+                                        <label>
+                                            验证码</label></dt><dd><input type="text" class="small bLeftRequire w3 inp01" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__APP__/common/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle">
+                                            </dd>
+                                </dl>
+                                <div class="clear">
+                                </div>
+                                <div class="form-footer">
+                                    <input type="submit" style="width: 80px; height: 30px; line-height: 30px; font-size: 14px;
+                                        font-weight: bold;" class="button-default" value="登陆" />
+								
+                                </div>
+			</form>
+                                </div>
+                            </div>
+				
+		
+      </div>
+      <div class="clear"></div>
+      </div>
+	  <div class="userfootbg"></div>
+	</div>
+</div>
+<div class="clear"></div>

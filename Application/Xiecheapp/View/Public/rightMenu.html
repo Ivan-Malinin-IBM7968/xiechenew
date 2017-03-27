@@ -1,0 +1,104 @@
+<div class="fixedright">
+
+    <div class="returnTop Top_kefu">
+        <div class="online_kefu" onclick="window.open('http://qiao.baidu.com/v3/?module=default&controller=im&action=index&ucid=6534618&type=n&siteid=3474866','_blank')"></div>
+        <div class="retopslide kefu move-arrow">
+        <a href="http://qiao.baidu.com/v3/?module=default&controller=im&action=index&ucid=6534618&type=n&siteid=3474866" target="_blank"> 在线客服</a>
+            <i>&nbsp;</i>
+        </div>
+    </div>
+    <div class="line Top_line"></div>
+    <div class="returnTop Top_order">
+        <div class="order_list"></div>
+        <div class="orderlist">
+            <p><a href="/myhome/carservice_order" target="_blank">保养订单</a></p>
+            
+            <p><a href="/myhome/shiguche_order" target="_blank">维修订单</a></p>
+
+            <p><a href="/myhome/coupon_order" target="_blank">团购订单</a></p>
+            
+            <i>&nbsp;</i>
+        </div>
+    </div>
+    <div class="returnTop Top_phone">
+        <div class="phone"></div>
+        <div class="phone2">
+            <span class="kefu_style">客服 400-660-2822</span>
+            <i>&nbsp;</i>
+        </div>
+    </div>
+    <div class="returnTop Top_chat">
+        <div class="erweima"></div>
+        <div class="retopslide2">
+            <div class="wechat"></div>
+            <i>&nbsp;</i>
+        </div>
+    </div>
+
+    <div class="returnTop Rtop">
+        <div class="retopico"></div>
+        <div class="retopslide return">
+            返回顶部
+            <i>&nbsp;</i>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".Rtop").hover(function () {
+            $(this).find(".retopico").css("background-color", "#1092e5");
+            $(this).find(".return").stop().show().animate({"right": "35px", "opacity": "1"});
+        }, function () {
+            $(this).find(".retopico").css("background-color", "none");
+            $(this).find(".return").stop().animate({"right": "100px", "opacity": "0"}, function () {
+                $(".return").hide();
+            });
+        });
+
+        $(".Top_chat").hover(function () {
+            $(this).find(".erweima").css("background-color", "#1092e5");
+            $(this).find(".retopslide2").show().stop().animate({"right": "35px", "opacity": "1"});
+        }, function () {
+            $(this).find(".erweima").css("background-color", "none");
+            $(this).find(".retopslide2").stop().animate({"right": "100px", "opacity": "0"}, function () {
+                $(".retopslide2").hide();
+            });
+        });
+
+        $(".Top_phone").hover(function () {
+            $(this).find(".phone").css("background-color", "#1092e5");
+            $(this).find(".phone2").stop().show().animate({"right": "35px", "opacity": "1"});
+        }, function () {
+            $(this).find(".phone").css("background-color", "");
+            $(this).find(".phone2").stop().animate({"right": "100px", "opacity": "0"}, function () {
+                $(".retopslide").hide();
+            });
+        });
+        $(".Top_order").hover(function () {
+            $(this).find(".order_list").css({"background": "url(__PUBLIC__/images/common/my_order2.png) center center no-repeat", "background-color": "#1092e5"});
+            $(this).find(".orderlist").show().stop().animate({"right": "35px", "opacity": "1"});
+        }, function () {
+            $(this).find(".order_list").css({"background": "url(__PUBLIC__/images/common/my_order.png) center center no-repeat", "background-color": ""});
+            $(this).find(".orderlist").stop().animate({"right": "100px", "opacity": "0"}, function () {
+                $(".orderlist").hide();
+            });
+        });
+
+//        $(".Top_kefu").hover(function () {
+//            $(this).find(".online_kefu").css("background-color", "#1092e5");
+//            $(this).find(".kefu").stop().show().animate({"right": "35px", "opacity": "1"});
+//        }, function () {
+//            $(this).find(".online_kefu").css("background-color", "");
+//            $(this).find(".kefu").stop().animate({"right": "100px", "opacity": "0"}, function () {
+//                $(".retopslide").hide();
+//            });
+//        });
+
+        $(".Rtop").click(function () {
+            $("html,body").animate({scrollTop: "0"});
+        });
+
+    });
+</script>
+

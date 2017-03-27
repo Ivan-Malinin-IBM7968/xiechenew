@@ -1,0 +1,111 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+	function checkname(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+	}
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">编辑库存 [ <A HREF="__URL__">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/do_edit">
+			<table cellpadding=3 cellspacing=3>
+				<tr>
+					<td class="tRight" >商品名称：</td>
+					<td class="tLeft" ><input type="hidden" value="{$list.id}" name="id"><input type="text" class="medium bLeftRequire" id="name" name="name" value="{$list.name}"></td>
+				</tr>
+				<tr>
+				<td class="tRight" >商品类别：</td>
+					<td class="tLeft" >
+						<select name="super_cate" class="large bLeftRequire">
+							<option value="1">机油</option>
+							<option value="2">机滤</option>
+							<option value="3">空气滤清器</option>
+							<option value="4">空调滤清器</option>
+						</select>
+					</td>
+				</tr>
+				<TR>
+                    <TD class="tRight" >采购单价：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="price" class="large bLeftRequire" name="price" value="{$list.price}">&nbsp;&nbsp;&nbsp;&nbsp;例如：100</TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >采购数量：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="num" class="large bLeftRequire" name="num" value="{$list.num}">&nbsp;&nbsp;&nbsp;&nbsp;例如：10</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >规格：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="unit" class="large bLeftRequire" name="norms" value="{$list.norms}">&nbsp;&nbsp;&nbsp;&nbsp;例如：4L</TD>
+                </TR>
+				
+                
+				<TR>
+                    <TD class="tRight" >供应商名称：</TD>
+                    <TD class="tLeft" >
+                   		<select name="supplier" class="large bLeftRequire">
+                   			<volist name="suppliers" id="vo">
+							<option value="{$vo.supplier}" <eq name="vo.supplier" value="$list.supplier"> selected</eq>>{$vo.supplier}</option>
+							</volist>
+						</select>	 
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >库存状态：</TD>
+                    <TD class="tLeft" >
+                   		<select name="store_status" class="large bLeftRequire">
+                   			<volist name="store_status" id="st" key="k">
+							<option value="{$k}" <eq name="list.store_status" value="$k"> selected</eq>>{$st}</option>
+							</volist>
+						</select>	 
+                    </TD>
+                </TR>
+				<tr>
+					<td class="tRight tTop">备  注：</td>
+					<td class="tLeft"><TEXTAREA class="large bLeft"  name="remark" rows="5" cols="57">{$list.remark}</textarea></td>
+				</tr>
+                <TR>
+                    <TD class="tRight" ></TD>
+                    <TD class="tLeft" ><input TYPE="button" value="提交" onclick="check()">&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="__URL__">返回</A></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+function check(){
+	var name = $('input[name=name]').val();
+	if(!name){
+		alert('必须填写商品名称');
+		return false;
+	}
+	var price = $('input[name=price]').val();
+	if(!price){
+		alert('必须填写采购单价');
+		return false;
+	}
+	var num = $('input[name=num]').val();
+	if(!num){
+		alert('必须填写采购数量');
+		return false;
+	}
+	var unit = $('input[name=norms]').val();
+	if(!unit){
+		alert('必须填写商品规格');
+		return false;
+	}
+	$('#form1').submit();
+}
+</script>

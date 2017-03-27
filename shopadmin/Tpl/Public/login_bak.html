@@ -1,0 +1,311 @@
+<!DOCTYPE html ><html ><head><meta charset="utf-8" /><title>携车网:4S店预约保养,保养团购,售后资讯,汽车售后服务网站</title><meta content="4S店预约保养,保养价格,事故理赔,工时费折扣,保养团购券,代金券,上海大众保养多少钱,奥迪保养多少钱,宝马保养多少钱" name="keywords"><meta content="携车网  (原名纵横携车网) 向广大车主提供汽车保养维修预约享受折扣服务，用车费用记录、油耗统计信息、车辆维修保养价格数据信息等，帮您轻松解决小保养、大保养、机油、机滤、刹车片、火花塞等汽车保养难题，是您选择养车服务的第一网络平台。"  name="description"><script type="text/javascript" src="/Public/Js/DatePicker/WdatePicker.js?v=20131225"></script><!--加载时间控件插件--><script type="text/javascript" src="/Public/Js/com.js?v=20131225"></script><link rel="shortcut icon" href="/Public/new_2/images/favicon.ico" type="image/x-icon"><link rel="stylesheet" type="text/css" href="/Public/new_2/css/common.css?v=20131225" /><script src="/Public/new_2/js/jquery.min.js" ></script><script src="/Public/new_2/js/jquery-ui-1.9.2.custom.min.js" ></script><link rel="stylesheet" href="/Public/new_2/css/redmond/jquery-ui-1.9.2.custom.css"><!-- ! GA track code start --><script src="/Public/new_2/js/ga.js" ></script><!-- ! GA track code end --></head><body ><!-- 头部Nav开始 --><div class='top-container'><a href="/index" id="logo-h1-con" title='携车网'><h1 id='logo'>携车网</h1></a><div class="cs"></div></div><div class="nav-container"><div class="nav"><ul class='main-nav'><li style="width:1px;border-left:none;"></li><li><a href="/index.php">首页</a></li><li ><a href="/order">4S店售后预约</a></li><li ><a href="/coupon">4S店售后团购</a></li><li ><a href="/noticelist">优惠速递</a></li><li ><a href="/articlelist">用车心得</a></li></ul></div></div><!-- 头部Nav结束 --><script src="/Public/new_2/js/jquery.min.js" ></script><script src="/Public/new_2/js/base.js" ></script><script type="text/javascript" src="/Public/Js/car_select/car_data.js?v=20131225"></script><script type="text/javascript" src="/Public/Js/car_select/normal.js?v=20131225"></script><script src="/Public/think/jquery.think.js?v=20131225"></script><link rel="stylesheet" type="text/css" href="/Public/new_2/css/index.css?v=20131225" /><style>  .gy a{
+
+  }
+  .gy a:visited{
+    color: #000000;
+  }
+  .gy a:hover{
+    text-decoration: underline;
+  }
+</style><script>  function fleshVerify(){ 
+  //重载验证码
+  var timenow = new Date().getTime();
+    $('#verifyImg').attr("src",'/common/verify/'+timenow);
+  }
+
+  function showid(id,name){
+    $('#address').val(name);
+    $('#shop_area').val(id);
+    $('#address_Shop').hide();
+    $('#ShopAddressDiv').hide();
+  }
+
+  function showid_1(id,name){
+    $('#address_1').val(name);
+    $('#shop_area_1').val(id);
+    $('#address_Shop_1').hide();
+    $('#ShopAddressDiv_1').hide();
+  }
+
+  function close_div(id){
+    if(id == 1){
+      $('#address_Shop').hide();
+      $('#ShopAddressDiv').hide();
+    }else{
+      $('#ShopName_div').hide();
+    }
+  }
+
+  function close_div_1(id){
+    if(id == 1){
+      $('#address_Shop_1').hide();
+      $('#ShopAddressDiv_1').hide();
+    }else{
+      $('#ShopName_div_1').hide();
+    }
+  }
+  
+  function giveshopname(id,name){
+    $('#text_shop_name').val(name);
+    $('#shop_name').val(name);
+    $('#ShopName_div').hide();
+    
+  }
+
+  function giveshopname_1(id,name){
+    $('#text_shop_name_1').val(name);
+    $('#shop_name_1').val(name);
+    $('#ShopName_div_1').hide();
+    
+  }
+  function showadress(){
+    if( this.value == '可选填')value=' ';
+    $('#address_Shop').show();
+    $('#ShopAddressDiv').show();
+    $.ajax({
+      type: "POST",
+      url: "/index-AjaxInfo",
+      cache: false,
+      data: "type=1",
+      success: function(data){
+        
+        var str = "<table width=100% border='0' align='center' cellpadding='1' cellspacing='13' style='text-align: center; '>";
+        data = eval("(" + data + ")");
+        var count = 1;
+        for(a=0;a<data.length;a++){
+          if(a%4==0){
+            str+="<tr>";
+          }
+          str+="<td ><a href='###' onclick=showid("+(data[a]['id'])+",'"+(data[a]['region_name'])+"');><font style='color:#666666;'>"+data[a]['region_name']+"</font></a></td>";
+          if(a!=0){
+            if(count%4==0){
+              str+="</tr>";
+            }
+          }
+          count++;
+        }
+        str+="</table>";
+        $('#ShopAddressDiv').html(str);
+
+      }
+    })
+  }
+
+
+  function showadress_1(){
+    if( this.value == '可选填')value=' ';
+    $('#address_Shop_1').show();
+    $('#ShopAddressDiv_1').show();
+    $.ajax({
+      type: "POST",
+      url: "/index-AjaxInfo",
+      cache: false,
+      data: "type=1",
+      success: function(data){
+        
+        var str = "<table width=100% border='0' align='center' cellpadding='1' cellspacing='13' style='text-align: center; '>";
+        data = eval("(" + data + ")");
+        var count = 1;
+        for(a=0;a<data.length;a++){
+          if(a%4==0){
+            str+="<tr>";
+          }
+          str+="<td ><a href='###' onclick=showid_1("+(data[a]['id'])+",'"+(data[a]['region_name'])+"');><font style='color:#666666;'>"+data[a]['region_name']+"</font></a></td>";
+          if(a!=0){
+            if(count%4==0){
+              str+="</tr>";
+            }
+          }
+          count++;
+        }
+        str+="</table>";
+        $('#ShopAddressDiv_1').html(str);
+
+      }
+    })
+  }
+    
+  function showshopname(){
+    var shopname = $('#text_shop_name').val();
+    shopname = shopname.trim();
+    if(shopname){
+    
+      $.ajax({
+        type: "POST",
+        url: "/index/AjaxInfo",
+        cache: false,
+        data: "type=2&shopname="+shopname,
+        success: function(data){
+          
+          var str = "<div style='TEXT-ALIGN: right;' style='height: 25px;'><a href='###' onclick='close_div(2);'>[关闭]</a>&nbsp;</div>";
+          str+= "<table width=100% border='0' align='left' cellpadding='1' cellspacing='10'>";
+          data = eval("(" + data + ")");
+          if(data){
+            for(a=0;a<data.length;a++){
+            str+="<tr  align='left'><td ><a href='###' onclick=giveshopname("+(data[a]['id'])+",'"+(data[a]['shop_name'])+"');><font style='color:#666666;'>"+data[a]['shop_name']+"</font></a></td></tr>";
+            }
+            str+="</table>";
+            $('#ShopName_div').show();
+            $('#ShopName_div').html(str);
+          }
+          
+
+        }
+      })
+    }
+    
+      
+  }
+
+  function showshopname_1(){
+    var shopname = $('#text_shop_name_1').val();
+    shopname = shopname.trim();
+    if(shopname){
+    
+      $.ajax({
+        type: "POST",
+        url: "/index/AjaxInfo",
+        cache: false,
+        data: "type=2&shopname="+shopname,
+        success: function(data){
+          var str = "<div style='TEXT-ALIGN: right;' style='height: 25px;'><a href='###' onclick='close_div_1(2);'>[关闭]</a>&nbsp;</div>";
+          str+= "<table width=100% border='0' align='left' cellpadding='1' cellspacing='10'>";
+          data = eval("(" + data + ")");
+          if(data){
+            for(a=0;a<data.length;a++){
+            str+="<tr  align='left'><td ><a href='###' onclick=giveshopname_1("+(data[a]['id'])+",'"+(data[a]['shop_name'])+"');><font style='color:#666666;'>"+data[a]['shop_name']+"</font></a></td></tr>";
+            }
+            str+="</table>";
+            $('#ShopName_div_1').show();
+            $('#ShopName_div_1').html(str);
+          }
+          
+
+        }
+      })
+    }
+    
+      
+  }
+
+  </script>
+<!-- <!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8" /> -->
+<title>{$Think.config.web_name}管理系统登录</title>
+<load href='__CSS__/reg_style.css' />
+<load href="__JS__/prototype.js" />
+<import file="Js.Base,Js.mootools,Js.Think.ThinkAjax,Js.PHP.php#min,Js.Form.CheckForm"  basepath="__PUBLIC__" />
+<script LANGUAGE="JavaScript">
+<!--
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__IMG__/loading2.gif', '__IMG__/ok.gif','__IMG__/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+	var timenow = new Date().getTime();
+	if (status==1)
+	{
+	$('result').innerHTML	=	'<span style="color:blue"><IMG SRC="__IMG__/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+	$('form1').reset();
+	window.location = '__APP__/Admin';
+	}else{
+		$('verifyImg').src= '__URL__/verify/'+timenow;
+	}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){ 
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+	if ( window != top){  window.top.location =window.location;}  
+
+//-->
+</script>
+</head>
+<body >  
+	<div class="header"> 
+	    <!--<a href="http://www.xieche.com.cn"><img src="/Public/new_2/images/logo.png" alt="携车网" class="logo" /></a>
+	    <div class="head_links">
+	如遇问题请拨打：400-660-2822</div>-->
+	</div>
+	<div class="content">
+<div style="width:960px; height:567px; background:url(__IMG__/login_bg1.jpg) no-repeat; float:left; margin-bottom:20px;">
+    	<div style="margin:155px 0 0 211px; text-align:left;">
+          <form METHOD=POST name="login" id="form1" >
+    	  <table width="230" border="0" cellspacing="0" cellpadding="0" onkeydown="if(event.keyCode==13) login(14);">
+    	   
+    	    <tr>
+    	      <td width="55" nowrap="nowrap">用户名：</td>
+    	      <td width="183" style="padding:3px 0px;"><input name="account" type="text" class="input" id="Top1_txtUserID" tabindex="2" value=""   /></td>
+  	      </tr>
+    	    <tr>
+    	      <td>密码：</td>
+    	      <td style="padding:3px 0px;"><input name="password" type="password" class="input" id="Top1_txtPassWord" tabindex="3" value="" maxlength="16" /></td>
+  	      </tr>
+    	    <tr>
+    	      <td>验证码：</td>
+    	      <td style="padding:3px 0px;"><input name="verify" onkeydown="keydown(event)" type="text" class="input" id="checkno" tabindex="6" value="" maxlength="5" /></td>
+  	      </tr>
+    	    <tr>
+    	      <td>&nbsp;</td>
+    	      <td style="padding:3px 0px;"><img id="verifyImg" SRC="__URL__/verify/" onclick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle"> 看不清换一张！</td>
+  	      </tr>
+    	    <tr>
+    	      <td height="44"><input type="hidden" name="ajax" value="1"></td>
+    	      <td><input type="button" id="registersubmit" name="registersubmit" value="登录" class="btn-submit" onclick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')" tabindex="6" /></td>
+  	      </tr>
+    	    <tr>
+    	      <td colspan="2" style="padding-left:40px; padding-top:52px;"><div id="result" class="result none"></div></td>
+   	        </tr>
+  	    </table>
+          </form>
+    	</div>
+    </div>
+  </div>
+<div class="clear"></div>
+<!-- <div id="footer" style="color:#373737;"> <a href="http://www.xieche.com.cn/about/4" target="_blank">关于我们</a> | <a href="http://www.xieche.com.cn/about/16" target="_blank">联系我们</a> | <a href="http://www.xieche.com.cn/about/24" target="_blank">服务协议</a> | <a href="http://www.xieche.com.cn/about/9" target="_blank">如何预约维修保养 </a>  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0d740edec6aa44f44b27ad6609216d3d' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<br />
+    Copyright © 2012 WWW.XIECHE.COM.CN 携车网 版权所有<br>
+    
+</div>
+
+</div>
+
+<div class="icpbox"> 
+<span>沪ICP备12017241号</span></div>
+
+
+</body>
+</html> -->
+
+<div class="w1200 footer"><ul class="row gy"><li><a href="/about/4" target="_blank">关于我们</a>|</li><li><a href="/about/16" target="_blank">联系我们</a>|</li><li><a href="/about/24" target="_blank">服务协议</a>|</li><li><a href="/about/9" target="_blank">如何预约维修保养 </a></li></ul><div class="row ba">
+        Copyright <a href="/Colligate/index" target="_blank">©</a>2013 WWW.XIECHE.COM.CN <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备12017241号</a> 携车网 版权所有<a href=""><!-- Start Alexa Certify Javascript --><script type="text/javascript">
+        _atrk_opts = { atrk_acct:"blklh1aMQV00iP", domain:"xieche.com.cn",dynamic: true};
+        (function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+        </script><noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=blklh1aMQV00iP" style="display:none" height="1" width="1" alt="" /></noscript><!-- End Alexa Certify Javascript --><br class="clear"></div><div class="row fi"><ul><li class="t1"><a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121109104613460" title="经营性网站备案信息" target="_blank"></a></li><li class="t2"><a href="http://webscan.360.cn/index/checkwebsite/url/www.xieche.net" title="360网站安全检测" target="_blank"></a></li><li class='t3'><a href="http://www.zx110.org/" title="征信网" target="_blank"></a></li><li class="t4"><a href="http://www.alipay.com/"></a></li></ul></div><div class="clear"></div></div><div style="text-align:center"><!--新加的百度统计--><script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F60969e039f9a2a7252a22e6e27e9f16f' type='text/javascript'%3E%3C/script%3E"));
+    </script><!--新加的百度统计结束--><!--CNZZ--><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5724214'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/stat.php%3Fid%3D5724214%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div><!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MFHJWV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MFHJWV');
+  </script><!-- End Google Tag Manager --></body></html>

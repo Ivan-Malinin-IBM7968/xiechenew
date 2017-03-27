@@ -1,0 +1,116 @@
+﻿/*快速提问弹出层2011-09-09------------*/
+.qcBox{border-right:3px solid #b2b2b2;border-bottom:3px solid #b2b2b2;width:660px;}
+.qc_cont .tj{background:url(http://images.webcars.com.cn/askweb/images_2011/bg.gif) no-repeat;}
+.qc{border:1px solid #5caed6;background:#fff;height:100%;}
+.qc_header{background:url(http://images.webcars.com.cn/askweb/images_2011/bg03.gif) repeat-x top;height:38px;}
+.qc_header ul{border-bottom:1px solid #5caed6;height:30px;line-height:30px;_height:29px;_line-height:29px;font-size:14px;text-align:center;padding-top:7px;margin:0 3px;position:relative;z-index:1;}
+.qc_header .cur{border:1px solid #5caed6;border-bottom:1px solid #fff;background:#fff;font-weight:bold;padding:0 15px;_margin-bottom:-1px;margin-top:-1px;*margin-top:0px;position:relative;z-index:2;}
+.qc_header .close{background:url(http://images.webcars.com.cn/askweb/images_2011/close.gif) no-repeat;width:19px;height:19px;display:block;cursor:pointer;}
+.qc_header li{margin:0 5px;}
+.qc_cont ul{margin:5px 0;width:100%;display:block;position:relative;}
+.qc_cont {border:3px solid #c0dcf4;border-top:none;text-align:left;padding:10px 5px;text-align:left;}
+.qc_cont_fl{width:80px;font-size:14px;text-align:right;display:block;}
+.qc_cont_fr{width:390px;}
+.qc_cont_fr input,.qc_cont_fr textarea{border:1px solid #b0d9eb;width:385px;overflow:hidden;}
+.qc_cont .redColor{color:#cc0202;margin-right:3px;}
+.qc_cont_fr input{height:25px;line-height:25px;}
+.qc_cont_fr input.yzm{width:100px;margin:0 5px 0 0}
+.qc_cont_fr textarea{height:160px;}
+.qc_cont .tj{background-position:0 0;width:103px;height:27px;border:none;cursor:pointer;color:#fff;font-weight:bold;font-size:14px;margin:15px 0 20px 80px;}
+.qc_pos{position:absolute;top:-5px;right:0;line-height:16px;width:155px;background:#fffde4;border:1px solid #fbbf67;padding:5px;}
+.qc_pos ul{margin:0}
+.qc_posn{position:absolute;top:10px;right:164px;background:url(http://images.webcars.com.cn/askweb/images_2011/bg04.gif) no-repeat;width:7px;height:11px;}
+.qc_pos .dui,.qc_pos .cuo{background:url(http://images.webcars.com.cn/askweb/images_2011/bg05.gif) no-repeat;}
+.qc_pos .dui{background:url(http://images.webcars.com.cn/askweb/images_2011/bg05.gif) no-repeat;text-indent:2em;}
+.qc_pos .cuo{background:url(http://images.webcars.com.cn/askweb/images_2011/bg06.gif) no-repeat;text-indent:2em;}
+/*提交问题页2011-09-09*/
+.tjBox{border:1px solid #5caed6;height:100%;}
+.question_tj{background:url(http://images.webcars.com.cn/askweb/images_2011/bg07.gif) #fff repeat-x top;border:1px solid #fff;}
+.question_tj .qc_header{background:url(http://images.webcars.com.cn/askweb/images_2011/bg08.gif) no-repeat 45px 0;height:69px;}
+.question_tj .qc_cont{border:none;margin:20px 140px 20px 90px;}
+.question_tj .qc_cont h2{font-weight:bold;font-size:14px;border-bottom:2px solid #b0d9eb;margin-bottom:10px;padding-bottom:5px;}
+.question_tj .qc_cont h2 .redColora{color:#CC0202;}
+.question_tj .qc_pos{width:250px;right:-75px;}
+.question_tj .mtnew{top:45px}
+.question_tj .qc_posn{right:260px;}
+.question_tj .qc_cont_fr input, .question_tj .qc_cont_fr textarea{width:455px;}
+.question_tj .qc_cont_fr{width:475px;}
+.qc_cont_fr input.check,.qc_cont .radio input{width:auto;margin:0 5px;border:none;}
+.question_tj .qc_cont_fr input.codewidth{width:100px;margin:0 5px 0 0}
+.question_tj .qc_cont_fr input.dx{width:200px}
+
+/*专家介绍2011-09-27*/
+.expert{}
+.expert h2{background:url(http://images.webcars.com.cn/askweb/images_2011/ebg.gif) repeat-x;text-align:left;height:30px;border-bottom:1px solid #85a9cd;line-height:30px;font-weight:bold;font-size:14px;padding-left:15px;}
+.expert_l{float:left;display:inline;width:110px;padding:5px 10px 5px 10px;margin:10px;height:200px;background:url(http://images.webcars.com.cn/askweb/images_2011/ebg2.gif) #f0f0f0 repeat-x top;}
+.expert_r{float:left;display:inline;margin:10px 10px 10px 0;}
+.expert_tw,.expert_gz{background:url(http://images.webcars.com.cn/askweb/images_2011/bg.gif) no-repeat;width:70px;height:21px;line-height:21px;}
+.expert_tw{background-position:-110px 0;display:block;}
+.expert_gz{background-position:-182px 0;display:block;}
+.expert_tw:link,.expert_tw:visited,.expert_gz:link,.expert_gz:visited{color:#fff;}
+.expert_l .expert_tw,.expert_l .expert_gz{margin:5px 0 5px 15px;}
+.expert_num{border-bottom:1px solid #fddfa3;font-size:14px;}
+.expert_num li{float:left;border-right:1px dashed #e0c343;padding:0 0 0 10px;width:80px;}
+.expert_num li.expert_fs{background:url(http://images.webcars.com.cn/askweb/images_2011/ebg3.gif) no-repeat;text-align:center;margin-left:-1px;border:1px solid #fee0a4;border-bottom:none;float:right;width:80px;padding:0;}
+.expert_num li.expert_fs .redColorcc{font-weight:bold;}
+.expert_cont{text-align:left;line-height:20px;position:relative;}
+.expert_cont h3{width:400px;}
+.expert_cont_pm{position:absolute;right:0;top:0px;width:85px;text-align:center;}
+.expert_cont_pm_01,.expert_cont_pm_02,.expert_cont_pm_03{background:url(http://images.webcars.com.cn/askweb/images_2011/epm_jin.gif) no-repeat;width:83px;height:104px}
+.expert_cont_pm_01{background-position:0 0}
+.expert_cont_pm_02{background-position:-87px 0}
+.expert_cont_pm_03{background-position:-170px 0}
+/*经销商名片2011-09-27*/
+.expert_mp{border:3px solid #c8dcf4;word-wrap:break-word;}
+.expert_mp .blueLine{border:1px solid #86a7d2;padding:5px;background:#f3f8fe;text-align:left;}
+.expert_mp h2{border-bottom:1px solid #b0cdf5;font-size:14px;font-weight:bold;text-align:left;padding-left:15px;}
+.expert_mp ul{padding:10px 15px;line-height:22px;border-top:1px solid #fff;}
+.expert_mp li{overflow:hidden;height:22px;word-wrap:break-word;}
+.expert_mp .telBox{background:url(http://images.webcars.com.cn/askweb/images_2011/tel.gif) no-repeat 15px 3px;padding:0 0 15px 15px;border-bottom:1px solid #b0cdf5;}
+.tel_num{font-family:Arial;font-size:18px;font-weight:bold;color:#CC0001}
+.telBox dl{margin:0 0 0 45px;}
+.tel_num_v{background:url(http://images.webcars.com.cn/askweb/images_2011/tel_v.gif) no-repeat;width:17px;height:13px;display:block;float:left;}
+/*粉丝2011-09-27*/
+.fensi{}
+.fensi h2,.fensiGroup h2{background:url(http://images.webcars.com.cn/askweb/images_2011/ebg4.gif) repeat-x;height:30px;border-bottom:1px solid #fdad78;color:#cd0001;font-size:14px;padding:0 10px;text-align:left;line-height:30px;}
+.fensi .more{font-size:12px;float:right;display:block;}
+.fensi strong{float:left;}
+.fensi .more:link,.fensi .more:visited{color:#cc0000}
+.fensi ul{margin:10px 0 0 0}
+.fensi li{float:left;width:50px;margin:0 8px 10px 8px;display:inline;}
+.fensi .name{height:24px;overflow:hidden;display:block;}
+.fensiGroup ul{margin:10px 0 0 0}
+.fensiGroup li{float:left;display:inline;width:100px;line-height:20px;margin:8px 19px;}
+.fensiGroup h3{height:20px;overflow:hidden;}
+.fensiGroup li.line{background:url(http://images.webcars.com.cn/askweb/images_2011/dot_gray.gif) repeat-x;height:5px;width:660px;}
+
+/*页面纠错css*/
+.titErrorReport h2{background:url("/askweb/images_2011/bgi_ErrorReport.gif") 0 0 repeat-x;border-bottom:solid 1px #BAE4FA;line-height:31px;color:#000}
+.ErrorReport{padding:30px 130px 30px 40px;font-family:Tahoma;line-height:26px;}
+.ErrorReport dl{width:100%;margin:0;padding:0;}
+.ErrorReport dt{width:21%;float:left;text-align:right;}
+.ErrorReport dd{width:78.9%;text-align:left;float:left;}
+.ErrorReport dd span{color:#757575;display:inline-block;}
+.border_input,.ErrorReport font input,.ErrorReport select{border:solid 1px #7295B3;margin:0px;padding:0px;}
+.checkbox_Error{margin:0 3px;padding:0;width:13px;height:13px;vertical-align:middle;*vertical-align:baseline;}
+.line_ErrorReport{border-top:solid 1px #71CAF4;margin-top:13px;padding:13px 0 18px;color:#000;}
+.btn_ErrorReport{background:url("/askweb/images_2011/btn_ErrorReport.gif") 0 0 no-repeat;width:87px;height:28px;border:none;cursor:pointer;font-size:12px;color:#fff;}
+.ErrorReportinput1{width:250px;}
+.ErrorReportinput2{width:200px;}
+.ErrorReport dd span.red{color:#f00;}
+/*手机版*/
+.AskwebMobile{background:url("/askweb/images_2011/MobileBgi.gif") 0 0 repeat-x #fff;padding:40px;}
+.AskwebMobileImg {float:left;width:498px;margin:0px;}
+.AskwebMobileRight{float:left;padding-top:5px;padding-left:25px;width:377px;text-align:left;}
+.AskwebMobileRight h2{background:url("/askweb/images_2011/Mobile_sprites.gif") 0 0 no-repeat;text-indent:-9999px;width:340px;height:33px;margin-bottom:18px;}
+.AskwebMobileRight h3{background-image:url("/askweb/images_2011/Mobile_sprites.gif");background-repeat:no-repeat;text-indent:-9999px;width:251px;height:45px;margin-bottom:20px;}
+.AskwebMobileRight h3.text1{background-position: 0 -40px;}
+.AskwebMobileRight h3.text2{background-position: 0 -95px;}
+.AskwebMobileList li{float:left;width:175px;padding-right:10px;font-size:14px;line-height:22px;text-align:left;margin-bottom:14px;}
+.AskwebMobileList a{background-image:url("/askweb/images_2011/Mobile_sprites.gif");background-repeat:no-repeat;width:120px;height:41px;display:block;border:none;text-indent:-9999px;margin-bottom:5px;}
+.icon_iphone{background-position:0 -147px;}
+.icon_ipad{background-position:-140px -147px;}
+.icon_wap{background-position:0 -198px;}
+.icon_android{background-position:-140px -198px;}
+.AskwebMobileList p{text-indent:0.3em;}
+.AskwebMobileList .colorgray{color:#999;}

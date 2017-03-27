@@ -1,0 +1,43 @@
+/*all page css*/
+
+.groupd{background-color:#fbfaf8; overflow: hidden;}
+.groupd-1{padding-top:36px;padding-bottom:40px;}
+.groupd-1-1{padding-bottom:26px;font-size:16px}
+.groupd-2{padding-left:20px}
+.groupd-3{color:#ff4a00;font-size: 16px;font-weight: 500;}
+.groupd-4{padding-left:20px;color:#35548c;font-size:16px;text-decoration:underline}
+.groupd-5{color:#35548c; margin: 18px 0; overflow: hidden; font-size: 16px;}
+.groupd-5 span{color:#ff5b25;font-size: 16px;font-weight: 500;}
+.groupd-6{height:35px;line-height:35px; margin: 18px 0; font-size: 16px;}
+.groupd-6-1{padding-left:100px}
+.groupd-6 .fl{padding-right:10px;font-size:16px}
+.groupd-buy{margin-top: 15px; overflow: hidden;}
+.groupd-7{display:block;background-color:#f05525;color:#ffffff;width:240px;height:60px;line-height:60px;cursor:pointer;font-size:16px}
+.groupd-7 a{color: #FFFFFF; display: block;}
+.groupd-7 a:hover{text-decoration: none;}
+.groupd-7-1{width:300px; font-size:16px; margin: 18px 0;}
+.groupd-7-2{font-size:18px;color:#ff5b25; padding-left: 10px;}
+h3.groupd-title{overflow: hidden; font-size: 22px; letter-spacing: 1px; margin: 5px 0 30px;}
+h3.groupd-shopname{margin: 18px 0; overflow: hidden; font-size: 16px;}
+h3.groupd-phone{margin: 18px 0; overflow: hidden; font-size: 16px;}
+.groupd-12 .fl{padding-right:50px;padding-bottom:20px}
+.groupd-11-t{text-indent:15px;margin-top:10px;font-weight:bold}
+
+.groupd-14{overflow: hidden; margin: 0 0 50px;}
+.oneyh{
+	overflow: hidden;
+	margin-bottom: 15px;
+	margin-top:30px
+}
+
+.oneyh h3{}
+
+.oneyh table span{
+	color: #ff4a00;
+}
+
+.groupd-8{padding:30px 0px 10px 0px}
+.oneyh h4{padding-bottom:10px}
+.groupd-1 h5{color:#19293d;padding:10px 0px}
+.groupd-13{padding:20px 0px}
+.font-18{font-size:16px; margin-top: 18px 0;}

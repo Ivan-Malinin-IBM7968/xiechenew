@@ -1,0 +1,38 @@
+.repair_ul {
+    background-color: #eaeeed;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+}
+.cur {
+    background-color: #ffffff;
+	border-top:4px solid #19293b;
+	line-height: 36px;
+}
+.repair_li {
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    width: 120px;
+}
+a.repair_s{display:block;float:left;padding:2px 16px;margin:30px 20px}
+a.repair_s_cur{background-color:#19293b;color:#ffffff}
+.table tbody > tr > th, .table tbody > tr > td {
+    color: #000000;
+	background-color:#ffffff;
+	text-align: center;
+}
+.table tbody > tr > th{background-color:#f6f6f6}
+.table p{margin:5px 0px}
+.Mcomment{overflow: hidden; padding: 15px; background-color: #eaeeed; width: 710px; height: 275px; position: fixed; left: 50%; top: 50%; margin: -138px 0 0 -355px; display: none;}
+.Mcc{overflow: hidden; width: 680px; background-color: #FFFFFF;}
+.Mcctop{overflow: hidden; border-bottom: 1px solid #eaeeed; margin: 0 0 15px; padding: 0 15px; height: 30px; line-height: 33px;}
+.Mcccon{overflow: hidden; padding: 0 15px;}
+.Mcccon textarea{width: 650px; height: 150px; border: 1px solid #dcdcdc; padding: 0 5px;}
+.Mcccon p{padding: 10px 0 0; overflow: hidden;}
+.Mcccon p a{width: 60px; height: 30px; background-color: #19283b; color: #FFFFFF; line-height: 30px; text-align: center;}
+.Mcccon p a:hover{text-decoration: none;}
+.Mccstar{overflow: hidden;}
+.Mccstar ul{overflow: hidden;}
+.Mccstar ul li{float: left; width: 27px; height: 30px; background: url(../images/car4s/0.png) 0 0 no-repeat; cursor: pointer;}
+.Mccstar ul li.current{background-image: url(../images/car4s/10.png);}

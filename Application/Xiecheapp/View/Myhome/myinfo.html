@@ -1,0 +1,76 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="myxinxi">
+			<div class="myxxtop">
+				<ul>
+					<li class="current"><a href="/myhome/myinfo.html">我的信息</a></li>
+					<li><a href="/myhome/my_safe.html">账户安全</a></li>
+				</ul>
+			</div>
+			<div class="myxxcon">
+				<form action="/myhome/update_user"  method="post">
+					<table>
+						<tbody>
+							<tr height="50">
+								<td>用户名：</td>
+								<td><input type="text" name="username" class="xxinput" value="{$member.username}" /></td>
+							</tr>
+							<tr height="50">
+								<td>绑定手机号：</td>
+								<td><input type="text" name="mobile" class="xxinput" value="{$member.mobile}" /></td>
+							</tr>
+							<tr height="50">
+								<td>我的车辆：</td>
+								<td><input type="text" name="" style="border:none; background:none; width:260px;" readonly="false" value="{$carName}"/> <a href="javascript:;" class="car-select">修改</a></td>
+							</tr>
+							<tr height="50">
+								<td>我的邮箱：</td>
+								<td><input type="text" name="email" class="xxinput" value="{$member.email}" /></td>
+							</tr>
+							<tr height="50">
+								<td>我的地址：</td>
+								<td><input type="text" name="address" class="xxinput" value="{$member.prov}-{$member.city}-{$member.area}" /></td>
+							</tr>
+							<tr height="50">
+								<td></td>
+								<td><input type="submit" value="确认提交" class="xxsubmit"></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.myxinxi{background: #f6f6f6; overflow: hidden; margin-bottom: 20px;}
+	.myxxtop{height: 40px; background: #dee4eb;}
+	.myxxtop ul{overflow: hidden;}
+	.myxxtop ul li{float: left; width: 100px; text-align: center;}
+	.myxxtop ul li.current{background: #ff5651;}
+	.myxxtop ul li a{display: inline-block; width: 100px; height: 37px; margin-top: 3px; line-height: 36px;}
+	.myxxtop ul li.current a{ background: #f6f6f6;}
+
+	.myxxcon{padding: 20px; overflow: hidden; height: 500px;}
+	.myxxcon input.xxinput{width: 300px; height: 28px; line-height: 28px; border: 1px solid #000000; color: #aaaaaa; text-indent: 5px;}
+	.myxxcon input.xxsubmit{width: 200px; height: 30px; border: none; background: #ff5651; color: #FFFFFF;}
+
+</style>
+

@@ -1,0 +1,275 @@
+body {
+    background-color:#EBFAF7;
+}
+
+#coupon-top {
+    background: url('../images/index_base.jpg') no-repeat center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    width: 100%;
+    height: 0;
+    padding-top: 180%;
+}
+
+#coupon-list {
+    position:relative;
+    margin-top:-110%;
+    margin-left:5%;
+    margin-right:5%;
+}
+
+.coupon { 
+    background: url('../images/index_coupon.png') no-repeat;
+    /*-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;*/
+
+    background-size: 100% 100%;
+
+    width:90%;
+    margin-left:5%;
+    margin-bottom:5%;
+
+}
+
+.coupon-expired {
+    position: relative;
+    background: url('../images/index_coupon_expired.png') no-repeat;
+    background-size: 100% 100%;
+
+    width:90%;
+    margin-left:5%;
+    margin-bottom:5%;
+}
+
+.coupon-expired-left {
+    float: left;
+}
+
+.coupon-expired-right {
+    float: right;
+    margin-right: 20px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.coupon a {
+    color:inherit;
+}
+
+.coupon a:hover {
+     text-decoration:none; 
+}
+
+.coupon-name {
+    padding:10px 70px 0 0;
+    color:white;
+    font-size:15px;
+    text-align: center;
+}
+
+.coupon-expired-name {
+    font-size: 15px;
+    color: #FFFFFF;
+    margin: 10px 0 0 70px;
+    text-align: center;
+}
+
+.coupon-amount {
+    padding:0 70px 0 0;
+    color:#20766B;
+    font-size:10px;
+    text-align: center;
+}
+
+.coupon-expired-amount {
+    margin-left: 80px;
+    color:#20766B;
+    font-size:10px;
+    text-align: center;
+}
+
+.coupon-amount span, .coupon-expired-amount span {
+    font-size:22px;
+}
+.coupon-time {
+    padding:0 70px 10px 0;
+    color:#9AE1D8;
+    font-size:12px;
+}
+
+.coupon-expired-time {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    color:#9AE1D8;
+    font-size:12px;
+}
+
+.detail-main {
+    width: 100%;
+    height: 100%;
+    background: url('../images/detail_base.jpg') no-repeat;
+    background-size: 100% 100%;
+
+    padding-top: 20px;
+}
+
+#detail-img {
+    height: 130px;
+}
+#detail-img img {
+    width: 100%;
+    height: 130px;
+}
+
+#detail-button {
+    background: url('../images/detail_button.png') no-repeat;
+    background-size: 100% 100%;
+
+    position:relative;
+
+    margin: 0 auto;
+
+    margin-top: 50px;
+
+    width: 200px;
+    height: 45px;
+    line-height: 45px;
+    
+    font-size: 20px;
+    font-weight: bold;
+
+    color:white;
+}
+#detail-text {
+    position:relative;
+    margin-top:10%;
+    margin-left:10%;
+    margin-right:10%;
+
+    color:#37C4B4;
+}
+
+
+/*default*/
+/*320px*/
+@media screen and (max-width: 359px) {
+    body {
+        padding-bottom: 70px;
+    }
+}
+
+/*360px*/
+@media screen and (min-width: 360px) and (max-width: 374px) {
+
+    body {
+        padding-bottom: 70px;
+    }
+
+    .detail-main {
+        padding-top: 24px;
+    }
+
+    #detail-img {
+        height: 146px;
+    }
+    #detail-img img {
+        width: 100%;
+        height: 146px;
+    }
+
+    #detail-button {
+        width: 250px;
+        height: 45px;
+        line-height: 45px;
+    }
+
+}
+
+/*375px*/
+@media screen and (min-width: 375px) and (max-width: 399px) {
+
+    html, body {
+        height: 100%;
+    }
+
+    .detail-main {
+        padding-top: 26px;
+    }
+
+    #detail-img {
+        height: 150px;
+    }
+    #detail-img img {
+        width: 100%;
+        height: 150px;
+    }
+
+    #detail-button {
+        width: 270px;
+        height: 55px;
+        line-height: 55px;
+    }
+
+}
+
+/*400px*/
+@media screen and (min-width: 400px) and (max-width: 413px) {
+    html, body {
+        height: 100%;
+    }
+
+    .detail-main {
+        padding-top: 28px;
+    }
+
+    #detail-img {
+        height: 164px;
+    }
+    #detail-img img {
+        width: 100%;
+        height: 164px;
+    }
+
+    #detail-button {
+        width: 290px;
+        height: 55px;
+        line-height: 55px;
+    }
+
+}
+
+/*414px*/
+@media screen and (min-width: 414px) and (max-width: 639px) {
+    html, body {
+        height: 100%;
+    }
+    .detail-main {
+        padding-top: 30px;
+    }
+
+    #detail-img {
+        height: 170px;
+    }
+    #detail-img img {
+        width: 100%;
+        height: 170px;
+    }
+
+    #detail-button {
+        width: 300px;
+        height: 55px;
+        line-height: 55px;
+    }
+
+}
+
+/*640px*/
+@media screen and (min-width: 640px) {
+
+
+}

@@ -1,0 +1,33 @@
+
+<table>
+<tr>
+	<td>
+	    品牌
+	</td>
+<td>
+		 车型
+	</td>
+<td>
+	  车系
+	</td>
+</tr>
+
+<volist name="model" id="list">
+<tr>
+	<td>
+	    {$list.brand_id}--{$list.brand_name}
+	</td>
+<td>
+		{$list.series_id}--{$list.series_name}
+	</td>
+<td>
+	  {$list.model_id}--{$list.model_name}
+	</td>
+</tr>
+
+
+
+</volist>
+
+
+</table>

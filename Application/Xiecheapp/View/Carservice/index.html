@@ -1,0 +1,248 @@
+<layout name='layout_maintenance' />
+	 <link type="text/css" href="__PUBLIC__/css/carservice.css" rel="stylesheet">
+   <link type="text/css" rel="stylesheet" href="__PUBLIC__/js/video_js/video-js.min.css">
+   <script src="__PUBLIC__/js/video_js/video.js"></script> 
+    
+    <div class="snav" id="snav">
+        <ul>
+          <li><a href="/carservice" class="current">府上养车</a></li>
+          <eq name="new_city_name" value="上海">
+          <li><a href="/shopservice/index">4S店预约保养</a></li>
+          <li><a href="/coupon">团购保养</a></li>
+          </eq>
+        </ul>
+        <span>
+          <b>您选择的车型是：{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+        </span>
+    </div>
+
+    <div class="fushangyangche">
+
+        <div class="videobox">
+          <div class="video">
+            <div class="videocon">
+              <!--视频-->
+              <video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" controls="controls" preload="auto" width="640" height="360" poster="__PUBLIC__/images/carservice/videosimg.jpg" data-setup='{"example_option":true}'>
+                <source src="{:C('WEB_ROOT')}/fsyc/xieche.flv" type='video/x-flv' />
+              </video>
+            </div>
+          </div>
+          <!-- <p><a href="#"><u>查看评论</u></a></p> -->
+        </div>
+      
+        <div class="xiaobaoyang">
+          <h1>携车网  府上养车</h1>
+          <p>车在哪，保养就到哪！</p>
+          <p>为您推荐的套餐</p>
+          <p>小保养低至&nbsp;&nbsp;&nbsp;&nbsp;<span>{$recommend_low.price}元</span></p>
+          <p><a href="/carservice/order">我要保养</a></p>
+        </div>
+      
+      <div class="showlc">
+        <a href="javascript:;"><img src="__PUBLIC__/images/carservice/showlc.png" alt=""></a>
+      </div>
+
+    </div>
+
+
+    <div class="liucheng" id="liucheng">
+      <div class="showfs">
+        <a href="javascript:;"><img src="__PUBLIC__/images/carservice/showfs.png" alt=""></a>
+      </div>
+      <span id="lcprev" class="glyphicon glyphicon-chevron-left" style="position: absolute; top:50%;left:0; cursor:pointer;font-size:68px;opacity:0.6;margin-top:-30px;"></span>
+      <div class="lccon">
+        <div class="lcslide">
+          <div class="lcsdes fl">
+            <p class="lcptitle">1.预约服务</p>
+            <p>网站、微信、支付宝服务窗、电话下单预约，</p>
+            <p>客服人员提前一天与车主</p>
+            <p>电话确认预约信息</p>
+          </div>
+          <div class="lcsimg fr"><span class="backgroundImage" style="background-image:url(__PUBLIC__/images/carservice/lcslideimg1.jpg); background-position:center center;"></span></div>
+        </div>
+        <div class="lcslide">
+          <div class="lcsdes fl">
+            <p class="lcptitle">2.技师到达</p>
+            <p>工作车、服务技师携设备及配件，在预定时间到达，</p>
+            <p>与车主沟通确认后，</p>
+            <p>开始施工准备，布置警示、架设监控、车辆护套、</p>
+            <p>场地布置</p>
+          </div>
+          <div class="lcsimg fr"><span class="backgroundImage" style="background-image:url(__PUBLIC__/images/carservice/lcslideimg2.jpg); background-position:center center;"></span></div>
+        </div>
+        <div class="lcslide">
+          <div class="lcsdes fl">
+            <p class="lcptitle">3.进行保养</p>
+            <p>请车主当面查验并拆封配件，</p>
+            <p>拆卸旧配件，更换新配件，</p>
+            <p>悉心完成整套保养工作，</p>
+            <p>过程中，热情与车主沟通答疑</p>
+          </div>
+          <div class="lcsimg fr"><span class="backgroundImage" style="background-image:url(__PUBLIC__/images/carservice/lcslideimg3.jpg); background-position:center center;"></span></div>
+        </div>
+        <div class="lcslide">
+          <div class="lcsdes fl">
+            <p class="lcptitle">4.车辆检测</p>
+            <p>保养完成后，</p>
+            <p>附赠爱车体检4类38项爱车深度专业检测及评分，</p>
+            <p>及时向车主微信或支付宝服务窗推送检测报告</p>
+          </div>
+          <div class="lcsimg fr"><span class="backgroundImage" style="background-image:url(__PUBLIC__/images/carservice/lcslideimg4.jpg); background-position:center center;"></span></div>
+        </div>
+        <div class="lcslide">
+          <div class="lcsdes fl">
+            <p class="lcptitle">5.完成结算</p>
+            <p>服务完成后，爱车交付车主验收，</p>
+            <p>车主验收确认后签字并结算，</p>
+            <p>向车主礼貌告别</p>
+          </div>
+          <div class="lcsimg fr"><span class="backgroundImage" style="background-image:url(__PUBLIC__/images/carservice/lcslideimg5.jpg); background-position:center center;"></span></div>
+        </div>
+        
+      </div>
+      <span id="lcnext" class="glyphicon glyphicon-chevron-right" style="position: absolute; top:50%;right:0; cursor:pointer;font-size:68px;opacity:0.6;margin-top:-30px;"></span>
+      
+    </div>
+
+    <div class="wenzhang">
+      <div class="wztitle">文章</div>
+      <div class="wzlist w1183">
+        <ul>
+          <li>
+            <div class="wzlistone">
+              <p class="wzp1"><a href="/carservice/nlist">优惠速递</a></p>
+              <p class="wzp2"><a href="/carservice/nlist"><img src="/Public_new/images/carservice/list1.jpg" alt=""></a></p>
+              <p class="wzp3">&nbsp;</p>
+              <dl>
+                <volist name="notice" id="vo">
+                <dd><span>{$vo.update_time|date="Y-m-d",###}</span><a href="/carservice/narticle/id/{$vo.id}">{$vo.noticetitle}</a></dd>
+                </volist>
+              </dl>
+              <p class="wzp4"><a href="/carservice/nlist">查看更多>></a></p>
+            </div>
+          </li>
+
+          <li>
+            <div class="wzlistone">
+              <p class="wzp1"><a href="/carservice/alist/type/2">府上养车专题</a></p>
+              <p class="wzp2"><a href="/carservice/alist/type/2"><img src="/Public_new/images/carservice/list2.jpg" alt=""></a></p>
+              <p class="wzp3">&nbsp;</p>
+              <dl>
+                <volist name="arlist2" id="vo2">
+                <dd><span>{$vo2.create_time|date="Y-m-d",###}</span><a href="/carservice/article/id/{$vo2.id}">{$vo2.title}</a></dd>
+                </volist>
+              </dl>
+              <p class="wzp4"><a href="/carservice/alist/type/2">查看更多>></a></p>
+            </div>
+          </li>
+
+          <li>
+            <div class="wzlistone">
+              <p class="wzp1"><a href="/carservice/alist/type/1">养车心得</a></p>
+              <p class="wzp2"><a href="/carservice/alist/type/1"><img src="/Public_new/images/carservice/list3.jpg" alt=""></a></p>
+              <p class="wzp3">&nbsp;</p>
+              <dl>
+                <volist name="arlist1" id="vo1">
+                <dd><span>{$vo1.create_time|date="Y-m-d",###}</span><a href="/carservice/article/id/{$vo1.id}">{$vo1.title}</a></dd>
+                </volist>
+              </dl>
+              <p class="wzp4"><a href="/carservice/alist/type/1">查看更多>></a></p>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+      $(function () {
+        // body...
+        $("#liucheng").height($(window).height());
+        $(".fushangyangche").height($(window).height()-66);
+        $(window).resize(function() {
+          $("#liucheng").height($(window).height());
+          $(".fushangyangche").height($(window).height()-66);
+        });
+        var i=0;
+        var lclength = $(".lccon .lcslide").size();
+        $("#lengthnum").html(lclength);
+        $("#shownum").html(1);
+        $(".lcslide:eq(0)").show();
+
+        $("#lcprev").click(function(){
+          i--;
+          if(i<0){
+            i=4;
+          }
+          $(".lcslide").eq(i).fadeIn().siblings().fadeOut();
+          $("#shownum").html(i+1);
+        });
+
+        $("#lcnext").click(function(){
+          i++;
+          if(i>lclength-1){
+            i=0;
+          }
+          $(".lcslide").eq(i).fadeIn().siblings().fadeOut();
+          $("#shownum").html(i+1);
+        });
+
+        function lcAuto(){
+          if(i<lclength-1){
+            i++;
+          }else{
+            i=0;
+          }
+          $(".lcslide").eq(i).fadeIn().siblings().fadeOut();
+          $("#shownum").html(i+1);
+        }
+
+        //var lc = setInterval(lcAuto,1000);
+        $(".lccon").mousedown(function(){
+            
+          $(this).mouseup(function(){
+           
+          });
+
+        });
+        
+
+        $(".showfs a").click(function(){
+          $('html,body').animate({scrollTop:$('#snav').offset().top}, 800);
+        });
+
+        $(".showlc a").click(function(){
+          $('html,body').animate({scrollTop:$('#liucheng').offset().top}, 800);
+        });
+        var pa=0;
+        var wzsize = Math.ceil($(".wzlist ul li").size()/3);
+        $("#listnum").text(wzsize);
+        function wzslide(){
+          $(".wzlist ul").animate({"left":-$(".wzlist ul li").outerWidth(true)*pa*3},700);
+          $("#curlist").text(pa+1);
+        }
+        $("#listprev").click(function(){
+          if(pa>0){
+            pa--;
+          }else{
+            pa = 0;
+            alert("这是第一页");
+          }
+          wzslide();
+        });
+
+        $("#listnext").click(function(){
+          if(pa<wzsize-1){
+            pa++;
+          }else{
+            pa = wzsize-1;
+            alert("这是最后一页");
+          }
+          wzslide();
+        });
+        
+
+      })
+
+    </script>

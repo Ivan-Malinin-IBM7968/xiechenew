@@ -1,0 +1,49 @@
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/shop4s.css?v={$Think.config.VERSION_DATE}" />
+<div style="margin: 0px 465px 10px;"><a href="__URL__/">首页</a> -->> <a href="__URL__/my_insurance">4S竞价查询</a> -->> 查看4S店竞价</div>
+
+<table border="0" align="center" cellpadding="1" cellspacing="0">
+<tr>
+	<td>ID</td>
+	<td>店铺名称</td>
+	<td>
+		<if condition="($order_type eq desc) and ($order_by eq comment_rate)">
+			<a href="__URL__/get_shopbidding/id/{$id}/order_by/comment_rate/order_type/asc">好评率 ↑</a>
+		<elseif condition="($order_type eq asc) and ($order_by eq comment_rate)"/>
+			<a href="__URL__/get_shopbidding/id/{$id}/order_by/comment_rate/order_type/desc">好评率 ↓</a>
+		<else/>
+			<a href="__URL__/get_shopbidding/id/{$id}/order_by/comment_rate/order_type/desc">好评率 ↓</a>
+		</if>
+	</td>
+	<td>店铺竞价时间</td>
+	<td>维修时间</td>
+	<td>有无代步车</td>
+	<td>
+		<if condition="($order_type eq desc) and ($order_by eq rebate)">
+			<a href="__URL__/get_shopbidding/id/{$id}/order_by/rebate/order_type/asc">返利现金  ↑</a>
+		<elseif condition="($order_type eq asc) and ($order_by eq rebate)"/>
+			<a href="__URL__/get_shopbidding/id/{$id}/order_by/rebate/order_type/desc">返利现金 ↓</a>
+		<else/>
+			<a href="__URL__/get_shopbidding/id/{$id}/order_by/rebate/order_type/desc">返利现金 ↓</a>
+		</if>
+	</td>
+	<td>备注</td>
+	<td>操作</td>
+	<td><a href="__URL__/get_shopbidding/id/{$id}/order_by/distance">距离</a></td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+	<td>{$vo.id}</td>
+	<td>{$vo.shop_name}</td>
+	<td>{$vo.comment_rate} %</td>
+	<td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+	<td>{$vo.servicing_time}天</td>
+	<td><eq name="vo.scooter" value="1">有<else/>无</eq></td>
+	<td>{$vo.rebate}</td>
+	<td>{$vo.remark}</td>
+	<td><if condition="$vo.is_bidorder eq 0"><a href="__URL__/select_tostore_time/shopbidding_id/{$vo.id}">选他！<else/>已下单</if></td>
+	<td>{$vo.distance}km</td>
+</tr>
+</volist>
+
+</table>

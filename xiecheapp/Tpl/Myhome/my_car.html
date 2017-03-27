@@ -1,0 +1,49 @@
+<layout name='layout_new' />
+
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/new_2/js/base.js" ></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<script>
+		function del_confirm(u_c_id){
+			if(!confirm("如果您删除这款车型，与这款车型相关的\n维修保养预约数据和用车账本数据也将一并\n删除并无法恢复。请问您是否确认要删除?")){
+				return false;
+			}else{
+				window.location.href="__APP__/myhome/delete-u_c_id-"+u_c_id;
+				return false;
+			}
+		}
+	</script>
+	<include file="Public:pa" />
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title">
+				我的车辆:
+				<a href="{:URL('/myhome/mycaradd',array())}{:C('HTML_URL_SUFFIX')}" class="add-car">添加车辆</a>
+			</h2>
+		<div class="table-con">
+				<table width="948">
+					<tr>
+						<th>车辆</th>
+						<th>操作</th>
+					</tr>
+					<volist name="membercar" id="mycar" mod="2">
+					<tr <eq name="mod" value="1">class="bg-blue"</eq>>
+						<td>{$mycar.car_name}</td>
+						<td>
+							<a href="{:URL('/myhome/change_my_car',array('u_c_id'=>$mycar['u_c_id']))}{:C('HTML_URL_SUFFIX')}">编辑</a> | <a href="###" onclick="del_confirm({$mycar.u_c_id});">删除</a>
+						</td>
+					</tr>
+					</volist>
+				</table>	
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>
+	
+</body>
+</html>

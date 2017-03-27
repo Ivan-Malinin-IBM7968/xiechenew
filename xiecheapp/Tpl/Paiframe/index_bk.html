@@ -1,0 +1,29 @@
+
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/new_2/js/base.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/index.css?v={$Think.config.VERSION_DATE}" />
+
+
+	<li id="pinpai">
+		<label>选择品牌:</label>
+		<select id="get_brand" name="brand_id"  onchange="comp_brlist('get_brand','get_series', 'get_model');">
+		</select>
+	</li>
+	<li id="chexing">
+		<label>选择车系:</label>
+		<select id="get_series" name="series_id"  disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+		</select>
+
+		<label style="margin-left:10px;">选择车型:</label>
+		<select class="car_select" id="get_model" name="model_id"  disabled>
+		</select>
+	</li>
+
+
+<script type='text/javascript'>
+	comp_fctlist("get_brand", "get_series", "get_model");
+</script>

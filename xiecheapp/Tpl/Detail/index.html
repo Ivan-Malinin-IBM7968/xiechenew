@@ -1,0 +1,40 @@
+<layout name='layout_note' />  
+<div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 费用明细</div>
+        <div class="userjzbar15"></div>
+		<div class="Consumebox">
+			<p class="ht01">
+			<a href="__APP__/membercar/add" class="addcarbut"></a>
+			<!-- <a href="#" class="Notebut"></a> -->
+			</p>
+			<div class="clear"></div>
+			<div class="Consumelistbg1"></div>
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+			  <tr>
+				<td class="w1">车辆名称</td>
+				<td>平均油耗</td>
+				<td>月均费用</td>
+				<td>操作</td>
+			  </tr>
+			</table>
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody">
+			<volist name="list_all_car" id="vo">
+			
+			  <tr>
+				<td class="w1"><a href="__APP__/detail/listdetail/u_c_id/{$vo.u_c_id}" class="link01">{$vo.car_name}</a></td>
+				<td><strong>{$vo.list_total.avg_oil}</strong><span class="f6">升/百公里</span></td>
+				<td><strong>{$vo.list_total.avg_month_cost}</strong><span class="f6">元</span></td>
+				<td><a href="__APP__/membercar/read/u_c_id/{$vo.u_c_id}" class="editbut"></a><a href="__APP__/membercar/delete/u_c_id/{$vo.u_c_id}" class="Delbut"></a></td>
+			  </tr>	
+			  </volist>
+			</table>
+		</div>
+		
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

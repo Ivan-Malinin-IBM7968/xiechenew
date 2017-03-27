@@ -1,0 +1,111 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+    <!-- 主体内容 -->
+    <div class="content" >
+        <div class="title">技师部门月度目标设定[ <a href="__URL__/index">返回首页</a> ]</div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <div>
+                城市：
+                <select id="city">
+                    <volist name="cityList" id="city">
+                    <option value='{$city.id}' <if condition="$defaultCity eq $city['id']">selected</if> >{$city.name}</option>
+                    </volist>
+                </select>
+                年份：
+                <select id="year">
+                    <volist name="yearList" id="year">
+                    <option value='{$year}' <if condition="$defaultYear eq $year">selected</if> >{$year}</option>
+                    </volist>
+                </select>
+            </div>
+            <form method="post" name="form" action="__URL__/goal" enctype="multipart/form-data">
+                <div>
+                    <table class="list">
+                        <tbody>
+                            <tr>
+                                <td>月份</td>
+                                <td>目标</td>
+                            </tr>
+                            <volist name='goalList' id='goal'>
+                            <tr>
+                                <td>{$goal.month}月</td>
+                                <td>
+                                    <span>
+                                        保养:<input class="care_goal" value="{$goal.care_goal}" type="text" size="4" name="care_goal[]">
+                                    </span>
+                                    <span>
+                                        非保养:<input class="non_care_goal" value="{$goal.non_care_goal}" type="text" size="4" name="non_care_goal[]">
+                                    </span>
+                                </td>
+                            </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="">
+                    <input name="city_id" type="hidden" value="{$defaultCity}">
+                    <input name="year" type="hidden" value="{$defaultYear}">
+                    <input type="submit" value="保存">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 主体内容结束 -->
+
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+
+<script type="text/javascript" charset="utf-8">
+    (function(){
+        var module = {
+            init : function(){
+                var self = this;
+
+                $('#city').change(function(){
+                    var city_id = $(this).val();
+                    var year = $('#year').val();
+
+                    $('input[name=city_id]').val(city_id);
+                    self.getGoalList(city_id, year);
+                });
+
+                $('#year').change(function(){
+                    var city_id = $('#city').val();
+                    var year = $(this).val();
+
+                    $('input[name=year]').val(year);
+                    self.getGoalList(city_id, year);
+                });
+            },
+
+            getGoalList: function(city_id, year) {
+                $.ajax({
+                    type : 'POST',
+                    url : '__URL__/getGoalListAPI',
+                    data : {city_id: city_id, year: year},
+                    dataType: 'json',
+                    success : function (data) {
+                        for (var i = 0; i < 12; i++) {
+                            if (data.data) {
+                                $('.care_goal').eq(i).val(data.data[i].care_goal);
+                                $('.non_care_goal').eq(i).val(data.data[i].non_care_goal);
+                            } else {
+                                $('.care_goal').eq(i).val(0);
+                                $('.non_care_goal').eq(i).val(0);
+                            }
+                        }
+                    }
+                })
+            },
+
+        };
+        module.init();
+    })();
+</script>

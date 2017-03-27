@@ -1,0 +1,133 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<style type="text/css">
+	.table th {
+    	background: none;
+	}
+	.table tbody > tr > th{
+		color: #000000;
+	}
+	.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td{line-height: 2em;}
+</style>
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="myxinxi">
+			<div class="myxxtop">
+				<ul>
+					<li class="current"><a href="javascript:;">我的抵用券</a></li>
+				</ul>
+			</div>
+			
+			<div class="myxxcon">
+				<div class="clearfix">
+					<a href="/myhome/my_salecoupon" class="repair_s  <empty name="is_use"> repair_s_cur</empty>">全部</a>
+					<a href="/myhome/my_salecoupon?is_use=0" class="repair_s  <eq name="is_use" value="1">repair_s_cur</eq>">未使用</a>
+					<a href="/myhome/my_salecoupon?is_use=1" class="repair_s <eq name="is_use" value="2">repair_s_cur</eq>">已使用</a>
+					<!-- <a href="/myhome/my_salecoupon?is_use=2" class="repair_s <eq name="is_use" value="3">repair_s_cur</eq>">已过期</a> -->
+				</div>
+				<notempty name="couponinfo">
+				<table class="table" cellspacing="42">
+				 	<tbody>
+				 		<tr>
+					 		<th>抵用券名</th>
+					 		<th>用券规则</th>
+					 		<th>抵用券属性</th>
+					 		<th>面额</th>
+					 		<th>状态</th>
+					 		<th>操作</th>
+				 		</tr>
+				 		<volist name="couponinfo" id="mycoupon" mod="2">
+				 		
+					 	<tr style="margin:20px 0; background-color:#FFFFFF;">
+					 		<td style="color:#ff4a00;">{$mycoupon.coupon_name}</td>
+					 		<td>{$mycoupon.coupon_summary}</td>
+					 		<td>{$mycoupon.coupon_amount}元抵用券</td>
+					 		<td style="color:#ff4a00;">￥{$mycoupon.coupon_amount}</td>
+					 		<td><if condition="$mycoupon.is_use eq 1">已于 {$mycoupon.use_time|date="Y-m-d H:i",###} 使用<else />未使用</if></td>
+					 		<td style="color:#35548b;cursor:pointer" onClick="if(confirm('确认要删除该券吗?'))del('{$mycoupon.membersalecoupon_id}')">删除</td>
+					 	</tr>
+					 	<tr height="20"></tr>
+						</volist>
+					</tbody>
+				</table>
+				</notempty>
+			</div>
+			
+		</div>
+		<h3><font class="home-c-t">猜您想要&nbsp;&nbsp;</font><font class="home-ds">为了帮您省钱，我们都已经淘了好久了</font></h3>
+		<div class="quanfenleicons">
+        	<div class="xianjinquan">
+				<empty name="Coupon"><p style="padding-top: 20px;">对不起，现在没有推荐的抵用券</p><else />
+              <ul>
+               <volist name="Coupon" id="voc">
+                <li>
+                  <div class="xianjinquancon">
+                    <h6><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+                    <p><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+                  
+                    <div class="xianjinquandes">
+                      <div class="xianjinquandestop t1">&nbsp;</div>
+                      <div class="xianjinquandescon c14b3b7">
+                        <table class="xianjinquandescon1" width="100%">
+                          <tbody>
+                            <tr height="10"></tr>
+                            <tr height="50">
+                              <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+                              <td align="center" class="xianjinstyle">跨品牌<br>保养套餐券</td>
+                            </tr>
+                            <tr height="10"></tr>
+                          </tbody>
+                        </table>
+                        <p>支持“15天内退款”、“过期退款”</p>
+                        <a href="/coupon/detail/id/{$voc.id}.html">查&nbsp;&nbsp;看</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+               </volist>
+               </ul>
+			  </empty>
+            </div> 
+	    </div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.myxinxi{background: #f6f6f6; overflow: hidden; margin-bottom: 20px;}
+	.myxxtop{height: 40px; background: #dee4eb;}
+	.myxxtop ul{overflow: hidden;}
+	.myxxtop ul li{float: left; width: 100px; text-align: center;}
+	.myxxtop ul li.current{background: #ff5651;}
+	.myxxtop ul li a{display: inline-block; width: 100px; height: 37px; margin-top: 3px; line-height: 36px;}
+	.myxxtop ul li.current a{ background: #f6f6f6;}
+
+	.myxxcon{padding: 20px; overflow: hidden; }
+	a.repair_s {display: block; float: left; margin: 30px 0px; padding: 2px 16px;}
+	a.repair_s_cur {background-color: #19293b; color: #ffffff;}
+</style>
+<script type="text/javascript">
+function del(id){
+	$.post('/myhome/delSalecoupon',{'id':id},function(data){
+		if(data.status){
+			alert('删除成功');
+			window.location.reload();
+		}else{
+			alert(data.msg);
+		}
+	},'json')
+}
+</script>

@@ -1,0 +1,56 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<style>
+.st-show-msg-box .rate-msg-box{
+	display: block;
+}
+.rate-msg-box .textinput{
+	border: 1px solid #ABADB3;
+    padding: 8px;
+	margin: 20px;
+}
+.rate-msg-box .ph-label{
+	display: block;
+    line-height: 1.5;
+    width: 200px;
+}
+.rate-msg-box .rate-msg{
+    height: 132px;
+    outline: 0 none;
+    resize: none;
+    width: 100%;
+}
+.rate-msg-box .text-counter strong{
+	color: #FF6600;
+    margin: 0 5px;
+}
+.comment_type{
+	margin: 10px 0 10px 5px;
+}
+.sbt{
+	text-align:center;
+}
+</style>
+<form action="/Admin/index.php/Store/comment/add_comment" method="post">
+<div class="rate-msg-box">
+	<div class="bd">
+		<div class="textinput">
+			<div class="comment_type">
+				<input type="radio" name="comment_type" value="1" checked />好评
+				<input type="radio" name="comment_type" value="2" />中评
+				<input type="radio" name="comment_type" value="3" />差评
+			</div>
+			<span class="ph-label">输入你的评价内容:</span>
+			<textarea class="rate-msg" name="content"></textarea>
+		</div>
+	</div>
+	<input type="hidden" name="shopid" value="{$shopid}" />
+	<input type="hidden" name="orderid" value="{$orderid}" />
+	<input type="hidden" name="uid" value="{$uid}" />
+	<div class="sbt"><input type="submit" value="提交"></div>
+</div>
+</form>

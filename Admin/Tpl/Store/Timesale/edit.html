@@ -1,0 +1,90 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">数据列表[ <A HREF="__URL__/index/shop_id/{$vo.shop_id}">返回列表</A> ]</div>
+<!--  功能操作区域  -->
+<div class="operate" >
+</form>
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+<table cellspacing="0" cellpadding="0" class="list" id="checkList">
+<form action="__URL__/update" method="post">
+<tbody>
+<tr>
+<td>商家名称</td>
+<td>
+			<volist name="shop" id="voshop">
+			<eq name="voshop.id" value="$vo.shop_id">{$voshop.shop_name}</eq>
+			</volist>
+</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>
+<input type="text" name="week" value="{$vo.week}">
+</td>
+</tr>
+<tr>
+<td>开始时间:</td>
+<td>
+当前为：{$vo.begin_time}&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="start_hours" >
+<volist name="Think.config.ORDER_HOURS" id="vohours">
+<option value="{$vohours}" <if condition="$vohours eq $vo['begin_hour']"> selected </if> >{$vohours}</option>
+</volist>
+</select>:
+<select name="start_minute" >
+<volist name="Think.config.ORDER_MINUTE" id="vominute">
+<option value="{$vominute}" <if condition="$vominute eq $vo['begin_minute']"> selected </if> >{$vominute}</option>
+</volist>
+</select>
+</td>
+</tr>
+<tr>
+<td>结束时间:</td>
+<td>
+当前为：{$vo.end_time}&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="end_hours" >
+<volist name="Think.config.ORDER_HOURS" id="vohours">
+<option value="{$vohours}" <if condition="$vohours eq $vo['end_hour']"> selected </if> >{$vohours}</option>
+</volist>
+</select>:
+<select name="end_minute" >
+<volist name="Think.config.ORDER_MINUTE" id="vominute">
+<option value="{$vominute}" <if condition="$vominute eq $vo['end_minute']"> selected </if> >{$vominute}</option>
+</volist>
+</select>
+</td>
+</tr>
+<tr>
+<td>是否启用:</td>
+<td>
+	<select name="status">
+		<option value="1" <if condition="$vo.status eq 1">selected</if> >启用</option>
+		<option value="0" <if condition="$vo.status eq 0">selected</if> >删除</option>
+	</select>
+</td>
+</tr>
+<tr>
+<td><input type="hidden" name="id" value="{$vo.id}"></td><td><input type="submit" value="修改"></td>
+</tr>
+</tbody>
+</form>
+</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

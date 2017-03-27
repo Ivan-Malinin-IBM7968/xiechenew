@@ -1,0 +1,14 @@
+/*all page css*/
+
+.groupo-1{padding-top:36px;padding-bottom:40px;}
+.groupo-1-1{font-size:16px;padding-bottom:10px}
+.groupo-2{overflow: hidden;}
+.groupo-2 h5{margin:20px 0px;background-color:#eaeeed;height:40px;line-height:40px;text-indent:10px}
+.form-control{width:280px}
+.groupo-2-1 dl{padding-left:30px;}
+dt,dd{height:30px;line-height:30px;font-weight:normal}
+.groupo-2-2{color:#f05525;padding-left:20px}
+.btn-sub{background-color:#f05525;color:#ffffff;padding:7px 60px}
+.groupo-2-3{font-size:16px;vertical-align: middle;}
+.groupo-2-4{font-size:24px;vertical-align: middle;color:#f05525;padding-right:10px}
+.btn:hover,.btn:focus{color:#ffffff}

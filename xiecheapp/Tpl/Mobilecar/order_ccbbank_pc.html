@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>携车网-填写订单</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/mobile/bootstrap/css/datetimepicker.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+    
+    <style>
+    .ui-datepicker-year{width: 80px !important;}
+    .ui-datepicker-month{width: 60px !important;}
+    
+    body{
+        width: 1183px ;
+        margin: 0  auto ;
+    }
+    </style>
+  </head>
+
+  <body>
+
+      <div class="pagetop">
+        <div class="reindex" id="reindex" onclick="window.history.go(-1)">&nbsp;</div>
+        <div class="thispage">填写订单</div>
+      </div>
+
+      <div class="content huise">
+
+        <form class="addform" method="post" name="subForm" id="subForm" action="__APP__/mobilecar/create_order_ccbbank">
+          <div class="form1">
+            <table class="formtable" border="0" align="center" width="100%">
+              <tbody>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+                <if condition="$tips neq ''">
+                  <tr><td colspan="3"><font color=red>{$tips}</font></td></tr>
+                </if>
+                <tr>
+                  <td width="80"><span class="red">*&nbsp;</span>您的姓名:&nbsp;</td>
+                  <td colspan="2"><input type="text" class="form-control" name="truename" id="truename" placeholder="您的姓名" /></td>
+                </tr>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+                
+                <tr>
+                  <td><span class="red">*&nbsp;</span>手机号码:&nbsp;</td>
+                  <td colspan="2"><input type="text" maxlength="11"  pattern="[0-9]" class="form-control" name="mobile" id="mobile" value="{$userinfo['mobile']}" /></td>
+                </tr>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+
+                <tr>
+                  <td><span class="red">*&nbsp;</span>预约地点:&nbsp;</td>
+                  <td colspan="2"><input type="text" class="form-control" name="address" id="address" value="上海市" /></td>
+                </tr>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+
+                <tr>
+                  <td><span class="red">&nbsp;</span>上门时间:&nbsp;</td>
+                  <td>
+					由客服稍后与您电话确认
+				  <!-- <input type="text" class="form-control datepicker1" name="order_time" id="order_time" placeholder="请选择上门服务时间" readonly="readonly" />
+				  </td>
+                  <td width="65">
+                    <select name="order_time2" id="order_time2" class="form-control" style="width:100%; height:34px;">
+						<option value="0">8:00</option>
+						<option value="1">9:00</option>
+						<option value="2">10:00</option>
+						<option value="3">11:00</option>
+						<option value="4">12:00</option>
+						<option value="5">13:00</option>
+						<option value="6">14:00</option>
+						<option value="7">15:00</option>
+						<option value="8">16:00</option>
+						<option value="9">17:00</option>
+						<option value="10">18:00</option>
+						<option value="11">19:00</option>
+						<option value="12">20:00</option>
+						<option value="13">21:00</option>
+                    </select> -->
+                  </td>
+                </tr>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+
+                <tr>
+                  <td><span class="red">&nbsp;</span>支付方式:&nbsp;</td>
+                  <td colspan="2">
+					现场支付
+                    <!-- <select name="pay_type" class="form-control" style="width:100%; text-indent:12px;">
+                      <option value="1">现金支付</option>
+                    </select> -->
+                  </td>
+                </tr>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+
+                <tr>
+                  <td><span style="color:#f4f6f3;">*&nbsp;</span>填写备注:&nbsp;</td>
+                  <td colspan="2"><input type="text" class="form-control" name="remark" id="remark" placeholder="备注" /></td>
+                </tr>
+
+                <tr>
+                  <td height="10"></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-more form1">
+
+            <h3 class="morebtn">填写更多信息，以便为您配备更精准的配件</h3>
+            <div class="moreshow">
+              <table class="formtable" border="0" width="100%">
+                <tbody>
+
+                  <tr>
+                    <td width="100">车牌号:&nbsp;</td>
+                    <td width="60">
+                      <select name="licenseplate_type" id="licenseplate_type" class="form-control" style="width:100%; height:34px;">
+                        <volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+                        <option value="{$vo_os}">{$vo_os}</option>
+                        </volist>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="licenseplate" id="licenseplate" maxlength="6" placeholder="请输入车牌后6位" />
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td height="10"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>车辆注册时间:&nbsp;</td>
+                    <td colspan="2"><input type="text" class="form-control datepicker2" name="car_reg_time" id="car_reg_time" placeholder="请选择车辆注册时间" readonly="readonly" /></td>
+                  </tr>
+
+                  <tr>
+                    <td height="10"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>发动机号码:&nbsp;</td>
+                    <td colspan="2"><input type="text" class="form-control" name="engine_num" id="engine_num" /></td>
+                  </tr>
+
+                  <tr>
+                    <td height="10"></td>
+                  </tr>
+                  
+                  <tr>
+                    <td>VIN:&nbsp;</td>
+                    <td colspan="2"><input type="text" class="form-control" name="vin_num" id="vin_num" /></td>
+                  </tr>
+
+                 <tr>
+                    <td height="10"></td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+            
+            <table width="100%" class="table-bordered" cellpadding="8">
+              <tbody>
+                <if condition="$patype eq 1">
+                <tr><td><b>套餐内容：</b><br />上门保养服务费<br />38项全车检测</td></tr>
+                <elseif condition="$name eq 2"/>
+                <tr><td><b>套餐内容：</b><br />上门保养服务费<br />38项全车检测<br />壳牌黄喜力 4L<br />品牌机滤</td></tr>
+                <elseif condition="$name eq 2"/>
+                <tr><td><b>套餐内容：</b><br />上门保养服务费<br />38项全车检测<br />壳牌蓝喜力 4L<br />品牌机滤</td></tr>
+                <elseif condition="$name eq 2"/>
+                <tr><td><b>套餐内容：</b><br />上门保养服务费<br />38项全车检测<br />金美孚 4L<br />品牌机滤</td></tr>
+                <else/>
+                </if>
+                
+              </tbody>
+            </table>
+
+
+            <button type="button" class="btn Bsubmit" onclick="doSub();" <if condition="$tips neq ''">disabled="true"</if>>
+              总额：￥<span id="amount-money">{$item_amount}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提交订单
+            </botton>
+
+          </div>
+
+          </div>
+        </form>
+
+    </div>
+  <script>
+
+  $(function(){
+
+      
+
+      $(".moreshow").hide();
+      $(".moreshow2").hide();
+      $(".morebtn").click(function(){
+        $(this).toggleClass("current").next(".moreshow").toggle();
+      });
+
+      function getLastDay(year,month)        
+        {        
+         var new_year = year;    //取当前的年份        
+         var new_month = month++;//取下一个月的第一天，方便计算（最后一天不固定）        
+         if(month>12)            //如果当前大于12月，则年份转到下一年        
+         {        
+          new_month -=12;        //月份减        
+          new_year++;            //年份增        
+         }        
+         var new_date = new Date(new_year,new_month,1);                //取当年当月中的第一天        
+         return (new Date(new_date.getTime()-1000*60*60*24)).getDate();//获取当月最后一天日期        
+        }
+
+      //4-19 超过下午四点 5-20
+       var now = new Date();
+       year = now.getFullYear();
+       hours = now.getHours();
+       month = now.getMonth()+1;
+       day = now.getDate();
+
+       if(hours >=16){
+        minDate = year+"-"+month+"-"+(day+2);
+        maxDate = year+"-"+month+"-"+(day+16);
+       }else{
+        minDate = year+"-"+month+"-"+(day+1);
+        maxDate = year+"-"+month+"-"+(day+15);
+       }
+
+       max2Date = year+"-"+month+"-"+getLastDay(year,month);
+
+
+      $("#order_time").datetimepicker({
+        language:'zh-CN',
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        startDate: minDate,
+        endDate: maxDate,
+        minView: 2,
+        initialDate: minDate,
+        pickerPosition: "bottom-left"
+      }).on("outOfRange",function(){
+        alert("日期不可选");
+      });
+
+      $("#car_reg_time").datetimepicker({
+        language:'zh-CN',
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        minView: 2,
+        endDate: max2Date,
+        pickerPosition: "bottom-left"
+      });
+
+      //抵用码
+      $('#use-code').click(function(){
+        var coupon_code = $('input[name=replace_code]').val();
+        var myreg = /^1\d{10}$/;
+        if(!coupon_code){
+          alert('请填写您的抵用码');
+          return false;
+        }
+        var mobile = $("#mobile").val();
+        if(!mobile){
+          alert('请填写手机号码');
+          $("#mobile").focus();
+          return false;
+        }
+        if(!myreg.test(mobile)){
+          alert('请填写正确的手机号码');
+          $("#mobile").focus();
+          return false;
+        }
+        $.post('__APP__/mobilecar/valid_coupon_code',{'coupon_code':coupon_code,'mobile':mobile},function(data){
+          if(data.status){
+            html = '成功使用一张价值'+data.data.price+'的抵用券';
+            alert(html);
+            var old_amount = $('#amount-money').text();
+            var new_amount = Number(old_amount)-Number(data.data.price);
+            $('#amount-money').text(new_amount);
+
+            var dikou = '-￥'+data.data.price;
+            //alert(dikou);
+            $(".aa").text(dikou);
+            //$(".aa").toggle();
+            //$("#replace_code").attr("disabled","disabled");
+          }else{
+            alert(data.data.message);
+            return false;
+          }
+        },'json')
+      });
+
+    });
+    //提交验证
+    var doSub = function(){
+      var truename = $("#truename").val();
+      var address = $("#address").val();
+      var mobile = $("#mobile").val();
+      var validLicenseplate = $("#licenseplate").val();
+      var licenseplate = $("#licenseplate_type").val()+$("#licenseplate").val();
+      var order_time = $("#order_time").val();
+      var myreg = /^1\d{10}$/;
+      if(!truename){
+        alert('请填写姓名');
+        $("#truename").focus();
+        return false;
+      }
+      if(!address){
+        alert('请填写详细地址');
+        $("#address").focus();
+        return false;
+      }
+      if(!mobile){
+        alert('请填写手机号码');
+        $("#mobile").focus();
+        return false;
+      }
+      if(!myreg.test(mobile)){
+        alert('请填写正确的手机号码');
+        $("#mobile").focus();
+        return false;
+      }
+      // if(!validLicenseplate){
+      //   alert('请填写车牌号');
+      //   $("#licenseplate").focus();
+      //   return false;
+      // }
+      //if(!order_time){
+        //alert('请选择服务时间');
+        //$("#order_time").focus();
+        //return false;
+      //}
+      // var hide_weixin_status = $('#hide_weixin_status').val();
+      // var code = $('#code').val();
+      // if(hide_weixin_status == 1 && !code){
+      //   alert('验证码不能为空！');
+      //   return false;
+      // }
+
+      document.getElementById('subForm').submit();
+    }
+  </script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?60969e039f9a2a7252a22e6e27e9f16f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  </body>
+</html>

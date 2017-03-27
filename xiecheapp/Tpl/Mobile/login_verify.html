@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+<meta>
+<title>绑定手机</title>
+<meta charset="utf-8">
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+	name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-itunes-app" content="app-id=588144466" />
+<link rel="stylesheet"
+	href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/mobile/css/order.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+<script	src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+<script	src="__PUBLIC__/mobile/js/libs/dialog.js"></script>
+<script type="text/javascript" src="__PUBLIC__/mobile/js/main.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/mobile/js/libs/zepto/zepto.min.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/mobile/js/libs/zepto/touch.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+
+<include file="Public:wapfoot" />
+<style>
+#loading-overlay {	display: none;}
+.modal{padding:20px;background-color:#ffffff;position:relative;display:none}
+.modal h1{font-size:2em;color:#000;text-align:center;font-weight:bold}
+.modal p{text-align:center;font-size:1.2em;color:#000000;padding:10px 0px;}
+.modal .go{clear:both;margin-top:10px;}
+.modal .go a{font-size:1.2em;padding:10px 20px;margin-left:20px;background-color:#00aff2;color:#ffffff}
+.modal .close-d{position:absolute;right:10px;top:10px}
+p.bg{height:30px;line-height:30px}
+.btn-block {
+display: block;
+width: 90%;
+}
+.btn-lg, .btn-group-lg>.btn {
+padding: 10px 16px;
+font-size: 18px;
+line-height: 1.33;
+border-radius: 6px;
+}
+.btn-primary {
+color: #fff;
+background-color: #428bca;
+border-color: #357ebd;
+}
+.btn {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.42857143;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+cursor: pointer;
+border: 1px solid transparent;
+border-radius: 4px;
+}
+.i-list p{height:30px;line-height:30px}
+</style>
+</head>
+<body style="background: #f1f1f1;">
+	<!-- <div id='loading-overlay'>
+        <div class="loading" id="loading-con">
+            <img src="__PUBLIC__/mb/images/ajax-loader.gif" alt="Loading..."/>
+            <div class="loading-text">正在跳转到支付页面</div>
+        </div>
+    </div> -->
+	<form action="__APP__/Mobile-save_order" id="form_go" method="post"
+		class="post-form" data-ajax="false">
+		<div id="warpper" style="background: #f1f1f1;">
+
+			<!-- Header Start -->
+			<header id="header" data-role="header">
+				<h1>绑定微信号</h1>
+				<span id="left-trigger"> <!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+				</span> <span id="right-trigger"> <a href="tel:4006602822"
+					class="service-call"></a>
+				</span>
+			</header>
+			<!-- Header End -->
+
+			<!-- Content Wrapper Start -->
+			<div id="content-wrapper" data-role="content">
+				<div id="inner-content-wrapper">
+					<!-- 服务类型 开始 -->
+					<div id="pi" class="sl">
+						<div class="title">
+							<span class="circle"></span>
+							<h3>绑定微信号</h3>
+							<div class="clear"></div>
+						</div>
+						<div class="i-list" id="text" style="padding-bottom:20px;padding-top:10px">
+							<ul>
+								<li style="display:none">
+										<label style="float:left;width:20%;height:30px;line-height:30px">品牌：</label>
+										<select id="get_brand" name="brand_id"
+											onchange="comp_brlist('get_brand','get_series', 'get_model');"
+											style="background: #ffffff; border: 1px solid #f1f1f1; font-size: 1.1em;float:left;width: 80%;height:30px;line-height:30px">
+										</select>
+
+								</li>
+								<li style="display:none">
+										<label style="float:left;width:20%;height:30px;line-height:30px">车系：</label>
+										<select id="get_series" name="series_id" disabled
+											onchange="comp_yearlist('get_brand', 'get_series', 'get_model');"
+											style="background: #ffffff; border: 1px solid #f1f1f1; font-size: 1.1em;float:left;width: 30%;height:30px;line-height:30px">
+										</select>
+										<label style="width: 20%; float:left;height:30px;line-height:30px">车型：</label>
+										<select class="car_select" id="get_model" name="model_id"
+									disabled
+									style="background: #ffffff; border: 1px solid #f1f1f1; font-size: 1.1em;width: 30%;height:30px;line-height:30px">
+										</select>
+								</li>
+
+
+								<li><label style="width: 22%; display: inline-block;">手
+										机：</label> <input type="text" id="mobile" name="mobile"
+									value="{$old_weixin.mobile}"
+									style="width: 78%; display: inline-block;"></li>
+								<li style="padding-top: 0px;"><a href="#" name="btn_ok"
+									id="btn_ok">发送验证码</a></li>
+
+								<li><label style="width: 22%; display: inline-block;">验证码：</label>
+									<input type="text" id="code" name="code"
+									style="width: 78%; display: inline-block;"> <input
+									type="hidden" id="hide_weixin_status" name="hide_weixin_status"
+									value="{$weixin_status}"></li>
+								<li <if condition="($hide_invite_code eq 1)">style="display:none;"</if>><label style="width: 22%; display: inline-block;">邀请码：</label>
+									<input type="text" id="invite_code" name="invite_code"
+									style="width: 78%; display: inline-block;"> </li>
+								<li style="padding-top: 0px;"><a href="#" name="btn_yz"
+									id="btn_yz">绑定微信号</a></li>
+
+								<div class="clear"></div>
+							</ul>
+							<div style="padding-left:15px;padding-bottom:10px">
+							<p class="bg">绑定微信号</p>
+							<p class="bg">轻松预约<font style="font-weight:bold">府上养车</font>，足不出户爱车也能做保养</p>
+							<p class="bg">还能预约<font style="font-weight:bold">4S店维修保养、事故车维修</font></p>
+							<p class="bg">资深<font style="font-weight:bold">技师谢师傅</font>在微信后台为您解答疑问</p>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<!-- 服务类型 结束 -->
+					<!-- <div id="next-btn" >
+					<a href="javascript:void(0)"  rel="external">下一步</a>
+				</div> -->
+				</div>
+
+			</div>
+			<!-- Content Wrapper End -->
+		</div>
+
+		<input type="hidden" id="Paweixin_id" name="Paweixin_id"
+			value="{$Paweixin_id}"> <input type="hidden" id="shop_id"
+			name="shop_id" value="{$shop_id}"> <input type="hidden"
+			id="workhours_sale" name="workhours_sale" value="{$workhours_sale}">
+		<input type="hidden" id="select_services" name="select_services"
+			value="{$selectedFinal}"> <input type="hidden"
+			id="order_date" name="order_date" value="{$order_date}"> <input
+			type="hidden" id="timesaleversion_id" name="timesaleversion_id"
+			value="{$timesaleversion_id}"> <input type="hidden"
+			id="order_time" name="order_time" value="{$order_time}">
+	</form>
+
+	<div id="dialog" class="modal">
+		<h1>绑定成功</h1>
+		<p>恭喜你，获得一次免费抽奖的机会。</p>
+		<div class="go">
+			<a href="javascript::void(0)" class="no-prize">不了谢谢</a>
+			<a href="javascript::void(0)" class="get-prize">前往抽奖</a>
+		</div>
+		<div class="close-d">X</div>
+	</div>
+	<script type="text/javascript">
+	
+		$('.no-prize').click(function(){
+			$('.close-d').trigger("click");
+			document.location.href="Mobile-index";
+		})
+		$('.get-prize').click(function(){
+			$('.close-d').trigger("click");
+			document.location.href="__APP__/Mobile-scratch-pa_id-{$pa_id}";
+		})
+		comp_fctlist("get_brand", "get_series", "get_model");
+
+		document.addEventListener("touchstart", function() {
+		}, false);
+		$("#next-btn a").on("click", function(e) {
+			var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/
+			var mobile = $('#mobile').val();
+			if (!$('#mobile').val() || $('#mobile').val() == '请输入手机号码') {
+				alert('手机号不能为空！');
+				return false;
+			}
+			if (mobile.length != 11) {
+				alert('手机号不满11位请重新填写！');
+				return false;
+			}
+			if (!re.test(mobile)) {
+				alert('手机号码只能输入数字！');
+				return false;
+			}
+			var truename = $('#truename').val();
+			if (!truename) {
+				alert('姓名不能为空！');
+				return false;
+			}
+			var hide_weixin_status = $('#hide_weixin_status').val();
+			var code = $('#code').val();
+			if (hide_weixin_status == 1 && !code) {
+				alert('验证码不能为空！');
+				return false;
+			}
+			$("#form_go").submit();
+			$("#loading-overlay").show();
+		})
+		var $i = 60;
+		function disabledUntilOneMiunte(){
+			if( $("#btn_ok").hasClass('noClick') ){
+				var $html = $i+'秒后可重新发送';
+				$("#btn_ok").text($html);
+				if($i >0){
+					$i--;
+				}
+				if($i == 0){
+					$("#btn_ok").removeClass('noClick').text('重新发送验证码');	
+					$i = 60;
+				}
+			}else{
+				return false;
+			}
+		}
+		setInterval(disabledUntilOneMiunte, 1000);
+		$(function() {
+
+			$("#btn_ok").click(function() {
+				if( $("#btn_ok").hasClass('noClick') ){
+					return false;
+				}
+				var mobile = $('#mobile').val();
+				var second = "60";
+				if (/^1\d{10}$/.test(mobile)) {
+					$.ajax({
+						type : "POST",
+						url : "__APP__/Mobile/SendSms",
+						cache : false,
+						data : "mobile=" + mobile,
+						dataType : "json",
+						success : function(data) {
+							if (data == '1') {
+								alert("发送成功！");
+								//60秒后才能再次点击
+								$("#btn_ok").addClass('noClick');
+							} else {
+								alert("发送失败！");
+								return false;
+							}
+						},
+						error : function() {
+						}
+					})
+				} else {
+					alert('请填写数字');
+				}
+			})
+			$("#btn_yz").click(
+					function() {
+						var code = $('#code').val();
+						var truename = $('#truename').val();
+						var mobile = $('#mobile').val();
+						var Paweixin_id = $('#Paweixin_id').val();
+						var second = "60";
+						var brand_id = $('select[name=brand_id]').val();
+						var series_id = $('select[name=series_id]').val();
+						var model_id = $('select[name=model_id]').val();
+						var invite_code = $('input[name=invite_code]').val();
+						
+						if (!mobile || mobile == '请输入手机号码') {
+							alert('手机号不能为空！');
+							return false;
+						}
+						$.ajax({
+							type : "POST",
+							url : "__APP__/Mobile/CheckCode2",
+							cache : false,
+							data : "code=" + code + "&mobile=" + mobile
+									+ "&Paweixin_id=" + Paweixin_id
+									+ "&truename=" + truename+ "&brand_id=" + brand_id+ "&series_id=" + series_id+ "&model_id=" + model_id+ "&invite_code=" + invite_code,
+							dataType : "json",
+							success : function(data) {
+								if (data == '1') {
+									var html = '<div style="margin:15px 0px;text-align:center;padding:20pxl"><img src="__PUBLIC__/mobile/images/bind/3.jpg" /></div><p style="padding-left:20px">恭喜您，微信号成功绑定携车网！</p><p style="padding-left:20px"> 您还可以</p><div style="padding-left:20px;overflow:hidden"><a href="javascript:void(0);" onclick="document.location.href=\'{$back_url}\'" class="btn btn-primary btn-lg btn-block" style="background-color:#00aaf1;border-color:#00aaf1">继续使用携车网</a></div>';
+									$('#text').html(html);
+								} else if (data == '2') {
+									alert("验证码不正确！");
+									return false;
+								}else if(data == '4'){
+									//抽奖层出来
+									var box= KM.widget.Dialog('struc',{struc:'#dialog',close:".close-d",zIndex:99,opacity:"0.65",backcolor:"#000"});
+									box.alert();
+									return false;
+								}else {
+									alert("手机号已注册！");
+									return false;
+								}
+							},
+							error : function() {
+							}
+						})
+					})
+
+		});
+	</script>
+</body>

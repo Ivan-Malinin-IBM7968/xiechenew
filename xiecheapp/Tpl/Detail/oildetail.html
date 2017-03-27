@@ -1,0 +1,54 @@
+<layout name='layout_note' />   
+<div class="usercontent">
+	<div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 费用明细</div>
+	<div class="userjzbar15"></div>
+	<div class="Consumebox">
+		<div class="clear"></div>
+		<div class="Consumelistbg1"></div>
+		<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+  			<tr>
+				<td class="w2"><span class="left">您查询油耗的车型是:{$brand_name} {$series_name} {$current_oilwear_info.model_name}</span>
+  			</tr>
+		</table>
+		<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody">
+  			<tr>
+				<th class="w2" width="60%">车型</th>
+				<th class="w2" width="20%">平均油耗</th>
+				<th class="w2" width="20%">用户数</th>
+			</tr>
+			<notempty name="current_oilwear_info">
+			<tr>
+				<td class="w2">{$brand_name} {$series_name} {$current_oilwear_info.model_name}</td>
+				<td class="w2">{$current_oilwear_info.per_oilwear}L/100km</td>
+				<td class="w2">{$current_oilwear_info.member_number}</td>
+			</tr>
+			</notempty>
+		</table>
+		<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+  			<tr>
+				<td class="w2"><span class="left">您或许还想知道 {$brand_name} {$series_name} 其他车型的油耗:</span>
+  			</tr>
+		</table>
+		<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody">
+  			<tr>
+				<th class="w2" width="60%">车型</th>
+				<th class="w2" width="20%">平均油耗</th>
+				<th class="w2" width="20%">用户数</th>
+			</tr>
+			<volist name="per_oilwear_arr" id="perlist" >
+			<tr>
+				<td class="w2">{$brand_name} {$series_name} {$perlist.model_name}</td>
+				<td class="w2">{$perlist.per_oilwear}L/100km</td>
+				<td class="w2">{$perlist.member_number}</td>
+			</tr>
+			</volist>
+		</table>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="userfootbg"></div>
+</div>
+</div>
+<div class="clear"></div>

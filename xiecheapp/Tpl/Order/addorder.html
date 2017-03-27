@@ -1,0 +1,185 @@
+<layout name='layout_note' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+	$("#how_find_code,#how_find_code2").click(function(){
+			popup();
+			$.ajax({
+				type:'POST',
+				url:'__APP__/membercar/codehelp',
+				cache:false,
+				datatype:'text',
+				data:"",
+				success: function(data){
+					if(data){
+						$("#code_help").html(data);
+					}
+				}
+			})
+	})
+	$("#server_order").click(function(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>同意携车网维修保养预约协议</em><a close="1"  class="flbc">关闭</a></h3><div  style="height:300px; overflow:scroll;padding:20px;"  id="agree_server"><div class="agreement" name="agreement" id="agreement"><h5>携车网汽车售后维修保养预约服务免责声明</h5><br>1、	会员在访问携车网之前，请务必仔细阅读本条款并同意本声明。会员访问携车网的行为以及通过各类方式使用携车网的行为，都将被视作是对本声明全部内容的认可。<br >2、	携车网所提供的汽车售后维修保养项目明细价格（包括但不限于零部件费和/或工时费等费用），由与携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据。最终付款以在服务提供商处实际发生额为准。携车网不提供任何保证，并不承担任何法律责任。<br>3、	携车网与签约的服务提供商以合同形式约定：通过携车网预约售后服务的车主能够享有一定的工时费和/或零件费折扣，携车网发出的预约确认信息作为车主享有这一折扣的凭证。如服务提供商拒绝向出示预约确认信息的车主提供上述折扣，车主应与携车网联系，由携车网与服务提供商协调解决。<br>4、	携车网与签约的服务提供商以合同形式约定：通过携车网预约售后服务的车主若按预约时间准时到达服务提供商处，可以享受预约优先工位。如服务提供商无法按预约时间提供预约优先工位，车主应与携车网联系，由携车网和服务提供商协调解决。<br>5、	通过携车网预约汽车售后服务的车主，在服务提供商处接受服务后，与服务提供商形成服务合同关系。携车网与该服务合同无关，携车网不承担因该服务合同产生的任何直接和/或间接的责任。<br>6、	携车网不对车辆在质保期内的保修和/或索赔做出预约保证。车辆在质保期内的保修和/或索赔受车辆制造商和/或服务提供商保修和/或索赔政策的约束，服务提供商可依据其保修和/或索赔政策接受或拒绝车主的索赔要求。<br>7、	携车网致力于提供合理、准确、完整的资讯信息，但并不保证信息的合理性、准确性和完整性，且不对因信息的不合理、不准确或遗漏导致的任何损失或损害承担责任。<br>8、	访问者在携车网注册时提供的一些个人资料，携车网除您本人同意及第9条规定外不会将用户的任何资料以任何方式泄露给任何一方。<br>9、	当政府部门、司法机关等依照法定程序要求携车网披露个人资料时，携车网将根据执法单位之要求或为公共安全之目的提供个人资料。在此情况下之任何披露，携车网均得免责。<br>10、	任何由于黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常经营的不可抗力而造成的损失，携车网得免责。由于与携车网链接的其它网站所造成之个人资料泄露及由此而导致的任何法律争议和后果，携车网均免责。 <br>11、	携车网如因系统维护或升级而需暂停服务时，将事先公告。若因线路及非本公司控制范围外的硬件故障或其它不可抗力而导致暂停服务，于暂停服务期间造成的一切不便与损失，携车网不负任何责任。<br>12、	携车网使用者因为违反本声明的规定而触犯中华人民共和国法律的，一切后果自行承担，携车网不承担任何责任。 <br>13、	凡以任何方式登陆携车网或直接、间接使用携车网资料者，视为自愿接受携车网声明的约束。<br></div><div class="submit_agree"></div></div>',
+			drag:true,//不可拖动
+			cover:true,//设置笼罩
+		})
+	})
+})
+function popup(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>车辆识别代码帮助</em><a close="1"  class="flbc">关闭</a></h3><div style="height:500px; overflow:scroll;" id="code_help"></div>',
+			drag:true,//不可拖动
+			cover:true,//设置笼罩
+			x:0,
+			y:-420
+		})
+	}
+</script>
+	<div class="usercontent">
+		<div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要预约</div>
+        <div class="userjzbar13"></div>
+		<div class="Consumebox">
+			<div class="clear"></div>
+			<div class="order_info">
+				<h6>您为您的爱车 {$my_car.car_name} {$my_car.brand_name} {$my_car.series_name} {$my_car.model_name} 选择的维修保养项目为：</h6><br>
+				<volist name="services_info" id="server">
+				{$i}、	{$server.name}<br>
+				</volist><br>
+				
+				<h6>您选择的4S店是：</h6><br>
+				{$get_shop.shop_name}<br>
+				地址：{$get_shop.shop_address}<br>
+				折扣：工时费 {$sale_arr.workhours_sale_str}，零件费  {$sale_arr.product_sale_str}<br>
+				<present name="sale_arr['coupon_discount']">优惠券：{$coupon_info.coupon_name}&nbsp;&nbsp;再减{$sale_arr.coupon_discount}</present>
+				<present name="sale_arr['coupon_amount']">优惠券：{$coupon_info.coupon_name}&nbsp;&nbsp;抵用{$sale_arr.coupon_amount}元</present>
+			</div>
+			<div class="yuyue_info_comp">下面请您填入预约详细信息：</div>
+			<div class="Consumelistbg1"></div>
+			<form action="__URL__/insert" method="post">
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle" width="100%">
+				<tr>
+					<td width="30%">预约时间</td>
+					<td><input type="text" name="order_date" class="Wdate" type="text" onfocus="WdatePicker({ <notempty name="sale_check"> disabledDays:[{$sale_check}],</notempty>enableKeyboard:false,doubleCalendar:<?php echo ($doubleCalendar);?>,dateFmt:'yyyy-MM-dd',minDate:'{$minday}',maxDate:'{$maxday}'})" />日<select name="order_hours" onclick="get_minute();" id="order_hours">
+			<option value="0">小时</option>
+			<volist name="Think.config.ORDER_HOURS" id="hours">
+			<if condition="($hours egt $min_hours) AND ($hours elt $max_hours)"> 
+			<option value="{$hours}">{$hours}</option>
+			</if>
+			</volist>
+			</select>时
+			<select name="order_minute" id="order_minute">
+				<option value="">分钟</option>
+			</select>
+			分 <span><font color="red">*</font></span>
+					</td>
+				</tr>
+			<tr>
+			<td>姓名</td><td><input type="text" value="{$list.truename}" name="truename"> <span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>手机号码</td><td><input type="text" value="{$list.mobile}" name="mobile"> <span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>车牌号</td><td><select name="cardqz">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+					<option value="{$type}" <if condition="$my_car.s_pro eq $type">selected<elseif condition="$type eq '沪'" />selected<else /></if> >{$type}</option>
+				</volist>
+					</select>
+					<input type="text" name="licenseplate" value="{$my_car.car_number}"><span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>已行驶公里数</td><td><input type="text" value="" name="miles"></td>
+			</tr>
+			<tr>
+				<td>车辆识别代码</td>
+				<td>
+					<input type="text" value="{$my_car.car_identification_code}" name="car_sn">
+					<span><a href="###" id="how_find_code"><font size="2" color="grey">如何查找您爱车的车辆识别代码？</font></a></span>
+				</td>
+			</tr>
+			<tr>
+			<td>备注</td><td><textarea name="remark" cols=50 rows=6 ></textarea></td>
+			</tr>
+			
+	<tr><td align="center" colspan="2">
+		<input type="hidden" name="shop_id" value="{$Think.get.shop_id}" />
+		<input type="hidden" name="s1" value="{$Think.get.s1}" />
+		<input type="hidden" name="s2" value="{$Think.get.s2}" />
+		<input type="hidden" name="u_c_id" value="{$Think.get.u_c_id}" />
+		<input type="hidden" name="select_services" value="{$Think.request.select_services}" />
+		<input type="hidden" name="model_id" value="{$Think.request.model_id}" />
+		<input type="hidden" name="brand_id" value="{$Think.request.brand_id}" />
+		<input type="hidden" name="series_id" value="{$Think.request.series_id}" />
+		<input type="hidden" name="timesaleversion_id" value="{$Think.request.timesaleversion_id}" />
+		<input type="hidden" name="membercoupon_id" value="{$Think.request.membercoupon_id}" />
+
+	</td>
+	</tr>
+			</table>
+			<div class="server_agree" >
+				<input type="checkbox" name="xcagreement" value="1" checked="checked">
+				<label id="server_order" style="cursor:pointer;"> 同意携车网维修保养预约协议</label>
+			</div>
+			<div class="submit_agree"><input type="submit" class="button-yellow" value="预约下单"></div>
+			<div class="yuyuetishi">
+				<h5>预约提示：</h5><br>
+				1、	我们目前只接受隔天预约，且只接受15天之内的预约。如果您预约第二天的维修保养服务，您需要在当天下午4点之前进行预约，以让我们的客服有时间与4S店确认您第二天的预约；
+				<br>
+				2、	如果您选择的是分时折扣，则只能在您选择的折扣时段内进行预约；
+				<br>
+				3、	请填入您的手机号，以接收预约确认的短信，该短信同时也是您到店后享受折扣的凭证；
+				<br>
+				4、	车牌号、已行驶里程数、车辆识别代码（<a href="###" id="how_find_code2">如何找到您爱车的车辆识别代码</a>）能方便4S店在您到店前获知您爱车的详细信息，提前做好准备，以更好地为您服务；
+				<br>
+				5、	如果您的爱车还有别的情况需要说明，请在备注中留言告诉我们。
+			</div>
+			
+	</form>	
+		</div>
+		
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+<script>
+	function agreeShow(){
+		if($("#agreement").is(":hidden")){
+			$("#agreement").show();
+		}else{
+			$("#agreement").hide();
+		}
+	}
+	function get_minute(){
+		var sel_hours = $("#order_hours").val();
+		var min_hours = '{$min_hours}';
+		var min_minute ='{$min_minute}';
+		var max_hours = '{$max_hours}';
+		var max_minute = '{$max_minute}';
+		$("#order_minute").html("");
+		$("#order_minute").append("<option value='0'>分钟</option>");
+		for(i=0; i<6; i++){
+			var m = i*10;
+			if(m==0){
+				m='00';
+			}
+			if(sel_hours==min_hours || sel_hours==max_hours){
+				if(sel_hours==min_hours && sel_hours!=max_hours && min_minute<=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+				if(sel_hours==max_hours && max_minute>=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+			}else{
+				$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+			}
+		}
+	}
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>保险公司查询</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-title" content="携车网">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466">
+		<link rel="stylesheet" href="__PUBLIC__/ac-car/css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/ac-car/css/reset.css">
+		<link rel="stylesheet" href="__PUBLIC__/ac-car/css/apps/main.css">
+		<link rel="stylesheet" href="__PUBLIC__/ac-car/css/apps/app.css">
+		<script src="__PUBLIC__/ac-car/js/libs/require.js" data-main="__PUBLIC__/ac-car/js/conf/app" ></script>
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			<div data-role="page" id="f-place">
+			<!-- Header Start -->
+			<header id="header" data-role="header">
+				<h1>保险公司查询</h1>
+				<span id="left-trigger">
+					<a href="javascript: history.back()" class="service-call"></a>
+				</span>
+				<span id="right-trigger" >
+				
+				</span>
+			</header>
+			<!-- Header End -->
+			<!-- Content Wrapper Start -->
+			<div id="content-wrapper" style="  height: 100%">
+				<ul id="f-list" data-role="listview" data-inset="true" style="padding: 10px;">
+					<!-- <li >
+						<div class="ui-grid-a">
+							<div class="guide-single ui-block-a">
+								<strong >文洋分中心</strong>
+								<span>上海市闵行区元江路3266号</span>
+							</div>
+							<div class="ui-block-b f-map-sign" style="width: 30%" >
+								<a href="">
+									<img src="__PUBLIC__/ac-car/images/map-sign.jpg" alt="请记录事故发生地点" style="width: 35%">
+								</a>
+								
+							</div>
+						</div>
+						<div class="ui-grid-solo f-info-distance">距离0.7km</div>
+						<div class="ui-grid-solo f-info-phone">021-64466333</div>
+						<div class="ui-grid-solo f-info-worktime">上午8时30分至下午17时</div>
+					</li> -->
+				</ul>
+			</div>
+			
+			<!-- Content Wrapper End -->
+			<script type="javascript/templete" id="tpl-f-place"> 
+			<li  >
+				<a href="">
+					<div class="ui-grid-a">
+						<div class="guide-single ui-block-a">
+							<strong >{{shop-name}}</strong>
+							<span>{{shop-address}}</span>
+						</div>
+						<div class="ui-block-b f-map-sign" style="width: 30%" >
+							<a href="__APP__/Accident-maps-shopid-{{id}}-lat-{{latitude}}-long-{{longitude}}" target="_self">
+								<img src="__PUBLIC__/ac-car/images/map-sign.jpg" alt="请记录事故发生地点" style="width: 35%">
+							</a>
+							
+						</div>
+					</div>
+					<div class="ui-grid-solo f-info-distance">距离 {{shop-distance}}km</div>
+					<div class="ui-grid-solo f-info-phone"><a href="tel:400-660-2822">400-660-2822</a></div>
+					<div class="ui-grid-solo f-info-worktime">{{worktime}}</div>
+					<div class="ui-grid-solo f-accar-bg"></div>
+				</a>
+			</li>
+		</script>
+		</div>
+		<!--{{shop-phonecall}}-->
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=640" />
+
+<style>
+	*{margin: 0; padding: 0; list-style: none;font-family: "arial"}
+	body{background: #fff7c1;}
+	.bg-1{width: 640px; height: auto;}
+	.bg-1 img{width: 640px; height: auto; display: block;}
+	.bg-2{ width: 620px; height: auto; line-height: 28px; font-size: 1.4em;  background: white; padding: 0 10px;}
+	.price{padding: 20px 0;}
+	.price strong{font-size: 1.5em; color: #ff7811; font-weight: bold; }
+	.price span{font-size: 1.1em; color: #999}
+
+	#main{width: 640px; height: auto; margin: 0 auto; background: #fff7c1;}
+	
+</style>
+</head>
+
+<body>
+
+	<div id="main">
+		<div class='bg-1'>
+			<img src="/UPLOADS/Coupon/Logo/{$coupon.coupon_pic}" width="640" alt="{$coupon.coupon_name}">
+		</div>
+		<div class='bg-2'>
+			<div class='price'>
+				<strong>￥{$coupon.coupon_amount}</strong><span></span>
+			</div>
+			<div class="detail-content">
+			{$coupon.coupon_des}
+			</div>
+		</div>
+		
+	
+		
+	</div>
+</body>
+</html>

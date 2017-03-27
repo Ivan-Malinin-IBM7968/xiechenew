@@ -1,0 +1,166 @@
+<load file="__CSS__/newstyle.css" />
+<!-- 菜单区域  -->
+<script src="__PUBLIC__/Js/jquery-1.6.2.min.js" type="text/javascript"></script>
+
+<style>
+.st-show-msg-box .rate-msg-box{
+	display: block;
+}
+.rate-msg-box .textinput{
+	border: 1px solid #ABADB3;
+    padding: 8px;
+	margin: 20px;
+}
+.rate-msg-box .ph-label{
+	display: block;
+    line-height: 1.5;
+    width: 200px;
+}
+.rate-msg-box .rate-msg{
+    height: 132px;
+    outline: 0 none;
+    resize: none;
+    width: 100%;
+}
+.rate-msg-box .text-counter strong{
+	color: #FF6600;
+    margin: 0 5px;
+}
+.comment_type{
+	margin: 10px 0 10px 5px;
+}
+.sbt{
+	text-align:center;
+}
+.i-item{
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DDDDDD;
+    padding: 10px 15px 5px;
+	margin-left:20px;
+	margin-right:20px;
+}
+.o-topic{
+	border-bottom: 1px solid #F9F0DB;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 0 0 2px;
+}
+.topic{
+	float: left;
+}
+.date-comment{
+	color: #999999;
+    float: right;
+}
+.item-reply{
+	padding-left: 50px;
+    position: relative;
+}
+.item-reply dl{
+	background-color: #F2F2F2;
+	border-top: 1px solid #F4F4F4;
+    padding: 5px;
+}
+.item-reply dt{
+	color: #999999;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+.item-reply dt .u-name{
+	float: left;
+}
+.item-reply dt a{
+	color: #005AA0;
+    float: left;
+    margin-right: 8px;
+}
+.item-reply dt .date-comment{
+	float: right;
+}
+.item-reply dd{
+	margin-left: 0;
+}
+.member_show{
+	margin-bottom: 10px;
+	color:#999999
+}
+.user{
+	color:#005AA0;
+	cursor: pointer;
+}
+.order_date{
+	font-size:12px;
+}
+.edit_comment{
+	display:none;
+}
+#edit_comments{
+	float: right;
+}
+</style>
+
+<present name="comment_info">
+<div id="main">
+<div id="main-right"><h1>订单评价回复</h1>
+</div>
+<div id="main-right2">
+
+<div class="i-item">
+	<div class="member_show">
+		<span class="user">{$comment_info.user_name}</span>
+		<span style="margin-left:5px">({$comment_info.create_time|date="Y-m-d",###})</span>
+		<span style="margin-left:5px"><font color="red"><if condition="$comment_info.comment_type eq 1">好评<elseif condition="$comment_info.comment_type eq 2" />中评<else />差评</if></font></span>
+	</div>
+
+	<div class="o-topic">
+		<strong class="topic">
+			 {$comment_info.comment}
+		</strong>
+		<span class="date-comment">{$comment_info.create_time|date="Y-m-d H:i:s",###}</span>
+	</div>
+
+	<!-- 回复内容 -->
+	<volist name="commentreply_list" id="vo" >
+	<div class="item-reply">
+		<dl>
+			<dt>
+				<span class="u-name"><span class="user"><if condition="$vo.operator_type eq 2" >网站工作人员<elseif condition="$vo.operator_type eq 3" />商家工作人员<else/>{$vo.operator_name}</if></span>回复说：</span>
+				<span class="date-comment">{$vo.create_time|date="Y-m-d H:i:s",###}</span>
+			</dt>
+			<dd>{$vo.reply}</dd>
+		</dl>
+	</div>
+	</volist>
+	<!-- 回复内容 -->
+	
+</div>
+	                    
+	                    
+<form action="__APP__/Shop/comment/reply_comment" method="post" onsubmit="return Check();">
+<div class="rate-msg-box">
+	<div class="bd">
+		<div class="textinput">
+			<span class="ph-label">输入你的回复的内容:</span>
+			<textarea class="rate-msg" name="content" id="content"></textarea>
+		</div>
+	</div>
+	<input type="hidden" name="comment_id" value="{$comment_info.id}" />
+	<div class="sbt"><input type="submit" value="提交"></div>
+</div>
+</form>
+<else />
+<div class="title">暂无评价</div>
+</div>
+</div>
+</present>
+
+<script type="text/javascript">
+	function Check(){
+		var content = $('#content').val();
+		if($.trim(content).length=='0'){
+			alert('请输入回复内容！');
+			return false;
+		}
+		return true;
+	}
+</script>

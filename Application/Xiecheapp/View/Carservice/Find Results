@@ -1,0 +1,129 @@
+Searching 68 files for "www.xieche.com"
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Myhome/all_order.html:
+   61  											</td>
+   62  											<td>
+   63: 												<if condition="($vo.pay_status eq 0 and $vo.pay_type eq 2 and $vo.status eq 0)"><p><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$vo['id']}&all_amount={$vo['amount']}&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></p></if>
+   64  												<a class="color-a" href="{:U('/myhome/carservice_detail',array('order_id'=>$vo['id']))}">订单详情</a>
+   65  											</td>
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Myhome/carservice_detail.html:
+   30  						</td>
+   31  						<td>
+   32: 							<if condition="($order_info.pay_status eq 0 and $order_info.pay_type eq 2 and $order_info.status eq 0)"><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$order_info.id}&all_amount={$order_info['amount']}&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></if>
+   33  						</td>
+   34  
+   ..
+  178  						</table>
+  179  					</dd>
+  180: 					<dd style="padding:0;"><if condition="($order_info.pay_status eq 0 and $order_info.pay_type eq 2 and $order_info.status eq 0)"><a href=""{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$order_id}&all_amount={$order_info['amount']}&coupon_name=上门保养套餐" class="btn btn-comment fr" style="padding: 15px 40px;">去支付</a></if></dd>
+  181  				</dl>
+  182  				
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Myhome/carservice_order.html:
+   66  			 		<td>￥{$vo.amount}</td>
+   67  			 		<td>
+   68: 			 			<if condition="($vo.pay_status eq 0 and $vo.pay_type eq 2 and $vo.status eq 0)"><p><a href=""{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id={$vo['id']}&all_amount={$vo['amount']}&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></p></if>
+   69  			 			<p><a class="color-a" href="{:U('/myhome/carservice_detail',array('order_id'=>$vo['id']))}">订单详情</a></p>
+   70  			 		</td>
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Myhome/index.html:
+  132  							</if>
+  133  						</td>
+  134: 						<td style="border-right: 1px solid #eff6fd;"><if condition="($vo.pay_status eq 0 and $vo.pay_type eq 2 and $vo.status eq 0)"><p><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id=vo.id&all_amount=vo.amount&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></p><elseif condition="($vo.pay_status eq 0 and $vo.pay_type eq 1)"/><p>待分配</p><else /></if><a class="color-a" href="{:U('/myhome/carservice_detail',array('order_id'=>$vo[id]))}">查看详情</a></td>
+  135  					</tr>
+  136  					<tr style="height: 25px;"></tr>
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Public/city.html:
+   73                          href="/public/honour" target="_blank">媒体报道</a></p>
+   74  
+   75:                 <p>Copyright © 2015 WWW.XIECHE.COM.CN 沪ICP备12017241号 携车网 版权所有</p>
+   76              </div>
+   77              <div class="fr fenxiangicon">
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Public/footer.html:
+   33          </div>
+   34        </div>
+   35:       <div class="copyright">Copyright © 2015 WWW.XIECHE.COM.CN <a href="http://www.miibeian.gov.cn">沪ICP备12017241号</a> 携车网 版权所有 </div>
+   36  </div>
+   37  
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Public/footer2.html:
+    5          <div class="zhichi fl">
+    6              <p class="p_bottom"><a href="/public/aboutus" target="_blank">关于我们</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="/shopservice/agreement" target="_blank">服务支持 </a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="/public/honour" target="_blank">媒体报道</a></p>
+    7:             <p>Copyright © 2015 WWW.XIECHE.COM.CN <a href="http://www.miibeian.gov.cn"><font color="#e47911">沪ICP备12017241号</font></a> 携车网 版权所有</p>
+    8          </div>
+    9          <div class="fr fenxiangicon">
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Public/header.html:
+   30      <script type="text/javascript">
+   31      if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i))) {
+   32:       location.replace("{:C('WEB_ROOT')}/mobilecar-carservice") 
+   33      }
+   34      </script>
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Shiguche/index.html:
+    8  		<script>document.documentElement.className = 'js';</script>
+    9  		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/jquery.fullPage.css" />
+   10: 		<link rel="shortcut icon" href="{:C('WEB_ROOT')}__PUBLIC__/new_2/images/favicon.ico" type="image/x-icon">
+   11  		<link type="text/css" href="__PUBLIC__/css/common.css" rel="stylesheet">
+   12  		<style>
+   ..
+  219  			<div id="s0-3-container">
+  220  				<a href="https://itunes.apple.com/cn/app/zong-heng-xie-che-qi-che-shou/id588144466?mt=8" id="iphone-app" class="get-app" target="_blank"></a>
+  221: 				<a href="{:C('WEB_ROOT')}/xc.apk" id="android-app" class="get-app" target="_blank"></a>
+  222  				<img src="__PUBLIC__/images/shiguche/s0-3.png" alt="" id="s0-3" >	
+  223  			</div>
+  ...
+  274          </div>
+  275        </div>
+  276:       <div class="copyright">Copyright © 2014 WWW.XIECHE.COM.CN 沪ICP备12017241号 携车网 版权所有 </div>
+  277  </div>
+  278  
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Shiguche/index_01.html:
+   10      <script>document.documentElement.className = 'js';</script>
+   11      <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/jquery.fullPage.css"/>
+   12:     <link rel="shortcut icon" href="{:C('WEB_ROOT')}__PUBLIC__/new_2/images/favicon.ico" type="image/x-icon">
+   13      <link type="text/css" href="__PUBLIC__/css/common.css" rel="stylesheet">
+   14      <link type="text/css" href="__PUBLIC__/css/header_new.css" rel="stylesheet">
+   ..
+  489          <a href="https://itunes.apple.com/cn/app/zong-heng-xie-che-qi-che-shou/id588144466?mt=8" id="iphone-app"
+  490             class="get-app" target="_blank"></a>
+  491:         <a href="{:C('WEB_ROOT')}/xc.apk" id="android-app" class="get-app" target="_blank"></a>
+  492          <img src="__PUBLIC__/images/shiguche/s0-3.png" alt="" id="s0-3">
+  493      </div>
+  ...
+  544              </div>
+  545            </div>
+  546:           <div class="copyright">Copyright © 2014 WWW.XIECHE.COM.CN 沪ICP备12017241号 携车网 版权所有 </div>
+  547      </div>   -->
+  548      <div class="footer2" >
+  ...
+  554                          href="/public/honour" target="_blank">媒体报道</a></p>
+  555  
+  556:                 <p>Copyright © 2015 WWW.XIECHE.COM.CN 沪ICP备12017241号 携车网 版权所有</p>
+  557              </div>
+  558              <div class="fr fenxiangicon">
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Shiguche/order.html:
+  119        }else{
+  120          var newChild =  document.createElement("span");
+  121:         newChild.innerHTML = '<img src="{:C('WEB_ROOT')}/UPLOADS/Driving/'+response+'" height="90" width="90"/>';
+  122          oShow.appendChild(newChild);
+  123          if(CarimgNum>1){
+  ...
+  152        }else{
+  153          var newChild =  document.createElement("span");
+  154:         newChild.innerHTML = '<img src="{:C('WEB_ROOT')}/UPLOADS/Driving/'+response+'" height="90" width="90"/>';
+  155          oShow2.appendChild(newChild);
+  156          $("#driving_img").val(response);
+
+/Users/wuwy/WWW/xiechenew/Application/Xiecheapp/View/Shopservice/index.html:
+  166              <div class="c95">
+  167                <div class="onecon">
+  168:                 <div class="oneimg fl"><a href="{:U('/shopservice/detail',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}"><img src="{:C('WEB_ROOT')}{$vo.shop_pic}" width="100%" alt=""></a></div>
+  169                  <div class="onedes fr">
+  170                    <h3><a href="{:U('/shopservice/detail',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}">{$vo.shop_name}</a></h3>
+
+19 matches across 12 files

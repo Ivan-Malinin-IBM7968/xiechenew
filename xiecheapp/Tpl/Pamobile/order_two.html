@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>请选择时间</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	
+	<link rel="stylesheet"  href="__PUBLIC__/mb/css/libs/jquery.mobile-git.css" /> 
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/order.css" />
+	<link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile.datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/main.css?v={$Think.config.VERSION_DATE}" />
+	
+	<script src="__PUBLIC__/mb/js/libs/jquery/jquery-1.9.1.js"></script> 
+	<script src="__PUBLIC__/mb/js/libs/jqueryui/jquery.ui.datepicker.js"></script>
+	<script src="__PUBLIC__/mb/js/libs/jqmobile/jquery.mobile-1.4.1.full.min.js"></script> 
+	<script src="__PUBLIC__/mb/js/libs/jqmobile/jquery.mobile.datepicker.js"></script>
+	<script src="__PUBLIC__/mb/js/libs/zepto/zepto.min.js"></script>
+	<script src="__PUBLIC__/mb/js/libs/zepto/touch.js"></script>
+	<script src="http://statics.xieche.net/mb/js/pamb_ga.js"></script>
+	<include file="Public:wapfoot" />
+</head>
+<body style="background: #f1f1f1;">
+<form action="{:URL('/Pamobile/order_three')}" id="form_go" method="get" class="post-form" data-ajax="false">
+	<div id="warpper" style="background:#f1f1f1;">
+		<!-- Header Start -->
+		<header id="header">
+			<h1 style="text-shadow: none;">请选择时间</h1>
+			<span id="left-trigger">
+				<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+			</span>
+			<span id="right-trigger" >
+				<a href="tel:4006602822" class="service-call"></a>
+			</span>
+		</header>
+		<!-- Header End -->
+		<!-- Content Wrapper Start -->
+		
+		<div id="content-wrapper"  >
+			<div id="inner-content-wrapper">
+				<!-- 服务类型 开始 -->
+				<div id="pi" class="sl" >
+					<div class="title">
+						<span class="circle"></span>
+						<h3>请选择日期</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="s-c-c">
+						<div class="info" style="width: 100%;">
+							<!-- <span class="lookout">&bull;&nbsp;预约维修下单只接受15天之内的预约</span> -->
+							<span class="lookout">只接受隔天预约，且只接受15天之内的预约;</span>
+							<span class="example">
+								如需预约第二天的服务，您需要在当天下午4点之前预约
+							</span> 
+						</div>
+						
+					</div>
+					<div class="i-list">
+						<input type="text" id="date-input-inline" data-inline="true" name="time_mn">
+						
+					</div>
+					<div class="title">
+						<span class="circle"></span>
+						<h3>请选择时间</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="i-list" style="padding-left: 10px;">
+						
+						<select name="" id="select-hour" data-inline="true" style="margin:0px 0px 0px 10px; ">
+								<!-- <option value="" id="hour-zero" name="hour-zero"  >00</option> -->
+						</select> 
+
+						<strong style="font-size: 1.1em; margin-right: 15px;">时</strong> 
+						
+						<select name="" id="select-mintues" data-inline="true" style="margin:0px 10px 0px 20px;">
+							<option value="" id="hour-half" name="hour-half" selected>30</option>
+						</select> 
+						<strong style="font-size: 1.1em">分</strong>
+						
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- 服务类型 结束 -->
+				<div id="next-btn">
+						<!-- <input type="submit" name="bt" value="确定"> -->
+					<a href="javascript:void(0)" value="" rel="external">下一步</a>
+				</div>
+			</div>
+			
+		</div>
+		<!-- Content Wrapper End -->
+	</div>
+	<input type="hidden" id="shop_id" name="shop_id" value="{$shop_id}">
+	<input type="hidden" id="selectedFinal" name="selectedFinal" value="{$selectedFinal}">
+	<input type="hidden" id="timesaleversion_id" name="timesaleversion_id" value="{$timesaleversion_id}">
+	<input type="hidden" id="workhours_sale" name="workhours_sale" value="{$workhours_sale}">
+	<input type="hidden" id="result" name="result" value='{$result}'>
+	<input type="hidden" id="result1" name="result" value='{"sale_check":"1,2,4,6,0","begin_time":"8:30","end_time":"17:00"}'>
+	<input type="hidden" id="zero" name="zero" value=''>
+	<input type="hidden" id="half" name="half" value=''>
+	
+</form>
+	<script>
+		(function(){
+
+			var minDate = $.parseJSON($("#result").val())["min"],
+				maxDate = $.parseJSON($("#result").val())["max"];
+
+			$('#select-hour').change(function(){
+				
+				$('#zero').val($('#select-hour option:selected').val());
+			})
+			 $('#select-mintues').on("change",function(){
+				 	$('#half').val($('#select-mintues option:selected').val());
+				 })
+			document.addEventListener("touchstart", function() {},false);
+
+			function allowedTimeRange(){
+				var timeRangeBegin = $.parseJSON($("#result").val())["begin_time"].split(":").map(Number),
+					timeRangeEnd = $.parseJSON($("#result").val())["end_time"].split(":").map(Number),
+					hourRange = timeRangeEnd[0] - timeRangeBegin[0] + 1,
+					hourBase = timeRangeBegin[0],
+					hourCount = timeRangeBegin[0];
+					for(i = 0; i < hourRange ; i++){
+						var count = hourCount++;
+						if(i==0){
+							$("#select-hour").append("<option value='"+ count +"' selected>" + count + "</option>")
+						}else{
+							$("#select-hour").append("<option value='"+ count +"'>" + count + "</option>")
+						}
+						
+					}
+					$("#select-hour").on("change",checkHour).change();
+
+			}
+
+			function checkHour(){
+				$("#select-mintues").empty().append('<option  id="hour-zero" value="0" selected>00</option><option  id="hour-half" value="30" selected>30</option>');
+				
+				var timeRangeBegin = $.parseJSON($("#result").val())["begin_time"].split(":").map(Number),
+					timeRangeEnd = $.parseJSON($("#result").val())["end_time"].split(":").map(Number);
+
+					if($(this).val() == timeRangeBegin[0]){
+						console.log(timeRangeBegin[1] > 0)
+						if(timeRangeBegin[1] > 0){
+							$("#select-mintues").prev("span").html("30")
+							$("#hour-zero").removeAttr("selected").next("option").attr("selected","selected");
+							$("#hour-zero").hide().remove();
+						}else{
+							return ;
+						}
+ 					}else if($(this).val() == timeRangeEnd[0]){
+ 						if(timeRangeEnd[1] == 0){
+ 							$("#select-mintues").prev("span").html("00")
+ 							$("#hour-half").removeAttr("selected").prev("option").attr("selected","selected");
+							$("#hour-half").hide().remove();
+ 						}else{
+ 							return ;
+ 						}
+ 					}
+			}
+
+			allowedTimeRange();
+
+			$("#date-input-inline").date({
+				altFormat: "yy-mm-dd",
+				altField: "#actualDate",
+				minDate : minDate,
+				maxDate : maxDate, 
+				hideIfNoPrevNext: true,
+				monthNames : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+				monthNamesShort : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+				dayNames : [ "周一", "周二", "周三", "周四", "周五	", "周六", "周日" ],
+				dayNamesMin : [ "周一", "周二", "周三", "周四", "周五	", "周六", "周日" ],
+				beforeShowDay: allowedDates
+			});
+			
+			
+			
+
+			function allowedDates(date){
+				var ArrProcessDay = [],
+					day = date.getDay(); //get current day by Date.getDay() method, retuen 0 ~ 6 represent Sunday ~ Saturday;
+				
+				// convert String to JSON object, and split into Array which contian Number;
+				var datesData = $.parseJSON($("#result").val())["sale_check"].split(",").map(Number);
+
+				//process day based on [0,1,2,3,4,5,6];
+				for(i=0; i<datesData.length; i++){
+					if(datesData[i] == 0){
+						ArrProcessDay.push(6);
+					}else{
+						ArrProcessDay.push(datesData[i]-1);
+					}
+				};
+				
+				/*var today = new Date().getDate(),
+					yesterday = today + 1,
+					yesDate = new Date().setDate(yesterday);
+
+				console.log(new Date(yesDate).getTime())	
+				console.log("yesterday: "+ yesterday);
+				console.log("today: "+ today.getTime());
+				// check if date is today, and later than 4:00pm
+				if(date.getTime()  == yesterday.getTime()){
+
+					console.log(date.toDateString())
+					if(date.getHours() >= 16){
+						console.log("today")
+
+						return [false,"","已经超过四点，明天不能预约，请预约后天的维修服务！"];
+					} 
+				}*/
+
+				//return if the day could be selected
+				if($.inArray(day,ArrProcessDay) != -1){
+					
+					return [true,""];
+				}else{
+					return [false,"","此天不能预约"];
+				};
+			}
+
+			$("#next-btn a").on("tap", function(e){
+					e.preventDefault();
+					$("#form_go").submit();
+			});
+		}());
+
+	</script>
+</body>

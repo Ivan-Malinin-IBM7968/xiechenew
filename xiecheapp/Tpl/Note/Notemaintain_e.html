@@ -1,0 +1,148 @@
+<layout name='layout_note' />
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <div class="userjzbar03"></div>
+		<form action="__URL__/saveNote/type/Notemaintain/note_id/{$list_note.note_id}" method="post">
+        <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+          <tr>
+            <td class="tdright w1">车辆：</td>
+            <td>
+			<span>{$select_u_c_id.car_name}</span>
+			</td>
+            <td class="tdright w2">日期：</td>
+            <td><input type="text" class="left fgre inp01" onclick="WdatePicker()" value="{$list_note.happen_time|date="Y-m-d",###}" name="happen_time">
+              <a href="#" class="Selecttime"></a> </td>
+          </tr>
+        </table>
+		
+		<table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+		     <td class="tdright w1">摘要：</td>
+		      <td><input type="text" value="{$list_note.summary}" class="inp01 w4" name="summary" id="summary"></td>
+	       </tr>
+	    </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+             <td class="tdright w1">人工费：</td>
+		     <td><input type="text" onclick="checkMoneys(this,1)" onblur="if (!(/^[\d]+\.?\d*$/.test(this.value)) ){this.value='';};accountTotalAcceoryFee();checkMoneys(this,2)" autocomplete="off" onchange="return CheckMoney(this, 'TXT_ManFee');accountTotalFee()" style="text-align:right;color:#CCCCCC;  width:130px;" class="addframetextbox w3 inp01" value="{$list_note.Notemaintain.labor_cost}" name="labor_cost" id="TXT_ManFee">
+		       元</td>
+			   <input type="hidden" id="isManInput" value=""/>
+                <input type="hidden" id="isAccesoryInput" value=""/>
+		     <td class="tdright w1">配件费：</td>
+		     <td><input type="text" onblur="if (!(/^[\d]+\.?\d*$/.test(this.value)) ){this.value='';};accountTotalAcceoryFee();checkMoneys(this,2)" onclick="checkMoneys(this,1)" value="{$list_note.Notemaintain.accessories_cost}" autocomplete="off" onkeydown="intelligenceTwo()" onchange="return CheckMoney(this, 'TXT_AcceoryFee');" style="text-align:right; color:#CCCCCC;  width:130px;" class="addframetextbox w3 inp01" name="accessories_cost" id="TXT_AcceoryFee">
+		       元</td>
+	       </tr>
+           <tr>
+             <td class="tdright w1">总费用：</td>
+             <td><input type="text" onblur="if (!(/^[\d]+\.?\d*$/.test(this.value)) ){this.value='';};checkMoneys(this,2)" onclick="checkMoneys(this,1)" value="{$list_note.total_cost}" autocomplete="off" onkeydown="intelligence()" onchange="return CheckMoney(this, 'TXT_Total')" style="text-align:right; width:130px; color:#CCCCCC;" class="addframetextbox w3 inp01" name="total_cost" id="TXT_Total">
+               元</td>
+             <td class="tdright w1">里  程：</td>
+             <td><input type="text" value="{$list_note.Notemaintain.miantain_odometer}" style="width:110px" class="addframetextbox w3 inp01"  name="miantain_odometer" id="TXT_Mileage">
+               公里</td>
+           </tr>
+         </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <!--<tr class="none">
+		     <td class="tdright w1 tdtop">配件明细：</td>
+		     <td>
+			 <p class="w4">
+			 <a class="user_Close" href="#"></a>
+			 <a class="AddItem" id="but">增加</a>
+			 </p>
+			 <div class="clear"></div>
+		<div id="tab">
+		<volist name="list_detail" id="vo" key="detail_key">
+		
+		<table id="{$detail_key}" border='0' cellspacing='0' cellpadding='0' class='AddItem'><tr class='none'><td class='w2'></td><td class='w2'></td><td class='w2'><a class='DelItem' onclick='deltr({$detail_key})' ></a></td></tr><tr class='none'><td class='w2'><div id='BigClass'><select name='TXT_BigClass[]' id='TXT_BigClass' onchange='Request(this,"midClass_{$detail_key}", "smallClass_{$detail_key}");'><volist name="Think.config.MAINTAIN_BIGCLASS" id="type"><option value='{$key}' <eq name="key" value="$vo.Big">selected="selected"</eq>>{$type}</option></volist></select></div></td><td class='w2'><div id='midClass_{$detail_key}'><select name='TXT_MidlClass[]' id='TXT_MidlClass'><option value='{$vo.Midl}'>{$vo.Midl_name}</option></select></div></td><td class='w2'><div id='smallClass_{$detail_key}'><select name='TXT_SmallClass[]' id='TXT_SmallClass'><option value='{$vo.Small}'>{$vo.Small_name}</option></select></div></td></tr><tr  class='none'><td >单价：<input type='text' id='TXT_Price' value="{$vo.Pric}" name='TXT_Pric[]' class='addframetextbox w3 inp01'> 元</td><td >数量：<input type='text' id='TXT_Quantity' value="{$vo.Quantity}" name='TXT_Quantity[]' class='addframetextbox w3 inp01'> 件</td><td >总价：<input type='text'id='TXT_SubCost'name='TXT_SubCost[]' value="{$vo.SubCost}" class='addframetextbox w3 inp01'> 元</td></tr></table>
+		</volist>
+
+		</div>
+			
+			 
+			 </td>
+	       </tr>-->
+		   <tr class="none">
+             <td class="tdright w1 tdtop">备注：</td>
+		     <td><textarea  class="addframetextbox" type="text" name="remark" id="remark">{$list_note.remark}</textarea></td>
+	       </tr>
+		    <tr class="none">
+            <td ></td>
+            <td > <input type="submit" class="button-yellow" value="保存"></td>
+          </tr>
+        </table>
+		  </form>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+
+
+<script>
+	 function Request(bigClass, midClassDivId, smallClassDivId){
+	 if (bigClass.value == 0){
+	 	var midSelect = document.getElementById(midClassDivId);
+		
+			midSelect.innerHTML = "<select name=\"TXT_MidlClass[]\" id=\"TXT_MidlClass\" style=\"width:50px;\"><option></option></select>";
+		var smallSelect = document.getElementById(smallClassDivId);
+			smallSelect.innerHTML = "<select name=\"TXT_SmallClass[]\" id=\"TXT_SmallClass\" style=\"width:50px;\"><option></option></select>";
+	 }
+	 else
+	 {
+		 createXMLHttpRequest();
+		 xmlHttp.onreadystatechange = function(){ handleStateChange(midClassDivId); };
+		 var getUrl = "__URL__/maintaindetail/select/"+ bigClass.value +"/smallClass/" + smallClassDivId;
+		 getUrl = encodeURI(getUrl);
+  		 getUrl = encodeURI(getUrl);
+		 xmlHttp.open("GET", getUrl, true);
+		 xmlHttp.send(null);
+	 }
+ }
+
+ function RequestTwo(midClass, smallClassDivId){
+		 createXMLHttpRequest();
+		 xmlHttp.onreadystatechange = function(){ handleStateChange(smallClassDivId); };
+		 xmlHttp.open("GET", "__URL__/maintaindetail/selectTwo/" + midClass.value, true);
+		 xmlHttp.send(null);
+		 
+ }
+
+     $(document).ready(function(){
+        //<tr/>居中
+        //$("#tab tr").attr("align","center");
+        
+        //增加<tr/>
+        $("#but").click(function(){
+            var _len = $(".AddItem:last").attr('id'); 
+			if(_len == 'but'){
+				var _len = 0;
+			}else{
+				var _len = ++_len;
+			}
+			 $("#tab").append("<table id="+_len+" border='0' cellspacing='0' cellpadding='0' class='AddItem'><tr class='none'><td class='w2'></td><td class='w2'></td><td class='w2'><a class='DelItem' onclick=\'deltr("+_len+")\' ></a></td></tr><tr class='none'><td class='w2'><div id='BigClass'><select name='TXT_BigClass[]' id='TXT_BigClass' onchange=\'Request(this, \"midClass_"+_len+"\", \"smallClass_"+_len+"\");\'><volist name="Think.config.MAINTAIN_BIGCLASS" id="type"><option value='{$key}'>{$type}</option></volist></select></div></td><td class='w2'><div id='midClass_"+_len+"'><select name='TXT_MidlClass[]' id='TXT_MidlClass'><option value='0'></option></select></div></td><td class='w2'><div id='smallClass_"+_len+"'><select name='TXT_SmallClass[]' id='TXT_SmallClass'><option value='0'></option></select></div></td></tr><tr  class='none'><td >单价：<input type='text' id='TXT_Price' name='TXT_Pric[]' class='addframetextbox w3 inp01'> 元</td><td >数量：<input type='text' id='TXT_Quantity' name='TXT_Quantity[]' class='addframetextbox w3 inp01'> 件</td><td >总价：<input type='text'id='TXT_SubCost'name='TXT_SubCost[]' class='addframetextbox w3 inp01'> 元</td></tr></table>"); 
+
+
+        })    
+    })
+    
+    //删除<tr/>
+    var deltr =function(index)
+    {
+		
+        var _len = $("#tab table").length;
+		//alert(_len);
+        $("#tab table[id='"+index+"']").remove();//删除当前行
+		/*
+		alert("table[id='"+index+"']");
+        for(var i=index+1,j=_len;i<j;i++)
+        {
+		//alert(i);
+            var nextTxtVal = $("#desc"+i).val();
+            $("#tab table[id=\'"+(i-1)+"\']").replaceWith("<table id="+(i-1)+" border='0' cellspacing='0' cellpadding='0' class='AddItem'><tr class='none'><td class='w2'></td><td class='w2'></td><td class='w2'><a class='DelItem' onclick=\'deltr("+(i-1)+")\' ></a></td></tr><tr class='none'><td class='w2'><div id='BigClass'><select name='TXT_BigClass[]' id='TXT_BigClass' onchange=\'Request(this, \"midClass_"+(i-1)+"\", \"smallClass_"+i+"\");\'><option  selected='selected'></option><option value='190'>发动机</option><option value='191'>传动系配件</option><option value='192'>转向系配件</option><option value='193'>制动系配件</option><option value='194'>行走系配件</option><option value='195'>电器仪表件</option><option value='196'>车身及附件</option><option value='197'>横向件及其他</option><option value='200'>保养用品及设备</option><option value='201'>工具</option><option value='202'>汽车影音娱乐</option><option value='203'>汽车内外饰用品</option><option value='204'>汽车改装</option><option value='205'>汽车安全用品</option><option value='206'>其他</option></select></div></td><td class='w2'><div id='midClass_"+(i-1)+"'><select name='TXT_MidlClass[]' id='TXT_MidlClass'><option value='0'></option></select></div></td><td class='w2'><div id='smallClass_"+(i-1)+"'><select name='TXT_SmallClass[]' id='TXT_SmallClass'><option value='0'></option></select></div></td></tr><tr  class='none'><td >单价：<input type='text' id='TXT_Price' name='TXT_Pric[]' class='addframetextbox w3 inp01'> 元</td><td >数量：<input type='text' id='TXT_Quantity' name='TXT_Quantity[]' class='addframetextbox w3 inp01'> 件</td><td >总价：<input type='text'id='TXT_SubCost'name='TXT_SubCost[]' class='addframetextbox w3 inp01'> 元</td></tr></table>");
+        }   
+        */
+    }
+</script>

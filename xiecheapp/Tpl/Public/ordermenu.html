@@ -1,0 +1,252 @@
+
+<link rel="stylesheet" href="__PUBLIC__/new/style/yy.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+	
+	$(".own_car").click(function(){
+		$("#other_car").removeAttr("checked");
+	})
+
+	$("#other_car").click(function(){
+		$(".own_car").removeAttr("checked");
+	})
+	
+	$("#how_find_code,#how_find_code2").click(function(){
+			popup3();
+			$.ajax({
+				type:'POST',
+				url:'__APP__/order/codehelp',
+				cache:false,
+				datatype:'text',
+				data:"",
+				success: function(data){
+					if(data){
+						$("#code_help").html(data);
+					}
+				}
+			})
+	})
+})
+function popup(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+		drag:true,//不可拖动
+		cover:true//设置笼罩
+	})
+}
+
+function popupcomment(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>回复</em><a close="1"  class="flbc">关闭</a></h3><div style="height:300px;width:500px; overflow:scroll;" id="comment_content"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:10,
+		y:10
+	})
+}
+
+function popupshowcomment(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>评价</em><a close="1"  class="flbc">关闭</a></h3><div style="height:400px;width:800px; overflow:scroll;" id="show_comment"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:10,
+		y:10
+	})
+}
+
+function popup2(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>维修保养项目价格和4S店信息</em><a close="1"  class="flbc">关闭</a></h3><div style="height:500px; overflow:scroll;" id="price_detail"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:0,
+		y:-200
+	})
+}
+function popup3(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>车辆识别代码帮助</em><a close="1"  class="flbc">关闭</a></h3><div style="height:500px; overflow:scroll;" id="code_help"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:0,
+		y:-420
+	})
+}
+function get_detail(url){
+	popup2();
+	$.ajax({
+		type:'POST',
+		url:'__APP__/order/price_detail',
+		cache:false,
+		datatype:'text',
+		data:"url="+url,
+		success: function(data){
+			if(data){
+				$("#price_detail").html(data);
+			}
+		}
+	})
+}
+$(function(){
+	
+	get_price();
+})
+function baoyang_selected_check(d){
+	if($(d).attr("checked")=='checked'){
+		$("[name='select_services[]']").each(function(){
+			if($(this).attr("service_type")=='baoyang'){
+				$(this).removeAttr("checked");
+			}
+		})
+		$(d).attr("checked",'true');
+	}
+	get_price();
+}
+function get_price(){
+	 var str="";
+	 $("[name='select_services[]']").each(function(){
+		 if($(this).attr("checked")){
+	     	str+=$(this).val()+",";
+		 }
+	 })
+	 var membercoupon_id = "{$membercoupon_id}";
+	 var model_id = "{$model_id}";
+	 var timesaleversion_id = "{$timesaleversion_id}";
+	 var submit_url = '__URL__/checkorder/timesaleversion_id/'+timesaleversion_id;
+	 if(model_id){
+		 submit_url += '/model_id/'+model_id;
+	 }
+	 if(str){
+		 submit_url += '/service_str/'+str;
+	 }
+	 $("#order_submit").html('<a href="'+submit_url+'" ><input type="button" value="预约下订" /></a>');
+	 if(timesaleversion_id && model_id){
+		
+	 	$.ajax({
+			type:'POST',
+			url:'__APP__/order/get_price',
+			cache:false,
+			dataType:'text',
+			data:'timesaleversion_id='+timesaleversion_id+'&model_id='+model_id+'&str='+str,
+			success:function(data){
+				//alert(data);
+	 			$("#shop_price").html(data);
+			}
+		})
+	 }else if(membercoupon_id){
+		var coupon_amount = "{$coupon['coupon_amount']}";
+		var cost_price = "{$coupon['cost_price']}";
+		var svae_price = cost_price-coupon_amount;
+		$("#shop_price").html("原价："+cost_price+"  优惠价："+coupon_amount+"  节省："+svae_price);
+		return false;
+	 }else{
+		$("#shop_price").html("数据不全，不能查询价格");
+		return false;
+	 }
+	 
+}
+function other_car_select(){
+	$("#list_other_car").show();
+}
+function own_car_select(){
+	$("#list_other_car").hide();
+}
+</script>
+<!--广告位-->
+<div id="nav-yy" style="width:960px; height:120px; margin:10px auto; padding:0px; ">
+<a href="__APP__/coupon" target="_blank"><img src="__PUBLIC__/new/images/banner.jpg"></a>
+</div><!--广告位-->
+<!--主要部分-->
+<div id="main" style="width:960px;margin:10px auto; padding:0px; ">
+
+<div id="bk" style="width:330px; margin:0px; padding:0px; float: left; border:1px solid #efefef; background-color:#FFF;">
+
+
+<div id="main-left" style="width:320px; margin:5px; padding:0px; float:left;">
+	<if condition="$sessarea eq sh">
+	<p class="p1">现金券推荐</p>
+		<!--现金券部分-->
+		<ul class="ul1">
+			<volist name="tuijian_coupon1" id="coup1" offset="0" length="3">
+				<li >
+					<h1 class="coupon_sort_pic_{$i}"><a href="__APP__/coupon/{$coup1.id}" title="{$coup1.coupon_name}">{$coup1.coupon_name|g_substr=35}</a></h1>
+						<dl>
+						<dt><a href="__APP__/coupon/{$coup1.id}"><img src="/UPLOADS/Coupon/Logo/coupon2_{$coup1.coupon_logo}" width="80" title="{$coup1.coupon_name}"/></a></dt>
+						<dd><a href="__APP__/coupon/{$coup1.id}" title="{$coup1.coupon_summary}">{$coup1.coupon_summary|g_substr=28}</a></dd>
+						<dd>原价{$coup1.cost_price} &nbsp;&nbsp;优惠价{$coup1.coupon_amount}</dd>
+						<dd>已有{$coup1.pay_count}人购买 </dd>
+						</dl>
+					</li>  
+			</volist>
+		</ul>
+	</if>
+ <!--现金券部分-->
+	<if condition="$sessarea eq sh">
+		<p class="p1">套餐券推荐</p>
+		<!--现金券部分-->
+		<ul class="ul1">
+		<volist name="tuijian_coupon2" id="coup2" offset="0" length="3">
+			<li >
+				<h1 class="coupon_sort_pic_{$i}"><a href="__APP__/coupon/{$coup2.id}" title="{$coup2.coupon_name}">{$coup2.coupon_name|g_substr=35}</a></h1>
+				<dl>
+				<dt><a href="__APP__/coupon/{$coup2.id}"><img src="/UPLOADS/Coupon/Logo/coupon2_{$coup2.coupon_logo}" width="80" title="{$coup2.coupon_name}"/></a></dt>
+				<dd><a href="__APP__/coupon/{$coup2.id}" title="{$coup2.coupon_summary}">{$coup2.coupon_summary|g_substr=28}</a></dd>
+				<dd>原价{$coup2.cost_price} &nbsp;&nbsp;优惠价{$coup2.coupon_amount}</dd>
+				<dd>已有{$coup2.pay_count}人购买 </dd>
+				</dl>
+			</li>  
+		</volist>
+		</ul>
+	</if>
+ <!--现金券部分-->
+ 
+ 
+ 
+  <!--话题广告-->
+  <!-- <div id="left-nav" style=" width:97.5%; height:65px; margin:10px auto; padding: 0px; background-color:#efefef; border:1px solid #efefef;">
+  <dl>
+  <dt>&nbsp;</dt>
+  <dd>[革命性话题]</dd>
+  <dd class="d1" style="padding: 0px;height: 25px;display: block;margin-top: 5px;margin-right: 15px;margin-bottom: 0px;margin-left: 0px;background-color: #efefef;width: 175px;float: right;line-height: 25px;color: #333;text-align: center;font-size: 12px;font-family: Verdana, Geneva, sans-serif;">NO.11 试雷诺拉古那古贝</dd>
+  </dl>
+  </div> -->
+  <!--话题广告-->
+  
+     <!--微博名人堂
+     
+	<if condition="$sessarea eq sh">
+     <div id="wb">
+       <p class="wb"><strong>推荐顾问</strong></p>
+        <volist name="expert_tuijian" id="vo_expert">
+			<dl>
+			<dt><a target="_blank" href="/tipask/?u-{$vo_expert.uid}.html"><img alt="{$vo_expert.username}" width="70" height="70" src="/tipask/css/default/avatar.gif" /></a></dt>
+			<dd><a target="_blank" href="/tipask/?u-{$vo_expert.uid}.html">{$vo_expert.username}</a></dd>
+			</dl>
+		</volist>
+     </div>
+     </if>-->
+     <div id="wb-wz">
+	     <p class="wb-wz">相关文章</p>
+	     <ul>
+		  <volist name="article" id="art">
+		  <li><a href="__APP__/article/{$art.id}"><em>{$art.create_time|date="m/d",###}</em>{$art.title|g_substr=36}</a> </li>
+		  </volist>
+		 </ul>
+     </div>
+     
+     <!-- <div id="wb-gg"></div> -->
+      <!--微博名人堂-->
+      
+  </div>
+</div>

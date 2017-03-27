@@ -1,0 +1,63 @@
+<layout name='layout_new' />
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/new_2/js/base.js" ></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<include file="Public:pa" />
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title my-points">
+				我的积分:
+				<span class="points">
+					可兑换积分 <span class='orange'>{$Memberinfo.point_number}</span>
+					 <a href="{:URL('/Gift/index',array())}{:C('HTML_URL_SUFFIX')}" target="_blank">[兑换积分]</a>
+				</span>
+			</h2>
+
+			<div class="table-con points-table">
+				<table width="948">
+					<tr>
+						<th width="80">订单编号</th>
+						<th width="200">完成时间</th>
+						<th width="290">增加(扣除)积分</th>
+						<th width="350">积分备注</th>
+					</tr>
+					<volist name="point_info" id="vo" key="key">
+					<tr <if condition="$key%2 eq 0">class="bg-blue no-border-bottom"</if>>
+						<td>{$vo.order_id}</td>
+						<td>{$vo.create_time|date="Y-m-d H:i",###}</td>
+						<td class="add">{$vo.point_number}</td>
+						<td>{$vo.point_memo}</td>
+					</tr>
+					</volist>
+				</table>	
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript">
+		function hTab(tab_controler,tab_con){
+			this.tab_controler = tab_controler;
+			this.tab_con = tab_con;
+			var tabs = $(tab_controler).children("li");
+			var panels = $(tab_con).children("div");
+			$(tab_con).children("div").css("display","none");
+			$(tab_con).children("div:first").css("display","block");
+			$(tabs).hover(function(){
+				var index = $.inArray(this,tabs);
+				tabs.removeClass("current")
+				.eq(index).addClass("current");
+				panels.css("display","none")
+				.eq(index).css("display","block");
+			});
+		};
+
+		hTab('#tabs1','#con1');
+		hTab('#tabs2','#con2');
+	</script>

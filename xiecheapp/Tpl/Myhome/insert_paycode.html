@@ -1,0 +1,168 @@
+<layout name='layout_new' />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/fp.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	<style type="text/css">
+	
+	.fp-progress{width: 950px; height: 50px; margin: 0px;}
+	.progress-1{background: url('http://statics.xieche.com.cn/new_2/images/myhome/zh-2.jpg') 0px 0px no-repeat;}
+	</style>
+
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<div class="content-right main">
+			<div class="fp-progress progress-1"></div>
+			<div class="form-container">
+				<form action="__APP__/member/getpwd_bymobile" method="post" class="fp-form" autocomplete="off">
+					<ul>
+						
+
+						<li>
+							<label for="">密码：</label>
+							<div>
+								<input type="text" name="username" class="text phone-input" style="width: 400px;" id="payPwd" data-filled="0">
+								
+							</div>
+						</li>
+						<li>
+							<label for="">重复输入密码：</label>
+							<div>
+								<input type="text" name="username" class="text phone-input" style="width: 400px;"id="rePayPwd" data-filled="0">
+								<div id="rePayPwd_error" class="msg-error"></div>
+							</div>
+						</li>
+						<li>
+							<label for="">验证码：</label>
+							<div class="ver-img">
+								<input type="text" name="verify" class="text code-input" style="width: 200px;" value="请输入验证码" id="authCode" data-filled="0">
+								<div class="tips"></div>
+								<div class="error">验证码不能为空</div>
+								<img id="img-code" src="__APP__/common/verify/"  alt="点击刷新验证码" title="点击刷新验证码">
+								<a href="#" id="refreshCode">看不清，换一张</a>
+								<div id="authCode_error" class="msg-error"></div>
+							</div>
+						</li>
+						<li>
+							<div class="next-trigger">
+								<a href="javascript:void(0);" class="disable" onclick="check()">下一步</a>
+							</div>
+						</li>
+					</ul>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="popup"></div>
+	<div class="blackbox"></div>
+
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>
+	<script type="text/javascript">
+	$(function(){
+        $("#send_verify").attr("disabled",false);
+        $("#send_verify").click(function(){
+			        $("#code").attr("disabled",false);
+                    var mobile = $('#mobile').val();
+                    var second = "60";
+                     $.ajax({
+                            type: "POST",
+                            url: "__APP__/Myhome/send_verify",
+                            cache: false,
+                            data:"mobile="+mobile,
+                            dataType: "json",
+                            success: function(data){
+                                if(data == '1'){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                                }else if(data == '-1'){
+                                    send_verify_show(second);
+                                    alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+                                    return false;
+                                }
+                            },
+                                error: function(){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                            }
+                         })
+      
+               })   
+			
+				
+			$.getUrlParam = function(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) return unescape(r[2]); return null;
+			}	
+			var jumpUrl = $.getUrlParam("jumpUrl");
+			$("#jumpUrl1").val(jumpUrl);
+			$("#jumpUrl2").val(jumpUrl);
+        })        
+		
+
+	function send_verify_show(i){
+		if(i>='0'){
+			$("#send_verify").attr("disabled",true); 
+			$("#send_verify").attr("value",i+"秒后重新发送");
+			i--;
+			setTimeout(function(){send_verify_show(i);},1000);
+		}else{
+			$("#send_verify").attr("disabled",false); 
+			$("#send_verify").attr("value","发送手机验证码");
+		}
+	}
+
+	$("#refreshCode, #img-code").on("click", function(e){
+    	e.preventDefault();
+    	var newTime = new Date().getTime();
+    	$("#img-code").attr("src","http://www.xieche.com.cn/common/verify/" + newTime);
+    });
+
+	function check(){
+		payPwd=$("#payPwd").val();
+    	var length = payPwd.length;
+    	//假设长度限制为10
+    	if(length<6){
+			alert('为保证您密码安全强度，请输入6位以上密码');
+			$("#payPwd").focus();
+			return false;
+		}
+		rePayPwd=$("#rePayPwd").val();
+		authCode=$("#authCode").val();
+		code=$("#code").val();
+		$.ajax({
+			type: "POST",
+			url: "__APP__/Myhome/do_insertpaycode",
+			cache: false,
+			data:"authCode="+authCode+"&code="+code+"&payPwd="+payPwd+"&rePayPwd="+rePayPwd,
+			dataType: "json",
+			success: function(data){
+				//alert(data);
+				if(data == '1'){
+					$('#authCode_error').text('验证码错误');
+				}
+				if(data == '2'){
+					$('#rePayPwd_error').text('两次输入支付密码不符，请重新输入');
+				}
+				if(data == '3'){
+					window.location="__APP__/Myhome/done_paycode";
+				}
+			}
+		})
+	}
+
+	$(document).ready(function(){
+		$("#authCode").keydown(function(){
+			$('#authCode_error').empty();
+		});
+		$("#rePayPwd_error").keydown(function(){
+			$('#rePayPwd_error').empty();
+		});
+	});
+	</script>

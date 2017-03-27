@@ -1,0 +1,110 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">活动兑奖记录</div>
+<!-- 查询区域 -->
+<div>
+
+<FORM METHOD=POST ACTION="__URL__/index/">
+<table cellspacing="0" cellpadding="10" > 
+	<tr>  
+		<td colspan="3">  
+			兑换时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" readonly="readonly">&nbsp;&nbsp;——&nbsp;&nbsp;
+			<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" readonly="readonly">
+		</td>
+		<td>
+			<input type="hidden" name="type" value="{$type}" />
+			<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">&nbsp;&nbsp;
+			<input type="reset" value="重置" style="impBtn hMargin fLeft shadow">
+		</td>
+	</tr>
+</table>
+
+</FORM>
+</div>
+<!-- 功能操作区域结束 -->
+<div><button id="count_all">统计总数</button>&nbsp;&nbsp;&nbsp; &nbsp;<button id="count_day">统计每天的数据</button></div>
+	</tr>
+<!-- 列表显示区域  -->
+<div class="list" >
+	<table class="list">
+		<tr class="row">
+			<eq name="type" value="1">
+				<th>统计总数</th>
+			<else />
+				<th>统计每天情况</th>
+			</eq>
+			<th>参与人数</th>
+			<th>生成机油桶数</th>
+			<th>帮别人加油人数</th>
+			<th>各兑奖情况</th>
+			<th>各层次机油数统计</th>
+		</tr>
+		<eq name="type" value="1">
+			<tr>
+				<td></td>
+				<td>{$list.count1}人</td>
+				<td>{$list.count2}桶</td>
+				<td>{$list.count3}人</td>
+				<td>
+					<volist name="list.prizeCount" id="co">
+						{$co.name}:&nbsp;&nbsp;{$co.count}个<br />
+					</volist>
+				</td>
+				<td>
+					<volist name="list.oilCount" id="co2">
+						{$key}:&nbsp;&nbsp;{$co2}个<br />
+					</volist>
+				</td>
+			</tr>
+		<else />
+			<volist name="list" id="vo">
+				<tr>
+				<td>{$key}</td>
+				<td>{$vo.count1}人</td>
+				<td>{$vo.count2}桶</td>
+				<td>{$vo.count3}人</td>
+				<td>
+					<volist name="vo.prizeCount" id="co">
+						{$co.name}:&nbsp;&nbsp;{$co.count}个<br />
+					</volist>
+				</td>
+				<td>
+					<volist name="vo.oilCount" id="co2">
+						{$key}:&nbsp;&nbsp;{$co2}个<br />
+					</volist>
+				</td>
+			</tr>
+			</volist>
+		</eq>
+	</table>
+</div>
+<script type="text/javascript">
+	$('#count_all').click(function(){
+		$('input[name=type]').val(1);
+		$('form').submit();
+	})
+	$('#count_day').click(function(){
+		$('input[name=type]').val(2);
+		$('form').submit();
+	})
+	$('input[name=start_time]').click(function(){
+		$('input[name=type]').val(2);
+	})
+</script>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

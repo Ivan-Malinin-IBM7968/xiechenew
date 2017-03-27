@@ -1,0 +1,86 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    function getshops(){
+        var fsid = $("#get_fs").val();
+        $.ajax({
+			type:'POST',
+			url:'__APP__/Store/Article/get_shops',
+			cache:false,
+			dataType:'text',
+			data:'fsid='+fsid,
+			success:function(data){
+				if(data!='null'){
+	        		var param = eval(data);
+					$("#get_shops").html("");
+					$("#get_shops").append("<option value='0'>请选择店铺</option>");
+					for (i=0; i<param.length; i++ ){
+						var selected = "";
+						$("#get_shops").append("<option value='"+param[i]['id']+"' "+selected+">"+param[i]['shop_name']+"</option>");
+					}
+				}
+			}
+		})
+    }
+    //-->
+</SCRIPT>
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <div class="content">
+        <div class="title">新增商铺 公告[ <A HREF="__URL__/index/shop_id/{$Think.request.id}">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1" action="__URL__/insert" enctype="multipart/form-data">
+            <TABLE cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >所在城市：</TD>
+                    <TD class="tLeft" >
+                    <select name="city_name">
+                    	<volist name="citys" id="city">
+                    		<option value="{$city}">{$city}</option>
+                    	</volist>
+                    </select>
+                </TR>
+                <tr>
+					<TD class="tRight" >品牌：</td>
+					<TD class="tLeft" >
+						<select id="get_fs" name="fsid" onchange="getshops();">
+							<option value="0">全部</option>
+							<volist name="fs" id="vofs">
+	                    		<option value="{$vofs.fsid}" >{$vofs.fsname}</option>
+	                    	</volist>
+						</select>
+					</td>
+				</tr>
+				<TR>
+                    <TD class="tRight" >店铺：</TD>
+                    <TD class="tLeft" ><select name="shop_id" id="get_shops">
+                    					
+                    				   </select>
+                   </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">商铺公告标题：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft large" name="noticetitle" ROWS="5" COLS="35"></TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">商铺公告简介：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft large" name="noticedescription" ROWS="5" COLS="35"></TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <!-- <TD ><input type="hidden" name="shop_id" value="{$Think.request.id}"/></TD> -->
+                    <TD class="center">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

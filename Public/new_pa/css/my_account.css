@@ -1,0 +1,195 @@
+/* My Account */
+.aside{width: 230px; height: auto;border: 1px solid #e65400; border-top: 3px solid #e65400}
+.main{width: 950px; height: auto}
+.aside dl{display: block; width: 230px;height: auto;}
+.aside dl dt{width: 230px; height: 45px;text-align: center;border-bottom: 1px solid #dadada; background: #ffcaa7}
+.aside dl dt a{width: 230px; height:45px; display: block; line-height: 45px; font-size: 17px;color:#000000; background: #ffcaa7}
+.aside dl dt a:visited{ color :#000000; font-weight: bold;}
+.aside dl dt a:hover{}
+.aside dl dt a.ddzx{/*background: #ffcaa7 url('../images/sprite.png') 0 -390px no-repeat;*/ background: #FFEFE7;}
+.aside dl dt a.zczx{/*background: #ffcaa7 url('../images/sprite.png') 0 -435px no-repeat;*/ background: #FFEFE7;}
+.aside dl dt a.grzx{/*background: #ffcaa7 url('../images/sprite.png') 0 -480px no-repeat;*/ background: #FFEFE7;}
+
+.aside dl dd{text-align: center;width: 230px;height:35px; line-height: 35px; border-bottom: 1px solid #dadada; font-size: 13px;}
+.aside dl dd a{display: block; width: 150px;height:35px;font-size: 13px; color: #000000;text-align: left; padding-left: 80px; }
+.aside dl dd a:visited{color: #000000;}
+.aside dl dd a:hover{background: #FFEFE7;}
+.aside dl dd a.current{background: #FFEFE7;}
+
+.main .title{display:block; width: 950px; height: 30px; line-height: 30px; border-bottom: 2px solid #e65400 ; font-size: 16px; font-weight: bold;}
+.main .section-t{display:block; width: 980px; height: 30px; line-height: 30px; font-size: 16px; font-weight: bold;}
+
+
+/*Account Index*/
+.personal-info{width: 908px; height: 110px; background: #FFEFE7; border: 1px solid #dadada;padding: 20px; font-size: 14px;}
+.grxx{}
+.grxx li{display: block; width: 300px; height: 20px; line-height: 20px;}
+.zcxx{display: block; background-color: #ffffff; height: 50px; margin-top: 20px; width: 100%;}
+.zcxx li{display: block; width: 893px; height: 25px; line-height: 25px;padding-left: 15px; font-size: 13px;}
+.zcxx li span.orange{color: #ff8a54;}
+.zcxx li a{color: #6795d9;margin-right: 15px;}
+.zcxx li a:visited{color: #6795d9;}
+.zcxx li a:hover{text-decoration: underline;}
+.zcxx li.jf{border-bottom: 1px dashed #dadada;}
+
+
+
+.acc-tab{width: 950px; height: 230px;  font-size: 14px;position: relative;overflow: hidden;}
+.acc-tab .tabs{display: block;width: 900px;height: 40px;line-height: 40px;position: absolute; z-index: 3; left:0;top:0;}
+.acc-tab .tabs li{display: block; width: 100px;background: #FFEFE7; height: 38px; line-height: 38px; border: 1px solid #dadada; float: left; text-align: center;z-index: 1; cursor: pointer;}
+.acc-tab .tabs li.current{height: 40px;border: 1px solid #e65400; background: white; border-bottom: none; }
+.acc-tab .con{border:1px solid #e65400; background: white; width: 948px; height: 180px; position: absolute; z-index: 2; left:0; top: 40px;}
+
+
+.recommend{margin-top:20px;width: 950px; height: 240px;}
+.re-shop .sales-con{height: auto;display: block;padding: 21px 0 10px 0px;width: 950px;}
+.re-shop .sales-con li{display: inline; width: 300px;  height: 135px; float: left; margin: 0 7px;  overflow: hidden; background: #ffffff; border: 1px solid #cacaca; overflow: hidden; border-top: 3px solid #e65400; margin-bottom: 15px;}
+.re-shop .sales-con li .img-con{width: 118px; height: 140px; float: right; overflow: hidden;}
+.re-shop .sales-con li div.shop-img{width: 110px; height: 85px; margin-left: 5px; margin-top: 10px;float: left; position: relative; padding: 5px 0 0 0; }
+.re-shop .sales-con li div.shop-img .img-con{width: 100px;height: 140px;float: right;overflow: hidden;margin-right: 4px; }
+.re-shop .sales-con li div.shop-img .img-con img{display: block; width: 105px; height: 80px; }
+.speacial-banner{display: block; width: 50px; height: 50px; position:absolute; background: url('../images/sprite.png')  -780px -264px no-repeat; top: 0; right: 0;}
+
+.re-shop .sales-con li .img-con .shop-rating{ float: left; margin: 0 0 0 5px;}
+.re-shop .sales-con li .img-con .shop-rating span{display: inline-block; width: 65px; height: 12px; background: url('../images/rating-sprite.png') 0 0 no-repeat;margin-top: 4px;}
+.re-shop .sales-con li .img-con .shop-rating strong{padding-left: 6px; font-size: 16px; color:#f7921a; font-style: italic; line-height: 12px; }
+.re-shop .sales-con li .content{ margin-top: 14px;margin-left: 5px; width: 175px; height: 110px; position: relative; float: left; overflow: hidden;}
+.re-shop .sales-con li .content h5{color: #000000; font-size: 13px; font-weight: bold; width: 250px; height: 24px; line-height: 24px; overflow: hidden;}
+.re-shop .sales-con li .content span{display: block; width: 220px; height:20px; line-height: 20px; font-size: 12px; color: #777777; padding-left: 20px;}
+.re-shop .sales-con li .content span.shop-comment{background: url('../images/sprite.png') -100px -83px no-repeat;}
+.re-shop .sales-con li .content span.shop-address{background: url('../images/sprite.png') -100px -123px no-repeat}
+.re-shop .sales-con li .content span a{color: #133879}
+.re-shop .sales-con li .content span a:visited{color: #133879}
+.re-shop .sales-con li .content span a:hover{text-decoration: underline;}
+.re-shop .price{position: absolute; bottom: 0 ;left:0 ; color: #777777; width: 160px; height: 20px;font-size: 12px}
+.re-shop .orange{color: #ff6600; font-size: 15px;font-weight: bolder}
+.re-shop .price em{text-decoration: line-through; font-size: 11px;}
+.re-shop .bought{position: absolute; bottom: 0 ; right: 5px; width: 50px; height: 20px; font-size: 11px;color: #777777}
+
+.re-ticket .sales-con{height: auto; display: block; padding-bottom: 10px;padding-top: 20px;}
+.re-ticket .sales-con li{display: inline; width: 400px;  height: 112px; float: left; margin: 0 7px; background: red; overflow: hidden; background: url('../images/sale_bg.png') 0 0 no-repeat; overflow: hidden;}
+.re-ticket .sales-con li .img-con{width:105; height: 80px; margin-left: 15px; margin-top: 20px;float: left}
+.re-ticket .sales-con li .img-con img{display: block; width: 105px; height: 80px; }
+.re-ticket .sales-con li .content{ margin-top: 20px; margin-left: 13px; width: 252px; height: 80px; position: relative; float: left}
+.re-ticket .sales-con li .content h5{color: #009dd7; font-size: 15px; font-weight: bolder; width: 250px; height: 24px; line-height: 24px; overflow: hidden;}
+.re-ticket .sales-con li .content span{display: block; width: 240px; height:15px; line-height: 15px; font-size: 12px; color: #777777}
+.re-ticket .sales-con li .content span a{color: #133879}
+.re-ticket .sales-con li .content span a:visited{color: #133879}
+.re-ticket .sales-con li .content span a:hover{text-decoration: underline;}
+.re-ticket .price{position: absolute; bottom: 0 ;left:0 ; color: #777777; width: 160px; height: 20px;}
+.re-ticket .orange{color: #ff6600; font-size: 15px;font-weight: bolder}
+.re-ticket .price em{text-decoration: line-through; font-size: 11px;}
+.re-ticket .bought{position: absolute; bottom: 0 ; right: 5px; width: 50px; height: 20px; font-size: 11px;color: #777777}
+
+.recent-order .tabs li{width:120px;}
+.recent-order {text-align: center; font-size: 13px;}
+.recent-order tr{border-bottom: 1px dashed #d8d8d8}
+.recent-order tr.bg-blue{background: #FFEFE7;}
+.recent-order th{height: 20px;background: #f1f1f1;line-height: 20px; font-size: 12px;}
+.recent-order td{height: 35px;line-height: 35px;vertical-align: middle;}
+.recent-order td a{color: #6795d9; }
+.recent-order td a:visited{color: #6795d9}
+.recent-order td a:hover{text-decoration: underline;}
+
+
+/* My Order*/
+.main .table-con{width: 948px; height: auto; border: 1px solid #f1f1f1; font-size: 12px;}
+.main .table-con .category{display:block; width: 930px; height: 30px; line-height: 30px; background: #FFEFE7; padding-left: 20px; font-size: 13px; font-weight: bold;}
+.main .table-con .filter{ width:940px; height: 30px; line-height: 30px; padding-left: 10px;}
+.main .table-con .filter li{float: left; font-size: 14px;padding: 0 8px;}
+.main .table-con .filter li a{color:#777777;}
+.main .table-con .filter li a:visited{color: #777777;}
+.main .table-con .filter li a:hover{color: #000000}
+.main .table-con .filter li a.current{color: #000000;}
+
+.main .table-con {text-align: center; font-size: 13px;}
+.main .table-con tr{background: #ffffff}
+.main .table-con tr.bg-blue{background: #FFEFE7;}
+.main .table-con th{height: 20px;background: #f1f1f1;line-height: 20px; font-size: 12px;}
+.main .table-con td{height: 35px;line-height: 35px;vertical-align: middle;border-bottom: 1px dashed #d8d8d8;}
+.main .table-con tr.no-border-bottom td{border-bottom: 0;}
+.main .table-con td a{color: #6795d9; }
+.main .table-con td a:visited{color: #6795d9}
+.main .table-con td a:hover{text-decoration: underline;}
+
+
+/*My Tickets*/
+.main .my-tickets tr td{height: 48px;}
+.main .my-tickets tr td .address{width: 250px; height:56px;}
+.main .my-tickets tr td .address li{display:block; float: left; width: 250px; height: 25px;line-height: 25px;}
+.main .my-tickets tr td .address li .shop-name{font-weight: 13px;}
+.main .my-tickets tr td .address .shop-address{background: url('../images/sprite.png') -100px -125px no-repeat;  padding-left: 20px; color: #777777;}
+
+
+
+/*My Points*/
+.my-points .points{font-size: 13px;}
+.my-points .points a{color: #6795d9;}
+.my-points .points a:visited{ color: #6795d9;}
+.my-points .points a:hover{text-decoration: underline;}
+.my-points span.orange{color: #ff8a54;}
+.points-table .add{color: #cc3300;}
+.points-table .cut{color: #066601;}
+
+
+/*My INFO */
+.my-info-con{width: 950px; height: auto; overflow:hidden ;background: #FFEFE7; padding-bottom: 20px;}
+.my-info-con ul{display: block; min-height: 150px; height: auto; margin-top: 20px; width: 948px; float: left;}
+.my-info-con ul li{float:left; width: 948px; display: block; height: 30px; line-height: 30px; text-align: left; padding-left: 20px; font-size: 14px; }
+#cancel, #change-my-info{float:left; display: block; width: 90px; height: 30px; line-height: 30px; text-align: center;font-size: 16px; color: #ffffff; border: none; background: #0066cc;margin-left: 20px; cursor: pointer; margin-top: 20px;}
+
+
+.my-info-con ul li label{display: inline-block;width: 100px; height: 30px; line-height: 30px;  float: left; font-size: 14px;}
+.my-info-con ul li input{float: left; margin-top: 1px; display: block; width: 200px; height: 20px; line-height: 20px;}
+.my-info-con ul li select{float:left; margin-top: 5px; display: block; width: 205px; height: 20px; line-height: 20px; }
+.additional-info{margin-left: 10px; font-size: 13px;color: #0066cc;}
+.additional-info:visited{color: #0066cc;}
+.additional-info:hover{text-decoration: underline;}
+
+
+/*My Cars*/
+.add-car{display: inline-block; width: 90px; height: 23px; line-height: 23px; text-align: center;font-size: 12px; color: #ffffff; border: none; background: #0066cc;margin-left: 10px; cursor: pointer; }
+
+
+
+
+/*My Order Detail*/
+.xm tr{height: auto;}
+.xm tr td{height: auto;}
+.xm li{height: 20px;line-height: 20px;}
+.xm tr td.info{font-size: 13px;}
+
+.dpxx{font-size: 13px;padding: 10px 0;}
+.info-h3{color: #000; background: #FFEFE7; padding: 10px 0; font-size: 15px; font-weight: bolder;}
+.dpxx ul li{height: 22px; line-height: 22px;}
+.sp-info{ background: #FFEFE7; line-height: 20px; font-size: 13px;padding: 10px}
+
+/*我的礼品卡 开始*/
+.price-red{color: #e60012;}
+.tickets-detail{position: relative; padding-bottom: 70px;}
+.acc-tab2{width: 980px; height: 300px; font-size: 14px;position: relative;overflow: hidden;}
+.acc-tab2 .tabs{display: block;width: 900px;height: 40px;line-height: 40px;position: absolute; z-index: 3; left:0;top:0;}
+.acc-tab2 .tabs li{display: block; width: 195px; height: 38px; line-height: 38px; float: left; text-align: center;z-index: 1; cursor: pointer; background: white; border: 1px solid white;}
+.acc-tab2 .tabs li.current{height: 40px;border: 1px solid #d9d9d9; background: white; border-bottom: none; color: #0364cb}
+.acc-tab2 .con{border-top:1px solid #d9d9d9; background: white; width: 948px; height: auto; position: absolute; z-index: 2; left:0; top: 40px;}
+
+.my-tickets2 div table{border: 1px solid #d9d9d9; margin-top: 20px; width: 948px; height: auto; background-color: white; border-collapse: collapse; text-align: center; font-size: 14px; color: #1b1b1b; }
+.my-tickets2 div table thead tr td{border: 1px solid #d9d9d9; background: #ececec;height: 40px; line-height: 40px; font-weight: bold}
+.my-tickets2 div table tbody tr td{border: 1px solid #d9d9d9; background: #ffffff;height: 5px; line-height: 50px;}
+
+.paginator{width: auto; height: 35px; line-height: 35px; margin-top: 30px; right: 0px; position: absolute; right: 0px; bottom: 20px;}
+.paginator .pages{display: block; width: auto; height: 35px; line-height: 35px; float: left;}
+.paginator .pages li{float: left; display: inline;}
+.paginator .pages li a{display: inline-block; width: 33px; height: 33px; line-height: 33px; border: 1px solid #dcdcdc; background: white; color: #265c95; text-align: center; margin: 0px 2px;}
+.paginator .pages li a:visited{color: #265c95; }
+.paginator .pages li a:hover{background: #ededed;}
+.paginator .pages li a.page-trigger{width: 80px;}
+.paginator .pages li a.disabled{background: #ededed; color: #666666; cursor: default;}
+.paginator .pages li a.current{background: #ededed; cursor: default;}
+.paginator .pages li.break{border: none;}
+.paginator .goto{float: left; font-size: 14px; color: #616161; margin-left: 15px; height: 35px; line-height: 35px; width: auto; }
+.paginator .goto .page-goto{width: 40px; display: inline-block;}
+
+
+.my-ticket-guide{width: 978px; height: 285px; border: 1px solid #ededed; background: url("../images/my-ticker-guide.jpg") center center no-repeat; margin-bottom: 50px;}
+/*我的礼品卡 结束*/

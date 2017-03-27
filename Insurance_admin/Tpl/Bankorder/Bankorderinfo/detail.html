@@ -1,0 +1,236 @@
+<tagLib name="html"/>
+<include file="../../Public/header"/>
+
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="title">订单详情</div>
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+    <table width="100%">
+        <tbody>
+        <tr valign="top">
+            <td>
+                <div style="margin-right:20px;">
+                    <div class="orderdetail">
+                        <div class="orderdetailtop">
+                            <table style="background-color: #eaeeed ; height:40px">
+                                <tr>
+                                    <td width="20"></td>
+                                    <td width="200">订单编号：{$order_info['id']}</td>
+                                    <td width="200">交易状态：
+                                        <switch name="order_info.status">
+                                            <case value="0">等待处理</case>
+                                            <case value="1">预约已确认</case>
+                                            <case value="2">已分配技师</case>
+                                            <case value="8">已作废</case>
+                                            <case value="9">服务已完成</case>
+                                        </switch>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="orderdetailcon">
+                            <dl>
+                                <!-- <dt>订单详情</dt> -->
+                                <!-- <dt>查看视频</dt>
+                                <dd>直播暂未开始</dd> -->
+                                <dt>订单类型</dt>
+                                <dd>{$order_info.order_type_name}</dd>
+                                <dt>下单人信息</dt>
+                                <dd>
+                                    <ul>
+                                        <li>姓名：{$order_info.truename}</li>
+                                        <li>地址：{$order_info.address}</li>
+                                        <li>手机号：{$order_info.mobile}</li>
+                                        <li>预约时间：
+                                            <if condition="$order_info.status eq 0">稍后客服电话与你联系！
+                                                <else/>
+                                                {$order_info.order_time|date="Y-m-d
+                                                H:i",###}-{$order_info.order_time|date="H",###}:59
+                                            </if>
+                                        </li>
+                                    </ul>
+                                </dd>
+                                <dt>车辆信息</dt>
+                                <dd>
+                                    <ul>
+                                        <li>车型：{$order_info.car_name}</li>
+                                        <li>车牌号：{$order_info.licenseplate}</li>
+                                    </ul>
+                                </dd>
+                                <dt>优惠信息</dt>
+                                <dd>
+                                    <ul>
+                                        <li>抵用券：
+                                            <empty name="order_info['replace_code']">无
+                                                <else/>
+                                                {$order_info['replace_code']}
+                                            </empty>
+                                        </li>
+                                    </ul>
+                                </dd>
+                                <dt>其他</dt>
+                                <dd>
+                                    <ul>
+                                        <li>预约状态：
+                                            <switch name="order_info.status">
+                                                <case value="0">等待处理</case>
+                                                <case value="1">预约已确认</case>
+                                                <case value="2">已分配技师</case>
+                                                <case value="8">已作废</case>
+                                                <case value="9">服务已完成</case>
+                                            </switch>
+                                        </li>
+                                    </ul>
+                                </dd>
+
+                                <dt>保养项目</dt>
+                                <dd class="dboder">
+                                    <table width="100%" style="font-size:14px;">
+                                        <tr bgcolor="#f6f6f6" height="60">
+                                            <td width="20%" style="text-indent:20px;">保养类型</td>
+                                            <td width="50%">保养项目</td>
+                                            <td width="20%">价格</td>
+                                            <td width="10%">总价</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="6" bgcolor="#FFFFFF" style="text-indent:20px;">
+                                                {$order_info['order_type_name']}
+                                            </td>
+                                            <empty name="item_list[0]">
+                                                <td height="40" bgcolor="#F8F8F8">[机油]不需要配件</td>
+                                                <td bgcolor="#F8F8F8">￥0</td>
+                                                <else/>
+                                                <td height="40" bgcolor="#F8F8F8">[机油]{$item_list[0]['name']}</td>
+                                                <td bgcolor="#F8F8F8"> ￥{$item_list[0]['price']}</td>
+                                            </empty>
+                                            <td rowspan="6" bgcolor="#F8F8F8"> ￥{$order_info['amount']}</td>
+                                        </tr>
+                                        <tr>
+                                            <empty name="item_list[1]">
+                                                <td height="40" bgcolor="#F8F8F8">[机油滤清器]不需要配件</td>
+                                                <td bgcolor="#F8F8F8">￥0</td>
+                                                <else/>
+                                                <td height="40" bgcolor="#F8F8F8">[机油滤清器]{$item_list[1]['name']}</td>
+                                                <td bgcolor="#F8F8F8"> ￥{$item_list[1]['price']}</td>
+                                            </empty>
+                                        </tr>
+                                        <tr>
+                                            <empty name="item_list[2]">
+                                                <td height="40" bgcolor="#F8F8F8">[空气滤清器]不需要配件</td>
+                                                <td bgcolor="#F8F8F8">￥0</td>
+                                                <else/>
+                                                <td height="40" bgcolor="#F8F8F8">[空气滤清器]{$item_list[2]['name']}</td>
+                                                <td bgcolor="#F8F8F8"> ￥{$item_list[2]['price']}</td>
+                                            </empty>
+                                        </tr>
+                                        <tr>
+                                            <empty name="item_list[3]">
+                                                <td height="40" bgcolor="#F8F8F8">[空调滤清器]不需要配件</td>
+                                                <td bgcolor="#F8F8F8">￥0</td>
+                                                <else/>
+                                                <td height="40" bgcolor="#F8F8F8">[空调滤清器]{$item_list[3]['name']}</td>
+                                                <td bgcolor="#F8F8F8"> ￥{$item_list[3]['price']}</td>
+                                            </empty>
+                                        </tr>
+                                        <tr>
+                                            <td height="40" bgcolor="#F8F8F8">服务费</td>
+                                            <td bgcolor="#F8F8F8"> ￥99</td>
+                                        </tr>
+                                        <tr>
+                                            <td height="40" bgcolor="#F8F8F8">抵扣</td>
+                                            <td bgcolor="#F8F8F8"> ￥-{$order_info['dikou_amount']}</td>
+                                        </tr>
+                                    </table>
+                                </dd>
+                                <dt>技师步骤：</dt>
+                                <table width="auto" border="0" cellspacing="5" cellpadding="0" class="table">
+                                    <tr>
+                                        <th>技师步骤</th><th>时间</th>
+                                    </tr>
+                                    <foreach name="step_info" item="a" key="b">
+                                        <tr>
+                                            <td>{$a['step_name']}</td>
+                                            <td>{$a['create_time']}</td>
+                                        </tr>
+                                    </foreach>
+                                    <tr><td><if condition="$order_info['report_id'] neq ''"><a href="http://www.xieche.com.cn/mobile/check_report-report_id-{$order_info['report_id']}">报告链接：http://www.xieche.com.cn/mobile/check_report-report_id-{$order_info['report_id']}</a></if></td></tr>
+                                </table>
+                                <dt>用户评价：</dt>
+                                <dd>{$comment}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<style type="text/css">
+    .orderdetail {
+        background: #fbfaf8;
+    }
+
+    .orderdetailtop {
+        background: #eaeeed;
+        font-size: 16px;
+        overflow: hidden;
+        margin: 0 0 20px;
+    }
+
+    .orderdetailtop b {
+        font-size: 24px;
+        color: #ff4a00;
+    }
+
+    .orderdetailtop span {
+        font-size: 14px;
+    }
+
+    .orderdetailtop span a {
+        display: inline-block;
+        width: 60px;
+        height: 24px;
+        line-height: 24px;
+        margin-left: 20px;
+        background: #38558b;
+        color: #FFFFFF;
+        text-align: center;
+    }
+
+    .orderdetailcon {
+        border: 1px solid #ebefee;
+        overflow: hidden;
+        margin: 0 0 20px;
+        padding: 20px 15px;
+    }
+
+    .orderdetailcon dl {
+        overflow: hidden;
+        margin: 0 0 20px 0;
+    }
+
+    .orderdetailcon dl dt {
+        font-size: 14px;
+        font-weight: bold;
+        background: #EAEEED;
+        height: 30px;
+        padding: 0 20px;
+        line-height: 30px;
+    }
+
+    .orderdetailcon dl dd {
+        padding: 20px;
+        font-size: 14px;
+        line-height: 2em;
+    }
+
+    .orderdetailcon dl dd.dboder {
+        border: 1px solid #ccc;
+        margin: 20px 0;
+        padding: 0;
+        text-indent: 20px;
+    }
+</style>
+

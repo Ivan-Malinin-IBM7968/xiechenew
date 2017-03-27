@@ -1,0 +1,199 @@
+<layout name='layout_nonejs' />
+	<title>兑换验证码</title>
+	<link rel="stylesheet" href="http://statics.xieche.com.cn/common/css/reset.css" >	
+	<link rel="stylesheet" href="http://statics.xieche.com.cn/event/dp/css/dp.css">
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="dp-progress dp-progress-1">
+				
+			</div>
+			<div class="dp-notice">
+				<span>券  码：</span>用户在团购网站下单购买携车网的产品后，从团购网站获取的凭证码，用户可以使用该凭证码在此进行预约。预约成功后携车网会向用户发送去4S店时使用的电子票券。
+			</div>
+			<div class="form-container">
+				<form action="__APP__/Dianping-Dianping_add" class="fp-form" name="form2" method="POST">
+					<ul>
+						<li>
+							<label for="">券&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+							<div class="form-field"><input type="text" id="coupon_code" name="coupon_code" class="text phone-input" style="width: 400px;" value="请输入券码"></div>
+							<div class="check-sign error"></div>
+							<div class="err-text">券码不存在</div>
+						</li>
+						<li>
+							<label for="">手机号码：</label>
+							<div class="form-field"><input type="text" id="mobile" name="mobile" class="text phone-input" style="width: 400px;" value="请输入手机号"></div>
+							
+						</li>
+						<li>
+							<label for="">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+							<div class="ver-img form-field">
+								<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" class="text code-input" style="width: 277px;" value="请输入验证码">
+								
+								<input type="button" value="获取验证码" id="send_verify" class="verify">
+							</div>
+						</li>
+						<li>
+							<div class="next-trigger form-field">
+								<input type="submit"  value="下一步" class="verify">
+							</div>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+		<script src="http://statics.xieche.com.cn/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script>
+
+		 	
+		  (function($){
+		      $(".phone-input, .code-input").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+
+		
+		  })(jQuery)
+
+
+  
+		</script>
+<script type="text/javascript">
+$(function(){ 
+	$("#send_verify").attr("disabled",false);
+		$("#send_verify").click(function(){
+			
+			var mobile = $('#mobile').val();
+			var second = "60";
+			
+			if(/^1\d{10}$/.test(mobile)){
+				alert(mobile);
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Dianping/send_verify",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						alert(data);
+						if(data == '1'){
+
+							$("#send_verify").show();
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						
+						$("#send_verify").show();
+						send_verify_show(second);
+					}
+				})
+			}
+		})
+
+}); 
+
+function ajax_app(){
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Weixinlottery-ajaxapp",
+		cache: false,
+		data:"mobile=1",
+		dataType: "json",
+		success: function(data){
+		},
+		error: function(){
+			
+		}
+	})
+}
+
+
+function send_verify_show(i){
+	if(i>='0'){
+		$("#send_verify").attr("disabled",true); 
+		$("#send_verify").attr("value",i+"秒后重新发送");
+		i--;
+		setTimeout(function(){send_verify_show(i);},1000);
+	}else{
+		$("#send_verify").attr("disabled",false); 
+		$("#send_verify").attr("value","发送手机验证码");
+	}
+}
+
+function login(){
+	var mobile = $('#mobile').val();
+	var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+	var patest_id = $('#patest_id').val();
+	var brand_id = $('#get_brand').val();
+	var series_id = $('#get_series').val();
+	var model_id = $('#get_model').val();
+	
+	
+	if(brand_id == '0'){
+		alert('请选择品牌~');
+		return false;
+	}
+
+	if(series_id == '0'){
+		alert('请选择车型~');
+		return false;
+	}
+
+	if(model_id == '0'){
+		alert('请选择车系~');
+		return false;
+	}
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Weixinlottery-lotteryloginyh",
+		cache: false,
+		data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery+"&patest_id="+patest_id+"&brand_id="+brand_id+"&series_id="+series_id+"&model_id="+model_id,
+		dataType: "json",
+		success: function(data){
+			if(data == '1'){
+				alert('验证码填写错误');
+				return false;
+			}else if(data == '3'){
+				alert('领取成功');
+				location.reload();
+			}
+			else if(data == '5'){
+				alert('请填写手机号码');
+				return false;
+			}else{
+				alert('您已经领取过优惠券了');
+				location.reload();
+				return false;
+			}
+		},
+		error: function(){
+			
+		}
+	})
+}
+
+</script>
+	</body>
+</html>

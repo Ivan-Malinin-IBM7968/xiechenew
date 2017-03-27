@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>订单列表</title>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/carservice.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td id="toptd">  
+      <div class="toptdleft" id="backBtn"><img src="__PUBLIC__/mobile/images/carservice/顶图返回箭头.png" width="20" height="25"  alt=""/></div>    
+      <div id="toptdright">订单列表</div>   
+  </tr>
+
+  <tr>
+    <td ><table id="toptd1" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%" align="center" valign="middle" id="allOrderBtn" style="color: #00A9F1">府上养车</td>
+        <td width="3" align="center" valign="middle"><img src="__PUBLIC__/mobile/images/carservice/分类背景1.png" width="1" height="40"  alt=""/></td>
+        <td width="50%" align="center" valign="middle" id="noPayOrderBtn">事故车</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="1" bgcolor="#C8C8C8"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+    
+   </td>
+  </tr>
+
+  <volist name="list" id="vo" key="key">
+  <tr>
+    <td align="right"><div id="ccc1" onclick="window.location.href='__APP__/mobiletmp/mycarservice_detail?order_id={$vo[id]}';">
+    <div id="cc0"></div>
+      <div id="cc1">
+        <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+       
+          <tr>
+            <td width="25"><img src="__PUBLIC__/mobile/images/carservice/上门保养小图标.png" width="14" height="14"  alt=""/></td>
+            <td width="70">上门保养</td>
+            <td width="40"><if condition="$vo['pay_status'] eq '0'"><img src="__PUBLIC__/mobile/images/carservice/未消费.png" width="34" height="12"  alt=""/></if></td>
+            <td id="jiage">￥{$vo['amount']}</td>
+          </tr>
+        </table>
+      </div>
+         <div id="cc2"></div>
+            <div id="cc3">
+              <table width="96%" border="0" align="center" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="width:55%;overflow:hidden;line-height:20px;vertical-align:top;padding-top:10px">{$vo['car_name']}</td>
+                  <td  style="width:45%;overflow:hidden;line-height:20px;vertical-align:top;padding-top:10px" id="data">{$vo['order_time']|date="Y-m-d",###}</td>
+                </tr>
+              </table>
+            </div>
+                <div id="cc4">
+                  <table id="xiangmu" width="96%" border="0" align="center"   cellspacing="2" cellpadding="2">
+                    <notempty name="vo['item_list']['0']['name']">
+                    <tr>
+                      <td width="25"><img src="__PUBLIC__/mobile/images/carservice/维修项目图标.png" width="12" height="13"  alt=""/></td>
+                      <td>机油 {$vo['item_list']['0']['name']}&nbsp;{$vo['item_list']['0']['norms']}L&nbsp;(￥{$vo['item_list']['0']['price']})</td>
+                    </tr>
+                    </notempty>
+                    <notempty name="vo['item_list']['1']['name']">
+                    <tr>
+                      <td width="25">&nbsp;</td>
+                      <td>机滤 {$vo['item_list']['1']['name']}&nbsp;(￥{$vo['item_list']['1']['price']})</td>
+                    </tr>
+                    </notempty>
+                    <notempty name="vo['item_list']['2']['name']">
+                    <tr>
+                      <td width="25">&nbsp;</td>
+                      <td>空气滤 {$vo['item_list']['2']['name']}&nbsp;(￥{$vo['item_list']['2']['price']})</td>
+                    </tr>
+                    </notempty>
+                    <notempty name="vo['item_list']['3']['name']">
+                    <tr>
+                      <td width="25">&nbsp;</td>
+                      <td>空调滤 {$vo['item_list']['3']['name']}&nbsp;(￥{$vo['item_list']['3']['price']})</td>
+                    </tr>
+                    </notempty>
+                    <tr>
+                      <td width="25">&nbsp;</td>
+                      <td>服务费 (￥99)</td>
+                    </tr>
+                  </table>
+                </div>
+                <!--  <div id="cc5"><img src="__PUBLIC__/mobile/images/carservice/删除.png" width="15" height="16"  alt=""/></div>-->
+      </div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  </volist>
+
+</table>
+
+<script type="text/javascript">
+$(function(){
+  $("#allOrderBtn").click(function(){
+    window.location.href='__APP__/mobiletmp/mycarservice?pa_id={$pa_id}';
+  });
+
+  $("#noPayOrderBtn").click(function(){
+    window.location.href='__APP__/mobile-bidorder_list-pa_id-{$pa_id}';
+  }); 
+});
+</script>
+<script>
+$(function(){
+
+  $("#backBtn").click(function(){
+      window.location.href='__APP__/mobiletmp/order';
+  });
+
+});
+</script>
+
+</body>
+</html>

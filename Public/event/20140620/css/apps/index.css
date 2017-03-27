@@ -1,0 +1,7 @@
+#main-banner{background: #ffffff;}
+#cate-menu{ background: #ffffff;}
+#cate-menu > a{ margin: 0px;} 
+#cate-menu li{display: block; width: 100%; height: auto; font-size: 1.3em; }
+#cate-menu .menu-con{height: auto; padding: 10px; width: 100%; width:70%}
+#cate-menu .menu-con strong{ display: block; font-size: 1.1em; color: #22272a; white-space: normal;}
+#cate-menu .menu-con span{ display: block; font-size: 0.9em; color: #a7a7a7; }

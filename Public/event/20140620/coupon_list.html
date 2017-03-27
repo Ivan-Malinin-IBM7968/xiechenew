@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>携车网－购买优惠券</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/apps/main.css">
+		<link rel="stylesheet" href="css/apps/app.css">
+		<script src="js/libs/jquery.js"></script>
+		<script src="js/libs/jquery.mobile-1.4.2.min.js"></script>
+		
+	</head>
+	
+</head>
+	<body>
+		<div id="wrapper">
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>携车网－购买优惠券</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<!-- Header End -->
+
+				<input type="hidden" id="hide_fsid" name="hide_fsid" value="{$fs_id}">
+				<input type="hidden" id="hide_fsname" name="hide_fsname" value="{$fs_Name}">
+				<nav id="list-sort">
+					<ul>
+						<li id="sort-block-a" style="width: 100%">
+							<a href="#select-brand" data-transition="slidefade" >全部品牌</a>
+						</li>
+					</ul>
+				</nav>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+				        <li class="ui-grid-a single-coupon" >
+							<div class="ui-block-a" style="width: 35%">
+								<img src="http://www.xieche.com.cn/UPLOADS/Coupon/Logo/coupon1_516e74ba21e20.jpg" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">联通新悦东风悦达起亚K2小保养套餐</h3>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥199元</strong>
+										<em>¥299</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="" class="buy-btn disable">立即购买</a>
+									</div> 
+									
+								</div>
+
+														
+							</div>
+				        </li>
+				        <li class="ui-grid-a single-coupon" >
+							<div class="ui-block-a" style="width: 35%">
+								<img src="http://www.xieche.com.cn/UPLOADS/Coupon/Logo/coupon1_516e74ba21e20.jpg" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">联通新悦东风悦达起亚K2小保养套餐</h3>
+								</div>
+								<div class="ui-grid-a" >
+									 
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥199元</strong>
+										<em>¥299</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="" class="buy-btn disable">立即购买</a>
+									</div> 
+									
+									
+								</div>
+
+														
+							</div>
+				        </li>
+				    </ul>
+				</div>
+				<div id="pagination">
+					<div id="prev-page" class="page-trigger">
+						<a href="###" class="ui-link">上一页</a>
+					</div>  
+					<div id="totle-page"> 1/8 页</div> 
+					<div id="next-page" class="page-trigger">
+						<a href="/Mobile-coupon_list-p-2" rel="external" class="ui-link">下一页</a>
+					</div>         
+				</div>
+			</div>
+			
+			<!-- Main Page End -->
+			<!-- Navigation Start -->
+			<div data-role="page" id="select-brand">
+				<header id="header" data-role="header">
+					<span id="left-trigger" >
+						<a href="#coupon-list-main" data-transition="slidefade" class="back"></a>
+					</span>
+					<span id="right-trigger" data-role="ui-btn-icon-right"></span>
+					<h1>请选择品牌</h1>
+				</header>
+			
+				<ul data-role="listview" id="brand-list">
+					<li><a href="#" data-fsid="" data-fsname="" rel="external" data-index="false">全部品牌</a></li>
+					<volist name="FSdata" id="list">  
+						<li>
+						<a href="#" data-fsid="{$list.fsid}" data-fsname="{$list.fsname}" rel="external" data-index="false">{$list.word}&nbsp;&nbsp;&nbsp;&nbsp;{$list.fsname}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<!-- Navigation End -->
+		</div>
+		<include file="Public:wapfoot" />
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+	</body>
+</html>

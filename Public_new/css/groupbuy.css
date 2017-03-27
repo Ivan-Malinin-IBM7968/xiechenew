@@ -1,0 +1,97 @@
+/*all page css*/
+
+.group,.group-c{background-color:#fbfaf8; overflow: hidden;}
+.group-p-c{border:20px solid #ffffff;}
+.group-1{background-color:#1ab7bc;color:#fff;font-size:18px;padding-top:15px;padding-bottom: 20px;padding-top: 40px;}
+.group-p{padding-top:40px}
+.group-p h5{text-align: center;height: 18px;overflow: hidden;}
+.group-p .fl{width:45%;font-size:24px}
+.group-p .fl p{font-size:18px}
+.group-2{height:66px;line-height:66px;text-align:center}
+.group-3{border-left:1px dotted #ffffff;padding:5px 0px 0px 20px}
+.bold{font-size:40px;font-weight:bold}
+.group-4{display:block;background-color:#f4f6f3;max-width:280px;height:45px;line-height:45px;margin-left:20px}
+.groupbg1 .group-4{color:#14b3b7}
+.groupbg2 .group-4{color:#fc774e}
+.groupbg3 .group-4{color:#f95e5a}
+.groupbg2{background-color:#ff7f48}
+.groupbg3{background-color:#ff5651}
+.group-1 .text-center p{padding:10px 0px}
+.pad-20{padding-bottom:0px}
+.group-more{padding:30px 0px; font-size:16px; border-bottom: 1px solid #e3e3e3; margin-bottom: 30px;}
+
+.car4s{background: #fbfaf8;overflow: hidden;}
+
+
+.adrarea{
+	overflow: hidden;
+	height: 100px;
+	line-height: 100px;
+	background: #fbfaf8;
+	z-index: 100;
+	width: 100%;
+	position: static;
+	top: 0;
+	left: 0;
+	font-size: 16px;
+}
+
+.adrarea span,.adrarea a{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+} 
+
+.adrarea a{
+	height: 30px;
+	line-height: 30px;
+	padding: 0 16px;
+}
+
+.adrarea a:hover{
+	color: #FFFFFF;
+	background: #35548c;
+	text-decoration: none;
+}
+
+.adrarea a.current{
+	color: #FFFFFF;
+	background: #35548c;
+	text-decoration: none;
+}
+.quanfenlei{
+	text-align: center;
+	line-height: 66px;
+	margin:0 0 20px
+}
+.quanfenlei a{
+	display: inline-block;
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 18px;
+	background: url(../images/car4s/quanflbg.png) center 56px no-repeat #14b3b7;
+	text-decoration: none;
+}
+
+.xianjinquan{overflow: hidden;}
+.xianjinquan ul{width: 1300px;}
+.xianjinquan ul li{width: 255px; height: 415px; text-align: center; overflow: hidden; float: left; background: #FFFFFF; padding: 15px; margin-right: 54px; margin-top: 9px;}
+.xianjinquancon{overflow: hidden; position: relative; width: 100%; height: 100%;}
+.xianjinquancon h6{margin-top: 0; font-size: 14px; letter-spacing: 1px;padding-bottom:10px;}
+.xianjinquancon h6 a{white-space: nowrap;}
+.xianjinquancon p{width: 225px; overflow: hidden;}
+.xianjinquancon p img{width: 225px;}
+.xianjinquandes{position: absolute; bottom: 0; width: 100%; height: 193px; z-index: 3;}
+.xianjinquandestop{background: url(../images/index/xianjinquansline.png) top center repeat-x; height: 3px; overflow: hidden;}
+.xianjinquandescon{background: #ff5650; height: 190px; color: #FFFFFF; overflow: hidden;}
+.xianjinquandescon1{border-bottom: 1px dashed #FFFFFF; overflow: hidden; font-size: 20px; color: #FFFFFF; margin-top: 5px; overflow: hidden;}
+.xianjinquandescon .xianjinstyle{font-size: 14px; letter-spacing: 1px;}
+.xianjinquandescon p{height: 35px; line-height: 35px; margin: 13px 0; font-size: 12px; letter-spacing: 1px;}
+.xianjinquandescon a{display: block; margin: 0 10px; background: #FFFFFF; color: #ff5650; font-size: 16px; height: 35px; line-height: 35px;}
+.xianjinquandescon a:hover{text-decoration: none;}
+.xianjinquandescon.cff7f48{background: #ff7f48;}
+.xianjinquandescon.c14b3b7{background: #14b3b7;}
+.xianjinquandescon.cff7f48 a{color: #ff7f48;}
+.xianjinquandescon.c14b3b7 a{color: #14b3b7;}
+.xianjinquandestop.t1{background: url(../images/index/xianjinquansline1.png) top center repeat-x;}
+.xianjinquandestop.t2{background: url(../images/index/xianjinquansline2.png) top center repeat-x;}

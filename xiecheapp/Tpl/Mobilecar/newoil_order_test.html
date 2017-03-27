@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+ 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no">
+	<title>奖品兑换</title>
+	<style type="text/css">
+	*{margin: 0; padding: 0; list-style: none; text-decoration: none; font-family: "微软雅黑";}
+	body{background: url(__PUBLIC__/mobile/images/castrol/newbg.jpg) top center no-repeat #4a9cc4; background-size: 100%; color: #FFFFFF;}
+	a{text-decoration: none; color: #FFFFFF;}
+	.warp{margin: 0 auto;}
+	.kuaidi{margin: 20px 0 10px; overflow: hidden;}
+	.jpshuoming{padding: 10px;}
+	.jpshuoming h4{font-size: 16px; font-weight: normal; margin-bottom: 10px;}
+	.jpshuoming p{line-height: 1.5em; font-size: 14px;}
+	.form{padding: 0 20px; margin: 10px 0; font-size: 14px;}
+	.form p{font-size: 14px; margin: 20px 0 10px;}
+	.oneform{overflow: hidden; height: 35px; line-height: 35px;}
+	.oneform span{float: right;}
+	.oneform i,.oneform em{font-style: normal; display: inline-block;}
+	.oneform i{background: rgba(255,255,255,0.2); height: 20px; line-height: 18px; text-align: center; width: 20px; cursor: pointer;}
+	.oneform em{padding:0 10px;}
+
+	.forminput{overflow: hidden;}
+	.forminput input{height: 35px; border: 1px solid #FFFFFF; width: 100%; background: none; color: #FFFFFF;}
+	.forminput input[type='text']{text-indent: 10px;}
+	.forminput a{background: rgba(255,255,255,0.2); border: none; display: block; height: 35px; line-height: 35px; text-align: center;}
+	.botborder{background: rgba(255,255,255,0.5); height: 1px; overflow: hidden; width: 100%;}
+	.onetop{margin: 15px 20px 10px; padding-left: 25px; height: 20px; font-size: 16px; line-height: 20px;}
+	.productico{background: url(/Public/mobile/images/castrol/productdes.png) left center no-repeat; background-size: 19px;}
+	.activitycon{padding: 5px 20px; font-size: 14px;}
+	.activitycon b{font-size: }
+	.activitycon p{line-height: 1.7em; margin: 5px 0; overflow: hidden; font-size: 12px;}
+	</style>
+	<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+</head>
+<body>
+	<div class="warp">
+		<div class="kuaidi"><img src="__PUBLIC__/mobile/images/castrol/prize{$type}.png" width="100%" alt=""></div>
+		<div class="onetop productico">{$onename}</div>
+		<div class="botborder">&nbsp;</div>
+		<div class="activitycon">
+			<if condition="$type eq 1">
+			<p>10元快的打车代金券，可在使用快的打车APP消费时抵用。</p>
+			<p>兑换规则：400ML机油即可兑换，不限兑换数量。</p>
+		    <p>使用范围：全国通用。</p>
+		    <p>使用流程：完成兑换后，携车网将会短信发送兑换码至您的手机，凭兑换码至快的打车APP兑换代金券，消费时正常使用即可。</p>
+		    <p>使用有效期 ：自兑换日起至2015年01月31日。</p>
+		    <p>咨询热线：400 660 2822</p>
+			<elseif condition="$type eq 2"/>
+			<p>本奖品为价值68元的【携车网-府上养车】上门汽车安全检测，包括4大类38小项检测项目。检测完成后，将生成电子检测评分报告，即时发送至车主微信，为您排除眼睛看不见的车辆安全隐患。 </p>
+			<p>兑换规则：600ML机油即可兑换，不限兑换数量。</p>
+			<p>使用范围：限上海外环以内地区</p>
+		    <p>使用流程：完成兑换后，携车网客服专员将在1个工作日内给您致电，确认奖品信息，   并为您预约上门服务的时间和地点。有任何疑问，可致电携车网客服中心400-660-2822。</p>
+		    <p>使用有效期 ：自兑换日起至2015年06月30日。</p>
+		    <p>注意事项：</p>
+		    <p>1、本奖品不与携车网其它优惠同时使用；</p>
+		    <p>2、本奖品不兑换现金；</p>
+		    <p>3、需提前一天预约，上门时间9:00—21:00，本服务仅限7座以内乘用车；</p>
+			<elseif condition="$type eq 3"/>
+			<p>本奖品为价值99元的【携车网-府上养车】汽车上门保养专业服务，车主可凭此奖品免费享受【携车网-府上养车】专业技师上门保养服务，保养所需的机油配件，需车主自备或在携车网预订时购买。</p>
+			<p>兑换规则：1000ML机油即可兑换，不限兑换数量。</p>
+			<p>使用范围：限上海外环以内地区</p>
+			<p>使用流程：完成兑换后，携车网客服专员将在1个工作日内给您致电，确认奖品信息，并为您预约上门服务的时间和地点。有任何疑问，可致电携车网客服中心400-660-2822。</p>
+			<p>使用有效期 ：自兑换日起至2015年06月30日。</p>
+			<p>注意事项：</p>
+			<p>1、本奖品不与携车网其它优惠同时使用；</p>
+			<p>2、本奖品不兑换现金；</p>
+			<p>3、需提前一天预约，上门时间9:00—21:00，本服务仅限7座以内乘用车；</p>
+			<elseif condition="$type eq 4"/>
+			<p>本奖品为价值300元的【携车网-府上养车】壳牌黄喜力机油小保养套餐，包含：壳牌黄喜力机油4L、品牌机滤1个、专业技师上门保养服务、38项专业检测。</p>
+			<p>兑换规则：2500ML机油即可兑换，不限兑换数量。</p>
+			<p>使用范围：限上海外环以内地区</p>
+			<p>使用流程：完成兑换后，携车网客服专员将在1个工作日内给您致电，确认奖品信息，并为您预约上门服务的时间和地点。有任何疑问，可致电携车网客服中心400-660-2822。</p>
+			<p>使用有效期 ：自兑换日起至2015年06月30日。</p>
+			<p>注意事项：</p>
+			<p>1、本奖品不与携车网其它优惠同时使用；</p>
+			<p>2、本奖品不兑换现金；</p>
+			<p>3、需提前一天预约，上门时间9:00—21:00，本服务仅限7座以内乘用车；</p>
+			<elseif condition="$type eq 5"/>
+			<p>本奖品为价值400元的【携车网-府上养车】壳牌蓝喜力机油小保养套餐，包含：壳牌蓝喜力机油4L、品牌机滤1个、专业技师上门保养服务、38项专业检测。</p>
+			<p>兑换规则：4000ML机油即可兑换，不限兑换数量。</p>
+			<p>使用范围：限上海外环以内地区</p>
+			<p>使用流程：完成兑换后，携车网客服专员将在1个工作日内给您致电，确认奖品信息，并为您预约上门服务的时间和地点。有任何疑问，可致电携车网客服中心400-660-2822。</p>
+			<p>使用有效期 ：自兑换日起至2015年06月30日。</p>
+			<p>注意事项：</p>
+			<p>1、本奖品不与携车网其它优惠同时使用；</p>
+			<p>2、本奖品不兑换现金；</p>
+			<p>3、需提前一天预约，上门时间9:00—21:00，本服务仅限7座以内乘用车；</p>
+			<elseif condition="$type eq 6"/>
+			<p>本奖品为价值600元的【携车网-府上养车】壳牌灰喜力机油小保养套餐，包含：壳牌灰喜力机油4L、品牌机滤1个、专业技师上门保养服务、38项专业检测。</p>
+			<p>兑换规则：6000ML机油即可兑换，不限兑换数量。</p>
+			<p>使用范围：限上海外环以内地区</p>
+			<p>使用流程：完成兑换后，携车网客服专员将在1个工作日内给您致电，确认奖品信息，并为您预约上门服务的时间和地点。有任何疑问，可致电携车网客服中心400-660-2822。</p>
+			<p>使用有效期 ：自兑换日起至2015年06月30日。</p>
+			<p>注意事项：</p>
+			<p>1、本奖品不与携车网其它优惠同时使用；</p>
+			<p>2、本奖品不兑换现金；</p>
+			<p>3、需提前一天预约，上门时间9:00—21:00，本服务仅限7座以内乘用车；</p>
+			<elseif condition="$type eq 7"/>
+			<p>本奖品为中石化1000元加油卡。</p>
+			<p>兑换规则：10000ML机油即可兑换。原定共50张油卡已全部兑完，因活动火爆特增加20张，12月31日中午12:00准时抢兑，先兑先得。</p>
+			<p>使用范围：全国通用。</p>
+			<p>使用流程：兑换完成后，携车网客服专员将在一个工作日内给你致电，确认奖品信息及寄送地址后，随后将油卡快递给您。</p>
+			<p>使用有效期 ：自兑换日起至2016年12月31日。</p>
+			<p>咨询热线：400 660 2822</p>
+			<else /></if>
+		</div>
+		<div class="form">
+			<p>请真实填写以下信息，便于奖品准确配送</p>
+			<form action="/mobilecar/exchangego" method="post" id="exchangeform">
+				<div class="oneform"><span><i id="minus">-</i><em id="num"><if condition="$defaultnum eq 1 OR $defaultnum eq -1">1<else/>0</if></em><i id="add">+</i></span>兑换数量</div>
+				<div class="oneform"><span><b id="amount">{$oneprice}</b>ml</span>兑换需消耗</div>
+				<div class="oneform"><span><b id="all">{$oil_num}</b>ml</span>当前机油</div>
+				<table width="100%" class="forminput">
+					<tbody>
+						<tr height="10"></tr>
+						<tr>
+							<td width="35">车型</td>
+							<td><input type="text" name="carmodel" id="carmodel"/></td>
+						</tr>
+						<tr height="10"></tr>
+						<tr>
+							<td>姓名</td>
+							<td><input type="text" name="username" id="username"/></td>
+						</tr>
+						<tr height="10"></tr>
+						<tr>
+							<td>手机</td>
+							<td><input type="text" name="mobile" id="mobile" maxlength="11"/></td>
+						</tr>
+						<tr height="10"></tr>
+						<if condition="$type neq 1">
+						<tr>
+							<td>地址</td>
+							<td><input type="text" name="address"/></td>
+						</tr>
+						<tr height="10"></tr>
+						</if>
+						<if condition="$defaultnum eq -1">
+						<tr>
+							<td colspan="2" align="center"><span id="thistime"></span></td>
+						</tr>
+						<tr height="10"></tr>
+						</if>
+						<tr>
+							<if condition="$defaultnum eq 1">
+							<td colspan="2"><a id="exchangego">确认提交</a></td>
+							<elseif condition="$defaultnum eq 0"/>
+							<td colspan="2"><a>机油不足 暂不可兑换</a></td>
+							<elseif condition="$defaultnum eq -1"/>
+							<td colspan="2"><a id="time">兑奖倒计时 </a></td>
+							</if>
+						</tr>
+					</tbody>
+				</table>
+				<input type="hidden" name="weixin_id" value="{$weixin_id}"/>
+				<input type="hidden" name="type" value="{$type}">
+				<input type="hidden" name="num" value="1" id="snum"/>
+			</form>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(function(){
+		var num = $("#num").text();
+		var amount = $("#amount").text();
+		$("#snum").val(num);
+		var all = $("#all").text();
+		var minnum = 1;
+		var maxnum = parseInt(all/amount);
+		var type = {$type};
+		$("#add").click(function(){
+			if(num < maxnum){
+				if(type!=7){
+					num++;
+					$("#num").text(num);
+					$("#amount").text(amount*num);
+					$("#snum").val(num);
+				}else{
+					alert("本次兑奖每位用户仅可兑换一个");
+				}
+			}else{
+				num = maxnum;
+				alert("机油总量不足兑换所需总数");
+			}	
+		});
+
+		$("#minus").click(function(){
+			if(num > minnum){
+				num--;
+				$("#num").text(num);
+				$("#amount").text(amount*num);
+				$("#snum").val(num);
+			}else{
+				num = minnum;
+				alert("兑换数量不可小于1");
+			}
+		});
+
+		$("#exchangego").click(function(){
+			if(!$("#carmodel").val()){
+				alert("车型不可为空");
+				return false;
+			}
+			if(!$("#username").val()){
+				alert("用户名不可为空");
+				return false;
+			}
+			if(!$("#mobile").val()){
+				alert("电话号码不可为空");
+				return false;
+			}
+
+			if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test($("#mobile").val()))){
+				alert("电话号码不正确");
+				return false;
+			}
+			
+			var address = $('input[name=address]');
+			if(address.length){
+				if(!address.val()){
+					alert("请填写兑奖地址");
+					return false;
+				}
+			}
+			var data = $('#exchangeform').serialize();
+		    $.post('/mobilecar/exchangego',data,function(data){
+		      if(data.status){
+		        alert(data.info);
+		        window.location.href = data.data;
+		      }else{
+		        alert(data.info);
+		      }
+		      
+		    },'json')
+		});
+
+		
+
+	});
+</script>
+	<script type="text/javascript">
+	var sum,day,h,m,s,thistime;
+	sum = {$time};
+	thistime = {$thistime};
+	function countdown(){
+		day=parseInt(sum/86400);
+		h=parseInt(sum%86400/3600);
+		m=parseInt(sum%86400%3600/60)
+		s=sum%60;
+		if(sum<=0){
+			$("#time").html("立即兑奖");
+			$("#time").attr("onclick","qianggou()");
+		}else{
+			sum--;
+			$("#time").html("兑奖倒计时&nbsp;"+day+"天"+h+"时"+m+"分"+s+"秒");
+		}
+		$("#thistime").html("当前服务器时间:"+new Date(thistime).getFullYear()+"-"+(new Date(thistime).getMonth()+1)+"-"+new Date(thistime).getDate()+"&nbsp;"+new Date(thistime).getHours()+":"+new Date(thistime).getMinutes()+":"+new Date(thistime).getSeconds());
+		thistime = thistime +1000;
+	
+	}
+	countdown();
+	var rtime = setInterval(countdown,1000);
+
+	
+		function qianggou(){
+			if(!$("#carmodel").val()){
+				alert("车型不可为空");
+				return false;
+			}
+			if(!$("#username").val()){
+				alert("用户名不可为空");
+				return false;
+			}
+			if(!$("#mobile").val()){
+				alert("电话号码不可为空");
+				return false;
+			}
+
+			if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test($("#mobile").val()))){
+				alert("电话号码不正确");
+				return false;
+			}
+			
+			var address = $('input[name=address]');
+			if(address.length){
+				if(!address.val()){
+					alert("请填写兑奖地址");
+					return false;
+				}
+			}
+			var data = $('#exchangeform').serialize();
+		    $.post('/mobilecar/rankadd',data,function(data){
+		      if(data.status){
+		        alert(data.info);
+		        window.location.href = data.data;
+		      }else{
+		        alert(data.info);
+		      }
+		      
+		    },'json')
+		}
+
+	</script>
+</body>
+</html>

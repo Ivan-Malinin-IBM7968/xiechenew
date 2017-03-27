@@ -1,0 +1,301 @@
+<layout name='layout' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+	$(".ckanbut").click(function(){
+		popup2();
+		 var shopid=$(this).attr('shopid');
+		 $.ajax({
+			type: "POST",
+			url: "__URL__/ajax_get_product_info",
+			cache: false,
+			data: "shop_id="+shopid+"&s1={$Think.get.s1}&s2={$Think.get.s2}&brand_id={$Think.get.brand_id}&series_id={$Think.get.series_id}&model_id={$Think.get.model_id}&u_c_id={$Think.get.u_c_id}&ajax_type=order",
+			success: function(data){
+				if (data!='null'){
+					var param = data;
+					$("#product_content").append(param);
+					
+				}
+			}
+		})
+	})
+})
+
+	function popup1(){
+		Think.popup({
+		content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+		drag:true,//不可拖动
+		cover:true//设置笼罩
+		});
+		}
+	
+	function popup2(){
+		Think.popup({
+		content:'<h3 class="flb" drag="1"><em>明细</em><a close="1"  class="flbc">关闭</a></h3><div id="product_content"></div>',
+		drag:true,//不可拖动
+		cover:true//设置笼罩
+		});
+		}
+</script>
+<!-- 顶部结束 -->
+<div class="bodybgwrap">
+  <div class="wrapbox">
+    <div class="ht10"></div>
+	
+	
+	<div class="guidenav guidenav1" > <a href="#" class="Crumbs">首页</a> > 商家介绍</div>
+    <div class="intr_sj">
+			
+
+<div class="n1">
+	<if condition="$list.have_logo eq 1">
+    <img width="160px" height="120px" title="" src="/UPLOADS/Shop/Logo/{$list.logo}">
+    </if>
+</div>
+<div class="n2">
+    <h1>
+        {$list.shop_name}</h1>
+    <p>
+        地址：{$list.shop_address}&nbsp;|&nbsp;<a href="javascript:;" lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^客服电话：{$Think.config.CALL_400} ">地图</a></p>
+    <p>
+        营业时间：8:00-18:30</p>
+    <p>
+        联系电话：400-660-2822</p>
+    
+</div>
+				<style type="text/css">
+#dialogmap{display:none; position:absolute; width:520px; height:340px;}
+#containermap{width:520px; height:340px;}
+#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="__PUBLIC__/Js/jq_openDialog.js?v={$Think.config.VERSION_DATE}"></script> 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript">
+$(function(){ 
+	$(".point").click(function(){
+		//$("#dialogmap").openDialog();
+		popup1();
+		 var map = new BMap.Map("containermap");
+			 var lng=$(this).attr('lng');
+		 //alert(lng);
+		 //var lat=$(this).attr('lat');
+		 arr=lng.split(',');//分割
+			
+		 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+		 //alert(lng);
+		 var text=$(this).attr('desc');
+		 //alert(text);
+		 var textArr=text.split('^^');
+		 map.centerAndZoom(point,15);
+		 map.addControl(new BMap.NavigationControl());
+		 map.addControl(new BMap.MapTypeControl());
+		 map.addControl(new BMap.ScaleControl());
+		 map.addControl(new BMap.OverviewMapControl());
+		 addMarker(point);
+		 function addMarker(point)
+		 {
+			var html='';
+			for(var i=0;i<textArr.length;i++)
+			{
+				html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+			}
+		 	var marker = new BMap.Marker(point);  // 创建标注
+			 	map.addOverlay(marker);              // 将标注添加到地图中
+			var infoWindow = new BMap.InfoWindow(html);
+			marker.openInfoWindow(infoWindow);
+			
+		  }	 
+	  });
+	var shopid = '{$shop_id}';
+	$.ajax({
+		type:'POST',
+		url:'__APP__/comment/showcommentall',
+		cache:false,
+		dataType:'text',
+		data:'shopid='+shopid,
+		success:function(data){
+			$("#commend_show").append(data);
+		}
+	})		   
+})
+</script>
+
+			<div class="n3">
+				<span class="intr_tab act">维修折扣</span><br />
+			</div>
+			<table class="l_fwinfo" cellspacing="0" cellpadding="0" border="0" width="500px" style="color:black;">
+				<tr>
+					<td>星期</td>
+					<td>时间</td>
+					<td>工时折扣率</td>
+					<td>零件折扣率</td>
+				</tr>
+				<volist name="list_timesale" id="list_t">
+					<volist name="list_t.timesaleversion" id="list_tt">
+				<tr>
+					<td>{$list_t.week_name_s}</td>
+					<td>{$list_t.begin_time}--{$list_t.end_time}</td>
+					<td>{$list_tt.workhours_sale_str}</td>
+					<td>{$list_tt.product_sale_str}</td>
+				</tr>
+				</volist>
+				</volist>
+			</table>
+			
+			<div class="clear"></div>
+		</div>
+   <div  class="intr_left">
+			<!--<h2 class="intr_title">服务预订 <span>  ALFA 147 2004款 2.0T</span>  <a href="#">[更改]</a></h2> 
+            
+			<table cellspacing="0" cellpadding="0" border="0" class="serve_list">
+				<tbody>
+                
+                     <tr class="tlist">
+					<td class="n1">
+                            
+                            <a target="_blank" href="#">
+                            镀膜</a>
+                    </td>
+					<td class="n2">
+						<p class="intr_p">预&nbsp;订&nbsp;价：<dfn class="rmb">¥</dfn><span><strong>460</strong></span></p>
+						<p class="intr_s">最近成交：<span>2笔</span></p>
+					</td>
+					<td class="n3">
+						<p class="intr_m"><span class="state state5"></span><a href="#">5.0</a></p>
+						<p class="intr_c"><a  href="#">共2人评价</a></p>
+					</td>
+				</tr>  
+                   
+                     <tr class="tlist">
+					<td class="n1">
+                            
+                            <a target="_blank" href="#">
+                            镀膜</a>
+                    </td>
+					<td class="n2">
+						<p class="intr_p">预&nbsp;订&nbsp;价：<dfn class="rmb">¥</dfn><span><strong>460</strong></span></p>
+						<p class="intr_s">最近成交：<span>2笔</span></p>
+					</td>
+					<td class="n3">
+						<p class="intr_m"><span class="state state5"></span><a href="#">5.0</a></p>
+						<p class="intr_c"><a  href="#">共2人评价</a></p>
+					</td>
+				</tr>
+				<tr class="tlist">
+					<td class="n1">
+                            
+                            <a target="_blank" href="#">
+                            镀膜</a>
+                    </td>
+					<td class="n2">
+						<p class="intr_p">预&nbsp;订&nbsp;价：<dfn class="rmb">¥</dfn><span><strong>460</strong></span></p>
+						<p class="intr_s">最近成交：<span>2笔</span></p>
+					</td>
+					<td class="n3">
+						<p class="intr_m"><span class="state state5"></span><a href="#">5.0</a></p>
+						<p class="intr_c"><a  href="#">共2人评价</a></p>
+					</td>
+				</tr>
+				<tr class="tlist">
+					<td class="n1">
+                            
+                            <a target="_blank" href="#">
+                            镀膜</a>
+                    </td>
+					<td class="n2">
+						<p class="intr_p">预&nbsp;订&nbsp;价：<dfn class="rmb">¥</dfn><span><strong>460</strong></span></p>
+						<p class="intr_s">最近成交：<span>2笔</span></p>
+					</td>
+					<td class="n3">
+						<p class="intr_m"><span class="state state5"></span><a href="#">5.0</a></p>
+						<p class="intr_c"><a  href="#">共2人评价</a></p>
+					</td>
+				</tr>
+                   
+			</tbody></table>-->
+            
+			<h2 class="intr_title">商家介绍</h2>
+			<div class="intr_sj_txEdit">
+				{$list.shop_detail}
+			</div>
+			<a name="comment" id="comment" ></a>
+			<h2 class="intr_title">商铺评价</h2>
+			<div class="commend_show" id="commend_show">
+				
+			</div>
+		</div>
+		<div class="intr_right">
+			<!--地图-->
+			<div class="map_sj">
+				<img src="http://api.map.baidu.com/staticimage?width=238&height=200&center={$list.shop_maps}&zoom=13&markers={$list.shop_maps}&markerStyles=l,A">
+				</div>
+				<p class="n2"><a href="javascript:;" lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^客服电话：{$Think.config.CALL_400} ">查看完整地图</a></p>
+			</div>
+			<!--end地图-->
+			<!--其他商家-->
+<!--			
+<div class="relate_sj">
+    <h2>
+        <span>同区域其他商家</span>
+        <div class="clear"></div>
+    </h2>
+    
+    <ul>
+        
+        <li><span class="n1">·</span> <span class="n2"><a href="/79783/">
+            上海比邻美车堂（锦绣乐购店）</a></span>
+            <div class="clear"></div>
+        </li>
+        
+        <li><span class="n1">·</span> <span class="n2"><a href="#">
+            上海比邻美车堂（正大旗舰店）</a></span>
+            <div class="clear"></div>
+        </li>
+        
+        <li><span class="n1">·</span> <span class="n2"><a href="#">
+            上海比邻美车堂（新梅联合广场店）</a></span>
+            <div class="clear"></div>
+        </li>
+        
+        <li><span class="n1">·</span> <span class="n2"><a href="#">
+            上海比邻美车堂（国金中心旗舰店）</a></span>
+            <div class="clear"></div>
+        </li>
+        
+        <li><span class="n1">·</span> <span class="n2"><a href="#">
+            上海比邻美车堂（高科西路街面店）</a></span>
+            <div class="clear"></div>
+        </li>
+        
+    </ul>
+    
+    
+</div>
+
+	
+<div class="relate_sj">
+    <h2 >
+        <span>最近浏览过的商家</span> <a href="#">清空</a>
+        <div class="clear"></div>
+    </h2>
+    <ul>
+        
+                <li><span class="n1">·</span> <span class="n2"><a href="#">车艺佳美国龙膜专营示范店</a></span>
+                    <div class="clear"></div>
+                </li>
+            
+                <li><span class="n1">·</span> <span class="n2"><a href="#">壹捷汽车服务（大柏树店）</a></span>
+                    <div class="clear"></div>
+                </li>
+            
+    </ul>
+</div>
+-->
+		</div>
+  </div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,328 @@
+<layout name='layout_repair' />
+<link type="text/css" href="__PUBLIC__/css/repair_order.css" rel="stylesheet">
+<script src="__PUBLIC__/bootstrap/js/datetimepicker.min.js"></script>
+<script src="__PUBLIC__/bootstrap/js/datetimepicker.cn.js"></script>
+<link type="text/css" href="__PUBLIC__/bootstrap/css/datetimepicker.css" rel="stylesheet">
+    <div class="snav" id="snav">
+      <ul>
+        <li><a href="/shiguche/">事故车介绍</a></li>
+        <li><a href="/shiguche/order/">事故车维修下单</a></li>
+        <li><a href="/shiguche/repair_order/" class="current">故障维修下单</a></li>
+      </ul>
+      <span>
+        <b>您选择的车型是：{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;"><u>修改车型</u></a>
+      </span>
+    </div>
+    
+	<div class="repairo">
+		
+		<div class="w1183 repairo-1">
+			<form id="form">
+			<p class="repairo-1-1"><a href="/">首页</a> > 故障维修下单</p>
+			<div class="repairo-2">
+				<h5 style="margin-top:0px">您想获得什么样的服务<font class="repairo-2-1">(最少选择一项)</font></h5>	
+				<div class="clearfix">
+					<div class="fl text-center">查看爱车故障</div>
+					<div class="fl text-center">上报故障信息</div>
+					<div class="fl text-center">客服确认信息</div>
+					<div class="fl text-center">推荐最佳4S店</div>
+					<div class="fl text-center">维修进度查询</div>
+				</div>	
+
+
+				<volist name="list_si_level_0" id="vo">
+				<if condition="$vo[id] gt 1">
+				<h5 style="margin-bottom:20px">{$vo.name}<font class="repairo-2-1">(显示价格仅供参考，具体价格以实际到店价格为准)</font></h5>
+				</if>
+				<ul class="labelon">
+					<volist name="list_si_level_1" id="vo1">
+						<if condition="$vo[id] eq $vo1[service_item_id]">
+							<li <if condition="$vo1[id] eq 10">class="checked"</if> style="display:inline-block; width:25%;">
+								<if condition="$vo1['service_item_id'] neq 1">
+									<input type="checkbox" class="checkbox1" name="select_services[]" data-name="{$vo1.name}" data-price="{$vo1.price}" data-2-name="{$vo1.detail2.Midl_name}" data-2-price="{$vo1.detail2.price}" data-2-unit="{$vo1.detail2.unit}" data-2-quantity="{$vo1.detail2.quantity}" data-1-name="{$vo1.detail1.Midl_name}" data-1-price="{$vo1.detail1.price}" data-1-unit="{$vo1.detail1.unit}" data-1-quantity="{$vo1.detail1.quantity}"  <if condition="$membercoupon_id gt '0'">  disabled </if> <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/><label data-des="{$vo1.name}">{$vo1.name}<notempty name="vo1.price">（￥{$vo1.price}）</notempty></label>
+								</if>
+							</li>
+						</if>
+					</volist>
+				</ul>
+				</volist>
+
+				<h5 style="margin:20px 0px">其他项目:</h5>
+				<ul>
+				  	<li style="display:inline-block;"><input type="checkbox" class="repairo-ck" id="other" value="-1" name="select_services[]"/>车有故障，到店检查为准</li>
+				</ul>
+				<h5 class="repairo-2-2" style="margin-top:20px">填写故障详情:</h5>
+				<div>
+					<textarea class="form-control" rows="3" placeholder="请输入故障详情" style="width:100%" name="remark"></textarea>
+				</div>
+				<h5 class="repairo-2-2">请输入预约信息:</h5>
+				<div class="repairo-2-3">
+					<div class="form-horizontal" role="form">
+					  <div class="form-group">
+					    <label for="time" class="col-sm-2 control-label"><font class="repairo-2-1">*</font> 预约时间:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="time"  name="order_date"/>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="name" class="col-sm-2 control-label"><font class="repairo-2-1">*</font> 姓名:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="name" name="truename"/>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="mobile" class="col-sm-2 control-label"><font class="repairo-2-1">*</font> 手机:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="mobile" name="mobile" maxlength="11"/>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="license" class="col-sm-2 control-label"><font class="repairo-2-1">*</font> 车牌号:</label>
+					    <!-- <div class="col-sm-2" style="padding-right:0px">
+					      <select class="form-control text-center" style="width:100%;" name="licenseplate_type">
+					      	<option value="沪">沪</option>
+					      </select>
+					    </div> -->
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="license" name="licenseplate" placeholder="如：沪A88888" maxlength="7"/>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="run-kilo" class="col-sm-2 control-label">已行驶公里数:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="run-kilo" name="miles"/>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="vin" class="col-sm-2 control-label">车辆识别代码:</label>
+					    <div class="col-sm-10 rl">
+					      <input type="text" class="form-control" id="vin" name="car_sn"/>
+					      <input name="shop_id" type="hidden" value="{}">
+					      <a href="javascript:;" id="whatVin" class="ab">如何查找车辆识别代号（VIN码）</a>
+					    </div>
+					  </div>
+					  <div class="form-group" style="margin-bottom:0px">
+					    <div class="col-sm-offset-2 col-sm-10 repairo-2-4">
+						    <a type="submit" id="submit" class="btn btn-sub">提交</a>
+						    <input type="checkbox" class="repairo-ck" checked id="xieyi" name="xcagreement"/>同意《<a href="/shopservice/agreement" target="_blank" style="color: #fe7240;">携车网维修保养预约协议</a>》
+					    </div>
+					  </div>
+					</div>
+				</div>
+				<h5 class="repairo-2-2">预约提示:</h5>
+				<div class="repairo-2-5">
+					<p>1.我们目前只接受隔天预约，且只接受15天之内的预约。如果您预约第二天的维修保养服务，您需要在当天下午4点之前进行预约，以让我们的客服有时间与4S店确认您第二天的预约；</p>
+					<p>2.如果您选择的是分时折扣，则只能在您选择的折扣时段内进行预约；</p>
+					<p>3.请填入您的手机号，以接收预约确认的短信，该短信同时也是您到店后享受折扣的凭证；</p>
+					<p>4.车牌号、已行驶里程数、车辆识别代码（如何找到您爱车的车辆识别代码）能方便4S店在您到店前获知您爱车的详细信息，提前做好准备，以更好地为您服务；</p>
+					<p>5.如果您的爱车还有别的情况需要说明，请在备注中留言告诉我们。</p>
+				</div>
+			</div>
+		</form>
+		</div>
+		
+	</div>
+	<div class="modal fade" style="overflow:hidden;">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">关闭</button>
+	        <h4 class="modal-title">维修项目说明</h4>
+	      </div>
+	      <div class="modal-body">
+	        <h5>aaaaa</h5>
+	        <p>bbbbb</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="showVin">
+		<div class="sVintop"><span class="fr" id="Vinclose">关闭</span>车辆识别代码帮助</div>
+		<div class="sVincon">
+			<h4>1.为什么需要填写车辆识别代码？</h4>
+			<p>车辆识别代码（VIN码）是您车辆的唯一代码，提供车辆识别代码可以让4S店在您到店前获知您爱车的详细车型信息，做好准备，更方便地为您的爱车提供服务。</p>
+			<h4>2.怎么获得车辆识别代码？</h4>
+			<p><img src="__PUBLIC__/images/order/vin.jpg" width="100%"></p>
+		</div>
+	</div>
+
+    <script type="text/javascript">
+      $(function () {
+
+      	function getLastDay(year,month)        
+        {        
+         var new_year = year;    //取当前的年份        
+         var new_month = month++;//取下一个月的第一天，方便计算（最后一天不固定）        
+         if(month>12)            //如果当前大于12月，则年份转到下一年        
+         {        
+          new_month -=12;        //月份减        
+          new_year++;            //年份增        
+         }        
+         var new_date = new Date(new_year,new_month,1);                //取当年当月中的第一天        
+         return (new Date(new_date.getTime()-1000*60*60*24)).getDate();//获取当月最后一天日期        
+        }
+      
+	  
+	  //弹框到顶部距离css
+	  $(function(){
+		 var height = $("#showVin").height();
+		 $("#showVin").css({
+		    "top":"50%",
+			"marginTop":-height/2	 
+		 });  
+	  });
+	  
+      //4-19 超过下午四点 5-20
+       var now = new Date();
+       year = now.getFullYear();
+       hours = now.getHours();
+       month = now.getMonth()+1;
+       day = now.getDate();
+
+       if(hours >=16){
+        minDate = year+"-"+month+"-"+(day+2);
+        maxDate = year+"-"+month+"-"+(day+16);
+       }else{
+        minDate = year+"-"+month+"-"+(day+1);
+        maxDate = year+"-"+month+"-"+(day+15);
+       }
+
+       max2Date = year+"-"+month+"-"+getLastDay(year,month);
+
+
+   	    $('#time').datetimepicker({
+   	    	format: 'yyyy-mm-dd hh:ii',
+	   	 	language: 'zh-CN',
+	   	 	weekStart: 1,
+	   	 	autoclose: 1,
+	   	 	startView: 2,
+	   	 	minView: 1,
+	   	 	startDate: minDate,
+        	endDate: maxDate,
+        	initialDate: minDate,
+	   	 	forceParse: 0,
+	   	 	todayBtn:  1	
+   	    }).on("outOfRange",function(){
+        	alert("日期不可选");
+     	});
+
+   	    $(".labelon label").click(function(){
+   	    	$('.modal-body h5').html($(this).html());
+   	    	$('.modal-body p').html($(this).attr("data-des"));
+   	    	$('.modal').modal({'backdrop':false});
+   	    });
+
+   	    $('#submit').click(function(){
+
+   	    	
+   	    	if($("#time").val()==""){
+   	    		alert("请选择预约时间");
+   	    		return false;
+   	    	}
+
+   	    	if(!$("#name").val()){
+   	    		alert("请输入您的姓名");
+   	    		return false;
+   	    	}
+
+   	    	if(!$("#mobile").val()){
+   	    		alert("请输入您的手机号码");
+   	    		return false;
+   	    	}
+
+   	    	var mobileRegExp = /^1[3|4|5|7|8][0-9]\d{4,8}$/;
+	        if(!mobileRegExp.test($("#mobile").val())){
+	           alert('请输入正确的手机号码');
+	           return false;
+	        }
+   	    	if(!$("#license").val()){
+   	    		alert("请输入您的车牌号");
+   	    		return false;
+   	    	}
+   	    	if($("#xieyi").prop("checked") == false){
+   	    		alert("未同意《携车网维修保养预约协议》");
+   	    		return false;
+   	    	}
+    		var data = $('#form').serialize();
+    		// console.log(data);
+    		$.post('/shiguche/repair_create_order',data,function(data){
+    			if(data.status){
+    				alert(data.info);
+    				window.location.href= data.url;
+    			}else{
+    				alert(data.info);
+    				if(data.info == '请先选择车型'){
+    					$('.car-select').click();
+    				}
+    			}
+    			
+    		},'json')
+
+		 });
+
+   	    //我不知道做什么项目，到店检查为准
+   	    $("#other").click(function(){
+   	    	if($(this).prop("checked")==false){
+   	    		$(this).parent().removeClass("checked");
+   	    	}else{
+   	    		$("input.checkbox1").removeProp("checked").parent().removeClass("checked");
+   	    		$("#other").parent().addClass("checked");
+   	    	}
+   	    	// amount = 0;
+   	    	// $("#amount").text(amount);
+   	    });
+
+   	    //选项选择
+   	    $("input.checkbox1").click(function(){
+   	    	if($("#other").prop("checked")==true){
+   	    		$("#other").removeProp("checked").parent().removeClass("checked");
+   	    	}
+
+   	    	if($(this).prop("checked")==true){
+   	    		$(this).parent().addClass("checked");
+   	    	}else{
+   	    		$(this).parent().removeClass("checked");
+   	    	}
+   	    	// var thisprice = Number($(this).attr("data-price"));
+   	    	// if($(this).prop("checked")==true){
+   	    	// 	$(this).parent().addClass("checked");
+   	    	// 	amount += thisprice;
+   	    	// 	$("#amount").text(amount);
+   	    	// }else{
+   	    	// 	$(this).parent().removeClass("checked");
+   	    	// 	amount -= thisprice;
+   	    	// }
+   	    	// amount = Math.round(amount*100)/100;
+   	    	// $("#amount").text(amount);
+   	    	// console.log(thisprice);
+   	    	// console.log(amount);
+
+   	    });
+        
+		
+		$("body").css("position","relative");
+   	    $("#whatVin").click(function(){
+   	    	$("#showVin").slideDown();
+			
+			var maskHeight = $("body").height();
+			$(".changecarboxbg").css({
+			   "height":maskHeight	
+			});
+			$(".changecarboxbg").fadeIn();
+   	    });
+
+   	    $("#Vinclose").click(function(){
+   	    	$("#showVin").slideUp();
+   	    	$(".changecarboxbg").hide();
+   	    });
+
+      })
+
+    </script>
+    <style type="text/css">
+	.repairo-2 li.checked{
+		color: #fe5a23;
+	}
+	.repairo-2 li label{cursor: pointer;}
+    </style>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta>
+	    <title>我的预约订单</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/order_list.css" />
+		<link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+		<style type="text/css">
+			.row:after {clear: both;}
+			.col-xs-4{width: 33.3333%;float:left}
+			.smenu .smenuli a {
+			    display: block;
+			    height: 100%;
+			}
+		</style>
+		<include file="Public:wapfoot" />
+	</head>
+	<body style="background:#f1f1f1;">
+		<div class="pagetop">
+	      <div class="reindex" id="reindex" onclick="javascript: history.go(-1);">&nbsp;</div>
+	      <div class="thispage">订单列表</div>
+	    </div>
+		<div id="wrapper" >
+			<div class="row smenu">
+	          <div class="col-xs-4 smenuli smrbg"><a href="__APP__/mobilecar-mycarservice-pa_id-{$pa_id}" id="allOrderBtn">府上养车</a></div>
+	          <div class="col-xs-4 smenuli smrbg"><a href="__APP__/mobile-bidorder_list-pa_id-{$pa_id}" id="noPayOrderBtn">事故车</a></div>
+	          <div class="col-xs-4 smenuli current"><a href="javascript:void(0)">4S店预约维修</a></div>
+	        </div>
+			<div class="list-order" style=" padding: 10px;">
+				<if condition="$show eq 'no'">
+				<ul>
+					<li>
+						<a href="/Weixin-login_verify" rel="external">点我绑定查看订单~</a>
+					</li>
+				</ul>
+				</if>
+		        <empty name="order_list"><p>您暂无4S店预约维修订单</p></empty>
+				<ul>
+					<volist name="order_list" id="vo">
+					<li data-role="listview" class="single-order">
+						<span class="order-sign"></span>
+						<div class="ui-grid-a order-info-block-1" >
+							<span class="ui-block-a">订单号：{$vo.order_id}</span>
+							<span class="ui-block-b">{$vo.create_time|date="Y-m-d",###}</span>
+						</div>
+						<div class="ui-grid-a order-info-block-2" >
+							<div class="ui-block-a" style="width: 70%">
+								<h3 class="shop-name">{$vo.shop_name}</h3>
+								<h4 class="shop-address slideToggle">{$vo.shop_address}</h4>
+								<span class="shop-sale">工时折扣：<strong>{$vo.workhours_sale}</strong></span>
+							</div>
+							<div class="ui-block-b" style="width: 30%; position: relative;">
+								<!--  <div class="progress-radial progress-25">
+							        <div class="overlay"></div>
+							    </div> -->
+							    <div class="progress-bar">
+							    	<span class="w{$vo.order_state}"></span>
+							    </div>
+							    <span class="order-status">{$vo.order_state_str}</span>
+							</div>
+						</div>
+						<div class="ui-grid-a order-info-block-3" >
+							<h4 class="ui-block-a" style="width: 25%;">到店时间：</h4>
+							<section class="ui-block-b" style="width: 75%;">
+								<ul >
+									<li>{$vo.order_time|date="Y-m-d H:i:s",###}</li>
+								</ul>
+							</section>
+							<div style="clear: both"></div>
+						</div>
+						
+						<div class="ui-grid-a order-info-block-4 slideToggle" >
+							<h4 class="ui-block-a" style="width: 25%;">预约项目:</h4>
+							<section class="ui-block-b" style="width: 75%;">
+								<ul >
+									<volist name="vo.service_items" id="vos">
+									<li>{$vos.name}</li>
+									</volist>
+								</ul>
+							</section>
+							<div style="clear: both"></div>
+						</div>
+
+						<div class="ui-grid-a order-info-block-5 slideToggle" >
+							<h4 class="ui-block-a" style="width: 25%;">我的评论：</h4>
+							<volist name="vo.comment_list" id="voc">
+								<section class="ui-block-b my-comment" style="width: 75%;">
+									{$voc.comment}
+								</section>
+							</volist>
+							
+						</div>
+						<div style="clear: both"></div>
+						<div class="ui-grid-a order-info-operate" >
+							<a href="javascript:void(0);" class="ui-block-a toggle-btn" data-toggle="0">展开详情</a>
+							<empty name="vo.comment_list">
+							<if condition="$vo.order_state eq 2">
+								<a href="javascript:void(0);" class="ui-block-b comment-toggle-btn" data-toggle="0">添加评论</a>
+							</if>
+							</empty>
+						</div>
+						
+						<div class="cui-grid-solo comment-con" >
+							<div class="ui-grid-solo comment-level">
+								<span>
+									<input type="radio" id="comment-good" name="comment-level" value="1">
+									<label for="comment-good">好评</label>
+								</span>
+								<span>
+									<input type="radio" id="comment-normal" name="comment-level" value="2">
+									<label for="comment-normal">中评</label>
+								</span>
+								<span>
+									<input type="radio" id="comment-bad" name="comment-level" value="3">
+									<label for="bad">差评</label>
+								</span>
+							</div>
+							<div class="ui-grid-solo comment-containet">
+								<textarea name="" id="" cols="30" rows="1" class="comment-box" style="height: auto; margin: 0 auto;" ></textarea>
+							</div>
+							<div class="ui-grid-a comment-operation">
+								<a href="javascript:void(0);" id="comment-go" data-order_id="{$vo.id}" data-uid="{$uid}" data-shop_id="{$vo.shop_id}">提交</a>
+							</div>
+						</div>
+					</li>
+					</volist>
+				</ul>
+			</div>
+			<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+			<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+				 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-transition="slidedown">关闭</a>
+		        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+		            <li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+						<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+					</li>
+					<li><a href="__APP__/Mobile" rel="external">预约维修保养</a></li>
+					<li><a href="__APP__/Mobile-coupon_list" rel="external">优惠券</a></li>
+					<li><a href="__APP__/Mobile-my_account" rel="external">我的账户</a></li>
+		        </ul>
+			</div>
+		</div>
+	<script>
+		$(".toggle-btn").on("click", function(){
+			if($(this).attr("data-toggle") == 0 ){
+				$(this).html("收起详情");
+				$(this).attr("data-toggle",1);
+			}else{
+				$(this).html("展开详情");
+				$(this).attr("data-toggle",0);
+			}
+			
+			$(this).parents("li").find(".slideToggle").stop().slideToggle("fast")
+		})
+
+		$(".comment-toggle-btn").on("click", function(){
+			if($(this).attr("data-toggle") == 0 ){
+				$(this).html("取消评论");
+				$(this).attr("data-toggle",1);
+			}else{
+				$(this).html("添加评论");
+				$(this).attr("data-toggle",0);
+			}
+			
+			$(this).parents(".single-order").children(".comment-con").stop().slideToggle("fast")
+		})
+		
+		$(".comment-operation a").click(function() {
+			var orderId = $(this).attr("data-order_id"),
+				shopId = $(this).attr("data-shop_id"),
+				uId = $(this).attr("data-uid"),
+				commentType = $(this).parent('.comment-operation').siblings(".comment-level").find("input[name='comment-level']:checked").val(),
+				commentContent = $(this).parent('.comment-operation').siblings(".comment-containet").children("textarea").val();
+
+				
+				var $this = $(this);
+				$.ajax({
+					url : "/Mobile-add_comment",
+					data : {
+						"order_id" : orderId,
+						"shop_id" : shopId,
+						"uid" : uId,
+						"comment_type" : commentType,
+						"comment" : commentContent
+					},
+					success : function(data){
+						if(data == 1){
+							//$(this).closest(".single-order").find(".my-comment").html(commentContent)
+							
+							$this.parents(".single-order").find(".order-info-block-5").append("<section class='ui-block-b my-comment' style='width: 75%;'>"+commentContent+"</section><div style='clear: both'></div>");
+							alert("评论成功！")
+							$this.parent(".single-order").find(".comment-toggle-btn").hide().remove();
+							var toggletBtn = $this.parents(".single-order").find(".toggle-btn");
+							console.log(toggletBtn)
+							$this.parents(".comment-con").hide()
+							if(toggletBtn.attr("data-toggle") == 0){
+								toggletBtn.trigger("click");
+							}else{
+								alert("评论失败, 请稍后尝试！");
+							}
+						}
+					}
+				})
+
+		})
+	</script>
+	</body>
+</html>

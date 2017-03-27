@@ -1,0 +1,21 @@
+body{background: #f5f5f5;}
+#container{width: 1200px; height: auto; margin: 0 auto; padding-top: 30px;}
+#qr-code-contianer{width: 800px; margin: 0 auto; height: auto;}
+#qr-code-img{width: 330px; height: 330px; display: block; margin: 0 auto;}
+#qr-code-sign{width: 335px; height: 105px; margin: 20px auto; background: url("http://statics.xieche.com.cn/new_2/images/weixinpay/weixin-sprite.jpg") 0px -160px no-repeat;}
+#qr-code-result{width: 335px; height: 105px; margin: 20px auto; background: url("http://statics.xieche.com.cn/new_2/images/weixinpay/weixin-result.jpg") 0px -160px no-repeat;}
+
+#price-container{border-top: 3px solid #d0d0d0; width: 600px; height: auto; margin: 40px auto; position: relative; }
+#price-sign{ width: 60px; height: 60px; display: block; position: absolute; left: 270px;  top: -30px; background: #f5f5f5 url("http://statics.xieche.com.cn/new_2/images/weixinpay/weixin-sprite.jpg") -20px -10px no-repeat;}
+#price-number{font-size: 70px; margin: 50px auto 10px; text-align: center}
+#price-number span{font-size: 45px;}
+
+#info-container{width: 600px; height: auto; margin: 20px auto; border-top: 2px solid #d0d0d0; position: relative;}
+#info-sign{width: 90px; color: #999999; font-size: 26px; height: 40px; line-height: 40px; display: block; background: #f5f5f5; position: absolute; left: 255px; top: -20px; text-align: center;}
+#infos-list{width: 580px; padding:30px 10px 40px 10px; }
+#infos-list dt, #infos-list dd{ font-size: 18px; height: 30px; line-height: 30px; color: #999999; }
+#infos-list dt{width: 30%; float: left; text-align: left;}
+#infos-list dd{width: 70%; float: right; text-align: right;}
+
+#extra-infos-container{width: 600px; height: auto; margin: 20px auto; border-top: 2px solid #d0d0d0;}
+#phonecall-sign{width: 240px; height: 80px; background: #f5f5f5 url("http://statics.xieche.com.cn/new_2/images/weixinpay/weixin-sprite.jpg") -20px -80px no-repeat;}

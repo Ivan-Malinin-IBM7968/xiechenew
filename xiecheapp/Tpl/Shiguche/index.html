@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事故车维修-携车网</title>
+		<meta content="汽车保养,汽车维修,4S店预约保养,汽车保养预约,汽车维修预约" name="keywords"><meta content="汽车保养维修,事故车维修首选携车网,在线预约,50元养车券免费领,海量车型任您选,汽车保养维修预约更有分时折扣,事故车维修预约,不花钱,还有返利拿4006602822" name="description">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<script>document.documentElement.className = 'js';</script>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/shiguche/jquery.fullPage.css" />
+		<link rel="shortcut icon" href="/Public/new_2/images/favicon.ico" type="image/x-icon">
+		<style>
+			body{position: relative;}
+			a{text-decoration: none;}
+			#menu { position: fixed; top: 0; left: 0; height: 40px; z-index: 70; width: 100%; padding: 0; margin: 0;}
+			#menu li { display: inline-block; margin: 10px; color: #000; background: #fff; background: rgba(255,255,255, 0.5); -webkit-border-radius: 10px; border-radius: 10px; width: 150px; float: left;}
+			#menu li a, #menu li.active a { padding: 9px 18px; display: block; color: white; }
+			#menu li a.current, #menu li a:hover{background: #156dc6; color: white; -webkit-border-radius: 10px; border-radius: 10px;}
+
+
+			#section0{  background: url("__PUBLIC__/shiguche/images/s0/s0-bg.png") center center no-repeat; overflow: hidden; background-color: #07b3ea} 
+			#s0-1{margin: 0 auto; display: block; margin-top: 60px;  height: auto;}
+			#s0-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 805px; width: 100%; height: auto;}
+			#s0-3{margin: 0 auto; display: block; margin-top: 10px; max-width: 1280px; width: 100%; height: auto;}
+			#s0-3-container{width: 1280px; position: relative; margin: 0 auto; margin-top: 10px; }
+			.get-app{width: 200px; height: 65px; position: absolute;}
+			#iphone-app{top: 163px; right: 290px;}
+			#android-app{top: 163px; right: 80px;}
+			.section{overflow: hidden; background-size: cover; }
+
+			#section1{background: url("__PUBLIC__/shiguche/images/s1/s1-bg.png") center center no-repeat; overflow: hidden; background-color: #eb4e5c;}
+			
+			#s1-1{position: absolute; top: 60px;  text-align: center; color: white; display: block; max-width: 429px; width: auto; height: auto;}
+			#s1-2{margin: 0 auto; display: block; margin-top: 30px; max-width: 805px; width: 100%; height: auto;}
+			#section2{ background: url("__PUBLIC__/shiguche/images/s2/s2-bg.png") center center no-repeat; overflow: hidden;background-color: #fdcd3b; }
+			#s2-1{position: absolute; top: 60px; text-align: center; color: white; display: block; height: auto;}
+			#s2-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 1267px; width: 100%; height: auto;}
+			#section3{background: url("__PUBLIC__/shiguche/images/s3/s3-bg.png") center center no-repeat; overflow: hidden;background-color: #5c397e;}
+			#s3-1{position: absolute; top: 60px; text-align: center; color: white; display: block; height: auto;}
+			#s3-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 1267px; width: 100%; height: auto;}
+			#section4{background: url("__PUBLIC__/shiguche/images/s4/s4-bg.png") center center no-repeat; overflow: hidden;background-color: #2cb37e;}
+			#s4-1{position: absolute; top: 60px; text-align: center; color: white; display: block; height: auto;}
+			#s4-2{margin: 0 auto; display: block; margin-top: 10px; max-width: 1267px; width: 100%; height: auto;}
+			#hand{display: none; width: 400px; height: 617px; position: fixed; background: url("http://statics.xieche.com.cn/shiguche/images/hand.png") 0px 0px no-repeat;left: 50%; bottom: 1%; margin-left: -200px;  z-index: 99;}
+
+			#inner-hand{width: 228px; height: 383px; position: relative; overflow: hidden; margin-left: 84px; margin-top: 87px;}
+			#iphone-frame{position: absolute; width: 228px; height: auto; top: 0px; left: 0px; /*background: url("images/iphone.png") 0px 0px no-repeat;*/}
+		</style>
+		<!--[if lt IE 9]>
+		<style>
+			#s0-2{width: auto;}
+			#s0-3{width: auto;}
+			#s1-1{width: auto;}
+			#s1-2{width: auto;}
+			#s2-2{width: auto;}
+			#s3-2{width: auto;}
+			#s4-2{width: auto;}
+			#menu li {  display: inline-block; margin: 10px; color: #000; background: #fff; background: rgba(255,255,255, 0.5); -webkit-border-radius: 10px; border-radius: 10px; background-color: #f1f1f1; color: black; width: 150px; float: left;}
+			#menu li a{color: black;}
+		</style>
+		<![endif]-->
+		<script type="text/javascript" src="__PUBLIC__/shiguche/vendors/jquery.min.js"></script>
+		<script type="text/javascript" src="http://statics.xieche.com.cn/new_2/js/jquery-ui-1.9.2.custom.min.js"></script>	
+		<script type="text/javascript" src="__PUBLIC__/shiguche/vendors/jquery.slimscroll.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/shiguche/jquery.fullPage.js"></script>
+		<script type="text/javascript">
+		
+			$(document).ready(function() {
+
+				var pepe = $.fn.fullpage({
+					
+					'verticalCentered' : true,
+					"css3" : true,
+					'navigationTooltips': ['携车网事故车', '报案并完成定损', '预约4s店', '查看事故车维修情况','维修完成获得返利'],
+					'fixedElements': '#Menu',
+					'anchors': ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+					'menu': '#menu',
+					'scrollOverflow': true,
+					'fixedElements' : '#hand',
+					'afterLoad' : function(a,index){
+						$("#menu li").eq(index-1).children("a").addClass("current");
+						$("#menu li").not($("#menu li").eq(index-1)).children("a").removeClass("current");
+						if(index>1){
+							$("#iphone-frame").animate({
+								"top" : -((index-2)*383)
+							})
+						}else{
+							
+						}
+					},
+					'onLeave': function(index, direction){
+						if (index == 1 && direction == 'down'){
+							$("#hand").fadeIn();
+							$("#iphone-frame").animate({
+								"top" : "0"
+							})
+						}
+						else if(index == 2 && direction == 'up'){
+							$("#hand").fadeOut();
+						}
+					}
+				});
+
+
+
+			});
+		</script>
+	</head>
+	<body>
+
+	
+
+		<div id="hand">
+			<div id="inner-hand">
+				<img id="iphone-frame" src="http://statics.xieche.com.cn/shiguche/images/iphone.png" width="228"/>
+			</div>
+		</div>
+		<ul id="menu">
+			<li data-menuanchor="firstPage"><a href="#firstPage" class="current">1.事故车维修</a></li>
+			<li data-menuanchor="secondPage"><a href="#secondPage">2.报案并定损</a></li>
+			<li data-menuanchor="3rdPage"><a href="#3rdPage">3.预约4s店</a></li>
+			<li data-menuanchor="4thpage"><a href="#4thpage">4.查看维修情况</a></li>
+			<li data-menuanchor="lastPage"><a href="#lastPage">5.维修得返利</a></li>
+		</ul>
+		<div class="section active port" id="section0" style="background-position: center center; ">
+			<img src="__PUBLIC__/shiguche/images/s0/s0-1.png" alt="" id="s0-1" >
+			<img src="__PUBLIC__/shiguche/images/s0/s0-2.png" alt="" id="s0-2" >
+			<div id="s0-3-container">
+				<a href="https://itunes.apple.com/cn/app/zong-heng-xie-che-qi-che-shou/id588144466?mt=8" id="iphone-app" class="get-app" target="_blank"></a>
+				<a href="http://www.xieche.com.cn/xc.apk" id="android-app" class="get-app" target="_blank"></a>
+				<img src="__PUBLIC__/shiguche/images/s0/s0-3.png" alt="" id="s0-3" >	
+			</div>
+			
+		</div>
+		<div class="section" id="section1" style="background-position: center center;">
+			<!-- <h1 id="s1-1">如果您的车辆不幸发生事故，正常报案并完成定损。</h1> -->
+			<img src="__PUBLIC__/shiguche/images/s1/s1-1.png" alt="" id="s1-2" >
+		</div>
+		<div class="section" id="section2" style="background-position: center center; ">
+			<!-- <h1 id="s2-1" style="color: black">预约4s店</h1> -->
+			<img src="__PUBLIC__/shiguche/images/s2/s2-2.png" alt="" id="s2-2"  >
+		</div>
+		<div class="section" id="section3" style="background-position: center center; ">
+			<!-- <h1 id="s3-1">查看事故车维修情况</h1> -->
+			<img src="__PUBLIC__/shiguche/images/s3/s3-2.png" alt="" id="s3-2"  >
+		</div>
+		<div class="section" id="section4" style="background-position: center center; ">
+			<!-- <h1 id="s4-1">维修完成获得返利</h1> -->
+			<img src="__PUBLIC__/shiguche/images/s4/s4-2.png" alt="" id="s4-2"  >
+		</div>
+		
+	</body>
+</html>

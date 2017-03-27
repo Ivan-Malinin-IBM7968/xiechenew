@@ -1,0 +1,26 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title">编辑地区 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1" action="__URL__/update" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{$vo.id}" />
+            <input type="hidden" name="region_type" value="{$vo.region_type}" />
+            <input type="hidden" name="parent_id" value="{$vo.parent_id}" />
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight" >地区名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="名称不能为空" NAME="region_name" value="{$vo.region_name}"></TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

@@ -1,0 +1,174 @@
+<style>
+.st-show-msg-box .rate-msg-box{
+	display: block;
+}
+.rate-msg-box .textinput{
+	border: 1px solid #ABADB3;
+    padding: 8px;
+	margin: 20px;
+}
+.rate-msg-box .ph-label{
+	display: block;
+    line-height: 1.5;
+    width: 200px;
+}
+.rate-msg-box .rate-msg{
+    height: 50px;
+    outline: 0 none;
+    resize: none;
+    width: 100%;
+}
+.rate-msg-box .text-counter strong{
+	color: #FF6600;
+    margin: 0 5px;
+}
+.comment_type{
+	margin: 10px 0 10px 5px;
+}
+.sbt{
+	text-align:center;
+}
+.i-item{
+	background: none repeat scroll 0 0 #FFFCF5;
+    border: 1px solid #F3E6C6;
+    padding: 10px 15px 5px;
+	margin-left:20px;
+	margin-right:20px;
+}
+.o-topic{
+	border-bottom: 1px solid #F9F0DB;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 0 0 2px;
+}
+.topic{
+	float: left;
+}
+.date-comment{
+	color: #999999;
+    float: right;
+}
+.item-reply{
+	padding-left: 50px;
+    position: relative;
+}
+.item-reply dl{
+	border-top: 1px solid #F4F4F4;
+    padding: 5px;
+}
+.item-reply dt{
+	color: #999999;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+.item-reply dt .u-name{
+	float: left;
+}
+.item-reply dt a{
+	color: #005AA0;
+    float: left;
+    margin-right: 8px;
+}
+.item-reply dt .date-comment{
+	float: right;
+}
+.item-reply dd{
+	margin-left: 0;
+}
+.member_show{
+	margin-bottom: 20px;
+	color:#999999
+}
+.user{
+	color:#005AA0;
+}
+.order_date{
+	font-size:12px;
+}
+.edit_comment{
+	display:none;
+}
+#edit_comments{
+	float: right;
+}
+</style>
+
+<script>
+	$(function(){
+		$("#edit_comments").click(function(){
+			$("#edit_comment").show();
+			$("#comment_type").hide();
+			$("#msg-box").hide();
+		})
+		
+		$("#edit_cancel").click(function(){
+			$("#edit_comment").hide();
+			$("#comment_type").show();
+			$("#msg-box").show();
+		})
+		
+	})
+</script>
+
+<div class="i-item">
+	<div class="member_show">
+		<span class="user">{$comment_info.user_name}</span><br>
+		<span class="order_date">下定日期:</span>
+		<span>{$orderinfo.create_time|date="Y-m-d",###}</span>
+	</div>
+	<div class="comment_type" id="comment_type"><span><if condition="$comment_info.comment_type eq 1">好评<elseif condition="$comment_info.comment_type eq 2" />中评<else />差评</if></span><if condition="$comment_info.comment_type neq 1"><span id="edit_comments" style="cursor:pointer">修改</span></if></div>
+	<div class="o-topic">
+		<strong class="topic">
+			 {$comment_info.comment}
+		</strong>
+		<span class="date-comment">{$comment_info.create_time|date="Y-m-d H:i:s",###}</span>
+	</div>
+	<div class="edit_comment" id="edit_comment">
+		<form action="/index.php/comment/add_comment" method="post">
+			<div class="rate-msg-box">
+				<div class="bd">
+					<div class="textinput">
+						<div class="comment_type">
+							<input type="radio" name="comment_type" value="1" <if condition="$comment_info.comment_type eq 1"> checked </if> />好评
+							<input type="radio" name="comment_type" value="2" <if condition="$comment_info.comment_type eq 2"> checked </if> />中评
+							<input type="radio" name="comment_type" value="3" <if condition="$comment_info.comment_type eq 3"> checked </if> />差评
+						</div>
+						<span class="ph-label">修改你的评价内容:</span>
+						<textarea class="rate-msg" name="content">{$comment_info.comment}</textarea>
+					</div>
+				</div>
+				<input type="hidden" name="shopid" value="{$shopid}" />
+				<input type="hidden" name="orderid" value="{$orderid}" />
+				<div class="sbt"><input type="submit" value="提交"><input type="button" value="取消" id="edit_cancel"></div>
+			</div>
+		</form>
+	</div>
+	<!-- 回复内容 -->
+	<volist name="commentreply_list" id="vo" >
+	<div class="item-reply">
+		<dl>
+			<dt>
+				<span class="u-name"><a href="#"><if condition="$vo.operator_type eq 2" >网站工作人员<elseif condition="$vo.operator_type eq 3" />商家工作人员<else/>{$vo.operator_name}</if></a>回复说：</span>
+				<span class="date-comment">{$vo.create_time|date="Y-m-d H:i:s",###}</span>
+			</dt>
+			<dd>{$vo.reply}</dd>
+		</dl>
+	</div>
+	</volist>
+	<!-- 回复内容 -->
+	
+</div>
+	                    
+	                    
+<form action="/index.php/comment/reply_comment" method="post">
+<div class="rate-msg-box" id="msg-box">
+	<div class="bd">
+		<div class="textinput">
+			<span class="ph-label">输入你的回复的内容:</span>
+			<textarea class="rate-msg" name="content"></textarea>
+		</div>
+	</div>
+	<input type="hidden" name="comment_id" value="{$comment_info.id}" />
+	<div class="sbt"><input type="submit" value="提交"></div>
+</div>
+</form>

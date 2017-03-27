@@ -1,0 +1,154 @@
+<layout name='layout_note' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+<style type="text/css">
+	*{font-family:"黑体"}
+	.order-title{font-size: 24px;font-weight: bold;}
+	.order-time{font-size:14px;}
+	.order-status{font-size:14px}
+	.subtitle{color:#000000;font-size:14px}
+	.sub-table-title td{color:#0033CC;font-size:12px;font-weight:normal}
+	.sub-table-content td{font-size:12px;color:#6f6f6f}
+</style>
+	
+<div id="wddd-right">已完成订单 -- 详情</div>
+<div id="wddd-right2"><br/>
+ <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#e4e4e4" style="font-size:12px;">
+  <tr>
+    <td width="10%" height="30" align="center" valign="middle" bgcolor="#F5F5F5">订单编号</td>
+    <td width="15%" align="center" valign="middle" bgcolor="#F5F5F5">预约时间</td>
+    <td width="19%" align="center" valign="middle" bgcolor="#F5F5F5">项目内容</td>
+    <td width="15%" align="center" valign="middle" bgcolor="#F5F5F5"> 订单状态 </td>
+    <td width="15%" align="center" valign="middle" bgcolor="#F5F5F5"> 完成时间 </td>
+    <td width="11%" align="center" valign="middle" bgcolor="#F5F5F5"> 获得积分 </td>
+    </tr>
+  <tr>
+    <td height="35" align="center" bgcolor="#FFFFFF">{$order_id}</td>
+    <td align="center" bgcolor="#FFFFFF"> {$order.order_time|date="Y-m-d H:i",###} </td>
+    <td align="center" bgcolor="#FFFFFF"> {$order.serviceitem_name} </td>
+    <td align="center" bgcolor="#FFFFFF"> 
+    <volist name="Think.config.ORDER_STATE" id="vo_os">
+	<eq name="key" value="$order.order_state">{$vo_os}</eq>
+	</volist>
+    </td>
+    <td align="center" bgcolor="#FFFFFF" style="padding:5px 0 5px 0;"><if condition="$order.order_state neq 2" >未完成<else />{$order.complete_time|date="Y-m-d H:i:s",###}</if></td>
+    <td align="center" bgcolor="#FFFFFF">{$order.point}</td>
+    </tr>
+  <tr>
+    <td height="10" colspan="6" align="center" bgcolor="#FFFFFF">
+		
+
+	</td>
+    </tr>
+  <tr>
+    <td height="35" colspan="6" bgcolor="#FFFFFF" style="padding:5px;" >
+    <font color="#FF9900">您为您的爱车 {$car_arr.brand_name} {$car_arr.series_name} {$car_arr.model_name} 选择的维修保养项目为：</font>
+    <br/><br/>
+    <volist name="serviceitem_name" id="serviceitem">
+    	{$i}、{$serviceitem}<br/><br/>
+    </volist>
+	您选择的4S店是：{$shop.shop_name}<br/>
+	地址：{$shop.shop_address}<br/>
+	折扣：工时费 {$order.workhours_sale_str}，零件费 {$order.product_sale_str}</td>
+    </tr>
+  <tr>
+    <td height="10" colspan="7" align="center" bgcolor="#FFFFFF"><!--CHF新写表格-->
+			<table border="0" cellspacing="0" cellpadding="0"  width="90%">
+			 <volist name="data" id="list">
+				<tr >
+					<td height="25" bgColor="#e3e3e3" colspan='4'>&nbsp;<span class="subtitle">{$list.ServerName.name}</span></td>
+				</tr>
+					
+					<tr>
+						<td>
+							<tr class="sub-table-title" >
+								<td align="center" >零件明细</td>
+								<td align="center" >零件单价</td>
+								<td align="center" >零件数量</td>
+								<td align="center" >零件折扣率</td>
+							</tr>
+						</td>
+					</tr>
+					
+					<volist name="list.test" id="vo">
+						<if condition="$vo.Midl_name neq '工时费'">
+							<tr class="sub-table-content">
+								<td align="center" height="30">{$vo.Midl_name}</td>
+								<td align="center" height="30">{$vo.price}</td>
+								<td align="center" height="30">{$vo.quantity} | {$vo.unit}</td>
+								<td align="center" height="30">{$product_sale}</td>
+							</tr>
+						</if>
+
+					</volist>
+					
+					<tr>
+						<td>
+							<tr class="sub-table-title">
+								<td align="center" >工时明细</td>
+								<td align="center" >工时单价</td>
+								<td align="center" >工时数量</td>
+								<td align="center" >折扣率</strong>
+							</tr>
+						</td>
+					</tr>
+					<volist name="list.test" id="vo">
+						<if condition="$vo.Midl_name eq '工时费'">
+							<tr class="sub-table-content">
+								<td align="center" height="30">{$vo.Midl_name}</td>
+								<td align="center" height="30">{$vo.price}</td>
+								<td align="center" height="30">{$vo.quantity} | {$vo.unit}</td>
+								<td align="center" height="30">{$product_sale}</td>
+							</tr>
+						</if>
+					</volist>
+			 </volist>
+			</table>
+			<table border="0" cellspacing="0" cellpadding="0"  width="90%">
+				<tr>
+					<td colspan='4' style="text-align: center;font-size:13px;">通过携车网预约您所选择的维修保养项目，共为您节省：</td>
+					
+				</tr>
+				<tr>
+					<td width="5"></td>
+					<td width="10">门市价</td>
+					<td width="10">折后价</td>
+					<td width="10">节省</td>
+				</tr>
+				<tr>
+					<td width="5">零件费：</td>
+					<td width="10">{$price.ProductPrice}</td>
+					<td width="10">{$price.SaleProductPrice}</td>
+					<td width="10">{$price.FavProductPrice}</td>
+				</tr>
+				<tr>
+					<td width="5">工时费：</td>
+					<td width="10">{$price.WorkPrice}</td>
+					<td width="10">{$price.SaleWorkPrice}</td>
+					<td width="10">{$price.FavWorkPrice}</td>
+				</tr>
+				<tr>
+					<td width="5">合计：</td>
+					<td width="10">{$price.Allprice}</td>
+					<td width="10">{$price.SaleAllPrice}</td>
+					<td width="10">{$price.FavAllPrice}</td>
+				</tr>
+			</table>
+</td>
+  </tr>
+  <tr>
+     <td height="10" colspan="7" bgcolor="#FFFFFF"  style="padding:5px;"><font color="#FF9900">注：</font>携车网所提供的汽车售后维修保养项目明细价格（包括但不限于零件费和/或工时费等费用），由与纵横携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，纵横携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据，最终付款以在服务提供商处实际发生额为准。但您享受到的折扣率不变。
+ </td>
+    </tr>
+<tr>
+    <td colspan="7"  bgcolor="#FFFFFF" style="padding:5px;">
+    <table width="38%" border="0" cellspacing="0" cellpadding="0" >
+      <tr>
+       <!-- <td align="center"> <img src="/UPLOADS/Product/{$model_id}/{$img_name}" /> </td>-->
+      </tr>
+    </table></td>
+  </tr>
+  </table>
+	
+
+</div>

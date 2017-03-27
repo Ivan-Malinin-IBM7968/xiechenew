@@ -1,0 +1,12 @@
+/*sgc order page css*/
+
+.shiguche{background: url(../images/sgc_order/bg.jpg) no-repeat center top; height: 1320px; overflow: hidden;}
+.sgcform{color: #FFFFFF;  font-size: 18px; margin: 70px auto; width:70%;}
+.sgcform form p{margin-bottom: 30px;}
+.sgcform form p label{ font-weight: normal;}
+.sgcform form p label span{display: inline-block; width: 100px;}
+.sgcform form p input,.sgcform form p select{width: 440px; height: 40px; border: 1px solid #FFFFFF; background: none; color: #FFFFFF;}
+.sgcform form div{position: relative;}
+.sgcform form div p .submit{position: absolute; bottom: 0; display: inline-block; left: 0; width: 190px; height: 40px; line-height: 40px; color: #FFFFFF; background: #2bc1cb; text-align: center; font-size: 18px; border: none;}
+.sgcform form div p u{position: absolute; bottom: 0; display: inline-block; cursor: pointer;}
+.sgcform form div p img{cursor: pointer;}

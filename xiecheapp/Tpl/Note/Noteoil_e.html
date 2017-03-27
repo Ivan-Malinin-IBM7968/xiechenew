@@ -1,0 +1,62 @@
+<layout name='layout_note' />
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <div class="userjzbar01"></div>
+        <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+        <form action="__URL__/savenote/type/Noteoil/note_id/{$list_note.note_id}" method="post">
+          <tr>
+            <td class="tdright w1">车辆：</td>
+            <td>
+				<span>{$select_u_c_id.car_name}</span>
+            </td>
+            <td class="tdright w2">日期：</td>
+            <td>
+            <input type="text" class="left fgre inp01" onclick="WdatePicker()" value="{$list_note.happen_time|date="Y-m-d",###}" name="happen_time">
+              <a class="Selecttime"></a> </td>
+          </tr>
+          <tr>
+            <td class="tdright">油品：</td>
+			<td>
+				<select name="oil_type">
+					<volist name='Think.config.OIL_TYPE' id="type" key="title_key">
+					<option value="{$title_key}" <eq name="title_key" value="$list_note.Noteoil.oil_type">selected="selected"</eq>>{$type}</option>
+					</volist>
+				</select>		
+            </td>
+			<td class="tdright">总里程表读数：</td>
+			<td><input type="text" value="{$list_note.Noteoil.odometer}"  id="txt_Mileage" name="odometer"> 公里</td>
+
+          </tr>
+        </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+          <tr>
+            <td class="tdright w1">单价：</td>
+            <td>
+            <input type="text" onblur="FillQuantity();" class="w3 inp01"  value="{$list_note.Noteoil.unit_price}" id="unit_price" name="unit_price"> 元</td>
+ 			<td class="tdright w1">数量：</td>
+            <td>
+            	<input type="text" value="{$list_note.Noteoil.quantity}" class="w3 inp01" onblur="FillPrice();" id="quantity" name="quantity"> 升</td>
+			<td class="tdright w1">总价：</td>
+            <td>
+            <input type="text" value="{$list_note.total_cost}"  class="w3 inp01" onblur="FillTotal();" id="total_cost" name="total_cost"> 元</td>
+          </tr>
+        </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr class="none">
+             <td class="tdright w1 tdtop">备注：</td>
+		     <td><textarea name="remark">{$list_note.remark}</textarea></td>
+	       </tr>
+		    <tr class="none">
+            <td ></td>
+            <td > <input type="submit" class="button-yellow" value="保存"></td>
+          </tr>
+          </form>
+        </table>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

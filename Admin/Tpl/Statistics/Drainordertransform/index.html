@@ -1,0 +1,178 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header_new" />
+
+<style>
+    .nowrap {
+        white-space: nowrap;
+    }
+</style>
+
+<!-- 菜单区域  -->
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<script>
+    $(document).ready(function(){
+        $("#btn_show_all").click(function(){
+            $("input[name='show_all']").val('1');
+            $("#search_form").submit();
+        });
+
+    });
+</script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main">
+
+    <!-- 主体内容  -->
+    <div class="panel panel-default" >
+        <!--<div class="panel-heading" style="width: 100%;"><h4>引流订单转化率统计</h4></div>-->
+
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <!--  表格开始  -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-condensed" style="position: fixed;">
+                    <tr style="background-color: lightgrey">
+                        <td>月份</td>
+                        <td>活动</td>
+                        <td>上线时间</td>
+                        <td>30天内引流订单数</td>
+                        <td>引流订单车牌数</td>
+                        <td>引流订单销售额</td>
+                        <td>30天内转化订单数</td>
+                        <td>30天内转化比例</td>
+                        <td>30天内转化订单销售额</td>
+                        <td>30~90天转化订单数</td>
+                        <td>30~90天转化比例</td>
+                        <td>30~90天转化订单销售额</td>
+                        <td>90天以上转化订单数</td>
+                        <td>90天以上转化比例</td>
+                        <td>90天以上转化订单销售额</td>
+                    </tr>
+
+                    <tr class="invisible">
+                        <td>201508</td>
+                        <td class="nowrap" style="width: 100px;">淘宝淘宝淘宝</td>
+                        <td class="nowrap">2015-08-28</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>66839.48</td>
+                        <td>700</td>
+                        <td>10.09%</td>
+                        <td>68699.48</td>
+                        <td>700</td>
+                        <td>10.09%</td>
+                        <td>68369.48</td>
+                        <td>700</td>
+                        <td>10.09%</td>
+                        <td>68996.48</td>
+                    </tr>
+                </table>
+                <table class="table table-hover table-bordered table-condensed" id="main_table">
+                    <tbody>
+
+                        <tr class="invisible">
+                            <td>月份</td>
+                            <td style="width: 100px"></td>
+                            <td>上线时间</td>
+                            <td>30天内引流订单数</td>
+                            <td>引流订单车牌数</td>
+                            <td>引流订单销售额</td>
+                            <td>30天内转化订单数</td>
+                            <td>30天内转化比例</td>
+                            <td>30天内转化订单销售额</td>
+                            <td>30~90天转化订单数</td>
+                            <td>30~90天转化比例</td>
+                            <td>30~90天转化订单销售额</td>
+                            <td>90天以上转化订单数</td>
+                            <td>90天以上转化比例</td>
+                            <td>90天以上转化订单销售额</td>
+                        </tr>
+                        <volist name="events" id="event">
+                            <assign name="month" value="$key" />
+                            <volist name="event" id="e">
+                                <tr>
+                                    <td><if condition="$key eq 0">{$month}</if></td>
+                                    <td class="nowrap" style="color: blue;">{$e.name}</td>
+                                    <td class="nowrap">{$e.date}</td>
+                                    <td>{$e.drain_order.count}</td>
+                                    <td>{$e.drain_order.license_count}</td>
+                                    <td>{$e.drain_order.amount}</td>
+                                    <volist name="e.drain_orders" id="v">
+                                        <td>{$v}</td>
+                                    </volist>
+                                    <volist name="e.trans_orders_30" id="v">
+                                        <td>{$v}</td>
+                                    </volist>
+                                    <volist name="e.trans_orders_90" id="v">
+                                        <td>{$v}</td>
+                                    </volist>
+                                    <volist name="e.trans_orders_180" id="v">
+                                        <td>{$v}</td>
+                                    </volist>
+                                </tr>
+                            </volist>
+
+                        </volist>
+                    </tbody>
+                </table>
+            </div>
+
+            <form method="post" name="search_form" id="search_form" action="__URL__/index" enctype="multipart/form-data" >
+                <div style="clear: both;"></div>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <td style="border: none;">
+                                <button type="button" class="btn btn-success btn-sm" name="search" id="btn_show_all">显示全部活动</button>
+                                <input type="hidden" name="show_all" value="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px; border: none">
+                                选择活动：
+                                <select class="" name="event_id">
+                                    <volist name="event_names" id="event_name">
+                                        <option value='{$key}' <if condition="$selected_event eq $key">selected</if> >{$event_name}</option>
+                                    </volist>
+                                </select>
+                            </td>
+                            <td style="border: none">
+                                <button type="submit" class="btn btn-primary btn-xs" type="submit" name="search">查询</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-condensed">
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <for start="$event_ym" end="$ym" name="m">
+                                <td>{$m} <span class="btn btn-xs btn-info">数量</span>  <span class="btn btn-xs btn-warning">比率</span>  <span class="btn btn-xs btn-danger">金额</span></td>
+                            </for>
+                        </tr>
+
+                        <volist name="trans_orders" id="trans_order">
+                            <assign name="month" value="$key" />
+                            <tr>
+                                <td>{$month}</td>
+                                <for start="$event_ym" end="$ym" name="m">
+                                    <td><span class="btn btn-xs btn-info">{$trans_order.$m.count}</span>  <span class="btn btn-xs btn-warning">{$trans_order.$m.rate}</span>  <span class="btn btn-xs btn-danger">{$trans_order.$m.amount}</span></td>
+                                </for>
+                            </tr>
+                        </volist>
+
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
+            <!--  表格结束  -->
+        </div>
+    </div>
+    <!-- 主体内容结束 -->

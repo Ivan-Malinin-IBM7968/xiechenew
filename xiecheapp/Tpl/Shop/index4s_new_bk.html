@@ -1,0 +1,279 @@
+<layout name='layout' />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/4sd.css?v={$Think.config.VERSION_DATE}" />
+<!--头部4-->
+<div style="width:960px; height:91px; margin:10px auto; padding:0px; ">
+	<a target="_blank" href="/index.php/coupon"><img src="/Public/new/images/banner.jpg"></a>
+</div>
+<!--头部4-->
+
+<!--中间部位-->
+<div class="main-4s">
+	<div class="main-dh"><span style="margin-top: 20px; line-height: 30px;">{$list.shop_name}</span></div>
+	<div class="main-icon">好评率：<span>{$list.comment_rate}%</span></div>
+
+	<notempty name="notice">
+	<div class="main-4syh"><big>【4S店简介】</big>{$list.shop_account}</div>
+	</notempty>
+
+	<div class="main-yhxx">
+		<div class="t">
+			<ul id="show">
+				<li onMouseOver="this.className='s1'" onMouseOut="this.className='s2'" class="s2">
+					<if condition ="$list[shop_class] eq 2" >
+					<img src="{$list[logo]}" width="280" height="210" />
+					<else/>
+						<img src="/UPLOADS/Shop/280/{$list.id}.jpg" width="280" height="210" />
+					</if>
+				</li>
+			</ul>
+		</div>
+
+		<div class="cx">
+			<table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td height="35" colspan="8" class="line">预约分时折扣</td>
+				</tr>
+				<tr  bgcolor="#F5F5F5">
+					<td height="38" colspan="2" align="center" valign="middle">星 期</td>
+					<td colspan="2" align="center" valign="middle">时 间</td>
+					<td colspan="2" align="center" valign="middle">工时折扣率</td>
+					<td width="17%" align="center" valign="middle">零件折扣率</td>
+					<td width="17%" align="center" valign="middle">查看</td>
+				</tr>
+
+				<volist name="list_timesale" id="votimesale">
+				<volist name="votimesale.timesaleversion" id="timesaleversion">
+				<tr onMouseOver="this.style.background='#F5F5F5'" onMouseOut="this.style.background='#FFFFFF'">
+				  <td height="35" colspan="2" align="center" valign="middle">{$votimesale.week_name_s}</td>
+				  <td colspan="2" align="center" valign="middle">{$votimesale.begin_time} - {$votimesale.end_time}</td>
+				  <td colspan="2" align="center" valign="middle">{$timesaleversion.workhours_sale_str}</td>
+				  <td align="center" valign="middle">{$timesaleversion.product_sale_str}</td>
+				  <td align="center" valign="middle"><a href="__APP__/order/yuyue/timesaleversion_id/{$timesaleversion.id}/member_id/{$member_id}"><img src="/Public/new/images/new/ckicon.jpg"></a></td>
+				</tr>
+				</volist>
+				</volist>
+				<tr>
+					<td colspan="8">&nbsp;</td>
+				</tr>	
+			</table>
+
+			<!-- Baidu Button BEGIN -->
+			<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+			<span class="bds_more">分享到：</span>
+			<a class="bds_qzone"></a>
+			<a class="bds_tsina"></a>
+			<a class="bds_tqq"></a>
+			<a class="bds_renren"></a>
+			<a class="bds_t163"></a>
+			<a class="shareCount"></a>
+			</div>
+			<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3625391" ></script>
+			<script type="text/javascript" id="bdshell_js"></script>
+			<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+			</script>
+			<!-- Baidu Button END -->
+
+			<notempty name="result">
+			<table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td height="35" colspan="8" class="line">常规保养费用</td>
+				</tr>
+				<tr bgcolor="#F5F5F5">
+					<td height="5" colspan="8" >&nbsp;</td>
+				</tr>
+
+				<tr bgcolor="#F5F5F5">
+					<td width="21%" height="35" rowspan="2" align="center" valign="middle" bgcolor="#F5F5F5">热门车型</td>
+					<td height="25" colspan="6" align="center" valign="middle" bgcolor="#F5F5F5"><strong>小保养（机油、机滤）</strong>       工时折扣:{$salesversion.workhours_sale}      零件折扣:{$salesversion.product_sale}</td>
+					</tr><tr  bgcolor="#F5F5F5">
+					<td width="13%" height="25" align="center" valign="middle" >工时费</td>
+					<td width="14%" align="center" valign="middle">零件费</td>
+					<td width="15%" align="center" valign="middle">门市价</td>
+					<td width="14%" align="center" valign="middle"><strong>折后价</strong></td>
+					<td width="12%" align="center" valign="middle"><strong>节省</strong></td>
+					<td width="11%" align="center" valign="middle"><strong>操作</strong></td>
+				</tr>
+
+				<volist name="result" key="key" id="value">
+				<tr onMouseOver="this.style.background='#F5F5F5'" onMouseOut="this.style.background='#FFFFFF'">
+					<td height="35" align="center" valign="middle"><a href="__APP__/order/yuyue/timesaleversion_id/{$salesversion.id}/model_id/{$value.model_id}" target="_blank">{$value.car_name}</a></td>
+					<td align="center" valign="middle">{$value.workhour} 元</td>
+					<td align="center" valign="middle">{$value.product} 元</td>
+					<td align="center" valign="middle">{$value.total} 元</td>
+					<td align="center" valign="middle">{$value.sales_total} 元</td>
+					<td align="center" valign="middle">{$value.save_total} 元</td>
+					<td align="center" valign="middle"><a href="__APP__/order/yuyue/timesaleversion_id/{$salesversion.id}/model_id/{$value.model_id}">预约</a></td>
+				</tr>
+				</volist>
+			</table>
+			</notempty>
+		</div>
+
+	</div>
+
+	<div style="clear:both;"></div>
+</div>
+<!--中间部位结束-->
+
+<!--下部模块-->
+<div class="dlwz">
+	<!--左边模块-->
+	<div class="wz-left">
+
+		<h2>4S店<span>优惠信息公告区</span></h2>
+		<div class="yhlist">
+			<ul>
+				<volist name="notice" id="von">
+				<li>
+					<em>{$von.update_time|date='m-d',###}</em>
+					<a href="__APP__/shop/FavType/shop_id/{$shop_id}/id/{$von.id}" target="_blank">{$von.noticetitle}</a>
+				</li>
+				</volist>
+			</ul>
+		</div>
+
+		<h2>4S店<span>售后资讯</span></h2>
+		<div class="yhlist">
+			<ul>
+				<volist name="article" id="voa">
+				<li>
+					<em>{$voa.create_time|date='m-d',###}</em>
+					<a href="__APP__/article/d/id/{$voa.id}" target="_blank">{$voa.title}</a>
+				</li>
+				</volist>
+			</ul>
+		</div>
+
+		<h2>用户评价</h2>
+		<div class="pjnr">
+			<volist name="comment" id="voc">
+			<ul>
+				<li class="tb"></li>
+				<li class="wz">{$voc.user_name} <span>（{$voc.create_time|date="Y-m-d",###}）<font color="red"><if condition="$voc.comment_type eq 1">好评<elseif condition="$voc.comment_type eq 2"/>中评<elseif condition="$voc.comment_type eq 3"/>差评</if></font></span>： {$voc.comment}</li>
+			</ul>
+
+			<volist name="voc.commentreply" id="vocr">
+				<ul>
+					<li class="hf"></li>
+					<li class="wz">{$vocr.operator_name} <span>（{$vocr.create_time|date="Y-m-d",###}）</span>： {$vocr.reply}</li>
+				</ul>
+			</volist>
+
+			</volist>
+		</div>
+
+		<h2>地理位置</h2>
+		<div class="wzt">
+			<div class="left2-nav"><img src="http://api.map.baidu.com/staticimage?width=238&height=200&center={$list.shop_maps}&zoom=13&markers={$list.shop_maps}&markerStyles=l,A" /> </div>
+			<div id="left3-nav"><a href="javascript:;" lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^客服电话：{$Think.config.CALL_400} ">查看大图</a></div>
+		</div>
+	  
+		<div class="wzxx">
+			<ul>
+				<li class="bt">{$list.shop_name}</li>
+				<li><strong>级      别</strong>：<if condition="$list.shop_class eq 1">特约商家<else />非特约商家</if></li>
+				<li><strong>主营品牌</strong>：<volist name="brands" id="brand">{$brand.brand_name}<if condition="$i lt count($brands)">，</if></volist></li>
+				<li><strong>好评率</strong> ：<font color="red">{$list.comment_rate}%</font></li>
+				<li><strong>电      话</strong>：400 660 2822</li>
+				<li><strong>地      址</strong>：{$list.shop_address} [<a href="javascript:;"  lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^电话：400 660 2822">地图</a>]</li>
+			</ul>
+		</div>
+
+	</div>
+	<!--左边模块-->
+
+	<!--右边模块-->
+	<div class="wz-right">
+		<!--轮播图-->
+		<notempty name="tuijian_coupon1">
+		<div class="wz-right-tg">
+			<p class="tg">现金券</p>
+			<volist name="tuijian_coupon1" id="cou1">
+			<dl>
+				<dt><a href="__APP__/coupon/coupondetail/coupon_id/{$cou1.id}" target="_blank"><img src="/UPLOADS/Coupon/Logo/{$cou1.coupon_pic}" width="150" height="100"></a></dt>
+				<dd><a href="__APP__/coupon/coupondetail/coupon_id/{$cou1.id}" target="_blank">{$cou1.coupon_name}</a></dd>
+				<dd>会员价：<del>&yen;{$cou1.coupon_amount}</del>
+				</dd>
+				<dd><b>{$cou1.pay_count}</b>人已购买</dd>
+			</dl>
+			</volist>
+		</div>
+		</notempty>
+		
+		<notempty name="tuijian_coupon2">
+		<div class="wz-right-tg">
+			<p class="tg">团购券</p>
+			<volist name="tuijian_coupon2" id="cou2">
+			<dl>
+				<dt><a href="__APP__/coupon/coupondetail/coupon_id/{$cou2.id}" target="_blank"><img src="/UPLOADS/Coupon/Logo/{$cou2.coupon_pic}" width="150" height="100"></a></dt>
+				<dd><a href="__APP__/coupon/coupondetail/coupon_id/{$cou2.id}" target="_blank">{$cou2.coupon_name}</a></dd>
+				<dd>会员价：<del>&yen;{$cou2.coupon_amount}</del>
+				</dd>
+				<dd><b>{$cou2.pay_count}</b>人已购买</dd>
+			</dl>
+			</volist>
+		</div>
+		</notempty>
+		<!--轮播图-->
+	</div>
+	<!--右边模块结束-->
+</div>
+
+<style type="text/css">
+	#dialogmap{display:none; position:absolute; width:640px; height:480px;}
+	#containermap{width:640px; height:480px;}
+	#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript">
+	$(function(){
+		//初始化
+		Think.init({
+				basePath:"__PUBLIC__/think"
+		})	
+
+		$(".point").click(function(){
+			//$("#dialogmap").openDialog();
+			popup();
+			 var map = new BMap.Map("containermap");
+			 var lng=$(this).attr('lng');
+			 //var lat=$(this).attr('lat');
+			 arr=lng.split(',');//分割
+				
+			 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+			 
+			 var text=$(this).attr('desc');
+			 var textArr=text.split('^^');
+			 map.centerAndZoom(point,15);
+			 map.addControl(new BMap.NavigationControl());
+			 map.addControl(new BMap.MapTypeControl());
+			 map.addControl(new BMap.ScaleControl());
+			 map.addControl(new BMap.OverviewMapControl());
+			 addMarker(point);
+			 function addMarker(point)
+			 {
+				var html='';
+				for(var i=0;i<textArr.length;i++)
+				{
+					
+					html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+				}
+				var marker = new BMap.Marker(point);  // 创建标注
+				map.addOverlay(marker);              // 将标注添加到地图中
+				var infoWindow = new BMap.InfoWindow(html);
+				marker.openInfoWindow(infoWindow);
+				
+			  }	 
+		});					   
+	})
+
+	function popup(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+			drag:true,//不可拖动
+			cover:true//设置笼罩
+		})
+	}
+</script>

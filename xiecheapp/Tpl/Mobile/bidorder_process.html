@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta>
+	    <title>维修进度查询</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<script src="__PUBLIC__/mobile/js/libs/swipe.js?v={$Think.config.VERSION_DATE}" ></script>
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/order_list.css" />
+		<include file="Public:wapfoot" />
+	</head>
+	<body style="background:#f1f1f1;">
+		<style>
+			.ab-t{position:absolute;left:-6px}
+			.img-c img{width:50px;height:50px;float:left;padding:1px}
+			.img-2{float:left;width:52px;overflow:hidden;}
+			span.key{color:#22272a;font-size:3em;padding:0px 6px}
+			p.des{font-size:1.2em;color:#666}
+			p.num{color:#898989}
+			.order-info-block-2{margin-top:0px;padding:10px 0px}
+			.over,.img-c{overflow:hidden}
+			.img-c{padding-right:10px}
+			.ui-grid-a > .ui-block-a,.left{width:22%}.ui-grid-a > .ui-block-b,.center{width:39%}.right{width:39%}
+			.ab-t-1{top:35px}.ab-t-2{top:160px}.ab-t-3{top:285px}.ab-t-4{top:410px}
+			p.count{color:#999}
+			.circle {
+				border-radius: 50%;
+				width: 10px;
+				height: 10px; 
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+			}
+			.circle1{background-color:#00aff2}
+			.circle2{background-color:#d2d2d2}
+			.layout{display:none;height:100%;width:100%;background-color:#000;z-index:1000;position:fixed;top:0px;}
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  clear:both;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+.swipe-wrap p.time{color:#fff;padding-bottom:10px;width:100%}
+		</style>
+		<div id="wrapper" >
+			<header id="header" data-role="header" >
+				<h1>维修进度查询</h1>
+				<span id="left-trigger">
+					<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+				</span>
+				<span id="right-trigger" >
+					<a href="tel:4006602822" class="service-call"></a>
+				</span>
+			</header>
+			<div class="list-order" style=" padding:0px 10px 10px 10px;">
+				<ul style="border-left:1px solid #d2d2d2;position:relative;background-color:#f1f1f1;padding-top:10px">
+						<li data-role="listview">
+							<volist name="model" id="list" key="k">
+								<div class="ui-grid-a order-info-block-2">
+									<if condition="($k eq 1)">
+										<div class="ab-t ab-t-{$k}"><div class="circle circle1">&nbsp;</div></div>
+									<else />
+										<div class="ab-t ab-t-{$k}"><div class="circle circle2">&nbsp;</div></div>
+									</if>
+									<div class="over left ui-block-a">
+										<span class="key">{$total-$k+1}</span><span>{$list.up_time|date="m",###|substr=1,1}月</span>
+									</div>
+									<div class="over center ui-block-b">
+										<div class="img-c">
+										    <switch name="list.count">
+										    	<case value="1">
+										    		<volist name="list['describe']" id="des4">
+										    			<img src="{$des4.url}" data-order="" data-des="{$des4.des}" data-uptime="{$list.up_time|date="Y-m-d H:i:s",###}" style="height:103px;width:104px"/>
+										    		</volist>
+										    	</case>
+										    	<case value="2">
+										    		<volist name="list['describe']" id="des3">
+											    		<div class="img-2">
+															<img src="{$des3.url}" data-order="" data-des="{$des3.des}" data-uptime="{$list.up_time|date="Y-m-d H:i:s",###}" style="height:103px"/>
+														</div>
+													</volist>
+										    	</case>
+										    	<case value="3">
+										    		<div class="img-2">
+														<img src="{$list.describe0.url}" data-order="" style="height:103px"/>
+													</div>
+													<div class="img-2">
+														<volist name="list['describe1']" id="des1">
+															<img src="{$des1.url}" data-order="" data-des="{$des1.des}" data-uptime="{$list.up_time|date="Y-m-d H:i:s",###}" />
+														</volist>
+													</div>
+										    	</case>
+										    	<case value="4">
+											    	<volist name="list['describe']" id="deses">
+														<div class="img-2">
+											    			<volist name="deses" id="des">
+																<img src="{$des.url}" data-order="" data-des="{$des.des}" data-uptime="{$list.up_time|date="Y-m-d H:i:s",###}" />
+															</volist>
+														</div>
+													</volist>
+										    	</case>
+										    </switch>
+										  </div>
+									</div>
+									<div class="ui-block-c right">
+										<p class="des">{$list.des_t}...<p>
+										<p class="count">{$list.count}张</p>
+									</div>
+								</div>
+							</volist>
+						</li>
+				</ul>
+			</div>
+			<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+			<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+				 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-transition="slidedown">关闭</a>
+		        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+		            <li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+						<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+					</li>
+					<li><a href="__APP__/Mobile" rel="external">预约维修保养</a></li>
+					<li><a href="__APP__/Mobile-coupon_list" rel="external">优惠券</a></li>
+					<li><a href="__APP__/Mobile-my_account" rel="external">我的账户</a></li>
+		        </ul>
+			</div>
+		</div>
+		<div class="layout">
+			<div id="mySwipe" class="swipe" style="padding:10px 0px">
+				<div class="swipe-wrap">
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		$(function(){
+			var img_num = $('div.img-c img').size();
+			$('div.img-c').find('img').each(function(k,v){
+				$(this).attr('data-order',k);
+				var src =$(this).attr('src'),des = $(this).attr('data-des'),up_time=$(this).attr('data-uptime');
+				if(!des){
+					des = '';
+				}
+				if(!up_time){
+					up_time = '';
+				}
+				k++;
+				var html = '<div><p class="time"><span style="float:left">'+up_time+'</span><span style="float:right;padding-right:10px">'+k+'/'+img_num+'</span></p><img style="width:100%;height:350px" src="'+src+'" onClick="$(this).parent().parent().parent().parent().hide()"><p style="text-align:center;color:#fff;height:28px;line-height:28px;font-size:1em;width:100%">'+des+'</p></div>'
+				$('.swipe-wrap').append(html);
+			});
+			$('div.img-c img').click(function(){
+				$('.layout').show();
+				var elem = document.getElementById('mySwipe');
+				var order = $(this).attr('data-order');
+					window.mySwipe = Swipe(elem, {
+					   startSlide: order,
+					  // auto: 3000,
+					  // continuous: true,
+					  // disableScroll: true,
+					  // stopPropagation: true,
+					  // callback: function(index, element) {},
+					  // transitionEnd: function(index, element) {}
+					});
+			})
+		})	
+		</script>
+	</body>
+</html>

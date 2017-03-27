@@ -1,0 +1,200 @@
+<style>
+.st-show-msg-box .rate-msg-box{ display: block; }
+.rate-msg-box .textinput{ padding: 8px; margin: 20px; }
+.rate-msg-box .ph-label{ display: block; line-height: 1.5; width: 200px; }
+.rate-msg-box .rate-msg{ height: 132px; outline: 0 none; resize: none; width: 100%; }
+.rate-msg-box .text-counter strong{ color: #FF6600; margin: 0 5px; }
+.comment_type{ margin: 2px 0 10px 5px; }
+.sbt{text-align:center; }
+.rating-shop{height: 195px; overflow: hidden; width: 618px;  padding-top: 5px;}
+.rating-shop .shop{float: left;}
+.rating-shop .title{margin-bottom: 5px; font-size: 14px; color: #888; font-family: "微软雅黑"; ;padding-bottom: 5px;}
+.shop-info{}
+.shop-name{font-size: 20px; color: black;}
+.shop-name:visited{color: black;}
+.shop-name:hover{text-decoration: underline;}
+
+.shop-img{display: block; border: 2px solid #f1f1f1; width: 200px; height: auto;}
+.comment_type{float: left;}
+.rate-con{margin-bottom: 10px; padding-bottom: 5px; height: 30px; width: 390px;}
+.rate-con label{float: left; height: 30px; line-height: 30px; width: 70px;}
+.rate-con .rater{display: block; float: left; height: 30px; width: 130px;}
+.rate-star-con{float: left;  float: left; height: 40px; width: 200px;}
+.service_title1, .service_title2, .service_title3 { display: block; float: left; height: 50px; line-height: 18px; margin-left: 10px; padding-top: 5px; width: 170px;}
+</style>
+
+<link href="__PUBLIC__/new_2/css/jquery.rater.css" rel="stylesheet"/>
+
+<div class="container"></div>
+<form action="/index.php/comment/add_comment" method="post">
+<div class="rate-msg-box">
+	<div class="bd">
+		<div class="textinput">
+			<div class="rating-shop">
+				<div class="title">评价4S店铺</div>
+				<div class='shop'>
+					<a href="javascript:void(0)">
+						<img src="/UPLOADS/Shop/200/{$shopid}.jpg" alt="" width="200" height="" class="shop-img" />
+					</a>
+
+					
+				</div>
+				<div class="comment_type shop-info">
+					<a href="javascript:void(0)" class="shop-name">{$shop_name}</a>
+					<div>
+						<input type="radio" name="comment_type" value="1" checked />好评
+						<input type="radio" name="comment_type" value="2" />中评
+						<input type="radio" name="comment_type" value="3" />差评
+					</div>
+					
+				</div>
+			</div>
+			<notempty name="servicemember">
+			<div class="rating-shop">
+				<div class="title">评价服务顾问</div>
+				<div class='shop'>
+					<a href="javascript:void(0)">
+						<img src="/UPLOADS/Service/{$servicemember.logo}" alt="" width="200" height="" class="shop-img" />
+					</a>
+				</div>
+				<div class="comment_type shop-info">
+					<div class="rate-con">
+						<div class="rate-star-con">
+							<label for="">服务态度:</label> 
+							<span class="rater1 rater"></span> 
+						</div>
+						<span class="service_title1"></span>
+						<div class="clear"></div>
+					</div>
+					<div class="rate-con">
+						<div class="rate-star-con">
+							<label for="">专业技能:</label> 
+							<span class="rater2 rater"></span>
+						</div>
+						<span class="service_title2"></span>
+						<div class="clear"></div>
+					</div>
+					<div class="rate-con">
+						<div class="rate-star-con">
+							<label for="">服务诚信:</label> 
+							<span class="rater3 rater"></span>
+						</div>
+						<span class="service_title3"></span>
+						<div class="clear"></div>
+					</div>
+					<input type="hidden" name="service" id="service">
+					<input type="hidden" name="profession" id="profession">
+					<input type="hidden" name="sincerity" id="sincerity">
+				</div>
+			</div>
+			</notempty>
+			<div class="clear"></div>
+			<span class="ph-label">输入你的评价内容:</span>
+			<textarea class="rate-msg" name="content"></textarea>
+		</div>
+	</div>
+	<input type="hidden" name="shopid" value="{$shopid}" />
+	<input type="hidden" name="orderid" value="{$orderid}" />
+	<div class="sbt"><input type="submit" value="提交"></div>
+</div>
+</form>
+<script type="text/javascript" src="__PUBLIC__/new_2/js/jquery.rater.js"></script>
+<script>
+var options1	= {
+	max	: 5,
+	hoverStar: function(ret) {
+		$('#service').val(ret.number);
+
+		var title = "";
+		switch (ret.number) {
+			case 1 : 
+				title	= '很不满意，服务顾问态度太差，还骂人，还说脏话，完全不把顾客当一回事。';
+				break;
+			case 2 : 
+				title	= '服务顾问有点不耐烦，跟她说话，爱理不理的。';
+				break;
+			case 3 : 
+				title	= '服务顾问态度一般，沟通不 是很顺畅。';
+				break;
+			case 4 : 
+				title	= "服务顾问态度挺好的，沟通挺顺畅，总体满意。"
+				break;
+			case 5 : 
+				title	= "服务顾问态度太棒了，考虑的很周到，完全超过期望值。"
+				break;
+			default :
+				title = "";
+				break;
+		};
+
+		$(".service_title1").html(title);
+	},
+	image : "__PUBLIC__/new_2/images/star.gif"
+
+}
+
+var options2	= {
+	max	: 5,
+	hoverStar: function(ret) {
+		$('#service').val(ret.number);
+
+		var title = "";
+		switch (ret.number) {
+			case 1 : 
+				title	= '太差了，连最基本的常识什么都不知道。';
+				break;
+			case 2 : 
+				title	= '有点差劲，基本上都不知道也不能给用户好的建议和咨询';
+				break;
+			case 3 : 
+				title	= '还行，中规中矩，本次进店要做的项目基本都知道';
+				break;
+			case 4 : 
+				title	= "还不错，这个顾问挺专业的，当前车辆改换什么都知道"
+				break;
+			case 5 : 
+				title	= "太棒了，这个顾问很专业，我的疑惑都能解答"
+				break;
+			default :
+				title = "";
+				break;
+		};
+		$(".service_title2").html(title);
+	},
+	image : "__PUBLIC__/new_2/images/star.gif"
+}
+
+var options3	= {
+	max	: 5,
+	hoverStar: function(ret) {
+		$('#service').val(ret.number);
+
+		var title = "";
+		switch (ret.number) {
+			case 1 : 
+				title	= '太差劲，不该更换的东西也让我更换，简直是个大忽悠';
+				break;
+			case 2 : 
+				title	= '有点差劲，老是推销一些可有可无的服务项目，有些还没到更换时间点的也让我更换，忽悠我消费';
+				break;
+			case 3 : 
+				title	= '还行，顾问推荐了不少可有可无的服务，有些还没到更换时间点的也让我更换，但没勉强我';
+				break;
+			case 4 : 
+				title	= "还不错，顾问推荐了一两个我认为可有可无的服务"
+				break;
+			case 5 : 
+				title	= "很棒，这个顾问很诚信，没忽悠我过度消费，更换的东西都是的确到了寿命了该换了"
+				break;
+			default :
+				title = "";
+				break;
+		};
+		$(".service_title3").html(title);
+	},
+	image : "__PUBLIC__/new_2/images/star.gif"
+}
+$('.rater1').rater(options1);
+$('.rater2').rater(options2);
+$('.rater3').rater(options3);
+</script>

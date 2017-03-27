@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div {margin:0;padding:0;}
+body {background:#fff;color:#333;font-size:12px; font-family: Arial, Helvetica, sans-serif, "微软雅黑", "黑体";}
+ul,dl {list-style-type:none;}
+select,input,img,select {vertical-align:middle;}
+
+#vickrey a:hover {color:#666666 !important; text-decoration:underline; cursor:text;}
+img{border:none;}
+.cleafix {clear:both;}
+.clear {clear:both;}
+.pageBox {margin:0; padding:0;}
+.pdb_100 {padding-bottom: 100px;}
+.pdb_20 {padding-bottom: 20px;}
+.pdt_10 {padding-top: 10px;}
+.mt_20 {margin-top:20px;}
+.fl {float:left;}
+.fr {float: right;}
+.red {color:red; font-size:12px; margin: 0px 10px;}
+.block {display:block;}
+.hidden {display:none;}
+/*page*/
+.pageContainer {width:100%; margin:0 auto; height:100%; padding:0px;}
+/*header*/
+.topContainer {width:100%; margin:0px auto; height:132px; padding:0px; background:url(../images/sub_navbg.gif) bottom left repeat-x;}
+.topContent {width:980px; margin:0px auto; height:132px; padding:0px auto;}
+.Header {width:980px; margin:0 auto; height:90px; padding:0px; position:relative; font-size: 12px; font-family: "微软雅黑";}
+.Head_r {width: 210px; height: 70px; float:right; padding-top: 10px;text-align: right;}
+.Header .logo {float:left; display:block; width:290px; height:90px; background:url(../images/logo.png) 0 0px; margin:0px; padding:0px;}
+.top_cx {float:right; width:80px; height:15px; line-height:15px; padding-left:10px;}
+.log_buyer {float:right; width:73px; height:15px; line-height:15px; padding-left:10px;padding-right: 3px;}
+.top_cx a,.log_buyer a {color:#333; font-weight:bold;}
+.top_cx a:hover, .log_buyer a:hover {color:#333; text-decoration:none;}
+.hotline {width: 200px; height:24px; padding:0px; position:relative; float:right; margin-top: 30px;}
+.subNav {width:980px; height:42px; margin: 0px auto; background:url(../images/sub_navbg.gif) repeat-x; color:#333; position:relative; left:0; top:0;}
+.subNav .navbar {width:980px; position: absolute; font-size:14px; font-weight:bold; font-family: "微软雅黑";}
+.subNav .navbar li {float:left; display:block; width:90px; padding-right:3px; background:url(../images/part_libg.gif) no-repeat right top;}
+.subNav .navbar li a {color:#333; display:block; width:90px; height:40px; line-height:40px; text-align:center;}
+.subNav .navbar li a:hover {text-decoration: none; background:url(../images/nav_focus.gif) bottom left repeat-x;}
+.subNav .search_tit {float:right; position:relative; width:257px; height:40px; top:0px; *margin:-1px; padding:0px;}
+.navFocus {text-decoration: none; background:url(../images/nav_focus.gif) bottom left repeat-x;}
+/*middle*/
+.middleContainer {width:100%; margin:0px auto; padding-bottom: 20px; height:100%; overflow:hidden; background: url(../images/page_middbg.gif) 0 0 repeat;}
+.middleContent {width:980px; padding:0px; margin:10px auto; height:100%; min-height:440px; border: 1px solid #ccc; background:#fff;}
+/*footer*/
+.footerContainer {width:100%; margin:0px auto; height:135px; background: url(../images/footbg.jpg) center no-repeat; border-top:1px solid #ddd;}
+.footerDiv {width: 980px; margin:0 auto;}
+.pageFooter {width:100%; margin:0px auto; height:145px; background: url(../images/footbg.jpg) center no-repeat;}
+.pageFooterText {width:980px; line-height:16px; height: 20px; padding-top:5px; margin:10px auto; *margin:0px auto; font-family:"宋体"; font-size: 12px;}
+.pageFooterText span {margin:0px 5px; font-family:"宋体";}
+.pageFooterText a {color: #666;}
+.footerLeft {float:left; width: 500px; height: 20px; line-height: 20px;}
+.footerRight {width: 450px; margin:0px; padding:0px;}
+.pft_link {position:relative; width:208px; *width:205px; height:34px; background:url(../images/foot_linkbg.gif) no-repeat 0px 0px;}
+.pft_btn {position: relative; width:42px !important; *width:36px; height:34px; background:none; cursor:pointer; border:none; margin-top:0px;}
+.pft_inp {width:155px;*width:150px; height:28px; line-height:30px; text-align:justify; padding:2px 5px; background:none; border:none; margin-top:0px;outline:medium;color:#999;}
+.copyright {width:980px; margin:30px auto !important; *margin:20px auto; color: #999; text-align: center; font: normal 12px/15px Arial, Helvetica, sans-serif, "宋体";}
+ul.sel_pftlink {display:block; background:#fff; position:absolute; padding:5px 3px 5px 3px; top: 0px; z-index:1500; margin-top:33px; margin-left:1px; width:194px; height:50px;line-height:25px;border-bottom:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+ul.sel_pftlink li{display:block;float:none; height:25px; text-align:justify;}
+ul.sel_pftlink li a{text-align:left;display:block; width: 182px; padding:0 6px; font-family:"宋体"; font-size:12px; color: #999;}
+ul.sel_pftlink li a:hover{display:block; background:#e9e9e9;text-decoration:none;}
+/*auction*/
+.pageNav {float:left; width:960px; height: 50px; background: url(../images/pagenavbg.gif) bottom left repeat-x;margin:0px; padding:0px;}
+.submenu {float:left; width:190px; height:50px; *height: 51px; margin:0px; padding:0px; display:block;}
+.round {float:left; width:940px; height:45px; background:url(../images/roundbg.gif) 0 0 repeat-x; margin:0px; padding-top:12px; padding-left: 20px; font-size: 14px; color:#666;}
+.round input {width: 120px; height:16px; font-size: 12px; color:#6d6d6d; vertical-align: text-bottom; border: 1px solid #c0c0c0; margin-right: 5px; background:url(../images/calander.gif) 106px 1px no-repeat; padding: 1px;}
+.round select {width: 140px; height:20px; vertical-align: text-bottom; border: 1px solid #c0c0c0; margin:0px 5px; font-size: 12px; color:#6d6d6d;}
+.round span {width:auto; height: 20px; background: url(../images/location.gif) 0 0 no-repeat; margin-left: 10px; padding-left: 20px;}
+.round span a {text-decoration:underline;}
+.minute {float:left; width: 940px; height: 47px; font-family:"微软雅黑"; font-size: 20px; color:#333; padding-left: 15px; padding-top: 8px; margin: 0px auto; background:url(../images/roundbg.gif) 0px 5px repeat-x;}
+.minute span {magrin: 0px 10px; font-family: Arial, Helvetica, sans-serif; color:#ff0e00; font-size: 28px; font-style:italic;}
+.auction {float:left; width:950px; margin:0px auto; padding: 5px; margin-bottom: 30px;}
+.auction table {width: 100%; height:auto; border:none; color: #666; font-size: 14px; text-align:center;}
+.auction table th {height:34px; font-weight: normal; border-top: 1px solid #a2c1d7; border-bottom: 1px solid #a2c1d7; background:url(../images/thbg.gif) 0 0 repeat-x;}
+.auction table td {height: 35px; border-bottom: 1px solid #dcdcdc; padding: 0px; margin: 0px;}
+.bidbtn input{width:57px; height:21px; border:none; line-height: 20px; color: white; background:url(../images/bidbtn.gif) 0 0 no-repeat; cursor:pointer;}
+/*perCenter*/
+.perInfo_con {width:938px; margin: 10px auto; padding: 10px; min-height: 600px; background: #fff; font-family: "Microsoft YaHei";}
+.perInfo_div {margin: 10px 0px; width: 100%; height:auto; padding:0px; clear:both;}
+.card {width: 450px; height:235px; margin-left: 10px; border: 1px solid #d6d6d6; background:url(../images/card_bg.gif) 0 0 repeat-x;}
+.card_tit {width: 440px; height:40px; background:url(../images/card_tline.gif) bottom left no-repeat; padding:5px 0px;}
+.card img {margin: 10px; padding-left: 10px;}
+.card_td {width: 420px; padding:10px;}
+.card_td table {width:100%; margin:0px; padding:0px; font-size: 14px; font-family:"宋体";}
+.card_td table th {padding:5px; font-weight: normal; color: #3b6691; text-align:right; white-space: nowrap;}
+.card_td table td {padding:5px; line-height: 20px; color: #666;}
+.amount_c {width: 440px; height: auto; font-size: 20px; margin: 0px 0px 0px 20px; }
+.amount_c .amount_info {color: #333; font-size: 20px; height: 50px; font-family: "Microsoft YaHei"; border-bottom: 1px dotted #ccc; padding-left: 10px;}
+.amount_c .amount_info span {margin: 0px 5px; color: #e90d00; font-size: 36px; line-height: 50px; font-style: italic;}
+.amount_c .amount_tips {color:#6d6d6d; font-size: 14px; line-height: 40px; font-family:"宋体"; padding-left: 10px;}
+.amount_c .amount_tips em {color: red; font-style:normal;}
+.per_btn {margin: 20px auto; text-align:left;}
+.per_btn input {color:#fff; height: 34px; width: 152px; background:url(../images/btn_150.gif) 0px 0px no-repeat; font: normal 14px "宋体"; text-align:center; border:none; margin: 0px 10px;}
+.todo_list {float:left; width: 452px; height:255px; margin-left: 10px; background:url(../images/tolistbg.gif) 0 0 repeat-x;}
+.todo_tb {float:left; width: 420px; padding:10px; margin-top:50px;}
+.todo_tb ul {float:left; height: auto; background:transparent; padding-left: 10px; padding-bottom: 8px; margin:0px;}
+.todo_tb ul li {float:left; height:24px; width: 370px; font: 14px/24px "宋体"; letter-spacing:1px;}
+.todo_tb ul li span {float:left; width: 260px; display: block; color: #333; font-weight:normal; padding-left: 10px;}
+.todo_tb ul li b {float:left; width: 100px; display: block; color: #006ee9; font-weight:normal; text-align:right;}
+.todo_tb ul li em {color: #ff6339; font-style:normal; text-align:center; margin:0px 15px;}
+.todo_tb img {border:none; float:right;}
+.cd_con {float: right; width: 452px; height:255px; margin-left: 10px; background:url(../images/cd_conbg.gif) 0 0 repeat-x;}
+.cd_title {width: 350px; color: #333; font-size: 16pt; height: 40px; line-height: 40px; margin-top:50px; text-align:center;}
+.cd_time {color:red; font: 50px/60px Arial, Helvetica, sans-serif; font-style:italic; text-align:center;}
+.cd_bid {width: 163px; height: 43px; margin: 10px auto; text-align:center;}
+/*perCenter_info */
+.per_label {width:910px; height: 40px; margin:0px auto; padding:0px 10px; background: url(../images/per_tabline.gif) bottom left repeat-x;}
+.per_tit {float:left; width:auto; margin:0px; padding: 0px;}
+#per_tabmenu {float:left;width:auto; height: 40px; padding: 0px; margin: 0px 10px;}
+#per_tabmenu ul{float:left; margin:0px; padding:0px; list-style:none; height:40px; font:normal 12pt/25px "微软雅黑";}
+#per_tabmenu li{float:left; margin:0px 0px 0px 5px; padding: 0px;}
+#per_tabmenu ul li a {float:left; height: 40px; padding:0px 0px 0px 20px; display:block !important; text-decoration:none; overflow: hidden;white-space: nowrap;-o-text-overflow: ellipsis;text-overflow: ellipsis;cursor: pointer;background:url("../images/tab_left.gif") no-repeat left top; color:#666;}
+#per_tabmenu ul li a:hover {float:left; color:#ff8006; background:url("../images/tab_left2.gif") no-repeat 0% top;}
+#per_tabmenu ul li a span {float:left; height: 30px; padding:10px 20px 10px 0px; display:block; margin: 0px; background:url("../images/tab_right.gif") no-repeat right top;}
+#per_tabmenu ul li a:hover span {float:left; background:url("../images/tab_right2.gif") no-repeat 100% top; /*color:#ff8006;*/}
+#per_tabmenu .selected a {background:url("../images/tab_left2.gif") no-repeat 0% top;}
+#per_tabmenu .selected a span {background:url("../images/tab_right2.gif") no-repeat 100% top; color:#333;}
+.per_rm {float:right; width: 90px; padding:10px 0px 0px 15px; letter-spacing: 1px; font: normal 14pt/22px "微软雅黑"; background: url(../images/s_arrow.png) -4px 18px no-repeat;}
+.info_modify {float:left; width: 80%; margin:10px 5px 10px 5px; padding:10px; background:url(../images/loc_pline.gif) left bottom repeat-x;}
+.info_modify table {width:100%; margin:0px; padding-bottom:10px; font-size: 14px; font-family:"宋体";}
+.info_modify table th {padding:5px; font-weight: normal; color: #3b6691; text-align:right; white-space: nowrap;}
+.info_modify table td {padding:5px; color: #666;}
+.info_modify table td input {height:22px; font-size: 14px; color:#666; border: 1px solid #c0c0c0; padding: 0px 2px; line-height: 22px;}
+.info_modify span {color:red; font-size:12px; margin: 0px 10px; line-height: 25px;}
+.info_m_btn {float:left; width: 65%; height:auto; text-align:center; padding: 10px;}
+.info_m_btn input {margin-left: 15px; width: 105px; height: 31px; color:#fff; font-size: 14px; background:url(../images/btn_review.gif) 0 0 no-repeat;}
+.fund_acbal {margin: 0px 5px; color: #333; font-size: 20px; height: 50px; line-height: 50px; font-family: "Microsoft YaHei"; border-bottom: 1px dotted #ccc; padding-left: 20px;}
+.fund_acbal span {margin: 0px 10px; color: #e90d00; font-size: 28px; font-style: italic;}
+.fund_tb {width:920px; margin:0px auto; padding: 5px; margin-bottom: 10px;}
+.fund_tb h3 {padding-left: 15px; font-size: 16px; line-height:35px; color:#3b6691; height: 35px; font-weight:normal;}
+.fund_tb table {width: 100%; height:auto; border:none; color: #666; font-size: 14px; text-align:center;}
+.fund_tb table th {height:34px; font-weight: normal; border-top: 1px solid #a2c1d7; border-bottom: 1px solid #a2c1d7; background:url(../images/thbg.gif) 0 0 repeat-x;}
+.fund_tb table td {height: 35px; border-bottom: 1px solid #dcdcdc; padding: 0px; margin: 0px;}
+input.search_btn {border:none; margin-left: 15px; width: 72px; height: 27px; color:#333; font-size: 12px; background:url(../images/tb_btn_base.gif) 0 0 no-repeat;}

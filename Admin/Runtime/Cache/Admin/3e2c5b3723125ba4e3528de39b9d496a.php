@@ -1,0 +1,60 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>『<?php echo (C("web_name")); ?>管理平台』By ThinkPHP <?php echo (THINK_VERSION); ?></TITLE>
+
+<script type="text/javascript" src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="__JS__/msg_show.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+jQuery(function($) {
+	setInterval(function(){
+		get_new_order()
+	},10000);
+
+//	setInterval(function(){
+//		get_new_coupon($.blinkTitle)
+//	},10000);
+});
+function get_new_order(){
+	$.ajax({
+		type:'POST',
+		url:'__APP__/Store/Membercoupon/get_new_order_coupon',
+		dataType : 'json',
+		success:function(data){
+			if(data['0'] == 0 && data['1'] == 0 && data['2'] == 0 && data['3'] == 0){
+				return;
+			}else if(data[0] > 0 && data[1] == 0){
+				$(document).find('title').empty().html("【有"+data["0"]+"张新优惠卷订单，请注意查看】");
+			}else if(data[1] > 0 && data[0] == 0){
+				$(document).find('title').empty().html("【有"+data["1"]+"张新订单，请注意查看】");
+			}else{
+				$(document).find('title').empty().html("【有"+data["0"]+"张新优惠卷订单，请注意查看】" + "【有"+data["1"]+"张新订单，请注意查看】");
+			}
+			if (data['2'] > 0) {
+				$(document).find('title').empty().html("【有"+data["2"]+"张新事故车订单，请注意查看】");
+			}
+			if (data['3'] > 0) {
+				$(document).find('title').empty().html("【有"+data["3"]+"张新上门保养订单，请注意查看】");
+			}
+			var titleValue = $(document).find('title').html();
+			//console.log(titleValue);
+			//blinkblink()
+		}
+	})
+}
+
+</SCRIPT>
+
+    <FRAMESET FRAMEBORDER=0 framespacing=0 border=0 rows="50, *,32">
+    <FRAME SRC="__APP__/Public/top" name="top" FRAMEBORDER=0 NORESIZE SCROLLING='no' marginwidth=0 marginheight=0>
+    <FRAMESET FRAMEBORDER=0  framespacing=0 border=0 COLS="200,7, *" id="frame-body">
+        <FRAME SRC="__APP__/Public/menu/tag/10/title/上门保养管理/name/CarService" FRAMEBORDER=0 id="menu-frame" name="menu">
+        <frame src="__APP__/Public/drag" id="drag-frame" name="drag-frame" frameborder="no" scrolling="no">
+<!-- <FRAME SRC="__APP__/Public/main" FRAMEBORDER=0 id="main-frame" name="main">-->        
+        <FRAME SRC="__APP__/Carservice/Carserviceorder/index" FRAMEBORDER=0 id="main-frame" name="main">
+         
+    </FRAMESET>
+    <FRAME SRC="__APP__/Public/footer" name="footer" FRAMEBORDER=0 NORESIZE SCROLLING='no' marginwidth=0 marginheight=0>
+    </FRAMESET>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta>
+	    <title>我的优惠券</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<script src="__PUBLIC__/mobile/js/main.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/my_coupon.css" />
+		<include file="Public:wapfoot" />
+	</head>
+	<body style="background:#f1f1f1;">
+		<div id="wrapper" >
+			<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+			<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+				 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-transition="slidedown">关闭</a>
+		        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+		            <li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+						<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+					</li>
+					<li><a href="__APP__/Mobile" rel="external">预约维修保养</a></li>
+					<li><a href="__APP__/Mobile-coupon_list" rel="external">优惠券</a></li>
+					<li><a href="__APP__/Mobile-my_account" rel="external">我的账户</a></li>
+		        </ul>
+			</div>
+			<header id="header" data-role="header" >
+				<h1>我的优惠券</h1>
+				<span id="left-trigger">
+					<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+				</span>
+				<span id="right-trigger" >
+					<a href="tel:4006602822" class="service-call"></a>
+				</span>
+			</header>
+			<div class="list-coupon" style="padding: 0px;">
+				<ul>
+					<volist name="Mycoupon" id="list">
+					<li data-role="listview" class="single-coupon ui-grid-solo" style="background: white; padding: 10px 0px; border-bottom: 1px solid #f1f1f1;">
+						<div class="ui-grid-a">
+
+							<div class="ui-block-a" style="width: 25%">
+								<img src="/UPLOADS/Coupon/Logo/coupon1_{$list.coupon_pic}" alt="" width="90%">
+							</div>
+							<div class="ui-block-b" style="width: 75%">
+								<h4 style="font-size: 1.1em;">{$list.coupon_name}</h4>
+								<div class="ui-grid-a ">
+									<div class="ui-block-a coupon-price" style="width: 70%">
+										<strong>现价:<span>¥{$list.coupon_amount}</span></strong>
+										<em>原价:<span>¥{$list.cost_price}</span>	</em>	
+									</div>
+									<div class="ui-block-b" style="width: 30%">
+									
+										
+									
+									</div>
+								</div>
+								<div class="ui-grid-solo" style="color: #666;">
+									购买时间:({$list.create_time|date="Y-m-d",###})
+								</div>
+							</div>
+
+						</div>
+						
+						<div class="ui-grid-solo" style="text-align: right; color: #666; font-size: .9em;">
+							<if condition="$list.is_pay eq 1">
+								已支付<br>
+
+								消费码:{$list.coupon_code}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有效期:({$list.end_time|date="Y-m-d",###})
+
+								
+								<!-- <if condition="$list.is_use eq 1">已使用($list.use_time|date="Y-m-d",###})<else/>未使用</if> -->
+							<else/>
+								<a href="__APP__/txwappay/payRequest.php?membercoupon_id={$list.membercoupon_id}" class="buy-btn" rel="external">去支付</a><br>
+							</if>
+						</div>
+					</li>
+					</volist>
+				</ul>
+			</div>
+			<div id="pagination">
+				{$page}
+			</div>
+		</div>
+	</body>
+</html>

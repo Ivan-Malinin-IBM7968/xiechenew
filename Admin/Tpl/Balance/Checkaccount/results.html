@@ -1,0 +1,291 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+
+<style type='text/css'>
+ 
+#main{
+    width: 100% ;
+
+}
+
+table.list {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    float: left;
+    margin: 3px 0;
+    padding: 8px;
+    text-align: left;
+    width: 80%;
+}
+
+.p_title {
+    clear: both;
+    color: red;
+    font-size: 20px;
+    height: 40px;
+    margin: 0;
+    width: 78%;
+}
+
+.p_title a{
+    display: inline-block ;
+    float: right ;
+}
+
+
+div.title {
+    background: #f0f0ff none repeat scroll 5px 40%;
+    border: 1px solid #d4d4d4;
+    clear: both;
+    float: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin: 5px 0;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-top: 5px;
+    text-align: left;
+    width: 97%;
+}
+
+</style>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="title"> 
+            对账结果页面。[ <A HREF="__URL__/index">返回列表</A> ]
+            选择查看数据 
+            <select name="datatype"  id="datatype" onchange="data_show()"> 
+                <option value="">请选择查看数据 </option>
+                <option value="1"> 核对到的过去月份数据：淘宝京东存在，后台存在,金额有差异 </option>
+                <option value="2"> 核对到的过去月份数据：淘宝京东存在，后台存在,金额吻合无误的。</option>
+                <option value="3"> 核对到的选择月份数据：淘宝京东存在，后台不存在 </option>
+                <option value="4"> 核对到的选择月份数据：淘宝京东存在，后台存在,金额有差异。</option>
+                <option value="5"> 核对到的选择月份数据：淘宝京东存在，后台存在,金额吻合无误的 </option>
+                <option value="6"> 核对到的选择月份数据：后台存在，淘宝京东不存在。</option> 
+            </select>
+    </div>  
+    
+    <div class="content" >
+<!-- <div class="title"> 核对到的过去月份的数据。</div>-->
+        <div id="data_1" style="display:none">
+            <p class="p_title">
+                过去月份： 淘宝京东存在，后台存在,金额有差异,共{$data.past_type2_num}条数据 
+                <a  href="/Admin/index.php/Balance/Checkaccount/results?type=1">导出订单为csv</a>
+            </p>  
+            
+            
+            <table class="list">
+               <tr> 
+                  <td width="300px">淘宝订单号</td>
+                  <td width="300px">淘宝金额</td>
+                  <td width="300px">后台订单号</td>
+                  <td width="300px">后台金额</td>
+               </tr>
+               <volist name="past_type2" id="vo">
+               <tr> 
+                  <td>{$vo.orderid_tb}</td>
+                  <td>{$vo.account_tb}</td>
+                  <td>  {$vo.orderid_db}  </td>
+                  <td>{$vo.account_db}</td>
+               </tr>
+               </volist>
+               
+               <tr> 
+                  <td>金额合计 </td>
+                  <td colspan="3"> 
+                      总金额：￥{$invoice.num_1.total_mount} ，
+                      已开发票：￥{$invoice.num_1.total_invoice} ，
+                      未开发票：￥{$invoice.num_1.total_no_invoice} 
+                  </td>
+               </tr>
+           </table> 
+        </div>
+         
+        <div id="data_2"  style="display:none">
+            <p class="p_title"> 
+                过去月份：淘宝京东存在，后台存在,金额吻合无误的。共{$data.past_type3_num}条数据
+                <a  href="/Admin/index.php/Balance/Checkaccount/results?type=2">导出订单为csv</a>
+            </p>  
+            
+            <table class="list">
+               <tr> 
+                  <td width="300px">淘宝订单号</td>
+                  <td width="300px">淘宝金额</td>
+                  <td width="300px">后台订单号</td>
+                  <td width="300px">后台金额</td>
+               </tr>
+               <volist name="past_type3" id="vo">
+               <tr> 
+                  <td>{$vo.orderid_tb}</td>
+                  <td>{$vo.account_tb}</td>
+                  <td>  {$vo.orderid_db}  </td>
+                  <td>{$vo.account_db}</td>
+               </tr>
+               </volist>
+                <tr> 
+                  <td>金额合计 </td>
+                  <td colspan="3"> 
+                      总金额：￥{$invoice.num_2.total_mount} ，
+                      已开发票：￥{$invoice.num_2.total_invoice} ，
+                      未开发票：￥{$invoice.num_2.total_no_invoice} 
+                  </td>
+               </tr>
+            </table> 
+        </div> 
+         
+<!--  <div class="title"> 选择月份匹配到的结果列表。</div>-->
+        
+        <div id="data_3" style="display:none">
+            <p class="p_title"> 
+                选择月份：淘宝京东存在，后台不存在数据,共{$data.curr_type1_num}条数据
+                <a  href="/Admin/index.php/Balance/Checkaccount/results?type=3">导出订单为csv</a>
+            </p>  
+            
+            <table class="list">
+            <tr> 
+               <td width="300px">淘宝订单号</td>
+               <td width="300px">淘宝金额</td>
+            </tr>
+            <volist name="curr_type1" id="vo">
+            <tr> 
+               <td>{$vo.orderid_tb}</td>
+               <td>{$vo.account_tb}</td>
+            </tr>
+            </volist>
+<!--             <tr> 
+                  <td>金额合计 </td>
+                  <td colspan="3"> 
+                      总金额：￥{$invoice.num_3.total_mount} ，
+                      已开发票：￥{$invoice.num_3.total_invoice} ，
+                      未开发票：￥{$invoice.num_3.total_no_invoice} 
+                  </td>
+               </tr>-->
+            </table>  
+        </div>
+        
+        
+        <div id="data_4" style="display:none">
+            <p class="p_title">
+                选择月份： 淘宝京东存在，后台存在,金额有差异,共{$data.curr_type2_num}条数据
+                <a  href="/Admin/index.php/Balance/Checkaccount/results?type=4">导出订单为csv</a>
+            </p>  
+            
+             <table class="list">
+                <tr> 
+                   <td width="300px">淘宝订单号</td>
+                   <td width="300px">淘宝金额</td>
+                   <td width="300px">后台订单号</td>
+                   <td width="300px">后台金额</td>
+                </tr>
+                <volist name="curr_type2" id="vo">
+                <tr> 
+                   <td>{$vo.orderid_tb}</td>
+                   <td>{$vo.account_tb}</td>
+                   <td>  {$vo.orderid_db}  </td>
+                   <td>{$vo.account_db}</td>
+                </tr>
+                </volist>
+                <tr> 
+                  <td>金额合计 </td>
+                  <td colspan="3"> 
+                      总金额：￥{$invoice.num_4.total_mount} ，
+                      已开发票：￥{$invoice.num_4.total_invoice} ，
+                      未开发票：￥{$invoice.num_4.total_no_invoice} 
+                  </td>
+               </tr>
+             </table>
+        </div>
+         
+         
+        <div id="data_5"  style="display:none"> 
+            <p class="p_title"> 
+                选择月份：淘宝京东存在，后台存在,金额吻合无误的,共{$data.curr_type3_num}条数据。
+                <a  href="/Admin/index.php/Balance/Checkaccount/results?type=5">导出订单为csv</a>
+            </p> 
+            
+            <table class="list">
+               <tr> 
+                  <td width="300px">淘宝订单号</td>
+                  <td width="300px">淘宝金额</td>
+                  <td width="300px">后台订单号</td>
+                  <td width="300px">后台金额</td>
+               </tr>
+               <volist name="curr_type3" id="vo">
+               <tr> 
+                  <td>{$vo.orderid_tb}</td>
+                  <td>{$vo.account_tb}</td>
+                  <td>  {$vo.orderid_db} </td>
+                  <td>{$vo.account_db}</td>
+               </tr>
+               </volist>
+               <tr> 
+                  <td>金额合计 </td>
+                  <td colspan="3"> 
+                      总金额：￥{$invoice.num_5.total_mount} ，
+                      已开发票：￥{$invoice.num_5.total_invoice} ，
+                      未开发票：￥{$invoice.num_5.total_no_invoice} 
+                  </td>
+               </tr>
+               
+            </table>
+        </div>
+        
+        
+        <div id="data_6" style="display:none">
+            <p class="p_title"> 
+                选择月份：后台存在，淘宝京东不存在的数据,共{$data.curr_type4_num}条数据 
+                <a  href="/Admin/index.php/Balance/Checkaccount/results?type=6">导出订单为csv</a>
+            </p>  
+            
+            <table class="list">
+               <tr> 
+                  <td width="300px">后台订单号</td>
+                  <td width="300px">后台金额</td>
+                  <td width="300px">淘宝订单号</td>
+                  <td width="300px">淘宝金额</td>
+
+               </tr>
+               <volist name="curr_type4" id="vo">
+               <tr> 
+                  <td> {$vo.orderid_db} </td>
+                  <td>{$vo.account_db}</td>
+                  <td>{$vo.orderid_tb}  </td>
+                  <td> 暂无 </td>
+
+               </tr>
+               </volist>
+                <tr> 
+                  <td>金额合计 </td>
+                  <td colspan="3"> 
+                      总金额：￥{$curr_type4_num.total_mount} ，
+                      已开发票：￥{$curr_type4_num.total_invoice} ，
+                      未开发票：￥{$curr_type4_num.total_no_invoice} 
+                  </td>
+               </tr>
+            </table>
+        </div>
+         
+		
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script type="text/javascript">
+function data_show(){
+    var datatype = $('#datatype').val() ;
+    //alert(datatype);
+    $('#data_'+datatype).show().siblings().hide();
+
+}
+      
+</script>
+

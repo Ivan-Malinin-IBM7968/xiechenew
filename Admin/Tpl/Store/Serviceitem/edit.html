@@ -1,0 +1,34 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <SCRIPT LANGUAGE="JavaScript">
+        <!--
+        //-->
+    </SCRIPT>
+    <div class="content">
+        <div class="title">编辑文章分类 
+			[ <A HREF="__URL__/index/pid/{$vo.parent_id}">返回列表</A> ]</div>
+        <FORM METHOD=POST id="form1" >
+            <TABLE cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >分类名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="标题不能为空,且不能含有空格" NAME="name" value="{$vo.name}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >上级分类：</TD>
+                    <TD class="tLeft" ><html:select options="list" selected="vo['parent_id']" name="parent_id" id="parent_id" first="请选择上级分类" /></TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <input TYPE="hidden" name="id" value="{$vo.id}">
+                        <input TYPE="hidden" name="ajax" value="1">
+                        <div class="impBtn fLeft"><input TYPE="button" value="保存" onclick="sendForm('form1','__URL__/update/','tips')" class="save imgButton"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

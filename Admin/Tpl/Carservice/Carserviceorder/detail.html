@@ -1,0 +1,1069 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/DatePicker/WdatePicker.js?v={$Think.config.VERSION_DATE}"></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+
+<div class="title">订单处理</div>
+
+<!-- 列表显示区域  -->
+<div >
+
+<form name="invoiceForm" id="invoiceForm" action="__URL__/update_invoice" method="post">
+<table style="line-height:50px;">
+<tr>
+	<td>开票金额：</td>
+	<td>{$order_info.amount}</td>
+    <!--<td>  <input id="chk_price" value="检查并修改价格"  type="button"> </td> -->
+</tr>
+	<tr>
+		<td>开票类型：</td>
+		<td>
+			<select name="invoice_type" id="invoice_type">
+				<option value="0" <if condition="$invoice_info.invoice_type eq 0">selected</if>>普通发票</option>
+				<option value="1" <if condition="$invoice_info.invoice_type eq 1">selected</if>>增值税发票</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>银行：</td>
+		<td><input name="bank_name" value="{$invoice_info.bank_name}" /></td>
+	</tr>
+	<tr>
+		<td>银行账号：</td>
+		<td><input name="bank_account" value="{$invoice_info.bank_account}" /></td>
+	</tr>
+	<tr>
+		<td>纳税人识别号：</td>
+		<td><input name="taxpayer_id" value="{$invoice_info.taxpayer_id}" /></td>
+	</tr>
+<tr>
+	<td>发票抬头：</td>
+	<td><input name="customer_name" value="{$invoice_info.customer_name}" /></td>
+</tr>
+
+<if condition="$invoice_info['express_id'] eq '' and $invoice_info['invoice_status'] neq 2">
+    <tr>
+        <td>收票人姓名：</td>
+        <td><input name="receiver_name" value="{$invoice_info.receiver_name}" /></td>
+    </tr>
+
+    <tr>
+        <td>收票人电话：</td>
+        <td><input name="receiver_phone" id="receiver_phone" value="{$invoice_info.receiver_phone}" /></td>
+    </tr>
+
+    <tr>
+        <td>收票人地址：</td>
+        <td><input name="receiver_address" value="{$invoice_info.receiver_address}" /></td>
+    </tr>
+<else/>
+    <tr>
+        <td>收票人姓名：</td>
+        <td>{$invoice_info.receiver_name}</td>
+    </tr>
+
+    <tr>
+        <td>收票人电话：</td>
+        <td><span id="receiver_phone">{$invoice_info.receiver_phone}</td>
+    </tr>
+
+    <tr>
+        <td>收票人地址：</td>
+        <td>{$invoice_info.receiver_address}</td>
+    </tr>
+</if>
+
+<tr>
+	<td>快递公司：</td>
+	<td>
+		<select name="express" id="express">
+			<option value="2" <if condition="$invoice_info.express eq 2">selected</if>>申通</option>
+			<option value="1" <if condition="$invoice_info.express eq 1">selected</if>>顺丰</option>
+			<option value="3" <if condition="$invoice_info.express eq 3">selected</if>>韵达</option>
+			<option value="4" <if condition="$invoice_info.express eq 4">selected</if>>中通</option>
+			<option value="5" <if condition="$invoice_info.express eq 5">selected</if>>圆通</option>
+		</select>
+	</td>
+</tr>
+
+<tr>
+    <td>发票号：</td>
+    <td><input type="text" name="invoice_no" id="invoice_no" value="{$invoice_info['invoice_no']}"></td>
+</tr>
+
+<tr>
+	<td>快递单号：</td>
+	<td><input type="text" name="express_id" id="express_id" value="{$invoice_info['express_id']}"></td>
+</tr>
+
+<tr>
+	<td>开票状态：</td>
+	<td>   
+		<select name="invoice_status" id="invoice_status">
+			<option value="1" <if condition="$invoice_info.invoice_status eq 1">selected</if>>待开票</option>
+			<option value="2" <if condition="$invoice_info.invoice_status eq 2">selected</if>>已开票已寄出</option>
+			<option value="3" <if condition="$invoice_info.invoice_status eq 3">selected</if>>已签收</option>
+		</select>
+	</td>
+    <input type="hidden" value="$invoice_info.invoice_status" id="invoice_status">
+</tr>
+<tr>
+	<td>备注：</td>
+	<td><textarea name="remark" rows="10" cols="10">{$invoice_info['remark']}</textarea></td>
+</tr>
+<tr>
+	<td colspan="2" align="center">
+		<input type="button" name="invoiceBtn" id="invoiceBtn" value="提交">
+	</td>
+</tr>
+</tr>
+</table>
+</form>
+<script>
+    //提交发票数据
+    $("#invoiceBtn").click(function() {
+        var express_id = $("#express_id").val();
+        var invoice_status = $("#invoice_status").val();
+        //alert(express_id);
+        //alert(invoice_status);
+        if(invoice_status!=2 && express_id==''){
+            var receiver_phone = $("#receiver_phone").val();
+            var mobileRegExp = /^1[3|4|5|7|8][0-9]\d{4,8}$/;
+            if (!mobileRegExp.test(receiver_phone) || receiver_phone.length!=11) {
+                alert('请填写正确的手机号码');
+                $("#receiver_phone").focus();
+                return false;
+            }else {
+                $("#invoiceForm").attr("action", "__URL__/update_invoice?id={$id}");
+                $("#invoiceForm").submit();
+                return true;
+            }
+        }else{
+            $("#invoiceForm").attr("action", "__URL__/update_invoice?id={$id}");
+            $("#invoiceForm").submit();
+            return true;
+        }
+    });
+</script>
+
+<form name="detailForm" id="detailForm" action="__URL__/update" method="post">
+<table style="line-height:50px;">
+	
+<tr>
+	<td>订单号：</td>
+	<td id="order_id" data-id="{$id}">{$order_info.show_id}</td>
+</tr>
+
+<tr>
+	<td>用户姓名：</td>
+	<td><input name="truename" value="{$order_info.truename}" /></td>
+</tr>
+
+<tr>
+	<td>手机号码：</td>
+	<td><input name="mobile" value="{$order_info.mobile}" /></td>
+</tr>
+
+<tr>
+	<td>车牌号：</td>
+	<td><input name="licenseplate" value="{$order_info.licenseplate}" /></td>
+</tr>
+
+<tr>
+	<td>VIN：</td>
+	<td><input name="vin_num" value="{$order_info.vin_num}" /></td>
+</tr>
+
+
+<if condition="$order_info[city_id] eq 1">
+    <tr id="area">
+        <td> 城市区域 :</td>
+        <td valign="middle">
+            <label for="city"></label>
+            <select name="area_id" id="area_id">
+                  <option value="">选择区域</option>
+            </select>
+        </td>
+        <td><input type="hidden" value="{$order_info[city_id]}" id="city_id"></td>
+    </tr>
+</if>
+
+
+<tr>
+	<td>用户地址：</td>
+	<td><input id="address" name="address" value="{$order_info.address}" /></td>
+</tr>
+
+<tr>
+	<td>用户坐标：</td>
+	<td><input type="text" name="coordinate" id="coordinate" value="{$order_info['coordinate']}" ></td>
+	<td>
+		<input type="button" onclick="get_coordinate()" value="获取坐标">
+	</td>
+</tr> 
+
+<tr>
+	<td>车型：</td>
+	<td><input name="car_name" value="{$order_info.car_name}" /></td>
+</tr>
+
+<!-- <tr>
+	<td width="150">选车</td>
+	<td>
+		<select name="brand_id" id="brand_id">
+			<option value="">选择品牌</option>
+			<volist name="brand_list" id="vo">
+			<option value="{$vo.brand_id}">{$vo.word}&nbsp;{$vo.brand_name}</option>
+			</volist>
+		</select>
+
+		<select name="model_id" id="model_id">
+			<option value="">选择车型</option>
+		</select>
+
+		<select name="style_id" id="style_id">
+			<option value="">选择款式</option>
+		</select>
+	</td>
+</tr> -->
+
+<tr>
+	<td>服务项目：</td>
+	<td>
+		<table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#CCCCCC" class="table">
+			  <tr>
+				<td width="38%" bgcolor="#f8f8f8">&nbsp;&nbsp;保养项目</td>
+				<td width="12%" bgcolor="#f8f8f8">&nbsp;&nbsp;价格</td>
+				<td width="25%" bgcolor="#f8f8f8" align="center">&nbsp;&nbsp;总价</td>
+			  </tr>
+			  <foreach name="item_list" item="value" key="key">
+			  <tr>
+			    <td height="40" bgcolor="#F8F8F8" style="text-align:left;">
+			    	<if condition="$key eq 0">
+					[机油]{$value['type']}
+			        <elseif condition="$key eq 1" />
+			        [机油滤清器]
+			        <elseif condition="$key eq 2" />
+			        [空气滤清器]
+			        <elseif condition="$key eq 3" />
+			        [空调滤清器]
+			        </if>  
+			    	<if condition="$key eq 0"><span id='order_oil'>{$value['name']}<a href='javascript:void(0);' onclick='edit_oil()'>编辑</a></span>
+					<elseif condition="$key eq 1" />
+					<span id='order_jy'>{$value['name']}<a href='javascript:void(0);' onclick='edit_jy()'>编辑</a></span>
+			        <elseif condition="$key eq 2" />
+					<span id='order_kq'>{$value['name']}<a href='javascript:void(0);' onclick='edit_kq()'>编辑</a></span>
+			        <elseif condition="$key eq 3" />
+					<span id='order_kt'>{$value['name']}<a href='javascript:void(0);' onclick='edit_kt()'>编辑</a></span>
+			        </if>
+
+			    	<if condition="$key eq 0">
+					 <label for="item_0"></label>
+					<select id='oil' style='display:none;'>
+					<empty name="default['oil_id']">
+						<!-- <input data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="0" value="自备配件（￥0）" /> -->
+						<option data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="0" value="不需要配件" />不需要配件</option>
+					<elseif condition="$default['oil_id'] eq -1"/>
+						<option data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="-1" value="自备配件（￥0）" />自备配件（￥0）</option>
+					<else />
+						<!-- <input data-oil-1-id="{$item_sets[0]['oil_1']}" data-oil-2-id="{$item_sets[0]['oil_2']}" data-oil-1-num="{$item_sets[0]['oil_1_num']}" data-oil-2-num="{$item_sets[0]['oil_2_num']}" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="{$item_sets[0]['id']}" value="{$item_sets[0]['name']}&nbsp;{$car_style['norms']}（￥{$item_sets[0]['price']}）" /> -->
+						<option data-oil-1-id="{$item_sets[0]['oil_1']}" data-oil-2-id="{$item_sets[0]['oil_2']}" data-oil-1-num="{$item_sets[0]['oil_1_num']}" data-oil-2-num="{$item_sets[0]['oil_2_num']}" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="{$item_sets[0]['id']}" value="{$item_sets[0]['name']}&nbsp;{$car_style['norms']}（￥{$item_sets[0]['price']}）" />{$default['oil_name']}&nbsp;{$default['norms']}（￥{$default['oil_price']}）</option>
+					</empty>
+					<div class="item_d" id="item_0_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+					  <!-- <ul> -->
+					  <foreach name="item_sets" item="set1" key="k">
+						<!-- <li data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set1['id']}" data_id="{$set1['id']}" data-price="{$set1['price']}" style="padding-left:20px;">{$set1.name}&nbsp;{$car_style['norms']}<strong>（￥{$set1.price}）</strong></li> -->
+						<option data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set1['id']}" data_id="{$set1['id']}" data-price="{$set1['price']}" style="padding-left:20px;">
+						{$set1.name}&nbsp;{$car_style['norms']}<strong>（￥{$set1.price}）</strong></option>
+					  </foreach>
+						<option data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="-1" data-price="0" value="自备配件（￥0）" />自备配件（￥0）</option>
+						<option data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="0" data-price="0" value="不需要配件" />不需要配件</option>
+					  <!-- </ul> -->
+					</div>
+					</select>
+					<elseif condition="$key eq 1" />
+					<label for="item_1"></label>
+					<select id='jilv' style='display:none;'>
+					<empty name="default['filter_id']">
+						<!-- <input name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="0" value="自备配件（￥0）" /> -->
+						<option name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="0" value="不需要配件" />不需要配件</option>
+					<elseif condition="$default['filter_id'] eq -1"/>
+						<option name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="-1" value="自备配件（￥0）" />自备配件（￥0）</option>
+					<else />
+						<!-- <input name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="{$item_set['1']['0']['id']}" value="{$item_set['1']['0']['name']}（￥{$item_set['1']['0']['price']}）" /> -->
+						<option name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="{$item_set['1']['0']['id']}" value="{$item_set['1']['0']['name']}（￥{$item_set['1']['0']['price']}）" />{$default['filter_name']}（￥{$default['filter_price']}）</option>
+					</empty>
+					<div class="item_d" id="item_1_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+					  <!-- <ul> -->
+					  <foreach name="item_set[1]" item="vv" key="kk">
+						<!-- <li width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_{$value['id']}" data_id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li> -->
+						<option width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_{$vv['id']}" data_id="{$vv['id']}" data-price="{$vv['price']}" style="padding-left:20px;">{$vv['name']}<strong>（￥{$vv['price']}）</strong></option>
+					  </foreach>
+						<option width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_0" data_id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></option>
+						<option width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_0" data_id="0" data-price="0" style="padding-left:20px;">不需要配件<strong>（￥0）</strong></option>
+					  <!-- </ul> -->  
+					</div>
+					</select>
+			        <elseif condition="$key eq 2" />
+					<label for="item_2"></label>
+					 <select id='konglv' style='display:none;'>
+					  <empty name="default['kongqi_id']">
+						<!-- <input name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="0" value="自备配件（￥0）" /> -->
+						<option name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="0" value="不需要配件" />不需要配件</option>
+					  <elseif condition="$default['kongqi_id'] eq -1"/>
+						<option name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="-1" value="自备配件（￥0）" />自备配件（￥0）</option>
+					  <else />
+						<!-- <input name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="{$item_set['2']['0']['id']}" value="{$item_set['2']['0']['name']}（￥{$item_set['2']['0']['price']}）" /> -->
+						<option name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="{$item_set['2']['0']['id']}" value="{$item_set['2']['0']['name']}（￥{$item_set['2']['0']['price']}）" />{$default['kongqi_name']}（￥{$default['kongqi_price']}）</option>
+					  </empty>	
+					<div class="item_d" id="item_2_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+					  <!-- <ul> -->
+						  <foreach name="item_set[2]" item="vvv" key="kkk">
+							<!-- <li width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_{$value['id']}" data_id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li> -->
+							<option width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_{$vvv['id']}" data_id="{$vvv['id']}" data-price="{$vvv['price']}" style="padding-left:20px;">{$vvv['name']}<strong>（￥{$vvv['price']}）</strong></option>
+						  </foreach>
+						  <option width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_0" data_id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></option>
+						  <option width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_0" data_id="0" data-price="0" style="padding-left:20px;">不需要配件<strong>（￥0）</strong></option>
+					  <!-- </ul> -->
+					</div>
+					</select>
+			        <elseif condition="$key eq 3" />
+					<label for="kt"></label>
+					<select id='kongtiaolv' style='display:none;'>
+					  <empty name="default['kongtiao_id']">
+					  <!-- <input name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="0" value="自备配件（￥0）" /> -->
+						<option name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="0" value="不需要配件" />不需要配件</option>
+					  <elseif condition="$default['kongqi_id'] eq -1"/>
+						<option name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="-1" value="自备配件（￥0）" />自备配件（￥0）</option>
+					  <else />
+						<!-- <input name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="{$item_set['3']['0']['id']}" value="{$item_set['3']['0']['name']}（￥{$item_set['3']['0']['price']}）" /> -->
+						<option name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="{$item_set['3']['0']['id']}" value="{$item_set['3']['0']['name']}（￥{$item_set['3']['0']['price']}）" />{$default['kongtiao_name']}（￥{$default['kongtiao_price']}）</option>
+					  </empty>
+					<div class="item_d" id="item_3_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+					  <!-- <ul> -->
+						  <foreach name="item_set[3]" item="vvvv" key="kkkk">
+							<!-- <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_{$value['id']}" data_id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li> -->
+							<option width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_{$vvvv['id']}" data_id="{$vvvv['id']}" data-price="{$vvvv['price']}" style="padding-left:20px;">{$vvvv['name']}<strong>（￥{$vvvv['price']}）</strong></option>
+						  </foreach>
+						  <option width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_0" data_id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></option>
+						  <option width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_0" data_id="0" data-price="0" style="padding-left:20px;">不需要配件<strong>（￥0）</strong></option>
+					  <!-- </ul> -->
+					</div>
+					</select>
+			        </if>
+
+			    </td>
+			    <td bgcolor="#F8F8F8"> 
+					<if condition="$key eq 0">
+						<span id='oil_price' price='{$value[price]}'>￥{$value['price']}</span>
+					<elseif condition="$key eq 1" />
+						<span id='jy_price' price='{$value[price]}'>￥{$value['price']}</span>
+					<elseif condition="$key eq 2" />
+						<span id='kq_price' price='{$value[price]}'>￥{$value['price']}</span>
+					<elseif condition="$key eq 3" />
+						<span id='kt_price' price='{$value[price]}'>￥{$value['price']}</span>
+					</if>
+				</td>
+				<td bgcolor="#F8F8F8"></td>
+			  </tr>
+			  </foreach>
+		
+			  <tr>
+			    <td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">服务费</td>
+			    <td bgcolor="#F8F8F8">{$service_cost}</td>
+				<td bgcolor="#F8F8F8"></td>
+			  </tr>
+			  <tr>
+			    <td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">优惠券 <if condition="$order_info['replace_code'] gt 0"><font color=red>(已抵扣)</font></if></td>
+			    <td bgcolor="#F8F8F8"><span id='dikou' price='{$dikou}'>{$dikou}</span></td>
+			    <td bgcolor="#F8F8F8" align="center"> <strong><span id='amount' price='{$order_info[amount]+$order_info[dikou_amount]}'>￥{$order_info['amount']+$order_info[dikou_amount]}<span></strong></td>
+			  </tr>
+
+			  <tr>
+			    <td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">抵扣金额</td>
+			    <td bgcolor="#F8F8F8" colspan="2">￥-{$order_info[dikou_amount]}</td>
+				
+			  </tr>
+
+			  <tr>
+			    <td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">支付金额</td>
+			    <td bgcolor="#F8F8F8" colspan="2">￥{$order_info[amount]}</td>
+				
+			  </tr>
+			</table>
+	</td>
+<!-- edit_item start -->
+<td>
+<!-- <span id="edititem"><a href='javascript:void(0);' onclick='edit_show()'>编辑配件</a></span> -->
+<span id="do_edititem" style="display:none;">
+  <table width="300" border="0" cellspacing="5" cellpadding="0" class="table">
+    <tr style="border-bottom:none">
+      <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr style="border:none">
+          <td width="50%" align="left">
+			<span id="sub">
+            <!--<form method="post" name="subForm" id="subForm" action="__APP__/carservice/order"> -->
+               <input type="hidden" name="oil_1_id" value="{$default['oil_1_id']}" />
+              <input type="hidden" name="oil_1_num" value="{$default['oil_1_num']}" />
+              <input type="hidden" name="oil_2_id" value="{$default['oil_2_id']}"/>
+              <input type="hidden" name="oil_2_num" value="{$default['oil_2_num']}"/>
+              <input type="hidden" name="CheckboxGroup0_res" id="CheckboxGroup0_res" value="{$default['oil_id']}">
+              <input type="hidden" name="CheckboxGroup1_res" id="CheckboxGroup1_res" value="{$default['filter_id']}">
+              <input type="hidden" name="CheckboxGroup2_res" id="CheckboxGroup2_res" value="{$default['kongqi_id']}">
+              <input type="hidden" name="CheckboxGroup3_res" id="CheckboxGroup3_res" value="{$default['kongtiao_id']}">
+			</span>
+            <!-- </form> -->
+            
+          </td>
+          <td width="16%">&nbsp;</td>
+        </tr>
+      </table></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  </span>
+  <span id="step">
+  <table width="300" border="0" cellspacing="5" cellpadding="0" class="table">
+	<tr>
+	<th>技师步骤</th><th>时间</th><if condition="$order_info['report_id'] neq ''"><th><a href="javascript:;" onclick="showbaogao()">查看检测报告</a></th></if>
+	</tr>
+	<foreach name="step_info" item="a" key="b">
+	<tr>
+	<td>{$a['step_name']}</td>
+	<td>{$a['create_time']}</td>
+	</tr>
+	</foreach>
+	<tr><td><if condition="$order_info['report_id'] neq ''"><a href="__WEB__/mobile/check_report-report_id-{$order_info['report_id']}">报告链接：__WEB__/mobile/check_report-report_id-{$order_info['report_id']}</a></if></td><td>点播地址：{$url}</td></tr>
+  </table>
+  <span>
+</td>
+<!-- edit_item end -->
+</tr>
+
+<tr>
+	<td>预约时间：</td>
+	<td>
+	<input name="order_time" id="order_time" onclick="new Calendar().show(this);" value="{$order_info.order_date}" />
+	<!-- <select name="order_hours">
+		<option value="{$order_info.order_hours}" selected>{$order_info.order_hours}</option>
+		<option value="9" >9</option>
+		<option value="10" >10</option>
+		<option value="11" >11</option>
+		<option value="12" >12</option>
+		<option value="13" >13</option>
+		<option value="14" >14</option>
+		<option value="15" >15</option>
+		<option value="16" >16</option>
+		<option value="17" >17</option>
+	</select>
+	<select name="order_minutes">
+		<option value="{$order_info.order_minutes}" selected>{$order_info.order_minutes}</option>
+		<option value="00" >00</option>
+		<option value="10" >10</option>
+		<option value="20" >20</option>
+		<option value="30" >30</option>
+		<option value="40" >40</option>
+		<option value="50" >50</option>
+	</select>
+	-{$order_info.order_hours}:59 -->
+    <select id="order_time2" name="order_time2" class="form-control">
+		<option value="{$order_info.order_hours}:00">{$order_info.order_hours}:00-{$order_info.order_hours}:59</option>
+		<option value="8:00">8:00-8:59</option>
+		<option value="9:00">9:00-9:59</option>
+		<option value="10:00">10:00-10:59</option>
+		<option value="11:00">11:00-11:59</option>
+		<option value="12:00">12:00-12:59</option>
+		<option value="13:00">13:00-13:59</option>
+		<option value="14:00">14:00-14:59</option>
+		<option value="15:00">15:00-15:59</option>
+		<option value="16:00">16:00-16:59</option>
+		<option value="17:00">17:00-17:59</option>
+		<option value="18:00">18:00-18:59</option>
+		<option value="19:00">19:00-19:59</option>
+		<option value="20:00">20:00-20:59</option>
+		<option value="21:00">21:00-21:59</option>
+	</select>
+	</td>
+</tr>
+
+<tr>
+	<td>下订时间：</td>
+	<td><input name="create_time" value="{$order_info.create_time|date="y-m-d H:i:s",###}" /></td>
+</tr>
+
+<tr>
+	<td>分配技师：</td>
+	<td>{$order_info.technician_name}</td>
+</tr>
+<tr>
+	<td>第三方ID：</td>
+	<td><input name="taobao_id" value="{$order_info.taobao_id}" /></td>
+</tr>
+<tr>
+	<td>来源：</td>
+	<td>{$order_info.origin}</td>
+</tr>
+<tr>
+	<td>用户备注：</td>
+	<td>
+		<textarea name="remark" id="remark" style="width:300px;height:150px;" readonly>{$order_info.remark}</textarea>
+	</td>
+</tr>
+
+<tr>
+	<td>客服备注:</td>
+	<td>
+		<textarea name="operator_remark" id="operator_remark" style="width:300px;height:150px;">{$order_info.operator_remark}</textarea>
+	</td>
+</tr>
+
+<notempty name="recall_info">
+	<tr>
+	<th colspan="2">历史回访</th><th>回访时间</th>
+	</tr>
+	<foreach name="recall_info" item="c" key="d">
+	<tr>
+	<td colspan="2">{$c['content']}</td>
+	<td>{$c['create_time']|date="y-m-d H:i:s",###}</td>
+	</tr>
+	</foreach>
+</notempty>
+
+<if condition="$order_info.status eq 9">
+<tr>
+	<td>回访备注:</td>
+	<td>
+		<textarea name="content" id="content" style="width:300px;height:150px;"></textarea>
+	</td>
+</tr>
+</if>
+
+<tr>
+	<td colspan="2" align="center">
+        <if condition="$order_info.status neq 9">
+            <input type="button" name="saveBtn" id="editBtn" value="修改订单">&nbsp;&nbsp;
+            <input type="button" name="saveBtn" id="saveBtn" value="预约确认">&nbsp;&nbsp;
+            <input type="button" name="saveBtn" id="delBtn" value="作废">&nbsp;&nbsp;
+        </if>
+        <if condition="$order_info.status eq 9"><input type="button" name="saveBtn" id="recallBtn" value="提交回访">&nbsp;&nbsp;</if>
+        <if condition="$order_info.status neq 9"><if condition="($authId eq 1) OR ($authId eq 238) OR ($authId eq 234) OR ($authId eq 300) OR ($authId eq 171) OR ($authId eq 242) OR ($authId eq 252) OR ($authId eq 269) OR ($authId eq 304) OR ($authId eq 336)"><input type="button" name="saveBtn" id="iniBtn" value="初始化">&nbsp;&nbsp;</if></if>
+        <if condition="($order_info['business_source'] eq 20 AND $order_info['pay_type'] neq 8  AND $authId eq 234) OR ($order_info['business_source'] eq 20 AND $order_info['pay_type'] neq 8 AND $authId eq 1)">
+            <input type="button" name="ddBtn" id="ddBtn" value="养车点点已完成">&nbsp;&nbsp;
+        </if>
+	</td>
+</tr>
+
+</table>
+</form>
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+	function edit_oil(){
+		$("#order_oil").attr('style','display:none;');
+		$("#oil").attr('style','');
+	}
+	function edit_jy(){
+		$("#order_jy").attr('style','display:none;');
+		$("#jilv").attr('style','');
+	}
+	function edit_kq(){
+		$("#order_kq").attr('style','display:none;');
+		$("#konglv").attr('style','');
+	}
+	function edit_kt(){
+		$("#order_kt").attr('style','display:none;');
+		$("#kongtiaolv").attr('style','');
+	}
+	//初始化
+	$(function(){
+		$("#iniBtn").click(function(){
+			var id = $('#order_id').attr('data-id');
+			$.post('__APP__/Carservice/Carserviceorder/initialization',{'id':id},function(data){
+				if(data.status){
+					alert(data.info);
+					window.location.href= '__APP__/Carservice/Carserviceorder/';
+				}else{
+					alert(data.info);
+				}
+			},'json')
+		});
+	});
+	//提交回访数据
+	$(function(){
+		$("#recallBtn").click(function(){
+			var content = $('#content').val();
+			var id = $('#order_id').attr('data-id');
+			$.post('__APP__/Carservice/Carserviceorder/insert_recall',{'content':content,'id':id},function(data){
+				if(data.status){
+					alert(data.info);
+					window.location.href= '__APP__/Carservice/Carserviceorder/';
+				}else{
+					alert(data.info);
+				}
+			},'json')
+		});
+	});
+
+	$("#editBtn").click(function(){
+		var coordinate = $("#coordinate").val();
+		/* if(coordinate == ""){
+			alert('请填写用户坐标');
+			$("#coordinate").focus();
+			return false;
+		} */
+
+		$("#detailForm").attr("action", "__URL__/edit?id={$id}");
+		//addValues();
+		$("#detailForm").submit();
+		return true;
+	});
+
+	$("#saveBtn").click(function(){
+		var coordinate = $("#coordinate").val();
+		/* if(coordinate == ""){
+			alert('请填写用户坐标');
+			$("#coordinate").focus();
+			return false;
+		} */
+		
+		$("#detailForm").attr("action", "__URL__/process_1?id={$id}");
+		$("#detailForm").submit();
+		return true;
+	});
+
+	$("#delBtn").click(function(){
+		$("#detailForm").attr("action", "__URL__/del?id={$id}");
+		$("#detailForm").submit();
+		return true;
+	});
+	//获取车系
+	$(function(){
+		$("#brand_id").change(function(){
+			var brand_id = $(this).val();
+			$.post('__APP__/Carservice/Carserviceorder/ajax_car_model',{'brand_id':brand_id},function(data){
+					data = data.data;
+					if(data.errno == 0){
+						var model_list_html = '<option value="">选择车型</option>';
+						$.each(data.result.model_list, function(k, v){
+							//console.log("%o", v);
+							model_list_html += '<option value="'+v['series_id']+'">'+v['word']+'&nbsp;'+v['series_name']+'</option>';
+						});
+						$("#model_id").html(model_list_html);
+					}else{
+						alert(data.errmsg);
+						return false;
+					}
+			},'json')
+			/*$.ajax({
+				type:'POST',
+				url:'__APP__/Carservice/Carserviceorder/ajax_car_model',
+				cache:false,
+				dataType:'JSON',
+				data:'brand_id='+brand_id,
+				success:function(data){
+
+				}
+			});*/
+		});
+	//获取车型
+		$("#model_id").live("change", function(){
+			var model_id = $(this).val();
+			$.post('__APP__/Carservice/Carconfig/ajax_car_style',{'model_id':model_id},function(data){
+				data = data.data;
+				if(data.errno == 0){
+					var style_list_html = '<option value="">选择款式</option>';
+					$.each(data.result.style_list, function(k, v){
+						//console.log("%o", v);
+						style_list_html += '<option value="'+v['model_id']+'">'+v['model_name']+'</option>';
+					});
+					$("#style_id").html(style_list_html);
+				}else{
+					alert(data.errmsg);
+					return false;
+				}
+			},'json')
+			/*$.ajax({
+				type:'POST',
+				url:'__APP__/Carservice/Carconfig/ajax_car_style',
+				cache:false,
+				dataType:'JSON',
+				data:'model_id='+model_id,
+				success:function(data){
+
+				}
+			});*/
+		});
+	});
+	//根据车型返回配件数据
+	function edit_show(){
+		$("#edititem").attr('style','display:none;');
+		$("#do_edititem").attr('style','');
+		submit = "<input type=\"hidden\" name=\"oil_1_id\" value=\"{$default['oil_1_id']}\"><input type=\"hidden\" name=\"oil_1_num\" value=\"{$default['oil_1_num']}\" /><input type=\"hidden\" name=\"oil_2_id\" value=\"{$default['oil_2_id']}\"><input type=\"hidden\" name=\"oil_2_num\" value=\"{$default['oil_2_num']}\" /><input type=\"hidden\" name=\"CheckboxGroup0_res\" id=\"CheckboxGroup0_res\" value=\"{$default['oil_id']}\"><input type=\"hidden\" name=\"CheckboxGroup1_res\" id=\"CheckboxGroup1_res\" value=\"{$default['filter_id']}\"><input type=\"hidden\" name=\"CheckboxGroup2_res\" id=\"CheckboxGroup2_res\" value=\"{$default['kongqi_id']}\"><input type=\"hidden\" name=\"CheckboxGroup3_res\" id=\"CheckboxGroup3_res\" value=\"{$default['kongtiao_id']}\"><input type=\"hidden\" name=\"sub\" value=\"1\">"
+		$('#sub').html(submit);
+	}
+
+	$("#oil").change(function(){
+		var $oil_1_id = $(this).find("option:selected").attr('data-oil-1-id');
+		var $oil_1_num = $(this).find("option:selected").attr('data-oil-1-num');
+    	var $oil_2_id = $(this).find("option:selected").attr('data-oil-2-id');
+    	var $oil_2_num = $(this).find("option:selected").attr('data-oil-2-num');
+		var CheckboxGroup0_res = $(this).find("option:selected").attr('data_id');
+		
+
+		$('input[name=oil_1_id]').val($oil_1_id);//放到要提交的数据框里面
+		$('input[name=oil_2_id]').val($oil_2_id);
+		$('input[name=oil_1_num]').val($oil_1_num);
+		$('input[name=oil_2_num]').val($oil_2_num);
+		$('#CheckboxGroup0_res').val(CheckboxGroup0_res);
+		var oil_price = $(this).find("option:selected").attr('data-price');
+		var jy_price = $('#jy_price').attr('price');
+		var kt_price = $('#kt_price').attr('price');
+		var kq_price = $('#kq_price').attr('price');
+		var dikou = $('#dikou').attr('price');
+		amount = oil_price*1+jy_price*1+kt_price*1+kq_price*1-dikou*1+99;
+		$('#oil_price').text('￥'+oil_price);
+		$('#oil_price').attr('price',oil_price);
+		$('#amount').text('￥'+amount);
+	});
+
+	$("#jilv").change(function(){
+		var $data_id = $(this).find("option:selected").attr('data_id');
+		$('#CheckboxGroup1_res').val($data_id);//放到要提交的数据框里面
+		var jy_price = $(this).find("option:selected").attr('data-price');
+		var oil_price = $('#oil_price').attr('price');
+		var kt_price = $('#kt_price').attr('price');
+		var kq_price = $('#kq_price').attr('price');
+		var dikou = $('#dikou').attr('price');
+		amount = oil_price*1+jy_price*1+kt_price*1+kq_price*1-dikou*1+99;
+		$('#jy_price').text('￥'+jy_price);
+		$('#jy_price').attr('price',jy_price);
+		$('#amount').text('￥'+amount);
+	});
+	$("#konglv").change(function(){
+		var $data_id = $(this).find("option:selected").attr('data_id');
+		$('#CheckboxGroup2_res').val($data_id);//放到要提交的数据框里面
+		var kq_price = $(this).find("option:selected").attr('data-price');
+		var oil_price = $('#oil_price').attr('price');
+		var kt_price = $('#kt_price').attr('price');
+		var jy_price = $('#jy_price').attr('price');
+		var dikou = $('#dikou').attr('price');
+		amount = oil_price*1+jy_price*1+kt_price*1+kq_price*1-dikou*1+99;
+		$('#kq_price').text('￥'+kq_price);
+		$('#kq_price').attr('price',kq_price);
+		$('#amount').text('￥'+amount);
+	});
+	$("#kongtiaolv").change(function(){
+		var $data_id = $(this).find("option:selected").attr('data_id');
+		$('#CheckboxGroup3_res').val($data_id);//放到要提交的数据框里面
+		var kt_price = $(this).find("option:selected").attr('data-price');
+		var oil_price = $('#oil_price').attr('price');
+		var kq_price = $('#kq_price').attr('price');
+		var jy_price = $('#jy_price').attr('price');
+		var dikou = $('#dikou').attr('price');
+		amount = oil_price*1+jy_price*1+kt_price*1+kq_price*1-dikou*1+99;
+		$('#kt_price').text('￥'+kt_price);
+		$('#kt_price').attr('price',kt_price);
+		$('#amount').text('￥'+amount);
+	});
+
+    $("#subBtn").click(function(){
+        if($('input[name="service_cost"]:checked').val() == 1){
+        }else{
+            alert('请确定服务费99元');
+            return false;
+        }
+        addValues();
+        $("#subForm").submit();
+    });
+    $('#no-service').click(function(){
+    	if( $(this).attr('checked') == 'checked' ){
+    		$('.checkbox').removeAttr('checked');
+    		$("#amount").text('99');
+    		amount = 99;
+    		$('#CheckboxGroup0_res').val('');
+    		$('#CheckboxGroup1_res').val('');
+    		$('#CheckboxGroup2_res').val('');
+    		$('#CheckboxGroup3_res').val('');
+    	}else{
+    		$('.checkbox').attr('checked','checked');
+    		
+    		$('.table').find('.checkbox').each(function(){
+    			if( $(this).attr('checked') == 'checked' ){
+    				amount += Number( $(this).attr('data-price') );
+    			}
+    		})
+    		$("#amount").text(amount);
+    		addValues();
+    	}
+    })
+    
+    //养车点点ajax更新事件
+    $('#ddBtn').bind('click',function(){
+        if(confirm('确认更新养车点点')){
+            //获取订单id ,用于更新表
+            var id = $('#order_id').attr('data-id');
+            $.ajax({
+                type:'POST',
+                url:'__URL__/ajax_dd_update',
+                cache:false,
+                dataType:'JSON',
+                data:'id='+id,
+                success:function(data){
+                    if(data=='success'){
+                        alert('更新已成功完成');
+                        location.reload();
+                    }else{
+                        alert('更新出现错误，请稍后重试!');
+                        location.reload();
+                    }
+                }
+            });
+        }else{
+            return  false ;
+        }
+         
+    });
+
+    //阻止客服同一时间段下过盛的订单
+    $('#order_time2').change(function(){
+        var order_time = $("#order_time").val();
+        var order_time2 = $("#order_time2").val();
+        var city_id = $("#city_id").val();
+        if(city_id==1){
+            $.ajax({
+                type:'POST',
+                url:'__URL__/prevent',
+                cache:false,
+                dataType:'JSON',
+                data:'order_time='+order_time+'&order_time2='+order_time2+'&type=1',
+                success:function(data){
+                    //alert(data);
+                    if(data<26){
+                        jQuery("#editBtn").attr('style','');
+                        return true;
+                    }else{
+                        jQuery("#editBtn").attr('style','display:none;');
+                        alert('这个时间段单量已经饱和');
+                        return false;
+                    }
+                }
+            });
+        }
+    });
+    
+    /*城市区域选择,目前只开放上海 wql@20150727 */  
+    $(function(){
+        var area_id = Number({$order_info.area_id}) ;   
+        //alert(area_id);
+        $.ajax({
+            type:'POST',
+            url:'__URL__/ajax_area',
+            cache:false,
+            dataType:'JSON',
+            data:'city_id=1',
+            success:function(data){
+                var Data = eval('(' + data + ')');
+                var data = Data.data;
+                if(data.errno == 0){
+                    var area_list_html = '<option value="">选择区域</option>';
+                    $.each(data.result.area_list, function(k, v){
+                        if(area_id && area_id==v['areaID']){
+                            area_list_html += '<option selected="selected" value="'+v['areaID']+'">'+v['area']+'</option>';
+                        }else{
+                            area_list_html += '<option value="'+v['areaID']+'">'+v['area']+'</option>';
+                        }
+                    });
+                    $("#area_id").html(area_list_html);
+                }else{
+                    return false;
+                }
+            }
+        });  
+    });
+    
+    
+    //检查并修改价格 wql@20150728
+    $('#chk_price').bind('click',function(){
+        $.ajax({
+            type:'POST',
+            url:'__URL__/ajax_chk_price',
+            cache:false,
+            dataType:'JSON',
+            data:'order_id='+{$order_info.id},
+            success:function(data){
+                var Data = eval('(' + data + ')');
+                var data = Data.data;
+                if(data.errno == 0){
+                   alert(data.errmsg); 
+                   location.reload();
+                }else{
+                    return false;
+                }
+            }
+        });  
+    });
+
+
+    function addValues(){
+    	CheckboxGroup0_res = $('option[name=item_0]').attr('data_id');
+        CheckboxGroup1_res = $('option[name=item_1]').attr('data_id');
+        CheckboxGroup2_res = $('option[name=item_2]').attr('data_id');
+        CheckboxGroup3_res = $('option[name=item_3]').attr('data_id');
+      	//获得每样的数量
+        var $oil_1_id = $('option[name=item_0]').attr('data-oil-1-id'); 
+    	var $oil_1_num = $('option[name=item_0]').attr('data-oil-1-num');
+    	var $oil_2_id = $('option[name=item_0]').attr('data-oil-2-id');
+    	var $oil_2_num = $('option[name=item_0]').attr('data-oil-2-num');
+        //if( $('#check1').attr('checked') == 'checked' ){
+        	$('option[name=oil_1_id]').val($oil_1_id);//放到要提交的数据框里面
+        	$('option[name=oil_2_id]').val($oil_2_id);
+        	$('option[name=oil_1_num]').val($oil_1_num);
+        	$('option[name=oil_2_num]').val($oil_2_num);
+        	$('#CheckboxGroup0_res').val(CheckboxGroup0_res);
+        //}else{
+        	//$('#CheckboxGroup0_res').val('');
+        //}
+        if( $('#check2').attr('checked') == 'checked' ){
+        	$('#CheckboxGroup1_res').val(CheckboxGroup1_res);
+        }else{
+        	$('#CheckboxGroup1_res').val('');
+        }
+        if( $('#check3').attr('checked') == 'checked' ){
+        	$('#CheckboxGroup2_res').val(CheckboxGroup2_res);
+        }else{
+        	$('#CheckboxGroup2_res').val('');
+        }
+        if( $('#check4').attr('checked') == 'checked' ){
+        	$('#CheckboxGroup3_res').val(CheckboxGroup3_res);
+        }else{
+        	$('#CheckboxGroup3_res').val('');
+        }
+    }
+	function checkClick(event,k){
+		$('#no-service').removeAttr('checked');
+		k--;
+		var $item_price = $('#item_price_'+k);
+		if( $(event).attr('checked') == 'checked' ){
+			$price = $(event).attr('data-price');
+			amount +=  Number($price );
+			$("#amount").text(amount);
+		}else{
+			$price = $(event).attr('data-price');
+			
+			amount -= Number($price);
+			if(amount<0){
+				amount = 0;
+			}
+			console.log(amount)
+			$("#amount").text(amount);
+		}
+		$(this).attr("data-price",$price);
+	}
+
+	function showbaogao(){
+		$("#showbaogao").show();
+	}
+
+	//获取坐标
+	function get_coordinate(){
+		var address = $('#address').val();
+		//alert(address);
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Carservice/Carserviceorder/ajax_geocoder',
+			cache:false,
+			dataType:'JSON',
+			data:{address:address},
+			success:function(data1){
+				//alert(data1);
+				obj = JSON.parse(data1);
+				if(obj.data.errno == 0){
+					 pos = obj.data.result.coordinate;
+					if(pos!=""){
+						alert(pos);
+						$("#coordinate").val(pos);
+						alert("添加坐标成功！");
+					}
+				}else{
+					alert(data.errmsg);
+					return false;
+				}
+			}
+		});
+	}
+
+</script>
+
+
+<!-- 检测报告 -->
+
+<div id="showbaogao" class="baogaobox" style="display:none;">
+  <div class="baogaoboxtop"><a onclick="jQuery(this).parent().parent().hide()">×</a><h3>检测报告</h3></div>
+  <div class="baogaoboxcon">
+  	<iframe src ="__WEB__/mobile/check_report-report_id-{$order_info['report_id']}" frameborder="0" width="100%" height="100%" marginheight="0" marginwidth="0" frameborder="0" scrolling="auto" width="100%"></iframe>
+  </div>
+</div>
+<style type="text/css">
+.baogaobox {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    display: none;
+    left: 50%;
+    margin-left: -300px;
+    /*margin-top: -220px;*/
+    position: fixed;
+    top: 10%;
+    width: 768px;
+}
+.baogaobox .baogaoboxtop {
+    border-bottom: 1px solid #aaaaaa;
+    height: 40px;
+    line-height: 40px;
+}
+.baogaobox .baogaoboxtop a {
+    border-left: 1px solid #aaa;
+    cursor: pointer;
+    float: right;
+    font-size: 18px;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+}
+.baogaobox .baogaoboxtop a:hover {
+    background: none repeat scroll 0 0 #ccc;
+}
+.baogaobox .baogaoboxtop h3 {
+    font-size: 14px;
+    line-height: 40px;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+.baogaobox .baogaoboxcon {
+    height: 500px;
+    overflow: hidden;
+}
+
+</style>

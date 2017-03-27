@@ -1,0 +1,135 @@
+/*custom jquery mobile theme START*/
+.ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b { background-color: #252525; border-color: #454545; color: #fff; text-shadow: 0 1px 0 #111; position: fixed;}
+.ui-input-text{margin:  0px;}
+/*custom jquery mobile theme END*/
+
+/*活动首页 START*/
+#site-logo{width: 60px; height: 60px; display: block; background: url("http://event.xieche.com.cn/20140620/images/wap-logo.png") center center no-repeat; background-size: 40px;}
+.share-arrow{ display:none; z-index: 9999;  width: 80px;height: 180px; position: absolute; right: 0px;top: 0px; background: url("http://event.xieche.com.cn/20140620/images/arrow.png") 20px center no-repeat; background-size: 70%;}
+.main-banner-container{padding: 0px; position: relative;}
+.main-title{margin:0px; padding:10px; height: 30px; width: 100%; position: absolute; left: 0px; bottom: 0px; background: rgba(0,0,0,0.7); color: #ffffff; text-align: center; font-size: 1.3em;}
+.main-title-desc{padding: 10px; line-height: 22px;  background: #f5f5f5; }
+.main-title-desc h4{font-size: 1.2em; text-align: center; font-weight: bolder}
+.main-title-desc p{font-size: 1em}
+.index-cate-title{font-size: 1.5em; color: #000000; padding: 10px;}
+.index-cate-desc{font-size: 1.1em; color: #666; padding: 0px 20px;}
+.index-cate-desc a{color: #0046b4; font-size: 1.1em;}
+.index-cate-desc a:visited{color: #0046b4; }
+.index-cate-desc a:hover{color: #0046b4; }
+
+.more-coupon-link{padding: 10px 0px;}
+.more-coupon-link a{background: #00aff2; color: white; width: 80%;  text-align: center; border-radius: 4px; padding: 6px 0px; height: 30px; line-height: 30px; margin: 0 auto;}
+
+
+.single-model{padding: 10px 20px;}
+.model-name{height: 30px; line-height: 30px; font-size: 1.2em; }
+.model-get a{background: #00aff2; color: white; width: 80%; text-align: center; border-radius: 8px; padding: 4px 0px; height: 30px; line-height: 30px; margin: 0 auto; float: right; display: inline-block;}
+.model-get a:visited{color: #ffffff;}
+.model-get a:hover{color: #ffffff;}
+
+.event-rule{ padding-bottom: 50px; }
+.event-rule li{padding: 10px; font-size: 1.3em;}
+.event-rule li span{font-size: 1em; display: inline-block; color: white; background: #00aff2; width: 15px; height: 15px; padding: 4px; line-height: 15px; text-align: center; border-radius: 1px; }
+.event-rule li a{color: #0046b4; font-size: 1.4em;}
+.event-rule li a:visited{color: #0046b4; }
+.event-rule li a:hover{color: #0046b4; }
+/*活动首页 END*/
+
+/*竞猜活动页面 开始*/
+
+#popup-login .popup-btn-container > div > input[type="text"] {width: 150px; height: 30px; line-height: 30px; font-size: 1.1em; padding: 0px 5px;}
+#popup-login .popup-btn-container > div > a{ display: block; margin: 0 auto; width: 90%; background: #0066cc; border: none; border: none; color: white;  height: 30px; line-height: 30px; border-radius: 5px;} 
+
+.popup-tpl-close-btn,.popup-login-close-btn {position: absolute; right: 20px; top: 10px; font-size: 1.5em; font-family: arial; font-family: 'helvetica neue','helvetica','arial',sans-serif}
+#custom-popup1{ max-width: 300px; display: none; z-index: 10; position: absolute; margin: 0 auto; top: 50px; left: 50%; margin-left: -150px; box-sizing: border-box;}
+.black-overlay{width: 100%; height: 100%; background: rgba(0,0,0,.7); position: fixed; z-index: 9; display: none;}
+
+.playground-container{padding: 10px;}
+.playground{border: 1px solid #d0d0d0; background: #ffffff;}
+.playground .coupon-name{text-align: center; line-height: 25px; font-size: 1.3em; padding: 10px; display: block;}
+.playground .coupon-img{display: block; margin: 0 auto; width: 85%;}
+.playground .coupon-address{color: #999999; padding: 5px 10px; margin-bottom: 10px;}
+.playground-caption{ padding: 5px 10px; border-top: 1px solid #d0d0d0;}
+.number-holder{text-align: center; font-weight: bold; margin: 5px;}
+.number-holder span{font-size: 2.2em;}
+.number-holder .rmb-sign{ font-size: 1.8em;}
+.number-holder .question-mark{color: #d51938; }
+
+.guess-num-container{padding: 10px;}
+.guess-num-container li a{display: block; text-align:center; background: black; width: 80%; font-size: 3em; margin: 0 auto; color: white;}
+
+.popup-window{background: #ffffff; padding: 10px; }
+.popup-title{padding: 10px; text-align: center; font-size: 1.5em; }
+.popup-desc{padding: 0px 10px;}
+.popup-btn-container{padding: 15px 10px; }
+.popup-btn-container >div > a{background: #00aff2; width: 90%; margin: 0 auto; display: block; text-align: center; padding: .6em .3em; box-sizing: border-box; color: #ffffff; border-radius: 4px;}
+
+#popup-login{width: 290px; box-sizing: border-box; }
+#popup-login .popup-btn-container > div > input[type="text"],
+#mobile,
+#mobile_verify_lottery{ border-radius: 5px; border: 1px solid #ccc; width: 135px; height: 30px; line-height: 30px; font-size: 1.1em; padding: 0px 5px;}
+
+#popup-login .popup-btn-container > div > a{ display: block; margin: 0 auto; width: 90%; padding: 0px; background: #0066cc; border: none; border: none; color: white;  height: 34px; line-height: 34px; border-radius: 5px;} 
+
+/*竞彩活动页面 结束*/
+
+
+#left-trigger{float: left;}
+#right-trigger{float: right;}
+.list-coupon{background: #f5f5f5;}
+#list-coupon ul{ }
+#list-coupon ul li:first-child{border-top: none;}
+.single-coupon{border-bottom: 1px solid #cacaca; border-top: 1px solid #ffffff; position: relative; height: auto; padding: 10px ; }
+#list-coupon .coupon-name{  color: #000000; font-weight: normal;  white-space: normal; height: auto; line-height: 20px; font-size: 1.2em;  }
+#list-coupon .coupon-price{ position: relative; right: 0px; top: -3px; text-align: left; }
+#list-coupon .coupon-price strong{ font-size: 1.4em; color: #e60012; display: block; height: 23px; margin-right: 5px;}
+#list-coupon .coupon-price em{ color: #999999; text-decoration: line-through; font-size: 0.9em; width: 50px; margin-right: 5px; }
+#list-coupon .coupon-type{ background: #fd8612; padding: 2px 5px; color: #ffffff; font-size: 10px; display: inline-block;  text-align: center;}
+#list-coupon .bought-count,
+#list-coupon .coupon-distance,
+#list-coupon .coupon-last-date{color: #777777; font-size: .8em; display: block;}
+.single-coupon .buy-btn{background: #00aff2; color: white; width: 90%; display: inline-block; margin: 0 auto; text-align: center; border-radius: 4px; padding: 6px 0px;}
+
+
+/*竞彩结果 开始*/
+
+.result-container{background: #e9e9e9; overflow: hidden;}
+.result-container ul li{overflow: hidden; }
+#all-result-btn, 
+#my-result-btn{font-size: 1.3em;}
+#all-result-btn:visited, 
+#my-result-btn:visited{color: #000000;}
+ #all-result-btn:hover, 
+#my-result-btn:hover{background: #00aff2; color: #ffffff; }
+.ui-btn-active{background: #00aff2; color: #ffffff; }
+
+.no-result{padding: 30px 0px;background: #f5f5f5; }
+.no-result-notice{font-size: 1.4em;   text-align: center; margin-bottom: 30px; }
+.no-result-notice strong{color: #e60012; margin: 0 auto;}
+.no-result-link a{background: #00aff2; color: white; width: 80%;  text-align: center; border-radius: 4px; padding: 6px 0px; height: 30px; line-height: 30px; margin: 0 auto;}
+
+.all-result{background: #f5f5f5;}
+.all-result-notice{background: #ffffff; border: 1px solid #d3d3d3; padding: 10px; }
+.all-result-title{ font-size: 1.1em; padding: 10px 0px; font-weight: bolder;}
+.all-resule-table tr{text-align: center; height: 30px;}
+.all-resule-table .num{background: #dcdcdc; color: #8c8c8c; padding: 3px; width: 10px; height: 10px; line-height: 10px; display: inline-block; border-radius: 2px;}
+.all-resule-table .num1{background: #eb6100; color: white;}
+.all-resule-table .num2{background: #f19149; color: white;}
+.all-resule-table .num3{background: #f19149; color: white;}
+.all-result-notice2{padding: 10px;color: #a7a7a7;}
+.all-result-notice2 a{color: #0663c2}
+.all-result-notice2 a:visited{color: #0663c2}
+.all-result-notice2 a:hover{color: #0663c2}
+
+.my-single-result{background: #f5f5f5; padding: 15px 0px; border-bottom: 1px solid #e3e3e3; border-top: 1px solid #ffffff;}
+.my-single-result:first-child{border-top: none;}
+.my-single-result .coupon-title{text-align: center; color: #22272a; font-size: 1.2em; padding: 5px 0px;}
+.my-single-result .coupon-num{color: #a7a7a7; margin-bottom:5px; font-size: .9em;}
+.my-single-result .coupon-num strong{color: #000000;}
+.my-single-result .coupon-num em{color: #0663c2;}
+.my-single-result .related-info span{ font-size: 0.8em; color: #a7a7a7; }
+.my-single-result .related-info span strong{color: #000000; }
+
+.my-single-result .buy-btn{background: #00aff2; color: white; width: 80%; display: inline-block; margin: 0 auto; text-align: center; border-radius: 4px; padding: 6px 0px; height: 30px; line-height: 30px; float: right;}
+.my-single-result .buy-btn.disable{background: #a7a7a7}
+/*竞彩结果 结束

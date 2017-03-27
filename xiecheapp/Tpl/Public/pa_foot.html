@@ -1,0 +1,129 @@
+<script type="text/javascript">
+	function selectNet() {
+		var netF = document.getElementById("net").style.display;
+		if (netF == "none") {
+			document.getElementById("net").style.display = "block";
+		} else if (netF == "block") {
+			document.getElementById("net").style.display = "none";
+		}
+	}
+
+	function openGw() {
+		document.getElementById("net").style.display = "none";
+	}
+
+	function openYzt() {
+		document.getElementById("net").style.display = "none";
+	}
+</script>
+<!-- coryright -->
+<div class="clear"></div>
+<div class="pageFooter">
+	<div class="pageFooterText">
+		<div class="footerLeft">
+			<span><a href="http://www.pahaoche.com/about.w" target="_top">关于我们</a></span>| <span><a
+				href="http://www.pahaoche.com/hire.w" target="_top">诚聘英才</a></span>
+
+
+		</div>
+		<div class="footerRight fr">
+			<div class="pft_link fr">
+				<input type="button" class="pft_btn fr" id="" onkeydown=""
+					onclick="selectNet()" /> <input type="text" class="pft_inp fl"
+					readonly value="平安集团旗下网站" onclick="selectNet()" />
+				<div id="net" style="display: none;">
+					<ul class="sel_pftlink" id="pftlink"
+						style="position: absolute; clear: both; overflow-y: hidden; height: 80px;">
+						<li><a href="http://www.pingan.com/index.shtml"
+							onclick="openGw()" target="_blank"> 中国平安官网 </a></li>
+						<li><a href="http://one.pingan.com/" onclick="openYzt()"
+							target="_blank"> 平安一账通 </a></li>
+						<li><a href="http://www.4008000000.com/?WT.mc_id=ec03-pahaoche-001" 
+						target="_blank">平安直通保险</a></li>
+					</ul>
+				</div>
+			</div>
+			<a href="#"><img src="__PUBLIC__/new_pa/images/pa_logo.gif" /></a>
+		</div>
+	</div>
+	<div class="copyright">
+		郑重提示：本公司从不上门现金收车，一旦发现请拨打4009-686-868举报，为保护您合法权益，车辆成交烦请务必到平安好车门店办理手续，谨防假冒。<br />
+		CopyRight © 2013 pahaoche.com 沪ICP备13010056号 版权所有 上海平安汽车电子商务有限公司
+	</div>
+</div>
+
+<script>
+	$(function() {
+		jQuery.fn.center = function(loaded) {
+			var obj = this;
+			body_width = parseInt($(window).width());
+			body_height = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight
+					: document.documentElement.clientHeight;
+			block_width = parseInt(obj.width());
+			block_height = parseInt(obj.height());
+
+			left_position = parseInt((body_width / 2) - (block_width / 2)
+					+ $(window).scrollLeft());
+			if (body_width < block_width) {
+				left_position = 0 + $(window).scrollLeft();
+			}
+
+			top_position = parseInt((body_height / 2) - (block_height / 2)
+					+ $(window).scrollTop());
+			if (body_height < block_height) {
+				top_position = 0 + $(window).scrollTop();
+			}
+
+			if (!loaded) {
+
+				obj.css({
+					'position' : 'absolute'
+				});
+				obj.css({
+					'top' : top_position,
+					'left' : left_position
+				});
+				$(window).bind('resize', function() {
+					obj.center(!loaded);
+				});
+				$(window).bind('scroll', function() {
+					obj.center(!loaded);
+				});
+
+			} else {
+				obj.stop();
+				obj.css({
+					'position' : 'absolute'
+				});
+				obj.animate({
+					'top' : top_position
+				}, 200, 'linear');
+			}
+		}
+	});
+</script>
+
+<!-- 百度pvuv统计代码 -->
+<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://"
+			: " http://");
+	document
+			.write(unescape("%3Cscript src='"
+					+ _bdhmProtocol
+					+ "hm.baidu.com/h.js%3Fb593fe6dbbc3a165ec20a9a9512890f5' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<!-- 好车百度统计代码 2014-02-14 Updated Start -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F69ef61b339394883895a6da0ee2a06bc' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- 好车百度统计代码 2014-02-14 Updated End -->
+
+<script type="text/javascript">
+	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5811873'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5811873%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+
+	$("#cnzz_stat_icon_5811873").hide();
+</script>
+</body>
+</html>

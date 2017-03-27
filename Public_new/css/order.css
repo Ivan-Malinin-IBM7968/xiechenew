@@ -1,0 +1,336 @@
+/*order page css*/
+
+.ordernav{
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.onavtip{
+	height: 30px;
+	background: #19293b;
+	line-height: 30px;
+	overflow: hidden;
+}
+.onavtip p,.onavdes p{
+	display: inline-block;
+	width: 200px;
+}
+.onavtip p span{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-top: 8px;
+	background: #646c76;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.onavtip p span:hover{
+	background: #FFFFFF;
+}
+.onavtip p span.current{
+	background: #FFFFFF;
+}
+.onavdes{
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	font-size: 16px;
+}
+
+.ordercon{
+	width: 1183px;
+	margin: 20px auto;
+	overflow: hidden;
+	font-size: 14px;
+}
+
+.orderchange,.orderform{
+	border: 1px solid #eaeeed;
+	/*overflow: hidden;*/
+	width: 580px;
+	padding: 0 10px;
+	min-height: 820px;
+}
+
+.orderchange{
+	
+}
+
+.bsby{
+	width: 568px;
+	margin: 15px auto;
+	overflow: hidden;
+}
+.bsby div{
+	float: left;
+	width: 284px;
+	padding-left: 15px;
+}
+.bsby label input{
+	
+}
+
+
+.xieshifu{
+	overflow: hidden;
+}
+
+.xieshifu ul.xieshifunav{}
+
+.xieshifu ul.xieshifunav li{
+	width: 50%;
+	display: inline-block;
+}
+
+.xieshifu ul.xieshifunav li.active{
+	background: #eaeeed;
+}
+
+.xieshifucon{
+	background: #eaeeed;
+	padding: 15px;
+}
+
+.xieshifucon .oildes{
+	padding-top: 20px;
+}
+
+.xieshifucon .oildes p {
+    line-height: 2em;
+}
+
+.xieshifucon .oildes p.pbt{
+	color: #5476a4;
+}
+
+.col-head{
+	background: #eaeeed;
+	height: 40px;
+	line-height: 40px;
+	margin: 10px 0;
+	text-indent: 15px;
+	font-size: 14px;
+}
+
+.changeitem{}
+.changeitem .item{
+	height: 43px;
+	margin: 25px auto;
+	padding: 0 15px;
+}
+
+.changeitem .item .checkbox{
+	width: 30px;
+}
+
+.changeitem .item .changecon{
+	width: 492px;
+	height: 43px;
+	line-height: 43px;
+	background: url(../images/order/select.png) 0 0 no-repeat;
+}
+
+.changeitem .item .changeonly{
+	width: 492px;
+	height: 43px;
+	line-height: 43px;
+	background: url(../images/order/select.png) 0 -44px no-repeat;
+	text-align: center;
+}
+
+.changeitem .item .changecon .changename{
+	width: 80px;
+	text-align: center;
+}
+
+.changeitem .item .changecon .changediv{
+	width: 410px;
+	cursor: pointer;
+	position: relative;
+}
+
+.changeitem .item .changecon .changediv input{
+	width: 410px;
+	display: block;
+	height: 43px;
+	text-indent: 15px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.changeitem .item .changecon .changediv ul{
+	position: absolute;
+	top: 43px;
+	left: 0;
+	width: 410px;
+	background: #FFFFFF;
+	border: 1px solid #ccc;
+	border-top: none;
+	text-indent: 15px;
+	overflow: hidden;
+	z-index: 2;
+}
+
+.changeitem .item .changecon .changediv ul li{
+	height: 30px;
+	line-height: 30px;
+}
+
+.changeitem .item .changecon .changediv ul li:hover{
+	background: #DDDDDD;
+}
+
+.changeitem .item .changecon .changediv ul p{
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	margin: 0;
+}
+
+
+.forminfo{
+	padding: 0 0 0 15px;
+}
+
+.forminfo.disno{
+	display: none;
+}
+
+.forminfo label{
+	font-weight: normal;
+	margin: 0;
+}
+
+.forminfo tr{
+	height: 65px;
+}
+
+.forminfo input,.forminfo select{
+	height: 43px;
+}
+
+.tijiao{
+	text-align: right;
+	font-size: 18px;
+	overflow: hidden;
+	height: 40px;
+	line-height: 40px;
+	margin: 20px 0;
+}
+
+.tijiao span{
+	font-size: 30px;
+	color: #F05525;
+}
+
+.tijiao a{
+	display: inline-block;
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	color: #FFFFFF;
+	background: #f05525;
+	text-align: center;
+}
+
+.tijiao button{
+	display: inline-block;
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	color: #FFFFFF;
+	background: #f05525;
+	text-align: center;
+}
+
+.tijiao a:hover{
+	text-decoration: none;
+	background: #ec7a56
+}
+
+.moreinfo{cursor: pointer;}
+
+.forminfo .countquan{
+	margin: 20px 0;
+	overflow: hidden;
+}
+
+.forminfo .countquan span{
+	color: #f05525;
+}
+
+.forminfo .quan{
+	margin: 10px 0;
+	overflow: hidden;
+}
+
+.forminfo .quan span{
+	color: #4a6495;
+	cursor: pointer;
+}
+
+.syquan{
+	border-top: 1px solid #cccccc;
+	margin-top: 15px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.syquan span{
+	color: #f05525;
+}
+
+#payment{
+	cursor: pointer;
+	background: url(../images/order/select.png) no-repeat -27px -89px;
+}
+
+.paymentul{
+	position:absolute; 
+	top:51px; 
+	background:#FFFFFF; 
+	width:466px; 
+	display:none;
+	text-indent: 15px;
+	border: 1px solid #cccccc;
+	border-top: none;
+}
+.paymentul li{
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.paymentul li:hover{
+	background: #DDDDDD;
+}
+
+.item_price{display: none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

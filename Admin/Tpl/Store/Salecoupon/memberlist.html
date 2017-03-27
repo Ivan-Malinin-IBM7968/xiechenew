@@ -1,0 +1,94 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">抵用券用户列表[ <A HREF="__URL__">返回列表</A> ]</div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+			<input type="button" value="添加用户" onclick="window.location.href='__URL__/add_membersalecoupon/coupon_id/{$coupon_id}'" />
+        </div>
+        <!-- 功能操作区域结束 -->
+		<div>
+			<FORM METHOD=POST ACTION="__URL__/memberlist/id/{$coupon_id}">
+			<table cellspacing="0" cellpadding="10" >
+				<tr>	
+					<td>
+					手机号：<input type="text" name="mobile" id="mobile" value="{$mobile}">
+					</td>
+				</tr>
+				<tr>	
+					<td>
+					是否使用：<input type="radio" value="1" name="is_use"  <if condition="$is_use eq 1">checked</if>>是
+					<input type="radio" value="0" name="is_use"  <if condition="$is_use eq 0">checked</if>>否
+					<input type="radio" value="" name="is_use"  <if condition="$is_use eq ''">checked</if>>全部
+					</td>
+				</tr>
+				<tr>	
+					<td>
+					是否绑定：<input type="radio" value="1" name="order_id"  <if condition="$order_id eq 1">checked</if>>是
+					<input type="radio" value="0" name="order_id"  <if condition="$order_id eq 0">checked</if>>否
+					<input type="radio" value="" name="order_id"  <if condition="$order_id eq ''">checked</if>>全部
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<input type="radio" value="" name="from"  <if condition="$from eq ''">checked</if>>全部
+						<volist name="ARRAY" id="list" key="key">
+							<input type="radio" value="{$list}" name="from"  <if condition="$from eq $list">checked</if>>{$list}
+						</volist>
+
+					</td>
+				</tr>
+				<tr>	
+					<td colspan="3" align="center">	
+						<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">
+					</td>
+				</tr>
+			</table>
+			</FORM>
+		</div>
+        <!-- 列表显示区域  -->
+        <div class="list" >
+        	<table class="list">
+        		<tr>
+					<th>编号</th>
+        			<th>用户名称</th>
+        			<th>电话</th>
+        			<th>来源</th>
+					<th>验证码</th>
+        			<th>添加时间</th>
+        			<th>是否使用</th>
+        			<th>使用时间</th>
+					<th>操作</th>
+        		</tr>
+        	<volist name="memberlist" id="vo">
+        		<tr>
+					<td>{$vo.membersalecoupon_id}</td>
+        			<td><a href="__APP__/Store/member/read/id/{$vo.uid}" target="_blank">{$vo['memberinfo']['username']}</a></td>
+        			<td>{$vo['memberinfo']['mobile']}</td>
+        			<td>{$vo.from}
+					<!-- <volist name="Think.config.MEMBER_FORM" id="name">
+						<if condition="$vo['memberinfo']['fromstatus'] eq $key"> {$name}</if> 
+					</volist> -->
+					</td>
+					<td>{$vo.coupon_code}</td>
+        			<td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+        			<td><if condition="$vo.is_use eq 1">已使用<else />未使用</if></td>
+        			<td><if condition="$vo.use_time gt 0">{$vo.use_time|date="Y-m-d",###}<else />--</if></td>
+					<td><if condition="$vo.order_id eq 0"><a href='__URL__/orders/membersalecoupon_id/{$vo.membersalecoupon_id}'>绑订单</a><else /><a href="__APP__/Store/order/edit/order_id/{$vo.true_order_id}">{$vo.order_id}({$vo.true_order_id})</a>&nbsp;&nbsp;{$vo.order_state}</if></td>
+        		</tr>
+        	</volist>
+        	</table>
+        </div>
+		<!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

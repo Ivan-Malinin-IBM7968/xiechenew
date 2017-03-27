@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>猜底价 送保养</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/reset.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/main.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/app.css">
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.js"></script>
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.mobile-1.3.2.min.js"></script>
+		<script src="http://event.xieche.com.cn/20140620/js/libs/wechatapi.js"></script>
+
+		<script src="http://event.xieche.com.cn/20140620/js/libs/require.js" data-main="http://event.xieche.com.cn/20140620/js/conf/playground_conf"></script>
+
+	</head>
+	
+</head>
+	<body style="background: #f5f5f5; position: relative; ">
+		
+		<input type="hidden" id="hide_Quiz_count" name="hide_Quiz_count" value="{$Quiz_count}">
+		<div id="wrapper">
+			<style>
+			</style>
+			<!-- <div class="popup-window" id="custom-popup1" >
+				<h2 class="popup-title">恭喜你猜对了！</h2>
+			    <div class="ui-content popup-desc">
+			      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+		      	</div>
+			    <div class="popup-btn-container ui-grid-a">
+			    	<div class="ui-block-a">
+			    		<a href="#main-page"  data-rel="back">填写手机号领券</a>
+			    	</div>
+			    	<div class="ui-block-b">
+			    		<a href="#main-page"  data-rel="back" data-transition="flow">点击分享</a>
+			    	</div>
+			    </div>
+			</div>
+			<div class="black-overlay"></div>
+-->			<!-- Main Page Start -->
+			<div data-role="page" id="main-page">
+				<div class="share-arrow"></div>
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>猜底价 送保养</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<!-- Header End -->
+				
+
+				
+
+				<!-- 竞猜模块 -->
+				<div class="ui-grid-solo playground-container" >
+					<div class="playground ui-grid-solo">
+						<a href="" id="view-profile-trigger"><if condition="$member['mobile'] neq '0'">帐号:{$member.mobile} </a>
+						
+								
+							<a href="__APP__/public-logout" rel="external" data-transition="flow">退出</a>
+						</if>
+						<h4 class="coupon-name">{$coupon.coupon_name}</h4>
+						<img src="{$coupon.coupon_pic}" alt="{$coupon.coupon_name}" class="coupon-img">
+						<div class="coupon-address"></div>
+						<div class="playground-caption">猜底价</div>
+						<div class="number-holder">
+							<span class="rmb-sign">￥</span>
+							<span>{$coupon[quiz_amount][0]}</span>
+							<span class="question-mark">?</span>
+							<span>{$coupon[quiz_amount][2]}</span>
+						</div>
+						<ul class="ui-grid-d guess-num-container">
+							<if condition="$is_open eq 1">
+
+								<volist name="coupon.rand_amount" id="vo_amount">
+								<li class="ui-block-{$key}">
+									<!-- #popupDialog{$i} -->
+									<a href="javascript:void(0)" id="test" class="popup-trigger"  >{$vo_amount}</a>
+								</li>
+								</volist>
+
+							<else/>
+								活动每天中午12点整开始
+							</if>
+
+						</ul>
+					</div>
+				</div>
+				<!-- 竞猜模块 -->
+				
+				<div data-role="popup" id="popupLogin" class="ui-corner-all">
+				    <form>
+				        <div style="padding:10px 20px;">
+				            <h3>Please sign in</h3>
+				            <label for="un" class="ui-hidden-accessible">Username:</label>
+				            <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+				            <label for="pw" class="ui-hidden-accessible">Password:</label>
+				            <input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+				            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>
+				        </div>
+				    </form>
+				</div>
+				
+				<div class="ui-block-solo" style="padding: 10px 20px; text-align: right; ">
+					<a href="__APP__/Explosion-result" rel="external" class="buy-btn disable">查看竞猜结果</a>
+				</div> 
+
+				<div class="index-cate-title">你可能感兴趣的</div>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+						<volist name="couponList" id="vo">
+				        <li class="ui-grid-a single-coupon">
+							<div class="ui-block-a" style="width: 35%">
+								<img src="/UPLOADS/Coupon/Logo/{$vo.coupon_pic}" alt="{$vo.coupon_name}" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">{$vo.coupon_name}</h3>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥{$vo.coupon_amount}元</strong>
+										<em>¥{$vo.cost_price}</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="__APP__/Mobile-coupon_detail-coupon_id-{$vo.id}" class="buy-btn disable">立即购买</a>
+									</div> 					
+								</div>
+							</div>
+				        </li>
+				        </volist>
+				    </ul>
+				</div>
+				<div class="ui-grid-solo more-coupon-link" style="background: #ddd; padding: 20px 0px;">
+		   			<a href="/Explosion-coupon_list"  rel="external" style="display: block; background: #0066cc; margin: 0 auto; font-size: 1.2em">更多优惠券选择</a>
+		   		</div>
+		   		<div class="index-cate-title">活动规则</div>
+		   		<ul class="event-rule">
+		   			<li>
+		   				<span>1</span>本次竞猜活动共五天，每天送出5份保养（先猜对先得，送完为止）
+		   			</li>
+		   			<li>
+		   				<span>2</span>活动时间：每天中午12点起竞猜直至0点
+		   			</li>
+		   			<li>
+		   				<span>3</span>
+		   				猜中的用户，请提前两天至电<a href="tel:400-660-2822">400-660-2822</a> 进行到店预约。
+		   			</li>
+		   			<li>
+		   				<span>4</span>在7月2日至7月8日保养用户，尊享车模全程接待以及小礼物一份。
+		   			</li>
+		   			<li>
+		   				<span>5</span>本券有效期直至2014年12月31日。
+		   			</li>
+		   		</ul>
+
+				<!-- Popup TPL  Start -->
+				<div data-role="popup" class="popup-window" id="popup-tpl" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+					<!-- <a href="#" class="popup-tpl-close-btn">X</a> -->
+					<h2 class="popup-title" style="margin: 0px;">恭喜你猜对了！</h2>
+				    <div class="ui-content popup-desc">
+				      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+			      	</div>
+				    <div class="popup-btn-container ui-grid-a">
+				    	<div class="ui-block-a">
+				    		<a href="#main-page" rel="external" class="popup-left-btn">填写手机号领券</a>
+				    	</div>
+				    	<div class="ui-block-b">
+				    		<a href="#main-page" rel="external"  class="popup-right-btn share-trigger-btn">点击分享</a>
+				    	</div>
+				    </div>
+				</div>
+
+				<!-- Popup TPL  End -->
+				<div data-role="popup" data-history="false" class="popup-window" id="popup-login" data-overlay-theme="b" data-theme="b" data-dismissible="false" data-position-to="window" style="max-width:400px;  ">
+					<form action="">
+						<!-- <a href="#" class="popup-login-close-btn">X</a> -->
+						<!-- <h2 class="popup-title">填手机玩游戏！</h2> -->
+				    	<div class="ui-content popup-desc" style="font-size: 1.2em; text-align: center; margin-bottom: 10px;">
+					      	参与竞猜！请填写手机号继续！
+				      	</div>
+					    <div class="popup-btn-container ui-grid-a" style="padding: 10px;">
+					    	<div class="ui-block-a" style="width: 60%">
+					    		<input type="text" class="" placeholder="请填写手机号" id="mobile" name="mobile">
+					    	</div>
+					    	<div class="ui-block-b" style="width: 40%">
+					    		<a href='javascript:void(0)'  id="send_verify" >获取验证码</a>
+					    	</div>
+					    </div>
+
+					    <div class="popup-btn-container ui-grid-a" style="padding: 10px;">
+					    	
+					    	<div class="ui-block-a" style="width: 60%">
+					    		<input type="text" type="text" placeholder="填写验证码" id="mobile_verify_lottery" name="mobile_verify_lottery">
+					    	</div>
+					    	<div class="ui-block-b" style="width: 40%">
+					    		<a href='javascript:void(0)' id="login-trigger"  >验证</a>
+					    	</div>
+					    </div>
+					</form>
+				</div>
+
+				<!-- Popup login End -->
+
+			</div>
+			
+			<!-- Main Page End -->
+
+			<!-- Popup login  Start -->
+			
+
+			
+		</div>
+		
+		
+	<script>
+		$(document).ready(function(){
+
+			$("#login-trigger").on('click',login)
+
+			function login(){
+				var mobile = $('#mobile').val();
+				var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+				
+				$.ajax({
+					type: "POST",
+					url: "/Explosion-login",
+					cache: false,
+					data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							alert('验证码填写错误');
+							return false;
+						}else if(data == '3'){
+							alert('验证成功');
+							location.reload();
+						}else if(data == '5'){
+							alert('请填写手机号码');
+							return false;
+						}
+					},
+					error: function(){
+						
+					}
+				})
+			}
+
+			$(".popup-trigger").on("click", function(e){
+				e.preventDefault();
+				var coupon_id = {$coupon.id},
+					num = $(this).html();
+
+				$.ajax({
+					url : 'http://www.xieche.com.cn/Explosion-Ajax_postQuiz-coupon_id-' + coupon_id + '-num-' +num,
+					dataType : 'json',
+					success : function(data){
+						
+						if(data == 1){
+							$("#popup-tpl").popup({
+								history: false ,
+							  	beforeposition: function( event, ui ) {
+							  		$(this).find(".popup-title").html("恭喜您，猜对了!")
+							  		$(this).find(".popup-desc").html("保养券将直接发送到您的手机!");
+							  		$(this).find(".popup-left-btn").html("去领取").attr('href','/Explosion-result');
+							  		
+							  	}
+							});
+
+							$("#popup-tpl").popup("open");
+
+						}else if(data == 2){
+							$("#popup-tpl").popup({
+								history: false ,
+							  	beforeposition: function( event, ui ) {
+							  		$(this).find(".popup-title").html("不好意思猜错了！ ")
+							  		$(this).find(".popup-desc").html("分享后可以再活得一次精彩机会哦！");
+							  		$(this).find(".popup-left-btn").html("直接购买").attr('href','/Explosion-coupon_list');
+							  		
+							  	}
+							});
+
+							$("#popup-tpl").popup("open");
+
+						}else if(data == 3){
+							$("#popup-tpl").popup({
+								history: false ,
+							  	beforeposition: function( event, ui ) {
+							  		$(this).find(".popup-title").html("不好意思猜错了！")
+							  		$(this).find(".popup-desc").html("今天的两次机会都用完了！！请去购买！ ");
+							  		$(this).find(".popup-left-btn").html("直接购买").attr('href','/Explosion-coupon_list');
+							  		
+							  	}
+							});
+
+							$("#popup-tpl").popup("open");
+
+						}else if(data == 4){
+							$("#popup-tpl").popup({
+								history: false ,
+							  	beforeposition: function( event, ui ) {
+							  		$(this).find(".popup-title").html("每天只有两次竞猜机会！")
+							  		$(this).find(".popup-desc").html("每天只有两次竞猜机会哦亲！请明天再来！ ");
+							  		$(this).find(".popup-left-btn").html("查看我的竞猜").attr('href','/Explosion-result');
+							  		
+							  	}
+							});
+
+							$("#popup-tpl").popup("open");
+
+						}
+						else if(data == 5){
+							$("#popup-tpl").popup({
+								history: false ,
+							  	beforeposition: function( event, ui ) {
+							  		$(this).find(".popup-title").html("亲！您已经竞猜过一次了哦！")
+									$(this).find(".popup-desc").html("分享到朋友圈或者发送给朋友，您可以获得第二次竞猜机会！");
+									$(this).find(".popup-left-btn").html("直接购买").attr('href','/Explosion-coupon_list');
+							  		
+							  	}
+							});
+
+							$("#popup-tpl").popup("open");
+
+						}
+					}
+				})
+			});
+
+		function weixinShareTimeline(title,desc,link,imgUrl){  
+			    WeixinJSBridge.invoke('shareTimeline',{  
+			        "img_url":imgUrl,  
+			        //"img_width":"640",   
+			        //"img_height":"640",   
+			        "link":link,  
+			        "desc": desc,  
+			        "title":title  
+			    });   
+			} 
+
+			WeixinApi.ready(function(Api) {
+
+		        // 微信分享的数据
+		        var wxData = {
+		            "appId": "wx43430f4b6f59ed33", // 服务号可以填写appId
+		            "imgUrl" : 'http://event.xieche.com.cn/20140620/images/main-title.jpg',
+		            "link" : "http://www.xieche.com.cn/Explosion-playground",
+		            "desc" : '猜对底价，免费送保养',
+		            "title" : '猜底价，送保养'
+		        };
+
+		        // 分享的回调
+		        var wxCallbacks = {
+		            ready : function() {
+		               
+		                
+		            },
+		            cancel : function(resp) {
+		              
+		                
+		            },
+		            fail : function(resp) {
+		               
+		                
+		            },
+		            confirm : function(resp) {
+		               
+		        		var coupon_id = {$coupon.id};
+		               	$.ajax({
+							url : 'http://www.xieche.com.cn/Explosion-Ajax_shareReturn-coupon_id-' + coupon_id ,
+							dataType : 'json',
+							success : function(data){
+								
+								}
+							});
+		               	
+		                 
+		            },
+		            all : function(resp) {
+		               
+		                window.open("http://www.xieche.com.cn/Explosion-playground",'self')
+		            }
+		        };
+
+		        // 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
+		        Api.shareToFriend(wxData, wxCallbacks);
+
+		        // 点击分享到朋友圈，会执行下面这个代码
+		        Api.shareToTimeline(wxData, wxCallbacks);
+
+		        // 点击分享到腾讯微博，会执行下面这个代码
+		        Api.shareToWeibo(wxData, wxCallbacks);
+
+		        // 有可能用户是直接用微信“扫一扫”打开的，这个情况下，optionMenu、toolbar都是off状态
+		        // 为了方便用户测试，我先来trigger show一下
+		        // optionMenu
+		    });
+
+		})
+	</script>
+	<include file="Public:wapfoot" />
+	</body>
+</html>

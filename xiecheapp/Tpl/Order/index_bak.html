@@ -1,0 +1,458 @@
+<layout name='layout_note' />
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script>
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+
+	$(".own_car").click(function(){
+		$("#other_car").removeAttr("checked");
+	})
+
+
+	$("#other_car").click(function(){
+		$(".own_car").removeAttr("checked");
+	})
+	var shopid = '{$shopid}';
+	var timesaleid = '{$timesaleid}';
+	if(shopid && timesaleid){
+		$("#product_content_"+shopid+"_"+timesaleid).show();
+	}
+	$(".checksubmit").click(function(){
+		 var shop_id=$(this).attr('shop_id');
+		 var timesaleversion_id=$(this).attr('timesaleversion_id');
+		 var select_services=$(this).attr('select_services');
+		 var model_id=$(this).attr('model_id');
+		 var brand_id=$(this).attr('brand_id');
+		 var series_id=$(this).attr('series_id');
+		 var u_c_id=$(this).attr('u_c_id')|0;
+		 var coupon_id=$(this).attr('coupon_id');
+		 var uid= "{$uid}";
+		 var url="__URL__/addorder/shop_id/"+shop_id+"/select_services/"+select_services+"/brand_id/"+brand_id+"/model_id/"+model_id+"/series_id/"+series_id+"/timesaleversion_id/"+timesaleversion_id+"/u_c_id/"+u_c_id;
+		 if(coupon_id>0){
+			 if(uid == ""){
+				 alert("该预约需要使用优惠价才能下订，请先登录后再下订！");
+				 window.location.href="__APP__/public/login";
+			 }else{
+				 $.ajax({
+					type: "POST",
+					url: "__URL__/check_coupon",
+					cache: false,
+					dataType:"text",
+					data:"uid="+uid+"&coupon_id="+coupon_id,			
+					success: function(data){
+						if (data>0){
+							url = url+"/membercoupon_id/"+data;
+							window.location.href=url;
+						}else{
+							alert("您没有优惠券或者优惠券已经过期！");
+						}
+					}
+				}) 
+			 }
+		 }else{
+			 window.location.href=url;
+		 }
+	})
+})
+function popup1(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+		drag:true,//不可拖动
+		cover:true//设置笼罩
+	})
+}
+	
+function popup2(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>维修保养项目价格和4S店信息</em><a close="1"  class="flbc">关闭</a></h3><div style="height:400px; overflow:scroll;padding:20px;" id="product_content"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:0,
+		y:-250
+	})
+}
+
+function other_car_select(){
+	$("#list_other_car").show();
+}
+function own_car_select(){
+	$("#list_other_car").hide();
+}
+function baoyang_selected_check(d){
+	if($(d).attr("checked")=='checked'){
+		$("[name='select_services[]']").each(function(){
+			if($(this).attr("service_type")=='baoyang'){
+				$(this).removeAttr("checked");
+			}
+		})
+		$(d).attr("checked",'true');
+	}
+}
+function yuyue_submit(shopid,timesaleid,services_str,not_coupon_services_str){
+	if(services_str == ''){
+		alert("很抱歉，您所选择的维修保养项目不在该优惠活动范围内，请点击该活动查看优惠项目详情。");
+		return false;
+	}
+	if($("#product_content_"+shopid+"_"+timesaleid).is(":hidden")){
+		if(not_coupon_services_str != ''){
+			alert("很抱歉，您所选择的一个或多个维修保养项目不在该优惠活动范围内，请点击该活动查看优惠项目详情。如果您仍需预约活动范围外的维修保养项目，请您分开下单。");
+		}
+		$("#product_content_"+shopid+"_"+timesaleid).show();	
+	}else{
+		$("#product_content_"+shopid+"_"+timesaleid).hide();
+	}
+}
+function hide_product_info(shopid,timesaleid){
+	$("#product_content_"+shopid+"_"+timesaleid).hide();
+}
+
+function postTotxWb(title,pic,url,s_url){
+	var _t = encodeURI(title);
+	var _p = pic;
+	var _url = encodeURIComponent('http://www.xieche.net/index.php/order/index/'+url+s_url);
+	var _appkey = '801213454';
+	//var _site = 'http://view.news.qq.com/';
+	var _u = 'http://share.v.t.qq.com/index.php?c=share&a=index&title='+_t+'&pic='+_p+'&url='+_url+'&appkey='+_appkey;
+	window.open( _u,'分享到腾讯微博', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+}
+function check_submit(){
+	return false;
+}
+</script>
+	  <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要预约
+</div>
+        <div class="userjzbar13"></div>
+		<div class="yuyuebox">
+			<div class="clear"></div>
+			
+			<form action="__URL__/index" method="POST">
+			<div class="filter_title">步骤一：选择车型</div>
+			<div class="filter">
+				<dl class="filter_li">
+      	<dt></dt><dd><div class="filter_data1">
+      	<present name="list_membercar">
+      	<font><b style="font-size:12px;">&nbsp;选择我的车型</b></font><br />
+		<volist name="list_membercar" id="vo" key="k">
+		<input type="radio" name="u_c_id" class="own_car" value="{$vo.u_c_id}" <if condition="((!isset($u_c_id)) && ($other_car neq 1) && ($k eq 1)) || ($vo.u_c_id eq $u_c_id)" > checked </if> onclick="own_car_select();"/>{$vo.car_name}&nbsp;{$vo.brand_name}-{$vo.series_name}-{$vo.model_name}<br>
+		</volist>
+		</present>
+		<div style="height:10px;"></div>
+		
+		<font><b style="font-size:12px;">&nbsp;选择其他车型</b></font><br />
+		<input type="radio" id="other_car" name="other_car" value="1" onclick="other_car_select();" <if condition="($other_car eq 1) or ($default_check eq 1)" > checked </if>/>选择其他车辆：
+		<div class="filter_data2 mfpart" id="list_other_car" <if condition="($other_car neq 1) and ($default_check neq 1)">style="display:none;"</if> >
+			<table>
+			<tr>
+			<th>品牌</th>
+			<td>
+			<select id="get_brand" name="brand_id" onchange="comp_brlist('get_brand','get_series', 'get_model');">
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<th>车系</th>
+			<td>
+			<select id="get_series" name="series_id" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<th>车型</th>
+			<td>
+			<select id="get_model" name="model_id" disabled>
+			</select>
+			</td>
+			</tr>
+			</table>
+</div>
+							</div>
+                        </dd>
+ 
+              </dl>
+            </div>
+            <div class="filter_foot"></div>
+            <div style="height:5px;"></div>
+			<div class="filter_title">步骤二：想获得什么样的服务？</div>
+			<div class="filter">
+			<volist name="list_si_level_0" id="vo">
+                <dl class="filter_li">
+                    <dt>{$vo.name}</dt>
+                    <dd><div class="filter_data1">
+                    	<table ><tr>
+                    		<?php $n=0;?>
+							<volist name="list_si_level_1" id="vo1">
+								<if condition="$vo[id] eq $vo1[service_item_id]">
+									<td width="165px">
+									<?php $n++;?>
+										<if condition="$vo1['service_item_id'] eq 1">
+										<input type="checkbox" id="server_{$vo1.id}" onclick="baoyang_selected_check(this);" name="select_services[]" service_type="baoyang" value="{$vo1.id}" <in name="vo1.id" value="$select_services_str">checked</in> <if condition="($default_check eq 1) and ($n eq 1)" > checked </if>/>
+										&nbsp;&nbsp;
+										<else />
+										<input type="checkbox" name="select_services[]" <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/>&nbsp;&nbsp;
+										</if>{$vo1.name}
+									</td><if condition="$n%3 eq 0"></tr><tr></if>
+								</if>
+							</volist>
+						</tr></table>
+						   </div>
+                    </dd>
+                </dl>
+			</volist>
+			
+<script type="text/javascript">
+	comp_fctlist("get_brand", "get_series", "get_model", '{$brand_id}', '{$series_id}', '{$model_id}');
+</script>
+            </div>
+        <div class="filter_foot"></div>
+        	<dl class="filter_li">
+                  <dt></dt><dd style="align:center;">
+                      <input type="submit" value="" class="editbut">
+                      </dd>
+            </dl>
+        </form>
+<input type="hidden" name="brand_id" id="brand_id" value="{$brand_id}"></input> 
+<input type="hidden" name="series_id" id="series_id" value="{$series_id}"></input> 
+<input type="hidden" name="model_id" id="model_id" value="{$model_id}"></input>
+			 
+			 
+<?php if($_SESSION['s_data']['u_c_id'] || $_SESSION['s_data']['model_id']){ ?>
+<div class="tabOrder">
+<empty name="allcount">
+	<div class="left">很抱歉，您所选择的品牌或车型还没有签约的合适4S店，我们将尽快覆盖更多品牌或车型的4S店，以为您提供全面的服务。</div>
+<else />
+	<div class="left">纵横携车网找到 <span class="fr">{$allcount}</span> 项符合您要求的服务</div>
+</empty>
+<div class="right">
+<div class="left"></div>
+  <!--<a href="#" class="drop">评价</a><a href="#" class="up">成交</a><a href="#" class="upon">价格</a>
+  
+  <a href="#" class="dropon">评价</a><a href="#" class="up">成交</a><a href="#" class="up">价格</a> -->
+  </div>
+<div class="clear"></div>
+</div>
+			 
+			 
+		<ul class="l_cont">
+                   <volist name="list_product" id="vo"> 
+                    <li>
+                        <div class="l_sjinfo">
+                            <div class="nl">
+                                <a href="__APP__/shop/{$vo.id}" target="_blank" rel="">
+                                    <if condition="$vo.have_logo eq 1"><img width="120px" height="90px" title="" src="__ROOT__/UPLOADS/Shop/Logo/{$vo.logo}" alt="{$vo.shop_name}"><else />{$vo.shop_name}</if></a>
+                            </div>
+                            <div class="nr">
+                                <h3>
+                                    <a href="__APP__/shop/{$vo.id}" target="_blank">
+                                        {$vo.shop_name}</a></h3>
+                                <div class="n1">
+                                    <div class="l_addr">
+                                        地址：{$vo.shop_address}</div>
+                                    <div class="l_loc">
+                                        区域：{$vo.area_name}<span class="chr">|</span><a href="javascript:;" lng="{$vo.shop_maps}" class="point" desc="商家名称：{$vo.shop_name} ^^地址：{$vo.shop_address} ^^电话：{$vo.shop_phone} ">地图</a></div>
+                                </div>
+								
+                                <div class="n2">
+                                </div>
+								
+                                <div class="n3">
+                                    <div class="l_mark">
+                                        <!-- <span class="state state5"></span><a href="#" target="_blank"> 5.0</a> -->
+                                      	 好评率：{$vo.comment_rate}%
+                                    </div>
+                                    <div class="l_comment">
+                                        <a href="__APP__/shop/{$vo.id}#comment" target="_blank">
+                                            {$vo.comment_number}人评价</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            	<div class="shop_detail">{$vo.shop_account}</div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                     <table cellspacing="0" cellpadding="0" border="0" class="l_fwinfo">
+					 <tr>
+						<th width="30%">&nbsp;星期</th>
+						<th width="15%">&nbsp;时间</th>
+						<th width="12%">工时折扣率</th>
+						<th width="13%">零件折扣率</th>
+						<if condition="$have_savemoney eq 1">
+						<th width="15%">节省</th>
+						</if>
+						<th width="15%">&nbsp;详细</th>
+					 </tr>
+					 <volist name="list_timesale_arr[$vo[id]]['timesale_arr']" id="time_arr">
+					 <volist name="time_arr" id="timesale_arr" key="k">
+					 <tr>
+						<td>
+							<span>{$timesale_arr.week_name_s}</span><notempty name="timesale_arr[memo]"><span><br /><font color="red"> (<if condition="$timesale_arr['coupon_url'] eq ''">{$timesale_arr.memo}<else /><a href="{$timesale_arr['coupon_url']}" style="color:red;" target="_blank">{$timesale_arr.memo}</a></if>)</font></span></notempty>
+						</td>
+						<td>
+							<p style="">{$timesale_arr.begin_time}-{$timesale_arr.end_time}</p>
+						</td>
+						<td>
+							<span class="price red">{$timesale_arr.oldworkhours_sale_str}</span>
+						</td>
+						<td>
+							<span class="price red">{$timesale_arr.product_sale_str}</span>
+						</td>
+						<if condition="$have_savemoney eq 1">
+						<td>
+							<span class="price blue">{$timesale_arr.savemoney}</span>
+						</td>
+						</if>
+						<td><a href="javascript:void(0);" class="ckanyuyuebut" onclick="yuyue_submit({$vo.id},{$timesale_arr.id},'{$timesale_arr.services_str}','{$timesale_arr.not_coupon_services_str}');"></a>
+						 </td>
+					 </tr>
+					 <notempty name="timesale_arr['services_str']">
+					 <tr id="product_content_{$vo.id}_{$timesale_arr.id}" style="border: 1px solid #CCCCCC;display:none;">
+					 <td colspan="6">
+					 <div>
+						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<img src="/UPLOADS/Product/{$vo.product_info.$timesale_arr[id]}">
+								</td>
+							</tr>
+							</table>
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+						  	<tr>
+						    	<td width="10%">
+						    		<script type="text/javascript" charset="utf-8">
+										(function(){
+										  var _w = 90 , _h = 24;
+										  var url = '{$timesale_arr.wb_url}';
+										  var s_url = '{$timesale_arr.s_wb_url}';
+										  var param = {
+										    url:'http://www.xieche.net/index.php/order/index/'+url+s_url,
+										    type:'2',
+										    count:'', /**是否显示分享数，1显示(可选)*/
+										    appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
+										    title:'我在@纵横携车网 上查询了{$select_car.brand_name} {$select_car.model_name}的维修保养价格,以及通过网上预约的折扣{$timesale_arr.coupon_str}：{$timesale_arr.share_workhours_sale_str}{$timesale_arr.share_product_sale_str}。这个价格好像很给力哟！ ', /**分享的文字内容(可选，默认为所在页面的title)*/
+										    pic:'http://www.xieche.net/UPLOADS/Product/{$vo.product_info.$timesale_arr[id]}', /**分享图片的路径(可选)*/
+										    ralateUid:'2463073343', /**关联用户的UID，分享微博会@该用户(可选)*/
+											language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+										    rnd:new Date().valueOf()
+										  }
+										  var temp = [];
+										  for( var p in param ){
+										    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+										  }
+										  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+										})()
+									</script>
+									
+						    	</td>
+						    	<td width="10%">
+						    		<a href="javascript:void(0);" title="分享到腾讯微博" onclick="postTotxWb('我在@纵横携车网 上查询了{$select_car.brand_name} {$select_car.model_name}的维修保养价格,以及通过网上预约的折扣{$timesale_arr.coupon_str}：{$timesale_arr.share_workhours_sale_str}{$timesale_arr.share_product_sale_str}。这个价格好像很给力哟！ ','http://www.xieche.net/UPLOADS/Product/{$vo.product_info.$timesale_arr[id]}','{$timesale_arr.wb_url}','{$timesale_arr.s_wb_url}');" target="_self" style="display:block;">
+										<img width="28px" src="http://mat1.gtimg.com/app/newvt/share/images/share_icon_0.png" />
+									</a>
+						    	<!-- <div id="qqwb_share__" data-appkey="801213454" data-icon="0" data-counter="1" data-counter_pos="right" data-content="我在@纵横携车网 上查询了{$select_car.brand_name} {$select_car.model_name}的维修保养价格,以及通过网上预约的折扣：{$timesale_arr.share_workhours_sale_str}{$timesale_arr.share_product_sale_str}。这个价格好像很给力哟！" data-pic="http://www.xieche.net/UPLOADS/Product/{$vo.product_info.$timesale_arr[id]}"></div> -->
+						    	</td>
+						    	<td width="80%"></td>
+						  	</tr>
+						  	</table>
+						  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+						  	<tr>
+						    	<td align="left" valign="middle"><img src="/Public/note/images/01.png"><span class="STYLE9"><span class="STYLE11">纵横携车网所提供的汽车售后维修保养项目明细价格（包括但不限于零件费和/或工时费等费用），由与纵横携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，纵横携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据，最终付款以在服务提供商处实际发生额为准。但您享受到的折扣率不变。</span></span></td>
+						  	</tr>
+						  	<tr>
+						    	<td height="20">&nbsp;</td>
+						  	</tr>
+						  	<tr>
+						    	<td height="20" align="left">
+						    		<span class="STYLE10">您所选择的4S店信息：<br><br>
+						      			4S店：<font color="blue">{$vo['shop_name']}</font><br>
+										 地址：<font color="blue">{$vo['shop_address']}</font><br>
+										 客服电话：<font color="blue">{$Think.config.CALL_400}</font>		
+						    		</span>
+						    	</td>
+						  	</tr>
+						  	<tr>
+						    	<td height="20"><span class="submit_order">
+						    	<!-- <a href="__URL__/addorder/shop_id/{$vo['id']}/select_services/{$timesale_arr.services_str}/brand_id/{$select_brand_id}/model_id/{$select_model_id}/series_id/{$select_series_id}/timesaleversion_id/{$timesale_arr.id}/u_c_id/{$u_c_id}" onclick="check_submit();"><img src="/Public/note/images/02.png" width="138" height="39"></a> -->
+						    	<a href="javascript:void(0);" shop_id="{$vo['id']}" timesaleversion_id="{$timesale_arr.id}" select_services="{$timesale_arr.services_str}" model_id="{$select_model_id}" brand_id="{$select_brand_id}" series_id="{$select_series_id}" u_c_id="{$u_c_id}" coupon_id="{$timesale_arr.coupon_id}" class="checksubmit"><img src="/Public/note/images/02.png" width="138" height="39"></a>
+						    	</span>
+						    	<span class="hide_product"><a href="###" onclick="hide_product_info({$vo.id},{$timesale_arr.id});">隐藏</a></span>
+						    	</td>
+						  	</tr>
+						  	<tr>
+						  	</tr>
+						</table>
+						
+					</div>
+					</td></tr>
+					</notempty>
+					</volist>
+				</volist>
+					 </tbody></table>
+                    </li>
+                   </volist>   
+                </ul>	 
+			 
+			 
+			 <!-- <div class="manu">{$page}</div> -->
+<style type="text/css">
+	#dialogmap{display:none; position:absolute; width:520px; height:340px;}
+	#containermap{width:520px; height:340px;}
+	#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+ 
+<script type="text/javascript" src="__PUBLIC__/Js/jq_openDialog.js?v={$Think.config.VERSION_DATE}"></script> 
+			<script type="text/javascript">
+$(function(){ 
+	$(".point").click(function(){
+								//$("#dialogmap").openDialog();
+								popup1();
+								 var map = new BMap.Map("containermap");
+					 			 var lng=$(this).attr('lng');
+								 //var lat=$(this).attr('lat');
+								 arr=lng.split(',');//分割
+									
+								 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+								 //alert(lng);
+								 var text=$(this).attr('desc');
+								 var textArr=text.split('^^');
+								 map.centerAndZoom(point,15);
+								 map.addControl(new BMap.NavigationControl());
+								 map.addControl(new BMap.MapTypeControl());
+								 map.addControl(new BMap.ScaleControl());
+								 map.addControl(new BMap.OverviewMapControl());
+								 addMarker(point);
+								 function addMarker(point)
+								 {
+									var html='';
+									for(var i=0;i<textArr.length;i++)
+									{
+										html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+									}
+								 	var marker = new BMap.Marker(point);  // 创建标注
+ 								 	map.addOverlay(marker);              // 将标注添加到地图中
+									var infoWindow = new BMap.InfoWindow(html);
+									marker.openInfoWindow(infoWindow);
+									
+								  }	 
+							   });					   
+})
+</script>
+<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>
+	<!--<div id="dialogmap"><div id="containermap"></div> </div>-->
+			 
+<?php }?>		 
+			 
+		<div class="clear"></div>	 
+	    </div>
+		<div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

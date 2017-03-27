@@ -1,0 +1,208 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<style type='text/css'>
+	.btnMap {
+	    width:50px !important;
+	    background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+	}
+</style>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+<!-- 主体内容  -->
+<div class="content" style="width:780px;">
+<div class="title">订单详情</div>
+<!-- 列表显示区域  -->
+<div>
+<form action="__URL__/update" method="post">
+<table class="list">
+	<tr>
+		<td><b>订单号</b></td>
+		<td colspan="3">{$vo.order_id}</td>
+	</tr>
+	<tr>
+		<td colspan="4">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>用户信息</b></td>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>姓名</b></td>
+		<td>{$vo.truename}</td>
+		<td><b>电话</b></td>
+		<td>{$vo.mobile}</td>
+	</tr>
+	<tr>
+		<td colspan="4">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>车辆信息</b></td>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>车牌号</b></td>
+		<td>{$vo.licenseplate}</td>
+		<td><b>车辆识别代码</b></td>
+		<td>{$vo.car_sn}</td>
+	</tr>
+	<tr>
+		<td><b>车辆型号</b></td>
+		<td colspan="3">{$select_car.brand_name}--{$select_car.series_name}--{$select_car.model_name}</td>
+	</tr>
+	<tr>
+		<td><b>已行驶公里数</b></td>
+		<td colspan="3">{$vo.mileage}</td>
+	</tr>
+	<tr>
+		<td colspan="4">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>预约详情</b></td>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><b>预约时间</b></td>
+		<td>{$vo.order_time.date} {$vo.order_time.hour}:{$vo.order_time.minute}</td>
+		<td><b>预约4S店</b></td>
+		<td>{$vo.shop_info.shop_name}</td>
+	</tr>
+	<tr>
+		<td><b>下定时间</b></td>
+		<td>{$vo.create_time}</td>
+		<td><b>4S店地址</b></td>
+		<td>{$vo.shop_info.shop_address}</td>
+	</tr>
+	<tr>
+		<td><b>订单金额</b></td>
+		<td colspan="3">{$vo.total_price}</td>
+	</tr>
+	<tr>
+		<td><b>工时费折扣率</b></td>
+		<td>{$vo.workhours_sale}</td>
+		<td><b>零件费折扣率</b></td>
+		<td>{$vo.product_sale}</td>
+	</tr>
+	<tr>
+		<td><b>服务顾问</b></td>
+		<td colspan="3">
+			<notempty name="vo.servicemember_name">{$vo.servicemember_name}<else/>无</notempty>
+		</td>
+	</tr>
+	<tr>
+		<td><b>预约服务项目</b></td>
+		<td colspan="3">
+			<volist name="service_ids_arr" id="vo_order">
+			{$serviceitem[$vo_order]['name']}&nbsp;&nbsp;&nbsp;&nbsp;
+			</volist>
+		</td>
+	</tr>
+	<notempty name="coupon">
+	<tr>
+		<td><b>优惠劵名称</b></td>
+		<td>{$coupon.coupon_name}</td>
+		<td><b>优惠劵折扣</b></td>
+		<td>{$coupon.coupon_discount}</td>
+	</tr>
+	<tr>
+		<td><b>使用优惠劵后工时折扣</b></td>
+		<td colspan="3">{$vo['workhours_sale']-$coupon['coupon_discount']}</td>
+	</tr>
+	</notempty>
+	<tr>
+		<td><b>用户备注</b></td>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="4">{$vo.remark}</td>
+	</tr>
+	<tr>
+		<td><b>客服备注</b></td>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="4">{$vo.operator_remark}</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<input type="hidden" name="id" id="orderid" value="{$vo.id}">
+			<if condition="$vo.order_state eq 1" ><input type="button" value="预约完成" onclick="update_order_state(2);"></if>
+		</td>
+	</tr>
+	<tr>
+		<td><b>使用优惠卷信息</b></td>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<volist name="$membercoupon_info" id="list">
+			<if condition="$list.order_type eq 1" >现金券<else/>团购券</if>
+			{$list.coupon_name}
+			<if condition="$list.is_use eq 0" >未使用<else/>已使用</if>
+			<if condition="$list.is_pay eq 0" >未支付<else/>已支付</if>
+			<if condition="$list.is_use eq 0" >未使用<else/>已使用</if>
+			</volist>
+			<br>
+			<if condition="$salecoupon_info.membersalecoupon_id neq 0" >抵用券</if>
+			{$salecoupon_info.coupon_name}
+			<if condition="$membercoupon_info.is_use eq 0" >未使用<else/>已使用</if>
+			<br>
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+
+<div>
+	<span style="color:red;cursor:pointer" id="show_img">显示预约项目和价格详情</span>
+	<div class="pro_img" style="display:none;">
+		<img src="/UPLOADS/Product/{$vo.img_name}">
+	</div>
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+	$(document).ready(function(){
+		var flip = 0;
+		$("#show_img").click(function () {
+			
+		$(".pro_img").toggle( flip++ % 2 == 0 );
+		if ( flip % 2 == 0 ){
+			$("#show_img").html("显示预约项目和价格详情");
+		}else{
+			$("#show_img").html("隐藏预约项目和价格详情");
+		}
+
+		});
+	});
+	function update_order_state(d){
+		if(!confirm("确认要修改订单状态？")){
+			return false;
+		}
+		var id = $("#orderid").val();
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Shop/order/update_order_state',
+			cache:false,
+			datatype:'text',
+			data:"order_state="+d+"&id="+id,
+			success: function(data){
+				if(data == 1){
+					alert("修改成功！");
+					window.location.reload();
+					return false;
+				}else{
+					alert("修改失败！");
+					return false;
+				}
+			}
+		})
+	}
+</script>

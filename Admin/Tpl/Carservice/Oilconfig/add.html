@@ -1,0 +1,128 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+
+<div class="title">添加机油</div>
+
+<!-- 列表显示区域  -->
+<div >
+
+<table style="line-height:50px;">
+	
+<tr>
+	<td>名称:</td>
+	<td>
+		<input type="text" name="name_0" id="name_0">
+	</td>
+</tr>
+
+<tr>
+	<td>油品:</td>
+	<td>
+		<select id="type_0">
+   			<option value="0">选择</option>
+   			<option value="1">矿物油</option>
+   			<option value="2">半合成油</option>
+   			<option value="3">全合成油</option>
+   		</select>
+	</td>
+</tr>
+
+<tr>
+	<td>规格:</td>
+	<td>
+		<input type="text" name="norms_0" id="norms_0">
+	</td>
+</tr>
+
+<tr>
+	<td>价格:</td>
+	<td>
+		<input type="text" name="price_0" id="price_0">
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2" align="center">
+		<input type="button" name="saveBtn" id="saveBtn" value="保存">
+	</td>
+</tr>
+
+</table>
+
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script>
+$("#saveBtn").click(function(){
+	var name = $("#name_0").val();
+	var type = $("#type_0").val();
+	var norms = $("#norms_0").val();
+	var price = $("#price_0").val();
+
+	if(name == ""){
+		alert('请填写机油名称');
+		$("#name_0").focus();
+		return false;
+	}
+
+	if(type == ""){
+		alert('请选择机油油品');
+		$("#type_0").focus();
+		return false;
+	}
+
+	if(norms == ""){
+		alert('请填写机油规格');
+		$("#norms_0").focus();
+		return false;
+	}
+
+	if(price == ""){
+		alert('请填写机油价格');
+		$("#price_0").focus();
+		return false;
+	}
+
+	$.ajax({
+	    url: '__APP__/Carservice/Oilconfig/ajax_edit_oil',
+	    type: 'POST',
+	    data:{ name:name,type:type,norms:norms,price:price},
+	    dataType: 'json',
+	    timeout: 1000,
+	    error: function(){
+	      alert('系统繁忙!');
+	      return false;
+	    },
+	    success: function( data ){
+	      data = data.data;
+	      if(data.errno=='0'){
+	        window.location.href='__APP__/Carservice/Oilconfig/';
+	        return true;
+	      }
+	    }
+	});
+});
+</script>

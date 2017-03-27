@@ -1,0 +1,61 @@
+<load file="__CSS__/newstyle.css" />
+
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<div id="main">
+<div id="main-right"><h1>保险类订单</h1>
+</div>
+<div id="main-right2">
+	<div>
+	<FORM METHOD=POST ACTION="__URL__/rate">
+	<table class="list" width="785">
+		<tr>
+			<td>时间搜索：</td>
+			<td>
+			开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+			结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="搜索" style="impBtn hMargin fLeft shadow"></td>
+		</tr>
+	</table>
+	</FORM>
+	</div>
+	<table width="785" >
+		<tr>
+			<td align="left">总共返利：{$data.price_count}元</td>
+		</tr>
+	</table>
+  <table width="785" border="0" cellspacing="1" cellpadding="1" bgcolor="#E4E4E4">
+    <tr>
+      <td align="center" bgcolor="#EEEEEE">ID</td>
+      <td align="center" bgcolor="#EEEEEE">返利券金额</td>
+	  <td align="center" bgcolor="#EEEEEE">返利券状态</td>	
+	  <td align="center" bgcolor="#EEEEEE">有效期开始时间</td>
+	  <td align="center" bgcolor="#EEEEEE">有效期结束时间</td>
+    </tr>
+
+
+	<volist name="data.Bidcoupon" id="vo">
+    <tr>
+      <td  align="center" bgcolor="#FFFFFF">{$vo.id}</td>
+      <td align="center" bgcolor="#FFFFFF">{$vo.price}</td>
+      <td align="center" bgcolor="#FFFFFF">
+		<if condition="$vo.status eq 1">未使用</if>
+		<if condition="$vo.status eq 0">已使用</if>
+	  </td>
+      <td align="center" bgcolor="#FFFFFF">
+		{$vo.start_time|date="y-m-d ",###}
+	  </td>
+	  <td align="center" bgcolor="#FFFFFF">
+		{$vo.end_time|date="y-m-d ",###}
+	  </td>
+    </tr>
+	</volist>
+  </table>
+</div>
+
+</div>

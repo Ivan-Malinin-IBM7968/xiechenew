@@ -1,0 +1,190 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/sales.css?v={$Think.config.VERSION_DATE}" />
+	<style>
+		/*adding weixin-banner to shop-detail*/
+		.weixin-banner{width: 830px; height: 348px; margin: 20px 0px; background: url("http://statics.xieche.net/new_2/images/order-complete-weixin/weixin-2.jpg") 0px 0px no-repeat; } 
+
+
+
+	</style>
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="__APP__/coupon">4S店售后团购</a></li>
+			<li>></li>
+			<li><a href="__APP__/shop/{$shopinfo.id}">{$shopinfo.shop_name}</a></li>
+			<li>></li>
+			<li>{$coupon.coupon_name}</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="w1200 content">
+		<div class="w830 content-left">
+			<!-- Ticlet Start-->
+			<div class="w830 ticket">
+				<h2 class="title">{$coupon.coupon_name}</h2>
+				<div class="w830 ticket-info">
+					<div class="img-con">
+						<img src="/UPLOADS/Coupon/Logo/{$coupon.coupon_pic}"  width="450" height="338" title="{$coupon.coupon_name}" alt="{$coupon.coupon_name}">
+					</div>
+					<div class="info-con">
+						<div class="f-price">
+							¥{$coupon.coupon_amount}
+							<em>/</em><span> ¥{$coupon.cost_price}</span>
+						</div>
+						<div class='add-info'></div>
+						<div class="add-info2">
+							<span class="yg"><strong>{$coupon.pay_count}</strong>人已购买</span>
+							<span class="ad">团购数量有限，下单要快哟</span>
+						</div>
+						<div class="buy-ticket">
+						
+							<if condition="$coupon.is_delete eq 1">
+								<a href="###"><span>已下架</span></a>
+							<else/>
+								<a href="{:URL('/coupon/couponbuy',array('coupon_id'=>$coupon['id']))}{:C('HTML_URL_SUFFIX')}" rel="nofollow"><span>立即抢购</span></a>
+							</if>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Ticket End-->
+			<!-- Ticket Related Info Start-->
+			
+			
+			<div class="xg">
+				<div class="dp">
+					<h4>店铺: </h4>
+					<span>{$shopinfo.shop_name} &nbsp;&nbsp;{$shopinfo.shop_address} <!-- <a href="">[查看地图]</a> --></span> &nbsp;&nbsp;
+					<span>400-660-2822</span>&nbsp;&nbsp;
+					<span><a href="__APP__/shop/{$shopinfo.id}#comment">{$shopinfo.comment_number}</a>人评论</span>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<!-- Baidu Button BEGIN -->
+			<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+			<span class="bds_more">分享到：</span>
+			<a class="bds_qzone"></a>
+			<a class="bds_tsina"></a>
+			<a class="bds_tqq"></a>
+			<a class="bds_renren"></a>
+			<a class="bds_t163"></a>
+			<a class="shareCount"></a>
+			</div>
+			<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3625391" ></script>
+			<script type="text/javascript" id="bdshell_js"></script>
+			<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+			</script>
+			<!-- Baidu Button END -->
+			<div class="clear"></div>
+				<div class="table-con w830">
+				<div class="cate-title">
+					<h3>适用车型</h3>
+				</div>
+				<div>
+					<table class="w830 models-can-use" width="830">
+						<tr>
+						<volist name="car" id="list" key="key">
+							{$list.top}
+								<td>{$list.car_name}</td>
+							
+							{$list.foot}
+						</volist>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+
+			<notempty name="other_coupon">
+			<div class="w830 table-con">
+				<div class="cate-title">
+					<h3>该商户其他团购</h3>
+				</div>
+				<table class="w830 sale-info other-coupon" width="830">
+				<tr>
+					<th>现价</th>
+					<th>原价</th>
+					<th>名称</th>
+					<th>已购数量</th>
+				</tr>
+				<volist name="other_coupon" id="other_c" mod="2">
+					<tr <eq name="mod" value="1">class="bg-blue"</eq>>
+						<td class="price">&#165;{$other_c.coupon_amount}</td>
+						<td>&#165;{$other_c.cost_price}</td>
+						<td><a target="_blank" href="__APP__/coupon/{$other_c.id}" >{$other_c.coupon_name}</a></td>
+						<td>{$other_c.pay_count}人已购买</td>
+					</tr>
+				</volist>
+				</table>
+			</div>
+			</notempty>
+			
+
+			<div class="w830 weixin-banner">
+			
+			</div>
+
+			<div class="w830 ticket-detail">
+				<div class="cate-title">
+					<h3>关于本团购</h3>
+				</div>
+				<div class="article">
+					{$coupon.coupon_des}
+				</div>
+			</div>
+		</div>
+		<div class="w350 content-right">
+			<div class="tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><span> / </span><em>{$tcoupon1.cost_price}</em></span>
+						</div>
+					</li>
+					<div class="clear"></div>
+					</volist>
+				</ul>
+
+			</div>
+			<div class="tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+
+							<span class="desc">
+								<b>¥</b><strong>{$tcoupon2.coupon_amount}</strong>
+								<span> / </span> 
+								<em>{$tcoupon2.cost_price}</em>
+							</span>
+						</div>
+					</li>
+					<div class="clear"></div>
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		
+	</div>

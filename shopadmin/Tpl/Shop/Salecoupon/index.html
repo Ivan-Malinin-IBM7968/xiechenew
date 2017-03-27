@@ -1,0 +1,84 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Js/jquery.js'></script>
+<div id="main">
+<div id="main-right"><h1>促销抵用券验证</h1></div>
+<div>
+	<form method="post" action="__URL__" onSubmit="return check_form();">
+	<table class="list">
+		<tr>
+			<td>车牌号：</td>
+			<td>
+			<select name="licenseplate_title">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+					<option value="{$vo_os}"<if condition="$licenseplate_title eq $vo_os">selected</if>>{$vo_os}</option>
+				</volist>
+			</select>
+			<input type="text"  name="licenseplate" id="licenseplate" value="{$licenseplate}" />(注释：必须填写如无车牌填写000000)
+			</td>
+		</tr>
+		<tr>
+			<td>验证码：</td>
+			<td><input type="text"  name="coupon_code" value="{$coupon_code}" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="查询验证码真伪" style="impBtn hMargin fLeft shadow"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+<div id="main-right2">
+  <table width="785" border="0" cellspacing="1" cellpadding="1">
+    <tr>
+      <td height="40" bgcolor="#F2F2F2">抵用券编号</td>
+	  <td bgcolor="#F2F2F2">抵用券消费码</td>
+      <td bgcolor="#F2F2F2">抵用券名称</td>
+      <td bgcolor="#F2F2F2">过期日期</td>
+      <td bgcolor="#F2F2F2">操作</td>
+    </tr>
+	
+    <volist name="membersaleconpon" id="vo">
+    <tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+      <td height="40">{$vo.membersalecoupon_id}</td>
+	  <td>{$vo.coupon_code}</td>
+      <td>{$vo.coupon_name}</td>
+      <td>
+      	{$vo.end_time|date="Y-m-d H:i:s",###}(<if condition="$vo.end_time lt $now">已过期<else />未过期</if>)
+      </td>
+	  <td>
+		<if condition="$vo.order_id eq 0">券未绑定预约订单,不能使用<elseif condition="$vo.is_use eq 1" />已使用<elseif condition="$vo.end_time lt $now" />已过期<else />可使用</if>
+	  </td>
+    </tr>
+    </volist>
+		<if condition="$licenseplate neq ''  AND $membersaleconpon eq '' ">
+		<tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+			<td height="40" colspan="5">此抵用券未预约或验证码错误，不能使用，如有疑问请致电4006602822咨询</td>
+		</tr>
+		</if>
+	<tr>
+		<td colspan="6">
+			<input value='确认使用' type="button" onClick="sure_do();"/>
+		</td>
+	</tr>
+  </table>
+  <div id="main-right3">{$page}</div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+<!--
+	function check_form(){
+		if ($('#licenseplate').val() == ""){
+			alert("请填写车牌号");
+			$('#licenseplate').focus();
+			return false;
+		}
+		return true;
+	}
+
+	function sure_do(){
+		window.location = "__URL__/use_salecoupon/membersalecoupon_id/{$membersaleconpon.0.membersalecoupon_id}/licenseplate_str/{$licenseplate_str}";
+	}
+//-->
+</script>

@@ -1,0 +1,618 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<style>
+    .tongji {
+        width:800px !important;
+    }
+</style>
+
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">上门保养预约订单列表</div>
+<!-- 查询区域 -->
+<div>
+
+<FORM METHOD=POST ACTION="__URL__/index/type/2"   id="myform">
+<div style="margin:10px">电话：<input type="text"  name="mobile" id="mobile" value="{$data.mobile}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单号：&nbsp;&nbsp;&nbsp;<input type="text"  name="id" id="id" value="{$data.id}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;车牌：<input type="text" name="licenseplate" id="licenseplate" value="{$licenseplate}"/>&nbsp;&nbsp;&nbsp;&nbsp;地址：<input TYPE="text" name="address" value="{$address}" style="width:500px"></div>
+<div style="margin:10px">
+    订单状态：
+    <select name="status" id="status">
+        <option value="all" <if condition="$status eq 'all'">selected</if>>全部</option>
+        <option value="0" <if condition="$status eq '0'">selected</if>>等待处理</option>
+        <option value="1" <if condition="$status eq 1">selected</if>>预约确认</option>
+        <option value="2" <if condition="$status eq 2">selected</if>>已分配技师</option>
+        <option value="8" <if condition="$status eq 8">selected</if>>订单作废</option>
+        <option value="9" <if condition="$status eq 9">selected</if>>服务已完成</option>
+        <option value="99" <if condition="$status eq 99">selected</if>>技师对账</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    城市：
+    <select name="city_id" id="city_id">
+        <option value="all" <if condition="$city_id eq 'all'">selected</if>>全部</option>
+        <option value="1" <if condition="$city_id eq 1">selected</if>>上海</option>
+        <option value="2" <if condition="$city_id eq 2">selected</if>>杭州</option>
+        <option value="3" <if condition="$city_id eq 3">selected</if>>苏州</option>
+        <option value="4" <if condition="$city_id eq 4">selected</if>>成都</option>
+        <option value="5" <if condition="$city_id eq 5">selected</if>>济南</option>
+        <option value="6" <if condition="$city_id eq 6">selected</if>>福州</option>
+    </select>
+    支付方式：
+    <select name="pay_type" id="pay_type">
+        <option value="all" <if condition="$pay_type eq 'all'">selected</if>>全部</option>
+        <option value="1" <if condition="$pay_type eq 1">selected</if>>现金</option>
+        <option value="2" <if condition="$pay_type eq 2">selected</if>>线上支付</option>
+        <option value="3" <if condition="$pay_type eq 3">selected</if>>POS机</option>
+        <option value="4" <if condition="$pay_type eq 4">selected</if>>淘宝支付</option>
+        <option value="5" <if condition="$pay_type eq 5">selected</if>>点评支付</option>
+        <option value="7" <if condition="$pay_type eq 7">selected</if>>京东支付</option>
+        <option value="9" <if condition="$pay_type eq 9">selected</if>>PAD支付宝扫码</option>
+        <option value="10" <if condition="$pay_type eq 10">selected</if>>点评到家</option>
+        <option value="11" <if condition="$pay_type eq 11">selected</if>>支付宝WAP</option>
+        <option value="12" <if condition="$pay_type eq 12">selected</if>>天猫</option>
+        <option value="13" <if condition="$pay_type eq 13">selected</if>>同程旅游</option>
+    </select>
+    客&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服：&nbsp;
+    <select name="customer_id" id="customer_id">
+        <option value="">--请选择客服--</option>
+        <volist name="customer_list" id="customervo">
+            <option value="{$customervo.id}" <if condition="$customervo['id'] eq $data['customer_id']">selected</if>>{$customervo.nickname}</option>
+        </volist>
+        <option value="1" <if condition="$data['customer_id'] eq 1">selected</if>>admin</option>
+    </select>
+    技师姓名：
+    <select name="technician_id" id="technician_id">
+        <option value="0">全部</option>
+        <foreach name="technician_list" item="technician_list">
+            <option value="{$technician_list.id}">{$technician_list.truename}</option>
+        </foreach>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<div style="margin:10px">
+    开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" readonly="readonly" style="width:150px">
+    结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" readonly="readonly" style="width:150px">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间纬度：
+    <select name="time_type" id="time_type">
+        <option value="create_time" <if condition="$time_type eq create_time">selected</if>>下单时间</option>
+        <option value="order_time" <if condition="$time_type eq order_time">selected</if>>上门时间</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单来源：
+    <select name="remark">
+        <option value="">请选择</option>
+        <option value="滴答拼车99元通用码" <eq name="remark" value="滴答拼车99元通用码">selected </eq>>滴答拼车99元通用码</option>
+        <option value="携程自驾游月刊项目" <eq name="remark" value="携程自驾游月刊项目">selected </eq>>携程自驾游月刊项目</option>
+        <option value="红牛社区活动" <eq name="remark" value="红牛社区活动">selected </eq>>红牛社区活动</option>
+        <option value="中美国际99元专车年卡" <eq name="remark" value="中美国际99元专车年卡">selected </eq>>中美国际99元专车年卡</option>
+        <option value="中银保险99元专车年卡" <eq name="remark" value="中银保险99元专车年卡">selected </eq>>中银保险99元专车年卡</option>
+        <option value="华安财险99元专车年卡" <eq name="remark" value="华安财险99元专车年卡">selected </eq>>华安财险99元专车年卡</option>
+        <option value="中美国际99元专车年卡1000张" <eq name="remark" value="中美国际99元专车年卡1000张">selected </eq>>中美国际99元专车年卡1000张</option>
+        <option value="华安财险" <eq name="remark" value="华安财险">selected </eq>>华安财险</option>
+        <option value="爱代驾268元中端车型小保养套餐" <eq name="remark" value="爱代驾268元中端车型小保养套餐">selected </eq>>爱代驾268元中端车型小保养套餐</option>
+        <option value="爱代驾368元高端车型小保养套餐" <eq name="remark" value="爱代驾368元高端车型小保养套餐">selected </eq>>爱代驾368元高端车型小保养套餐</option>
+        <option value="免费领取20元券" <eq name="remark" value="免费领取20元券">selected </eq>>免费领取20元券</option>
+        <option value="快的积分商城" <eq name="remark" value="快的积分商城">selected </eq>>快的积分商城</option>
+        <option value="三星" <eq name="remark" value="三星">selected </eq>>三星</option>
+        <option value="平安好车采购" <eq name="remark" value="平安好车采购">selected </eq>>平安好车采购</option>
+        <option value="中化道达尔代金卡2000张" <eq name="remark" value="中化道达尔代金卡2000张">selected </eq>>中化道达尔代金卡2000张</option>
+        <option value="中化道达尔礼品卡10000张" <eq name="remark" value="中化道达尔礼品卡10000张">selected </eq>>中化道达尔礼品卡10000张</option>
+        <option value="驴妈妈" <eq name="remark" value="驴妈妈">selected </eq>>驴妈妈</option>
+        <option value="驴妈妈地推及自驾游" <eq name="remark" value="驴妈妈地推及自驾游">selected </eq>>驴妈妈地推及自驾游</option>
+        <option value="驴妈妈积分商城20元券" <eq name="remark" value="驴妈妈积分商城20元券">selected </eq>>驴妈妈积分商城20元券</option>
+        <option value="三星车险赠送卡制作用" <eq name="remark" value="三星车险赠送卡制作用">selected </eq>>三星车险赠送卡制作用</option>
+        <option value="大客户" <eq name="remark" value="大客户">selected </eq>>大客户</option>
+        <option value="补中化道达尔代金卡8000张（送）" <eq name="remark" value="补中化道达尔代金卡8000张（送）">selected </eq>>补中化道达尔代金卡8000张（送）</option>
+    </select>
+</div>
+<div style="margin:10px">
+    下单渠道：
+    <select name="order_origin">
+        <option value="">请选择</option>
+        <option value="1" <eq name="origin" value="1">selected</eq>>PC下单</option>
+        <option value="2" <eq name="origin" value="2">selected</eq>>微信下单</option>
+        <option value="3" <eq name="origin" value="3">selected</eq>>后台带下单</option>
+        <option value="4" <eq name="origin" value="8">selected</eq>>新版APP下单</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单类型：
+    <select name="order_type" id="order_type">
+        <option value="">请选择</option>
+        <option value="1" <eq name="order_type" value="1">selected </eq>>保养订单</option>
+        <option value="2" <eq name="order_type" value="2">selected </eq>>检测订单</option>
+        <option value="3" <eq name="order_type" value="3">selected </eq>>淘宝已支付订单</option>
+        <option value="20" <eq name="order_type" value="20">selected </eq>>上海平安</option>
+        <option value="22" <eq name="order_type" value="22">selected </eq>>光大168</option>
+        <option value="23" <eq name="order_type" value="23">selected </eq>>光大268</option>
+        <option value="24" <eq name="order_type" value="24">selected </eq>>光大368</option>
+        <option value="35" <eq name="order_type" value="35">selected </eq>>好车况(市场部推广)</option>
+        <option value="36" <eq name="order_type" value="36">selected </eq>>大众点评199</option>
+        <option value="37" <eq name="order_type" value="37">selected </eq>>大众点评299</option>
+        <option value="38" <eq name="order_type" value="38">selected </eq>>大众点评399</option>
+        <option value="50" <eq name="order_type" value="50">selected </eq>>好车况(点评)</option>
+        <option value="51" <eq name="order_type" value="51">selected </eq>>保养(点评)</option>
+
+        <option value="52" <eq name="order_type" value="52">selected </eq>>建设银行168</option>
+        <option value="53" <eq name="order_type" value="53">selected </eq>>建设银行268</option>
+        <option value="54" <eq name="order_type" value="54">selected </eq>>建设银行368</option>
+        <option value="55" <eq name="order_type" value="55">selected </eq>>建设银行好空气16.8</option>
+        <option value="56" <eq name="order_type" value="56">selected </eq>>建设银行好空气98</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业务类型：
+    <select name="business_source" id="business_source">
+        <option value="">请选择</option>
+        <volist name="business_source_list" id="vo">
+            <option value="{$vo[id]}" <eq name="order_type" value="{$vo[id]}">selected </eq>>{$vo[name]}</option>
+        </volist>
+    </select>
+    旧业务类型：
+    <select name="business_source_old" id="business_source">
+        <option value="">请选择</option>
+        <volist name="business_source_old" id="vo">
+            <option value="{$key}" <eq name="order_type" value="{$key}">selected </eq>>{$vo}</option>
+        </volist>
+    </select>
+    &nbsp;绑定微信：
+    <select name="weixinbind" id="weixinbind">
+        <option value="">请选择</option>
+        <option value="1" <eq name="weixinbind" value="1">selected </eq>>未绑定</option>
+        <option value="2" <eq name="weixinbind" value="2">selected </eq>>已绑定</option>
+    </select>
+</div>
+<div style="margin:10px">
+    <input type="checkbox" name="is_del" value='1' <if condition="$type eq ''">checked</if>>不显示作废订单
+    <input type="checkbox" name="is_delay" value='1'>显示已过预约时间未完成订单
+    <input type="submit" value="查询" style="impBtn hMargin fLeft shadow">&nbsp;&nbsp;
+    <input type="button" value="重置" style="impBtn hMargin fLeft shadow" onclick="window.location.href='__APP__/Carservice/Carserviceorder/';">&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="__APP__/Carservice/Carserviceorder/index/status/all" style="padding-right:50px">(当前显示的是未处理订单，点此查看全部订单)</a>
+</div>
+
+<!--<table cellspacing="0" cellpadding="10" >-->
+  <!--<tr>  -->
+    <!--<td width=25%>-->
+      <!--订单号：&nbsp;&nbsp;&nbsp;<input type="text"  name="id" id="id" value="{$data.id}"/></td>-->
+    <!--<td >-->
+      <!--电话：<input type="text"  name="mobile" id="mobile" value="{$data.mobile}"/></span>-->
+    <!--</td>-->
+	<!--<td>-->
+	<!--客&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服：&nbsp;-->
+	<!--<select name="customer_id" id="customer_id">-->
+		<!--<option value="">--请选择客服--</option>-->
+		<!--<volist name="customer_list" id="customervo">-->
+		<!--<option value="{$customervo.id}" <if condition="$customervo['id'] eq $data['customer_id']">selected</if>>{$customervo.nickname}</option>-->
+	<!--</volist>-->
+		<!--<option value="1" <if condition="$data['customer_id'] eq 1">selected</if>>admin</option>-->
+	<!--</select>-->
+	<!--</td>-->
+	<!--<td>  -->
+		<!--<input type="checkbox" name="is_delay" value='1'>显示已过预约时间未完成订单-->
+	<!--</td>-->
+  <!--</tr>-->
+
+  <!---->
+  <!--<tr>  -->
+    <!--<td>-->
+      <!--车牌：<input type="text" name="licenseplate" id="licenseplate" value="{$licenseplate}"/>-->
+    <!--</td>-->
+
+    <!--<td>-->
+    <!--技师姓名：-->
+    <!--<select name="technician_id" id="technician_id">-->
+      <!--<option value="0">全部</option>-->
+      <!--<foreach name="technician_list" item="technician_list">-->
+      <!--<option value="{$technician_list.id}">{$technician_list.truename}</option>-->
+      <!--</foreach>-->
+    <!--</select>-->
+	<!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+	<!--</td>-->
+
+	<!--<td>-->
+    <!--订单状态：-->
+    <!--<select name="status" id="status">-->
+		<!--<option value="all" <if condition="$status eq 'all'">selected</if>>全部</option>-->
+		<!--<option value="0" <if condition="$status eq '0'">selected</if>>等待处理</option>-->
+		<!--<option value="1" <if condition="$status eq 1">selected</if>>预约确认</option>-->
+		<!--<option value="2" <if condition="$status eq 2">selected</if>>已分配技师</option>-->
+		<!--<option value="8" <if condition="$status eq 8">selected</if>>订单作废</option>-->
+		<!--<option value="9" <if condition="$status eq 9">selected</if>>服务已完成</option>-->
+		<!--<option value="99" <if condition="$status eq 99">selected</if>>技师对账</option>-->
+    <!--</select>-->
+	<!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+	<!--</td>-->
+	<!--<td>-->
+    <!--支付方式：-->
+    <!--<select name="pay_type" id="pay_type">-->
+		<!--<option value="all" <if condition="$pay_type eq 'all'">selected</if>>全部</option>-->
+		<!--<option value="1" <if condition="$pay_type eq 1">selected</if>>现金</option>-->
+		<!--<option value="2" <if condition="$pay_type eq 2">selected</if>>线上支付</option>-->
+		<!--<option value="3" <if condition="$pay_type eq 3">selected</if>>POS机</option>-->
+		<!--<option value="4" <if condition="$pay_type eq 4">selected</if>>淘宝支付</option>-->
+		<!--<option value="5" <if condition="$pay_type eq 5">selected</if>>点评支付</option>-->
+		<!--<option value="7" <if condition="$pay_type eq 7">selected</if>>京东支付</option>-->
+        <!--<option value="9" <if condition="$pay_type eq 9">selected</if>>PAD支付宝扫码</option>-->
+        <!--<option value="10" <if condition="$pay_type eq 10">selected</if>>点评到家</option>-->
+        <!--<option value="11" <if condition="$pay_type eq 11">selected</if>>支付宝WAP</option>-->
+        <!--<option value="12" <if condition="$pay_type eq 12">selected</if>>天猫</option>-->
+        <!--<option value="13" <if condition="$pay_type eq 13">selected</if>>同程旅游</option>-->
+    <!--</select>-->
+	<!--城市：-->
+    <!--<select name="city_id" id="city_id">-->
+		<!--<option value="all" <if condition="$city_id eq 'all'">selected</if>>全部</option>-->
+		<!--<option value="1" <if condition="$city_id eq 1">selected</if>>上海</option>-->
+		<!--<option value="2" <if condition="$city_id eq 2">selected</if>>杭州</option>-->
+		<!--<option value="3" <if condition="$city_id eq 3">selected</if>>苏州</option>-->
+		<!--<option value="4" <if condition="$city_id eq 4">selected</if>>成都</option>-->
+		<!--<option value="5" <if condition="$city_id eq 5">selected</if>>济南</option>-->
+        <!--<option value="6" <if condition="$city_id eq 6">selected</if>>福州</option>-->
+    <!--</select>-->
+    <!--</td>-->
+  <!--</tr>-->
+  <!---->
+  <!--<tr>  -->
+    <!--<td colspan="3">  -->
+      <!--开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" readonly="readonly">-->
+      <!--结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" readonly="readonly">-->
+    <!--</td>-->
+	<!--<td>  -->
+		<!--时间纬度：-->
+		<!--<select name="time_type" id="time_type">-->
+			<!--<option value="create_time" <if condition="$time_type eq create_time">selected</if>>下单时间</option>-->
+			<!--<option value="order_time" <if condition="$time_type eq order_time">selected</if>>上门时间</option>-->
+		<!--</select>-->
+	<!--</td>-->
+  <!--</tr>-->
+  <!--<tr>-->
+	<!--<td colspan="2">地址：<input TYPE="text" name="address" value="{$address}" style="width:500px"></td>-->
+	<!--<td>-->
+	<!--绑定微信：-->
+	<!--<select name="weixinbind" id="weixinbind">-->
+		<!--<option value="">请选择</option>-->
+		<!--<option value="1" <eq name="weixinbind" value="1">selected </eq>>未绑定</option>-->
+		<!--<option value="2" <eq name="weixinbind" value="2">selected </eq>>已绑定</option>-->
+	<!--</select>-->
+	<!--</td>-->
+	<!--<td>  -->
+	<!--业务类型：-->
+	<!--<select name="business_source" id="business_source">-->
+	<!--<option value="">请选择</option>-->
+		<!--<volist name="business_source_list" id="vo">-->
+		<!--<option value="{$key}" <eq name="order_type" value="$key">selected </eq>>{$vo}</option>-->
+		<!--</volist>-->
+	<!--</select>-->
+	<!--</td>-->
+	<!--<td>  -->
+	    <!--订单类型：-->
+		<!--<select name="order_type" id="order_type">-->
+			<!--<option value="">请选择</option>-->
+			<!--<option value="1" <eq name="order_type" value="1">selected </eq>>保养订单</option>-->
+			<!--<option value="2" <eq name="order_type" value="2">selected </eq>>检测订单</option>-->
+			<!--<option value="3" <eq name="order_type" value="3">selected </eq>>淘宝已支付订单</option>-->
+			<!--<option value="20" <eq name="order_type" value="20">selected </eq>>上海平安</option>-->
+			<!--<option value="22" <eq name="order_type" value="22">selected </eq>>光大168</option>-->
+			<!--<option value="23" <eq name="order_type" value="23">selected </eq>>光大268</option>-->
+			<!--<option value="24" <eq name="order_type" value="24">selected </eq>>光大368</option>-->
+			<!--<option value="35" <eq name="order_type" value="35">selected </eq>>好车况(市场部推广)</option>-->
+			<!--<option value="36" <eq name="order_type" value="36">selected </eq>>大众点评199</option>-->
+			<!--<option value="37" <eq name="order_type" value="37">selected </eq>>大众点评299</option>-->
+			<!--<option value="38" <eq name="order_type" value="38">selected </eq>>大众点评399</option>-->
+			<!--<option value="50" <eq name="order_type" value="50">selected </eq>>好车况(点评)</option>-->
+			<!--<option value="51" <eq name="order_type" value="51">selected </eq>>保养(点评)</option>-->
+                <!---->
+                        <!--<option value="52" <eq name="order_type" value="52">selected </eq>>建设银行168</option>-->
+			<!--<option value="53" <eq name="order_type" value="53">selected </eq>>建设银行268</option>-->
+			<!--<option value="54" <eq name="order_type" value="54">selected </eq>>建设银行368</option>-->
+			<!--<option value="55" <eq name="order_type" value="55">selected </eq>>建设银行好空气16.8</option>-->
+			<!--<option value="56" <eq name="order_type" value="56">selected </eq>>建设银行好空气98</option>-->
+		<!--</select>-->
+	<!--</td>-->
+
+  <!--</tr>-->
+  <!--<tr>  -->
+  <!--&lt;!&ndash;  <td><a href="/car/index.php/Admin/Index/select_car" target="_blank">下单</a></td>&ndash;&gt;-->
+    <!--<td colspan="2"> -->
+		<!--<a href="__APP__/Carservice/Carserviceorder/index/status/all" style="padding-right:50px">(当前显示的是未处理订单，点此查看全部订单)</a>-->
+		<!--<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">&nbsp;&nbsp;-->
+		<!--<input type="button" value="重置" style="impBtn hMargin fLeft shadow" onclick="window.location.href='__APP__/Carservice/Carserviceorder/';">&nbsp;&nbsp;&nbsp;&nbsp;-->
+		<!--<input type="checkbox" name="is_del" value='1' <if condition="$type eq ''">checked</if>>不显示作废订单-->
+
+    <!--</td>-->
+    <!--<td>-->
+    <!--下单渠道：-->
+    <!--<select name="order_origin">-->
+    	<!--<option value="">请选择</option>-->
+    	<!--<option value="1" <eq name="origin" value="1">selected</eq>>PC下单</option>-->
+    	<!--<option value="2" <eq name="origin" value="2">selected</eq>>微信下单</option>-->
+    	<!--<option value="3" <eq name="origin" value="3">selected</eq>>后台带下单</option>-->
+    	<!--<option value="4" <eq name="origin" value="8">selected</eq>>新版APP下单</option>-->
+    <!--</select>-->
+    <!--</td>-->
+	<!--<td>-->
+	<!--订单来源：-->
+	<!--<select name="remark">-->
+		<!--<option value="">请选择</option>-->
+		<!--<option value="携程自驾游月刊项目" <eq name="remark" value="携程自驾游月刊项目">selected </eq>>携程自驾游月刊项目</option>-->
+		<!--<option value="红牛社区活动" <eq name="remark" value="红牛社区活动">selected </eq>>红牛社区活动</option>-->
+		<!--<option value="中美国际99元专车年卡" <eq name="remark" value="中美国际99元专车年卡">selected </eq>>中美国际99元专车年卡</option>-->
+		<!--<option value="中银保险99元专车年卡" <eq name="remark" value="中银保险99元专车年卡">selected </eq>>中银保险99元专车年卡</option>	-->
+		<!--<option value="华安财险99元专车年卡" <eq name="remark" value="华安财险99元专车年卡">selected </eq>>华安财险99元专车年卡</option>	-->
+		<!--<option value="中美国际99元专车年卡1000张" <eq name="remark" value="中美国际99元专车年卡1000张">selected </eq>>中美国际99元专车年卡1000张</option>	-->
+		<!--<option value="华安财险" <eq name="remark" value="华安财险">selected </eq>>华安财险</option>	-->
+		<!--<option value="爱代驾268元中端车型小保养套餐" <eq name="remark" value="爱代驾268元中端车型小保养套餐">selected </eq>>爱代驾268元中端车型小保养套餐</option>-->
+		<!--<option value="爱代驾368元高端车型小保养套餐" <eq name="remark" value="爱代驾368元高端车型小保养套餐">selected </eq>>爱代驾368元高端车型小保养套餐</option>-->
+		<!--<option value="免费领取20元券" <eq name="remark" value="免费领取20元券">selected </eq>>免费领取20元券</option>-->
+		<!--<option value="快的积分商城" <eq name="remark" value="快的积分商城">selected </eq>>快的积分商城</option>-->
+		<!--<option value="三星" <eq name="remark" value="三星">selected </eq>>三星</option>-->
+		<!--<option value="平安好车采购" <eq name="remark" value="平安好车采购">selected </eq>>平安好车采购</option>-->
+		<!--<option value="中化道达尔代金卡2000张" <eq name="remark" value="中化道达尔代金卡2000张">selected </eq>>中化道达尔代金卡2000张</option>-->
+		<!--<option value="中化道达尔礼品卡10000张" <eq name="remark" value="中化道达尔礼品卡10000张">selected </eq>>中化道达尔礼品卡10000张</option>-->
+		<!--<option value="驴妈妈" <eq name="remark" value="驴妈妈">selected </eq>>驴妈妈</option>-->
+		<!--<option value="驴妈妈地推及自驾游" <eq name="remark" value="驴妈妈地推及自驾游">selected </eq>>驴妈妈地推及自驾游</option>-->
+		<!--<option value="驴妈妈积分商城20元券" <eq name="remark" value="驴妈妈积分商城20元券">selected </eq>>驴妈妈积分商城20元券</option>-->
+		<!--<option value="三星车险赠送卡制作用" <eq name="remark" value="三星车险赠送卡制作用">selected </eq>>三星车险赠送卡制作用</option>-->
+		<!--<option value="大客户" <eq name="remark" value="大客户">selected </eq>>大客户</option>-->
+		<!--<option value="补中化道达尔代金卡8000张（送）" <eq name="remark" value="补中化道达尔代金卡8000张（送）">selected </eq>>补中化道达尔代金卡8000张（送）</option>-->
+	<!--</select>-->
+	<!--</td>-->
+  <!--</tr>-->
+<!--</table>-->
+<input type="hidden" value="{$list_type}" name="list_type">
+</FORM>
+<div>
+    发送20元抵用券<input name="send_mobile" type="text" /><button id="send_msg">发送</button>
+    <if condition="in_array($authId,$csvArray)">
+    <button id="order_export">导出订单为csv</button> <button id="fit_export">导出配件合计为csv</button>
+    </if>
+    <a href="__APP__/Carservice/Carserviceorder/index/list_type/bill{$search}" style="padding-right:50px">切换技师对账数据</a> 
+</div>
+</div>
+<!-- 功能操作区域结束 -->
+
+ <if condition="$list_type eq ''">
+	<!-- 列表显示区域  -->
+	<div class="list" >
+	<table class="list">
+	<tr class="row">
+	<th width=5%>订单号</th>
+	<th width=2%>城市</th>
+	<th width=5%>
+	 <if condition="$order eq 'order_time'">
+	  <a href="javascript:sortBy('order_time','{$sort}','index/status/{$status}')" title="按照编号{$sortType}">预约时间<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+	 <else />
+		<a href="javascript:sortBy('order_time','0','index/status/{$status}/customer_id/{$admin_id}/time_type/{$time_type}/start_time/{$start_time}/end_time/{$end_time}')" title="按照编号升序排列 ">预约时间</a>
+	  </if>
+	</th>
+
+	<th width=5%>
+	 <if condition="$order eq 'create_time'">
+	  <a href="javascript:sortBy('create_time','{$sort}','index/status/{$status}/customer_id/{$admin_id}/time_type/{$time_type}/start_time/{$start_time}/end_time/{$end_time}')" title="按照编号{$sortType}">下单时间<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+	 <else />
+		<a href="javascript:sortBy('create_time','0','index/status/{$status}')" title="按照编号升序排列 ">下单时间</a>
+	  </if>
+	</th>
+
+	<th width=3%>姓名</th>
+
+	<th width=5%>
+	 <if condition="$order eq 'mobile'">
+	  <a href="javascript:sortBy('mobile','{$sort}','index')" title="按照编号{$sortType}">电话<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+	 <else />
+		<a href="javascript:sortBy('mobile','1','index')" title="按照编号升序排列 ">电话</a>
+	 </if>
+	</th>
+
+	<th width=4%>
+	 <if condition="$order eq 'licenseplate'">
+	  <a href="javascript:sortBy('licenseplate','{$sort}','index')" title="按照编号{$sortType}">车牌<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+	 <else />
+		<a href="javascript:sortBy('licenseplate','1','index')" title="按照编号升序排列 ">车牌</a>
+	 </if>
+	</th>
+
+	<th width=7%>地址</th>
+
+	<th width=5%>
+	 <if condition="$order eq 'amount'">
+	  <a href="javascript:sortBy('amount','{$sort}','index')" title="按照编号{$sortType}">金额<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+	 <else />
+		<a href="javascript:sortBy('amount','1','index')" title="按照编号升序排列 ">金额</a>
+	 </if>
+	</th>
+	<th width=5%>抵用码</th>
+
+	<th width=3%>
+
+	 <if condition="$order eq 'status'">
+	  <a href="javascript:sortBy('status','{$sort}','index')" title="按照编号{$sortType}">支付状态<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+	 <else />
+		<a href="javascript:sortBy('status','1','index')" title="按照编号升序排列 ">预约状态</a>
+	 </if>
+
+	</th>
+
+	<th width=2%>技师</th>
+	<th>客服</th>
+	<th>操作</th>
+	<th>车型</th>
+	<th>机油</th>
+	<th>机滤</th>
+	<th>空气滤</th>
+	<th>空调滤</th>
+	</tr>
+
+	<tr>
+	<volist name="list" id="vo">
+	<td><if condition="$authId neq '237'"><a href="__URL__/detail?id={$vo.id}" style="margin-left:5px">{$vo.show_id}</a><else/>{$vo.show_id}</if></td>
+	<td>
+	<if condition="$vo.city_id eq '1'">上海</if>
+	<if condition="$vo.city_id eq '2'">杭州</if>
+	<if condition="$vo.city_id eq '3'">苏州</if>
+	<if condition="$vo.city_id eq '4'">成都</if>
+	<if condition="$vo.city_id eq '5'">济南</if>
+    <if condition="$vo.city_id eq '6'">福州</if>
+	</td>
+	<td>{$vo.order_time|date="y-m-d H:i:s",###}</td>
+	<td>{$vo.create_time|date="y-m-d H:i:s",###}</td>
+	<td>{$vo.truename}</td>
+	<td>{$vo.mobile}</td>
+	<td>{$vo.licenseplate}</td>
+	<td>{$vo.address}</td>
+	<td>{$vo.amount}</td>
+	<td>{$vo.replace_code}</td>
+	<td>{$vo.status_name}</td>
+	<td>{$vo.technician_name}</td>
+	<td>{$vo.operate}({$vo.operate_id})</td>
+	<td>
+	  <if condition="$vo.status eq '0'">
+		<if condition="$authId neq '237'">
+			<a href="__URL__/detail?id={$vo.id}">处理订单</a>
+		</if>
+	  <elseif condition="$vo.status eq '1'" />
+
+	  <a href="__URL__/technician_assign?id={$vo.id}&start_time={$start_time}&end_time={$end_time}">分配技师</a>
+
+	  <elseif condition="$vo.status eq '2'" />
+		<if condition="($authId eq 271) OR ($authId eq 286) OR ($authId eq 219) OR ($authId eq 240) OR ($authId eq 1) OR ($authId eq 140) OR ($authId eq 244) OR ($authId eq 237) OR ($authId eq 272) OR ($authId eq 278) OR ($authId eq 287) OR ($authId eq 288) OR ($authId eq 392) OR ($authId eq 384) OR ($authId eq 366) OR ($authId eq 248)">
+		<a href="javascript:if(confirm('确实要重置吗?'))location='__URL__/update_to_process1?id={$vo.id}'">重置分配</a>
+		</if>
+		<if condition="$authId neq '237'">
+	  <!-- <a href="__URL__/process_9?id={$vo.id}">完成订单</a> --><a href="__URL__/detail?id={$vo.id}">处理订单
+	  </a>
+		</if>
+	  <elseif condition="$vo.status eq '9'" />
+		<if condition="$authId neq '237'">
+			<a href="__URL__/detail?id={$vo.id}" style="margin-left:5px">订单已完成</a>
+		</if>
+	  </if>
+	  <a href="javascript:void(0);" onClick="showlog('carserviceorder',{$vo.true_id})">查看日志</a>
+	  <!-- <a href="__URL__/show?id={$vo.id}" style="margin-left:5px">查看订单</a> -->
+	</td>
+	<td>{$vo.car_name}</td>
+	<td>{$vo.oil}</td>
+	<td>{$vo.filter}</td>
+	<td>{$vo.kongqi}</td>
+	<td>{$vo.kongtiao}</td>
+	</tr>
+	</volist>
+	</table>
+    <table class="list tongji">
+        <tr class="row">
+            <th>套餐类型</th>
+            <th>订单数</th>
+            <th>去重手机数</th>
+            <th>去重车牌数</th>
+            <th>去重地址数</th>
+            <th>绝对唯一订单数</th>
+            <th>总价</th>
+        </tr>
+        <volist name="priceInfo" id="price">
+            <tr>
+                <td>{$price.name}</td>
+                <td>{$price.orderCount}</td>
+                <td>{$price.distinctMobile}</td>
+                <td>{$price.distinctLicenseplate}</td>
+                <td>{$price.distinctAddress}</td>
+                <td>{$price.absoluteCount}</td>
+                <td>{$price.value}</td>
+            </tr>
+        </volist>
+    </table>
+	</div>
+<!--  分页显示区域 -->
+<div class="page" style="float:left"><if condition="$page neq ''">{$page}<else/>共{$source_count}条记录</if></div>
+</if>
+<if condition="$list_type eq 'bill'">
+  <include file="Carserviceorder:bill_list" />
+</if>
+
+<script>
+jQuery('#send_msg').click(function(){
+	var send_mobile = jQuery('input[name=send_mobile]').val();
+	if(!send_mobile){
+		alert('请先输入手机号码');
+		return false;
+	}
+	jQuery.post('__URL__/code_process',{'mobile':send_mobile},function(data){
+		var data = data.data;
+		alert(data.message);
+	},'json')
+}) 
+
+//导出订单csv
+jQuery('#order_export').click(function(){
+    //alert('11111');
+    var ret = check();
+    if(ret == false){
+        return false ;
+    }
+    
+    var param = jQuery('#myform').serialize() ;
+    var url = '/Admin/index.php/Carservice/Carserviceorder/order_export?'+param ;
+    window.location.href= url ;  
+});
+
+jQuery('#fit_export').click(function(){
+    //alert('11111');
+    var ret = check();
+    if(ret == false){
+        return false ;
+    }
+    
+    var param = jQuery('#myform').serialize() ;
+    var url = '/Admin/index.php/Carservice/Carserviceorder/fit_export?'+param ;
+    window.location.href= url ;  
+});
+
+function  check(){
+//    var  start_time = jQuery('input[name=start_time]').val();
+//    var  end_time = jQuery('input[name=end_time]').val();
+//    var  status = jQuery("#status option:checked").val();
+//    var  city_id = jQuery("#city_id option:checked").val();
+//    var  time_type = jQuery("#time_type option:checked").val();
+//     
+//    if(start_time==''){
+//        alert('请选择开始时间!');
+//        return false ;
+//    }
+//    if(end_time==''){
+//        alert('请选择结束时间!');
+//        return false ;
+//    }
+//    if(status=='all'){
+//        alert('请选择订单状态!不可为全部!');
+//        return false ;
+//    }
+//    if(city_id=='all'){
+//        alert('请选择城市!不可为全部!');
+//        return false ;
+//    }
+//    if(time_type=='create_time'){
+//        alert('请选择时间纬度为上门时间!');
+//        return false ;
+//    }
+    var  checkArr = new Array();
+    checkArr[0]='start_time|'+''+'|请选择开始时间!';
+    checkArr[1]='end_time|'+''+'|请选择结束时间!';
+    for(var i=0;i<checkArr.length;i++){
+        var valArr = checkArr[i].split("|"); //字符分割 
+        var  eleval = jQuery('input[name='+valArr[0]+']').val(); 
+        
+        if(eleval == valArr[1]){
+            alert(valArr[2]);
+            return false ;
+        }
+    }
+
+}
+
+</script>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

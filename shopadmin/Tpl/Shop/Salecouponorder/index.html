@@ -1,0 +1,58 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>抵用券记录</h1></div>
+
+<div id="main-right2">
+	<div>
+		<form method="post" name="form" id="form" action="__URL__/index">
+		<table class="list" width="785">
+			<tr>
+				<td>使用时间：</td>
+				<td>
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" >
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" ></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="搜索"></td>
+			</tr>
+			
+		</table>
+		</form>
+	</div>
+
+	<table width="785" border="0" cellspacing="1" cellpadding="1">
+		<tr>
+			<td height="40" bgcolor="#F2F2F2">抵用券ID</td>
+			<td bgcolor="#F2F2F2">抵用券名称</td>
+			<td bgcolor="#F2F2F2">用户姓名</td>
+			<td bgcolor="#F2F2F2">手机号</td>
+			<td bgcolor="#F2F2F2">车牌号</td>
+			<td bgcolor="#F2F2F2">使用时间</td>
+			<td bgcolor="#F2F2F2">绑定的订单号</td>
+			<td bgcolor="#F2F2F2">操作</td>
+		</tr>
+		<volist name="membersalecoupon" id="vo">
+		<tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+		  <td height="40">{$vo.coupon_code}</td>
+		  <td><a href="http://www.xieche.com.cn/Lottery-salecoupon-salecoupon_id-{$vo.salecoupon_id}" target="_blank">{$vo.coupon_name}</a></td>
+		  <td>{$vo.user_name}</td>
+		  <td>{$vo.mobile}</td>
+		  <td>{$vo.licenseplate}</td>
+		  <td>{$vo.use_time|date="Y-m-d H:i:s",###}</td>
+		  <td><if condition="$vo.true_order_id neq 0"><a href="__APP__/Shop/order/edit/order_id/{$vo.true_order_id}" target="_blank">{$vo.order_id}</a><else/>无绑定订单</if></td>
+		  <td><a href="__URL__/add_remark/membersalecoupon_id/{$vo.membersalecoupon_id}">添加备注</a></td>
+		</tr>
+		<tr>
+			<td colspan="2">备注信息</td>
+			<td colspan="6">{$vo.remark}</td>
+		</tr>
+		<tr>
+			<td colspan="8">&nbsp;</td>
+		</tr>
+		</volist>
+	</table>
+	<div id="main-right3">{$page}</div>
+</div>
+
+</div>

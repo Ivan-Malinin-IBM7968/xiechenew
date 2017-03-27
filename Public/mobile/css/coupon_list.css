@@ -1,0 +1,12 @@
+#left-trigger{float: left;}
+#right-trigger{float: right;}
+.list-coupon{}
+.single-coupon{border-bottom: 1px solid #f1f1f1; position: relative; height: 90px; padding: 10px 0px; background: white}
+.coupon-name{ font-weight: bold; color: #000000; margin: 0px; white-space: normal; height:40px; line-height: 20px; font-size: 1.1em; line-height: 16px}
+.coupon-price{ position: relative; right: 0px; top: -3px; text-align: right; }
+.coupon-price strong{ font-size: 1.3em; color: #fd8612; font-weight: bold; display: block; height: 23px; margin-right: 5px;}
+.coupon-price em{ color: #999999; text-decoration: line-through; font-size: 0.8em; width: 50px; margin-right: 5px; }
+.coupon-type{ background: #fd8612; padding: 2px 5px; color: #ffffff; font-size: 10px; display: inline-block;  text-align: center;}
+.bought-count,
+.coupon-distance,
+.coupon-last-date{color: #777777; font-size: .8em; display: block;}

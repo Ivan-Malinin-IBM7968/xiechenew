@@ -1,0 +1,74 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<script>
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+	
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">每日新增列表</div>
+<!--  功能操作区域  -->
+<div class="operate" >
+<!-- 查询区域 -->
+<div>
+<FORM METHOD=POST ACTION="__URL__">
+
+<table cellspacing="0" cellpadding="10" >
+	<tr>	
+		<td colspan="2">	
+			时间搜索：
+			
+			开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+			结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly">
+		</td>
+	</tr>
+	<tr>	
+		<td colspan="3" align="center">	
+			<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">
+		</td>
+	</tr>
+</table>
+
+</FORM>
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+			<table class="list">
+				<tr class="row">
+					<th>日期</th>
+					<th>新增订单数</th>
+					<th>新增店铺数</th>
+					<th>售出的现金券数</th>
+					<th>售出的团购券数</th>
+					<th>上架的现金券数</th>
+					<th>上架的团购券数</th>
+				</tr>
+				<volist name="list" id="vo">
+				<tr>
+					<td>{$vo.create_time|date="Y-m-d",###}</td>
+					<td>{$vo.order_num}</td>
+					<td>{$vo.shop_num}</td>
+					<td>{$vo.sold_cashcoupon}</td>
+					<td>{$vo.sold_groupon}</td>
+					<td>{$vo.onshelf_cashcoupon}</td>
+					<td>{$vo.onshelf_groupon}</td>
+				</tr>
+				</volist>
+			</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

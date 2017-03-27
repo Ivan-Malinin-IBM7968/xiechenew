@@ -1,0 +1,112 @@
+.shop-name{background: #ffffff; padding: 0 10px 0px 10px;}
+.shop-name em{font-style: normal; font-size: .8em; background:#ff6600; color: #ffffff; padding: 2px 4px; display: inline-block; float: left; margin-top: 7px;}
+.shop-name span{font-size: 1.3em; font-weight: bold; display: inline-block; margin-left: 5px; margin-top: 4px; float: left; }
+.shop-brand{font-size: 0.9em; color: #666666;}
+.shop-rating{font-size: .9em;  color: #ff6600; font-family: "Lucida Grande",Verdana,"Microsoft YaHei",hei; text-align: right;}
+.shop-rating span{font-size: 1.4em; font-weight: bold;}
+.shop-address{color: #666666; font-size: .9em;}
+.shop-address em{background: url("../images/address-map.png") center center no-repeat; display: inline-block; width: 20px; height: 20px; background-size: 20px; float: left; }
+.single-sale-info{ border-top: 2px solid #f1f1f1; position: relative; height: 138px; margin-bottom: 40px;}
+.single-sale-info .number{border-radius: 50%; color: #444444; background: #f1f1f1; width: 20px; height: 20px; text-align: center; line-height: 20px; font-size: 0.9em; position: absolute; left: 0px; top: -12px;font-weight: normal; font-style: italic;}
+.sale-price{position: absolute; right: 0px; top: -22px; padding: 2px 5px; background: #ffffff; color: #02aff1; font-size: 1em;}
+.sale-price strong{font-size: 1.8em; font-family: "Lucida Grande",Verdana,"Microsoft YaHei",hei; font-weight: bolder; }
+
+.cal-week-con{background: #f1f1f1; height: 78px; width: 100%; position: relative; }
+.cal-week{width: 96%; display: block; height: 20px; padding: 0px; margin:0 auto; margin-top: 20px; padding:4px 0px; }
+.cal-week li{float: left; width: 14.28%; list-style: none; display: inline-block; font-size: 0.9em; text-align: center; color: #999999;}
+.cal-week li span{background: #f1f1f1; font-weight: 400; width: 98%; display: inline-block;}
+.cal-week li.has-sale-1 span{background: #ff6600; color: #ffffff; }
+.cal-time{background-color: #fcfcfc; padding: 2px 0px 6px 0px; margin: 0 auto; width: 100%; display: block;}
+.cal-time *{color: #444444; font-size: 0.85em; margin-left: 5px;display: inline-block; }
+.buy-btn-con{ background-color: #f1f1f1; position: absolute; bottom: 0px; left: 0px; width: 100%; height: 40px;}
+
+.shop-info-container{background: #f2f2f2;}
+.order-btn{ background: #ff6600; color: #ffffff; width: 70px; height: 40px; line-height: 40px;   padding: 0px; margin: 0px;font-size: 1.3em; font-weight: bold; text-decoration: none; float: right;}
+.ui-tabs-ul{display: block; background-color: #f1f1f1;}
+.ui-tabs-ul li{ float: left; height: 45px; display: inline-block;}
+.ui-tabs-ul li a{color: #777777;  text-decoration: none; font-weight: 300; text-align: center; height: 45px; width: 100%; display: inline-block; line-height: 45px;} 
+.ui-tabs-ul li a:visited{color: #777777;}
+.ui-tabs-ul li a:hover{color: #fd8612;}
+.ui-tabs-ul li a.active{color: #fd8612; }
+.tabs-content{padding: 10px;}
+
+
+.sale-title{color: #ff6600; font-size: 1.3em;}
+.sale-title h4{font-weight: bolder;}
+.sale-title h4 span{font-size: 1.4em; color: #02aff1 }
+
+.sale-explanation{ font-size: .8em; margin-bottom: 20px; background: #fafafa; padding: 5px;}
+.sale-explanation dl dt,.sale-explanation dl dd{display: inline-block; margin-top: .5em;}
+.sale-explanation dl dt{ padding: .1em .8em;  margin-right: 4px;}
+.sale-explanation dl dt.sy{background: #ff6600; color: white;}
+.sale-explanation dl dt.sn{background: #f1f1f1; color: #777777;}
+.sale-explanation dl dd{color: #666666; }
+
+.single-sale-promo{border-bottom: 1px solid #f1f1f1; position: relative; height: 120px;  margin: 0px 0px 10px 0px ;}
+.promo-name{width: 70%;}
+.promo-name a{margin: 0px; white-space: normal; font-size: 1.1em; width: 130px; height: 40px;color: black; font-weight: bold;}
+.promo-price{position: absolute; right: 5px; top: -3px; text-align: right; }
+.promo-price strong{ font-size: 1.3em; color: #fd8612;  display: block; text-align: right; height: 23px; font-weight: bold;}
+.promo-price em{display: block; color: #999999; text-decoration: line-through; font-size: 0.8em;  text-align: right;}
+.promo-type{ background: #fd8612; padding: 2px 5px; color: #ffffff; font-size: 10px; display: inline-block;  text-align: center;}
+.bought-count{color: #777777; font-size: 0.8em; display: block;}
+#buy-btn{  text-align: center; background: #fd8612; color: #ffffff; width: 65px; height: 35px; line-height: 35px; right: 0px; bottom: 10px;  padding: 0px; margin: 0px;font-size: 1.2em; font-weight: 400; text-decoration: none; border-radius: 5px; display: block; position: absolute;}
+
+/*用户评论开始的*/
+.single-comment{position: relative; border-bottom: 1px solid #f1f1f1; position: relative; height: auto; }
+.c-name{font-weight: normal; font-size: 1.1em; }
+.c-date{ position: absolute; right: 0px; top: 3px; color: #777777;}
+.c-service{margin-top: 5px; color: #777777; font-size: 0.8em;}
+.c-service dt{float: left; margin: 0px;}
+.c-service dd{float: left; margin: 0px 0px 0px 5px;}
+.customer-rating{clear: both; padding-top: 5px;}
+.rating-progress{ float: left; width: 65px; height: 15px; border-radius: 18px;background: #f1f1f1; overflow: hidden;}
+.rating-progress span{background: #02aff1; display: block; height: 20px; }
+.rating-progress span.rate-good{width: 100%}
+.rating-progress span.rate-normal{width: 66%}
+.rating-progress span.rate-bad{width: 33%}
+.rating-class{float: left; font-size: 0.8em; color: #02aff1; margin-left: 5px  }
+
+.commment-body{clear: both; padding-top: 8px; font-size: 0.95em; color: #444444; height: auto; white-space: normal; line-height: 22px;}
+.comment-reply{ display: block; margin-left: 0.2em; clear: both; margin-top: 4px;}
+.comment-reply li{background: #f1f1f1; width: 96%; height: auto;color: #444; font-size: 0.8em;  padding: 2% 0 4% 3%;  }
+.comment-reply li > div{ white-space: normal; }
+
+/*用户评论结束*/
+
+
+/*分页CHF加起来试试弹性*/
+#pagination{width: 90%; height: 50px; margin: 0 auto; padding: 10px 0px;}
+#pagination > div{float: left;box-sizing: border-box; width: 33.33%}
+.page-trigger{ }
+#totle-page{ text-align: center; height: 40px; line-height: 40px; font-size: 1.2em}
+.page-trigger > a{ display:block; border-radius: 5px; background: #eeeeee; text-align: center; width: 98px; height: 40px; line-height: 40px; font-size: 1.1em; color: #444; text-decoration: none;}
+.page-trigger > a:visited{color: #444;}
+.page-trigger > a:hover{color: #ffffff; background: #777777}
+/*分页CHF加起来试试弹性结束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

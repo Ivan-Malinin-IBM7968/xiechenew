@@ -1,0 +1,102 @@
+body {
+    font-family: "微软雅黑", sans-serif;
+    background: -webkit-linear-gradient(#0E152F, #25377C);
+    color: #ffffff;
+    height: 1900px;
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    background: #0D2241;
+    color: #F8F7F8;
+    /*text-align: center*/
+    margin: 32px 16px;
+    padding: 10px 0;
+    position: relative;
+    font-size: 1.4em;
+}
+
+.captain-block {
+    background: #0D2241;
+    color: #F8F7F8;
+    text-align: center;
+    margin: 32px 16px;
+    padding: 10px 0;
+    font-size: 1.2em;
+}
+
+/* auto calculate */
+#check_report_point_circle {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    background: chartreuse;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2em;
+    vertical-align: middle;
+    border-width: 2px;
+    border-color: #ffffff;
+}
+
+#check_report_item_holder {
+    display: none;
+}
+
+#logo {
+    height: 2em;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+#quick_visit_div {
+
+    margin-top: 32px;
+}
+
+#check_report_indicator{
+    font-size: 14px;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.badge {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: red;
+    font-size: 12px;
+}
+
+.captain {
+    text-align: center;
+}
+
+.captain-block .captain{
+    text-align: left;
+}
+
+.item_grid {
+    text-align: left;
+}
+
+.item_holder {
+    margin: 32px 16px;
+}
+
+.color-block {
+    width: 30px;
+    height: 20px;
+    background: red;
+    display: inline-block;
+}
+
+img.check_status_flag {
+    width: 1.2em;
+    height: 1.2em;
+}

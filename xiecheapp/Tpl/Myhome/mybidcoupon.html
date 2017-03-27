@@ -1,0 +1,45 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title">我的返利券:</h2>
+
+			<div class="table-con my-tickets">
+				<table width="948">
+					<tr>
+						<th width="80">编号</th>
+						<th width="250">返券名称</th>
+						<th width="100">消费码</th>
+						<th width="250">店铺</th>
+						<th width="105">有效期</th>
+						<th width="105">是否使用</th>
+					</tr>
+					 <volist name="data.Bidcoupon" id="list" mod="2">
+						<tr>
+							<td>{$list.id}</td>
+							<td>返利现金券 {$list.price}元</td>
+							<td>{$list.code}</td>
+							<td>{$list.shop_name}</td>
+							<td>
+								{$list.start_time|date="Y-m-d",###}---{$list.end_time|date="Y-m-d",###}
+							</td>
+							<td>
+								<if condition="$list.status eq '0'">已使用<else />未使用</if>
+							</td>
+						</tr>
+					</volist>
+					<tr>
+						<td colspan="6">{$page}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>

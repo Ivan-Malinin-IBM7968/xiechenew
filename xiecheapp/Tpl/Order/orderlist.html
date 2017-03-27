@@ -1,0 +1,61 @@
+<layout name='layout_myhome' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+<div id="wddd-right">已完成订单 -- 详情</div>
+<div id="wddd-right2">
+  <form name="form2" method="post" action="">
+    <select name="jumpMenu" size="1" id="jumpMenu" onChange="MM_jumpMenu('parent',this,0)">
+      <option value="#">一个月前的订单</option>
+      <option value="#">近一个月的订单</option>
+    </select>
+    <select name="jumpMenu2" id="jumpMenu2" onChange="MM_jumpMenu('parent',this,0)">
+      <option value="#">全部订单</option>
+      <option value="#">已完成订单</option>
+      <option value="#">已取消订单</option>
+    </select>
+   
+  </form><br/>
+ <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#e4e4e4">
+  <tr>
+    <td width="12%" height="30" align="center" valign="middle" bgcolor="#EBEBEB">订单编号</td>
+    <td width="22%" align="center" valign="middle" bgcolor="#EBEBEB"> 预约时间 </td>
+    <td width="19%" align="center" valign="middle" bgcolor="#EBEBEB"> 订单状态 </td>
+    <td width="16%" align="center" valign="middle" bgcolor="#EBEBEB"> 投诉状态 </td>
+    <td width="15%" align="center" valign="middle" bgcolor="#EBEBEB">操作</td>
+    <td align="center" valign="middle" bgcolor="#EBEBEB">查看</td>
+    </tr>
+  <volist name="list" id="vo">
+  <tr>
+    <td height="35" align="center" bgcolor="#FFFFFF"><strong>{$vo.id}</strong></td>
+    <td align="center" bgcolor="#FFFFFF">{$vo['order_time']|date="Y-m-d H:s",###}</td>
+    <td align="center" bgcolor="#FFFFFF">
+	 	<volist name="Think.config.ORDER_STATE" id="vo_os">
+		<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+		</volist>
+	</td>
+    <td align="center" bgcolor="#FFFFFF">无</td>
+    <td align="center" bgcolor="#FFFFFF">
+    	<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+		<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+		</volist>
+    </td>
+    <td align="center" bgcolor="#FFFFFF"><a href="">查看</a> | <a href="">评价</a></td>
+    </tr>
+  </volist>
+  <tr>
+    <td height="30" colspan="6" align="right" bgcolor="#FFFFFF">等待付款订单数：<font color="#990000">0</font>   未完成的订单数：<font color="#990000">0</font>   已完成的订单数：<font color="#990000">1</font>  已取消订单数：<font color="#990000">1</font>  订单总数：<font color="#990000">2</font>  &nbsp;&nbsp;</td>
+    </tr>
+  <tr>
+    <td height="45" colspan="6" align="right" bgcolor="#FFFFFF"><table width="20%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="68" height="31" align="center" style="background-image:url(images/syy.png); background-repeat:no-repeat;">上一页</td>
+        <td align="center"><font color="#990000">1</font></td>
+        <td width="70" align="center" style="background-image:url(images/xyy.png); background-repeat:no-repeat;">下一页 </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+</div>
+
+</div>

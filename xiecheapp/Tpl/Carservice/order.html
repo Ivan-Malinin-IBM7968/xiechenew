@@ -1,0 +1,719 @@
+<layout name='layout_new' />
+
+<style type="text/css">
+table {margin:auto;vertical-align:middle;border-collapse:collapse;border-spacing:0;}
+td {vertical-align:middle;font-size:14px}
+input,select,option{font-size:14px;color:#666}
+option{height:24px;line-height:24px}
+.ddtx {
+  padding: 0px;
+  height: auto;
+  width: 1200px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-left: auto;
+  border: 1px solid #005ead;
+  overflow: hidden;
+}
+.ddtx .tx_bd {
+  padding: 0px;
+  margin:20px 0px 0px 40px;
+}
+.ddtx .tx_title {
+  font-size: 22px;
+  font-family: "微软雅黑";
+  height: 40px;
+  padding: 0px;
+  line-height: 40px;
+  display: block;
+  width: 85%;
+  margin-top: 30px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+.ddtx .tx_bd table {
+  font-family: "微软雅黑";
+  font-size: 16px;
+}
+.ddtx .tx_bd table tr td #truename,.input-class {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;
+  width: 250px;
+  padding-left: 10px;
+line-height:30px;
+}
+.ddtx .tx_bd table tr td #ctiy {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  line-height: 30px;line-height:30px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #city2 {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #form4 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form13 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form13 #zctime {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form14 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form14 #vin {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #address {
+  margin: 0px;
+  height: 30px;
+	line-height:30px;
+  width: 522px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #mobile {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #form6 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 260px;
+}
+.ddtx .tx_bd table tr td #yzm {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 240px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #form7 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+}
+.ddtx .tx_bd table tr td #licenseplate_type {
+  margin: 0px;
+  height: 34px;line-height:34px;
+  width: 50px;
+  font-size: 14px;
+	text-align:center;
+}
+.ddtx .tx_bd table tr td #licenseplate{
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.ddtx .tx_bd table tr td #order_time {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #order_time2 {
+  margin: 0px;
+  height: 34px;line-height:34px;
+  width: 266px;
+}
+.ddtx .tx_bd table tr td #form10 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+}
+.ddtx .tx_bd table tr td #time2 {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 240px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.ddtx .tx_bd table tr td #form11 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+}
+.ddtx .tx_bd table tr td #chash {
+  margin: 0px;
+  height: 34px;line-height:34px;
+  width: 266px;
+  font-size: 14px;
+  color: #666;
+}
+.ddtx .tx_bd table tr td #car_reg_time, #engine_num, #vin_num {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #remark {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 522px;
+}
+.ddtx .spxq_right {
+  padding:0px 40px;
+  height: auto;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
+  font-family: "微软雅黑";
+}
+.ddtx .spxq_right .spxq_title {
+  font-size: 24px;
+  font-family: "微软雅黑";
+  height: 40px;
+  padding: 0px;
+  line-height: 40px;
+  display: block;
+  width: 85%;
+  margin-top: 30px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+.ddtx .spxq_right table {
+  width: 100%;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-spacing: 1px;
+  background-color: rgb(204, 204, 204);
+  border-collapse: separate;
+  border-color: gray;
+}
+.ddtx .spxq_right table td{text-align:center}
+	.code-title{
+	background:url('http://www.xieche.com.cn/Public/carservice/img/icon_1.gif') scroll no-repeat 0px center;
+	font-size: 16px;
+    height: 40px;
+    line-height: 43px;
+    padding-left: 26px;
+	font-family:"微软雅黑";
+	margin:20px 0px;
+	color:#005ea7;
+  cursor: pointer;
+}
+.code-hide{background:url('http://www.xieche.com.cn/Public/carservice/img/icon_2.gif') scroll no-repeat 0px center;}
+	.code-content{padding:10px 20px;border:1px solid #a3d1ec;font-family:"微软雅黑";}
+	.code-content p{background-color:#eefaff;height:40px;line-height:40px;margin:10px 0px;font-size:14px;}
+.btn-danger {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: #fff;
+	-moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding: 2px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	margin-left:5px;
+}
+.code-input{
+	background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #555;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year{width:43%;text-align:center}
+</style>
+</head>
+
+<body>
+<div class="ddtx">
+
+<h2 class="tx_title">请正确填写以下内容，提交订单后，会有客服与您联系</h2>
+<div class="tx_bd">
+  <form method="post" name="subForm" id="subForm" action="__APP__/carservice/create_order">
+  <table width="100%" border="0" cellspacing="4" cellpadding="4">
+    <tr>
+      <td width="15%" height="65" align="right" style="padding-right:60px" valign="middle"><img src="__PUBLIC__/carservice/img/xx.png" width="6" height="6" /> 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名 :</td>
+      <td width="25%" valign="middle">
+        <label for="truename"></label>
+        <input type="text" name="truename" id="truename" />
+      </td>
+      <td width="27%">&nbsp;</td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <!--<tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle"><img src="__PUBLIC__/carservice/img/xx.png" width="6" height="6" /> 所在地区 :</td>
+      <td>
+        <label for="ctiy"></label>
+        <select name="ctiy" size="1" id="ctiy">
+          <option>上海市</option>
+        </select>
+      </td>
+      <td>
+        <label for="city2"></label>
+        <select name="city2" size="1" id="city2">
+          <option>徐汇区</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+    </tr>-->
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" width="6" height="6" /> 详细地址：</td>
+      <td colspan="3">
+        <label for="address"></label>
+        <input name="address" type="text" id="address" value="上海市" />  （外环内）
+      </td>
+      </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 手机号码：</td>
+      <td>
+        <label for="mobile"></label>
+        <input type="text" name="mobile" id="mobile" value="{$userinfo['mobile']}" />
+      </td>
+      <td> <notempty name="yzm"><button type="button" id="yzmBtn" style="width:120px;height:32px" >发送验证码</button></notempty></td>
+      <td>&nbsp;</td>
+    </tr>
+    <notempty name="yzm">
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 验证码：</td>
+      <td>
+        <label for="yzm"></label>
+        <input name="yzm" type="text" id="yzm" placeholder="填写手机验证码" />
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    </notempty>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 车 牌 号 ：</td>
+      <td>
+        <select name="licenseplate_type" id="licenseplate_type" style="font-size:14px;float: left;">
+          <volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+			<option value="{$vo_os}">{$vo_os}</option>
+		  </volist>
+        </select>
+        <input name="licenseplate" type="text" id="licenseplate" value="" style="width:196px" />
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 服务时间：</td>
+      <td>
+        <label for="order_time"></label>
+        <input class="input-class datepicker1" type="text" name="order_time" id="order_time" placeholder="请选择上门服务时间">
+      </td>
+      <td>
+        <label for="time2"></label>
+        <select name="order_time2" id="order_time2" style="font-size:14px">
+			<option value="0">8:00</option>
+			<option value="1">9:00</option>
+			<option value="2">10:00</option>
+			<option value="3">11:00</option>
+			<option value="4">12:00</option>
+			<option value="5">13:00</option>
+			<option value="6">14:00</option>
+			<option value="7">15:00</option>
+			<option value="8">16:00</option>
+			<option value="9">17:00</option>
+			<option value="10">18:00</option>
+			<option value="11">19:00</option>
+			<option value="12">20:00</option>
+			<option value="13">21:00</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 付款方式：</td>
+      <td>
+        <label for="chash"></label>
+        <select name="pay_type" id="chash" style="font-size:14px">
+          <option value="1">现金</option>
+		  <option value="2">在线支付</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <!--  
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">抵用码：</td>
+      <td>
+        <label for="chash"></label>
+        <input class="input-class" type="text" name="replace_code" placeholder="输入抵用码，可以抵用服务费">
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    -->
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">车辆注册时间：</td>
+      <td>
+        <label for="clzc"></label>
+        <input class="input-class datepicker2" type="text" name="car_reg_time" id="car_reg_time" placeholder="请选择车辆注册时间">
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">发动机号码：</td>
+      <td colspan="2">
+        <label for="zctime"></label>
+        <input type="text" name="engine_num" id="engine_num" />
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">VIN：</td>
+      <td colspan="2">
+        <label for="vin"></label>
+        <input type="text" name="vin_num" id="vin_num" />
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <!--<tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;</td>
+      <td colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="15%" height="65">
+            <input type="radio" name="invoices_type" class="invoices_type" value="0" checked />
+            <label for="invoices_type"></label>
+            不要发票
+          </td>
+          <td width="14%">
+            <input type="radio" name="invoices_type" class="invoices_type" value="1" />
+            <label for="invoices_type"></label>
+            个人
+          </td>
+          <td width="14%">
+            <input type="radio" name="invoices_type" class="invoices_type" value="2" /> 
+            公司
+            <label for="invoices_type"></label>
+          </td>
+          <td width="9%" align="right" style="padding-right:60px" valign="middle">发票抬头</td>
+          <td width="34%">
+            <label for="invoices_title"></label>
+            <input type="text" name="invoices_title" id="invoices_title" />
+          </td>
+        </tr>
+      </table></td>
+    </tr>-->
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">备 注：</td>
+      <td colspan="3">
+        <label for="remark"></label>
+        <input type="text" name="remark" id="remark" />
+      </td>
+      </tr>
+  </table>
+  </form>
+</div>
+<div class="spxq_right">
+<h2 class="spxq_title">商品详情</h2>
+<table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#CCCCCC">
+  <tr>
+    <td width="25%" height="40" bgcolor="#f8f8f8">&nbsp;&nbsp;商品名称</td>
+    <td width="38%" bgcolor="#f8f8f8">&nbsp;&nbsp;保养项目</td>
+    <td width="12%" bgcolor="#f8f8f8">&nbsp;&nbsp;价格</td>
+    <td width="25%" bgcolor="#f8f8f8">&nbsp;&nbsp;总价</td>
+  </tr>
+
+  <foreach name="item_list" item="value" key="key">
+  <tr>
+    <if condition="$key eq 0">
+    <td rowspan="5" bgcolor="#FFFFFF">&nbsp;&nbsp;上门保养</td>
+    </if>
+    <td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">
+      <if condition="$key eq 0">
+      [机油]
+      <elseif condition="$key eq 1" />
+      [机油滤清器]
+      <elseif condition="$key eq 2" />
+      [空气滤清器]
+      <elseif condition="$key eq 3" />
+      [空调滤清器]
+      </if>
+      {$value['name']}
+    </td>
+    <td bgcolor="#F8F8F8"> ￥{$value['price']}</td>
+    <if condition="$key eq 0">
+    <td rowspan="5" bgcolor="#F8F8F8"> ￥{$item_amount}</td>
+    </if>
+  </tr>
+  </foreach>
+  <empty name="item_list">
+  <tr>
+    <td bgcolor="#FFFFFF">&nbsp;&nbsp;服务费</td>
+    <td height="40" bgcolor="#F8F8F8" align="center">已有配件，仅购买上门服务</td>
+    <td bgcolor="#F8F8F8"> ￥99</td>
+    <td bgcolor="#F8F8F8"> ￥99</td>
+  </tr>
+  <else />
+  <tr>
+    <td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">服务费</td>
+    <td bgcolor="#F8F8F8"> ￥99</td>
+  </tr>
+  </empty>
+
+
+  
+</table>
+<div class="coupon-code">
+  	<p class="code-title" id="code-show">使用优惠卷抵消部分总额</p>
+  	<div class="code-content" style="display:none" id="code-show-content">
+  		<!-- <p style="width:220px">有优惠卷兑换码？<a href="javascript:void(0);" onClick="$('#code-show-input').show();">点击输入兑换码</a></p> -->
+  		<div id="code-show-input">
+  			<p style="width:450px">请输入您手中的兑换码：<input type="text" class="code-input" /><button type="button" class="btn-danger" id="use-code">使用</button></p>
+  			<p style="width:120px">可以优惠<font style="color:#e44256;font-weight:bold" id="replace-money"> 0.00 </font>元</p>
+  		</div>
+  	</div>
+  </div>
+</div>
+<div class="zf" style="background:#efefef; width:100%; height:80px;line-height:80px">
+  <table width="100%" border="0" cellspacing="6" cellpadding="0">
+    <tr>
+      <td width="82%" height="70" align="right" style="font-size:16px">应付总额：<font style="font-size:22px;margin-right:20px;color:#e80012">￥<font id="amount-money">{$item_amount}</font></font></td>
+      <td width="18%" style="height:80px;line-height:80px">
+        <img src="__PUBLIC__/carservice/img/tj.png" width="180" height="50" id="subBtn" style="display:block;cursor:pointer"/>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+<script>
+$(function(){
+	
+	$.datepicker.regional['zh-CN'] = {
+            closeText: '关闭',
+            prevText: '<上月',
+            nextText: '下月>',
+            currentText: '今天',
+            monthNames: ['一月','二月','三月','四月','五月','六月',
+            '七月','八月','九月','十月','十一月','十二月'],
+            monthNamesShort: ['一','二','三','四','五','六',
+            '七','八','九','十','十一','十二'],
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+            dayNamesMin: ['日','一','二','三','四','五','六'],
+            weekHeader: '周',
+            dateFormat: 'yy-mm-dd',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: true,
+            yearSuffix: '年',
+            mouthSuffix:'月'};
+    $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+	
+	//4-19 超过下午四点 5-20
+	 var minDate = new Date();
+	 hours = minDate.getHours();
+	 $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+	 var maxDate = new Date();
+	 if(hours >=16){
+	  $(".datepicker1").datepicker({'minDate':'+2','maxDate':'+16','dateFormat':'yy-mm-dd'});
+	 }else{
+	  $(".datepicker1").datepicker({'minDate':'+1','maxDate':'+15','dateFormat':'yy-mm-dd'});
+	 }
+	 
+	 $(".datepicker2").datepicker({'maxDate':new Date(),'dateFormat':'yy-mm-dd','changeYear':true,'changeMonth':true});	
+	
+  $('#use-code').click(function(){
+    var mobile = $("#mobile").val();
+    if(mobile){
+    }else{
+      alert('请填写手机号码');
+      $("#mobile").focus();
+      return false;
+    }
+	  var coupon_code = $('.code-input').val();
+	  if(!coupon_code){
+		  alert('请填写您的抵用码');
+		  return false;
+	  }
+	  $.post('__APP__/carservice/valid_coupon_code',{'coupon_code':coupon_code,'mobile':mobile},function(data){
+		  if(data.status){
+			  html = '成功使用一张价值'+data.data.price+'的抵用券';
+			  alert(html);
+			  var price = data.data.price+'.00';
+			  $('#replace-money').text(price);
+			  var old_amount = $('#amount-money').text();
+			  var new_amount = Number(old_amount)-Number(data.data.price);
+			  $('#amount-money').text(new_amount);
+		  }else{
+			  alert(data.data.message);
+			  return false;
+		  }
+	  },'json')
+  })
+  $('#code-show').click(function(){
+	  if( $(this).hasClass('code-hide') ){
+		  $('#code-show-content').hide();  
+		  $(this).removeClass('code-hide');
+	  }else{
+	  	$('#code-show-content').show();
+	  	$(this).addClass('code-hide');
+	  }
+  })
+	
+  $("#yzmBtn").click(function(){
+      var mobile = $("#mobile").val();
+      if(mobile){
+      }else{
+        alert('请填写手机号码');
+        $("#mobile").focus();
+        return false;
+      }
+      if( $(this).hasClass('noClick') ){
+    	  return false;
+      }
+      $.ajax({
+          type:'POST',
+          url:'__APP__/carservice/giveeverify',
+          cache:false,
+          dataType:'JSON',
+          data:'mobile='+mobile,
+          success:function(data){
+              data = data.data;
+              if(data.errno == 0){
+                  alert('验证码发送成功');
+                  $('#yzmBtn').addClass('noClick');
+                  return true;
+              }else{
+                  alert(data.errmsg);
+                  return false;
+              }
+          }
+      });
+  });
+
+  $("#subBtn").click(function(){
+    var truename = $("#truename").val();
+    var address = $("#address").val();
+    var mobile = $("#mobile").val();
+    var licenseplate = $("#licenseplate_type").val()+$("#licenseplate").val();
+    var order_time = $("#order_time").val();
+	var yzm = $("#yzm").val();
+	
+    if(truename == ""){
+      alert('请填写姓名');
+      $("#truename").focus();
+      return false;
+    }
+    if(address == ""){
+      alert('请填写详细地址');
+      $("#address").focus();
+      return false;
+    }
+    if(mobile == ""){
+      alert('请填写手机号码');
+      $("#mobile").focus();
+      return false;
+    }
+    <notempty name="yzm">
+    if(!yzm){
+    	alert('请填写手机验证码');
+        $("#yzm").focus();
+        return false;
+    }
+    </notempty>
+    if(licenseplate == ""){
+      alert('请填写车牌号');
+      $("#licenseplate").focus();
+      return false;
+    }
+    if(order_time == ""){
+      alert('请选择服务时间');
+      $("#order_time").focus();
+      return false;
+    }
+
+    $("#subForm").submit();
+  });
+});
+
+var $i = 60;
+function disabledUntilOneMiunte(){
+	if( $("#yzmBtn").hasClass('noClick') ){
+		var $html = $i+'秒后可重新发送';
+		$("#yzmBtn").text($html);
+		if($i >0){
+			$i--;
+		}
+		if($i == 0){
+			$("#yzmBtn").removeClass('noClick').text('重新发送验证码');	
+			$i = 60;
+		}
+	}else{
+		return false;
+	}
+}
+setInterval(disabledUntilOneMiunte, 1000);
+</script>
+
+</body>
+</html>

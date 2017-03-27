@@ -1,0 +1,323 @@
+/*home page css*/
+
+.banner{
+	width: 100%;
+}
+
+.carousel-indicators li{
+	background-color: #FFFFFF;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    width: 10px;
+}
+
+.carousel-indicators .active {
+    background-color: #000;
+    height: 12px;
+    margin: 0;
+    width: 12px;
+    border: none;
+    box-shadow: 0px 0px 5px yellow;
+}
+
+.baoyang{
+	overflow: hidden;
+	text-align: center;
+	margin: 50px 0;
+}
+
+.by33{
+	width: 33%;
+}
+.bydiv{
+	width: 350px; 
+	display: inline-block; 
+	margin: 0 auto; 
+	text-align: left;
+}
+
+.bydiv .bydivimg{
+	margin-bottom: 20px;
+}
+
+.bydiv .bydivtitle{
+	font-size: 20px; 
+	margin-bottom: 20px;
+}
+
+.bydiv .bydivtitle span{
+	display: inline-block;
+	width: 30px;
+	background: url(../images/index/tjt.jpg) 10px center no-repeat;
+	background-size: 12px;
+}
+
+.bydiv .bydivdes{
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+.bydiv .bydivrecom{
+	font-size: 16px;
+
+}
+.bydiv .bydivrecom span{
+	font-size: 22px;
+	color: #ff4a00;
+}
+
+.shiguche{
+	background: #000000;
+	overflow: hidden;
+}
+
+.shiguche h3{
+	font-size: 30px;
+	margin: 0;
+	height: 150px;
+	line-height: 150px;
+	color: #FFFFFF;
+	text-indent: 8%;
+}
+
+.sgcpath{
+	overflow: hidden;
+	height: 540px;
+}
+
+.sgcpath ul{width: 100%; overflow: hidden;}
+.sgcpath li{width: 5%; height: 540px; float: left; background-size:cover; background-position: left center; background-repeat: no-repeat; overflow: hidden; position: relative;}
+.sgcpath li .sgclccon{width: 800px; margin-left: 180px;}
+
+.liucheng1{width: 550px; overflow: hidden;}
+.lctitle{font-size: 24px; margin: 40px 0;}
+.lccon{overflow: hidden;}
+.lcdown{font-size: 16px;}
+.lcdown span{color: #ff4a00;}
+
+.liucheng2{width: 550px; overflow: hidden;}
+.lc2img{margin: 50px 0; overflow: hidden;}
+.lc2img p{font-size: 18px;}
+
+.liucheng3{color: #FFFFFF; width: 550px; margin-top: 40px; overflow: hidden;}
+
+.liucheng4{color: #FFFFFF;}
+.liucheng4 p{font-size: 16px;}
+.liucheng4 p span{color: #ff4a00;}
+.fllc{margin-top: 55px; overflow: hidden;}
+.fllc dl{overflow: hidden;}
+.fllc dl dd{display: inline-block; text-align: center; padding-right:20px;}
+.fllc dl dd p.f30{font-size: 30px;}
+
+
+.sgclc{height: 240px; padding: 0 8%; color: #FFFFFF; padding-top: 50px;}
+
+.sgclc1{font-size: 18px; overflow: hidden;}
+
+.sgclc1 p{margin: 30px 0}
+.sgclc1 p a{font-size: 22px; color: #ffffff; display: inline-block; width: 165px; height: 45px; line-height: 42px; text-align: center; border: 2px solid #FFFFFF; margin-right: 30px; margin-top: 15px;}
+
+.sgclc2{font-size: 24px; color: #FFFFFF;}
+.sgclc2 h4{margin: 55px 0 40px; font-size: 24px;}
+.sgclc2 p{font-size: 18px;}
+.sgclc2 p span{display: inline-block; margin-right: 15px; cursor: pointer;}
+
+.guzhang{
+	background: #eff0f1;
+	overflow: hidden;
+	height: 900px;
+	position: relative;
+}
+
+.guzhangtip{
+	width: 400px;
+	position: absolute;
+	left: 8%;
+	top: 130px;
+}
+
+.guzhangtip h3{
+	font-size: 30px;
+	height: 100px;
+	color: #000000;
+	margin-top: 0;
+}
+
+.guzhangtip p{
+	line-height: 2.5em;
+	font-size: 16px;
+}
+
+.guzhangtip a{
+	display: inline-block;
+	width: 160px;
+	height: 50px;
+	margin-top: 60px;
+	line-height: 50px;
+	text-align: center;
+	background: #000000;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+
+
+.chedengguzhang{
+	width: 700px;
+	height: 360px;
+	position: absolute;
+	right: 8%;
+	top: 130px;
+}
+
+.chedengguzhang a{
+	display: block;
+	width: 700px;
+	height: 360px;
+}
+
+.chedengguzhang a p{
+	height: 52px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	line-height: 52px;
+	margin: 0;
+	color: #FFFFFF;
+	z-index: 5;
+	text-indent: 10px;
+}
+
+.chedengguzhang a p.chedengpbg{
+	background: #000000;
+	filter:Alpha(opacity=60);  
+    opacity:0.6;
+    z-index: 4;
+}
+
+.gzxianjinquan{
+	width: 775px;
+	overflow: hidden;
+	position: absolute;
+	top: 550px;
+	right: 8%;
+}
+
+.gzxianjinquan .xjqmore{
+	text-align: right;
+	height: 25px;
+}
+
+.gzxianjinquan .xjqmore a{
+	color: #0079f4;
+	text-decoration: underline;
+}
+
+.gzxianjinquan .gzxjq{
+	overflow: hidden;
+	width: 840px;
+}
+
+.gzxianjinquan .gzxjq .xjqli{
+	float: left;
+	width: 355px;
+	margin-right: 65px;
+	_display:inline;
+}
+
+.gzxianjinquan .gzxjq .xjqli .xjqimg{}
+.gzxianjinquan .gzxjq .xjqli .xjqdp{
+	font-size: 18px;
+	line-height: 50px;
+}
+.gzxianjinquan .gzxjq .xjqli .dpadress{
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.gzxianjinquan .gzxjq .xjqli .dpadress span b{
+	color: #ff4a00;
+	font-size: 22px;
+}
+
+.ask{
+	height: 930px;
+	width: 100%;
+	background: url(../images/wendabg.jpg) top center no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+
+.asktip{
+	width: 400px;
+	position: absolute;
+	left: 160px;
+	top: 200px;
+}
+
+.asktip h3{
+	font-size: 30px;
+	height: 100px;
+	color: #000000;
+}
+
+.asktip p{
+	line-height: 2em;
+	font-size: 18px;
+	color: #000000;
+}
+
+.asktip a{
+	display: inline-block;
+	width: 160px;
+	height: 50px;
+	margin-top: 140px;
+	line-height: 50px;
+	text-align: center;
+	background: #000000;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+
+.askimg{
+	position: absolute;
+	top: 220px;
+	right: 8%;
+}
+
+.askimg img{
+	display: inline-block;
+	margin-left: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

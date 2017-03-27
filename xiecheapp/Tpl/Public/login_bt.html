@@ -1,0 +1,185 @@
+<layout name='layout_new' />
+
+		<link rel="stylesheet" href="http://statics.xieche.net/common/css/reset.css">
+		<link rel="stylesheet" href="http://statics.xieche.net/common/css/common/login.css">
+		<script src="http://statics.xieche.net/common/js/libs/requirejs/require.js" data-main="http://statics.xieche.net/common/js/conf/login"></script>
+		
+		<div class="wrapper">
+			<div class="block-1">
+				<div class="inner-block-1">
+					<div class="user-box tab-view">
+						<ul class="controler">
+							<li class="current">用户登陆</li>
+							<li >用户注册</li>
+						</ul>
+						<div class="container">
+							<!-- 用户登陆 START -->
+							<div>
+								<form action="__APP__/public/logincheck" method="post" name="form1">
+									<div class="row">
+										<input type="text"  name="username" id="username" class="input-field input-text" value="请输入用户名/手机号">
+									</div>
+									<div class="row">
+										<input type="password" name="password" class="input-field input-text" placeholder="请输入密码">
+									</div>
+									<div class="row">
+										<div class="float-left">
+											<input type="text" class="input-field input-code" name="verify" value="输入验证码">
+										</div>
+										<div class="float-right" style="width: 160px; ">
+											<img src="__APP__/common/verify/" id="img-code" alt="点击获取验证码" style="float: left; display: inline;">
+											<a href="#" style="float: right; font-size: 14px;" id="refreshCode">换一张</a>
+										</div>
+									</div>
+									<div class="row row-narrow ">
+										<div class="float-left">
+											<input type="checkbox" id="input-remember-pass" name="remember_pass" value="1" class="error"> <label for="input-remember-pass">记住密码</label>
+										</div>
+										<div class="float-right">
+											<a href="###" onclick="get_pwd();">忘记密码</a>
+										</div>
+									</div>
+									<div class="row">
+										<input type="hidden" id="jumpUrl1" name="jumpUrl" value="">
+										<input type="submit" value="登 陆" class="input-login" />
+									</div>
+								</form>
+							</div>
+							<!-- 用户登陆 END -->
+							<!-- 用户注册 START -->
+							<div style="display: none;">
+								 <form action="__APP__/member/insert" method="post" onsubmit="return check();">
+									<div class="row">
+										<input type="text" name="username" id="LoginName" class="input-field input-text" value="请输入用户名/手机号">
+									</div>
+									<div class="row">
+										
+										<input type="password"  name="password" id="txtPwd" class="input-field input-text" placeholder="请输入密码6-16位字符，区分大小写" >
+									</div>
+									<div class="row">
+										<input type="text" name="mobile" id="mobile"  class="input-field input-text" value="请输入您的11位数手机号码">
+									</div>
+									<div class="row">
+										<div class="float-left">
+											<input type="text" id="mobile_verify" name="mobile_verify" class="input-field input-code" value="手机验证码">
+										</div>
+										<div class="float-right" style="width: 160px; ">
+
+										<input type="button" id="send_verify" class="input-login" value="获取手机验证码" id="send_verify" > 
+											
+										</div>
+									</div>
+									<div class="row row-narrow">
+										<div class="">
+											<!--<input type="checkbox" id="input-agree-privacy-police" name="check_box" > -->
+												<input type="checkbox" id="check_box" name="check_box" checked="checked" > 
+											<label for="input-agree-privacy-police">同意携车网的</label>
+											<a href="__APP__/about/24" target="_blank">《网络服务协议》</a>
+										</div>
+										
+									</div>
+									<div class="row">
+										<input type="hidden" id="jumpUrl2" name="jumpUrl" value="">
+										<input name="submit" type="submit" value="注 册" class="input-reg" />
+									</div>
+								</form>
+							</div>
+							<!-- 用户注册 END -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block-2">
+				<div class="inner-block-2">
+					
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+
+<script> 
+  $(function(){
+        $("#send_verify").attr("disabled",false);
+        $("#send_verify").click(function(){
+                    var mobile = $('#mobile').val();
+                    var second = "60";
+                    if(mobile){
+                     $.ajax({
+                            type: "POST",
+                            url: "__APP__/Member/send_verify",
+                            cache: false,
+                            data:"mobile="+mobile,
+                            dataType: "json",
+                            success: function(data){
+                                if(data == '1'){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                                }else if(data == '2'){
+                                    //send_verify_show(second);
+                                    alert("该手机号已注册请确认!");
+                                    return false;
+                                }else if(data == '-1'){
+                                    send_verify_show(second);
+                                    alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+                                    return false;
+                                }
+                            },
+                                error: function(){
+                                    $("#send_verify").show();
+                                    send_verify_show(second);
+                            }
+                         })
+
+                    }else{
+                        alert('请填写手机号~');
+                        return false;
+                    }
+      
+               })   
+			
+				
+			$.getUrlParam = function(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) return unescape(r[2]); return null;
+			}	
+			var jumpUrl = $.getUrlParam("jumpUrl");
+			$("#jumpUrl1").val(jumpUrl);
+			$("#jumpUrl2").val(jumpUrl);
+        })        
+		
+
+	function send_verify_show(i){
+		if(i>='0'){
+			$("#send_verify").attr("disabled",true); 
+			$("#send_verify").attr("value",i+"秒后重新发送");
+			i--;
+			setTimeout(function(){send_verify_show(i);},1000);
+		}else{
+			$("#send_verify").attr("disabled",false); 
+			$("#send_verify").attr("value","发送手机验证码");
+		}
+	}
+
+	function check(){
+		var $che = $("#check_box");
+	
+		if(!$che.is(":checked"))
+		{
+			alert('请先阅读携车网服务协议~ ');
+			return false;
+		}
+		return true;
+	
+	}
+
+	function get_pwd(){
+		var username = $("#LoginName").val();
+		location.href="__APP__/member/get_password/username/"+username;
+	}
+
+
+</script>

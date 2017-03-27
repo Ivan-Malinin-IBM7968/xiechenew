@@ -1,0 +1,71 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>确认结算信息</h1></div>
+
+<div id="main-right2">
+	<FORM METHOD=POST ACTION="__URL__/update_jiesuan" >
+	<table width="785" border="0" cellspacing="1" cellpadding="1">
+		<tr>
+			<td height="40" bgcolor="#F2F2F2">优惠券ID</td>
+			<td bgcolor="#F2F2F2">优惠券类型</td>
+			<td bgcolor="#F2F2F2">优惠券名称</td>
+			<td bgcolor="#F2F2F2">用户姓名</td>
+			<td bgcolor="#F2F2F2">车牌/手机</td>
+			<td bgcolor="#F2F2F2">金额</td>
+			<td bgcolor="#F2F2F2">佣金</td>
+			<td bgcolor="#F2F2F2">使用时间</td>
+			<td bgcolor="#F2F2F2">结算时间</td>
+			<td bgcolor="#F2F2F2">结算状态</td>
+		</tr>
+		<volist name="Msalecouponjiesuan" id="vo">
+		<tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+		  <td height="40"><input type='hidden' name="membersalecoupon_id[]" id="membersalecoupon_id[]" value="{$vo.membersalecoupon_id}" >{$vo.membersalecoupon_id}</td>
+		  <td>抵用券</td>
+		  <td>{$vo.coupon_name}</td>
+		  <td>{$vo.user_name}</td>
+		  <td><if condition="$vo.licenseplate eq ''"> {$vo.mobile}<else /> {$vo.licenseplate}</if></td>
+		  <td>价值:&nbsp;{$vo.coupon_amount}</td>
+		   <td>{$vo.commission}</td>
+		  <td>{$vo.use_time|date="Y-m-d H:i:s",###}</td>
+		  <td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+		  <td>{$vo.jiesuan_status_str}</td>
+		</tr>
+		</volist>
+		<tr style="font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>结算金额</td><td>{$jiesuan_amount1}</td>
+			<td colspan="2">佣金</td><td colspan="2">{$jiesuan_commission1}</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr style="font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>实际支付</td><td>{$true_pay1}</td>
+			<td colspan="5">&nbsp</td>
+		</tr>
+		
+		<tr>
+			<td colspan="10">&nbsp;</td>
+		</tr>
+		<!--<tr style="color:red;font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>总结算金额</td><td>{$jiesuan_amount}</td>
+			<td colspan="2">总佣金</td><td colspan="2">{$jiesuan_commission}</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>总实际支付</td><td>{$true_pay}</td>
+			<td colspan="5">&nbsp</td>
+		</tr>
+		<if condition="$jiesuan_status eq 1">
+		<tr>
+			<!--<td colspan="10"><input type="button" onclick="window.location.href='{$update_jiesuan_url}'" value="确认结算信息"></td>-->
+			<td colspan="10" align="center"><input type="submit" value="确认结算" style="impBtn hMargin fLeft shadow"></td>
+		</tr>
+		</if>
+	</table>
+	</FORM>
+</div>
+
+</div>

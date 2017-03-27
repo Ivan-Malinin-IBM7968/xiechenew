@@ -1,0 +1,131 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+
+<script>
+	function upstatus(id,price){
+		if(!confirm("确定要使用金额为"+price+"的返利券吗？")){
+			return false;
+		}
+		$.ajax({
+			type:'POST',
+			url:'__URL__/AjaxUpdate',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("使用成功");
+					parent.location.reload();
+				}else{
+					alert("使用失败");
+				}
+			}
+		})
+		
+	}
+
+	function check(){
+		var licenseplate = $('#licenseplate').val();
+		if(!licenseplate){
+			alert('请填写车牌号');
+			return false;
+		}
+		return true;
+	}
+
+	function bidcheck(){
+		var count = $(".table_a tr td input[type='checkbox']:checked").length;
+		if(count == 0){
+			alert('请选择抵用券~');
+			return false;
+		}
+		return true;
+	}
+
+</script>
+
+
+<div id="main">
+<div id="main-right"><h1>事故车现金券验证</h1></div>
+<div>
+	<form method="post" action="__URL__" onsubmit="return check();">
+	<table class="list">
+		<tr>
+			<td>车牌号：</td>
+			<td> 
+				<select name="licenseplate_title">
+					<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+						<option value="{$vo_os}"<if condition="$data.licenseplate_title eq $vo_os">selected</if>>{$vo_os}</option>
+					</volist>
+				</select>
+				<input type="text"  name="licenseplate" id="licenseplate" value="{$data.licenseplate}" size="13"/>(注：必须填写如无车牌填写000000)
+			</td>
+		</tr>
+	
+		<volist name="array" id="list" key="key">
+			<if condition="$key%2 eq '0'">
+			<tr>
+			</if>
+				<td>验证码：</td>
+				<td><input type="text"  name="arraycode[]" id="arraycode[]" value="{$sqlcode[$key-1]}"/></td>
+			<if condition="$key%2 eq '0'">
+			</tr>
+			</if>
+
+		</volist>
+		
+		<tr>
+			<td></td>
+			<td><input type="submit" value="查询验证码真伪" style="impBtn hMargin fLeft shadow"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+<div id="main-right2">
+<form method="post" action="__URL__/BidFinish" onsubmit="return bidcheck();">
+  <table width="785" border="0" cellspacing="1" cellpadding="1" class='table_a'>
+    <tr>
+	  <td bgcolor="#F2F2F2">选择</td>
+      <td height="40" bgcolor="#F2F2F2">返利券编号</td>
+      <td bgcolor="#F2F2F2">返利券名称</td>
+	  <td bgcolor="#F2F2F2">金额</td>
+      <td bgcolor="#F2F2F2">是否使用</td>
+      <td bgcolor="#F2F2F2">过期日期</td>
+     
+    </tr>
+	<volist name="data.BidOrder" id="list">
+    <if condition="$data['type'] neq 2">
+	<notempty name="data.BidOrder">
+	 <tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+	  <td>
+		<if condition="($list[bidstatus] eq '1') and ($list[bidcoupon_endtime] gt $now)">
+		<input type="checkbox" name="bidcoupon_id[]" id="bidcoupon_id[]" value="{$list.bidcoupon_id}">
+		</if>
+	  </td>
+      <td height="40">{$list.order_id}</td>
+      <td>{$list.bidcoupon_name}</td>
+	  <td>{$list.price}</td>
+      <td>
+      	 <if condition="$list[bidstatus] eq 1">未使用<else />已使用</if>
+      </td>
+      <td>
+      	{$list.bidcoupon_endtime|date="Y-m-d H:i:s",###}(<if condition="$listbidcoupon_endtime lt $now">已过期<else />未过期</if>)
+      </td>
+    </tr>
+	</notempty>
+   </if>
+   </volist>
+	<notempty name="data.BidOrder">
+    <tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+		 <td  colspan="6">
+			 <input type="submit" name="btn" id="btn" value="确定抵用">
+		</td>
+	</tr>
+	</notempty>
+  </table>
+ </form>
+  <div id="main-right3">{$page}</div>
+</div>
+
+</div>

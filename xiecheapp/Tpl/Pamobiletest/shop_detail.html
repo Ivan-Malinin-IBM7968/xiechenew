@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>店铺详情 | Example Page</title>
+    <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/shop_detail.css" />
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/mb/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mb/js/main.js"></script>
+	<style>
+		.ui-tabs-active{
+			color: #fd8612;
+			background: #ffffff;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="warpper" style="background:#f1f1f1;">
+		<!-- Header Start -->
+		<header id="header" data-role="header">
+			<h1>店铺详情 | Example Page</h1>
+			<div id="left-trigger"></div>
+			<div id="right-trigger"></div>
+		</header>
+		<!-- Header End -->
+		
+		<!-- Content Wrapper Start -->
+		<div id="content-wrapper" data-role="content" style="background:#f1f1f1; padding: 10px;">
+			<div class="ui-grid-a" style="background: #ffffff; padding: 10px;">
+				<div class="ui-block-a" style="width: 30%">
+					<img src="http://placehold.it/62x47" alt="店铺图片" style="width: 100%">
+				</div>
+				<div class="ui-block-b" style="width: 70%; padding-left: 10px;">
+					<h3 style="margin: 0px;">上海交运起元</h3>
+					<h5 style="margin: 5px 0px 0px 0px;">上海大众4S店</h5>
+					<div class="ui-block-a">
+						<span>100%</span>好评率
+					</div>
+				</div>
+			</div>
+
+			<div class="ui-grid-solo" style="background: #ffffff; padding: 10px;border-top: 2px solid #f1f1f1;">
+				<div class="ui-block-a">
+					<h4 style="margin: 0px;">上海市 徐汇区 龙水南路386号...</h4>
+				</div>
+			</div>
+			
+			<div data-role="tabs" id="tabs" style="background: #ffffff; padding: 0px; margin-top: 10px;" class="shop-info-con">
+				  <div data-role="navbar" class="shop-info-container">
+				    <ul class="ui-tabs-ul">
+				      <li style="width: 33%"><a href="#sale-info" data-ajax="false" >折扣信息</a></li>
+				      <li style="width: 34%"><a href="#sale-promo" data-ajax="false">优惠券</a></li>
+				      <li style="width: 33%"><a href="#customer-comment" data-ajax="false">用户评论</a></li>
+				    </ul>
+				  </div>
+				  <div id="sale-info" data-inset="true" class="tabs-content">
+				   <ul data-role="listview" data-inset="true">
+				        <li class="single-sale-info" style="overflow: visible;">
+				        	<strong class="number">1</strong>
+				        	<span class="sale-price">
+				        		<strong>8.5</strong> 折
+				        	</span>
+							<div class="ui-block-solo cal-week-con" >
+								<ul class="cal-week">
+									<li class="has-sale-0">
+										<span>周一</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周二</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周三</span>
+									</li>
+									<li class="has-sale-0">
+										<span>周四</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周五</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周六</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周日</span>
+									</li>
+								</ul>
+								<span class="cal-time">
+									上午12:00-下午12:00
+								</span>
+								<a href="#" class="ui-btn ui-btn-inline order-btn">预 约</a>
+							</div>
+				        </li>
+				        <li class="single-sale-info" style="overflow: visible;">
+				        	<strong class="number">1</strong>
+				        	<span class="sale-price">
+				        		<strong>8.5</strong> 折
+				        	</span>
+							<div class="ui-block-solo cal-week-con" >
+								<ul class="cal-week">
+									<li class="has-sale-0">
+										<span>周一</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周二</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周三</span>
+									</li>
+									<li class="has-sale-0">
+										<span>周四</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周五</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周六</span>
+									</li>
+									<li class="has-sale-1">
+										<span>周日</span>
+									</li>
+								</ul>
+
+								<span class="cal-time">
+									上午12:00-下午12:00
+								</span>
+								<a href="#" class="ui-btn ui-btn-inline order-btn">预 约</a>
+							</div>
+				        </li>
+				    </ul>
+				  </div>
+
+
+				  <div id="sale-promo" class="tabs-content">
+				    <ul data-role="listview" data-inset="true">
+				         <li class="ui-grid-a single-sale-promo" style="margin-bottom: 10px;">
+							<div class="ui-block-a" style="width: 30%">
+								<img src="http://placehold.it/62x47" alt="店铺图片"  style="width: 100%">
+							</div>
+							<div class="promo-price">
+								<strong>¥900</strong>
+								<em>¥1000</em>
+							</div>
+							<div class="ui-block-b" style="width: 70%; padding-left: 10px;">
+								<h3 class="promo-name" style="margin: 0px; white-space: normal; width: 130px; height:40px; line-height: 20px;">上海虹湾一汽大众4S店1000元现...</h3>
+								<span class="promo-type">现金券</span>
+								<span class="bought-count">10人已经购买</span>
+							</div>
+							<a href="#" class="ui-btn ui-btn-inline " id="buy-btn">购 买</a>
+				        </li>
+				        <li class="ui-grid-a single-sale-promo" style="margin-bottom: 10px;">
+							<div class="ui-block-a" style="width: 30%">
+								<img src="http://placehold.it/62x47" alt="店铺图片"  style="width: 100%">
+							</div>
+							<div class="promo-price">
+								<strong>¥900</strong>
+								<em>¥1000</em>
+							</div>
+							<div class="ui-block-b" style="width: 70%; padding-left: 10px;">
+								<h3 class="promo-name" style="margin: 0px; white-space: normal; width: 130px; height:40px; line-height: 20px;">上海虹湾一汽大众4S店1000元现...</h3>
+								<span class="promo-type">现金券</span>
+								<span class="bought-count">10人已经购买</span>
+							</div>
+							<a href="#" class="ui-btn ui-btn-inline " id="buy-btn">购 买</a>
+				        </li>
+				        <li class="ui-grid-a single-sale-promo" style="margin-bottom: 10px;">
+							<div class="ui-block-a" style="width: 30%">
+								<img src="http://placehold.it/62x47" alt="店铺图片"  style="width: 100%">
+							</div>
+							<div class="promo-price">
+								<strong>¥900</strong>
+								<em>¥1000</em>
+							</div>
+							<div class="ui-block-b" style="width: 70%; padding-left: 10px;">
+								<h3 class="promo-name" style="margin: 0px; white-space: normal; width: 130px; height:40px; line-height: 20px;">上海虹湾一汽大众4S店1000元现...</h3>
+								<span class="promo-type">现金券</span>
+								<span class="bought-count">10人已经购买</span>
+							</div>
+							<a href="#" class="ui-btn ui-btn-inline " id="buy-btn">购 买</a>
+				        </li>
+				    </ul>
+				  </div>
+
+				<!-- ！！！！！！！！！！！！！！！！！！！！！！！！！！！ ！-->
+				<!-- 花花！！！！！！！！！！飞飞！！！！！！！！！！！！！！ -->
+				<!-- 套到这里结束！！！！！！！！！！！！！！！！！！！！！！ -->
+				<!-- 不要套下面的！！！！！！！！！！！！！！！！！！！！ ！！-->
+				<!-- ！！！！！！！！！！！！！！！！！！！！！！！！！！！ ！-->
+
+				  <div id="customer-comment" class="tabs-content">
+				  	<ul data-role="listview" data-inset="true">
+				        <li class="ui-grid-a single-comment" style="margin-bottom: 10px; padding-bottom: 10px;">
+							<h3 class="c-name" style="margin: 0px;">用户250250250000</h3> 
+							<h4 class="c-date" style="font-size: 0.7em; margin: 0px;">2014-01-22</h4>
+							<dl class="c-service">
+								<dt>服务项目：
+								<dd>项目A</dd>
+								<dd>项目B</dd>
+								<dd>项目C</dd>
+							</dl>
+							<div class="customer-rating">
+								<div class="rating-progress">
+									<span class="good"></span>
+								</div>
+								<span class="rating-class">中评</span>
+							</div>
+							
+							<div class="commment-body">
+								4S店服务满意的，过去后接待的服务顾问不是开始指定的，但是这是小问题。网上有折扣，还是比较实惠的。
+							</div>
+							<ul class="comment-reply" >
+								<li>
+									<h4>商家回复： </h4>
+									<div>谢谢， 欢迎再次光临！</div>
+								</li>
+								<li>
+									<h4>商家回复： </h4>
+									<div>谢谢， 欢迎再次光临！谢谢， 欢迎再次光临谢谢， 欢迎再次光临谢谢， 欢迎再次光临</div>
+								</li>
+							</ul>
+				        </li>
+				        <li class="ui-grid-a single-comment" style="margin-bottom: 10px; padding-bottom: 10px;">
+							<h3 class="c-name" style="margin: 0px;">用户250250250000</h3> 
+							<h4 class="c-date" style="font-size: 0.7em; margin: 0px;">2014-01-22</h4>
+							<dl class="c-service">
+								<dt>服务项目：
+								<dd>项目A</dd>
+								<dd>项目B</dd>
+								<dd>项目C</dd>
+							</dl>
+							<div class="customer-rating">
+								<div class="rating-progress">
+									<span class="normal"></span>
+								</div>
+								<span class="rating-class">中评</span>
+							</div>
+							
+							<div class="commment-body">
+								4S店服务满意的，过去后接待的服务顾问不是开始指定的，但是这是小问题。网上有折扣，还是比较实惠的。
+							</div>
+							<ul class="comment-reply" >
+								
+								<li>
+									<h4>商家回复： </h4>
+									<div>谢谢， 欢迎再次光临！谢谢， 欢迎再次光临谢谢， 欢迎再次光临谢谢， 欢迎再次光临</div>
+								</li>
+							</ul>
+				        </li>
+				    </ul>
+				    <div style="clear: both;"></div>
+				  </div>
+				</div>
+
+		</div>
+		<!-- Content Wrapper End -->
+	</div>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+</body>

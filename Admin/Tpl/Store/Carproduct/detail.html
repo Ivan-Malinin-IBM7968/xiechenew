@@ -1,0 +1,59 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script type="text/javascript" src="/Public/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="/Public/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+	function add_product(){
+		$("#list").append('<tr><td><input type="text" name="Midl_name[]" id="Midl_name" value=""/></td><td><input type="text" name="price[]" id="price" value=""/></td><td><input type="text" name="quantity[]" id="quantity" value=""/></td><td><input type="text" name="unit[]" id="unit" value=""/></td><td></td><td><input type="button" value="删除" onclick="remove_tr(this)"/></td></tr>');
+	}
+	function remove_tr(obj){
+		//$(this).remove();
+		var tr=obj.parentNode.parentNode;  
+	    var tbody=tr.parentNode;  
+	    tbody.removeChild(tr);   
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+	
+	<!-- 主体内容  -->
+	<div class="content" >
+		<div class="title">车型库-产品价格管理</div>
+		<form action="__APP__/Store/Carproduct/save_product" method="post" >
+			<div>
+				服务类型：{$product_info.service_name}<br>
+				品牌：{$product_info.brand_name}<br>
+				车系：{$product_info.series_name}<br>
+				车型：{$product_info.model_name}<br>
+			</div>
+			<table class="list" id="list">
+				<tr>
+					<th>名称</th>
+					<th>单价</th>
+					<th>数量</th>
+					<th>单位</th>
+					<th>总价</th>
+					<th>操作</th>
+				</tr>
+				<volist name="product_info.product_detail_arr" id="detail">
+					<tr id="tr_{$i}">
+						<td><input type="text" name="Midl_name[]" id="Midl_name" value="{$detail.Midl_name}"/></td>
+						<td><input type="text" name="price[]" id="price" value="{$detail.price}"/></td>
+						<td><input type="text" name="quantity[]" id="quantity" value="{$detail.quantity}"/></td>
+						<td><input type="text" name="unit[]" id="unit" value="{$detail.unit}"/></td>
+						<td>{:template_multiplication($detail[price],$detail[quantity])}</td>
+						<td><input type="button" value="删除" onclick="remove_tr(this)"/></td>
+					</tr>
+				</volist>
+				
+			</table>
+			<input type="hidden" name="product_id" value="{$product_info.id}" />
+			<div><input type="button" value="添加" onclick="add_product();"/>&nbsp;&nbsp;<input type="submit" value="保存" /></div>
+		</form>
+		<div style="height:20px;"></div>
+	</div>
+</div>

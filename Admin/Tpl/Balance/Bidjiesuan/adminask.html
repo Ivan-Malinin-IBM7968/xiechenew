@@ -1,0 +1,66 @@
+<!-- 列表显示区域  -->
+<div class="list" >
+<!-- <FORM METHOD=POST ACTION="__URL__/confirmadminask" > -->
+<table class="list">
+<tr class="row">
+<th>订单号</th>
+<th>车主名</th>
+<th>车牌号</th>
+<th>手机号码</th>
+<th>4S店</th>
+
+<th width=10%>保险公司</th>
+<th width=10%>定损金额</th>
+<th>4S店佣金</th>
+<th>4S店佣金比例</th>
+<!-- <th>保险公司佣金</th>
+<th>保险公司佣金比例</th> -->
+<th>完成时间</th>
+<th>订单状态</th>
+</tr>
+<tr>
+<volist name="data.Bidorderjiesuan" id="vo">
+<td><input type='checkbox' name="id[]" id="id[]" value="{$vo.id}" checked>{$vo.order_id}({$vo.bidorder_id})</td>
+<td>{$vo.truename}</td>
+<td>{$vo.licenseplate}</td>
+<td>{$vo.mobile}</td>
+<td>{$vo.shop_name}</a>
+</td>
+
+<td>{$vo.insurance_name}</td>
+<td>{$vo.loss_price}</td>
+<td>
+	{$vo.insurance_commission}
+</td>
+
+<td>{$vo.insurance_rebate}</td>
+<!-- <td>
+	{$vo.company_commission}
+</td>
+<td>
+	{$vo.company_rebate}
+</td> -->
+<td>
+	{$vo.complete_time}
+</td>
+<td>
+	{$vo.jiesuan_status}
+</td>
+
+</tr>
+</volist>
+<!-- <tr>
+	<td colspan="12" align="center"><input type="submit" value="提交" style="impBtn hMargin fLeft shadow"></td>
+</tr> -->
+<tr>
+	<td colspan="12" align="center">
+	定损总金额:{$allpay}<br>携车网应收款：{$commission}<br>携车网开票金额:{$commission}
+	
+	</td>
+</tr>
+</table>
+<!-- </FORM> -->
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->

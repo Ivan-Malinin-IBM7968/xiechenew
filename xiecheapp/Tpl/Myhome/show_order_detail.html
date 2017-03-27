@@ -1,0 +1,277 @@
+<layout name='layout_note' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<div class="usercontent">
+        <div class="guidenav" > <a href="#" class="Crumbs" >首页</a> > 订单详情</div>
+        <div class="userjzbar14"></div>
+        <div class="clear"></div>
+        <div class="yuyuelistbg1"></div>
+<style type="text/css">
+<!--
+.STYLE4 {
+	font-size: 24px;
+	font-weight: bold;
+}
+.STYLE7 {color: #3399FF; font-weight: bold; }
+.STYLE8 {
+	font-size: 16px;
+	color: #1D92C2;
+}
+.STYLE9 {color: #58595B}
+.STYLE10 {
+	color: black;
+	font-size: 12px;
+	font-weight: bold;
+}
+.STYLE11 {font-size: 12px}
+-->
+</style>
+
+<style type="text/css">
+	#dialogmap{display:none; position:absolute; width:520px; height:340px;}
+	#containermap{width:520px; height:340px;}
+	#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="__PUBLIC__/Js/jq_openDialog.js?v={$Think.config.VERSION_DATE}"></script> 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript">
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	});
+	$(".point").click(function(){
+		popup1();
+		 var map = new BMap.Map("containermap");
+			 var lng=$(this).attr('lng');
+		 //alert(lng);
+		 //var lat=$(this).attr('lat');
+		 arr=lng.split(',');//分割
+			
+		 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+		 //alert(lng);
+		 var text=$(this).attr('desc');
+		 //alert(text);
+		 var textArr=text.split('^^');
+		 map.centerAndZoom(point,15);
+		 map.addControl(new BMap.NavigationControl());
+		 map.addControl(new BMap.MapTypeControl());
+		 map.addControl(new BMap.ScaleControl());
+		 map.addControl(new BMap.OverviewMapControl());
+		 addMarker(point);
+		 function addMarker(point)
+		 {
+			var html='';
+			for(var i=0;i<textArr.length;i++)
+			{
+				html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+			}
+		 	var marker = new BMap.Marker(point);  // 创建标注
+			 	map.addOverlay(marker);              // 将标注添加到地图中
+			var infoWindow = new BMap.InfoWindow(html);
+			marker.openInfoWindow(infoWindow);
+			
+		  }	 
+	  });
+})
+function popup1(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+		drag:true,//不可拖动
+		cover:true//设置笼罩
+	});
+}
+</script>
+<div class="order_detail">
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="orderinfo">
+		<tr>
+			<th width="8%">订单号</th>
+			<th width="15%">订单状态</th>
+			<th width="15%">下定时间</th>
+			<th width="15%">预约时间</th>
+			<th width="15%">完成时间</th>
+			<th width="10%">订单金额</th>
+			<th width="10%">获得积分</th>
+			<th width="6%">地图</th>
+		</tr>
+		<tr>
+			<td>{$list.order_id}</td>
+			<td>
+			<volist name="Think.config.ORDER_STATE" id="vo_os">
+			<eq name="key" value="$list.order_state">{$vo_os}</eq>
+			</volist>
+			</td>
+			<td>{$list.create_time|date="Y-m-d H:i:s",###}</td>
+			<td>{$list.order_time|date="Y-m-d H:i:s",###}</td>
+			<td><if condition="$list.order_state eq 2">{$list.update_time|date="Y-m-d H:i:s",###}<else />未完成</if></td>
+			<td>{$list.total_price}</td>
+			<td><empty name="pointinfo['point_number']" >0<else />{$pointinfo.point_number}</empty></td>
+			<td align="center"><a href="javascript:;" lng="{$getShop.shop_maps}" class="point" desc="商家名称：{$getShop.shop_name} ^^地址：{$getShop.shop_address} ^^电话：{$Think.config.CALL_400} ">地图</a></td>
+		</tr>
+	</table>
+</div>
+<div style="height:20px;"></div>
+<div class="order_info">
+	<h6>您为您的爱车 {$my_car.car_name} {$my_car.brand_name} {$my_car.series_name} {$my_car.model_name} 选择的维修保养项目为：</h6><br>
+	<volist name="services_info" id="server">
+	{$i}、	{$server.name}<br>
+	</volist><br>
+	
+	<h6>您选择的4S店是：</h6><br>
+	{$getShop.shop_name}<br>
+	地址：{$getShop.shop_address}<br>
+	折扣：工时费 {$sale_arr.workhours_sale}，零件费  {$sale_arr.product_sale}<br>
+	<present name="sale_arr['coupon_save_discount']">优惠券：{$coupon.coupon_name}&nbsp;&nbsp;<if condition="$sale_arr['coupon_save_discount'] gt 0">再减{$sale_arr.coupon_save_discount}<else />抵用{$sale_arr.coupon_save_money}元</if></present>
+</div>
+<div >
+	<table width="600px" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td >
+			<img src="/UPLOADS/Product/{$img_name}" />
+		</td>
+	</tr>
+	
+	<!-- <volist name="list_product" id="product" key="k">
+	<tr height="10px"><td></td></tr>
+	<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="6" height="20"><strong>维修项目{$k}：{$product.service_name.name}</strong>
+					</td>
+				</tr>
+				<tr>
+					<td width="20%" height="20px;"><span class="STYLE7">零件明细</span></td>
+					<td width="15%"><span class="STYLE7">零件单价</span></td>
+					<td width="15%"><span class="STYLE7">零件数量</span></td>
+					<td width="20%"><span class="STYLE7">门市零件价格</span></td>
+					<td width="15%"><span class="STYLE7">折扣率</span></td>
+					<td width="15%"><span class="STYLE7">折后价格</span></td>
+				</tr>
+				
+					<volist name="product['list_detai']" id="detail" >
+					<if condition="$detail.Midl_name neq '工时费'" >
+						<tr height="18px;">
+							<td height="18px;">{$detail.Midl_name}</td>
+							<td>{$detail.price}</td>
+							<td>{$detail.quantity}&nbsp;{$detail.unit}</td>
+							<td>{$detail.total}</td>
+							<td>{$sale_arr.product_sale}</td>
+							<td>{$detail.after_sale_total}</td>
+						</tr>
+					</if>
+					</volist>
+						<tr>
+					    	<td width="20%" height="18px;"><span class="STYLE7">工时明细</span></td>
+					        <td width="15%"><span class="STYLE7">工时单价</span></td>
+					        <td width="15%"><span class="STYLE7">工时数量</span></td>
+					        <td width="20%"><span class="STYLE7">门市工时价格</span></td>
+					        <td width="15%"><span class="STYLE7">折扣率</span></td>
+					        <td width="15%"><span class="STYLE7">折后价格</span></td>
+						</tr>
+					<volist name="product['list_detai']" id="detail1" >
+					<if condition="$detail1.Midl_name eq '工时费'" >
+						<tr height="18">
+							<td height="18">{$detail1.Midl_name}</td>
+							<td>{$detail1.price}</td>
+							<td>{$detail1.quantity}&nbsp;{$detail1.unit}</td>
+							<td>{$detail1.total}</td>
+							<td>{$sale_arr.workhours_sale}</td>
+							<td>{$detail1.after_sale_total}</td>
+						</tr>
+					</if>
+					</volist>
+			</table>
+		</td>
+	</tr>
+	</volist>
+	
+  	<tr>
+    	<td height="20">&nbsp;</td>
+  	</tr>
+  	<tr>
+    	<td>
+    		<table width="60%" border="0" align="left" cellpadding="0" cellspacing="0">
+      			<tr>
+        			<td height="20" colspan="6" nowrap><strong>通过纵横携车网预约您所选择的维修保养项目，共为您<span class="STYLE8">节省</span>：</strong></td>
+        		</tr>
+				<tr bgcolor="#1D92C2">
+      				<td width="25%" height="20"></td>
+          			<td width="25%"><strong>门市价</strong></td>
+          			<td width="25%"><strong>折后价</strong></td>
+          			<td width="25%"><strong>节省</strong></td>
+				<tr height="20px;">
+			        <td width="136"><strong>零件费</strong></td>
+			        <td height="18" width="103">{$total_product_price}</td>
+			        <td width="110">{$after_product_price}</td>
+			        <td width="113">{$total_product_price-$after_product_price}</td>
+				</tr>
+      			<tr height="18px;">
+			        <td><strong>工时费</strong></td>
+			        <td height="18px;">{$total_workhours_price}</td>
+			        <td>{$after_workhours_price}</td>
+			        <td>{$total_workhours_price-$after_workhours_price}</td>
+      			</tr>
+      			<tr height="18">
+			        <td><strong>合计(元)</strong></td>
+			        <td height="18">{$total_product_price+$total_workhours_price} </td>
+			        <td>{$after_product_price+$after_workhours_price}</td>
+			        <td><strong>{$total_product_price-$after_product_price+$total_workhours_price-$after_workhours_price}</strong></td>
+      			</tr>
+    		</table>
+    	</td>
+  	</tr> -->
+  	<tr>
+    	<td align="left" valign="middle"><img src="/Public/note/images/01.png"><span class="STYLE9"><span class="STYLE11">纵横携车网所提供的汽车售后维修保养项目明细价格（包括但不限于零件费和/或工时费等费用），由与纵横携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，纵横携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据，最终付款以在服务提供商处实际发生额为准。但您享受到的折扣率不变。</span></span></td>
+  	</tr>
+  	<tr>
+    	<td height="20">&nbsp;</td>
+  	</tr>
+  	<tr>
+    	<td height="20" align="left">
+    		<span class="STYLE10">您所选择的4S店信息：<br><br>
+      			4S店：<font color="blue">{$getShop['shop_name']}</font><br>
+				 地址：<font color="blue">{$getShop['shop_address']}</font><br>
+				 客服电话：<font color="blue">{$Think.config.CALL_400}</font>		
+    		</span>
+    	</td>
+  	</tr>
+  	<tr>
+    	<td height="40">&nbsp;</td>
+  	</tr>
+  	
+  	<!-- <tr>
+    	<td height="20" align="center"><a href="__URL__/addorder/shop_id/{$list['shop_id']}/select_services/{$list['select_services']}/product_str/{$list['product_str']}/model_id/{$list['model_id']}/timesale_id/{$list['timesale_id']}/u_c_id/{$list['u_c_id']}"><img src="/Public/note/images/02.png" width="138" height="39"></a></td>
+  	</tr> -->
+  	<tr>
+    	<td height="20">&nbsp;</td>
+  	</tr>
+  	<tr>
+    	<td height="20">&nbsp;</td>
+  	</tr>
+</table>
+
+</div>
+				
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

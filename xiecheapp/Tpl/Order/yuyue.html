@@ -1,0 +1,199 @@
+<layout name='layout_order' />
+   <!--左边-->
+<div id="main-right" style="width:620px; margin:0; padding:0px; float:right; border:1px solid #efefef; background-color:#FFF;">
+<div id="cx">
+  <ul>
+    <li class='<if condition="$shop_area eq ''">area_selected</if>'><a href="__URL__/index"><font color="#333333">全部区域 </font></a></li>
+	<volist name="Carea[$sessarea]" id="area">
+    <li class='<if condition="$shop_area eq $key">area_selected</if>'><a href="__URL__/index/shop_area/{$key}/fsid/{$fsid}">{$area}</a></li>
+    </volist>
+  </ul>
+</div>
+<div id="pp">
+  <ul>
+    <li class='<if condition="$fsid eq ''">area_selected</if>'><a href="__URL__/index/shop_area/{$shop_area}"><font color="#333333">全部品牌</font></a></li>
+    <volist name="Think.config.BRANDS" id="brand">
+    	<li class='<if condition="$fsid eq $key">area_selected</if>'><a href="__URL__/index/fsid/{$key}/shop_area/{$shop_area}">{$brand}</a></li>
+    </volist>
+  </ul>
+</div>
+<div id="xz_yuyue">
+<div id="xz-yy"></div>
+<div id="xz-yy1">你想获得什么样的服务</div>
+<div id="xz-bg">
+预约4S店：<b><a href="{:URL('/shop/index',array('shop_id'=>$shop_info['id']))}{:C('HTML_URL_SUFFIX')}" style="size:13px;"  target="_blank">{$shop_info.shop_name}</a></b><br>
+<form action="__URL__/insert" method="post">
+	<empty name="membercoupon_id">
+  		<volist name="list_si_level_0" id="vo">
+               <dl class="filter_li">
+                   <dt>{$vo.name}</dt>
+                   <dd>
+				   <div class="filter_data1">
+                   	<table >
+					<tr>
+                   		<?php $n=0;?>
+						<volist name="list_si_level_1" id="vo1">
+							<if condition="$vo[id] eq $vo1[service_item_id]">
+								<td width="165px">
+								<?php $n++;?>
+									<if condition="$vo1['service_item_id'] eq 1">
+									<input type="checkbox" id="server_{$vo1.id}" <if condition="$membercoupon_id gt '0'"> disabled </if> <if condition="$n eq 1">checked</if> onclick="baoyang_selected_check(this);" name="select_services[]" service_type="baoyang" value="{$vo1.id}" <in name="vo1.id" value="$select_services_str">checked</in> <if condition="($default_check eq 1) and ($n eq 1)" > checked </if>/>
+									&nbsp;&nbsp;
+									<else />
+									<input type="checkbox" name="select_services[]" <if condition="$membercoupon_id gt '0'">  disabled </if> onclick="get_price();" <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/>&nbsp;&nbsp;
+									</if>{$vo1.name}
+								</td><if condition="$n%3 eq 0"></tr><tr></if>
+							</if>
+						</volist>
+					</tr>
+					</table>
+					</div>
+                   </dd>
+               </dl>
+		</volist>
+		<dl class="filter_li">
+			<dt>其他</dt>
+                <dd><div class="filter_data1"><input type="checkbox" name="select_services[]" value="-1"/>&nbsp;&nbsp;我不知道做什么项目，到店检查为准</div>
+                </dd>
+		</dl>
+	<else />
+		<dl class="filter_li">
+		<dd>
+			<div class="filter_data1">
+          		<table >
+          			<tr>
+          			<?php $n=0;?>
+          				<volist name="serviceitem" id="voservice">
+          				<?php $n++;?>
+            			<td width="165px">
+            				√ {$voservice.name}
+            			</td><if condition="$n%3 eq 0"></tr><tr></if>
+            			</volist>
+            		</tr>
+            	</table>
+ 			</div>
+       	</dd>
+       	</dl>
+	</empty>
+ <p class="">本次保养您选择了:</p>
+ <p class="cg3" id="shop_price"></p>
+ <p class="cg3" id="carinfo"><if condition="$model_id gt 0">所选车辆信息：{$carname.brand_name} {$carname.series_name} {$carname.model_name}<else />您未选定车型</if></p>
+</div>
+
+<div id="xz-yy1">输入预约信息</div>
+<div id="xz-bg">
+			<table border="0" cellspacing="15" cellpadding="0" class="Consumelisttitle" width="100%">
+				<tr>
+					<td width="30%">预约时间</td>
+					<td><input type="text" name="order_date" class="Wdate" type="text" onfocus="WdatePicker({ <notempty name="sale_check"> disabledDays:[{$sale_check}],</notempty>enableKeyboard:false,doubleCalendar:<?php echo ($doubleCalendar);?>,dateFmt:'yyyy-MM-dd',minDate:'{$minday}',maxDate:'{$maxday}'})" />
+					日<select name="order_hours" onclick="get_minute();" id="order_hours">
+					<option value="0">小时</option>
+					<volist name="Think.config.ORDER_HOURS" id="hours">
+					<if condition="($hours egt $min_hours) AND ($hours elt $max_hours)"> 
+					<option value="{$hours}">{$hours}</option>
+					</if>
+					</volist>
+					</select>
+					时<select name="order_minute" id="order_minute">
+					<option value="">分钟</option>
+					</select>
+					分 <span><font color="red">*</font></span>
+					</td>
+				</tr>
+			<tr>
+			<td>姓名</td><td><input type="text" value="{$list.truename}" name="truename"> <span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>手机号码</td><td><input type="text" value="{$list.mobile}" name="mobile"> <span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>车牌号</td><td>
+			<select name="cardqz">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+					<option value="{$type}" <if condition="$my_car.s_pro eq $type">selected<elseif condition="$type eq '沪'" />selected<else /></if> >{$type}</option>
+				</volist>
+			</select><font color="red">*</font>
+					<input type="text" name="licenseplate" value="{$my_car.car_number}"><span><font color="red">*</font></span></td>
+			</tr>
+			<tr>
+			<td>已行驶公里数</td><td><input type="text" value="" name="miles"></td>
+			</tr>
+			<tr>
+				<td>车辆识别代码</td>
+				<td>
+					<input type="text" value="{$my_car.car_identification_code}" name="car_sn">
+					<span><a href="###" id="how_find_code"><font size="2" color="grey">如何查找您爱车的车辆识别代码？</font></a></span>
+				</td>
+			</tr>
+			<tr>
+			<td>备注</td><td><textarea name="remark" cols=50 rows=6 ></textarea></td>
+			</tr>
+			
+	<tr><td align="center" colspan="2">
+		<input type="hidden" name="shop_id" value="{$shop_id}" />
+		<input type="hidden" name="model_id" value="{$model_id}" />
+		<input type="hidden" name="timesaleversion_id" value="{$Think.request.timesaleversion_id}" />
+		<input type="hidden" name="u_c_id" value="{$u_c_id}" />
+		<input type="hidden" name="membercoupon_id" value="{$membercoupon_id}" />
+	</td>
+	</tr>
+			</table>
+			<div class="server_agree" >
+				
+				<a href="http://www.xieche.net/article/article24" target="_blank">同意《携车网维修保养预约协议》</a>
+			</div>
+			<if condition="$shop.shop_class eq 2"><div><p class="shop_class2">非特约4S店预约折扣信息为携车网定期采集，4S店有可能进行适时调整，携车网不对此折扣做出承诺</p></div></if>
+			<div class="submit_agree" style="text-align: center;"><input type="submit" class="button-yellow" value="预约下单"></div>
+			<div class="yuyuetishi">
+				<h5>预约提示dsaddsaa：</h5><br>
+				1、	我们目前只接受隔天预约，且只接受15天之内的预约。如果您预约第二天的维修保养服务，您需要在当天下午4点之前进行预约，以让我们的客服有时间与4S店确认您第二天的预约；
+				<br>
+				2、	如果您选择的是分时折扣，则只能在您选择的折扣时段内进行预约；
+				<br>
+				3、	请填入您的手机号，以接收预约确认的短信，该短信同时也是您到店后享受折扣的凭证；
+				<br>
+				4、	车牌号、已行驶里程数、车辆识别代码（<a href="###" id="how_find_code2">如何找到您爱车的车辆识别代码</a>）能方便4S店在您到店前获知您爱车的详细信息，提前做好准备，以更好地为您服务；
+				<br>
+				5、	如果您的爱车还有别的情况需要说明，请在备注中留言告诉我们。
+				<input type="checkbox" name="xcagreement" id="xcagreement" value="1">
+				
+
+			</div>
+	</form>	
+</div>
+
+
+</div>
+</div>
+<script>
+	function get_minute(){
+		var sel_hours = $("#order_hours").val();
+		var min_hours = '{$min_hours}';
+		var min_minute ='{$min_minute}';
+		var max_hours = '{$max_hours}';
+		var max_minute = '{$max_minute}';
+		$("#order_minute").html("");
+		$("#order_minute").append("<option value='0'>分钟</option>");
+		for(i=0; i<6; i++){
+			var m = i*10;
+			if(m==0){
+				m='00';
+			}
+			if(sel_hours==min_hours || sel_hours==max_hours){
+				if(sel_hours==min_hours && sel_hours!=max_hours && min_minute<=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+				if(sel_hours==max_hours && max_minute>=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+			}else{
+				$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+			}
+		}
+	}
+</script>
+
+
+
+
+

@@ -1,0 +1,34 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增走访记录 [ <A HREF="__URL__/index/id/{$Think.get.id}">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/insert">
+			<table cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >走访内容：</TD>
+                    <TD class="tLeft" ><textarea name="content" cols="50" rows="10"></textarea></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" ><input type="hidden" name="salemanage_id" value="{$Think.get.id}"></TD>
+                    <TD class="tLeft" ><input TYPE="submit" value="提交"></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

@@ -1,0 +1,497 @@
+<style type="text/css">
+table {margin:auto;vertical-align:middle;border-collapse:collapse;border-spacing:0;}
+td {vertical-align:middle;}
+.xzxm {
+  padding: 0px;
+  height: auto;
+  width: 100%;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-left: auto;
+}
+.xzxm .xz_title {
+  font-size: 25px;
+  display: block;
+  padding: 0px;
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+.xzxm .jg {
+  width: 100% ;
+  font-family: "微软雅黑";
+  font-size: 16px;
+  margin: 0px;
+  padding-bottom:20px;
+  display: block;
+  height: 40px;
+  line-height:40px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: #CCC;
+}
+.xzxm .xz_bd {
+  
+}
+form{position:relative}
+.xzxm .xz_bd table tr td #form1 {
+  background-image: url(__WEB__/Public/carservice/img/1.png);
+  background-repeat: no-repeat;
+  height: 34px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  
+}
+.xzxm .xz_bd table tr td #form1 #item_0,.xzxm .xz_bd table tr td #form2 #item_1,.xzxm .xz_bd table tr td #form3 #item_2,.xzxm .xz_bd table tr td #form4 #item_3,.xzxm .xz_bd table tr td #form4 #item_3,.xzxm .xz_bd table tr td #form5 #item_4 {
+  padding: 0px;
+  height: 30px;
+  line-height:30px;
+  width: 340px;
+  margin-top: 2px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 140px;
+  background-image: url(__WEB__/Public/carservice/img/x.png);
+  background-repeat: no-repeat;
+  background-position: 320px 12px;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  font-size: 14px;
+  cursor:pointer;
+  padding-left:10px;
+	
+}
+.xzxm .xz_bd table tr td #form2 {
+  background-image: url(__WEB__/Public/carservice/img/2.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height:34px;
+}
+.CheckboxGroup:hover{background-color:#f0f0f0}
+
+.xzxm .xz_bd table tr td #form3 {
+  background-image: url(__WEB__/Public/carservice/img/3.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+	height:34px;
+}
+
+.xzxm .xz_bd table tr td #form4 {
+  background-image: url(__WEB__/Public/carservice/img/4.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+	height:34px;
+}
+
+.xzxm .xz_bd table tr td #form5 {
+  background-image: url(__WEB__/Public/carservice/img/5.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+	height:34px;
+}
+
+.xzxm .hs {
+  background-color: #EFEFEF;
+  padding: 0px;
+  height: 150px;
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+.table tr{height:80px;border-bottom:1px dashed #ccc}
+.item_price{display:none}
+
+#taobao_price{
+    width:40% ;
+}
+
+#taobao_id{
+    width:50% ;
+}
+</style>
+
+
+
+
+<!-- 主体内容开始-->
+<div class="content" >
+<div class="title">配件信息</div>
+<notempty name="tipss"><div><h3>{$tipss}</h3></div></notempty>
+<div class="xzxm">
+<h2 class="xz_title">
+    {$car_name} <br> 
+    价格: <font style="font-size:22px; color:#C00;"><strong id="amount" style="font-size:22px;"></strong> 元</font>
+</h2>
+<p class="jg">
+	
+	<if condition="(($authId eq 1) OR ($authId eq 224) OR ($authId eq 234) OR ($authId eq 367) OR ($authId eq 171) OR ($authId eq 243) OR ($authId eq 299) OR ($authId eq 223) OR ($authId eq 305) OR ($authId eq 309) OR ($authId eq 266) OR ($authId eq 372) OR ($authId eq 269) OR ($authId eq 252) OR ($authId eq 242) OR ($authId eq 336) OR ($authId eq 391) OR ($authId eq 346)) AND $tbid_show eq 1">
+		<span id="taobao_price">
+		<label for="tb_id"></label>
+		<input name="taobao_price" type="text" id="taobao_price" class="item_i" placeholder="输入淘宝卖出金额" data_id="0" value="" />
+		</span>
+	</if>
+        <if condition="$tbid_show eq 1">
+			<span id="taobao_id">
+				<label for="tb_id"></label>
+				<input name="taobao_id" type="text" id="taobao_id" class="item_i" placeholder="请准确输入第三方ID" data_id="0" value="" />
+			</span>
+	</if>
+
+	<if condition="$order_type eq 2">(套餐 : 上门汽车安全检测)</if>
+	<if condition="$order_type eq 6">(套餐 : 上门汽车保养专业服务)</if>
+	<if condition="$order_type eq 7">(套餐 : 府上养车-黄壳机油套餐)</if>
+	<if condition="$order_type eq 8">(套餐 : 府上养车-蓝壳机油套餐)</if>
+	<if condition="$order_type eq 9">(套餐 : 府上养车-灰壳机油套餐)</if>
+</p>
+<div class="xz_bd">
+  <table width="100%" border="0" cellspacing="5" cellpadding="0" class="table">
+    <tr>
+      <td width="10%" height="40" align="left" valign="middle">
+		 <font style="font-size:18px; font-family:'微软雅黑';">项目:</font>
+	  </td>
+      <td width="5%"><input type="checkbox" checked id="check1" class="checkbox" data-price="{$item_sets[0]['price']}" onClick="checkClick(this,1)" /></td>
+	  <td width="60%" ><form id="form1" name="form1" method="post" action="">
+        <label for="item_0"></label>
+        <empty name="item_sets">
+        	<input data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="0" value="自备配件（￥0）" />
+        <else />
+        	<input data-oil-1-id="{$item_sets[0]['oil_1']}" data-oil-2-id="{$item_sets[0]['oil_2']}" data-oil-1-num="{$item_sets[0]['oil_1_num']}" data-oil-2-num="{$item_sets[0]['oil_2_num']}" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="{$item_sets[0]['id']}" value="{$item_sets[0]['name']}&nbsp;{$car_style['norms']}（￥{$item_sets[0]['price']}）" />
+        </empty>
+        <div class="item_d" id="item_0_d" style="position:absolute;z-index:1000;width:360px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+          <foreach name="item_sets" item="set1" key="k" >
+            <li data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set1['id']}" data-id="{$set1['id']}" data-price="{$set1['price']}" style="padding-left:20px;">{$set1.name}&nbsp;{$car_style['norms']}<strong>（￥{$set1.price}）</strong></li>
+          </foreach>
+		  <notempty name="item_sets_bu">
+		  <foreach name="item_sets_bu" item="set2" key="k" >
+            <li data-oil-1-id="{$set2['oil_1']}" data-oil-2-id="{$set2['oil_2']}" data-oil-1-num="{$set2['oil_1_num']}" data-oil-2-num="{$set2['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set2['id']}" data-id="{$set2['id']}" data-price="{$set2['price']}" style="padding-left:20px;">{$set2.name}&nbsp;1L<strong>（￥{$set2.price}）</strong></li>
+          </foreach>
+		  </notempty>
+          <li data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+          </ul>
+        </div>
+      </form></td>
+      <td width="17%" style="color:#e80012;font-size:14px"><span id="item_price_0" class="item_price">{$item_sets['0']['price']}</span></td>
+    </tr>
+	<if condition="$tips neq ''">
+		<tr><td width=100></td><td width=60></td><td><font color=red>{$tips}</font></td></tr>
+	</if>
+    <tr>
+      <td height="40">&nbsp;</td>
+	   <td><input type="checkbox" checked id="check2"  data-price="{$item_set[1][0]['price']}" class="checkbox" onClick="checkClick(this,2)" /></td>
+      <td><form id="form2" name="form2" method="post" action="">
+        <label for="item_1"></label>
+        
+        <empty name="item_set[1]">
+        	<input name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="0" value="自备配件（￥0）" />
+        <else />
+        	<input name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="{$item_set['1']['0']['id']}" value="{$item_set['1']['0']['name']}（￥{$item_set['1']['0']['price']}）" />
+        </empty>
+        <div class="item_d" id="item_1_d" style="position:absolute;z-index:1000;width:360px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+          <foreach name="item_set[1]" item="value">
+            <li width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_{$value['id']}" data-id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li>
+          </foreach>
+          <li width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+          </ul>
+        </div>
+      </form></td>
+      <td style="color:#e80012;font-size:14px"><span id="item_price_1" class="item_price">{$item_set['1']['0']['price']}</span></td>
+    </tr>
+    <tr>
+      <td height="40">&nbsp;</td>
+      <td>
+        <input type="checkbox" id="check3" <if condition="$order_type eq 60 or $order_type eq 61">checked</if> data-price="{$item_set[2][0]['price']}" class="checkbox" onClick="checkClick(this,3)" />
+    </td>
+      <td><form id="form3" name="form3" method="post" action="">
+        <label for="item_2"></label>
+          <empty name="item_set[2]">
+          	<input name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="0" value="自备配件（￥0）" />
+    	  <else />
+	        <input name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="{$item_set['2']['0']['id']}" value="{$item_set['2']['0']['name']}（￥{$item_set['2']['0']['price']}）" />
+    	  </empty>	
+        <div class="item_d" id="item_2_d" style="position:absolute;z-index:1000;width:360px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+	          <foreach name="item_set[2]" item="value">
+	            <li width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_{$value['id']}" data-id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li>
+	          </foreach>
+              <li width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+			<!--<li width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_0" data-id="0" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>-->
+          </ul>
+        </div>
+      </form></td>
+      <td style="color:#e80012;font-size:14px"><span id="item_price_2" class="item_price">{$item_set['2']['0']['price']}</span></td>
+    </tr>
+    <tr>
+      <td height="40">&nbsp;</td>
+	   <td><input type="checkbox" id="check4" <if condition="$order_type eq 14 or $order_type eq 33 or $order_type eq 47 or $order_type eq 52 or $order_type eq 55 or $order_type eq 60 or $order_type eq 61 or $order_type eq 68">checked</if> data-price="{$item_set[3][0]['price']}" class="checkbox" onClick="checkClick(this,4)" /></td>
+      <td><form id="form4" name="form4" method="post" action="">
+        <label for="kt"></label>
+          <empty name="item_set[3]">
+          	<input name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="0" value="自备配件（￥0）" />
+          <else />
+        	<input name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="{$item_set['3']['0']['id']}" value="{$item_set['3']['0']['name']}（￥{$item_set['3']['0']['price']}）" />
+          </empty>
+        <div class="item_d" id="item_3_d" style="position:absolute;z-index:1000;width:360px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+	          <foreach name="item_set[3]" item="value">
+	            <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_{$value['id']}" data-id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li>
+	          </foreach>
+              <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+			  <!-- <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_0" data-id="764" data-price="0" style="padding-left:20px;">pm2.5 1元装<strong>（￥1）</strong></li>
+			  <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_0" data-id="765" data-price="0" style="padding-left:20px;">pm2.5 8元装<strong>（￥8）</strong></li> -->
+
+          </ul>
+        </div>
+      </form></td>
+      <td style="color:#e80012;font-size:14px"><span id="item_price_3" class="item_price">{$item_set['3']['0']['price']}</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+	   <td><input id="no-service" type="checkbox" /></td>
+      <td>
+      <div style="width:100%;background-color:#efefef;text-align:center;height:34px;line-height:34px;font-size:14px">已有配件，仅购买上门服务</div>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    
+	
+    <tr>
+      <td>&nbsp;</td>
+	   <td><input id="service_cost" type="checkbox" disabled="true" checked="" value="1" name="service_cost"></td>
+      <td>
+      <div style="width:100%;background-color:#efefef;text-align:center;height:34px;line-height:34px;font-size:14px">服务费99</div>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr style="border-bottom:none">
+      <td height="65" colspan="2">&nbsp;</td>
+      <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr style="border:none">
+          <td width="34%" align="left"></td>
+          <td width="50%" align="left">
+              <input type="hidden" name="oil_1_id" value="{$item_sets['0']['oil_1']}" />
+              <input type="hidden" name="oil_1_num" value="{$item_sets['0']['oil_1_num']}" />
+              <input type="hidden" name="oil_2_id" value="{$item_sets['0']['oil_2']}" />
+              <input type="hidden" name="oil_2_num" value="{$item_sets['0']['oil_2_num']}" />
+              <input type="hidden" name="CheckboxGroup0_res" id="CheckboxGroup0_res" value="{$item_sets['0']['id']}">
+              <input type="hidden" name="CheckboxGroup1_res" id="CheckboxGroup1_res" value="{$item_set['1']['0']['id']}">
+              <input type="hidden" name="CheckboxGroup2_res" id="CheckboxGroup2_res" value="{$item_set['2']['0']['id']}">
+              <input type="hidden" name="CheckboxGroup3_res" id="CheckboxGroup3_res" value="{$item_set['3']['0']['id']}">
+
+                          
+          </td>
+          <td width="16%">&nbsp;</td>
+        </tr>
+      </table></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</div>
+
+<!-- 主体内容结束 -->
+
+
+
+
+<script>
+
+	jQuery('#check_type').click(function(){
+		if(jQuery(this).prop('checked') == true ){
+			jQuery('#order_type').val('2');
+		}else{
+			jQuery('#order_type').val('1');
+		}
+	});
+
+    jQuery(".item_i").focus(function(){
+        jQuery(this).next().show();
+    });
+
+    jQuery(".item_i").blur(function(){
+        var objThis = jQuery(this);
+        setTimeout(function(){
+            objThis.next().hide();
+        }, 500);
+    });
+
+    //var amount = {$item_sets['0']['price'] + $item_set['1']['0']['price'] + $item_set['2']['0']['price'] + $item_set['3']['0']['price'] + 99};
+    var amount = {$item_sets['0']['price'] + $item_set['1']['0']['price'] + 99};
+    jQuery("#amount").text(amount);
+    var old_price = 0, price = 0,back_amount = amount;
+
+    jQuery(".CheckboxGroup").click(function(){
+        id = jQuery(this).attr("data-id");
+        price = jQuery(this).attr("data-price");
+
+        var tag = jQuery(this).attr("id");
+        tag = tag.split("_");
+        if(tag[0] && tag[1]){
+            jQuery("#"+tag[0]+"_res").val(id);
+        }else{
+            return false;
+        }
+		jQuery(this).parent().parent().prev('input').attr('data_id',id); 
+		if(id==3){
+			jQuery('#taobao_id').attr('style','');
+		}//else{
+			//jQuery('#taobao_id').attr('style','display:none');
+		//} 
+        old_price = jQuery(this).parent().parent().parent().parent().parent().find(".item_price").text();
+        amount -= Number(old_price);
+        if(amount < 0){
+            amount = 90;
+        }
+        var $top_input = jQuery(this).parent().parent().prev();
+        $top_input.val( jQuery(this).text() );
+        if ( $top_input.hasClass('oil-input') ){
+        	var $data_oil_1_id = jQuery(this).attr('data-oil-1-id');
+        	var $data_oil_1_num = jQuery(this).attr('data-oil-1-num');
+        	var $data_oil_2_id = jQuery(this).attr('data-oil-2-id');
+        	var $data_oil_2_num = jQuery(this).attr('data-oil-2-num');
+        	$top_input.attr('data-oil-1-id',$data_oil_1_id).attr('data-oil-1-num',$data_oil_1_num).attr('data-oil-2-id',$data_oil_2_id).attr('data-oil-2-num',$data_oil_2_num);
+        }
+        jQuery(this).parent().parent().parent().parent().parent().find(".item_price").text(price);//隐藏中的每一项目价格
+        jQuery(this).parent().parent().parent().parent().parent().find(".checkbox").attr('data-price',price);//勾选
+		
+		//判断checkbox是否选中
+		var $target =jQuery(this).attr('data-tag');
+		if (jQuery('#'+$target).prop('checked'))
+		{
+			amount += Number(price);
+			jQuery("#amount").text(amount);	
+		} 
+        
+    });
+
+    jQuery("#service_cost").click(function(){
+        if(jQuery('input[name="service_cost"]:checked').val() == "1"){
+            amount += 99;
+        }else{
+            amount -= 99;
+        }
+        jQuery("#amount").text(amount);
+    })
+
+	
+    jQuery('#no-service').click(function(){
+    	if( jQuery(this).prop('checked') == true ){
+    		jQuery('.checkbox').removeAttr('checked');
+    		jQuery("#amount").text('99');
+		//动态更改右边价格
+		jQuery("#item_amount").html('99');
+    		amount = 99;
+    		jQuery('#CheckboxGroup0_res').val('');
+    		jQuery('#CheckboxGroup1_res').val('');
+    		jQuery('#CheckboxGroup2_res').val('');
+    		jQuery('#CheckboxGroup3_res').val('');
+			
+    	}else{
+    		jQuery('.checkbox').prop('checked',true);
+    		
+    		jQuery('.table').find('.checkbox').each(function(){
+    			if( jQuery(this).prop('checked') == true ){
+    				amount += Number( jQuery(this).attr('data-price') );
+    			}
+    		})
+    		jQuery("#amount").text(amount);
+			//动态更改右边价格
+			jQuery("#item_amount").html(amount);
+    		addValues();
+    	}
+    })
+    function addValues(){
+        
+    	CheckboxGroup0_res = jQuery('input[name=item_0]').attr('data_id');
+        CheckboxGroup1_res = jQuery('input[name=item_1]').attr('data_id');
+        CheckboxGroup2_res = jQuery('input[name=item_2]').attr('data_id');
+        CheckboxGroup3_res = jQuery('input[name=item_3]').attr('data_id');
+		order_type = jQuery('input[name=item_4]').attr('data_id');
+		taobao_id = jQuery('input[name=taobao_id]').val();
+		if(taobao_id){
+			jQuery('#CheckboxGroup5_res').val(taobao_id);
+		}
+		taobao_price = jQuery('input[name=taobao_price]').val();
+		if(taobao_price){
+			jQuery('#CheckboxGroup6_res').val(taobao_price);
+		}
+      	//获得每样的数量
+        var $oil_1_id = jQuery('input[name=item_0]').attr('data-oil-1-id'); 
+    	var $oil_1_num = jQuery('input[name=item_0]').attr('data-oil-1-num');
+    	var $oil_2_id = jQuery('input[name=item_0]').attr('data-oil-2-id');
+    	var $oil_2_num = jQuery('input[name=item_0]').attr('data-oil-2-num');
+        if( jQuery('#check1').prop('checked') ){
+        	jQuery('input[name=oil_1_id]').val($oil_1_id);//放到要提交的数据框里面
+        	jQuery('input[name=oil_2_id]').val($oil_2_id);
+        	jQuery('input[name=oil_1_num]').val($oil_1_num);
+        	jQuery('input[name=oil_2_num]').val($oil_2_num);
+        	jQuery('#CheckboxGroup0_res').val(CheckboxGroup0_res);
+			
+        }else{
+        	jQuery('#CheckboxGroup0_res').val('');
+        }
+        if( jQuery('#check2').prop('checked') ){
+        	jQuery('#CheckboxGroup1_res').val(CheckboxGroup1_res);
+        }else{
+        	jQuery('#CheckboxGroup1_res').val('');
+        }
+        if( jQuery('#check3').prop('checked') ){
+        	jQuery('#CheckboxGroup2_res').val(CheckboxGroup2_res);
+        }else{
+        	jQuery('#CheckboxGroup2_res').val('');
+        }
+        if( jQuery('#check4').prop('checked') ){
+        	jQuery('#CheckboxGroup3_res').val(CheckboxGroup3_res);
+        }else{
+        	jQuery('#CheckboxGroup3_res').val('');
+        }
+		if( jQuery('#check5').prop('checked') ){
+        	jQuery('#ordertype_res').val(order_type);
+        }else{
+        	jQuery('#ordertype_res').val('');
+        }
+    }
+	function checkClick(event,k){
+		jQuery('#no-service').removeAttr('checked');
+		k--;
+		var $item_price = jQuery('#item_price_'+k);
+		if( jQuery(event).prop('checked') ){
+			$price = jQuery(event).attr('data-price');
+			amount +=  Number($price );
+			jQuery("#amount").text(amount);
+			//动态更改右边价格
+			jQuery('#item_amount').html(amount);
+		}else{
+			$price = jQuery(event).attr('data-price');
+			
+			amount -= Number($price);
+			if(amount<0){
+				amount = 0;
+			}
+			jQuery("#amount").text(amount);
+			//动态更改右边价格
+			jQuery('#item_amount').html(amount);
+		}
+		//动态更改隐藏域的值
+		addValues();
+		jQuery(this).attr("data-price",$price);
+	}
+
+</script>
+
+

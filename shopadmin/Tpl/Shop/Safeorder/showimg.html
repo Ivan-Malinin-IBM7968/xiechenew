@@ -1,0 +1,165 @@
+<load file="__CSS__/newstyle.css" />
+
+	
+
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/jQueryRotate.js'></script> 
+<div id="main">
+<div id="main-right">
+<if condition="$type eq 1">
+	<h1>事故车受损照片[ <A HREF="__URL__/bidorder/id/{$id}">返回列表</A> ]</h1>
+<else />
+	<h1>事故车受损照片[ <A HREF="__URL__/partake/id/{$id}/type/2">返回列表</A> ]</h1>
+</if>
+	
+
+	
+
+</div>
+
+<style>
+	.car-license{height: 300px; padding: 20px;}
+	.license-container{display: block; width: 300px; height: auto; border: 3px solid #f1f1f1; position: relative;}
+	.license-container:hover{border: 3px solid #aaa;}
+	.rotate-trigger{ position: absolute; bottom: 10px; right: 10px; width: 30px; height: 30px; line-height: 45px; text-align: center; background: white; color: #0066cc; font-weight: bolder; background: url("__PUBLIC__/Images/rotate.png") 0px 0px no-repeat;}
+	.rotate-trigger:visited{background: white; color: #0066cc; }
+	.rotate-trigger:hover{background: #0066cc; color: #ffffff; background: url("__PUBLIC__/Images/rotate.png") 0px -30px no-repeat;}
+
+	#rot90{ 
+		-moz-transform:rotate(90deg); 
+		-webkit-transform:rotate(90deg); 
+		transform:rotate(90deg); 
+		filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	}
+
+	#rot135{
+	-moz-transform:rotate(135deg);-webkit-transform:rotate(135deg);transform:rotate(135deg); filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.707,M12=-0.707,M21=0.707,M22=-0.707,SizingMethod='auto expand');
+	
+	}
+</style>
+
+<div id="main-right2">
+			<table border="0" align="center" cellpadding="1" cellspacing="0" style="width: 100%"> 
+			<tr>
+				<td>编号</td>
+				<td>图片信息</td>
+			</tr>
+			<volist name="data.Insuranceimg" id="vo">
+			<tr>
+				<td>{$i}</td>
+				<td class="car-license" >
+					<span   class="license-container"><!-- href="/UPLOADS/Driving/{$vo.car_img}" target="_blank" -->
+						<img src="/UPLOADS/Driving/{$vo.car_img}" width="300" id="{$i}" />
+						<a href="javascript" class="rotate-trigger" data-i="{$i}" title="旋转图片"></a>
+					</span>
+				</td>
+			</tr>
+			</volist>
+
+			</table>
+	</div>
+
+</div>
+
+<script>
+	
+	jQuery.fn.rotate = function(angle,whence) {
+		var p = this.get(0);
+
+		// we store the angle inside the image tag for persistence
+		if (!whence) {
+			p.angle = ((p.angle==undefined?0:p.angle) + angle) % 360;
+		} else {
+			p.angle = angle;
+		}
+
+		if (p.angle >= 0) {
+			var rotation = Math.PI * p.angle / 180;
+		} else {
+			var rotation = Math.PI * (360+p.angle) / 180;
+		}
+		var costheta = Math.round(Math.cos(rotation) * 1000) / 1000;
+		var sintheta = Math.round(Math.sin(rotation) * 1000) / 1000;
+		//alert(costheta+","+sintheta);
+	 
+		if (document.all && !window.opera) {
+			var canvas = document.createElement('img');
+
+			canvas.src = p.src;
+			canvas.height = p.height;
+			canvas.width = p.width;
+
+			canvas.style.filter = "progid:DXImageTransform.Microsoft.Matrix(M11="+costheta+",M12="+(-sintheta)+",M21="+sintheta+",M22="+costheta+",SizingMethod='auto expand')";
+		} else {
+			var canvas = document.createElement('canvas');
+			if (!p.oImage) {
+				canvas.oImage = new Image();
+				canvas.oImage.src = p.src;
+			} else {
+				canvas.oImage = p.oImage;
+			}
+
+			canvas.style.width = canvas.width = Math.abs(costheta*canvas.oImage.width) + Math.abs(sintheta*canvas.oImage.height);
+			canvas.style.height = canvas.height = Math.abs(costheta*canvas.oImage.height) + Math.abs(sintheta*canvas.oImage.width);
+
+			var context = canvas.getContext('2d');
+			context.save();
+			if (rotation <= Math.PI/2) {
+				context.translate(sintheta*canvas.oImage.height,0);
+			} else if (rotation <= Math.PI) {
+				context.translate(canvas.width,-costheta*canvas.oImage.height);
+			} else if (rotation <= 1.5*Math.PI) {
+				context.translate(-costheta*canvas.oImage.width,canvas.height);
+			} else {
+				context.translate(0,-sintheta*canvas.oImage.width);
+			}
+			context.rotate(rotation);
+			context.drawImage(canvas.oImage, 0, 0, canvas.oImage.width, canvas.oImage.height);
+			context.restore();
+		}
+		canvas.id = p.id;
+		canvas.angle = p.angle;
+		p.parentNode.replaceChild(canvas, p);
+	}
+
+	jQuery.fn.rotateRight = function(angle) {
+		this.rotate(angle==undefined?90:angle);
+	}
+
+	jQuery.fn.rotateLeft = function(angle) {
+		this.rotate(angle==undefined?-90:-angle);
+	}
+
+	var fnRotateScale = function(dom, angle, scale) {
+    if (dom && dom.nodeType === 1) {
+        angle = parseFloat(angle) || 0;
+        scale = parseFloat(scale) || 1;
+        if (typeof(angle) === "number") {
+            //IE
+            var rad = angle * (Math.PI / 180);
+            var m11 = Math.cos(rad) * scale, m12 = -1 * Math.sin(rad) * scale, m21 = Math.sin(rad) * scale, m22 = m11;
+            if (!dom.style.Transform) {
+                dom.style.filter = "progid:DXImageTransform.Microsoft.Matrix(M11="+ m11 +",M12="+ m12 +",M21="+ m21 +",M22="+ m22 +",SizingMethod='auto expand')";
+            }
+            //Modern
+            dom.style.MozTransform = "rotate("+ angle +"deg) scale("+ scale +")";
+            dom.style.WebkitTransform = "rotate("+ angle +"deg) scale("+ scale +")";
+            dom.style.OTransform = "rotate("+ angle +"deg) scale("+ scale +")";
+            dom.style.Transform = "rotate("+ angle +"deg) scale("+ scale +")";
+        }     
+    }
+};
+
+	/*var rot = 0;
+	$(".rotate-trigger").on("click", function(){
+		e.preventDefault();
+		rot += 90;
+		$("#rotImg").rotate(rot)
+	})*/
+	
+	$(".rotate-trigger").on("click", function(e){
+		e.preventDefault();
+		var domId = $(this).data("i");
+		$("#"+domId).rotate(90)
+	})
+</script>

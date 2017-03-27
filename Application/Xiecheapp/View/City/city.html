@@ -1,0 +1,25 @@
+<include file="Public:header_none" />
+<style type="text/css">
+*{ margin:0px; padding:0px; text-decoration:none;}
+.citycon{line-height: 2em;}
+.citytitle{float: left; width: 83px; color: orange; font-size: 14px; line-height: 33px;}
+.citymenu{float: right; width: 1100px;}
+.citymenu ul{overflow: hidden;}
+.citymenu ul li{float: left; width: 75px; height: 33px; line-height: 33px; border: 1px solid #ccc; text-align: center; margin-right: 10px;}
+.ordernav{border-top: 1px solid #efefef;}
+</style>
+<div class="ordernav">
+  <div class="onavtip">&nbsp;</div>
+</div>
+<div class="citycon w1183" id="citycon">
+    <div class="citytitle">选择城市：</div> 
+    <div class="citymenu">
+      <ul>
+          <volice name="city_info" id="vo">
+            <li><a href="/Public/changecity/citynum/{$vo.id}">{$vo.name}</a></li>
+        </volice>
+      </ul>
+    </div>
+</div>
+</body>
+</html>

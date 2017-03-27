@@ -1,0 +1,779 @@
+<layout name='layout_index' />
+<style type="text/css">
+<!--
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div { margin:0; padding:0; border:0; }
+table, td { font-family:"宋体"; }
+
+body {text-align:center; }
+td, p, li, select, input, textarea, div { font-size:12px; }
+ul { list-style-type:none; }
+select, input { vertical-align:middle; }
+.f14 { font-size:14px; }
+.lh20 { line-height:20px; }
+a { text-decoration:underline; }
+.clearit { clear:both; }
+/* 列表 */
+/* 14px加点列表 */
+.link14listStyle li { text-align:left; line-height:23px; font-size:14px; padding:0 0 0 9px; background:url(http://i0.sinaimg.cn/dy/legal/2006index/news_law_hz_012.gif) no-repeat 0 50%; }
+/* 14px无点列表 */
+.link14list li { text-align:left; line-height:23px; font-size:14px; padding:0; }
+/* 12px加点列表 */
+.link12listStyle li { text-align:left; line-height:20px; font-size:12px; padding:0 0 0 9px; background:url(http://i0.sinaimg.cn/dy/legal/2006index/news_law_hz_012.gif) no-repeat 0 45%; }
+/* 12px无点列表 */
+.link12list li { text-align:left; line-height:20px; font-size:12px; padding:0; }
+/* 主容器 */
+#wrap { width:750px; margin:0 auto; text-align:left; }
+.main { width: 750px; clear: both; }
+.top { width: 750px; height: 42px; clear: both; margin-top: 10px; margin-bottom: 10px; }
+.top .logo { float: left; }
+.top .nav1 { text-align: right; width: 561px; float: right; padding-top: 4px; padding-bottom: 6px; color:#009;}
+.top .nav1 a { color: #009; text-decoration: none; margin-right: 6px; margin-left: 6px; }
+.top .nav1 a:hover { color: #f00; text-decoration: underline; }
+.top .nav2 { background-image: url(http://i0.sinaimg.cn/dy/deco/2007/0402/sitemap/sina_map_ws_002.gif); width: 561px; height: 15px; overflow: hidden; float: right; }
+.ch { width: 750px; overflow: hidden; clear: both; }
+.ch .a { color:#000; background-image: url(http://i1.sinaimg.cn/dy/2009/0911/nav/sina_map_ams_001.gif); background-repeat: no-repeat; width: 67px; padding-top: 11px; padding-right:13px; text-align:center; }
+.ch .a a { text-decoration: none; }
+.ch .a a:hover { text-decoration: underline; }
+.ch .b { color: #000; background-image: url(http://i3.sinaimg.cn/dy/deco/2007/0402/sitemap/sina_map_ams_002.gif); width: 539px; padding-top: 11px; padding-left: 5px; border-right: 1px solid #e5ddf7; border-left: 1px solid #e5ddf7; }
+.ch .b a { color: #000; text-decoration: none; }
+.ch .b a:hover { color: #f00; text-decoration: underline; }
+.ch .c { color:#009; background-image: url(http://i3.sinaimg.cn/dy/deco/2007/0402/sitemap/sina_map_ams_002.gif); width: 86px; float: left; padding-top: 11px; padding-left: 14px; border-right: 1px solid #e5ddf7; }
+.ch .c a { text-decoration: none; }
+.ch .c a:hover { text-decoration: underline; }
+.ch2 { width: 750px; clear: both; }
+.ch2 td { line-height:26px; }
+.ch2 .a { color:#009; background:url(http://i3.sinaimg.cn/dy/2009/0911/nav/sn_m_01.gif) no-repeat 0 2px; width: 67px; padding-right:8px; padding-top:4px; text-align:center; }
+.ch2 .a a { text-decoration: none; }
+.ch2 .a a:hover { text-decoration: underline; }
+/*2010-1-22 cl begin*/
+.ch2 .b { color: #666; text-align: left; width: 539px; padding-left: 30px; border-right: 1px solid #d8e4f7; border-bottom: 1px solid #d8e4f7; border-left: 1px solid #dbdbdb; background:#f5f8fd; }
+/*2010-1-22 cl end*/
+.ch2 .b a { text-decoration: none; margin-right: 10px; }
+.ch2 .b a:hover { text-decoration: underline; }
+.ch2 .c { color:#666; border-bottom: 1px solid #dbdbdb; width: 90px; padding-left: 8px; border-right: 1px solid #dbdbdb; background:#f5f8fd; }
+.ch2 .c a { text-decoration: none; margin-right: 6px; margin-left: 6px; }
+.ch2 .c a:hover { text-decoration: underline; }
+.footer { color: #666; line-height: 24px; text-align: center; width: 750px; clear: both; margin-top: 10px; -webkit-text-size-adjust:none; }
+.footer a { color: #666; }
+.b1 { background:url(http://i0.sinaimg.cn/dy/2009/0911/nav/sn_m_02.gif) no-repeat 96% 50%; width: 529px; }
+.b2 { padding-left: 18px; }
+.colorPink .a{background-image:url(http://i1.sinaimg.cn/dy/2009/0911/nav/sn_m_03.gif);}
+.colorPink .b{border-bottom: 1px solid #f0e1c5;border-right: 1px solid #f0e1c5;background:#fefefe;}
+.colorPink .c{border-bottom: 1px solid #f0e1c5;background:#fdfefa;}
+.colorPink .b1{background-image:url(http://i2.sinaimg.cn/dy/2009/0911/nav/sn_m_04.gif);}
+.colorPink a:link,.colorPink a:visited{color:#009;}
+.colorPink a:hover{color:#f00;}
+.colorAmethyst .a{background-image:url(http://i3.sinaimg.cn/dy/2009/0911/nav/sn_m_05.gif);}
+.colorAmethyst .b{border-bottom: 1px solid #e5ddf7;border-right: 1px solid #e5ddf7;background:#fff;}
+.colorAmethyst .c{border-bottom: 1px solid #e5ddf7;background:#fff;}
+.colorAmethyst .b1{background-image:url(http://i0.sinaimg.cn/dy/2009/0911/nav/sn_m_06.gif);}
+.colorAmethyst a:link,.colorAmethyst a:visited{color:#009;}
+.colorAmethyst a:hover{color:#f00;}
+.colorGreen .a{background-image:url(http://i1.sinaimg.cn/dy/U814P1T618D1F14653DT20100125110951.png);}
+.colorGreen .b{border-bottom: 1px solid #b2e6a6;border-right: 1px solid #b2e6a6;background:#fbfdf8;}
+.colorGreen .c{border-bottom: 1px solid #b2e6a6;background:#fbfdf8;}
+.colorGreen .b1{background-image:url(http://i0.sinaimg.cn/dy/2009/0911/nav/sn_m_06.gif);}
+.colorGreen a:link,.colorGreen a:visited{color:#009;}
+.colorGreen a:hover{color:#f00;}
+.colorGray{}
+.colorGray .a{background-image:url(http://i2.sinaimg.cn/dy/deco/2012/0618/sn_m_09.png);line-height:48px;}
+.colorGray .b{border-bottom: 1px solid #d7d7d7;border-right: 1px solid #d7d7d7;background:#f9f7fd;line-height:24px;-webkit-text-size-adjust:none;}
+.colorGray .c{border-bottom: 1px solid #d7d7d7;background:#f9f7fd;line-height:24px;}
+.colorGray a:link,.colorGray a:visited{color:#009;}
+.colorGray a:hover{color:#f00;}
+-->
+</style>
+</head>
+<body><!-- SUDA_CODE_START --> 
+
+
+<br>
+<div id="wrap">
+	<!--<table class="top" cellspacing="0" cellpadding="0" width="750" border="0">
+		<tbody>
+			<tr>
+				<td width="190" rowspan="2"><span class="logo"><a href="http://www.sina.com.cn/" target="_blank"><img alt="新浪网导航" src="http://i2.sinaimg.cn/dy/deco/2012/0326/U509P1T326D166F6692DT20090428165718.jpg" /></a></span></td>
+				<td align="right" width="560"><span class="nav1"><a href="http://www.sina.com.cn/">新浪首页</a>|<a href="http://search.sina.com.cn/">搜索</a></span></td>
+			</tr>
+			<tr>
+				<td><div class="nav2"></div></td>
+			</tr>
+		</tbody>
+	</table>-->
+<!-- publish_helper name='内容编辑区' p_id='1' t_id='618' d_id='1' f_id='14650' -->
+
+<table class="ch" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a"  height="22" >网站导航</td>
+<td class="b"  height="22" >
+<table cellspacing="0" cellpadding="0" width="567" border="0">
+<tr><td></td><td style="text-align:center;"></td>
+</tr>
+</table>
+</td>
+<td class="c"  height="22" ><!--热门推荐--></td>
+</tr>
+</tbody>
+</table>
+
+
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="__APP__/order/index" target="_blank">4s售后预约</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+	<volist name="data.shop" id="vo">
+	<a  href="__APP__/shop/{$vo.id}" title="{$vo.shop_name}" >{$vo.shop_name|g_substr=14}</a>
+	</volist>
+</td>
+<!--<td class="b2"><a href="http://sports.sina.com.cn/others/">综合</a><a href="http://sports.sina.com.cn/tennis/">网球</a><a href="http://sports.sina.com.cn/chess/">棋牌</a><a href="http://golf.sina.com.cn/">高尔夫</a><a href="http://f1.sina.com.cn/">F1赛车</a><a href="http://sports.sina.com.cn/lottery/">彩票</a><a href="http://sports.sina.com.cn/bn/sports/">视频</a></td>-->
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/order/index">更多</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="__APP__/coupon/{$vo.id}">4s售后团购</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+<volist name="data.coupon" id="vo">
+<a href="__APP__/coupon/{$vo.id}" title="{$vo.coupon_name}">{$vo.coupon_name|g_substr=14}</a>
+</volist>
+</td>
+<!--<td class="b2"><a href="http://blog.sina.com.cn/lm/pic/?tj=1">图片</a><a href="http://blog.sina.com.cn/lm/z/photoblog/">摄影</a><a href="http://blog.sina.com.cn/lm/book/?tj=1">文化</a><a href="http://blog.sina.com.cn/lm/ent/">八卦</a><a href="http://blog.sina.com.cn/lm/sports/?tj=1">体育</a><a href="http://blog.sina.com.cn/lm/zt/">专题</a><a href="http://blog.sina.com.cn/lm/mediablog/?tj=1">媒体</a><a href="http://blog.sina.com.cn/lm/z/collegeblog/">校园</a></td>-->
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/coupon">更多</a></td>
+</tr>
+</tbody>
+</table>
+
+
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="__APP__/noticelist">优惠速递</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+<volist name="data.Notice" id="vo">
+	<a href="{:URL('/shop/favtype',array('shop_id'=>$vo['shop_id'],'id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" title="{$vo.noticetitle}">{$vo.noticetitle|g_substr=15}</a>
+</volist>
+
+</td>
+<!--
+<td class="b2"><a href="http://weibo.com/pub/news"> 随便看看</a><a href="http://weibo.com/pub/i/fun">有趣的人</a><a href="http://weibo.com/mobile/cellphone?ky=wap">手机微博</a><a href="http://weibo.com/mobile/cellphone?ky=iphone">客户端</a><a href="http://s.weibo.com/?guide">搜索</a></td>-->
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/noticelist">更多</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="__APP__/articlelist">用车心得</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"> 
+<volist name="data.Article" id="vo">
+<a href="__APP__/article/{$vo.id}" title="{$vo.title}">{$vo.title|g_substr=15}</a>
+</volist>
+</td>
+<!--
+<td class="b2">
+<a href="http://news.sina.com.cn/media/">传媒</a><a href="http://news.sina.com.cn/opinion/">评论</a><a href="http://sky.news.sina.com.cn/">航空</a><a href="http://weather.news.sina.com.cn/">天气</a><a href="http://green.sina.com.cn/">环保</a><a href="http://roll.news.sina.com.cn/s/channel.php?ch=01">滚动</a><a href="http://news.sina.com.cn/hotnews/">排行</a><a href="http://news.sina.com.cn/zt/">专题</a></td>-->
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/articlelist">更多</a></td>
+</tr>
+</tbody>
+</table>
+
+
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="">小型车</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>17,'series_id'=>153,'model_id'=>408))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="新Polo">新Polo</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>63,'series_id'=>439,'model_id'=>1186))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="晶锐">晶锐</a> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>54,'series_id'=>377,'model_id'=>1028))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="K2">K2</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>25,'series_id'=>231,'model_id'=>631))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="嘉年华">嘉年华</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>68,'series_id'=>471,'model_id'=>1278))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="爱唯欧">爱唯欧</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</td>
+<!--<td class="b2"><a href="http://ent.sina.com.cn/photo/">图库</a><a href="http://ent.sina.com.cn/bn/">视频</a><a href="http://ent.sina.com.cn/vipchat.html?tj=1">嘉聊</a><a href="http://ent.sina.com.cn/f/entreport/">娱乐快报</a><a href="http://data.ent.sina.com.cn/index.html">资料库</a><a href="http://data.ent.sina.com.cn/show/index.php?&dpc=1">演出订票</a></td>-->
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/order/index">更多</a></td>
+</tr>
+</tbody>
+</table>
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="">紧凑型车</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>17,'series_id'=>156,'model_id'=>418))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="朗逸">朗逸</a>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="{:URL('/order/index',array('brand_id'=>17,'series_id'=>164,'model_id'=>449))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="高尔夫">高尔夫</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>63,'series_id'=>440,'model_id'=>1188))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="明锐">明锐</a>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="{:URL('/order/index',array('brand_id'=>11,'series_id'=>118,'model_id'=>315))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="凯越">凯越</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>56,'series_id'=>407,'model_id'=>1099))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="荣威550">荣威550</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+</td>
+<!--<td class="b2"><a href="http://finance.sina.com.cn/fund/">基金</a><a href="http://finance.sina.com.cn/forex/">外汇</a><a href="http://finance.sina.com.cn/futuremarket/">期货</a><a href="http://finance.sina.com.cn/nmetal/">黄金</a><a href="http://finance.sina.com.cn/money/bank/">银行</a><a href="http://finance.sina.com.cn/money/insurance/">保险</a><a href="http://blog.sina.com.cn/lm/finance/?tj=1">博客</a><a href="http://finance.sina.com.cn/column/">专栏</a></td>-->
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/order/index">更多</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="">中级车</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>17,'series_id'=>152,'model_id'=>400))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="新帕萨特">新帕萨特</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>11,'series_id'=>114,'model_id'=>303))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="君威">君威</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="{:URL('/order/index',array('brand_id'=>63,'series_id'=>438,'model_id'=>1179))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="昊锐">昊锐</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>25,'series_id'=>233,'model_id'=>1403))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="蒙迪欧致胜">蒙迪欧致胜</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{:URL('/order/index',array('brand_id'=>55,'series_id'=>397,'model_id'=>1078))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="天籁">天籁</a>
+
+
+</td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="__APP__/order/index">更多</a></td>
+</tr>
+</tbody>
+</table>
+<!--
+<table class="ch2 colorPink" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://video.sina.com.cn/">视频</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://video.sina.com.cn/news/">新闻</a><a href="http://video.sina.com.cn/ent/">娱乐</a><a href="http://video.sina.com.cn/sports/">体育</a><a href="http://video.sina.com.cn/movie/">大片</a><a href="http://v.sina.com.cn/v/dv/">微视频</a><a href="http://v.sina.com.cn/v/gaoxiao.html">搞笑</a></td>
+<td class="b2"><a href="http://video.sina.com.cn/live/">嘉宾聊天</a><a href="http://edu.sina.com.cn/video/open/">公开课</a><a href="http://video.sina.com.cn/movie/zongyi">综艺</a><a href="http://video.sina.com.cn/radio/">电台</a><a href="http://v.sina.com.cn/v/paike.html">拍客</a><a href="http://ent.sina.com.cn/bn/music/more.html">音乐</a><a href="http://tv.video.sina.com.cn/station/list/type/index.html">直播</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://video.sina.com.cn/movie/movie/">电影</a>|<a href="http://video.sina.com.cn/movie/category/teleplay/">电视</a>|<a href="http://video.sina.com.cn/movie/comic/">动漫</a></td>
+</tr>
+</tbody>
+</table>
+<table class="ch2 colorPink" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a"><a href="http://video.sina.com.cn/movie/">新浪大片</a></td>
+<td class="b"><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://video.sina.com.cn/movie/category/movie/">电影(508部)</a><a href="http://video.sina.com.cn/movie/category/teleplay/">电视剧(15374集)</a><a href="http://video.sina.com.cn/movie/category/documentary/">纪录片</a></td>
+<td class="b2"><a href="http://video.sina.com.cn/movie/officalsite/">官网首播剧场</a><a href="http://movie.video.sina.com.cn/golden/golden.html">黄金剧场</a><a href="http://video.sina.com.cn/movie/category/teleplay/area/5.html">韩剧</a><a href="http://video.sina.com.cn/movie/category/movie/area/2.html ">港片</a><a href="http://video.sina.com.cn/movie/category/movie/area/4.html">好莱坞</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://video.sina.com.cn/movie/zt/">高清大片专题策划</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorPink" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://ipad.sina.com.cn/">iPad版</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+<a href="http://ipad.sina.com.cn/news/">新闻</a><a href="http://ipad.sina.com.cn/finance/">财经</a><a href="http://ipad.sina.com.cn/tech/">科技</a><a href="http://ipad.sina.com.cn/ent/">娱乐</a><a href="http://ipad.sina.com.cn/book/">读书</a><a href="http://ipad.sina.com.cn/blog/">博客</a>
+</td>
+<td class="b2">
+<a href="http://ipad.sina.com.cn/nba/">NBA</a><a href="http://video.sina.com.cn/ipad/">视频</a><a href="http://video.sina.com.cn/movie/ipad/">大片</a><a href="http://ipad.sina.com.cn/photo/">图汇</a><a href="http://music.sina.com.cn/radio/ipad.php">音乐</a><a href="http://auto.sina.com.cn/ipad_sina/">汽车</a><a href="http://ipad.sina.com.cn/baby/">亲子</a><a href="http://ipad.sina.com.cn/roll/">滚动</a>
+</td>
+</tr>
+</tbody>
+</table></td>
+
+<td class="c" ><a href="http://ipad.sina.com.cn/style/news/">尚文</a>|<a href="http://geo.sina.com.cn/ipad/">环球地理</a>
+</td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://fashion.sina.com.cn/">时尚</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://fashion.sina.com.cn/style/">时装</a><a href="http://fashion.sina.com.cn/wedding/">婚嫁</a><a href="http://fashion.sina.com.cn/beauty/">美容</a><a href="http://fashion.sina.com.cn/body/">美体</a><a href="http://fashion.sina.com.cn/luxury/">尚品</a></td>
+<td class="b2"></a><a href="http://fashion.sina.com.cn/blog/">时尚博客</a><a href="http://lady.weibo.com/">微博</a><a href="http://fashion.sina.com.cn/column/">专栏</a><a href="http://fashion.sina.com.cn/video/">视频</a><a href="http://fashion.sina.com.cn/zt/">专题</a><a href="http://fashion.sina.com.cn/video/">时尚大片</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://fashion.sina.com.cn/cosmetics/">化妆品库</a>|<a href="http://fashion.sina.com.cn/show/">秀场T台</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://health.sina.com.cn/">健康</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://health.sina.com.cn/healthcare/">保健</a><a href="http://health.sina.com.cn/disease/">疾病</a><a href="http://health.sina.com.cn/mingyitang/videolist/">名医堂</a><a href="http://health.sina.com.cn/yangshengtan/videolist/">养生坛</a><a href="http://health.sina.com.cn/healthvideo/">看健康</a></td>
+<td class="b2"></a><a href="http://blog.sina.com.cn/lm/health/">博客</a><a href="http://weibo.com/sinahealth">微博</a><a href="http://club.life.sina.com.cn/index.php?gid=5">论坛</a><a href="http://health.sina.com.cn/disease/ku/">疾病库</a><a href="http://drug.health.sina.com.cn/">药品库</a><a href="http://hospitalize.news.sina.com/">医院大全</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://health.sina.com.cn/disease/zizhen/">症状自诊</a>|<a href="http://hospitalize.news.sina.com/zixun/">问专家</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://eladies.sina.com.cn/">女性</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://fashion.sina.com.cn/">时尚</a><a href="http://style.sina.com.cn/">生活</a><a href="http://eladies.sina.com.cn/feel/">情感</a><a href="http://eladies.sina.com.cn/news/">八卦</a><a href="http://eladies.sina.com.cn/qg/koushu/">口述</a></td>
+<td class="b2"><a href="http://blog.sina.com.cn/lm/eladies/">情感博客</a><a href="http://lady.weibo.com/">Lovelady</a><a href="http://eladies.sina.com.cn/photo/">美图</a><a href="http://eladies.sina.com.cn/bbs/">论坛</a><a href="http://eladies.sina.com.cn/z/">专题</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://fashion.sina.com.cn/cosmetics/c/list.php?i=1">免费试用</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://collection.sina.com.cn">收藏</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://roll.collection.sina.com.cn/collection/zlxx/index.shtml">展览信息</a><a href="http://roll.collection.sina.com.cn/collection/pmzx/index.shtml">拍卖资讯</a><a href="http://roll.collection.sina.com.cn/collection/cjrw1/index.shtml">人物</a><a href="http://roll.collection.sina.com.cn/collection/hwdt/index.shtml">海外动态</a></td>
+<td class="b2"></a><a href="http://roll.collection.sina.com.cn/collection/zgsh/index.shtml">中国书画</a><a href="http://roll.collection.sina.com.cn/collection/ddys/index.shtml">当代艺术</a><a href="http://roll.collection.sina.com.cn/collection/cqty/index.shtml">瓷器陶艺</a><a href="http://roll.collection.sina.com.cn/collection/jjhm/index.shtml">家具红木</a>
+</td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://collection.sina.com.cn/zt/famous/">名人堂</a>|<a href="http://store.collection.sina.com.cn/art/index.php">藏品在线</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://house.sina.com.cn/">房产</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://bj.house.sina.com.cn/exhibit/index.html">买房</a><a href="http://esf.sina.com.cn">二手房</a><a href="http://zufang.sina.com.cn">租房</a><a href="http://bj.house.sina.com.cn/club/">业主论坛</a><a href="http://club.house.sina.com.cn/bj/">乐居会</a></td>
+<td class="b2"><a href="http://dichan.sina.com.cn/">地产网</a><a href="http://blog.sina.com.cn/lm/house/">房产博客</a><a href="http://t.house.sina.com.cn/">微博</a><a href="http://data.dichan.com/Default.html">数据</a><a href="http://appraisal.dichan.com/">测评</a><a href="http://business.dichan.com/">房商通</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://jiaju.sina.com.cn/">家居</a>|<a href="http://jiaju.sina.com.cn/decoration/">家装</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://auto.sina.com.cn/">汽车</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://auto.sina.com.cn/car/">购车</a><a href="http://auto.sina.com.cn/guide/">导购</a><a href="http://data.auto.sina.com.cn/">车型</a><a href="http://photo.auto.sina.com.cn/">图库</a><a href="http://auto.sina.com.cn/sales/">降价</a><a href="http://buycar.auto.sina.com.cn/">报价</a></td>
+<td class="b2"><a href="http://auto.sina.com.cn/news/">新闻</a><a href="http://auto.sina.com.cn/newcar/">新车</a><a href="http://auto.sina.com.cn/review/">试车</a><a href="http://auto.sina.com.cn/suv/">SUV</a><a href="http://auto.sina.com.cn/wom/">口碑</a><a href="http://bbs.auto.sina.com.cn/">论坛</a><a href="http://auto.sina.com.cn/inquiry/">违章查询</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://auto.sina.com.cn/beauty/">美女</a>|<a href="http://auto.sina.com.cn/driving/">自驾游</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://green.sina.com.cn/">环保</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1">
+<a href="http://roll.green.sina.com.cn/green/hb_gdxw/index.shtml">资讯</a><a href="http://roll.green.sina.com.cn/green/hb_ft/index.shtml">访谈</a><a href="http://roll.green.sina.com.cn/green/hb_hbrw/index.shtml">人物</a><a href="http://roll.green.sina.com.cn/green/hb_dtsh/index.shtml">低碳生活</a><a href="http://roll.green.sina.com.cn/green/hb_lscy/index.shtml">绿色产业</a>
+</td>
+<td class="b2"></a>
+<a href="http://roll.green.sina.com.cn/green/hb_zthd/index.shtml">主题活动</a><a href="http://roll.green.sina.com.cn/green/hb_qyxd/index.shtml">企业行动</a><a href="http://roll.green.sina.com.cn/green/hb_ngodt/index.shtml">NGO动态</a><a href="http://roll.green.sina.com.cn/green/hb_hbcs/index.shtml">环保城市</a>
+</td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://gongyi.sina.com.cn/gyzx/hb.html">博客</a>|<a href="http://weibo.com/">微博</a>|<a href="http://club.gongyi.sina.com.cn/forum-17-1.html">论坛</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://book.sina.com.cn/">读书</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://vip.book.sina.com.cn/book_lib.php?pub=1&s=list&order=_ct&dpc=1">新书</a><a href="http://vip.book.sina.com.cn/pub/?cd=serial">书库</a><a href="http://vip.book.sina.com.cn/">原创</a><a href="http://book.sina.com.cn/excerpt/">书摘</a><a href="http://cul.book.sina.com.cn/">文史</a><a href="http://book.sina.com.cn/rank/">排行榜</a></td>
+<td class="b2"><a href="http://book.sina.com.cn/news/list/culture.shtml">文化新闻</a><a href="http://book.sina.com.cn/youth/">青春馆</a><a href="http://book.sina.com.cn/lady/">女人馆</a><a href="http://book.sina.com.cn/history/">历史馆</a><a href="http://book.sina.com.cn/finance/">财经馆</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://book.sina.com.cn/novel/">小说</a>|<a href="http://vip.book.sina.com.cn/vip/index.html">VIP全本</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://edu.sina.com.cn/">教育</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://edu.sina.com.cn/a/">出国</a><a href="http://edu.sina.com.cn/studyabroad/">留学</a><a href="http://edu.sina.com.cn/foreign/">外语</a><a href="http://edu.sina.com.cn/job/">求职</a><a href="http://edu.sina.com.cn/zxx/">中小学</a><a href="http://edu.sina.com.cn/bschool/">商学院</a></td>
+<td class="b2"><a href="http://edu.sina.com.cn/zhongkao/">中考</a><a href="http://edu.sina.com.cn/gaokao/">高考</a><a href="http://edu.sina.com.cn/kaoyan/">考研</a><a href="http://edu.sina.com.cn/official/">公务员</a><a href="http://edu.sina.com.cn/cet/">四六级</a><a href="http://edu.sina.com.cn/toefl/">托福</a><a href="http://edu.sina.com.cn/ielts/">雅思</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://edu.sina.com.cn/shiti/">题库</a>|<a href="http://edu.sina.com.cn/college/">院校库</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://baby.sina.com.cn/">育儿</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://baby.sina.com.cn/health/">健康</a><a href="http://baby.sina.com.cn/nutrition/">营养</a><a href="http://baby.sina.com.cn/nutrition/">教育</a><a href="http://baby.sina.com.cn/tv/">嘉宾访谈</a><a href="http://ask.baby.sina.com.cn/">专家答疑</a></td>
+
+<td class="b2"><a href="http://baby.sina.com.cn/photo/">宝宝图库</a><a href="http://video.baby.sina.com.cn/baby/">视频</a><a href="http://baby.sina.com.cn/bookbar/">书库</a><a href="http://baby.sina.com.cn/tools/">工具</a><a href="http://qiuyi.baby.sina.com.cn/">求医问药</a><a href="http://product.baby.sina.com.cn/">产品库</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://baby.sina.com.cn/zt/">专题</a>|<a href="http://baby.sina.com.cn/wap/">手机育儿</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://astro.sina.com.cn/">星座</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://astro.sina.com.cn/luck/">运势</a><a href="http://astro.sina.com.cn/test/">测试</a><a href="http://astro.sina.com.cn/learning/">占星</a><a href="http://astro.sina.com.cn/vogue/">星趣</a><a href="http://astro.sina.com.cn/taluo/">塔罗</a><a href="http://astro.sina.com.cn/feeling/">故事</a></td>
+<td class="b2"><a href="http://astro.sina.com.cn/love/">配对</a><a href="http://astro.sina.com.cn/folk/">面相</a><a href="http://astro.sina.com.cn/blod/">血型</a><a href="http://astro.sina.com.cn/bbs/">论坛</a><a href="http://blog.sina.com.cn/lm/astro/?tj=1">博客</a><a href="http://bbs.astro.sina.com.cn/tableforum/App/index.php?bbsid=130&amp;subid=1">星相研究室</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://astro.sina.com.cn/v/xuyuanshu.html">许愿</a>|<a href="http://vip.astro.sina.com.cn/Zodiac/submit.php">免费命盘</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://fo.sina.com.cn/">佛学</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://fo.sina.com.cn/basic/">常识</a><a href="http://fo.sina.com.cn/video/">影视</a><a href="http://fo.sina.com.cn/music/">音乐</a><a href="http://fo.sina.com.cn/book/">丛书</a><a href="http://fo.sina.com.cn/master/">高僧</a><a href="http://fo.sina.com.cn/veg/">素食</a></td>
+<td class="b2"><a href="http://fo.sina.com.cn/blog/">佛学博客</a><a href="http://fo.sina.com.cn/classics/">佛教经典</a><a href="http://fo.sina.com.cn/xuefo/">学佛心路</a><a href="http://fo.sina.com.cn/video/lecture/">法师讲经</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://fo.sina.com.cn/temple/">寺院导航</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://travel.sina.com.cn/">旅游</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://travel.sina.com.cn/china/index.html">国内游</a><a href="http://travel.sina.com.cn/world/index.html">出境游</a><a href="http://travel.sina.com.cn/air/index.html">航空</a><a href="http://travel.sina.com.cn/hotel/index.html">酒店</a><a href="http://travel.sina.com.cn/outdoor/index.html">户外</a><a href="http://travel.sina.com.cn/shopping/index.html">特产</a></td>
+<td class="b2"><a href="http://travel.sina.com.cn/china/notes/list.html">游记</a><a href="http://travel.sina.com.cn/search/index.html">线路</a><a href="http://travel.sina.com.cn/air/stewardess/list.html">空姐</a><a href="http://travel.sina.com.cn/hdphoto/1.shtml">高清图</a><a href="http://travel.sina.com.cn/complain/index.html">投诉</a><a href="http://blog.sina.com.cn/lm/travel/">博客</a><a href="http://travel.sina.com.cn/bbs/index.html">论坛</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://travel.sina.com.cn/sight/index.html">景区</a>|<a href="http://travel.sina.com.cn/air/ticket/list.html">特价机票</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://games.sina.com.cn/">游戏</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://games.sina.com.cn/netgames/">全球新网游</a><a href="http://games.sina.com.cn/pc/">单机</a><a href="http://games.sina.com.cn/video/index.html">游戏沸点</a><a href="http://wanwan.sina.com.cn/">玩玩平台</a></td>
+<td class="b2"><a href="http://games.sina.com.cn/hot/">媒体之声</a><a href="http://ka.sina.com.cn/">新手卡</a><a href="http://kan.sina.com.cn/" target="_blank">看游戏</a><a href="http://games.sina.com.cn/y/weekly/index.shtml">产业周刊</a><a href="http://top.sina.com.cn/" target="_blank">网游排行榜</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://games.sina.com.cn/zt/yzzw/index.shtml">趣闻回顾</a>|<a href="http://games.sina.com.cn/photo/">MM图集</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://gongyi.sina.com.cn/">公益</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://gongyi.sina.com.cn/gyzx/zz.html">救助</a>
+<a href="http://gongyi.sina.com.cn/gyzx/zx.html">助学</a><a href="http://gongyi.sina.com.cn/gyzx/fr.html">扶弱</a><a href="http://gongyi.sina.com.cn/gyzx/ngo.html">公益组织</a><a href="http://gongyi.sina.com.cn/qycs.html">企业CSR</a></td>
+
+<td class="b2"><a href="http://gongyi.sina.com.cn/greenlife/">绿色生活</a><a href="http://gongyi.sina.com.cn/gyyy.html">公益影像</a><a href="http://blog.sina.com.cn/lm/gongyi/">公益博客</a><a href="http://club.gongyi.sina.com.cn/">绿丝带</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://weibo.com/gongyi">微博</a>|<a href="http://yangfanbook.sina.com.cn/donation">扬帆计划</a></td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorAmethyst" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://bbs.sina.com.cn/">论坛</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://bbs.sina.com.cn/top/post.html">热帖排行</a><a href="http://bbs.sina.com.cn/top/forum.html">热坛排行</a><a href="http://bbs.sina.com.cn/bbshot/index.html">坛爆点</a></td>
+<td class="b2"><a href="http://sina.allyes.com/main/adfclick?db=sina&amp;bid=80646,113214,113342&amp;cid=0,0,0&amp;sid=105302&amp;advid=3866&amp;camid=15178&amp;show=ignore&amp;url=http://sina.jiayuan.com/st/?id=99">交友</a><a href="http://bbs.sina.com.cn/guide/index.shtml">论坛地图</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://bbs.sina.com.cn/zt/index.html">锐话题</a>|<a href="http://bbs.sina.com.cn/xhtml/2008/0723/41.html">手机论坛</a></td>
+</tr>
+</tbody>
+</table>
+<table class="ch2 colorGreen" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://search.sina.com.cn">搜索</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://search.sina.com.cn">新闻</a><a href="http://search.video.sina.com.cn/index.php">视频</a><a href="http://uni.sina.com.cn/#blog">博客</a><a href="http://music.sina.com.cn/yueku/search/index.shtml">音乐</a><a href="http://search.sina.com.cn/img">图片</a><a href="http://iask.sina.com.cn">知识人</a></td>
+<td class="b2"><a href="http://ditu.iask.com">地图</a><a href="http://search.auto.sina.com.cn/search.html">车型</a><a href="http://3g.sina.com.cn/iask/util/wap.html">手机</a><a href="http://ishare.iask.sina.com.cn/">共享资料</a><a href="http://zhuanye.iask.com/">专业搜索</a><a href="http://s.weibo.com/?guide">微博搜索</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" ><a href="http://search.sina.com.cn">新闻搜索</a>|<a href="http://search.sina.com.cn/zt">专题</a></td>
+</tr>
+</tbody>
+</table>
+<table class="ch2 colorGreen" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://music.sina.com.cn/yueku/">乐库</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://music.sina.com.cn/radio/">乐库电台</a><a href="http://music.sina.com.cn/wall/index.php">唱片墙</a><a href="http://music.sina.com.cn/yueku/m.php">播放器</a><a href="http://music.sina.com.cn/box/">音乐组件</a></td>
+<td class="b2"><a href="http://music.sina.com.cn/yueku/search/index.shtml">乐库搜索</a><a href="http://music.sina.com.cn/yueku/rank/newmoreboard.php">排行榜</a><a href="http://music.sina.com.cn/shequ/mu_center/muc_forme.php">为你推荐</a><a href="http://music.sina.com.cn/yueku/newsong.php">新歌</a><a href="http://music.sina.com.cn/category/">资料库</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" >&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorGreen" cellspacing="0" cellpadding="0" width="750" border="0">
+
+<tbody>
+
+<tr>
+
+<td class="a" ><a href="http://uc.sina.com.cn/">UC</a></td>
+
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+
+<tbody>
+
+<tr>
+
+<td class="b1"><a href="http://uc.sina.com.cn/download.html">UC2010</a><a href="http://ut.sina.com.cn">UT5.2</a><a href="http://show.sina.com.cn/down.html">SHOW2.0</a></td>
+
+<td class="b2"><a href="http://uc.sina.com.cn/zt/UCgroup/index.shtml">群组推荐</a><a href="http://uc.sina.com.cn/activity.html">活动汇总</a><a href="http://im.sina.com.cn/service.php">客服中心</a></td>
+
+</tr>
+
+</tbody>
+
+</table></td>
+<td class="c" >&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table class="ch2 colorGreen" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://mail.sina.com.cn/">邮箱</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://mail.sina.com.cn/">免费邮箱</a><a href="http://mail.sina.com.cn/cnmail/index.html">CN邮箱</a><a href="http://mail.2008.sina.com.cn/">2008邮箱</a><a href="http://vip.sina.com.cn/">VIP邮箱</a></td>
+<td class="b2"><a href="http://unipro.sina.com.cn/">通行证</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" >&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="ch2 colorGreen" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" >工具</td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://tools.sina.com.cn">百事通</a><a href="http://map.tools.sina.com.cn/index.php">地图</a><a href="http://tools.sina.com.cn/map/beijinglukuang.html">实时路况</a><a href="http://tech.sina.com.cn/soft/">软件</a></td>
+<td class="b2"><a href="http://rss.sina.com.cn/">RSS</a><a href="http://tools.sina.com.cn/map/bus.html">公交换乘</a><a href="http://tools.sina.com.cn/cidian/fy.html">在线翻译</a><a href="http://data.ent.sina.com.cn/show/index.php?&amp;dpc=1">演出查询</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" >&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="ch2 colorGreen" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" ><a href="http://sms.sina.com.cn/">手机</a></td>
+<td class="b" ><table cellspacing="0" cellpadding="0" width="529" border="0">
+<tbody>
+<tr>
+<td class="b1"><a href="http://diy.sina.com.cn/cardshow.php">贺卡</a><a href="http://sms.sina.com.cn/mobiledo/theme/index.php">主题</a><a href="http://sms.sina.com.cn/act/090903/ysqmdo.html">签名</a><a href="http://sms.sina.com.cn/zhuanti.html">专题</a><a href="http://sms.sina.com.cn/mobilegame.html">游戏</a><a href="http://sms.sina.com.cn/mms_pic_category.html">图片</a></td>
+<td class="b2"><a href="http://sms.sina.com.cn/mms_ring_category.html">铃声</a><a href="http://bf.sina.com.cn/sinarc_php/yycqlist.php">短信</a><a href="http://sms.sina.com.cn/act/090819/zazhitoutiao.html">杂志</a><a href="http://sina.cn/">手机新浪网</a></td>
+</tr>
+</tbody>
+</table></td>
+<td class="c" >&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="ch2 colorGray" cellspacing="0" cellpadding="0" width="750" border="0">
+<tbody>
+<tr>
+<td class="a" width="60">地方</td>
+<td class="b"  width="564"><a href="http://city.sina.com.cn/">城市</a><a href="http://sh.sina.com.cn/">上海</a><a href="http://gd.sina.com.cn/">广东</a><a href="http://henan.sina.com.cn/">河南</a><a href="http://sc.sina.com.cn/">四川</a><a href="http://fj.sina.com.cn/">福建</a><a href="http://zj.sina.com.cn/">浙江</a><a href="http://cq.sina.com.cn/">重庆</a><a href="http://hb.sina.com.cn/">湖北</a><a href="http://hunan.sina.com.cn/">湖南</a><a href="http://sx.sina.com.cn/">陕西</a><a href="http://ln.sina.com.cn/">辽宁</a><a href="http://mn.sina.com.cn/">闽南</a><a href="http://hlj.sina.com.cn/">黑龙江</a><a href="http://ah.sina.com.cn/">安徽</a>
+<br />
+<a href="http://hebei.sina.com.cn/">河北</a><a href="http://jiangsu.sina.com.cn/">江苏</a>
+</td>
+<td class="c"  width="126">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+-->
+<!-- publish_helper_end
+<table class="footer" cellspacing="0" cellpadding="0" width="750" border="0">
+		<tbody>
+			<tr>
+				<td><a class="sinatail" href="http://corp.sina.com.cn/chn/">新浪简介</a> | <a class="sinatail" href="http://corp.sina.com.cn/eng/">About Sina</a> | <a class="sinatail" href="http://emarketing.sina.com.cn/">广告服务</a> | <a href="http://www.sina.com.cn/contactus.html">联系我们</a> | <a class="sinatail" href="http://corp.sina.com.cn/chn/sina_job.html">招聘信息</a> | <a class="sinatail" href="http://www.sina.com.cn/intro/lawfirm.shtml">网站律师</a> | <a class="sinatail" href="http://english.sina.com/">SINA English</a> | <a class="sinatail" href="http://login.sina.com.cn/signup/signup.php">通行证注册</a> | <a class="sinatail" href="http://tech.sina.com.cn/focus/sinahelp.shtml">产品答疑</a> <br />
+					Copyright &copy; 1996-2013 SINA Corporation, All Rights Reserved <br />
+					新浪公司 <a class="sinatail" href="http://www.sina.com.cn/intro/copyright.shtml">版权所有</a> <br />
+					北京市通信公司提供网络带宽 </td>
+			</tr>
+		</tbody>
+	</table> -->
+</div>
+
+</body>
+</html>

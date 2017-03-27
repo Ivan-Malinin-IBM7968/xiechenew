@@ -1,0 +1,51 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title"><present name="cateName">[{$cateName}] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</present>服务分类列表  </div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <html:imageBtn name="add" value="新增" click="add({$pid})" style="impBtn hMargin fLeft shadow" />
+            <html:imageBtn name="edit" value="编辑" click="edit()" style="impBtn hMargin fLeft shadow" />
+            <html:imageBtn name="sort" value="排序" click="sort()" style="impBtn hMargin fLeft shadow" />
+            <html:imageBtn name="delete" value="删除" click="del()" style="impBtn hMargin fLeft shadow" />
+            <html:imageBtn name="sort" value="缓存" click="cache()" style="impBtn hMargin fLeft shadow" />
+            <!-- 查询区域 -->
+            <div class="fRig">
+                <FORM METHOD=POST ACTION="__URL__">
+                    <div class="fLeft"><span id="key"><input TYPE="text" NAME="name" title="分类查询" value="{$Think.post.name}" class="medium" ></span></div>
+                    <html:imageBtn type="submit" name="search" value="查询" style="impBtn hMargin fLeft shadow" />
+            </div>
+            </FORM>
+        </div>
+        <!-- 功能操作区域结束 -->
+
+        <!-- 列表显示区域  -->
+        <div class="list" >
+			<gt name="Think.get.pid" value="0">
+				<html:list id="checkList" style="list" name="category" checkbox="true" datasource="list" action="true" show="id:编号|10%,name:分类名称:edit,sort:排序,status|getStatus:状态,create_time|toDate='y-m-d':发布时间|10%,remark:备注" actionlist="status|showStatus=$category['id'],edit:编辑:id" />
+			<else/>
+				<html:list id="checkList" style="list" name="category" checkbox="true" datasource="list" action="true" show="id:编号|10%,name:分类名称:child,sort:排序,status|getStatus:状态,create_time|toDate='y-m-d':发布时间|10%,remark:备注" actionlist="status|showStatus=$category['id'],edit:编辑:id" />
+			</gt>
+            
+        </div>
+        <!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+        <!-- 列表显示区域结束 -->
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+

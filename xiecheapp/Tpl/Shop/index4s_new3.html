@@ -1,0 +1,435 @@
+<layout name='layout' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/shop4s.css?v={$Think.config.VERSION_DATE}" />
+
+<style type="text/css">
+body {font-family: Verdana, Geneva, sans-serif, "宋体";}
+/*Example for a Menu Style*/
+.menu { height:23px;width:300px;background-color:#fff;background-color:#008bd3;border-top:1px solid #efefef;}
+.menu ul {margin:0px; padding:0px; list-style:none; text-align:center;}
+.menu li {display:inline; line-height:23px; float: left;}
+.menu li a {color:#ffffff; text-decoration:none; padding:5px 27px 6px 5px; }
+.menu li a.tabactive {border-left:1px solid #d7d7d7; border-right:1px solid #d7d7d7; color:#000; background-color:#fff; font-weight:bold;  position:relative;}
+/*.tab_menu {background-color:#fff;background-color:#008bd3;border-top:1px solid #efefef; height: 23px; text-align: center; color: #ffffff; line-height: 23px;}*/
+.tab_menu{
+	background-image: url("/Public/new/images/new/line.jpg");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    display: block;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    height: 28px;
+    padding: 0;
+    width: 280px;
+}
+#tabcontent1,#tabcontent2,#tabcontent3,#tabcontent4,#anothercontent1,#anothercontent2, #anothercontent3, #anothercontent4,#anothercontent5, #anothercontent6 {border:1px solid #efefef; width:286px; height:196px;padding:6px ; font-size:12px; margin-bottom:5px;}
+#tabcontent2 p{margin:0 0px 5px 0px}
+#xq #xqt {
+	background-repeat: no-repeat;
+	padding: 0px;
+	float: left;
+	height: 210px;
+	width: 280px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	text-align: center;
+}
+
+</style>
+
+<div id="xz" style="height: 120px;"></div>
+
+	
+<div id="wddd-zx">
+	<div style="border-bottom: 2px solid rgb(0, 139, 208);line-height: 40px;">
+		<div style="float:left;color: #0053AA;font-size: 28px;font-weight: bold;margin-left: 5px;">{$list.shop_name}
+			<if condition="$list.shop_class eq 1">
+				<img src="/Public/new/images/ty.jpg" style="margin-left: 15px;">
+			</if>
+		</div>
+		<div style="float:right;margin-right: 5px;">好评率：<span style="color:#0053aa;font-size:28px;font-weight:bold"><a href="#comment">{$list.comment_rate}%</a></span> </div>
+	</div>
+	<div class="clear"></div>
+	<div class="dpyh">
+		<p class="yhwz" style="font-size:15px;"><big>【4S店简介】</big>{$list.shop_account}</p>
+	</div>
+
+	<div id="xq">
+		<div id="xqt">
+			<if condition ="$list.shop_class eq 2" >
+				<img src="{$list.logo}" width="280" height="210" />
+			<else/>
+				<img src="/UPLOADS/Shop/280/{$list.shop_id}.jpg" width="280" height="210" />
+			</if>
+		  </div>
+		
+		<div id="tb" style="width:300px; float:right; margin:5px 5px 0 5px;">
+		<!--Start of the Tabmenu 1 -->
+
+		<!--End of the Tabmenu 1 -->
+		
+		<!--Start Tabcontent 1 
+		<div id="tabcontent1">
+			<volist name="notice" id="von">
+				<p>
+					<a href="__APP__/shop/favtype/shop_id/{$shop_id}/id/{$von.id}" target="_blank">{$von.noticetitle}</a>&nbsp;&nbsp;
+					{$von.update_time|date='m-d',###}
+				</p>
+			</volist>
+		</div>
+		End Tabcontent 1-->
+		
+		<!--Start Tabcontent 2-->
+		<div id="tabcontent2">
+			<notempty name="notice">
+			<p class="tab_menu"><b>4s店优惠信息</b></p>
+			<div style="background-color:#EFF8FF">
+			<volist name="notice" id="von">
+				<p>
+					<!--<a href="__APP__/shop/favtype/shop_id/{$shop_id}/id/{$von.id}" target="_blank">{$von.noticetitle}</a>&nbsp;&nbsp;
+					{$von.update_time|date='m-d',###}-->
+					<a href="{:URL('/shop/favtype',array('shop_id'=>$shop_id,'id'=>$von['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" >{$von.noticetitle}</a>&nbsp;&nbsp;{$von.update_time|date='m-d',###}
+
+				</p>
+			</volist>
+			</div>
+			</notempty>
+
+			<p class="tab_menu"><b>4s店售后资讯</b></p>
+			<div style="background-color:#EFF8FF">
+			<volist name="article" id="voa">
+				<p>
+					<a href="__APP__/article/{$voa.id}" target="_blank">{$voa.title}</a>&nbsp;&nbsp;{$voa.create_time|date='m-d',###}
+
+					<!--<a href="{:URL('/article/d',array('id'=>$voa['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" >{$voa.title}</a>&nbsp;&nbsp;{$voa.create_time|date='m-d',###}-->
+				</p>
+			</volist>
+			</div>
+		</div>
+		<!--End Tabcontent 2 -->
+
+		
+		<!--tab-->
+		</div>
+		
+	</div>
+	<div id="xq-right">
+		<p class="right">{$list.shop_name}</p>
+		<ul>
+		<li>级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<if condition="$list.shop_class eq 1">特约商家<else />非特约商家</if></li>
+		<li>主营品牌：{$fsname}<!--<volist name="brands" id="brand">{$brand.brand_name}<if condition="$i lt count($brands)">，</if></volist>-->
+		</li>
+		<li>好评率&nbsp;&nbsp;&nbsp;：<font color="red">{$list.comment_rate}%</font></li>
+		<li>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：{$list.shop_address} [<a href="javascript:;"  lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^电话：400 660 2822">地图</a>]</li>
+		<li>预约电话：400 660 2822</li>
+		<li>简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介：{$list.shop_account}</li>
+		</ul>
+	</div>
+	
+	<div class="clear"></div>
+
+	<style type="text/css">
+		.shop_coupon {
+			border: 1px solid #EFEFEF;margin: 10px 5px 0 0;padding: 0;width: 650px;background-color: #F9F9F9;float:right;
+		}
+		.shop_coupon a {
+			color: #6666CC;text-decoration: none;
+		}
+		.shop_coupon a:hover {
+			background-color: #6666CC;color: #FFFFFF;
+		}
+		.shop_coupon_ul {
+			display: block;
+			float: left;
+			margin-left: 10px;
+			padding: 5px;
+		}
+		.pic {
+			width:48px;
+			height: 48px;
+			float:left;
+			display: block;
+		}
+		.info {
+			color: #999999;
+		}
+		.info p,.info dl {
+			width:535px;
+			float: left;
+		}
+		.info dd,.info dt{
+			display: inline;
+		}
+		.info dd {
+			font-weight: bold;
+			margin-right: 20px;
+		}
+
+	</style>
+	<div class="shop_coupon">
+		<ul>
+			<!-- 现金券 -->
+			<notempty name="coupon1">
+			<li>
+				<span class="pic"><img src="/Public/new/images/quan_big_icon.png"></span>
+				<ul class="shop_coupon_ul">
+					<volist name="coupon1" id="cou1">
+					<li>
+						<h3>
+							<a href="__APP__/coupon/{$cou1.id}" target="_blank">本店现金券：{$cou1.coupon_name}	</a>
+
+							<!--<a href="__APP__/coupon/coupondetail/coupon_id/{$cou1.id}" target="_blank">本店现金券：{$cou1.coupon_name}	</a>
+							<a href="{:URL('/coupon/coupondetail',array('coupon_id'=>$cou1['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">本店现金券：{$cou1.coupon_name}</a>-->
+						</h3>
+						<div class="info">
+							<p>售价：{$cou1.coupon_amount} 元，{$cou1.pay_count}人已购买</p>
+							<a href="__APP__/coupon/{$cou1.id}" target="_blank">详情>></a>
+						</div>
+					</li>
+					</volist>
+				</ul>
+			</li>
+			<li style="height:10px"></li>
+			</notempty>
+			
+			<!-- 套餐券 -->
+			<notempty name="coupon2">
+			<li>
+				<span class="pic"><img src="/Public/new/images/tuan_big_icon.png"></span>
+				<ul class="shop_coupon_ul">
+					<volist name="coupon2" id="cou2">
+					<li>
+						<h3>
+							<a href="__APP__/coupon/{$cou2.id}" target="_blank">本店套餐券：{$cou2.coupon_name}	</a>
+						</h3>
+						<div class="info">
+							<dl>
+								<dt>现价：</dt>
+								<dd>¥{$cou2.coupon_amount}
+								</dd>
+								<dt>原价：</dt>
+								<dd>
+									<del>¥{$cou2.cost_price}
+									</del>
+								</dd>
+								<dt>节省：</dt>
+								<dd>¥{$cou2[cost_price]-$cou2[coupon_amount]}
+								</dd>
+							</dl>
+							<a href="__APP__/coupon/{$cou2.id}" target="_blank">详情>></a>
+						</div>
+					</li>
+					</volist>
+				</ul>
+			</li>
+			</notempty>
+		</ul>
+	</div>
+
+<div id="xq-left2">
+	<!-- <notempty name="expert_user">
+		<p class="left2">金牌销售顾问</p>
+		<volist name="expert_user" id="expert">
+			<dl>
+			<dt>&nbsp;</dt>
+			<dd class="zy">姓名：<a href="/tipask/?u-{$expert.uid}.html" target="_blank">{$expert.username}</a></dd>
+			<dd>职务：<a href="/tipask/?u-2.html" target="_blank">销售顾问</a></dd>
+			<dd>电话：{$expert.phone}</dd>
+			</dl>
+		</volist>
+	</notempty> -->
+
+	<p class="left2"><if condition="$tuijian1 eq 'brand1'">品牌推荐<elseif condition="$tuijian1 eq neq_shop"/>其他店铺推荐<else/>推荐</if>现金券</p>
+	<volist name="tuijian_coupon1" id="cou1" offset="0" length="3">
+		<dl>
+		<dt ><a href="__APP__/coupon/{$cou1.id}" target="_blank"><img src="/UPLOADS/Coupon/Logo/{$cou1.coupon_pic}" width="80" ></a></dt>
+		<dd><a href="__APP__/coupon/{$cou1.id}" target="_blank">{$cou1.coupon_name}</a><br>¥{$cou1.coupon_amount}</dd>
+		<dd></dd>
+		</dl> 
+	</volist>
+
+	<p class="left2"><if condition="$tuijian2 eq 'brand2'">品牌推荐<elseif condition="$tuijian2 eq neq_shop"/>其他店铺推荐<else/>推荐</if>套餐券</p>
+	<volist name="tuijian_coupon2" id="cou2" offset="0" length="3">
+		<dl>
+		<dt ><a href="__APP__/coupon/{$cou2.id}" target="_blank"><img src="/UPLOADS/Coupon/Logo/{$cou2.coupon_pic}" width="80" height="60"></a></dt>
+		<dd><a href="__APP__/coupon/{$cou2.id}" target="_blank">{$cou2.coupon_name}</a><br>¥{$cou2.coupon_amount}</dd>
+		<dd></dd>
+		</dl> 
+	</volist>
+
+	<p class="left2">地理位置</p>
+	<div id="left2-nav"><img src="http://api.map.baidu.com/staticimage?width=270&height=200&center={$list.shop_maps}&zoom=13&markers={$list.shop_maps}&markerStyles=l,A" /> 
+	</div>
+	<div id="left3-nav"><a href="javascript:;" lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^客服电话：{$Think.config.CALL_400} ">查看大图>></a></div>
+	</div>
+
+  <div id="right-ct2">
+  <p class="yycs">预约分时折扣</p>
+  <table width="650" border="0" align="center" cellpadding="1" cellspacing="0" style="margin:5px auto 5px auto; padding:0px;">
+  <tr style="font-size:13px;">
+    <td width="30%" bgcolor="#F2F2F2"> 星 期 </td>
+    <td width="20%" bgcolor="#F2F2F2"> 时 间 </td>
+    <td width="20%" bgcolor="#F2F2F2"> 工时折扣率 </td>
+    <td width="20%" bgcolor="#F2F2F2"> 零件折扣率 </td>
+    <td width="10%" bgcolor="#F2F2F2"> 详 情 </td>
+  </tr>
+	<volist name="list_timesale" id="votimesale">
+	<volist name="votimesale.timesaleversion" id="timesaleversion">
+	<tr>
+	  <td>{$votimesale.week_name_s}</td>
+	  <td>{$votimesale.begin_time} - {$votimesale.end_time}</td>
+	  <td>{$timesaleversion.workhours_sale_str}</td>
+	  <td>{$timesaleversion.product_sale_str}</td>
+	  <td>
+	 <!-- <a href="__APP__/order/yuyue/timesaleversion_id/{$timesaleversion.id}/member_id/{$member_id}">
+		 <img src="__PUBLIC__/new/images/ckicon.jpg" width="61" height="31">
+	  </a>-->
+	   <a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$timesaleversion['id'],'member_id'=>$member_id,'shop_id'=>$shop_id))}{:C('HTML_URL_SUFFIX')}">
+		 <img src="__PUBLIC__/new/images/ckicon.jpg" width="61" height="31">
+	  </a>
+	  </td>
+	</tr>
+	</volist>
+	</volist>
+</table></div>
+
+<div style="float:left;margin: 0px 15px 0 7px;">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3625391" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+</div>
+<notempty name="result">
+<div id="right3">
+	<p class="yycs">常规保养费用</p>
+    <table width="650" border="0" align="center" cellpadding="1" cellspacing="0" style="margin:5px auto 5px auto; padding:0px;">
+	<thead>
+	  	<tr>
+			<th scope="col" rowspan="2">热门车型</th>
+			<th colspan="6" scope="col"><b>{$salesversion.name}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工时折扣:{$salesversion.workhours_sale}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;零件折扣:{$salesversion.product_sale}</th>
+	    </tr>
+		<tr>	
+			<th scope="col">工时费</th>
+			<th scope="col">零件费</th>
+			<th scope="col">门市价</th>
+			<th scope="col"><b>折后价</b></th>
+			<th scope="col"><b>节省</b></th>
+			<th scope="col"><b>操作</b></th>
+		</tr>
+  	</thead>
+	
+	<volist name="result" key="key" id="value">
+	<tr>
+	    <td>
+			<a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$salesversion['id'],'model_id'=>$value['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$value.car_name}</a>
+			<!-- <a href="__APP__/order/yuyue/timesaleversion_id/{$salesversion.id}/model_id/{$value.model_id}" target="_blank">{$value.car_name}</a> -->
+		</td>
+		<td>{$value.workhour} 元</td>
+		<td>{$value.product} 元</td>
+		<td>{$value.total} 元</td>
+		<td>{$value.sales_total} 元</td>
+		<td>{$value.save_total} 元</td>
+		<td>
+			<a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$salesversion['id'],'shop_id'=>$shop_id,'model_id'=>$value['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">预约</a>
+			<!-- <a href="__APP__/order/yuyue/timesaleversion_id/{$salesversion.id}/model_id/{$value.model_id}">预约</a> -->
+		</td>
+	</tr>
+	</volist>
+	</table>
+</div>
+</notempty>
+
+
+	<div id="wdjx">
+	  <a id="comment" name="comment"></a>
+	  <p class="wdjx">店铺评价</p>
+	  <volist name="comment" id="voc">
+	  <dl>
+	   <dt>
+	   <em>{$key+1}</em>{$voc.user_name}
+	   <small>（{$voc.create_time|date="Y-m-d",###}）</small>
+	   <if condition="$voc.comment_type eq 1">好评<elseif condition="$voc.comment_type eq 2"/>中评<elseif condition="$voc.comment_type eq 3"/>差评</if>
+	   </dt>
+	   <dd>&nbsp;&nbsp;&nbsp;&nbsp;{$voc.comment}</dd>
+	   <volist name="voc.commentreply" id="vocr">
+		 <dd class="gs-left1">&nbsp;&nbsp;&nbsp;&nbsp;{$vocr.operator_name}
+			<small>（{$vocr.create_time|date="Y-m-d",###}）</small>
+			</br >&nbsp;&nbsp;&nbsp;{$vocr.reply}
+		 </dd>
+	   </volist>
+	  </dl>
+	  </volist>
+	</div>
+	<div id="clear" style="clear: both; height:10px;"></div>
+</div>
+<style type="text/css">
+	#dialogmap{display:none; position:absolute; width:640px; height:480px;}
+	#containermap{width:640px; height:480px;}
+	#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript">
+	$(function(){
+		//初始化
+		Think.init({
+				basePath:"__PUBLIC__/think"
+		})	
+
+		$(".point").click(function(){
+			//$("#dialogmap").openDialog();
+			popup();
+			 var map = new BMap.Map("containermap");
+			 var lng=$(this).attr('lng');
+			 //var lat=$(this).attr('lat');
+			 arr=lng.split(',');//分割
+				
+			 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+			 
+			 var text=$(this).attr('desc');
+			 var textArr=text.split('^^');
+			 map.centerAndZoom(point,15);
+			 map.addControl(new BMap.NavigationControl());
+			 map.addControl(new BMap.MapTypeControl());
+			 map.addControl(new BMap.ScaleControl());
+			 map.addControl(new BMap.OverviewMapControl());
+			 addMarker(point);
+			 function addMarker(point)
+			 {
+				var html='';
+				for(var i=0;i<textArr.length;i++)
+				{
+					
+					html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+				}
+				var marker = new BMap.Marker(point);  // 创建标注
+				map.addOverlay(marker);              // 将标注添加到地图中
+				var infoWindow = new BMap.InfoWindow(html);
+				marker.openInfoWindow(infoWindow);
+				
+			  }	 
+		});					   
+	})
+
+	function popup(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>地图显示</em><a close="1"  class="flbc">关闭</a></h3><div id="containermap"></div>',
+			drag:true,//不可拖动
+			cover:true//设置笼罩
+		})
+	}
+</script>

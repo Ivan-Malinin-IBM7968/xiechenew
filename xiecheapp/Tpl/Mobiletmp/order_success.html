@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>下订成功</title>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/carservice.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td id="toptd">  
+  
+     <div id="toptdright"><if condition="$pay_type eq '2' "><span style="left:2%;font-size:1.2rem;padding:5px;position:absolute;" id="homeBtn" onclick="window.history.go(-1)">返回</span></if><span>提交成功</span></div>   
+  </tr>
+
+  <tr>
+    <td height="10"></td>
+  </tr>
+
+  <tr>
+      <td height="130">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td height="50" align="center" id="xiangmu1">提交成功，稍后会有客服与您联系。</td>
+  </tr>
+
+  <tr>
+    <td height="50" align="center">
+      <table width="94%" border="0" cellspacing="0" cellpadding="0" id="subBtn">
+        <tr>
+          <td width="8" height="40" background="__PUBLIC__/mobile/images/carservice/blueBtn1.png">
+          </td>
+          <td height="40" background="__PUBLIC__/mobile/images/carservice/blueBtn2.png">
+            <if condition="$pay_type eq '2' "><div style="color:#FFF;width:100%;text-align:center;padding:0.6rem;" id="showpay">支付订单</div></if>
+            <if condition="$pay_type eq '1' "><div style="color:#FFF;width:100%;text-align:center;padding:0.6rem;" id="return">返回订单页</div></if>
+          </td>
+          <td width="8" height="40" background="__PUBLIC__/mobile/images/carservice/blueBtn3.png">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+ 
+  <tr>
+    <td height="4">&nbsp;</td>
+  </tr>
+</table>
+
+<script>
+$(function(){
+  //$("#homeBtn").click(function(){
+    //window.location.href='__APP__/mobile';
+  //});
+  $("#showpay").click(function(){
+    window.location.href='__APP__/weixinpay/wxpay.php?order_id={$order_id}&showwxpaytitle=1';
+  });
+   $("#return").click(function(){
+    window.location.href='__APP__/mobiletmp-mycarservice?pa_id={$pa_id}';
+  });
+});
+</script>
+
+</body>
+</html>

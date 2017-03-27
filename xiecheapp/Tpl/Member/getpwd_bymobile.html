@@ -1,0 +1,153 @@
+<layout name='layout_new' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+
+
+<script>
+	function fleshVerify(){ 
+	//重载验证码
+	var timenow = new Date().getTime();
+	$('#verifyImg').attr("src",'__APP__/common/verify/'+timenow);
+	}
+
+	$(function(){
+		$("#send_verify").attr("disabled",false);
+		$("#send_verify").click(function(){
+			
+			var second = "60";
+			//if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Member/ajax_send_mobile_verify",
+					cache: false,
+					data:"",
+                    dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							//$("#send_mobile_verify").show();
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						//$("#send_mobile_verify").show();
+						send_verify_show(second);
+					}
+				})
+			//}
+		})
+	})
+	
+
+	function send_verify_show(i){
+		if(i>='0'){
+			$("#send_verify").attr("disabled",true); 
+			$("#send_verify").attr("value",i+"秒后重新发送");
+			i--;
+			setTimeout(function(){send_verify_show(i);},1000);
+		}else{
+			$("#send_verify").attr("disabled",false); 
+			$("#send_verify").attr("value","发送手机验证码");
+		}
+	}
+	function check_verify(){
+		var verify_code = $("#mobile_verify").val();
+		if(verify_code==''){
+			$("#show_verify_check").html("请输入验证码！");
+			$("#show_verify_check").focus();
+			return false;
+		}else{
+			$.ajax({
+				type: "POST",
+				url: "/index.php/member/check_mobile_verify",
+				cache: false,
+				data: "verify_code="+verify_code,
+				success: function(data){
+					if(data == 1){
+						$("#show_verify_check").html("");
+						$("#verify_form").submit();
+						return true;
+					}else{
+						$("#show_verify_check").html("验证码输入错误！");
+						$("#show_verify_check").focus();
+						return false;
+					}
+				},
+				error: function(){
+					$("#show_verify_check").html("");
+					$("#verify_form").submit();
+					return true;
+				}
+			})
+			return false;
+		}
+	}
+</script>
+
+<div class="bodybgwrap">
+	<div class="wrapbox">
+	   <div class="ht10"></div>
+	<style>
+		.userbox {
+		  background: url("") repeat-y scroll 0 0 transparent;
+		  border: 1px solid #F18E16;
+		  height: auto;
+		  margin: 0 auto;
+		  width: 958px;
+		}
+	</style>
+		<div class="userbox">
+			<div class="usercontent">
+				<div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 帐户信息 </div>
+				<div class="userjzbar14"></div>
+				<div class="uc-inner">
+					<form action="__APP__/member/password_edit" method="post" id="verify_form">
+					<table  border="1" cellpadding="0" cellspacing="0">	
+						<tr>
+							<td>
+								重置登陆密码
+							</td>
+						</tr>
+						<tr>
+							<td>
+								用户：{$username}
+							</td>
+						</tr>
+						<notempty name="memberinfo.mobile">
+						<tr>
+							<td>
+								
+									您的账号绑定的手机号码是{$memberinfo.mobile|get_hidden_mobile=$memberinfo.mobile}
+									<input type="button" value="再次发送手机验证码" id="send_verify" /><br>
+									携车网已经向您的绑定手机{$memberinfo.mobile|get_hidden_mobile=$memberinfo.mobile}发送了一条短信。请查看并输入手机校验码。
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								您收到的校验码：
+								<input type="text" name="mobile_verify" id="mobile_verify"/><span id="show_verify_check" style="color:red"></span>
+								<input type="hidden" name="uid" value="{$memberinfo.uid}" />
+								<input type="button" value="确定" class="button-default" style="width: 80px; height: 30px; line-height: 30px; font-size: 14px;font-weight: bold;" onclick="return check_verify();">
+							</td>
+						</tr>
+						<else/>
+						<tr>
+							<td>
+								您的账号还没有绑定手机，不能使用手机验证码重置密码。<br />您可以致电客服进行人工服务。客服电话： 400-660-2822
+							</td>
+						</tr>
+						</notempty>
+					</table>
+					</from>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="userfootbg"></div>
+</div>
+
+<div class="clear"></div>

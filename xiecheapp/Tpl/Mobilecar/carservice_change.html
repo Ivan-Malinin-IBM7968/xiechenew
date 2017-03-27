@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>携车网-上门保养</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/cardata.js" charset="utf-8"></script>
+  </head>
+
+  <body style="overflow:auto;">
+    
+      <div class="welcomepage" style="display:none;">
+        <a href="tel:4006602822" style="display:block;"><img src="__PUBLIC__/mobile/images/index_01.jpg" width="100%" alt=""></a>
+        <img src="__PUBLIC__/mobile/images/index_02.jpg" width="100%" alt="">
+        <a id="showbrand" style="display:block;"><img src="__PUBLIC__/mobile/images/index_03.jpg" width="100%" alt=""><img src="__PUBLIC__/mobile/images/index_04.jpg" width="100%" alt=""></a>
+      </div>
+      
+      <table class="table table-hover brand ab" id="brand" style="display:none;">
+        <tbody>
+          <volist name="brand_list" id="vo">
+          <tr data-id="{$vo.brand_id}" class="brand-list">
+            <td>{$vo.word}&nbsp;{$vo.brand_name}</td>
+            <td class="text-right">
+              <i class="glyphicon glyphicon-chevron-right">&nbsp;</i>
+            </td>
+          </tr>
+          </volist>
+        </tbody>
+      </table>
+
+      <table class="table table-hover brand ab" id="series"></table>
+
+      <table class="table table-hover brand ab" id="model"></table>
+
+      <table class="table table-hover brand ab" id="newbrand" style="display:block;"></table>
+
+      <table class="table table-hover brand ab" id="newseries"></table>
+
+      <table class="table table-hover brand ab" id="newmodel"></table>
+
+
+<script>
+
+var brand_id = series_id = model_id = '' ;
+var i,j;
+
+$(function(){
+  /*
+   *进入已缓存的选择车型
+   */
+  $("#showbrand").click(function(){
+    $(".welcomepage").hide();
+    
+  });
+
+    var html="";
+    html+="<tbody>"
+    $.each(array,function(key,val){
+      html += $("#newbrand").html()+"<tr onclick=\"newbrand(this)\" data-index=\""+key+"\" data-id='"+array[key]["brand_id"]+"'><td>"+array[key]["brand_name"]+"</td><td class=\"text-right\"><i class=\"glyphicon glyphicon-chevron-right\"></i></td></tr>";
+    });
+    html += "<tr id=\"newbrandmore\" onclick=\"newbrandmore()\"><td colspan=\"2\"><button type=\"button\" class=\"btn btn-lg btn-block\" style=\"background:#00aaf1;border-color:#00aaf1;color:#FFFFFF;\">查看更多车型</button></td></td></tr></tbody>";
+
+    $("#newbrand").html(html);
+    $("#newbrand").css('display',"table").animate({
+          'width' : "100%",
+        }, 300);
+    $('body').scrollTop(0);
+
+});
+
+/*
+ *查看更多车型
+ */
+function newbrandmore(){
+  $("#newbrand").hide();
+  $("#brand").css('display',"table").animate({
+        'width' : "100%",
+      }, 300);
+  $('body').scrollTop(0);
+  //console.log("brand_id:"+brand_id+"-"+"series_id:"+series_id+"-"+"model_id:"+model_id);
+}
+
+
+/*
+ *绑定brand已缓存事件
+ */
+function newbrand(ts){
+
+  brand_id = $(ts).attr('data-id');
+  var html =' ';
+  i = $(ts).attr('data-index');
+  console.log(i);
+  html += "<tbody>";
+  $.each(array[i]["child"],function(key1,val1){
+    html += "<tr onclick=\"newseries(this)\" data-index=\""+key1+"\" data-id='"+array[i]["child"][key1]["series_id"]+"'><td>"+array[i]["child"][key1]["series_name"]+"</td><td class=\"text-right\"><i class=\"glyphicon glyphicon-chevron-right\"></i></td></tr>";
+  });
+  $("#newseries").html(html);
+  $("#newbrand").hide();
+  $('body').scrollTop(0);
+  $("#newseries").css('display',"table").animate({
+        'width' : "100%",
+      }, 300);
+  //console.log("brand_id:"+brand_id+"-"+"series_id:"+series_id+"-"+"model_id:"+model_id);
+}
+
+
+/*
+ *绑定series已缓存事件
+ */
+function newseries(ts){
+  series_id = $(ts).attr('data-id');
+  
+  var html =' ';
+  j = $(ts).attr('data-index');
+  html += "<tbody>";
+  $.each(array[i]["child"][j]["child"],function(key2,val2){
+    
+    html += "<tr onclick=\"subData(this)\" data-id='"+array[i]["child"][j]["child"][key2]["model_id"]+"'><td>"+array[i]["child"][j]["child"][key2]["model_name"]+"</td><td class=\"text-right\"><i class=\"glyphicon glyphicon-chevron-right\"></i></td></tr>"; 
+        
+  });
+  html += "</tbody>";
+
+  $("#newmodel").html(html);
+
+  $("#newseries").hide();
+  $('body').scrollTop(0);
+  $("#newmodel").css('display',"table").animate({
+        'width' : "100%",
+      }, 300);
+  //console.log("brand_id:"+brand_id+"-"+"series_id:"+series_id+"-"+"model_id:"+model_id);
+}
+
+/*
+ *绑定brand车型ajax请求输出事件
+ */  
+// $(document).on("click","#brand tr",function(){
+//   brand_id = $(this).attr('data-id');
+//   $.post('__APP__/mobilecar/ajax_car_style',{'brand_id':brand_id},function(data){
+//      data = data.data;
+//          if(data.errno == 0){
+           
+//             var html = '';
+//             $.each(data.result.style_list, function(k, v){
+//               html += '<tr data-id="'+v['series_id']+'"><td>'+v['word'].substr(1,1)+'&nbsp;'+v['series_name']+'</td><td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td></tr>';
+//             });
+//             $('#brand').hide();
+//       $('#series').html(html).css('display',"table").animate({
+//         'width' : "100%",
+//       }, 500);
+//       $('body').scrollTop(0);
+//         }else{
+//             alert(data.errmsg);
+//             return false;
+//         }
+//   },'json')     
+//   //console.log("brand_id:"+brand_id+"-"+"series_id:"+series_id+"-"+"model_id:"+model_id);
+// });
+
+/*
+ *绑定series车系ajax请求输出事件
+ */  
+// $(document).on("click","#series tr",function(){
+//   series_id = $(this).attr('data-id');
+//   $.post('__APP__/mobilecar/ajax_car_model',{'series_id':series_id},function(data){
+//     data = data.data;
+//     if(data.errno == 0){ 
+//     var html = '';
+//     $.each(data.result.model_list, function(k, v){
+//       html += '<tr data-id="'+v['model_id']+'"><td>'+v['model_name']+'</td><td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td></tr>';
+//         });
+//       $('#brand,#series').hide();
+//       $('#model').html(html).css('display',"table").animate({
+//           'width' : "100%",
+//         }, 500);
+//       $('body').scrollTop(0);
+//     }else{
+//       alert(data.errmsg);
+//       return false;
+//     }
+//   },'json')
+//   //console.log("brand_id:"+brand_id+"-"+"series_id:"+series_id+"-"+"model_id:"+model_id);
+// });
+
+/*
+ *绑定newmodel缓存事件
+ *绑定ajax请求得到的model事件
+ *提交brand_id series_id model_id
+*/
+
+// $(document).on("click","#newmodel tr,#model tr",function(){
+//     model_id = $(this).attr('data-id');
+//     //alert(model_id);
+//     if(!brand_id){
+//       alert('请选择品牌');
+//       return false;
+//      }
+//     if(!series_id){
+//       alert('请选择车系');
+//       return false;
+//         }
+//     if(!model_id){
+//       alert('请选择车型');
+//       return false;
+//   }
+//   window.location.href='/mobilecar/sub_car?brand_id='+brand_id+'&model_id='+model_id+'&series_id='+series_id;
+// });
+
+
+$('.brand-list').click(function(){
+  brand_id = $(this).attr('data-id');
+  $.post('__APP__/mobilecar/ajax_car_style',{'brand_id':brand_id},function(data){
+     data = data.data;
+         if(data.errno == 0){
+           
+            var html = '';
+            $.each(data.result.style_list, function(k, v){
+              html += '<tr class="series-list" onClick="getModel(this)" data-id="'+v['series_id']+'"><td>'+v['word'].substr(1,1)+'&nbsp;'+v['series_name']+'</td><td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td></tr>';
+            });
+            $('#brand').hide();
+      $('#series').html(html).css('display',"table").animate({
+        'width' : "100%",
+      }, 500);
+      $('body').scrollTop(0);
+        }else{
+            alert(data.errmsg);
+            return false;
+        }
+  },'json')     
+});
+
+function getModel(ts){
+  series_id = $(ts).attr('data-id');
+  $.post('__APP__/mobilecar/ajax_car_model',{'series_id':series_id},function(data){
+    data = data.data;
+    if(data.errno == 0){ 
+    var html = '';
+    $.each(data.result.model_list, function(k, v){
+      html += '<tr class="model-list" onClick="subData(this)"  data-id="'+v['model_id']+'"><td>'+v['model_name']+'</td><td class="text-right"><i class="glyphicon glyphicon-chevron-right">&nbsp;</i></td></tr>';
+        });
+      $('#brand,#series').hide();
+      $('#model').html(html).css('display',"table").animate({
+          'width' : "100%",
+        }, 500);
+      $('body').scrollTop(0);
+    }else{
+      alert(data.errmsg);
+      return false;
+    }
+  },'json')
+  
+}
+
+function subData(ts){
+ model_id = $(ts).attr('data-id');
+ if(!brand_id){
+        alert('请选择品牌');
+          return false;
+   }
+ if(!series_id){
+        alert('请选择车系');
+          return false;
+      }
+    if(!model_id){
+      alert('请选择车型');
+        return false;
+    }
+    window.location.href='__APP__/mobilecar-order2?brand_id='+brand_id+'&model_id='+model_id+'&series_id='+series_id;
+}
+    </script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?60969e039f9a2a7252a22e6e27e9f16f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  </body>
+</html>

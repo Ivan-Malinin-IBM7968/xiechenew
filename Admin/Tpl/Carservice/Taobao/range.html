@@ -1,0 +1,238 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">淘宝预约设置</div>
+
+        <!-- 列表显示区域  -->
+        <div class="list" >
+            <div class="">
+                <p>服务范围添加：</p>
+                <div id="addRangeGroup" data-url="__URL__/getChildAreaAPI">
+                    <label for="">省：</label>
+                    <select name="level2" id="level2">
+                        <option value="">请选择</option>
+                        <volist name="level2" id="province">
+                        <option value="{$province.area_id}">{$province.name}</option>
+                        </volist>
+                    </select>
+                    <label for="">市：</label>
+                    <select name="level3" id="level3">
+                        <option value="">请选择</option>
+                    </select>
+                    <label for="">区：</label>
+                    <select name="level4" id="level4">
+                        <option value="">请选择</option>
+                    </select>
+                    <label for="">街道：</label>
+                    <select name="level5" id="level5" multiple>
+                        <option value="">全区</option>
+                    </select>
+                    <label for="">分组名称：</label>
+                    <input id="addGroupName" type="text" name="groupName" value="">
+                    <a id="addRange" data-url="/Admin/index.php/Admin/Taobaoapi/rangeCreateAPI" href="javascript:void(0)">增加</a>
+                </div>
+            </div>
+            <div class="">
+                <p>服务范围查询：</p>
+                <div id="queryRangeGroup" data-url="__URL__/getChildGroupAPI">
+                    <label for="">市：</label>
+                    <select name="city" id="city">
+                        <option value="">请选择</option>
+                        <volist name="cityList" id="city">
+                        <option value="{$city.parent_area_id}">{$city.name}</option>
+                        </volist>
+                    </select>
+                    <label for="">分组：</label>
+                    <select name="rangeGroup" id="rangeGroup" data-url="__URL__/getSchedulePage">
+                        <option value="">请选择</option>
+                    </select>
+                    <label for="">修改组名：</label>
+                    <input id="editGroupName" type="text" name="groupName" value="">
+                    <a id="editRange" data-url="/Admin/index.php/Admin/Taobaoapi/rangeUpdateAPI" href="javascript:void(0)">编辑</a>
+                    <a id="removeRange" data-url="/Admin/index.php/Admin/Taobaoapi/rangeRemoveAPI" href="javascript:void(0)">删除</a>
+                </div>
+            </div>
+            <div id="serveContainer">
+            </div>
+        </div>
+        <!-- 列表显示区域结束 -->
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script type="text/javascript" charset="utf-8">
+    (function(){
+        var getNextLevel = function(group, level, childLevel){
+            var url = group.attr('data-url');
+
+            level.change(function(){
+                var areaId = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {areaId:areaId},
+                    dataType: "json"
+                })
+                .done(function(data){
+                    if (JSON.stringify(childLevel) === JSON.stringify($('#level5'))) {
+                        childLevel.attr('multiple', 'multiple');
+                        var text = '全区';
+                    } else {
+                        childLevel.removeAttr('multiple')
+                        var text = '请选择';
+                    }
+
+                    childLevel.find('option')
+                        .remove()
+                        .end()
+                        .append($('<option>', { 
+                            value: '',
+                            text : text,
+                            selected: 'selected'
+                        }));
+
+                    if (data.data) {
+                        $.each(data.data, function (i, item) {
+                            childLevel.append($('<option>', { 
+                                value: item.area_id,
+                                text : item.name 
+                            }));
+                        });
+                    }
+                });
+            });
+        };
+
+        getNextLevel($('#addRangeGroup'), $('#level2'), $('#level3'));
+        getNextLevel($('#addRangeGroup'), $('#level3'), $('#level4'));
+        getNextLevel($('#addRangeGroup'), $('#level4'), $('#level5'));
+        getNextLevel($('#queryRangeGroup'), $('#city'), $('#rangeGroup'));
+
+        $('#addRange').click(function(){
+            var url = $(this).attr('data-url');
+            var group_name = $('#addGroupName').val();
+            var level_3_id = $('#level3').val();
+            var area_id = $('#level5').val();
+            if (area_id == '') {
+                var child_area_ids = $('#level4').val();
+            } else {
+                var child_area_ids = $('#level5').val();
+            }
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    group_name:group_name,
+                    level_3_id:level_3_id,
+                    child_area_ids:child_area_ids
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('添加成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+
+        $('#editRange').click(function(){
+            var url = $(this).attr('data-url');
+            var group_name = $('#editGroupName').val();
+            var serve_range_id = $('#rangeGroup').val();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    group_name:group_name,
+                    serve_range_id:serve_range_id,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('修改成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+
+        $('#removeRange').click(function(){
+            var url = $(this).attr('data-url');
+            var serve_range_id = $('#rangeGroup').val();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_range_id:serve_range_id,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('删除成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+
+        $('#rangeGroup').change(function(){
+            var url = $(this).attr('data-url');
+            var serve_range_id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_range_id:serve_range_id,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                $('#serveContainer').empty();
+                $('#serveContainer').append(data.data);
+            });
+        });
+
+        $('#addSchedule').click(function(){
+            var url = $(this).attr('data-url');
+            var serve_range_id = $('#rangeGroup').val();
+            var start_time = $('start_time').val();
+            var end_time = $('end_time').val();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_range_id:serve_range_id,
+                    start_time:start_time,
+                    end_time:end_time,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('添加成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+    })();
+</script>

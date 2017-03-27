@@ -1,0 +1,204 @@
+<load file="__CSS__/newstyle.css" />
+
+<script src="__PUBLIC__/Js/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Js/Uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/Uploadify/uploadify.css">
+<style type="text/css">
+	ul{list-style-type:none; margin:0;width:100%; }
+	ul li{ width:150px; float:left;margin:5px}
+	li input{ margin-top:5px;width:150px;}
+</style>
+<script type="text/javascript">
+	var img_id_upload=new Array();//初始化数组，存储已经上传的图片名
+	var i=0;//初始化数组下标
+	$(function() {
+		$('#file_upload').uploadify({
+			'auto'     : false,//关闭自动上传
+			'fileObjName' : 'pic',
+			//'removeTimeout' : 1,//文件队列上传完成1秒后删除
+			'swf'      : '/Public/Admin/Js/Uploadify/uploadify.swf',
+			'uploader' : '__URL__/pic_upload',
+			'buttonText' : '选择图片',//设置按钮文本
+			'multi'    : true,//允许同时上传多张图片
+			'uploadLimit' : 8,//一次最多只允许上传10张图片
+			'fileTypeDesc' : 'Image Files',//只允许上传图像
+			'fileTypeExts' : '*.gif; *.jpg; *.png',//限制允许上传的图片后缀
+			'fileSizeLimit' : '2000KB',//限制上传的图片大小
+			'onUploadSuccess' : function(file, data, response) { //每次成功上传后执行的回调函数，从服务端返回数据到前端
+				$('#image').append('<li><img width="150px" src="__UPLOAD__/Service/'+data+'" />&nbsp;&nbsp;图片简单描述：<input type="text" name="pic_remark[]"><a href="###" class="delete_add_pic">删除</a><input type="hidden" name="pic[]" value="'+data+'"></li>');
+				img_id_upload[i]=data;
+				i++;
+			},
+			'onQueueComplete' : function(queueData) {             //上传队列全部完成后执行的回调函数
+				if(img_id_upload.length>0){
+				//alert('成功上传的文件有：'+encodeURIComponent(img_id_upload));
+				}
+			}
+			// Put your options here
+		});
+	});
+</script>
+
+<div id="main">
+	<div id="main-right"><h1>配套设施管理</h1></div>
+	<div id="main-right2">
+		<form method="post" id="form1" name="form1" <empty name="Servicefun">action="__URL__/insert"<else/>action="__URL__/edit"</empty>enctype="multipart/form-data">
+		<table width="785" cellspacing="1" cellpadding="1" border="0">
+			<tr>
+				<td width="100px">室内设施：</td>
+				<td>
+					若有以下配套，请勾选<br />
+					<empty name="Servicefun">
+					<volist name="Think.config.SERVICE_FUN" id="vo">
+						<input type="checkbox" name="service_id[]" value="{$key}">{$vo}&nbsp;&nbsp;&nbsp;
+					</volist>
+						<!-- <br />
+						<input type="checkbox" name="service_id[]" value="">其他&nbsp;&nbsp;
+						<input type="text" name="add_service_name"> -->
+					<else/>
+						<volist name="Think.config.SERVICE_FUN" id="vo" >
+							<input type="checkbox" name="service_id[]" value="{$key}" <in name="key" value="$service_ids">checked</in> />{$vo}&nbsp;&nbsp;&nbsp;
+						</volist>
+						<!-- <br />
+						<input type="checkbox" name="service_id[]" value="" checked>其他&nbsp;&nbsp;
+						<input type="text" name="add_service_name" value="{$service_name.service_name}">
+						<input type="hidden" name="servicefun_id" value="{$service_name.servicefun_id}"> -->
+					</empty>
+				</td>
+			</tr>
+			<tr>
+				<td>已有图片：</td>
+				<td>
+					<ul>
+					<volist name="Servicefunimg" id="vop">
+						<li id="li_{$vop.id}">
+							<a href="__UPLOAD__/Service/{$vop.pic}" target="_blank"><img width="150px" src="__UPLOAD__/Service/thumb300_{$vop.pic}"/></a>
+							<input class="pic_remark" type="text" id="remark_{$vop.id}" <empty name="vop.pic_remark">value="添加描述"<else/>value="{$vop.pic_remark}"</empty>><a href="###" onclick="edit_remark({$vop.id});">修改</a>&nbsp;&nbsp;<a href="###" onclick="pic_delete({$vop.id});" id="href_{$vop.id}" status="{$vop.status}"><if condition="$vop.status eq 1">禁用<else/>启用</if></a>&nbsp;&nbsp;<a href="###" onclick="true_delete({$vop.id});">删除</a>
+						</li>
+					</volist>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>设施图片上传：</td>
+				<td>
+					<input type="file" name="file_upload" id="file_upload" />
+					<p><a href="javascript:$('#file_upload').uploadify('upload','*');">上传</a></p>
+					<br />
+					<ul id="image"></ul><br />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="确定">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+<!--
+
+	$(function(){
+		$(".pic_remark").each(function(i){
+			if($(this).val() =="添加描述"){
+				$(this).attr("style","color:#999;");
+			}
+		});
+
+	   $(".pic_remark").bind("focus",function(){
+		   if($(this).val() =="添加描述") $(this).val(""); $(this).removeAttr("style");
+	   });
+
+	   $(".pic_remark").bind("blur",function(){
+		 if($(this).val() =="") $(this).val("添加描述"); $(this).attr("style","color:#999;");
+	   });
+		
+		$(".delete_add_pic").live('click', function() {
+		  $(this).parent("div").remove();
+		});
+	});
+
+
+	function edit_remark(id){
+		var pic_remark =$('#remark_'+id).val();
+		$.ajax({
+			type:'POST',
+			url:'__URL__/edit_remark',
+			cache:false,
+			dataType:'text',
+			data:'id='+id+'&pic_remark='+pic_remark,
+			success:function(data){
+				if (data == 1){
+					alert("修改成功");
+				}else{
+					alert("修改失败");
+				}
+			}
+		});
+	}
+
+	function true_delete(id){
+		if(!confirm("确定要删除这张图片吗？")){
+            return false;
+        }
+		
+		$.ajax({
+			type:'POST',
+			url:'__URL__/true_delete',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if (data == 1){
+					alert("删除成功");
+					$("#li_"+id).remove();
+				}else{
+					alert("修改失败");
+				}
+			}
+		});
+	}
+
+	function pic_delete(id){
+		var str;
+		status = $("#href_"+id).attr("status");
+		if (status ==1){
+			status = 0;
+			str = "确定要禁用这张图片吗！";
+		}else{
+			status = 1;
+			str = "确定要开启这张图片吗！";
+		}
+
+		if(!confirm(str)){
+            return false;
+        }
+		
+		$.ajax({
+			type:'POST',
+			url:'__URL__/delete',
+			cache:false,
+			dataType:'text',
+			data:'id='+id+'&status='+status,
+			success:function(data){
+				if (data == 1){
+					alert("操作成功");
+					if (status == 1){
+						$("#href_"+id).html("禁用");
+						$("#href_"+id).attr("status",1);
+					}else{
+						$("#href_"+id).html("启用");
+						$("#href_"+id).attr("status",0);
+					}
+					
+				}else{
+					alert("操作失败");
+				}
+			}
+		});
+	}
+//-->
+</script>

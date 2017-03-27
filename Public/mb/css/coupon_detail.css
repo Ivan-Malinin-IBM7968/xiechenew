@@ -1,0 +1,16 @@
+ .coupon-name h2{line-height: 30px; font-size: 1.6em; font-weight: bold;}
+
+ .coupon-price{position: relative;}
+ .coupon-price strong,
+ .coupon-price em{ position: absolute; right: 5px;}
+ .coupon-price strong{top: 0px; font-size: 1.7em; color: #fd8611; font-weight: bold;}
+ .coupon-price em{ top: 30px; font-size: 1.1em; color: #aaaaaa; text-decoration: line-through;}
+
+ .coupon-type span{background: #fd8611; color: white; padding: .25em; font-weight: normal;}
+.coupon-info > ul li{color: #aaaaaa; font-size: 1em;}
+.coupon-buy-btn{position: relative;}
+.coupon-buy-btn > a{position: absolute; right: 5px; padding:.3em 1.1em; background: #fd8611; color: #ffffff; border-radius: 5px; font-size: 1.5em; text-decoration: none;}
+
+.coupon-content *{color: #666666;}
+.coupon-content > p > span > strong { font-size: .9em; color: #444444;}
+.coupon-content > p > strong {font-size: .8em; color: #666666;}

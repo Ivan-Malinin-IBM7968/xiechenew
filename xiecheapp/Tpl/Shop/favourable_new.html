@@ -1,0 +1,130 @@
+<layout name='layout_new' />
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="__APP__/noticelist">优惠速递</a></li>
+			<li>></li>
+			<li>{$data.notice_top.noticetitle}</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="content w1200">
+		<div class="content-left w780 news ">
+			<div class="bg-blue news-container">
+				<div class="outArticle">
+					<h2>{$data.notice_top.noticetitle}</h2>
+					<div class="articleInfo"></div>
+					<p>{$data.notice_top.noticedescription}</p>
+					<div class="shop-info">
+						<div class="shop-image-container">
+							<img src="{$data.shop.shop_pic}" title="{$data.shop.shop_name}" width="280" height="210" class="shop-image" />
+							<if condition="$data[shop][shop_class] eq 1">
+								<span class='speacial-banner'></span>
+							</if>
+						</div>
+						<div class='info'>
+							<h3 class="shop-name"><a href="__APP__/shop/{$data.shop.id}" target="_blank">{$data.shop.shop_name}</a></h3>
+							<div class="shop-rating">
+								<span <php>echo "class='rating-".round($data[shop][comment_rate]/10)."'";</php>></span>
+								<strong>{$data[shop][comment_rate]/10}</strong>
+							</div>
+							<ul class="info-list">
+								<li class='comment'><a href="__APP__/shop/{$data.shop.id}#comment">{$data.shop.comment_number}</a>人评论</li>
+								<li class='phone'>400 660 2822</li>
+								<li class='address'>{$data.shop.shop_address}</li>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<table class="sale-info" width="720">
+							<tr bgcolor='#f1f1f1'>
+								<th width='240'>星期</th>
+								<th width="125">时段</th>
+								<th width="150">工时折扣率</th>
+								<th width="150">零件折扣率</th>
+								<th width="110">操作</th>
+							</tr>
+							<tr>
+								<td>{$data.shop.timesale.week_name_s}</td>
+								<td>{$data.shop.timesale.begin_time} - {$data.shop.timesale.end_time}</td>
+								<td>{$data.shop.timesale.workhours_sale_str}</td>
+								<td>{$data.shop.timesale.product_sale_str}</td>
+								<td><a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$data['shop']['timesale']['id'],'model_id'=>$model_id,'u_c_id'=>$u_c_id,'shop_id'=>$data[shop][id]))}{:C('HTML_URL_SUFFIX')}" class='operate'>查看/预约</a></td>
+							</tr>
+						</table>
+				</div>
+			</div>
+
+			<div class="news-con w780">
+				<div class="sales">
+					<h4>优惠速递</h4>
+					<ul>
+						<volist name="data['NoticeList']" id="n_value">
+							<li><a href="{:URL('/shop/favtype',array('shop_id'=>$n_value['shop_id'],'id'=>$n_value['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" title="{$n_value.noticetitle}">{$n_value.noticetitle|g_substr=34}<em>{$n_value.update_time|date="Y-m-d ",###}</em></a></li>
+						</volist>
+						<div class="clear"></div>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="aftermarket">
+					<h4>用车心得</h4>
+					<ul>
+						<volist name="data['ArticleList']" id="a_value">
+							<li><a href="__APP__/article/{$a_value.id}" target="_blank" title="{$a_value.title}">{$a_value.title|g_substr=34}<em>{$a_value.create_time|date="Y-m-d ",###}</em></a></li>
+						</volist>
+						<div class="clear"></div>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--右侧开始-->
+		<div class="content-right w400">
+			<div class="w350 tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+
+			</div>
+			<div class="w350 tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<!--右侧结束-->
+	</div> 

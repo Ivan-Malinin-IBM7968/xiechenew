@@ -1,0 +1,129 @@
+<layout name='layout' />
+<link rel="stylesheet" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/article.css?v={$Think.config.VERSION_DATE}" />
+
+
+<div id="xz" ><a href="__APP__/coupon" target="_blank"><img src="__PUBLIC__/new/images/banner.jpg"></a></div>
+<div id="zx-dh">
+	<div id="zx-dh-left">您当前所在的位置 : <a href="__APP__/index">纵横携车网</a> &gt; <a href="__APP__/article/articlelist">4S店售后资讯</a> &gt; 正文</div>
+	<div id="zx-dh-right">
+	  <form name="form2" method="post" action="__APP__/article/articlelist">
+		热门搜索 ：<a href="__APP__/article/articlelist/keyword/保养">保养</a>&nbsp;&nbsp;
+							<a href="__APP__/article/articlelist/keyword/机油">机油</a>&nbsp;&nbsp;
+							<a href="__APP__/article/articlelist/keyword/故障">故障</a>&nbsp;&nbsp;
+							<a href="__APP__/article/articlelist/keyword/误区">误区</a>
+		<label>
+		  <input name="keyword" type="text" id="keyword" >
+		</label>
+		<label>
+		  <input type="submit" name="搜索" id="搜索" value="搜索">
+		</label>
+	  </form>
+	</div>
+</div>
+
+
+<div id="main-zx">
+	<div id="main-zx-left">
+		<h2>{$articleinfo.title}</h2>
+		<div class="zx1">
+			<span><a href="__APP__/index" target="_blank">纵横携车网</a></span>
+			<span>{$articleinfo.create_time|date="Y-m-d H:i:s",###}</span>
+			<span>编辑：青尧</span>
+			<span>来源：网上</span>
+		</div>
+		<div class="clear"></div>
+		<div class="zx2">{$articleinfo.content}</div>
+		<div class="clear"></div>
+		<!-- Baidu Button BEGIN -->
+		<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+		<span class="bds_more">分享到：</span>
+		<a class="bds_qzone"></a>
+		<a class="bds_tsina"></a>
+		<a class="bds_tqq"></a>
+		<a class="bds_renren"></a>
+		<a class="bds_t163"></a>
+		<a class="shareCount"></a>
+		</div>
+		<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3625391" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+		</script>
+		<!-- Baidu Button END -->
+		<div class="zx3"><b>关键词</b> : 
+				<volist name="keyword" id="keywordvo">
+					<notempty name="keywordvo">
+					<a href="__APP__/article/articlelist/keyword/{$keywordvo}">{$keywordvo}</a>&nbsp;&nbsp;&nbsp;
+					</notempty>
+				</volist>
+		</div>
+		
+		<!-- <div class="zx4"><b>上一篇</b> : <a href="__APP__/article/d/id/{$prev_article.id}">{$prev_article.title}</a>  |  <b>下一篇</b> : <a href="__APP__/article/d/id/{$next_article.id}">{$next_article.title}</a></div> -->
+		<p class="zxs"><em>下一篇 : <a href="__APP__/article/d/id/{$prev_article.id}">{$prev_article.title}</a></em>上一篇 : <a href="__APP__/article/d/id/{$next_article.id}">{$next_article.title}</a></p> 
+
+		<div id="zx-wb">
+			<h2>相关文章</h2><!-- class='zb-wblb' -->
+
+			<div class="zx-wb-gjc">
+				<p class="gjc"><em>厂商相关</em>关键词相关</p>
+			</div>
+
+			<ul>
+				<volist name="article_key_relation" id="value">
+				<li class="tj"><a href="__APP__/article/d/id/{$value.id}" target="_blank" title="{$value.title}">{$value.title|g_substr=34}</a></li>
+				</volist>
+			</ul>
+			<ul>
+				<volist name="article_shop_relation" id="value">
+				<li class="tj"><a href="__APP__/article/d/id/{$value.id}" target="_blank" title="{$value.title}">{$value.title|g_substr=34}</a></li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+
+	<!--右边部分-->
+	<div id="main-zx-right">
+		<p class="zx-right-wz">团购券</p>
+		<volist name="tuijian_coupon2" id="tcoupon2">
+		<dl>
+			<dt><a target="_blank" href="__APP__/coupon/{$tcoupon2.id}"><img width="105" title="{$tcoupon2.coupon_name}" alt="{$tcoupon2.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}"></a></dt>
+			<dd><a target="_blank" href="__APP__/coupon/{$tcoupon2.id}" title="{$tcoupon2.coupon_name}">{$tcoupon2.coupon_name|g_substr=27}</a></dd>
+			<dd><font color="#999999">团购价：&#165;{$tcoupon2.coupon_amount}</font></dd>
+			<dd>已有{$tcoupon2.pay_count}人购买</dd>
+		</dl>
+		</volist>
+		
+		<!-- <div class="4sdjs"><img src="__PUBLIC__/new/images/4sdnav.jpg" width="306" height="87"></div> -->
+		<div class="clear"></div>
+		<p class="zx-right-wz2">现金券</p>
+		<volist name="tuijian_coupon1" id="tcoupon1">
+		<dl>
+			<dt><a target="_blank" href="__APP__/coupon/{$tcoupon1.id}"><img width="105" title="{$tcoupon1.coupon_name}" alt="{$tcoupon1.coupon_name}" src="/UPLOADS/Coupon/Logo/coupon1_{$tcoupon1.coupon_pic}"></a></dt>
+			<dd><a target="_blank" href="__APP__/coupon/{$tcoupon1.id}" title="{$tcoupon1.coupon_name}">{$tcoupon1.coupon_name|g_substr=27}</a></dd>
+			<dd><font color="#999999">团购价：&#165;{$tcoupon1.coupon_amount}</font></dd>
+			<dd>已有{$tcoupon1.pay_count}人购买</dd>
+		</dl>
+		</volist>
+
+		<!-- <div class="jebf"><img src="__PUBLIC__/new/images/4sdnav2.jpg" width="306" height="87"></div> -->
+		<div class="clear"></div>
+		
+		<notempty name="shop_info">
+		<div class="jebf2">
+			<ul class="bf1">
+				<li class="bg">4s店介绍</li>
+				<li class="name"><a href="__APP__/shop/{$shop_info.id}" target="_blank">{$shop_info.shop_name}</a></li>
+				<li><a href="__APP__/shop/{$shop_info.id}" target="_blank"><img height="210" width="280" src="/UPLOADS/Shop/280/{$shop_info.id}.jpg" title="{$shop_info.shop_name}"></a></li>
+				<li class="wz">{$shop_info.shop_account}</li>
+				<li class="dh">主营品牌：<volist name="brands" id="brand">{$brand.brand_name} </volist></li>
+				<li class="dh">电话：400 660 2822</li>
+				<li class="dz">地址：{$shop_info.shop_address}</li>
+			</ul>
+		</div>
+		</notempty>
+		<div class="clear"></div>
+	</div>
+	<!--右边部分-->
+</div>

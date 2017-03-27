@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no">
+<title>兑换记录</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+body{ background:url(__PUBLIC__/mobile/images/castrol/newbg.jpg) repeat-y; background-size:100%; font-family:"微软雅黑"; font-size:11px; color:#FFF; }
+.lipin_img{ background:url(__PUBLIC__/mobile/images/castrol/libao.png) 20px center no-repeat; background-size: 19px; text-indent:28px; margin:30px 0px 10px 0px; font-size:14px; padding-left:20px;}
+.hr1{ width:100%; height:1px; background-color:#CCC; overflow:hidden;}
+.cash{ background:url(__PUBLIC__/mobile/images/castrol/icon_lan2.png) no-repeat; width:81px; height:40px; text-align:center;}
+.content{padding-right:20px;}
+.left{ float:left;}
+.right{ float:right;}
+.clearf{ clear:both;}
+.padd_left{ padding-left:20px; margin:10px 0px;}
+.money{ margin-bottom:13px; font-size:14px;}
+</style>
+</head>
+<body>
+ 	<div class="lipin_img">礼品兑换记录</div>
+    <div class="hr1"></div>
+<!--     <empty name="alist">
+    无兑奖记录
+    <else />
+    <volist name="alist" id="vo">
+  	  <div class="padd_left">
+     	<div class="cash left"> <if condition="$vo.type eq 1">10元打车代金券
+				<elseif condition="$vo.type eq 2"/>上门汽车安全检测
+				<elseif condition="$vo.type eq 3"/>上门汽车保养专业服务
+				<elseif condition="$vo.type eq 4"/>府上养车-黄壳机油套餐
+				<elseif condition="$vo.type eq 5"/>府上养车-蓝壳机油套餐
+				<elseif condition="$vo.type eq 6"/>府上养车-灰壳机油套餐
+				<elseif condition="$vo.type eq 7"/>1000元油卡
+				<else />
+				</if></div>
+        <div class="content right"> 
+            <div class="money">
+	            <if condition="$vo.type eq 1"> 10元打车代金券 X {$vo.num}
+				<elseif condition="$vo.type eq 2"/>上门汽车安全检测 X {$vo.num}
+				<elseif condition="$vo.type eq 3"/>上门汽车保养专业服务 X {$vo.num}
+				<elseif condition="$vo.type eq 4"/>府上养车-黄壳机油套餐  X {$vo.num}
+				<elseif condition="$vo.type eq 5"/>府上养车-蓝壳机油套餐 X {$vo.num}
+				<elseif condition="$vo.type eq 6"/>府上养车-灰壳机油套餐 X {$vo.num}
+				<elseif condition="$vo.type eq 7"/>1000元油卡X {$vo.num}
+				<else />
+				</if>
+			</div>
+            <div>有效期: 2014/12/10-2014/12/30</div>    
+        </div> 
+        <div class="clearf"></div>
+     </div> 
+    </volist>
+    </empty>  -->
+
+    <div style="padding:0 20px;">
+    <table width="100%">
+      <tbody>
+        <volist name="alist" id="vo">
+        <tr height="10"></tr>
+        <tr>
+          <td rowspan="2" class="cash">
+              <if condition="$vo.type eq 1">10元打车代金券
+              <elseif condition="$vo.type eq 2"/>上门汽车安全检测
+              <elseif condition="$vo.type eq 3"/>上门汽车保养专业服务
+              <elseif condition="$vo.type eq 4"/>府上养车-黄壳机油套餐
+              <elseif condition="$vo.type eq 5"/>府上养车-蓝壳机油套餐
+              <elseif condition="$vo.type eq 6"/>府上养车-灰壳机油套餐
+              <elseif condition="$vo.type eq 7"/>1000元油卡
+              <else />
+              </if>
+          </td>
+          <td></td>
+          <td style="font-size:14px;">
+              <if condition="$vo.type eq 1"> 10元打车代金券 
+              <elseif condition="$vo.type eq 2"/>上门汽车安全检测
+              <elseif condition="$vo.type eq 3"/>上门汽车保养专业服务
+              <elseif condition="$vo.type eq 4"/>府上养车-黄壳机油套餐
+              <elseif condition="$vo.type eq 5"/>府上养车-蓝壳机油套餐
+              <elseif condition="$vo.type eq 6"/>府上养车-灰壳机油套餐
+              <elseif condition="$vo.type eq 7"/>1000元油卡
+              <else />
+              </if>
+          </td>
+          <td width="20"><small>×</small>{$vo.num}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td colspan="2">有效期
+            <if condition="$vo.type eq 1">至2015/01/31
+              <elseif condition="$vo.type eq 2"/>至2015/06/30
+              <elseif condition="$vo.type eq 3"/>至2015/06/30
+              <elseif condition="$vo.type eq 4"/>至2015/06/30
+              <elseif condition="$vo.type eq 5"/>至2015/06/30
+              <elseif condition="$vo.type eq 6"/>至2015/06/30
+              <elseif condition="$vo.type eq 7"/>两年
+              <else />
+              </if>
+          </td>
+        </tr>
+        <tr height="10"></tr>
+        </volist>
+      </tbody>
+    </table>
+    </div>
+
+
+    <script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+	</script>
+</body>
+</html>

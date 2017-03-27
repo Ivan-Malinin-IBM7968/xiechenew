@@ -1,0 +1,26 @@
+.repair_ul {
+    background-color: #eaeeed;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+}
+.cur {
+    background-color: #ffffff;
+	border-top:4px solid #19293b;
+	line-height: 36px;
+}
+.repair_li {
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    width: 120px;
+}
+a.repair_s{display:block;float:left;padding:2px 16px;margin:30px 20px}
+a.repair_s_cur{background-color:#19293b;color:#ffffff}
+.table tbody > tr > th, .table tbody > tr > td {
+    color: #000000;
+	background-color:#ffffff;
+	text-align: center;
+}
+.table tbody > tr > th{background-color:#f6f6f6}
+.table p{margin:5px 0px}

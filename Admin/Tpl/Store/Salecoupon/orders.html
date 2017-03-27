@@ -1,0 +1,65 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">完成订单列表[ <A HREF="__URL__/memberlist/id/{$membersalecoupon.salecoupon_id}">返回列表</A> ]</div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+        	抵用券名称：{$membersalecoupon.coupon_name}<br />
+        </div>
+		<div style="height:20px;"></div>
+		<div>
+			<form action="__URL__/saveorder/membersalecoupon_id/{$membersalecoupon.membersalecoupon_id}" method="post" >
+				绑定抵用券到订单：(请输入括号内的编号)<input type="text" name="order_id" />
+				&nbsp;&nbsp;<input type="submit" value="提交">
+			</form>
+		</div>
+        <!-- 功能操作区域结束 -->
+
+        <!-- 列表显示区域  -->
+        <div class="list" >
+        	<table class="list">
+        		<tr>
+        			<th>订单编号</th>
+        			<th>预约时间</th>
+        			<th>下订时间</th>
+        			<th>用户ID</th>
+        			<th>电话</th>
+        			<th>绑定的券</th>
+        			<th>预约状态</th>
+					<th>操作</th>
+        		</tr>
+        	<volist name="orderlist" id="vo">
+        		<tr>
+        			<td>{$vo['id']}</td>
+        			<td>{$vo.order_time|date="Y-m-d",###}</td>
+        			<td>{$vo.create_time|date="Y-m-d",###}</td>
+        			<td>{$vo.uid}</td>
+        			<td>{$vo.mobile}</td>
+        			<td>
+        			<if condition="count($vo.membersalecoupons) gt 0">
+        				<volist name="vo.membersalecoupons" id="mcvo">
+        					券ID:{$mcvo.salecoupon_id}&nbsp;&nbsp;券名称:{$mcvo.coupon_name}<br />
+        				</volist>
+        			<else />未绑定有券</if>
+        			</td>
+        			<td>
+        			<volist name="Think.config.ORDER_STATE" id="vo_os">
+					<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+					</volist>
+					</td>
+					<td><a href="__URL__/saveorder/membersalecoupon_id/{$membersalecoupon.membersalecoupon_id}/order_id/{$vo.id}">绑定</a></td>
+        		</tr>
+        	</volist>
+        	</table>
+        </div>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

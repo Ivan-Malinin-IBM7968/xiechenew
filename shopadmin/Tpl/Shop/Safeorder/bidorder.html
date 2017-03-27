@@ -1,0 +1,110 @@
+<load file="__CSS__/newstyle.css" />
+<div id="main">
+<div id="main-right">
+<if condition="$type eq 1">
+	<h1>事故车订单详细[ <A HREF="__APP__/Shop/Bidorder/index/">返回列表</A> ]</h1>
+<else />
+	<h1>事故车订单详细[ <A HREF="__URL__/index/">返回列表</A> ]</h1>
+</if>
+</div>
+	<div id="main-right2">
+		<table width="785" border="0" cellspacing="1" cellpadding="5" bgcolor="#E4E4E4">
+			<tr>
+				<td align="center" bgcolor="#EEEEEE">订单号</td>
+				<td align="center" bgcolor="#EEEEEE">姓名</td>
+				<td align="center" bgcolor="#EEEEEE">手机号</td>
+				<td align="center" bgcolor="#EEEEEE">车牌号</td>
+				<td align="center" bgcolor="#EEEEEE">4S店铺</td>
+				<td align="center" bgcolor="#EEEEEE">订单状态</td>
+				<td align="center" bgcolor="#EEEEEE">下订时间</td>	 
+			</tr>
+
+			<tr>
+				<td  align="center" bgcolor="#FFFFFF">{$data.order_id}</td>
+				<td align="center" bgcolor="#FFFFFF">{$data.truename}</td>
+				<td align="center" bgcolor="#FFFFFF">{$data.mobile}</td>
+				<td align="center" bgcolor="#FFFFFF">{$data.licenseplate}</td>
+				<td align="center" bgcolor="#FFFFFF">{$data.shop_name}</td>
+				<td align="center" bgcolor="#FFFFFF">
+					<volist name="Think.config.BIDORDER_STATE" id="statevo">
+						<if condition="$vo.order_status eq $key">{$statevo}</if>
+					</volist>
+				</td>
+				<td align="center" bgcolor="#FFFFFF">
+					{$data.create_time|date="y-m-d H:i:s",###}
+				</td>
+			</tr>
+		</table><br/>
+
+		<table width="785" border="0" cellspacing="1" cellpadding="6" bgcolor="#E4E4E4">
+			<tr>
+				<td align="center" width=100 >品牌：</td>
+				<td style="text-align:left;">{$array.Fs.fsname}</td>
+			</tr>
+			<tr>
+				<td align="center" width=100 >车型：</td>
+				<td style="text-align:left;">{$array.Insurance.car_info}</td>
+			</tr>
+			<tr>
+				<td align="center" width=100 >到店时间：</td>
+				<td style="text-align:left;">{$data.tostore_time|date="Y-m-d H:i:s",###}</td>
+			</tr>
+			<tr>
+				<td align="center" width=100 >携车网客服备注：</td>
+				<td style="text-align:left;">{$array.Insurance.operator_remark}</td>
+			</tr>
+			<tr>
+				<td align="center" width=100 >用户事故描述：</td>
+				<td style="text-align:left;">{$array.Insurance.description}</td>
+			</tr>
+			<tr>
+				<td align="center" width=100 >保险公司：</td>
+				<td style="text-align:left;">{$array.Insurance.insurance_name}</td>
+			</tr>
+			<tr>
+				<td align="center">行驶证照片：</td>
+				<td style="text-align:left;">
+						<notempty name="array.Insurance.driving_img">
+							<a href="/UPLOADS/Driving/{$array.Insurance.driving_img}" target="_blank"><img src="/UPLOADS/Driving/{$array.Insurance.driving_img}" border="0"></a>
+						</notempty>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">汽车图片：</td>
+				<td style="text-align:left;">
+					<if condition="$type eq 1">
+						<a href="__URL__/showimg/id/{$insurance_id}/type/1">查看受损车图片</a>
+					<else/>
+						<a href="__URL__/showimg/id/{$insurance_id}/">查看受损车图片</a>
+					</if>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" >定损金额：</td>
+				<td  style="text-align:left;">{$array.Insurance.loss_price}元</td>
+			</tr>
+			<tr>
+				<td align="center" width=90 >维修时间：</td>
+				<td style="text-align:left;">
+				{$array.Shopbid.servicing_time}
+				</td>
+			</tr>
+			<tr>
+				<td align="center" >&nbsp;代步车：</td>
+				<td  style="text-align:left;">
+					<if condition="$array.Shopbid.scooter eq 0">无</if>
+					<if condition="$array.Shopbid.scooter eq 1">有</if>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">返利现金：</td>
+				<td style="text-align:left;">{$array.Shopbid.rebate}</td>
+			</tr>
+			<tr>
+				<td align="center" >备&nbsp;&nbsp;注：</td>
+				<td  style="text-align:left;">{$array.Shopbid.remark}</td>
+			</tr>
+		</table>
+	</div>
+
+</div>

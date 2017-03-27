@@ -1,0 +1,314 @@
+<layout name='layout_order' />
+<div id="main-right" style="width:620px; margin:0; padding:0px; float:right; border:1px solid #efefef; background-color:#FFF;">
+<div id="cx">
+  <ul>
+    <!--<li class='<if condition="$shop_area eq ''">area_selected</if>'><a href="__URL__/index/fsid/{$fsid}">
+		<font color="#333333">全部区域 </font></a>
+	</li>-->
+	<li class='<if condition="$shop_area eq ''">area_selected</if>'><a href="{:URL('/order/index',array('fsid'=>$fsid))}{:C('HTML_URL_SUFFIX')}">
+		<font color="#333333">全部区域 asd</font></a>
+	</li>
+	<volist name="Carea[$sessarea]" id="area">
+		<li class='<if condition="$shop_area eq $key">area_selected</if>'>
+		<empty name="fsid">
+			<!--<a href="__URL__/index/shop_area/{$key}">{$area}</a>-->
+
+			<a href="{:URL('/order/index',array('shop_area'=>$key))}{:C('HTML_URL_SUFFIX')}">{$area}</a>
+		<else/>
+			<!--<a href="__URL__/index/shop_area/{$key}/fsid/{$fsid}">{$area}</a>-->
+
+			<a href="{:URL('/order/index',array('shop_area'=>$key,'fsid'=>$fsid))}{:C('HTML_URL_SUFFIX')}">{$area}</a>
+		</empty>
+		</li>
+    </volist>
+  </ul>
+</div>
+<div id="pp">
+  <ul>
+   <!-- <li class='<if condition="$fsid eq ''">area_selected</if>'><a href="__URL__/index/shop_area/{$shop_area}/series_id/{$series_id}/model_id/{$model_id}"><font color="#333333">全部品牌</font></a></li>-->
+	<li class='<if condition="$fsid eq ''">area_selected</if>'><a href="{:URL('/order/index',array('shop_area'=>$shop_area,'series_id'=>series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}"><font color="#333333">全部品牌</font></a></li>
+
+    <volist name="Think.config.BRANDS" id="brand">
+    	<li class='<if condition="$fsid eq $key">area_selected</if>'>
+			<empty name="shop_area">
+				<!--<a href="__URL__/index/fsid/{$key}">{$brand}</a>-->
+				<a href="{:URL('/order/index',array('fsid'=>$key))}{:C('HTML_URL_SUFFIX')}">{$brand}</a>
+			<else/>
+			<!--<a href="__URL__/index/fsid/{$key}/shop_area/{$shop_area}/brand_id/{$brand_id}/series_id/{$series_id}/model_id/{$model_id}">{$brand}</a>-->
+			<a href="{:URL('/order/index',array('fsid'=>$key,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">{$brand}</a>
+			</empty>
+		</li>
+    </volist>
+  </ul>
+</div>
+<div id="xz">
+<form action="{:URL('/order/index')}{:C('HTML_URL_SUFFIX')}" method="POST">
+<input type="hidden" id="shop_area" name="shop_area" value="{$shop_area}">
+<input type="hidden" id="fsid" name="fsid" value="{$fsid}">
+<input type="hidden" id="brand_id" name="brand_id" value="{$brand_id}">
+<input type="hidden" id="series_id" name="series_id" value="{$series_id}">
+<input type="hidden" id="model_id" name="model_id" value="{$model_id}">
+
+
+<dl class="filter_li">
+      	<dt></dt><dd>
+		<div class="filter_data1">
+      	<!--<present name="list_membercar">
+			<font><b style="font-size:12px;">&nbsp;选择我的车型</b></font><br />
+			<volist name="list_membercar" id="vo" key="k">
+			<input type="radio" name="u_c_id" class="own_car" value="{$vo.u_c_id}" <if condition="((!isset($u_c_id)) && ($other_car neq 1) && ($k eq 1)) || ($vo.u_c_id eq $u_c_id)" > checked </if> onclick="own_car_select();"/>{$vo.car_name}&nbsp;{$vo.brand_name}-{$vo.series_name}-{$vo.model_name}<br>
+			</volist>
+			</present>
+		-->
+		<table cellspacing="8" cellpadding="0" width="55%"  style="margin-left:100px;">
+			<present name="list_membercar">
+				<tr >	
+					<td align="left">
+						<b>选择我的车型</b>
+					</td>
+				</tr>
+			<volist name="list_membercar" id="vo" key="k">
+				<tr >
+					<td >
+						<input type="radio" name="u_c_id" class="own_car" value="{$vo.u_c_id}" <if condition="((!isset($u_c_id)) && ($other_car neq 1) && ($k eq 1) && $brand_id eq 0) || ($vo.u_c_id eq $u_c_id)" > checked </if> onclick="own_car_select();"/>{$vo.car_name}&nbsp;{$vo.brand_name}-{$vo.series_name}-{$vo.model_name}	
+					</td>
+				</tr>
+			</volist>
+
+			</present>
+			
+		</table>
+		<div style="height:10px;"></div>
+			
+			<font style="margin-left:100px;"><b style="font-size:12px;line-height:30px;">&nbsp;选择其他车型</b></font><br />
+
+			<div style="margin-left:105px;line-height:30px;">
+			<input type="radio" id="other_car" name="other_car" value="1" onclick="other_car_select();"<input type="radio" id="other_car" name="other_car" value="1" onclick="other_car_select();" <if condition="$uid eq '' or $brand_id neq 0" > checked </if>/>选择其他车辆：
+
+			</div>
+			<div  style="margin-left:107px;line-height:30px;" class="filter_data2 mfpart" id="list_other_car" <if condition="($other_car neq 1) and ($default_check neq 1)">style="display:none;"</if> >
+			
+			<table cellspacing="8"  width="55%" >
+				<tr>
+					<td>
+						品 牌<select id="get_brand" name="brand_id" onchange="comp_brlist('get_brand','get_series', 'get_model');" style= "width:160px">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						车 系<select id="get_series" name="series_id" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');" style= "width:160px">
+						</select>
+					</td>
+				</tr>
+				<tr> 
+					<td>
+						车 型<select id="get_model" name="model_id" disabled style= "width:160px">
+						</select>
+					</td>
+				</tr>
+		
+			</table>
+		
+	</div>
+</div>
+		</dd> </dl>
+			<dl class="filter_li">
+			<dt></dt><dd style="text-align:center;">
+				<input type="submit" value="提交" class="editbut">
+			</dd>
+		</dl>
+</form>
+
+
+
+
+</div>
+
+
+<div class="clear"></div>
+<script type="text/javascript">
+	comp_fctlist("get_brand", "get_series", "get_model", '{$brand_id}', '{$series_id}', '{$model_id}');
+</script>
+
+
+<div id="sjxx">
+
+
+<volist name="tuijian_shop" id="tuijian">
+<div id="xxb">
+ <dl>
+ <dt><img src="{$tuijian.shop_pic}" /></dt>
+ <dd <if condition="$tuijian.shop_class eq 1"> style="background-image:url(__PUBLIC__/new/images/ty.jpg); height:32px; line-height:32px; background-position:right; background-repeat:no-repeat;" </if>>
+ <strong><font color="#3172c5">
+ 
+ <!--<a href="__APP__/shop/index/shop_id/{$tuijian.id}" target="_blank">[4S店] {$tuijian.shop_name}</a>-->
+ 
+ <a href="{:URL('/shop/index',array('shop_id'=>$tuijian['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" >[4S店] {$tuijian.shop_name}</a>
+ </font></strong>
+ </dd>
+ <dd>好评率： <font color="red">{$tuijian.comment_rate}%</font></dd>
+ <dd>评论人数：
+	<!--
+	<a href="__APP__/shop/index/shop_id/{$tuijian.id}#comment" target="_blank">{$tuijian.comment_number}人已评价</a>
+	-->
+	<a href="{:URL('/shop/index',array('shop_id'=>$tuijian))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$tuijian.comment_number}人已评价</a>
+ 
+ </dd>
+ <dd>主营品牌：<volist name="tuijian['brands']" id="brand">{$brand.brand_name}，</volist></dd>
+ <dd>联系电话： 400-660-2822</dd>
+ <dd>地　　址：{$tuijian.shop_address} [<a href="javascript:;"  lng="{$tuijian.shop_maps}" class="point" desc="商家名称：{$tuijian.shop_name} ^^地址：{$tuijian.shop_address} ^^电话：400-660-2822">查看地图</a>]</dd><!--{$tuijian.shop_phone} -->
+ 
+ </dl>
+ <div id="yhlb">
+   <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#efefef">
+     <tr style="height:25px;">
+       <td width="17%" align="center" valign="middle" bgcolor="#EBDEDB">星 期</td>
+       <td width="20%" align="center" valign="middle" bgcolor="#ECE8E8">时 间</td>
+       <td width="17%" align="center" valign="middle" bgcolor="#F5ECE9">工时折扣率</td>
+       <td width="18%" align="center" valign="middle" bgcolor="#EBDEDB">零件折扣率</td>
+       <td width="14%" align="center" valign="middle" bgcolor="#F5ECE9">详 情</td>
+     </tr>
+     <volist name="tuijian.timesale" id="tuijian_sale_item">
+     <tr style="height:25px;">
+       <td align="center" valign="middle" bgcolor="#FFFFFF">{$tuijian_sale_item.week_name_s}</td>
+       <td align="center" valign="middle" bgcolor="#F9F6F6">{$tuijian_sale_item.begin_time} - {$tuijian_sale_item.end_time}</td>
+       <td align="center" valign="middle" bgcolor="#FFFFFF">{$tuijian_sale_item.workhours_sale_str}</td>
+       <td align="center" valign="middle" bgcolor="#FFFFFF">{$tuijian_sale_item.product_sale_str}</td>
+       <td align="center" valign="middle" bgcolor="#FFFFFF" <a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$tuijian_sale_item['id'],'model_id'=>$model_id,'u_c_id'=>$u_c_id))}{:C('HTML_URL_SUFFIX')}" target="_blank">查看并预约</a></td>
+     </tr>
+     </volist>
+   </table>
+ </div>
+ </div>
+ </volist>
+</form>
+
+<form action="__URL__/index" method="POST">
+	 <table >
+		<input type="hidden" id="shop_area" name="shop_area" value="{$shop_area}">
+		<input type="hidden" id="fsid" name="fsid" value="{$fsid}">
+		<input type="hidden" id="brand_id" name="brand_id" value="{$brand_id}">
+		<input type="hidden" id="series_id" name="series_id" value="{$series_id}">
+		<input type="hidden" id="model_id" name="model_id" value="{$model_id}">
+		<tr>
+			<td>
+				搜索4S店铺关键字：<input type="text" name="shop_name" id="shop_name" value={$shop_name}>
+			</td>
+			<td>
+				<input type="submit" value="搜索" class="editbut">
+			</td>
+		</tr>
+	</table>
+</form>
+
+
+<div id="jg" >&nbsp;&nbsp;以下商家由携车纵横网推荐商家，信息仅供参考</div>
+ 
+<!--商家信息-->
+ <volist name="shops" id="vo">
+ <div id="xxb1">
+ <dl>
+ <dt><img src="{$vo.shop_pic}" title="{$vo.shop_name}"/></dt>
+ <dd <if condition="$vo.shop_class eq 1"> style="background-image:url(__PUBLIC__/new/images/ty.jpg); height:32px; line-height:32px; background-position:right; background-repeat:no-repeat;" </if> >
+ <strong><font color="#3172c5" style="">
+ <!--<a href="__APP__/shop/index/shop_id/{$vo.id}" target="_blank">[4S店] {$vo.shop_name}</a>-->
+  <a href="{:URL('/shop/index',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" >[4S店] {$vo.shop_name}</a>
+ 
+ </font></strong>
+ </dd>
+ <dd>好评率： <font color="red">{$vo.comment_rate}%</font></dd>
+ <dd>评论人数：<!-- <a href="__APP__/shop/index/shop_id/{$vo.id}#comment" target="_blank">{$vo.comment_number}人已评价</a>-->
+ 
+	<a href="{:URL('/shop/index',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$vo.comment_number}人已评价</a>
+ </dd>
+ <dd>主营品牌：<volist name="vo['brands']" id="brand">{$brand.brand_name} </volist></dd>
+ <dd>预约电话： {$phone}</dd>
+ <dd>地　　址：{$vo.shop_address} [<a href="javascript:;"  lng="{$vo.shop_maps}" class="point" desc="商家名称：{$vo.shop_name} ^^地址：{$vo.shop_address} ^^电话：400-660-2822 "><font color="#3172c5">查看地图</font></a>]</dd><!--{$vo.shop_phone}-->
+ </dl>
+ <div id="yhlb">
+   <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#efefef">
+     <tr style="height:25px;">
+       <td width="17%" align="center" valign="middle" bgcolor="#EBDEDB">星 期</td>
+       <td width="20%" align="center" valign="middle" bgcolor="#ECE8E8">时 间</td>
+       <td width="17%" align="center" valign="middle" bgcolor="#F5ECE9">工时折扣率</td>
+       <td width="18%" align="center" valign="middle" bgcolor="#EBDEDB">零件折扣率</td>
+       <td width="14%" align="center" valign="middle" bgcolor="#F5ECE9">详 情</td>
+     </tr>
+     <volist name="vo.timesale" id="sale_item">
+     <tr style="height:25px;">
+       <td align="center" valign="middle" bgcolor="#FFFFFF">{$sale_item.week_name_s}</td>
+       <td align="center" valign="middle" bgcolor="#F9F6F6">{$sale_item.begin_time} - {$sale_item.end_time}</td>
+       <td align="center" valign="middle" bgcolor="#FFFFFF">{$sale_item.workhours_sale_str}</td>
+       <td align="center" valign="middle" bgcolor="#FFFFFF">{$sale_item.product_sale_str}</td>
+       <td align="center" valign="middle" bgcolor="#FFFFFF" >
+	   
+	  <!-- <a href="__URL__/yuyue/timesaleversion_id/{$sale_item.id}<if condition='$model_id gt 0'>/model_id/{$model_id}</if><if condition='$u_c_id gt 0'>/u_c_id/{$u_c_id}</if>" target="_blank">查看并预约</a>-->
+	   <a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$sale_item['id'],'model_id'=>$model_id,'u_c_id'=>$u_c_id))}{:C('HTML_URL_SUFFIX')}" target="_blank">查看并预约</a>
+	   
+	   
+	   </td>
+     </tr>
+     </volist>
+   </table>
+ </div>
+ </div>
+ </volist>
+<div>{$page}</div>
+</div>
+<style type="text/css">
+	#dialogmap{display:none; position:absolute; width:520px; height:340px;}
+	#containermap{width:520px; height:340px;}
+	#closeDialog{text-align:right; background-color:#F5F5F5; cursor:pointer; padding:5px 5px 5px 0px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+ 
+<script type="text/javascript">
+						$(function(){ 
+							$(".point").click(function(){
+								//$("#dialogmap").openDialog();
+								popup();
+								 var map = new BMap.Map("containermap");
+					 			 var lng=$(this).attr('lng');
+								 //var lat=$(this).attr('lat');
+								 arr=lng.split(',');//分割
+									
+								 var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+								 //alert(lng);
+								 var text=$(this).attr('desc');
+								 var textArr=text.split('^^');
+								 map.centerAndZoom(point,15);
+								 map.addControl(new BMap.NavigationControl());
+								 map.addControl(new BMap.MapTypeControl());
+								 map.addControl(new BMap.ScaleControl());
+								 map.addControl(new BMap.OverviewMapControl());
+								 addMarker(point);
+								 function addMarker(point)
+								 {
+									var html='';
+									for(var i=0;i<textArr.length;i++)
+									{
+										html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+									}
+								 	var marker = new BMap.Marker(point);  // 创建标注
+ 								 	map.addOverlay(marker);              // 将标注添加到地图中
+									var infoWindow = new BMap.InfoWindow(html);
+									marker.openInfoWindow(infoWindow);
+									
+								  }	 
+							   });
+
+
+							   
+})
+</script>
+<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>
+</div>
+<div class="col-all">       
+
+<!--汽车社区汽车通-->
+<div class="col-all">
+	
+</div>
+</div>
+</div>

@@ -1,0 +1,119 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script>
+	function delete_sale(id){
+		$.ajax({
+			type:'POST',
+			url:'__URL__/delete_sale',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+	<!-- 主体内容  -->
+	<div class="content" >
+	<div class="title">销售明细</div>
+	
+	<div class="operate">
+		 <form action="__URL__" method="post" >
+			类别：<select name="super_cate">
+					<option value="0">请选择类别</option>
+					<option value="1" <eq name="super_cate" value="1">selected</eq>>机油</option>
+					<option value="2" <eq name="super_cate" value="2">selected</eq>>机滤</option>
+					<option value="3" <eq name="super_cate" value="3">selected</eq>>空气滤清器</option>
+					<option value="4" <eq name="super_cate" value="4">selected</eq>>空调滤清器</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			销售<select name="sale_price">
+					<option value="0">请选择类别</option>
+					<option value="2" <eq name="sale_price" value="0">selected</eq>>未销售</option>
+					<option value="1" <eq name="sale_price" value="1">selected</eq>>已销售</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			仓库状态<select name="store_status">
+					<option value="0">请选择</option>
+					<option value="1" <eq name="store_status" value="1">selected</eq>>未入库</option>
+					<option value="2" <eq name="store_status" value="2">selected</eq>>入库</option>
+					<option value="3" <eq name="store_status" value="3">selected</eq>>出库</option>
+					<option value="4" <eq name="store_status" value="4">selected</eq>>退货未退款</option>
+					<option value="5" <eq name="store_status" value="5">selected</eq>>退货已退款</option>
+			</select>
+			<input type="submit" value="搜索">
+		</form> 
+	</div>
+	<div class="list">
+		<table class="list">
+			<tr class="row">
+				<th align=center>采购批次号</th>
+				<th align=center>销售订单号</th>
+				<th align=center>商品名称</th>
+				<th align=center>供应商</th>
+				<th align=center>类别</th>
+				<th align=center>规格</th>
+				
+				<th align=center>数量</th>
+				<th align=center>采购价格</th>
+				<th align=center>销售价格</th>
+				<!--  <th align=center>库存状态</th>-->
+				<th align=center>业务日期</th>
+				<th align=center>备注</th>
+				<th align=center>操作</th>
+			</tr>
+			<volist name="list" id="vo">
+				<tr>
+					<td align=center>{$vo.s_id}</td>
+					<td align=center>{$vo.order_id}</td>
+					<td align=center>{$vo.name}</td>
+					<td align=center>{$vo.supplier}</td>
+					<td align=center>
+						<switch name="vo.super_cate">
+					    	<case value="1">机油</case>
+					    	<case value="2">机滤</case>
+					    	<case value="3">空气滤清器</case>
+					    	<case value="4">空调滤清器</case>
+					    </switch>
+					</td>
+					<td align=center>{$vo.norms}</td>
+					<td align=center>{$vo.num}</td>
+					<td align=center>{$vo.price}</td>
+					<td align=center>{$vo.sale_price}</td>
+					<!-- <td align=center>
+						<switch name="vo.store_status">
+					    	<case value="1">未入库</case>
+					    	<case value="2">入库</case>
+					    	<case value="3">出库</case>
+					    	<case value="4">退货未退款</case>
+					    	<case value="5">退货已退款</case>
+					    </switch>
+					</td>-->
+					<empty name="vo.update_time">
+						<td align=center>{$vo.create_time|date="y-m-d",###}</td>
+					<else />
+						<td align=center>{$vo.update_time|date="y-m-d",###}</td>
+					</empty>
+					<td align=center>{$vo.remark}</td>
+					<td align=center><a href="__APP__/Storehouse/Storehouseitem/edit/id/{$vo.id}">编辑</a>&nbsp;&nbsp;<a onclick="showlog('storehouseitem',{$vo.id})" href="javascript:void(0);">查看日志</a></td>
+				</tr>
+			</volist>
+			<tr>
+				<td colspan="4">{$page}</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+</div>

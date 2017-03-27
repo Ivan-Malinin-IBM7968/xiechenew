@@ -1,0 +1,144 @@
+/* 4S团购首页*/
+*{margin: 0; padding: 0;}
+
+.filter{background: #f1f1f1; height: auto; font-size: 12px;}
+.filter dl{display: block; width: 810px; height: 25px; padding: 0 10px;line-height: 25px;}
+.filter dl dt, .filter dl dd{float: left; margin-right: 10px;}
+.filter dl a{padding: 2px 4px; color: #0c314c}
+.filter dl dd.current a, .filter dl a:hover{background: #0c314c; color: white;}
+
+.sales-con{height: auto; display: block; padding: 20px 0px;  text-align: justify; width: 850px;}
+.sales-con li{display: inline; width: 405px; height: 435px; float: left; margin: 20px 20px 0px 0px;  overflow: hidden; /* background: url('../images/sale-single-bg.png') 0 0 no-repeat; background: red;*/}
+.sales-con li .img-con{width: 405px; height: auto; position: relative; }
+.sales-con li .img-con .address{background: rgba(0,0,0,.6); width: 252px; height: 30px; position: absolute; left: 0 ; bottom: 0}
+.sales-con li .img-con .address strong{background: url('../images/sprite.png') 0 -560px no-repeat;padding-left: 27px; color: #ffffff; font-size: 11px; display: block; width: 225px; height: 30px; line-height: 34px;}
+.sales-con li .img-con img{display: block; width: 405px; height: auto;}
+.sales-con li .content{ margin-top: 5px;  width: 405px; height: 125px; position: relative; }
+.sales-con li .content h5{color: #009dd7; font-size: 23px; font-weight: bolder; width: 405px; height: 25px; line-height: 24px; overflow: hidden;}
+.sales-con li .content span{display: block; width: 405px; font-size: 17px; color: #777777; margin: 5px 0px;}
+.sales-con li .content span a{color: #133879}
+.sales-con li .content span a:visited{color: #133879}
+.sales-con li .content span a:hover{text-decoration: underline;}
+.price{position: absolute; bottom: 0px; left: 0; color: #777777; width: 150px; height: 50px;}
+.orange{color: #ff6600; font-size: 26px; font-weight: bolder;}
+.price em{text-decoration: line-through; font-size: 16px;}
+.bought{position: absolute; bottom: 11px; right: 5px; width: 70px; height: 30px; font-size: 11px; color: #777777;}
+
+
+/* 4S优惠券详情页面 */
+.ticket{height: 380px;}
+.ticket .title{font-size: 22px; color: #000000; font-weight: bold; padding: 8px 0;}
+.ticket .ticket-con{height: 350px; }
+.ticket .ticket-info .img-con{width: 450px; height: 338px; float: left;}
+.ticket .ticket-info .info-con{width: 360px; height: 338px; float: right; background: #f4f4f4}
+.info-con .f-price em{font-size: 16px; color: #777777}
+.info-con .f-price{width: 360px; height: 80px; color: #ff7811; text-align: center; line-height: 80px; font-size: 40px;border-bottom: 1px solid #dadada}
+.info-con .f-price span{ font-size: 16px; text-decoration: line-through; color: #777777}
+.info-con .add-info{width: 360px; height: 70px; background: url('../images/sprite.png') -556px -515px no-repeat;border-top: 1px solid #ffffff}
+.info-con .add-info2{width: 360px; height: 60px; margin-top: 20px; border-bottom: 1px solid #dadada}
+.info-con .add-info2 span{display: block; width: 360px; text-align: center; margin: 5px 0; font-size: 14px; color: #777777 }
+.info-con .add-info2 span.yg strong{color: #ff7811; font-size: 20px;}
+.info-con .add-info2 span.ad{}
+.info-con .buy-ticket{border-top: 1px solid #fff; height: 70px; width: 360px; }
+.info-con .buy-ticket a{display: block; width: 160px; height: 50px; margin: 0 auto; line-height: 50px; background: #ff7811;  margin-top: 20px;text-align: center; font-size: 20px; color: white}
+.info-con .buy-ticket a:hover{color: white;}
+.info-con .buy-ticket a span{font-size: 26px;font-weight: bold;}
+.info-con .buy-ticket a span:hover{color: white;}
+
+.dp{width: 830px; height: 50px; line-height: 50px; color: #777; background: #f1f1f1; font-size: 13px;}
+.dp h4{display: inline-block;}
+
+.table-con{width: 830px; height: auto;  font-size: 12px; margin-top: 20px;}
+.table-con .category{display:block; width: 930px; height: 30px; line-height: 30px; background: #effaff; padding-left: 20px; font-size: 13px; font-weight: bold;;}
+.table-con .filter{ width:940px; height: 30px; line-height: 30px; padding-left: 10px;}
+.table-con .filter li{float: left; font-size: 14px;padding: 0 8px;}
+.table-con .filter li a{color:#777777;}
+.table-con .filter li a:visited{color: #777777;}
+.table-con .filter li a:hover{color: #000000}
+.table-con .filter li a.current{color: #000000;}
+
+.table-con {text-align: center; font-size: 13px;}
+.table-con tr{background: #ffffff}
+.table-con tr.bg-blue{background: #effaff;}
+.table-con th{height: 20px;background: #f1f1f1;line-height: 20px; font-size: 12px;}
+.table-con td{height: 35px;line-height: 35px;vertical-align: middle;border-bottom: 1px dashed #d8d8d8;}
+.table-con tr.no-border-bottom td{border-bottom: 0;}
+.table-con td a{color: #6795d9; }
+.table-con td a:visited{color: #6795d9}
+.table-con td a:hover{text-decoration: underline;}
+
+.ticket-detail{margin-top: 20px;}
+.article{width:788px;height:auto;padding:15px 20px 30px 20px;position: relative;}
+.article h4{display:block;height:42px;line-height:40px;color: #008bd0;font-size: 16px;font-weight: 700;text-align: left}
+.article p{color: #000000;font-size: 13px;line-height: 2;margin: 10px auto;padding: 0 20px;text-indent: 2em;}
+.article img{border: 1px solid #333333;clear: both;display: block;margin: 0 auto;}
+.article div.articleLink{color:#647da5;width:320px;height:20px;line-height:20px;position:absolute;bottom:24px;right:10px; font-size: 13px;}
+.article div.articleLink a{color:#647da5; }
+.article div.articleLink a:visited{color:#647da5;}
+.article div.articleLink a:hover{text-decoration:underline}
+.article div.articleLink div.left{float:left;width:320px;height:20px;}
+.article .shop-info{width: 740px; height: auto; padding: 10px; border: }
+.article .shop-info .shop-image-container{ width: 220px; height: 150px; position: relative; overflow: visible; padding-top:10px; float:left;}
+.article .shop-info .shop-image{display: block; width:200px; height: 150px;}
+.article .shop-info .speacial-banner{display: block; width: 100px; height: 100px; position:absolute; background: url('../images/sprite.png')  4px -88px no-repeat; top: 0; right: 0;}
+.article .info{float: left; padding:10px 0 0 10px;color: #008bd0; width: 460px;height:165px; overflow: hidden;}
+.article .info .shop-name{font-size: 18px; text-align: left; color: #008bd0;}
+.article .info .shop-rating{ margin-top: 5px;}
+.article .info .shop-rating span{display: inline-block; width: 65px; height: 12px; background: url('../images/rating-sprite.png') 0 0 no-repeat;margin-top: 4px;}
+.article .info .shop-rating strong{padding-left: 6px; font-size: 16px; color:#f7921a; font-style: italic; line-height: 12px; }
+.article .info .info-list{display: block;color:#9a9a9a; margin-top: 5px; font-size: 13px; width: 400px;height: auto;}
+.article .info .info-list li{display: block;margin: 4px 0; padding:  5px 0 3px 20px;}
+.article .info .info-list li.comment{background: url('../images/sprite.png') -100px -80px no-repeat;}
+.article .info .info-list li.comment a{color: #00b0f2;}
+.article .info .info-list li.comment a:visited{color: #00b0f2;}
+.article .info .info-list li.comment a:hover{color:#cc3300;}
+.article .info .info-list li.phone{background: url('../images/sprite.png') -100px -100px no-repeat}
+.article .info .info-list li.address{background: url('../images/sprite.png') -100px -120px no-repeat}
+
+.article p span strong, .article p strong span{color: #ec5100; font-size: 18px; }
+
+/*Buy Coupon*/
+.info-h3{color: #000; padding: 10px 0 10px 10px;  font-size: 15px; font-weight: bolder; border-bottom: 3px solid #00b4f8;}
+.buy-coupon.table-con{width: 780px; height: auto; min-height: 110px; margin-top: 0px;  padding-bottom: 10px;}
+.total-price-con{width:780px; height: 60px; line-height: 60px; position: relative;}
+.change-mobile{widows: 300px; height: 22px; line-height: 22px; position: absolute; left:0; bottom: 0;}
+.buy-coupon .total-price{position: absolute; bottom: 0px; right: 200px;display: block; width: 200px; height: 44px; line-height: 44px;}
+.total-price em{font-size: 14px; color: #777777; margin-right: 5px;}
+.total-price strong{font-size: 24px;color: #B91919}
+.buy-coupon table{ width: 778px; height: auto; }
+.buy-coupon table tr td{height: 50px; line-height:50px;}
+.curr-price{color: #B91919; font-size: 15px;}
+.change-num{width: 150px; margin:0 auto; height: 50px; line-height: 50px; overflow: hidden; position:relative;}
+.change-input{width: 60px; height: 28px; line-height: 30px; font-size: 16px;text-align: center; display: inline-block; border: 1px solid #bcbcbc; position: absolute; left: 44px; top: 10px; }
+.buy-coupon.table-con a.cut{position: absolute; left:10px; top: 10px;}
+.buy-coupon.table-con a.add{position: absolute; right:10px; top: 10px;}
+.buy-coupon.table-con a.change-action{display: inline-block; width: 30px; text-decoration: none; height: 28px; line-height: 30px; text-align: center; background: #f1f1f1;font-size: 20px;color:#000000; border: 1px solid #bcbcbc; color: #000000; font-weight: bold;}
+.buy-coupon.table-con a.change-action:visited{color: #000000;}
+.buy-coupon.table-con a.change-action:hover{text-decoration: none; background: #bbb; color: #ffffff;}
+.prev-price{color: #777777; text-decoration: line-through;}
+.other-coupon .price{color: #cc6600;position: relative; bottom: 0px;}
+.datail-con{font-size: 13px;margin-top: 10px}
+.datail-con .detail-trigger{display: inline-block; height: 20px; line-height: 20px; color:#00B4F8;}
+.detail-trigger:hover{color: #cc3300;}
+.coupon-datail{margin-top: 20px;}
+.coupon-detail p{padding: 5px 10px; line-height: 18px;}
+.detail-trigger{}
+.detail{padding: 10px; background: #effaff;}
+.detail h4{font-size: 16px;margin-bottom: 5px;}
+.detail h4 a{color:#00B4F8;}
+.detail h4 a:visited{color: #00B4F8}
+.detail h4 a:hover{color: #0066cc;}
+.pay-btn{width: 100px; height: 50px; display: block; position: absolute; right: 0px; bottom: 0px;}
+.pay-btn .submit{display: block; width: 80px; height: 30px; line-height: 30px; background: #FF7811; border: none; color: #ffffff;margin-top: 10px; cursor: pointer;}
+.pay-btn-cft{width: 210px; height: 50px; display: block; position: absolute; right: 0px; bottom: 0px;}
+.pay-btn-cft a{display: block; float: left; margin-right: 5px; width: 100px; height: 40px; font-size: 16px; letter-spacing: 1px; line-height: 40px; background: #FF7811; border-radius: 10px;}
+.pay-btn-cft .submit{   border: none; color: #ffffff;margin-top: 10px; cursor: pointer;}
+
+.pay-con{width: 780px; height: 60px; line-height: 60px; position: relative; font-size: 13px; }
+
+.ticket-detail .article {/*border: 1px solid #aaa;*/ font-size: 13px;padding-top:  15px;}
+.ticket-detail .article p{ color: black; font-size: 12px; line-height: 18px; margin: 0; padding: 0; text-indent: 0; text-align: left; margin-top: 10px}
+.ticket-detail .article img{margin: 0; text-align: left;}
+.ticket-detail .article table{border-collapse:collapse; border-spacing: 0}
+.ticket-detail .article table, .ticket-detail .article table td, .ticket-detail .article table td p{background: #effaff; text-align: center; font-size:13px; }
+.ticket-detail .article table td{border: 1px solid #aaa; }

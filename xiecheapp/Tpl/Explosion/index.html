@@ -1,0 +1,298 @@
+
+<!doctype html>
+<html>
+	<head>
+	    <title>携车网-养车3折团</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/reset.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/main.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/app.css">
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.js"></script>		
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.mobile-1.4.2.min.js"></script>
+		<script src="http://event.xieche.com.cn/20140620/js/libs/wechatapi.js"></script>
+	</head>
+	
+</head>
+	<body style="background: #f5f5f5;">
+		<div id="wrapper">
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				
+				<!-- Header Start -->
+				<header id="header" data-role="header" data-title="携车网-养车3折团">
+					<h1 style="padding: 0px; width: 50%; text-align: center; margin: 0 auto;">携车网-养车3折团</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+						<a href="" id="site-logo"></a>
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<!-- Header End -->
+				<div class="ui-grid-solo main-banner-container" style="">
+					<!-- <a href="" style="display: block; margin: 0px; padding: 0px;">
+						<img src="http://event.xieche.com.cn/20140620/images/main-title.jpg" alt="" width="100%" style="width: 100%; display:block;">
+					</a> -->
+					<div class="ui-grid-solo main-title" style="margin: 0px;">跨品牌养车 品质不打折 价格3折起</div>
+					
+				</div>
+				<div class="ui-grid-solo main-title-desc">
+					
+					<p>跨品牌养车是携车网为打破4S店售后品牌垄断、为车主养车提供最大实惠的创新养车方式。很多车型虽然品牌不同，但共用动力总成，保养零配件也通用，跨品牌保养价格能降一半多，但服务却是不打折的原厂品质，与到本品牌4S店养车无本质区别。</p>
+				</div>
+				<!-- <div class="ui-grid-solo more-coupon-link" style="background: #ddd; padding: 20px 0px;">
+		   		
+
+					<a href="http://www.xieche.com.cn/Explosion-playground" data-ajax="false" id="go-checknow"  rel="external" style="display: block; background: #0066cc; margin: 0 auto; font-size: 1.2em" target="_blank">价格有多低 你猜我就送</a>
+
+
+		   		</div> -->
+				<div class="index-cate-title">底价保养券</div>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+
+					<volist name="coupon" id="list">
+				        <li class="ui-grid-a single-coupon" style="">
+							<div class="ui-block-a" style="width: 35%">
+								<img src="/UPLOADS/Coupon/Logo/{$list.coupon_pic}" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" style="margin-bottom: 5px;" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">{$list.coupon_name}</h3>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥{$list.coupon_amount}元</strong>
+										<em>¥{$list.cost_price}</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="__APP__/Mobile-coupon_detail-coupon_id-{$list.id}-dztype-1" class="buy-btn disable" rel="external">购买</a>
+									</div>
+								</div>					
+							</div>
+				        </li>
+				      </volist>
+				    </ul>
+				</div>
+				<div class="ui-grid-solo more-coupon-link" style="background: #ddd; padding: 20px 0px;">
+		   			<a href="/Explosion-coupon_list"  rel="external" style="display: block; background: #0066cc; margin: 0 auto; font-size: 1.2em">更多优惠券选择</a>
+		   		</div>
+				
+		   		<!-- <div class="index-cate-title">活动期间驻店模特</div>
+		   		<div class="index-cate-desc">
+		   			7月2日至7月8日,凡通过携车网预约或购买产品的用户，致电 <a href="tel:400-660-2822">400-660-2822</a> 提前两天预约，就可享受车模全程接待! 
+		   		</div>
+		   		<ul class="model-list">
+		   			<!-- 
+						
+						上海协通别克4s店                nami
+						上海绅协绅起起亚4s店         萌晰
+						上海华星鸿捷大众4s店         曦曦
+						上海国信丰田4s店               妖精
+						上海锦江通永别克4s店        Cherry
+						上海协通众盛大众4s店        姗姗
+						上海虹湾大众4s店              小辰
+						上海联通新悦起亚4s店        团子
+
+		   			 -->
+		   		<!--<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/01_nami.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">Nami</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-298-dztype-1#sale-promo" rel="external" title="上海协通别克4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+		   			<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/萌晰.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">萌晰</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-129-dztype-1#sale-promo" rel="external" title="上海绅协绅起起亚4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+					<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/曦曦.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">曦曦</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-1364-dztype-1#sale-promo" rel="external" title="上海华星鸿捷大众4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+					<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/妖精.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">妖精</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-65-dztype-1#sale-promo" rel="external" title="上海国信丰田4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+					<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/Cherry.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">Cherry</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-299-dztype-1#sale-promo" rel="external" title="上海锦江通永别克4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+					<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/姗姗.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">姗姗</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-356-dztype-1#sale-promo" rel="external" title="上海协通众盛大众4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+					<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/小辰.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">小辰</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-64-dztype-1#sale-promo" rel="external" title="上海虹湾大众4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+					<li class="single-model">
+		   				<div class="ui-grid-solo">
+		   					<img src="http://event.xieche.com.cn/20140620/images/ms/团子.jpg" alt="" style="width: 100%;">
+		   				</div>
+		   				<div class="ui-grid-a">
+		   					<div class="ui-block-a model-name">团子</div>
+		   					<div class="ui-block-b model-get">
+		   						<a href="/Mobile-shop_detail-shop_id-83-dztype-1#sale-promo" rel="external" title="上海联通新悦起亚4s店"> ❤ 选她为我服务</a>
+		   					</div>
+		   				</div>
+		   			</li>
+		   		</ul>-->
+		   		
+
+
+		   		<!-- <div class="index-cate-title">活动规则</div>
+		   		<ul class="event-rule">
+		   			<li>
+		   				<span>1</span>
+		   				凡通过携车网预约或购买产品的用户，致电 <a href="tel:400-660-2822">400-660-2822</a> 提前两天预约，就可享受车模全程接待
+		   			</li>
+		   			<li>
+		   				<span>2</span>
+		   				通过携车网预约车模接待的用户，均可获得小礼品一件。
+		   			</li>
+		   			<li>
+		   				<span>3</span>
+		   				活动时间：7月2日至7月8日
+		   			</li>
+		   		</ul>-->
+			</div> 
+			
+			<!-- Main Page End -->
+		</div>
+		<include file="Public:wapfoot" />
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+
+		/*$("#go-checknow").on("click", function(e){
+			e.preventDefault();
+			alert("GO! Check Now!");
+			window.open("", "_blank")
+		})*/
+
+	</script>
+	<script>
+		$( document ).on( "mobileinit", function() {
+			$.mobile.linkBindingEnabled = false;
+			$.mobile.hashListeningEnabled = false;
+			
+		});
+
+
+		function weixinShareTimeline(title,desc,link,imgUrl){  
+		    WeixinJSBridge.invoke('shareTimeline',{  
+		        "img_url":imgUrl,  
+		        //"img_width":"640",   
+		        //"img_height":"640",   
+		        "link":link,  
+		        "desc": desc,  
+		        "title":title  
+		    });   
+		} 
+		
+		WeixinApi.ready(function(Api) {
+
+		        // 微信分享的数据
+		        var wxData = {
+		            "appId": "wx43430f4b6f59ed33", // 服务号可以填写appId
+		            "imgUrl" : 'http://event.xieche.com.cn/20140620/images/main-title.jpg',
+		            "link" : "http://www.xieche.com.cn/Explosion",
+		            "desc" : '用快修店的价格享受4S店的保养服务，更有模特全程接待陪同',
+		            "title" : '携车网：保养三折起，养车更养眼'
+		        };
+
+		        // 分享的回调
+		        var wxCallbacks = {
+		            ready : function() {
+		               
+		                
+		            },
+		            cancel : function(resp) {
+		              
+		                
+		            },
+		            fail : function(resp) {
+		               
+		                
+		            },
+		            confirm : function(resp) {
+		               
+		                 
+		            },
+		            all : function(resp) {
+		               
+		               
+		            }
+		        };
+
+		        // 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
+		        Api.shareToFriend(wxData, wxCallbacks);
+
+		        // 点击分享到朋友圈，会执行下面这个代码
+		        Api.shareToTimeline(wxData, wxCallbacks);
+
+		        // 点击分享到腾讯微博，会执行下面这个代码
+		        Api.shareToWeibo(wxData, wxCallbacks);
+
+		        // 有可能用户是直接用微信“扫一扫”打开的，这个情况下，optionMenu、toolbar都是off状态
+		        // 为了方便用户测试，我先来trigger show一下
+		        // optionMenu
+		    });
+
+	</script>
+	</body>
+</html>

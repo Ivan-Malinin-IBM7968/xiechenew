@@ -1,0 +1,162 @@
+<layout name='layout_new' />
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script src="__PUBLIC__/Js/area/area.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<style>
+    .login-box{
+
+    }
+
+    .login-box1 label{
+
+    }
+
+    .login-ul{
+        padding-top: 20px;
+    }
+    
+    .login-ul li{
+        display: inline-block;
+        width: 780px;
+        height: 35px; 
+        line-height: 35px;
+        margin-bottom: 4px;
+    }
+    
+    .login-ul li label{
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        text-align: right;
+        float: left;
+        overflow: hidden;
+    }
+
+    .login-ul li input{
+        display: inline-block;
+        width: 250px;
+        height: 19px;
+        line-height: 19px;
+        float: left;
+    }
+    
+    .xy{
+        margin: 0;
+        padding: 0;
+    }
+    td{height: 40px; line-height: 40px;}
+</style>
+
+<script>
+
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+})
+</script>
+<div id="wddd-right" style="width: 1200px; margin: 20px auto; font-si">帐户信息完善</div>
+<div id="wddd-right2" style="border: 0px solid #CCCCCC;">
+<div class="yuyuebox uc-inner">
+				
+				<form action="__APP__/member/save" method="post">
+					
+					<table width="60%" border="0" align="center" cellpadding="1" cellspacing="9" style="margin-left:205px;">
+						<input type="hidden" name="uid" value="{$uid}"/>
+						<input type="hidden" name="brand_id" id="brand_id" value="{$r_data.brand_id}" /> 
+						<input type="hidden" name="series_id" id="series_id" value="{$r_data.series_id}" /> 
+						<input type="hidden" name="model_id" id="model_id" value="{$r_data.model_id}" />
+						<tr align="left">
+							<td  height="30" valign="middle" >用&nbsp;户&nbsp;名&nbsp;：
+								<input name="username" id="username" type="text" class="w3 inp01" value="{$r_data.username}" />
+								<font color=red><b>*</b></font><span id="check_username" class="check_register"></span>
+							</td>
+						</tr>
+						<tr align="left">
+							<td height="30" valign="middle" >邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
+								<input type="text" name="email" id="email" class="w3 inp01" value="{$r_data.email}" /><font color=red><b>*</b></font>
+								<span id="check_email" class="check_register"></span>
+							</td>
+						</tr>
+
+						<notpresent name="Think.session.mobile">
+						<tr align="left">
+							<td height="30" valign="middle">手机号码：
+								<input type="text" name="mobile" id="mobile" class="w3 inp01"value="{$r_data.mobile}"/>
+								<font color=red><b>*</b></font><span id="check_mobile" class="check_register"></span>
+							</td>
+						</tr>
+						</notpresent> 
+						<!--
+						<tr align="center">
+							<td width="20%" height="30" valign="middle" >重置密码</td>
+							<td width="60%" align="center" valign="middle" >
+								<notpresent name="Think.session.mobile">,手机号确认订单信息用</notpresent>
+							</td>
+						</tr>
+						-->
+						<tr align="left">
+							<td width="20%" height="30" valign="middle" >选择城市：
+								<select location="loc" label="省" name="prov"></select> 
+								<select location="loc" label="市" name="city"></select> 
+								<select location="loc"label="区" name="area"></select>
+							</td>
+							
+						</tr>
+						<tr align="left">
+							<td  height="30" valign="middle">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：
+								<select id="get_brand" name="brand_id" onchange="comp_brlist('get_brand','get_series', 'get_model');">
+							</td>
+						</tr>
+						<tr align="left">
+							<td width="20%" height="30" valign="middle" >车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：
+								<select id="get_series" name="series_id" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');"></select>
+							
+							</td>
+						</tr>
+						<tr align="left">
+							<td width="20%" height="30" valign="middle" >车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：
+								<select id="get_model" name="model_id" disabled><option value="0">请选择车型</option></select>
+							</td>
+						</tr>
+						<tr align="left">
+							<td width="20%" height="30" valign="middle">车的昵称&nbsp;：<input type="text" name="car_name" value="{$r_data.car_name}" /></td>
+						</tr>
+						<tr align="left">
+							<td width="20%" height="30" valign="middle" >验&nbsp;证&nbsp;码&nbsp;：
+							<input type="text" class="small bLeftRequire w3 inp01"
+							check="Require" warning="请输入验证码" name="verify"> <img
+							id="verifyImg" SRC="__APP__/common/verify/" onClick="fleshVerify()"
+							BORDER="0" ALT="点击刷新验证码" style="cursor: pointer" align="absmiddle"></td>
+							
+						</tr>
+						<tr >
+							<td height="30" valign="middle" >
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="submit"
+						style="width: 80px; height: 30px; line-height: 30px; font-size: 14px; font-weight: bold;"
+						class="button-default" value="提交" /></td>
+							
+						</tr>
+
+					</table>
+						<br>
+				<div class="form-footer">
+				</div><br>
+				
+			</div>
+</div>
+
+
+<script type="text/javascript">
+	comp_fctlist("get_brand", "get_series", "get_model",{$r_data.brand_id},{$r_data.series_id},{$r_data.model_id});
+</script>
+

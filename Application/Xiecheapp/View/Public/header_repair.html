@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        <notempty name="title">{$title}
+            <else/>
+            携车网,汽车保养维修预约,4S店折扣优惠,事故车维修预约
+        </notempty>
+    </title>
+    <empty name="meta_keyword">
+        <meta content="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修" name="keywords">
+        <else/>
+        <meta content="{$meta_keyword}" name="keywords">
+    </empty>
+    <empty name="description">
+        <meta content="汽车保养维修,事故车维修-首选携车网,全国唯一4S店汽车保养维修折扣的网站,最低5折起,还有更多团购套餐任您选,事故车维修预约,不花钱,还有返利拿4006602822"
+              name="description">
+        <else/>
+        <meta content="{$description}" name="description">
+    </empty>
+
+    <link type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="__PUBLIC__/css/common.css" rel="stylesheet">
+    <link type="text/css" href="__PUBLIC__/css/header_new.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="__PUBLIC__/jquery/jquery.min.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="header_new">
+    <div class="head_content">
+        <div class="logo fl"><a href="/"><img src="__PUBLIC__/images/index_new/logo2.png"></a></div>
+        <div class="city2 fl">
+            <p>{$new_city_name}</p>
+            <p><a href="/Public/city">[切换城市]</a></p>
+        </div>
+        <div class="model fr">
+            <div class="binds"> {$carName}&nbsp;&nbsp;
+                <a href="javascript:;" class="car-select">
+                    <empty name="choseCar">修改车型
+                        <else/>
+                        车型绑定
+                    </empty>
+                </a>
+                &nbsp;|&nbsp;
+                <empty name="username"><a href="/Public/login">登录 / 注册</a>
+                    <else/>
+                    <a href="/myhome">{$username}</a> <a href="/public/logout">退出</a></empty> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>400-660-2822</b></div>
+            <div class="select">
+                <div class="fl" id="menu_f">
+                    <ul>
+                        <li id="#item1" class="fl li_style"><a href="/">首页</a></li>
+                        <li  class="fl bg">|</li>
+                        <li id="#item2" class="fl left2 li_style"><a href="/carservice" onclick="checkCar('/carservice');return false;">养车</a></li>
+                        <li class="fl bg">|</li>
+                        <eq name="new_city_name" value="上海"> <li id="#item3" class="fl left2 li_style line2"><a href="/shiguche">修车</a></li>
+                            <li class="fl bg">|</li></eq>
+
+                        <li id="#item4" class="fl left2 li_style"><a href="/ask">提问</a></li>
+                        <li class="clearf"></li>
+                    </ul>
+                </div>
+                <eq name="new_city_name" value="上海">
+                    <div class="fr">
+                        <div class="search">
+                            <form action="/shopservice/index" method="get">
+                                <input type="text" name="k" class="search_input" placeholder="输入4S店铺">
+                                <input type="submit" value="" class="search_sub" class="fl">
+                            </form>
+                        </div>
+                    </div>
+                </eq>
+                <div class="clearf"></div>
+            </div>
+        </div>
+        <div class="clearf"></div>
+    </div>
+</div>
+<div class="kong"></div>

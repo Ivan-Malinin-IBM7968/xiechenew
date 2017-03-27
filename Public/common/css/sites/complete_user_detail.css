@@ -1,0 +1,17 @@
+/*用户注册后信息补完页面*/
+a{font-size: 14px; color: #195cbc; }
+a:visited{ color: #195cbc}
+a:hover{text-decoration: underline;}
+.form-container{width: 720px; height: 800px; margin: 0 auto;}
+.form-container .fillin-sign{float: left; width: 20px; height: 50px; line-height: 50px; display: inline-block; color: #e60012}
+.form-container .row{float: left; width: 560px; height: 60px; line-height: 60px; font-size: 16px;}
+.form-container .row label{ float: left; width: 90px; display: inline-block; height: 50px; line-height: 50px; text-align: left;}
+.form-container .row .input-field{float: left; height: 48px; padding: 0px 10px; line-height: 50px; border: 1px solid #bdbcbc; font-size: 14px; width: 300px; }
+.form-container .row .form-select{ float: left;width: 322px; height: 48px; line-height: 48; display: inline-block; background: #ffffff; border: 1px solid #bdbcbc; border-radius: 0px; font-size: 14px; }
+.form-container .row .form-select option{height: 30px; line-height: 30px; font-size: 14px; display: block; background: #f1f1f1;}
+#img-code{cursor: pointer;}
+#refreshCode{cursor: pointer; font-size: 14px; color: #195cbc; text-decoration: none;}
+#refreshCode:visited{}
+#refreshCode:hover{text-decoration: underline;}
+
+.row .verify-code .input-field{ float: left; width: 120px; }

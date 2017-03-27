@@ -1,0 +1,167 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">机油管理</div>
+
+<div class="operate">
+  <div class="impBtn hMargin fLeft shadow"><input type="button" id="" name="add" value="新增" onclick="add()" class="add imgButton"></div>
+   <form method="post" ACTION="__URL__">
+  	<label for="name">名称:</label>
+  	<input type="text" name="name" />
+  	<input type="submit" value="搜索" />
+  </form>
+</div>
+
+<!-- 列表显示区域  -->
+<div class="list" >
+<table class="list">
+<tr class="row">
+
+<th>编号</th>
+<th>名称</th>
+<th>类别</th>
+<th>规格</th>
+<th>价格</th>
+<th>操作</th>
+
+</tr>
+
+<tr>
+  <foreach name="oil_list" item="oil">
+    <tr id="oil_{$oil.id}">
+      <td>{$oil.id}</td>
+      <td>
+          <input id="name_{$oil.id}" value="{$oil.name}"/>
+           二维码： <input id="code_{$oil.id}" value="{$oil.code}">
+            <a href="javascript:void(0);" onclick="if( confirm('确定绑定吗?') ){ bindcode({$oil.id}) }"> 绑定二维码 </a>
+      </td>
+      <td>
+        <select id="type_{$oil.id}">
+          <option value='0'>油品类型</option>
+          <if condition="$oil.type eq 1">
+            <option value='1' selected='selected'>矿物油</option>
+          <else/>
+            <option value='1'>矿物油</option>
+          </if>
+          <if condition="$oil.type eq 2">
+            <option value='2' selected='selected'>半合成油</option>
+          <else/>
+            <option value='2'>半合成油</option>
+          </if>
+          <if condition="$oil.type eq 3">
+            <option value='3' selected='selected'>全合成油</option>
+          <else/>
+            <option value='3'>全合成油</option>
+          </if>
+      </td>
+      <td><input id="norms_{$oil.id}" value="{$oil.norms}"/>&nbsp;L</td>
+      <td><input id="price_{$oil.id}" value="{$oil.price}"/>&nbsp;元</td>
+      <td>
+        <a href="javascript:void(0);" onclick="if( confirm('确定要修改吗?') ){ edit_oil({$oil.id}) }">修改</a>
+        <a href="javascript:void(0);" onclick="if( confirm('确定要删除吗?') ){ del_oil({$oil.id}) }">删除</a>
+
+      </td>
+    </tr>
+  </foreach>
+</tr>
+</volist>
+</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script>
+//编辑物品
+function edit_oil(_item_id){
+  var _name=$('#name_'+_item_id).val();
+  var _type=$('#type_'+_item_id).val();
+  var _norms=$('#norms_'+_item_id).val();
+  var _price=$('#price_'+_item_id).val();
+  var _code=$('#code_'+_item_id).val();
+   
+  $.ajax({
+    url: '__APP__/Carservice/Oilconfig/ajax_edit_oil',
+    type: 'POST',
+    data:{ id:_item_id,name:_name,type:_type,norms:_norms,price:_price,code:_code},
+    dataType: 'json',
+    //timeout: 1000,
+    error: function(){
+      alert('系统繁忙!');
+      return false;
+    },
+    success: function( data ){
+      data = data.data;
+      if(data.errno == '0'){
+        alert(data.errmsg);
+        return true;
+      }
+    }
+  });
+}
+function del_oil(_item_id){
+  $.ajax({
+    url: '__APP__/Carservice/Oilconfig/ajax_del_oil',
+    type: 'POST',
+    data:{ id:_item_id},
+    dataType: 'json',
+    timeout: 1000,
+    error: function(){
+      alert('系统繁忙!');
+      return false;
+    },
+    success: function( data ){
+      data = data.data;
+      if(data.errno == '0'){
+        $("#oil_"+_item_id).remove();
+        alert(data.errmsg);
+        return true;
+      }
+    }
+  });
+}
+function add(){
+  window.location.href='__APP__/Carservice/Oilconfig/add';
+}
+
+//绑定二维码
+function bindcode(_item_id){
+    
+  var _code=$('#code_'+_item_id).val();
+  
+  $.ajax({
+        url: '__APP__/Carservice/Oilconfig/ajax_bindcode',
+        type: 'POST',
+        data:{ id:_item_id,code:_code},
+        dataType: 'json',
+        //timeout: 1000,
+        error: function(){
+          alert('系统繁忙!');
+          return false;
+        },
+        success: function( data ){
+          data = data.data;
+          if(data.errno == '0'){
+            alert(data.msg);
+            return true;
+          }
+        }
+  });
+}
+
+</script>

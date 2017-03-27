@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>携车网-上门保养</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+    <style type="text/css">
+		.page li:first-child {float:left;list-style-type:none;padding-left:10px}
+		.page li:last-child {float:right;list-style-type:none;padding-right:30px}
+	</style>
+  </head>
+
+  <body>
+  	<div class="pagetop">
+      <div class="reindex" id="reindex">&nbsp;</div>
+      <div class="thispage">车主评价</div>
+    </div>
+    
+    <div class="container huise">
+      <div class="row smenu">
+        <div class="col-xs-4 smenuli smrbgl"><a href="__APP__/mobilecar/sel_item">立即下单</a></div>
+        <div class="col-xs-4 smenuli smrbg"><a href="__APP__/mobilecar/carservice_des">服务介绍</a></div>
+        <div class="col-xs-4 smenuli current"><a href="__APP__/mobilecar/commentList">车主评价</a></div>
+      </div>
+    	<div style="background-color:#ffffff; padding:10px;border-top:1px solid #f6f2f1;" class="row">
+    		<p><span style="font-size:16px; color:#85878a;">评价详情</span></p>
+    		<p>好评: <span style="color:#f15454;">{$gootrate}</span>&nbsp;&nbsp;&nbsp;&nbsp;{$count}人评论</p>
+    	</div>
+		<volist name="list" id="vo">
+			<div style="background-color:#ffffff; padding:10px;border-top:1px solid #f6f2f1;" class="row">
+				<div class="row" style="color:#7a7a7a;padding-bottom:10px; font-size:12px;">
+					<div class="col-md-6 col-xs-6 col-sm-6" style="color:#D62B21;">{$vo.type}</div>
+					<div class="col-md-6 col-xs-6 col-sm-6 text-right">{$vo.truename}&nbsp;&nbsp;{$vo.comment_time|date="Y-m-d",###}</div>
+				</div> 
+				<notempty name="vo.content">   
+					<div class="row" style="padding:10px 0px;color:#7a7a7a">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							{$vo.content}
+						</div>
+					</div>
+				</notempty>
+				<!-- <notempty name="vo.technician_name">
+				<div class="row" style="padding-top:10px;color:#175a80">
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						技师{$vo.technician_name}完成该订单
+					</div>
+				</div>
+				</notempty> -->
+			</div>
+		</volist>
+		<div class="row"><ul class="page clearfix" style="padding-left:20px">{$page}</ul></div>
+</div>
+
+<script>
+      $(function(){
+
+        //返回上一页
+        $("#reindex").click(function(){
+            window.location.href='/mobilecar/sel_item';
+        });
+      });
+
+    </script>
+  </body>
+</html>

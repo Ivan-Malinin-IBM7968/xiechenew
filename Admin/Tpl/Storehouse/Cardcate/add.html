@@ -1,0 +1,76 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+	function checkname(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+	}
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增卡类别 [ <A HREF="__URL__">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/do_add">
+			<table cellpadding=3 cellspacing=3>
+				<tr>
+				<td class="tRight" >产品用途：</td>
+					<td class="tLeft" >
+						<input TYPE="text" id="price" class="large bLeftRequire" name="use_way" >
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="tRight" >开始编码：</td>
+					<td class="tLeft" >
+					<input TYPE="text" id="price" class="large bLeftRequire" name="ic" >
+					</td>
+				</tr>
+				
+				<TR>
+                    <TD class="tRight" >产品名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="price" class="large bLeftRequire" name="name" ></TD>
+                </TR>
+				
+                <TR>
+                    <TD class="tRight" ></TD>
+                    <TD class="tLeft" ><input TYPE="button" value="提交" onclick="check()"></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+
+
+function check(){
+	var name = $('input[name=name]').val();
+	if(!name){
+		alert('必须填写商品名称');
+		return false;
+	}
+	var price = $('input[name=use_way]').val();
+	if(!price){
+		alert('必须填写产品用途');
+		return false;
+	}
+	var num = $('input[name=ic]').val();
+	
+	if(!num){
+		alert('必须填写开始编码');
+		return false;
+	}
+	
+	$('#form1').submit();
+}
+</script>

@@ -1,0 +1,60 @@
+<load file="__CSS__/newstyle.css" />
+
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+
+<div id="main">
+<div id="main-right"><h1>保险类订单</h1>
+</div>
+<div id="main-right2">
+	<div>
+	<FORM METHOD=POST ACTION="__URL__/ordercount">
+	<table class="list" width="785">
+		<tr>
+			<td>时间搜索：</td>
+			<td>
+			开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+			结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="搜索" style="impBtn hMargin fLeft shadow"></td>
+		</tr>
+	</table>
+	</FORM>
+	</div>
+
+	<table width="785" >
+		<tr>
+			<td align="left">总共：{$data.order_count}张订单</td>
+		</tr>
+	</table>
+  <table width="785" border="0" cellspacing="1" cellpadding="1" bgcolor="#E4E4E4">
+    <tr>
+      
+      <td align="center" bgcolor="#EEEEEE">订单号</td>
+      <td align="center" bgcolor="#EEEEEE">姓名</td>
+	  <td align="center" bgcolor="#EEEEEE">订单状态</td>
+	  <td align="center" bgcolor="#EEEEEE">下订时间</td>	
+    </tr>
+
+
+	<volist name="data.Bidorder" id="vo">
+    <tr>
+      <td  align="center" bgcolor="#FFFFFF">{$vo.order_id}</td>
+      <td align="center" bgcolor="#FFFFFF">{$vo.truename}</td>
+      <td align="center" bgcolor="#FFFFFF">
+		<volist name="Think.config.BIDORDER_STATE" id="statevo">
+			<if condition="$vo.order_status eq $key">{$statevo}</if>
+		</volist>
+	  </td>
+	  <td align="center" bgcolor="#FFFFFF">
+		{$vo.create_time|date="y-m-d H:i:s",###}
+	  </td>
+    </tr>
+	</volist>
+  </table>
+</div>
+
+</div>

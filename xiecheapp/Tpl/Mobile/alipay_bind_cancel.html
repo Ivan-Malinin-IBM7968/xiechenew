@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>解除绑定</title>
+    <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/order.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+	<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+	<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/main.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/zepto/zepto.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/zepto/touch.js"></script>
+	<include file="Public:wapfoot" />
+	<style>
+		#loading-overlay{
+			display: none;
+		}
+	</style>
+</head>
+<body style="background: #f1f1f1;">
+
+<form action="__APP__/Mobile-save_order" id="form_go" method="post" class="post-form" data-ajax="false">
+	<div id="warpper" style="background:#f1f1f1;">
+		<!-- Header Start -->
+		<header id="header" data-role="header">
+			<h1>解除绑定服务窗</h1>
+			<span id="left-trigger">
+				<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+			</span>
+			<span id="right-trigger" >
+				<a href="tel:4006602822" class="service-call"></a>
+			</span>
+		</header>
+		<!-- Header End -->
+		
+		<!-- Content Wrapper Start -->
+		<div id="content-wrapper" data-role="content" >
+			<div id="inner-content-wrapper">
+				<!-- 服务类型 开始 -->
+				<div id="pi" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>解除绑定服务窗</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="i-list">
+						<ul>
+							
+							<li>
+								<label style="width: 25%; display: inline-block;">手 机：</label>
+								
+								<input type="text" id="mobile" value="{$mobile}" disabled name="mobile"  style="width: 75%; display: inline-block; border: none; font-size: 1.3em;">
+								
+							</li>
+							<li style="padding-top: 0px;">
+							
+									<a href="#" name="btn_yz" id="btn_yz" >解除绑定服务窗</a>
+								
+							</li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- 服务类型 结束 -->
+				<!-- <div id="next-btn" >
+					<a href="javascript:void(0)"  rel="external">下一步</a>
+				</div> -->
+			</div>
+			
+		</div>
+		<!-- Content Wrapper End -->
+	</div>
+	</form> 
+	<script>
+	document.addEventListener("touchstart", function() {},false);
+	$(function(){	
+		$("#btn_yz").click(function(){
+			var mobile = $('#mobile').val();
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Mobile/cancel_alipay",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							alert("解绑成功！");
+							location.href="Mobile-index";
+						}else{
+							alert("解绑失败！");
+							return false;
+						}
+					},
+					error: function(){
+					}
+				})
+		})
+
+
+	}); 
+
+	</script>
+</body>

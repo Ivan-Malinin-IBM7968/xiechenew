@@ -1,0 +1,984 @@
+<layout name='layout_new' />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/shop_detail.css?v={$Think.config.VERSION_DATE}" />
+
+
+<!--
+<script>
+	$(function(){
+		$('#comment a').click(function(){
+			$.ajax({
+				type: "POST",
+				//url:$(this).attr('href'),    //取得a标签链接地址
+				url:"__URL__/ajax_info",    //取得a标签链接地址
+				beforeSend:function(){
+				$("#lcontent").text("请稍等!");
+			},
+			success:function(data){
+				data = eval("(" + data + ")");
+				
+				$('#lcontent').html(data[1]); 
+					//将数据重新加载到lcontent容器中
+				}
+				});
+			return false;     //使a标签失效*/
+		})
+	})
+</script>-->
+
+<div class="black-overlay" style="display:none;"></div>
+<div class="slide-in-panel" style="display:none;">
+	<div class="close-bar">
+		<a class="close-btn">X</a>
+	</div>
+	<div class="detail-container"></div>
+</div>
+<div class='w1200 breadcrumb clear'>
+	<ul>
+		<li><a href="__APP__/order">4S店售后预约</a></li>
+		<li>></li>
+		<li>{$list.shop_name}</li>
+	</ul>
+</div>
+<div class="clear"></div>
+
+<div class="w1200 content">
+	<div class="w830 content-left">
+		<div class="w830 shop-title">
+			<a href="javascript:void(0)" class="ty-icon"></a><h2 class="shop-name">{$list.shop_name}</h2>
+			<!-- <span class="shop-desc">{$list.shop_account}</span> -->
+			<div class="service-sale-con">
+				<div class="title">工时折扣</div>
+				<strong class="sale-number">{$workhours_sale}</strong><em> 折起</em>
+			</div>
+			
+		</div> 
+		<div class="w830 shop-image-container">
+			<div class="main-shop-img">
+				<if condition ="$list.shop_class eq 2" >
+					<img src="{$list.logo}" width="280" height="210" class="shop-image"/>
+				<else/>
+					<img src="/UPLOADS/Shop/280/{$list.shop_id}.jpg" width="280" height="210" class="shop-image"/>
+				</if>
+				<if condition="$list.shop_class eq 1">
+					<span class='speacial-banner'></span>
+				</if>
+			</div>
+			
+			<ul class="related-img-con">
+				<volist name="Servicefunimg" id="vo">
+					<li class="">
+						<a href="#" class="">
+							<if condition="($i eq 1) OR ($i eq 7)">
+								<if condition="$vo.pic eq 'none' ">
+									<img src="__PUBLIC__/new_2/images/placeholder/fholder204.jpg" alt="{$vo.pic_remark}" title="{$vo.pic_remark}" width="204" height="101">
+								<else/>
+									<img src="/UPLOADS/Service/{$vo.pic}" alt="{$vo.pic_remark}" title="{$vo.pic_remark}" width="204" height="101">
+								</if>
+							<else/>
+								<if condition="$vo.pic eq 'none' ">
+									<img src="__PUBLIC__/new_2/images/placeholder/fholder97.jpg" alt="{$vo.pic_remark}" title="{$vo.pic_remark}" width="97"		height="101">
+								<else/>
+									<img src="/UPLOADS/Service/{$vo.pic}" alt="{$vo.pic_remark}" title="{$vo.pic_remark}" width="97" height="101">
+								</if>
+							</if>
+
+							
+						</a>
+					</li>
+				</volist>
+			</ul>
+			
+			<div class="clear"></div>
+		</div>
+		<div class="w830 shop-desc">
+			<dl class="">
+				<dt>简&nbsp;&nbsp;&nbsp;介:</dt>
+				<dd>{$list.shop_account}</dd>
+				
+			</dl>
+
+			<div class="shop-rating">
+				<div style="float: left" class="rating-precent">
+					<strong>{$list.comment_rate}<em style="">%</em></strong>	
+				<!-- <span <php>echo "class='rating-".round($list[comment_rate]/10)."'";</php>></span> -->
+					<span >
+						好 评 率
+					</span>
+					<span >
+						共 <a href="#comment">{$list.comment_number}</a> 人 评 论
+					</span>
+				</div>
+				
+				<div class="cloumn-2">
+					<ul>
+						<li><strong>好评:({$comment_rate.good}%)</strong>
+							<div class=" progress-con">
+								<div class="hp-progress inner-progress-con" style="width: {$comment_rate.good}%">
+									<span class="progress"></span>
+								</div>
+								
+							</div>
+						</li>
+						<li><strong>中评:({$comment_rate.normal}%)</strong>
+							<div class="progress-con">
+								<div class="zp-progress inner-progress-con" style="width: {$comment_rate.normal}%">
+									<span class="progress"></span>
+								</div>
+							</div>
+						</li>
+						<li><strong>差评:({$comment_rate.bad}%)</strong>
+							<div class="cp-progress progress-con">
+								<div class="cp-progress inner-progress-con" style="width: {$comment_rate.bad}%">
+									<span class="progress"></span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		<div class="clear"></div>
+
+		<notempty name="Servicefun">
+		<div class="w830 shop-facility">
+			<dl class="facility-list">
+				<dt>设&nbsp;&nbsp;&nbsp;施:</dt>
+				<volist name="Servicefun" id="vo">
+				<if condition="$vo['service_id'] neq '0'">
+					<dd class="fun_{$vo.service_id}" title="{$vo.service_name}" ></dd>
+				</if>
+				</volist>
+				<!--<dd class="fun_1" title="wifi" ></dd>
+				<dd class="fun_2"></dd>
+				<dd class="fun_3"></dd>
+				<dd class="fun_4"></dd>
+				<dd class="fun_5" title="店内提供电脑"></dd>
+				<dd class="fun_6" title="饮料茶水"></dd>-->
+			</dl>
+		</div>
+		</notempty>
+
+		<div class="w830 sub-shop-info">
+			<div class="shop-info">
+					<ul class="info-list">
+						<li class='comment'><a href="#comment">{$list.comment_number}</a>人评论</li>
+						<li class='phone'>400 660 2822</li>
+						<li class='address'>{$list.shop_address}</li>
+					</ul>
+				</div>
+		</div>
+
+		<notempty name="Servicemember">
+		<div class="w830 consultant-con">
+			<!-- <div class="gw-caption">
+				<h4 >服务顾问</h3>
+			</div> -->
+			<ul class="consultant">
+				<volist name="Servicemember" id="smvo">
+				<li class="single-consultant">
+					<a href="javascript: void(0)"  class="consultant-tooltips" data-f="{$smvo.service}" data-z="{$smvo.profession}" data-c="{$smvo.sincerity}">
+						<img src="/UPLOADS/Service/{$smvo.logo}" alt="" class="consultant-img" width="70" height="70" />					 	
+					</a>
+					<ul class='consultant-info'>
+						<li class="gw-name">
+							<span class="caption">服务顾问:</span>
+							<strong class="name">{$smvo.name}</strong>
+						</li>
+						<li>服务态度: {$smvo.service}分</li>
+						<li>专业技能: {$smvo.profession}分</li>
+						<li>诚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信: {$smvo.sincerity}分</li>
+					</ul>
+					<div class='consultant-detail'>
+						<div class="basic-info">
+							<a href="javascript: void(0)"  class="avantar" data-f="{$smvo.service}" data-z="{$smvo.profession}" data-c="{$smvo.sincerity}">
+								<img src="/UPLOADS/Service/{$smvo.logo}" alt="" class="consultant-img" width="150" height="150" />					 	
+							</a>
+							<ul class='consultant-info'>
+								<li>{$smvo.name}</li>
+								<li>服务态度: {$smvo.service}分</li>
+								<li>专业技能: {$smvo.profession}分</li>
+								<li>诚   信: {$smvo.sincerity}分</li>
+								<li>服务口号:{$smvo.signature}</li>
+							</ul>
+						</div>
+
+						<div class="comment">
+							<ul class="c-comment">
+								<volist name="smvo.commenttype" id="voc">
+								<h4>共有{$voc.commenttype_count}人评论</h4>
+									<li class="single-comment">
+										<strong>{$voc.user_name}</strong><em>({$voc.create_time|date="Y-m-d",###})</em><span><if condition="$voc.comment_type eq 1">好评<elseif condition="$voc.comment_type eq 2"/>中评<elseif condition="$voc.comment_type eq 3"/>差评</if></span>
+									
+										{$voc.comment}
+										<volist name="voc.commentreply" id="vocr">
+										<strong <neq name="vocr.operator_type" value="3">style="color:black; font-weight: bolder;"</neq>>{$vocr.operator_name}&nbsp;回复:</strong>
+										<span class="time">({$vocr.create_time|date="Y-m-d",###})</span>
+										<span class="content" <neq name="vocr.operator_type" value="3">style="color:black;"</neq>>{$vocr.reply}</span>
+										</volist>
+									</li>
+								</volist>
+							</ul>
+						</div>
+					</div>
+				</li>
+				</volist>
+				
+			</ul>
+		</div>
+		</notempty>
+
+		<div class="w830 preorder-list">
+			<div class="cate-title">
+				<h3>预约分时折扣</h3>
+			</div>
+			<ul class="parameter">
+				<li class='week'>星期</li>
+				<li class="time">时段</li>
+				<li class='sale1'>工时折扣率</li>
+				<li class='sale2'>零件折扣率</li>
+				<li class='operate'>操作</li>
+			</ul>
+			<ul class="detail-list">
+				<volist name="list_timesale" id="votimesale">
+					<volist name="votimesale.timesaleversion" id="timesaleversion" mod="2">
+					<li <eq name="mod" value="1">class="bg-blue"</eq>>
+						<span class='week'>{$votimesale.week_name_s}</span>
+						<span class="time">{$votimesale.begin_time} - {$votimesale.end_time}</span>
+						<span class='sale1'>{$timesaleversion.workhours_sale_str}</span>
+						<span class='sale2'>{$timesaleversion.product_sale_str}</span>
+						<a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$timesaleversion['id'],'shop_id'=>$shop_id,'member_id'=>$member_id))}{:C('HTML_URL_SUFFIX')}" class='operate'>查看/预约</a>
+					</li>
+					</volist>
+				</volist>
+			</ul>
+		</div>
+		
+		<if condition="($coupon1 neq '') OR ($coupon2 neq '') ">
+		<div class="sales-order">
+			<div class="cate-title">
+				<h3><a name="coupon">优惠券</a></h3>
+			</div>
+			<ul class="parameter">
+				<li class='week'>类型</li>
+				<li class="time">名称</li>
+				<li class='sale1'>现价/原价</li>
+				<li class='sale2'>已购数量</li>
+				<li class='operate'>操作</li>
+			</ul>
+			<notempty name="coupon1">
+			<div class='w830 xianjin'>
+				<div class="cate-name">
+					<img src="/Public/new_2/images/xianjinquan.jpg" width="105" height="41">
+				</div>
+				<ul class="detail-list">
+					<volist name="coupon1" id="cou1" mod="2">
+					<li <eq name="mod" value="1">class="bg-blue"</eq>>
+						<span class='name'>{$cou1.coupon_name}</span>
+						<span class="price">¥{$cou1.coupon_amount} / {$cou1.cost_price}</span>
+						<span class='bought'>{$cou1.pay_count}人已购</span>
+						<a href="__APP__/coupon/{$cou1.id}" target="_blank" class='operate'>查看</a>
+					</li>
+					</volist>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			</notempty>
+
+			<notempty name="coupon2">
+			<div class='w830 xianjin'>
+				<div class="cate-name">
+					<img src="/Public/new_2/images/taocanquan.jpg" width="105" height="41">
+				</div>
+				<ul class="detail-list">
+					<volist name="coupon2" id="cou2" mod="2">
+					<li <eq name="mod" value="1">class="bg-blue"</eq>>
+						<span class='name'>{$cou2.coupon_name}</span>
+						<span class="price">¥{$cou2.coupon_amount} / {$cou2.cost_price}</span>
+						<span class='bought'>{$cou2.pay_count}人已购</span>
+						<a href="__APP__/coupon/{$cou2.id}" target="_blank" class='operate'>查看</a>
+					</li>
+					</volist>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			</notempty>
+		</div>
+		</if>
+
+		<notempty name="result">
+		<div class="w830 baoyang-order">
+			<div class="cate-title">
+				<h3>常规保养费用</h3>
+			</div>
+			<div class="sub-title">
+				<h5>{$salesversion.name}</h5>
+				<span>工时折扣:{$salesversion.workhours_sale}</span>
+				<span>零件折扣:{$salesversion.product_sale}</span>
+			</div>
+			<ul class="parameter">
+				<li class='hot-car'>热门车型</li>
+				<li class="price1">工时费</li>
+				<li class='price2'>零件费</li>
+				<li class='price3'>折后价/门市价</li>
+				<li class='price4'>节省</li>
+				<li class='operate'>操作</li>
+			</ul>
+			<ul class="detail-list">
+				<volist name="result" key="key" id="value">
+				<li>
+					<span class='hot-car'><a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$salesversion['id'],'model_id'=>$value['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$value.car_name}</a></span>
+					<span class="price1"><b>¥</b><strong>{$value.workhour}</strong></span>
+					<span class='price2'><b>¥</b><strong>{$value.product}</strong></span>
+					<span class='price3'><b>¥</b><strong>{$value.sales_total}</strong><em> / {$value.total}</em></span>
+					<span class='price4'><b>¥</b><strong>{$value.save_total}</strong></span>
+					<a href="{:URL('/order/yuyue',array('timesaleversion_id'=>$salesversion['id'],'shop_id'=>$shop_id,'model_id'=>$value['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank" class='operate'>查看</a>
+				</li>
+				</volist>
+			</ul>
+		</div>
+		</notempty>
+		
+		<notempty name="comment">
+		<div class="w830 shop-comment" id="comment">
+		
+			<div class="cate-title">
+				<h3>店铺评价</h3>
+			</div>
+		
+			
+			<div class="w830 comment-box" style="display:none">
+				<div></div>
+				<h4>您好, 有任何意见反馈都可以在这里提交.</h4>
+				<div class='input-con'>
+					<input type="text" class="comment" />
+					<input type='submit' id="submit-comment" value="发 表">
+				</div>
+			</div>
+			<!--评论从这里开始*************************************************************************************胡椒-->
+			<div class="w830 comment-summary"><!-- comment-summary 开始 -->
+				<div class="summary">
+					<div class="shop-rating">
+						<div style="float: left" class="rating-precent">
+							<strong>{$list.comment_rate}<em style="">%</em></strong>	
+						<!-- <span <php>echo "class='rating-".round($list[comment_rate]/10)."'";</php>></span> -->
+							<span >
+								好 评 率
+							</span>
+							<span >
+								共 <a href="#comment">{$list.comment_number}</a> 人 评 论
+							</span>
+						</div>
+						<div class="cloumn-2">
+							<ul>
+								<li><strong>好评:({$comment_rate.good}%)</strong>
+									<div class=" progress-con">
+										<div class="hp-progress inner-progress-con" style="width: {$comment_rate.good}%">
+											<span class="progress"></span>
+										</div>
+										
+									</div>
+								</li>
+								<li><strong>中评:({$comment_rate.normal}%)</strong>
+									<div class="progress-con">
+										<div class="zp-progress inner-progress-con" style="width: {$comment_rate.normal}%">
+											<span class="progress"></span>
+										</div>
+									</div>
+								</li>
+								<li><strong>差评:({$comment_rate.bad}%)</strong>
+									<div class="cp-progress progress-con">
+										<div class="cp-progress inner-progress-con" style="width: {$comment_rate.bad}%">
+											<span class="progress"></span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<ul class="w830 commnet-filter">
+					<li class="current"><a href="javascript:void(0)" onclick="showcomment('all')">全部评论({$all_count})</a></li>
+					<li><a href="javascript:void(0)" onclick="showcomment('good')">好 评({$good_count})</a></li>
+					<li><a href="javascript:void(0)" onclick="showcomment('medium')">中 评({$medium_count})</a></li>
+					<li><a href="javascript:void(0)" onclick="showcomment('bad')">差 评({$bad_count})</a></li>
+				</ul>
+			</div><!-- comment-summary 结束 -->
+
+			<div class="w830 commnet-con">
+				<ul class="w830 comment-list" id="all" name="all">
+
+
+					<volist name="comment" id="voc">
+					<li class="w830 single-comment">
+						<div class="avatar">
+							<img src="__APP__/Public/new_2/images/comment-avatar.jpg" alt="{$voc.user_name}" title="{$voc.user_name}">
+						</div>
+						<div class="comment-detail">
+							<div class="top"></div>
+							<div class="center">
+								<div class="comment-title">
+									<dl class="comment-info users">
+										<dt class="name">{$voc.user_name}&nbsp;</dt>
+										<dd class="time">{$voc.create_time|date="Y-m-d",###}</dd>
+										<dd class="level">
+											<if condition="$voc.comment_type eq 1">
+											好评
+											<elseif condition="$voc.comment_type eq 2"/>中评
+											<elseif condition="$voc.comment_type eq 3"/>差评
+											</if>
+
+										</dd>
+									</dl>
+									
+										
+									<dl class="comment-info items">
+										<dt>维修项目:</dt>
+										<volist name="voc.serviceitem" id="vocst">
+											<dd>{$vocst.name}</dd>
+										</volist>
+									</dl>	
+
+									<notempty name="voc.servicemember_name">
+									<dl class="comment-info r-consultant">
+										<dt>服务顾问:</dt>
+										<dd>{$voc.servicemember_name}</dd>
+									</dl>
+									</notempty>
+								</div>
+								<div class="clear"></div>
+								<div class="comment-content">
+									{$voc.comment}
+								</div>
+								
+							</div>
+							<div class="bottom"></div>
+						</div>
+						<div class="clear"></div>
+						<ul class="comment-reply">
+						
+							<volist name="voc.commentreply" id="vocr">
+							<li class="single-reply">
+								<div class="reply-avatar">
+									<img src="__APP__/Public/new_2/images/reply-avatar.jpg" alt="{$vocr.operator_name}" title="{$vocr.operator_name}">
+								</div>
+								<dl class="reply-con">
+									<dt class="reply-info">{$vocr.operator_name}&nbsp;回复:  ({$vocr.create_time|date="Y-m-d",###})</dt>
+									<dd class="reply-content">
+										{$vocr.reply}
+									</dd>
+								</dl>
+								<div class="clear"></div>
+							</li>
+							</volist>
+						</ul>
+						
+						<div class="clear"></div>
+					</li>
+					</volist>
+
+					<div class="clear"></div>
+					<div id='page_all' name='page_all'>
+						<div class="clear"></div>
+							<div class="pagerArea">
+								<ul id="pager">
+									{$page}  
+								</ul>
+						</div>
+					</div>
+				</ul>
+
+			
+				<ul class="w830 comment-list" id="good" name="good">
+					<volist name="comment1" id="voc">
+
+					<li class="w830 single-comment">
+						<div class="avatar">
+							<img src="__APP__/Public/new_2/images/comment-avatar.jpg" alt="{$voc.user_name}" title="{$voc.user_name}">
+						</div>
+						<div class="comment-detail">
+							<div class="top"></div>
+							<div class="center">
+								<div class="comment-title">
+									<dl class="comment-info users">
+										<dt class="name">{$voc.user_name}&nbsp;</dt>
+										<dd class="time">{$voc.create_time|date="Y-m-d",###}</dd>
+										<dd class="level">
+											<if condition="$voc.comment_type eq 1">
+											好评
+											<elseif condition="$voc.comment_type eq 2"/>中评
+											<elseif condition="$voc.comment_type eq 3"/>差评
+											</if>
+
+										</dd>
+									</dl>
+									
+										
+									<dl class="comment-info items">
+										<dt>维修项目:</dt>
+										<volist name="voc.serviceitem" id="vocst">
+											<dd>{$vocst.name}</dd>
+										</volist>
+									</dl>		
+									
+									<notempty name="voc.servicemember_name">
+									<dl class="comment-info r-consultant">
+										<dt>服务顾问:</dt>
+										<dd>{$voc.servicemember_name}</dd>
+									</dl>
+									</notempty>
+								</div>
+								<div class="clear"></div>
+								<div class="comment-content">
+									{$voc.comment}
+								</div>
+								
+							</div>
+							<div class="bottom"></div>
+						</div>
+						<div class="clear"></div>
+						<ul class="comment-reply">
+							
+							<volist name="voc.commentreply" id="vocr">
+							<li class="single-reply">
+								<div class="reply-avatar">
+									<img src="__APP__/Public/new_2/images/reply-avatar.jpg" alt="{$vocr.operator_name}" title="{$vocr.operator_name}">
+								</div>
+								<dl class="reply-con">
+									<dt class="reply-info">{$vocr.operator_name}&nbsp;回复:  ({$vocr.create_time|date="Y-m-d",###})</dt>
+									<dd class="reply-content">
+										{$vocr.reply}
+									</dd>
+								</dl>
+								<div class="clear"></div>
+							</li>
+							</volist>
+						</ul>
+						
+						<div class="clear"></div>
+					</li>
+					</volist>
+					<div class="clear"></div>
+					<div id='page_good' name='page_good'>
+						<div class="clear"></div>
+							<div class="pagerArea">
+								<ul id="pager">
+									{$page}  
+								</ul>
+						</div>
+					</div>
+				</ul>
+				
+
+				<ul class="w830 comment-list" id="medium" name="medium">
+					<volist name="comment2" id="voc">
+
+					<li class="w830 single-comment">
+						<div class="avatar">
+							<img src="__APP__/Public/new_2/images/comment-avatar.jpg" alt="{$voc.user_name}" title="{$voc.user_name}">
+						</div>
+						<div class="comment-detail">
+							<div class="top"></div>
+							<div class="center">
+								<div class="comment-title">
+									<dl class="comment-info users">
+										<dt>{$voc.user_name}&nbsp;</dt>
+										<dd>{$voc.create_time|date="Y-m-d",###}</dd>
+										<dd>
+											<if condition="$voc.comment_type eq 1">
+											好评
+											<elseif condition="$voc.comment_type eq 2"/>中评
+											<elseif condition="$voc.comment_type eq 3"/>差评
+											</if>
+
+										</dd>
+									</dl>
+									
+										
+									<dl class="comment-info items">
+										<dt>维修项目:</dt>
+										<volist name="voc.serviceitem" id="vocst">
+											<dd>{$vocst.name}</dd>
+										</volist>
+									</dl>
+
+									<notempty name="voc.servicemember_name">
+									<dl class="comment-info r-consultant">
+										<dt>服务顾问:</dt>
+										<dd>{$voc.servicemember_name}</dd>
+									</dl>
+									</notempty>
+								</div>
+								<div class="clear"></div>
+								<div class="comment-content">
+									{$voc.comment}
+								</div>
+							</div>
+							<div class="bottom"></div>
+						</div>
+						<div class="clear"></div>
+						<ul class="comment-reply">
+					
+							<volist name="voc.commentreply" id="vocr">
+							<li class="single-reply">
+								<div class="reply-avatar">
+									<img src="__APP__/Public/new_2/images/comment-avatar.jpg" alt="{$voc.user_name}" title="{$voc.user_name}">
+								</div>
+								<dl class="reply-con">
+									<dt class="reply-info">{$vocr.operator_name}&nbsp;回复:  ({$vocr.create_time|date="Y-m-d",###})</dt>
+									<dd class="reply-content">
+										{$vocr.reply}
+									</dd>
+								</dl>
+								<div class="clear"></div>
+							</li>
+							</volist>
+						</ul>
+						
+						<div class="clear"></div>
+					</li>
+					</volist>
+					<div class="clear"></div>
+					<div id='page_medium' name='page_medium'>
+						<div class="clear"></div>
+							<div class="pagerArea">
+								<ul id="pager">
+									{$page}  
+								</ul>
+						</div>
+					</div>
+				</ul>
+
+				
+				<ul class="w830 comment-list" id="bad" name="bad">
+					<volist name="comment3" id="voc">
+
+					<li class="w830 single-comment">
+						<div class="avatar">
+							<img src="__APP__/Public/new_2/images/reply-avatar.jpg" alt="{$vocr.operator_name}" title="{$vocr.operator_name}">
+						</div>
+						<div class="comment-detail">
+							<div class="top"></div>
+							<div class="center">
+								<div class="comment-title">
+									<dl class="comment-info users">
+										<dt>{$voc.user_name}&nbsp;</dt>
+										<dd>{$voc.create_time|date="Y-m-d",###}</dd>
+										<dd>
+											<if condition="$voc.comment_type eq 1">
+											好评
+											<elseif condition="$voc.comment_type eq 2"/>中评
+											<elseif condition="$voc.comment_type eq 3"/>差评
+											</if>
+
+										</dd>
+									</dl>
+									
+										
+									<dl class="comment-info items">
+										<dt>维修项目:</dt>
+										<volist name="voc.serviceitem" id="vocst">
+											<dd>{$vocst.name}</dd>
+										</volist>
+									</dl>
+
+									<notempty name="voc.servicemember_name">
+									<dl class="comment-info r-consultant">
+										<dt>服务顾问:</dt>
+										<dd>{$voc.servicemember_name}</dd>
+									</dl>
+									</notempty>
+								</div>
+								<div class="clear"></div>
+								<div class="comment-content">
+									{$voc.comment}
+								</div>
+								
+							</div>
+							<div class="bottom"></div>
+						</div>
+						<div class="clear"></div>
+						<ul class="comment-reply">
+							<volist name="voc.commentreply" id="vocr">
+							<li class="single-reply">
+								<div class="reply-avatar">
+									<img src="__APP__/Public/new_2/images/reply-avatar.jpg" alt="{$vocr.operator_name}" title="{$vocr.operator_name}">
+								</div>
+								<dl class="reply-con">
+									<dt class="reply-info">{$vocr.operator_name}&nbsp;回复:  ({$vocr.create_time|date="Y-m-d",###})</dt>
+									<dd class="reply-content">
+										{$vocr.reply}
+									</dd>
+								</dl>
+								<div class="clear"></div>
+							</li>
+							</volist>
+						</ul>
+						
+						<div class="clear"></div>
+					</li>
+					</volist>
+					<div class="clear"></div>
+					<div id='page_bad' name='page_bad'>
+						<div class="clear"></div>
+							<div class="pagerArea">
+								<ul id="pager">
+									{$page}  
+								</ul>
+						</div>
+					</div>
+				</ul>
+				
+			</div>
+			
+
+				
+			<!--评论从这里结束*************************************************************************************胡椒**************************************************************************-->
+		</div>
+		</notempty>
+		
+		<!---->
+		<script>
+			function hTab(tab_controler,tab_con){
+				this.tab_controler = tab_controler;
+				this.tab_con = tab_con;
+				var tabs = $(tab_controler).children("li");
+				var panels = $(tab_con).children("ul");
+				$(tab_con).children("ul").css("display","none");
+				$(tab_con).children("ul:first").css("display","block");
+				$(tabs).click(function(){
+					var index = $.inArray(this,tabs);
+					tabs.removeClass("current")
+					.eq(index).addClass("current");
+					panels.css("display","none")
+					.eq(index).css("display","block");
+				});
+			};
+
+		hTab('.commnet-filter','.commnet-con');
+		</script>
+		<div class="news w830">
+			<notempty name="notice">
+			<div class="sales">
+				<h4>优惠速递</h4>
+				<ul>
+				<volist name="notice" id="von">
+					<li><a href="{:URL('/shop/favtype',array('shop_id'=>$shop_id,'id'=>$von['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$von.noticetitle}<em>{$von.update_time|date='m-d',###}</em></a></li>
+				</volist>
+				</ul>
+			</div>
+			</notempty>
+			<notempty name="article">
+			<div class="aftermarket">
+				<h4>用车心得</h4>
+				<ul>
+					<volist name="article" id="voa">
+						<li><a href="__APP__/article/{$voa.id}" target="_blank">{$voa.title}<em>{$voa.create_time|date='m-d',###}</em></a></li>
+					</volist>
+				</ul>
+			</div>
+			</notempty>
+		</div>
+	</div>
+
+	<div class="w350 content-right">
+		
+		<div class="map" id="map"></div>
+
+		<div class="w350 tuijian">
+			<h3><if condition="$tuijian1 eq 'brand1'">品牌推荐<elseif condition="$tuijian1 eq neq_shop"/>其他店铺推荐<else/>推荐</if>现金券</h3>
+			<ul>
+				<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+			</ul>
+		</div>
+
+		<div class="w350 tuijian">
+			<h3><if condition="$tuijian2 eq 'brand2'">品牌推荐<elseif condition="$tuijian2 eq neq_shop"/>其他店铺推荐<else/>推荐</if>套餐券</h3>
+			<ul>
+				<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+				</volist>
+			</ul>
+
+		</div>
+	</div>
+</div>
+<input type="hidden" id="divstyle" name="divstyle" >
+<script>
+	$(function(){
+		$(".single-consultant").on("click", function(e){
+			e.preventDefault();
+			var bWidth= $("body").width(),
+				bHeight = $("body").height(),
+				cLeft = $(".consultant-con").offset().left,
+				cWidth = $(".consultant").width(),
+				elem = $(this);
+
+			//console.log(cLeft)	
+
+			$(".black-overlay").css({
+				"width" : bWidth,
+				"height" : bHeight,
+				"background" : "#000000",
+				"opacity" : .3,
+				"position" : "absolute",
+				"top" : 0,
+				"left" : 0,
+				"z-index" : 10000
+			}).show();
+
+		
+
+			$(".slide-in-panel").css({
+				"position" : "fixed",
+				"right" : 0,
+				"top" : 0,
+				
+				"width" : 0 ,
+				"height" : "100%",
+				"z-index" : 10001
+			}).show().animate({
+				"width" : bWidth -  $(".content-right").offset().left + 50 
+			}, 300, "swing",  function(){
+				$(this).children(".detail-container").append(elem.children(".consultant-detail").clone().show())
+			})
+
+		})
+
+		$(".close-btn").on("click", function(e){
+			$(".slide-in-panel .detail-container").empty()
+			$(".slide-in-panel").animate({
+				"width" : 0
+			}, 100, "swing", function(){
+				$(".black-overlay").hide()
+			})
+		})
+
+	}())
+</script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript">
+	function showcomment(str){
+		$('#divstyle').val(str);
+		if(str=='good'){
+			comment_type = '1';
+		}else if(str=='medium'){
+			comment_type = '2';
+		}else if(str=='bad'){
+			comment_type = '3';
+		}
+		
+		$.ajax({
+			type: "GET",
+			url: "__URL__/get_page",
+			cache: false,
+			dataType:"text",
+			data:"shop_id="+{$list.shop_id}+"&comment_type="+comment_type,			
+			success: function(data){
+			$('#page_all').html('');
+			$('#page_good').html('');
+			$('#page_medium').html('');
+			$('#page_bad').html('');
+					if(str){
+						if(data){
+							$('#page_'+str).html(data);
+						}else{
+							$('#page_'+str).html(' ');
+						}
+					}else{
+						if(data){
+							$('#page_all').html(data);
+						}else{
+							$('#page_all').html(' ');
+						}
+					}
+			}
+		})
+		
+
+	}
+	function get_comment(id){    //test函数名 一定要和action中的第三个参数一致上面有
+		var id = id;
+		var style = $('#divstyle').val();
+		/*$.get('__URL__/get_comment', {'p':id,}, function(data){  //用get方法发送信息到TestAction中的test方法
+			 $("#all").replaceWith("<d  id='all'>"+data+"</div>"); //test一定要和tpl中的一致
+		});*/
+		$.ajax({
+			type: "GET",
+			url: "__URL__/get_comment",
+			cache: false,
+			dataType:"text",
+			data:"p="+id+"&shop_id="+{$list.shop_id}+"&style="+style,			
+			success: function(data){
+				
+				if(style){
+					$('#'+style).html(' ');
+					$('#'+style).html(data);
+				}else{
+					$('#all').html(' ');
+					$('#all').html(data);
+				}
+				
+			}
+		})
+	 }
+
+
+	$(function() {
+	    $( document ).tooltip();
+	  });
+
+	var map = new BMap.Map("map");				
+	var point = new BMap.Point({$list.shop_maps}); // 创建点坐标
+
+	map.centerAndZoom(point,14);
+	map.addControl(new BMap.NavigationControl());
+	map.addControl(new BMap.MapTypeControl());
+	map.addControl(new BMap.ScaleControl());
+	map.addControl(new BMap.OverviewMapControl());
+	addMarker(point);
+
+	function addMarker(point)
+	{	
+		var marker = new BMap.Marker(point);  // 创建标注
+		map.addOverlay(marker);              // 将标注添加到地图中
+		var opts = {
+			width : 200,     // 信息窗口宽度
+			height: 50,     // 信息窗口高度
+			title : "{$list.shop_name}" // 信息窗口标题
+		}
+		var address = "地址：{$list.shop_address}";
+		var infoWindow = new BMap.InfoWindow(address, opts);  // 创建信息窗口对象
+		marker.openInfoWindow(infoWindow);
+	}	 
+</script>

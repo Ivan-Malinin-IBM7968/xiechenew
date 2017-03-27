@@ -1,0 +1,104 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Js/jquery.js'></script>
+<div id="main">
+<div id="main-right"><h1>团购现金券验证</h1></div>
+<div>
+	<form method="post" action="__URL__/index" onSubmit="return check_form();">
+	<table class="list">
+		<tr>
+			<td>车牌号：</td>
+			<td>
+			<select name="licenseplate_title">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+					<option value="{$vo_os}"<if condition="$licenseplate_title eq $vo_os">selected</if>>{$vo_os}</option>
+				</volist>
+			</select>
+			<input type="text"  name="licenseplate" id="licenseplate" value="{$licenseplate}" />(注释：必须填写如无车牌填写000000)
+			
+			</td>
+		</tr>
+		<tr>
+			<td>验证码1：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.0}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+			<td>验证码2：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.1}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+		</tr>
+		<tr>
+			<td>验证码3：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.2}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+			<td>验证码4：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.3}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+		</tr>
+		<tr>
+			<td>验证码5：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.4}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+			<td>验证码6：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.5}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+		</tr>
+		<tr>
+			<td>验证码7：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.6}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+			<td>验证码8：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.7}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+		</tr>
+		<tr>
+			<td>验证码9：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.8}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+			<td>验证码10：</td>
+			<td><input type="text"  name="coupon_code[]" value="{$coupon_code.9}" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="查询验证码真伪" style="impBtn hMargin fLeft shadow"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+<div id="main-right2">
+  <table width="785" border="0" cellspacing="1" cellpadding="1" >
+    <tr>
+      <td height="40" bgcolor="#F2F2F2">现金券编号</td>
+      <td bgcolor="#F2F2F2">现金券消费码</td>
+      <td bgcolor="#F2F2F2">现金券名称</td>
+      <td bgcolor="#F2F2F2">是否支付</td>
+      <td bgcolor="#F2F2F2">过期日期</td>
+      <td bgcolor="#F2F2F2">操作</td>
+    </tr>
+    <volist name="memberconpon" id="vo">
+    <tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+      <td height="40" >{$vo.membercoupon_id}</td>
+      <td>{$vo.coupon_code}</td>
+      <td>{$vo.coupon_name}</td>
+      <td>
+      	<if condition="$vo.is_pay eq 1">已支付<elseif condition="$vo.is_pay eq 0"/>未支付<else /></if>
+      </td>
+      <td>
+      	<if condition="$vo.end_time gt 0">{$vo.end_time|date="Y-m-d H:i:s",###}(<if condition="$vo.end_time lt $now">已过期<else />未过期</if>)</if>
+      </td>
+      <td>
+		<if condition="$vo.membercoupon_id eq 0">无效号码<elseif condition="$vo.is_pay eq 0" />未支付<elseif condition="$vo.is_use eq 1" />已使用<elseif condition="$vo.have_code eq 1" />和上面重复<elseif condition="$vo.end_time lt $now" />已过期<else />可使用</if>
+	  </td>
+    </tr>
+    </volist>
+	<tr>
+		<td colspan="7">
+		<a href="__URL__/use_coupon1/membercoupon_ids/{$memberconpon_id_str}/licenseplate_str/{$licenseplate_str}">确认使用</a>
+		</td>
+	</tr>
+  </table>
+</div>
+
+</div>
+
+<script type="text/javascript">
+<!--
+	function check_form(){
+		if ($('#licenseplate').val() == ""){
+			alert("请填写车牌号");
+			$('#licenseplate').focus();
+			return false;
+		}
+		return true;
+	}
+//-->
+</script>

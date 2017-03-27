@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ThinkPHP示例：Hello,ThinkPHP</title>
+    <link href="../Public/css.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/think/jquery-1.6.2.min.js"></script>
+    <script src="__PUBLIC__/think/jquery.think.js"></script>
+
+    <script>
+		function fleshVerify(){ 
+		//重载验证码
+		var timenow = new Date().getTime();
+		$('#verifyImg').attr("src",'__APP__/common/verify/'+timenow);
+
+		}
+    </script>
+</head>
+<body>
+<div class="main">
+<table>
+<form action="__APP__/public/logincheck" method="post">
+<tr>
+<td>用户名：</td><td><input type="text" name="username"  /></td>
+</tr>
+<tr>
+<td>密码：</td><td><input type="password" name="password" /></td>
+</tr>    
+    <tr>
+        <td>验证码：</td><td><input type="text" class="small bLeftRequire" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__APP__/common/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle"></td>
+    </tr>
+    <tr>
+    <td><input type="submit" value="登录"></td>
+    </tr>
+    </form>
+</table>
+</div>
+</body>
+</html>

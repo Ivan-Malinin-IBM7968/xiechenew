@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>携车网 - 4S店铺售后预约</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta name="apple-mobile-web-app-title" content="携车网">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/index.css?v={$Think.config.VERSION_DATE}" />
+	<script src="__PUBLIC__/mobile/js/libs/require.js" data-main="__PUBLIC__/mobile/js/pamobile"></script>
+	<include file="Public:wapfoot" />
+</head>
+<body style="position: relative">	
+	 <!-- <div id='loading-overlay'>
+        <div class="loading" id="loading-con">
+            <img src="__PUBLIC__/mb/images/ajax-loader.gif" alt="Loading..."/>  
+            <div class="loading-text">努力加载中...</div>
+        </div>
+        
+    </div>  -->
+	<div id="warpper" >
+		<!-- Main page start  -->
+		<div data-role="page" id="main-page">
+			<!-- Header Start -->
+			<header id="header" data-role="header">
+				<h1>携车网-微门店<!--{$fs_id}--></h1>
+				<span id="left-trigger">
+			
+					<!-- <a href="javascript: window.history.back()" class="back" rel="external"></a> -->
+				</span>
+				<span id="right-trigger" >
+					<a href="tel:4006602822" class="service-call"></a>
+				</span>
+			</header>
+			<!-- Header End -->
+
+			<!-- Content Wrapper Start -->
+			<input type="hidden" id="hide_fsid" name="hide_fsid" value="{$fs_id}">
+			<input type="hidden" id="hide_fsname" name="hide_fsname" value="{$fs_Name}">
+			<div id="content-wrapper">
+				<!-- 筛选区块 Start-->
+				<nav id="list-sort">
+					<ul>
+						<li id="sort-block-a" style="position: relative" >
+							<a href="#select-brand" data-transition="slidefade"  >
+							<if condition="$fs_Name eq ''">
+								选择品牌
+							<else/>
+								{$fs_Name}
+							</if>
+							</a>
+						</li>
+						<li id="sort-block-b" <if condition="$order_type eq 'commment'">class="hover"</if>> 
+							<a href="#" rel="external">好评率优先</a>
+						</li>
+						<li id="sort-block-c" <if condition="$order_type eq 'distance'">class="hover"</if>> 
+							<a href="#" rel="external">距离优先</a>
+						</li>
+
+					</ul>
+				</nav>
+				<!-- 筛选区块 End -->
+				<!-- 店铺list Start -->
+				<div id="list-shop" >
+					<empty name="shop_info">
+						对不起，该品牌暂无签约4S店
+					<else/>
+					<ul>
+					<volist name="shop_info" id="list">
+						<li class="single-shop ui-grid-solo">
+						<a href="__APP__/Mobile-shop_detail-shop_id-{$list.id}" rel="external">
+							<div class="ui-grid-a">
+								<div class="shop-img ui-block-a" style="width: 20%">
+									<img src="{$list.logo}" alt="店铺图片" width="90%" style="margin: 0 auto;">
+								</div>
+								<div class="ui-block-b" style="width: 80%; position: relative; ">
+									<div class="ui-grid-a">
+										<div class="ui-block-a" style="width:70%; ">
+											<span class="shop-brand">
+											<if condition="$list.shop_class eq 1">
+												<em>特约</em>
+											</if>
+											{$list.shop_name2}</span>
+											<h3 class="shop-name">{$list.shop_name1}</h3>
+											
+										</div>
+										
+										<div class="ui-block-b shop-sale" style="width: 30%">
+												<if condition="$list.workhours_sale eq 'none'">
+													无折扣
+												<elseif condition="$list.workhours_sale eq 'free'"/>
+													<strong>全免<span></span></strong>
+													<span>工时费</span>
+												<else/>
+													<strong>{$list.workhours_sale}折<span>起</span></strong>
+													<span>工时费</span>
+												</if>
+										</div>
+									</div>
+									
+									<span class="clear"></span>
+								</div>
+							</div>
+							<div class="ui-grid-a" style="margin-bottom: 8px;">
+								<div class="ui-block-a" style="width: 20%"></div>
+								<div class="ui-block-b " style="width: 80%">
+									<div class="ui-grid-a">
+										<div class="ui-block-a shop-rating" >
+											<strong>{$list.comment_rate}%</strong> 好评({$list.comment_number})
+										</div>
+										<div class="ui-block-b sale-additional" >
+											<if condition="$list.have_coupon1 eq '1'">
+												<span class="xj">现金券</span>
+											</if>
+											<if condition="$list.have_coupon2 eq '1'">
+												<span class="tc">套餐券</span>
+											</if>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="ui-grid-a">
+								<div class="ui-block-a" style="width: 20%"></div>
+								<div class="ui-block-b shop-address" style="width: 80%">
+									<div class="ui-block-a address-detail" style="width: 80%">
+											<em></em><span>{$list.shop_address}</span>
+									</div>
+									<span class="ui-block-b address-distance" style="width: 20%; text-align: right; height: 20px; line-height: 22px;">
+										<if condition="($long neq '') AND ($lat neq '')">
+											{$list.distance}km
+										</if>
+									</span>
+								</div>
+							</div>
+						</a>
+						</li>
+					</volist>
+					</ul>
+					</empty>
+				</div>
+				<!-- 店铺list End -->
+				<!-- 翻页区块 Start -->
+				<div id="pagination">
+					{$page}
+				</div>
+				<!-- 翻页区块 End -->
+			</div>
+			<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+			<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+				 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-transition="slidedown">关闭</a>
+				<ul data-role="listview" data-inset="true" style="min-width:210px;">
+					<li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+						<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+					</li>
+					<li><a href="__APP__/Mobile" rel="external">预约维修保养</a></li>
+					<li><a href="__APP__/Mobile-coupon_list" rel="external">优惠券</a></li>
+					<li><a href="__APP__/Mobile-my_account-pa_id-{$pa_id}" rel="external">我的账户</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- main page end -->
+		<!-- Navigation Start -->
+			<div data-role="page" id="select-brand" > 
+				<header id="header" data-role="header">
+					<span id="left-trigger" >
+						<a href="#main-page" data-transition="slidefade" class="back"></a>
+					</span>
+					<span id="right-trigger" data-role="ui-btn-icon-right"></span>
+					<h1>请选择品牌</h1>
+				</header>
+				<ul data-role="listview" id="brand-list">
+					<li><a href="#" data-index="true" data-fsid="" data-fsname="" rel="external">全部品牌</a></li>
+					<volist name="FSdata" id="list">  
+						<li>
+						<a href="#" data-index="true" data-fsid="{$list.fsid}" data-fsname="{$list.fsname}" rel="external">{$list.word}&nbsp;&nbsp;&nbsp;&nbsp;{$list.fsname}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<!-- Navigation End -->
+		<!-- Content Wrapper End -->
+	</div>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+
+</body>
+</html>

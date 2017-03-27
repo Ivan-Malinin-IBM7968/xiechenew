@@ -1,0 +1,104 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>事故车订单结算</h1></div>
+
+<div id="main-right2">
+	<div>
+		<table width="785">
+			<tr>
+				<td>订单总数:<if condition="$data.BidorderCount eq ''"> 0<else/></if>{$data.BidorderCount}</td>
+				<td>抢单总数:<if condition="$data.shopbidding_count eq ''">0<else/></if>{$data.shopbidding_count}</td>
+				<td>可结算金额:<if condition="$data.sumscore eq ''">0<else/></if>{$data.sumscore}</td>
+			</tr>
+		</table>
+		<br>
+		<form method="post" name="form" id="form" action="__URL__">
+		<table class="list" width="785">
+			<tr>
+				<td>结算状态：</td>
+				<td>
+					<label><input type="radio" name="jiesuan_status" value="" <if condition="$jiesuan_status eq ''"> checked </if>>全部</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="jiesuan_status" value="1" <if condition="$jiesuan_status eq 1"> checked </if>>申请结算</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="jiesuan_status" value="2" <if condition="$jiesuan_status eq 2"> checked </if>>商家确认</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="jiesuan_status" value="3" <if condition="$jiesuan_status eq 3"> checked </if>>已结算</label>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>结算时间：</td>
+				<td>
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" >
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" ></td>
+			</tr>
+
+			<tr>
+				<td><a href="__URL__/index/month_type/last_month">上个月未结算</a></td>
+				<td><a href="__URL__/index/month_type/this_month">本月未结算</a></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"><input type="submit" value="搜索"></td>
+			</tr>
+			
+		</table>
+		</form>
+	</div>
+
+	<table width="785" border="0" cellspacing="1" cellpadding="1">
+		<tr>
+			<td height="40" bgcolor="#F2F2F2">保险订单号</td>
+			<td bgcolor="#F2F2F2">保险公司</td>
+			<td bgcolor="#F2F2F2">用户名</td>
+			<td bgcolor="#F2F2F2">手机号</td>
+			<!-- <td bgcolor="#F2F2F2">车牌号</td> -->
+			<td bgcolor="#F2F2F2" width="10%">保险金额</td>
+			<td bgcolor="#F2F2F2">佣金</td>
+			<td bgcolor="#F2F2F2">佣金比例</td>
+			<td bgcolor="#F2F2F2">结算时间</td>
+			<td bgcolor="#F2F2F2">结算状态</td>
+		</tr>
+
+		<volist name="bidorderjiesuan" id="vo">
+		<tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+		  <td height="40" ><a href="__APP__/Shop/Safeorder/bidorder/id/{$vo.insurance_id}/type/1" target="_blank" >{$vo.bidorder_id}</a></td>
+		  <td>{$vo.insurance_name}</td>
+		  <td>{$vo.user_name}</td>
+		  <td>{$vo.user_phone}</td>
+		  <!-- <td>{$vo.licenseplate}</td> -->
+		  <td>{$vo.loss_price}</td>
+		   <td>订单佣金:{$vo.insurance_commission}</br>
+					<!-- 保险公司佣金:{$vo.company_commission} -->
+		   </td>
+		  <td>订单佣金比例:{$vo.insurance_rebate}%</br>
+					<!-- 保险公司佣金比例:{$vo.company_rebate}% -->
+			</td>
+		  <td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+		  <td>{$vo.jiesuan_status_str}</td>
+		</tr>
+		</volist>
+		<tr>
+			<td colspan="9">&nbsp;</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="2">&nbsp</td>
+			<td>总结算金额</td><td>{$jiesuan_amount}</td>
+			<td colspan="2">总佣金</td><td colspan="2">{$jiesuan_commission}</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="2">&nbsp</td>
+			<td>总实际支付</td><td>{$true_pay}</td>
+			<td colspan="5">&nbsp</td>
+		</tr>
+		<if condition="($jiesuan_status eq 1) AND ($true_pay neq 0) AND ($jiesuan_amount neq 0)">
+		<tr>
+			<td colspan="9"><input type="button" onclick="window.open('{$true_jiesuan_url}');" value="确认结算信息"></td>
+		</tr>
+		</if>
+	</table>
+	<!-- <div id="main-right3">{$page}</div> -->
+</div>
+
+</div>

@@ -1,0 +1,66 @@
+<layout name='layout_new' />
+<script>
+	function checkpoint(id,point){
+		var sqlponit = $('#point').val();
+		if(sqlponit >=point){
+			$.ajax({
+				type: "POST",
+				url: "__URL__/AjaxCheckpoint",
+				cache: false,
+				dataType:"text",
+				data:"point="+point+"&id="+id,			
+				success: function(data){
+					
+						//alert(window.location.host+"__APP__");
+						window.location.href = "__APP__/Gift/giftbuy/id/"+id;
+					
+				}
+			});
+		}else{
+			alert('积分不足！');
+		
+		}
+		
+	}
+</script>
+<div style="TEXT-ALIGN: center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;">
+	<div >
+		<div >
+			<img src="__PUBLIC__/note/images/lipin.jpg" width="980" height="3240" border="0" usemap="#Map">
+			<input type="hidden" name="point" id="point" value="{$member.point_number}">
+			<map name="Map"><area shape="rect" coords="95,451,175,474" href="###" onclick="checkpoint(1);">
+				<area shape="rect" coords="332,450,413,477" href="###" onclick="checkpoint(2,2000);">
+				<area shape="rect" coords="570,450,652,475" href="###" onclick="checkpoint(3,2000);">
+				<area shape="rect" coords="808,449,889,475" href="###" onclick="checkpoint(4,2000);">
+
+				<area shape="rect" coords="94,718,174,743" href="###" onclick="checkpoint(5,3000);">
+				<area shape="rect" coords="331,718,413,744" href="###" onclick="checkpoint(6,4000);">
+				<area shape="rect" coords="570,718,650,742" href="###" onclick="checkpoint(7,4000);">
+				<area shape="rect" coords="805,717,889,745" href="###" onclick="checkpoint(8,5000);">
+
+				<area shape="rect" coords="95,990,175,1014" href="###" onclick="checkpoint(9,10000);"> 
+
+				<area shape="rect" coords="100,1548,179,1572" href="###" onclick="checkpoint(10,3000);">
+				<area shape="rect" coords="333,1545,415,1572" href="###" onclick="checkpoint(11,20000);">
+				<area shape="rect" coords="571,1546,653,1571" href="###" onclick="checkpoint(12,25000);">
+				<area shape="rect" coords="809,1546,891,1571" href="###" onclick="checkpoint(13,30000);">
+
+				<area shape="rect" coords="99,1818,180,1843" href="###" onclick="checkpoint(14,50000);">
+				<area shape="rect" coords="335,1818,418,1843" href="###" onclick="checkpoint(15,60000);">
+				<area shape="rect" coords="575,1819,655,1842" href="###" onclick="checkpoint(16,70000);">
+				<area shape="rect" coords="808,1818,891,1842" href="###" onclick="checkpoint(17,80000);">
+
+				<area shape="rect" coords="100,2360,181,2385" href="###" onclick="checkpoint(18,5000);">
+				<area shape="rect" coords="337,2360,418,2383" href="###" onclick="checkpoint(19,8000);">
+				<area shape="rect" coords="573,2360,658,2385" href="###" onclick="checkpoint(20,10000);">
+				<area shape="rect" coords="809,2360,891,2385" href="###" onclick="checkpoint(21,35000);">
+
+				<area shape="rect" coords="99,2635,181,2659" href="###" onclick="checkpoint(22,40000);">
+
+				<area shape="rect" coords="100,3178,185,3204" href="###" onclick="checkpoint(23,90000);">
+				<area shape="rect" coords="340,3177,422,3204" href="###" onclick="checkpoint(24,100000);">
+				<area shape="rect" coords="686,3177,771,3207" href="###" onclick="checkpoint(25,15000);">
+			</map>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<layout name='layout_nonejs' />
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/common/css/reset.css" >	
+		<link rel="stylesheet" href="http://statics.xieche.com.cn/event/dp/css/dp.css">
+		<style>
+			.fp-form, .fp-form ul{margin-top: 0px;}
+			.fp-form ul li{height: 50px;}
+			.fp-form ul li label{ color: #999999;}
+		</style>
+
+		<div class="container">
+			<div class="dp-progress dp-progress-3">
+				
+			</div>
+			<div class="form-container">
+				<div class="form-title">预约单详情</div>
+				<form action="" class="fp-form">
+					<ul>
+						<!--<li>
+							<label for="">消费券编号:</label>
+							<div class="form-field">
+								<div class="final-value">
+									{$dianpingif.coupon_code}
+								</div>
+							</div>
+						</li>-->
+						<li>
+							<label for="">消&nbsp;&nbsp;费&nbsp;&nbsp;码：</label>
+							<div class="form-field">
+								<div class="final-value">
+									{$dianpingif.coupon_code}
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">车&nbsp;&nbsp;牌&nbsp;&nbsp;号：</label>
+							<div class="form-field">
+								<div class="final-value">
+									{$order.licenseplate}
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">下订时间：</label>
+							<div class="form-field">
+								<div class="final-value">
+									{$order.create_time|date='Y-m-d H:i:s',###}
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">预约时间：</label>
+							<div class="form-field">
+								<div class="final-value">
+									{$order.order_time|date='Y-m-d H:i:s',###}
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">店&nbsp;&nbsp;&nbsp;&nbsp;铺：</label>
+							<div class="form-field">
+								<div class="final-value">
+									{$shop.shop_name}
+								</div>
+							</div>
+						</li>
+						<li>
+						<label for="">车&nbsp;&nbsp;&nbsp;&nbsp;型：</label>
+							<div class="form-field">
+								<div class="final-value">
+											{$car}
+									
+								</div>
+							</div>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+		<script src="http://statics.xieche.com.cn/common/js/libs/jquery/jquery-1.11.min.js"></script>
+	</body>
+</html>

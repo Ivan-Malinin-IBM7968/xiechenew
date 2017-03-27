@@ -1,0 +1,6 @@
+ .coupon-price{position: relative;}
+ .coupon-price strong,
+ .coupon-price em{ position: absolute; right: 5px;}
+
+  .coupon-price strong{font-size: 1.2em; color: #fd8611;}
+  .coupon-price em{font-size: .9em; color: #aaaaaa; text-decoration: line-through;}

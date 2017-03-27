@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta >
+		<title></title>
+		<link rel="stylesheet" href="http://statics.xieche.net/common/css/reset.css" />
+		<style>
+			#block1{width: 100%; height: 375px; background: url("http://statics.xieche.net/image/event/20140325/bg1.jpg") center center no-repeat;}
+			#inner-block1{width: 1100px; height: 375px; margin: 0 auto;}
+			#block2{width: 100%; height: 308px; background: url("http://statics.xieche.net/image/event/20140325/bg2.jpg") center center no-repeat;}
+			#inner-block2{width: 1100px; height: 308px; margin: 0 auto; position: relative;}
+			#block3{width: 100%; height: 394px; background: url("http://statics.xieche.net/image/event/20140325/bg3.jpg") center center no-repeat;}
+			#inner-block3{position: relative; width: 1100px; height: 394px; margin: 0 auto;}
+			.reg-box{position: absolute; width: 387px; height: 130px; overflow: hidden; top:85px; left: 77px;  overflow: hidden;}
+			.reg-box .phone, 
+			.reg-box .verify{ margin: 20px auto; width: 387px; height: 42px; overflow: hidden;}
+			.reg-box .phone input, 
+			.reg-box .verify input{  border: 1px solid #cdcdcd; width: 255px; padding-left: 5px; height: 38px; line-height: 38px; margin-right: 10px; font-size: 16px; display: inline-block; float: left;}
+			.reg-box .phone a, 
+			.reg-box .verify a{
+				display: inline-block; background: #f1f1f1; color: #000000; width: 103px; height: 40px; line-height: 40px; text-align: center; text-decoration: none;float: left;
+			}
+			.reg-box .verify a:after{}
+			.reg-box .phone a{background: url("http://statics.xieche.net/image/event/20140325/sprite.png") 0px 0px no-repeat;}
+			.reg-box .phone a:visited{background: url("http://statics.xieche.net/image/event/20140325/sprite.png") 0px 0px no-repeat;}
+			.reg-box .phone a:hover{background: url("http://statics.xieche.net/image/event/20140325/sprite.png") 0px -40px no-repeat;}
+			.reg-box .verify a{color: #f1f1f1; background: url("http://statics.xieche.net/image/event/20140325/sprite.png") 0px -80px no-repeat;}
+			.reg-box .verify a:visited{background: url("http://statics.xieche.net/image/event/20140325/sprite.png") 0px -80px no-repeat;}
+			.reg-box .verify a:hover{background: url("http://statics.xieche.net/image/event/20140325/sprite.png") 0px -120px no-repeat;}
+			#block4{width: 100%; height: 248px; background: url("http://statics.xieche.net/image/event/20140325/bg4.jpg") center center no-repeat;}
+			#inner-block4{width: 1100px; height: 248px; margin: 0 auto;}
+		</style>
+	</head>
+	<body>
+		<div id="block1">
+			<div id="inner-block1">
+				
+			</div>
+		</div>
+		<div id="block2">
+			<div id="inner-block2">
+				<a href="" id="go-link" >访问这里挑选合适您的现金券或者套餐券</a>
+			</div>
+		</div>
+		<div id="block3">
+			<div id="inner-block3">
+				<div class="reg-box">
+					<div class="phone">
+						<input type="text" value="手机号码">
+						<a href="javascript:void(0);">获取验证码</a>
+					</div>
+					<div class="verify">
+						
+						<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" value="验证码">
+						<a href="javascript:void(0);" id="">立即验证</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="block4">
+			<div id="inner-block4">
+				
+			</div>
+		</div>
+		<script src="http://statics.xieche.net/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script>
+			(function(){
+		      $(".reg-box .phone input, .reg-box .verify input").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+		  }());
+
+		</script>
+	</body>
+</html>

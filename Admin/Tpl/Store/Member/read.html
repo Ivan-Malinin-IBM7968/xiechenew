@@ -1,0 +1,273 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">用户信息<if condition="$member_info.status eq 1"> [<a href="{:U('/Store/Order/selectshop',array('uid'=>$member_info[uid]))}">代下单</a>]</if>
+		[<a href="{:U('/Store/membercoupon/member_order',array('uid'=>$member_info[uid]))}">代下优惠券</a>]
+		[<a href="{:U('/Carservice/Carserviceorder/place_order',array('uid'=>$member_info[uid]))}">代下上门保养</a>]
+		[<a href="javascript:void(0)" onclick="$('#model').show();return false;">给用户发送短信</a>]
+		</div>
+            <!-- 查询区域 -->
+            <div class="content">
+            {$string}
+			<table>
+			<tr><TD class="tRight" >Uid：</TD><td>{$member_info.uid}</td></tr>
+			<tr><TD class="tRight" >用户名：</TD><td>{$member_info.username}</td></tr>
+			<tr><TD class="tRight" >卡号：</TD><td>{$member_info.cardid}</td></tr>
+			<tr><TD class="tRight" >邮箱：</TD><td>{$member_info.email}</td></tr>
+			<tr><TD class="tRight" >电话：</TD><td>{$member_info.mobile}</td></tr>
+			<tr><TD class="tRight" >地区：</TD><td>{$member_info.prov}--{$member_info.city}--{$member_info.area}</td></tr>
+			<tr><TD class="tRight" ><a href="__URL__/edit/id/{$member_info.uid}">来源：</a></TD>
+			<td>
+				<if condition="1 eq $member_info['fromstatus']">百度/谷歌</if>
+				<if condition="2 eq $member_info['fromstatus']">论坛/微博</if>
+				<if condition="3 eq $member_info['fromstatus']">朋友介绍</if>
+				<if condition="4 eq $member_info['fromstatus']">APP</if>
+				<if condition="5 eq $member_info['fromstatus']">客服电话</if>
+				<if condition="6 eq $member_info['fromstatus']">老用户</if>
+				<if condition="7 eq $member_info['fromstatus']">宣传单</if>
+				<if condition="9 eq $member_info['fromstatus']">短信推广</if>
+				<if condition="8 eq $member_info['fromstatus']">其他</if>
+			</td></tr>
+			<tr><TD class="tRight" >用户积分：</TD><td>{$member_info.point_number}</td></tr>
+			<tr><TD class="tRight" >注册时间：</TD><td>{$member_info.reg_time|date="Y-m-d",###}</td></tr>
+			<tr><TD class="tRight" >账号状态：</TD><td><if condition="$member_info.status eq 1">账号正常<else /><font color="red">账号已被禁用</font></if></td></tr>
+			<tr><TD class="tRight" >IP地址：</TD><td>{$member_info.ip}</td></tr>
+			<tr><TD class="tRight" >备注：</TD><td>{$member_info.memo}</td></tr>
+			<tr><TD class="tRight" >用户车型信息：</TD><td>{$webusercar}</br>车牌号：{$webusercar_info.car_number}</br>
+				<empty name="webusercar_info">
+				<input type="button" value="为用户备注车型" onClick="window.location.href='{:U('/Store/Member/add_webusercar',array('uid'=>$member_info[uid]))}'"/>
+				<else/>
+				<input type="button" value="修改用户备注车型" onClick="window.location.href='{:U('/Store/Member/edit_webusercar',array('uid'=>$member_info[uid],'id'=>$webusercar_info[id]))}'"/>
+				</empty>
+				</td></tr>
+			</table>
+			</div>
+		    <div class="title">用户自定义车型信息</div>
+            <!-- 查询区域 -->
+            <div class="content">
+            
+            <table class="list">
+			<th>车辆数</th>
+			<th>自定义车名</th>
+			<th>车型信息</th>
+			<th>车辆状态</th>
+			
+			<volist name="membercar_info" id="carvo"  key="">
+				<tr>
+					<td>车辆{$i}</td>
+					<td>{$carvo.car_name}</td>
+					<td>{$carvo.car_info.brand_name}--{$carvo.car_info.series_name}--{$carvo.car_info.model_name}</td>
+					<td><if condition="$carvo.status eq -1">已删除<elseif condition="$carvo.status eq 1" />正常<else />注销</if></td>
+				</tr>
+			</volist>
+			</table>
+
+			<div class="title">用户订单</div>
+				<table cellspacing="10">
+					<tr>
+						<th>订单编号</th>
+						<th>订单类型</th>
+						<th>预约时间</th>
+						<th>真实姓名</th>
+						<th>电话</th>
+						<th>车牌号</th>
+						<th>备注</th>
+						<th>订单状态</th>
+						<th>操作</th>
+					</tr>
+
+					<volist name="order_info" id="ordervo">
+						<tr><TD>{$ordervo.id}</TD><td>4s店预约保养</td><td>{$ordervo.order_time|date="Y-m-d H:i:s",###}</td><td>{$ordervo.truename}</td><td>{$ordervo.mobile}</td>
+							<td>{$ordervo.licenseplate}</td><td>{$ordervo.remark}</td>
+							<td>
+								{$Think.config.ORDER_STATE.$ordervo[order_state]}
+							</td>
+							<td>
+								<a href="__APP__/Store/order/edit/order_id/{$ordervo.id}" target="_blank">详细</a>
+							</td>
+						</tr>
+					</volist>
+					<volist name="re_order_info" id="re_order" key="0">
+						<tr><TD>{$re_order.id}</TD><td>上门保养</td><td>{$re_order.order_time|date="Y-m-d H:i:s",###}</td><td>{$re_order.truename}</td><td>{$re_order.mobile}</td>
+							<td>{$re_order.licenseplate}</td><td>{$re_order.remark}</td>
+							<td>
+								{$Think.config.RESERVATION_ORDER_STATE.$re_order[status]}
+							</td>
+							<td>
+								<a href="/Admin/index.php/Carservice/carserviceorder/detail?id={$re_order.id}" target="_blank">详细</a>&nbsp
+								<if condition="$re_order.status eq 9"><a href="/mobile/check_report-report_id-{$re_order.checkreport_id}" target="_blank">查看检测报告</a>
+									<else />
+								</if>
+							</td>
+
+					</volist>
+					<volist name="bidorder_info" id="bidorder">
+						<tr><TD>{$bidorder.id}</TD><td>事故车</td><td>{$bidorder.order_time|date="Y-m-d H:i:s",###}</td><td>{$bidorder.truename}</td><td>{$bidorder.mobile}</td>
+							<td>{$bidorder.licenseplate}</td><td>{$bidorder.remark}</td>
+							<td>
+								{$Think.config.BIDORDER_STATE.$bidorder[order_status]}
+							</td>
+							<td>
+								<a href="__APP__/Store/bidorder/orderdetail/id/{$bidorder.id}" target="_blank">详细</a>
+							</td>
+						</tr>
+					</volist>
+				</table>
+
+			 <div class="title">用户购买优惠卷信息</div>
+            <!-- 查询区域 -->
+          
+           <table class="list">
+			<tr class="row">
+			<th>优惠卷号</th>
+			<th>券名</th>
+			<th>用户名</th>
+			<th width=10%>金额</th>
+			
+			<th>类别</th>
+			<th>4S店</th>
+			<th>添加时间</th>
+			<th>使用状态</th>
+			<th width=8%>使用时间</th>
+			<th>支付状态</th>
+			<th width=8%>支付时间</th>
+		
+			</tr>
+			<tr>
+			<volist name="list" id="vo">
+			<td>{$vo.membercoupon_id}</td>
+			<td><a href="__WEB__/coupon/{$vo.coupon_id}" target="_blank">{$vo.coupon_name}</a></td>
+		
+			<td><a href="__APP__/Store/member/CouponRead/id/{$vo.uid}" target="_blank">{$vo.username}</a><br>
+				 <if condition="$vo.licenseplate eq ''"> {$vo.mobile}<else /> {$vo.licenseplate}</if>
+			</td>
+			<td>原价:{$vo.cost_price}<br>现价:{$vo.coupon_amount}</td>
+			
+			<td>
+			<if condition="$vo.coupon_type eq 1">现金券<else />团购券</if>
+			</td>
+
+			<td>{$vo.shop_name}</td>
+			<td>{$vo.create_time|date="y-m-d H:i:s",###}</td>
+			<td>
+				<if condition="$vo.is_use eq 0">
+				未使用
+					<if condition="$vo.is_refund eq 1">,已退款</if>
+				<else />
+				已使用
+				</if>
+
+			</td>
+			<td >
+				<if condition="$vo.use_time gt 0">{$vo.use_time|date="y-m-d H:i:s",###}<else />--</if>
+
+			</td>
+			<td>
+			<volist name="Think.config.PAY_STATE" id="vo_os">
+			<eq name="key" value="$vo.is_pay">{$vo_os}</eq>
+			</volist>
+			</td>
+
+			<td><if condition="$vo.pay_time gt 0">{$vo.pay_time|date="y-m-d H:i:s",###}<else />--</if></td>
+
+			
+			</tr>
+			</volist>
+			</table>
+
+			<!-- 回访显示区域开始 -->
+			<div class="title">用户回访信息</div>
+			<table>
+			<tr>
+				<TD class="tRight" >历史回访备注：</TD>
+				<td colspan=5>
+					<table width=100%>
+						<tr>
+						<th width=70%>备注内容</th><th width=15%>操作人</th><th width=15%>添加时间</th>
+						</tr>
+						<volist name="feedback_info" id="vo_fe">
+						<tr>
+							<td>{$vo_fe.content}</td>
+							<td>{$vo_fe.operator_name}</td>
+							<td>{$vo_fe.create_time|date="y-m-d H:i:s",###}</td>
+						</tr>
+					</volist>
+					</table>
+				</td>
+			</tr>
+			<form action="__URL__/insert_feedbackinfo/" method="post">	
+			<tr>
+				<TD class="tRight" >回访备注：</TD>
+				<td><textarea rows="10" cols="40" name="content"></textarea></td>
+				<TD class="tRight" >下次回访时间：</TD>
+				<td><input TYPE="text" class="large bLeft"  NAME="recall_time" onclick="new Calendar().show(this);" value="{$start_time}" readonly="readonly"></td>
+				<TD class="tRight" >是否关闭回访：</TD>
+				<td><input type="radio" name="is_close" value="true" <if condition="$is_close eq 'true'">checked</if>>是</input><input type="radio" name="is_close" value="false" <if condition="$is_close eq 'false' or $is_close eq ''">checked</if>>否</input></td>
+				<td><input type="hidden" name="uid" value="{$member_info.uid}"><input type="hidden" name="mobile" value="{$member_info.mobile}"></td>
+			</tr>
+			<tr><TD class="tRight" >&nbsp;</TD><td><input type="submit" id="btn_ok" name="btn_ok" value="提交"></td></tr>
+			</form>
+			</table>
+			<!-- 回访显示区域结束 -->
+
+			</div>
+
+        <!-- 列表显示区域结束 -->
+    </div>
+<div style="width:500px;z-index:99;background-color:#efefef;padding:0px 0px 20px 40px;position:fixed;top:30%;left:30%;display:none" id="model">
+	<div style="float:right;padding:10px 20px 0px 0px;cursor:pointer" onClick="$(this).parent().hide()">X</div>
+	<h3 style="padding-top:30px">请填写客户资料:</h3>
+	<div style="padding:10px 0px"><label style="width:80px;display:inline-block">手机号码：</label><input name="add_mobile" /></div>
+	<div style="padding:10px 0px"><label style="width:80px;display:inline-block;vertical-align:top">备注：</label><textarea rows="5" style="width:300px" name="add_remark" readonly></textarea></div>
+	<div style="padding:10px 0px"><label style="width:80px;display:inline-block;vertical-align:top"></label><button id="send">添加</button></div>	
+</div>
+<script type="text/javascript">
+	
+	<notempty name="staff">
+		var html = '【携车网-府上养车】你很忙，我们知道，99元上门为您保养爱车，4S品质，省钱省事。另有4S店预约折扣、车辆维修返利等，好多便宜。400-660-2822，服务工号：{$staff.staff_id} {$staff.name}';
+		$('textarea[name=add_remark]').val(html);
+	</notempty>
+	
+	$('#send').click(function(){
+		/* if(!canSend){
+			alert('您无权限发送');
+			return false;
+		} */
+		var add_mobile = $('input[name="add_mobile"]').val();
+		if(!add_mobile){
+			alert('请填写客户电话');
+			return false;
+		}
+		var add_remark = $('textarea[name="add_remark"]').val();
+		if(!add_remark){
+			alert('请填写发送内容');
+			return false;
+		}
+		$.post('__URL__/sendMsg',{'mobile':add_mobile,'content':add_remark},function(data){
+			if(data.status){
+				alert('发送成功');
+				window.location.reload();
+			}else{
+				alert(data.msg);
+			}
+		},'json')
+	})
+</script>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

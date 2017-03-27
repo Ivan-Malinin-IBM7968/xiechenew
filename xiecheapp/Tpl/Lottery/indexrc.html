@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>携车网_唯一4S店售后折扣网站，上海东风日产品牌特惠，千元售后现金券抽奖，沪上全部4S店售后折扣比拼</title>
+<meta content="4S店预约保养,保养价格,事故理赔,工时费折扣,保养团购券,代金券,上海大众保养多少钱,奥迪保养多少钱,宝马保养多少钱" name="keywords">
+<meta content="携车网  (原名纵横携车网) 向广大车主提供汽车保养维修预约享受折扣服务，用车费用记录、油耗统计信息、车辆维修保养价格数据信息等，帮您轻松解决小保养、大保养、机油、机滤、刹车片、火花塞等汽车保养难题，是您选择养车服务的第一网络平台。" name="description">
+<link rel="shortcut icon" href="/Public/new_2/images/favicon.ico" type="image/x-icon">
+<if condition="$header eq '4'">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="initial-scale = 0.5, user-scalable = no">
+<base target="_blank">
+
+</if>
+<if condition="$header eq '3'">
+<meta name="viewport" content="initial-scale = 0.5, user-scalable = no">
+<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+</if>
+<if condition="$header eq '2'">
+<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
+</if>
+<if condition="$header eq '1'">
+<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+<meta name="viewport" content="initial-scale=0.5,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
+</if>
+
+
+<style type="text/css">
+
+</style>
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/cj/jQueryRotate.2.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/cj/jquery.easing.min.js"></script>
+<script type="text/javascript">
+   
+
+
+$(function(){ 
+	$("#send_verify").attr("disabled",false);
+		$("#send_verify").click(function(){
+			var mobile = $('#mobile').val();
+			var second = "60";
+			if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Lottery/send_verify",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							$("#send_verify").show();
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						$("#send_verify").show();
+						send_verify_show(second);
+					}
+				})
+			}
+		})
+
+}); 
+
+function ajax_app(){
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Lottery-ajaxapp",
+		cache: false,
+		data:"mobile=1",
+		dataType: "json",
+		success: function(data){
+		},
+		error: function(){
+			
+		}
+	})
+
+
+
+}
+function send_verify_show(i){
+	if(i>='0'){
+		$("#send_verify").attr("disabled",true); 
+		$("#send_verify").attr("value",i+"秒后重新发送");
+		i--;
+		setTimeout(function(){send_verify_show(i);},1000);
+	}else{
+		$("#send_verify").attr("disabled",false); 
+		$("#send_verify").attr("value","发送手机验证码");
+	}
+}
+
+function lottery(){ 
+	var mobile = $('#mobile').val();
+	var hiden_sessuser = $('#hiden_sessuser').val();
+	var hide_mobile = $('#hide_mobile').val();
+	var url = $('#url').val();
+	if(hide_mobile || hiden_sessuser || mobile){
+		$.ajax({ 
+			type: 'POST', 
+			url: '__APP__/Lottery-ajaxcj', 
+			dataType: 'json', 
+			data: "mobile="+mobile+"&salecoupon_id=2",
+			cache: false, 
+			error: function(){ 
+				alert('出错了！'); 
+				return false; 
+			}, 
+			success:function(json){ 
+				$("#startbtn").unbind('click').css("cursor","default"); 
+				var a = json.angle; //角度
+				var p = json.prize; //奖项 
+				var count = json.count; //重复计数
+				var id = json.id; //重复计数
+				var KEY = json.KEY; //KEY
+				var session_mobile = json.session_mobile; //session_username
+					if(!session_mobile){
+						alert('请先登录！');
+						return false;
+					}
+					if(count=='noway'){
+						alert('您已经抽过奖了！');
+						return false;
+					}else{
+						 $("#startbtn").rotate({ 
+							duration:3000, //转动时间 
+							angle: 0, 
+							animateTo:1800+a, //转动角度 
+							easing: $.easing.easeOutSine, 
+							callback: function(){ 
+								alert('恭喜你，中得'+p+'\n');
+								$.ajax({
+									type: "POST",
+									url: "__APP__/Lottery-addsale",
+									cache: false,
+									data: "id="+id+"&mobile="+hide_mobile+"&KEY="+KEY+"&url="+url,
+									success: function(data){
+										if (data != '0'){
+											window.location.href = 'http://www.xieche.com.cn/Lottery-my_salecoupon-membersalecoupon_id-'+data;
+										}
+									}
+								})
+							} 
+						}); 
+					}
+			} 
+		});
+	}else{
+		alert('请填写手机号码!');
+		return false;
+	}
+} 
+
+function login(){
+	var mobile = $('#mobile').val();
+
+	var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Lottery-lotterylogin",
+		cache: false,
+		data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery,
+		dataType: "json",
+		success: function(data){
+			if(data == '1'){
+				alert('验证码填写错误');
+				return false;
+			}else{
+				location.reload();
+			}
+		},
+		error: function(){
+			
+		}
+	})
+}
+
+</script>
+<style>
+	*{margin: 0; padding: 0; list-style: none;}
+	body{background: #fff7c1;}
+	.bg-1{width: 640px; height: 346px;}
+	/*.bg-1{background: url('__PUBLIC__/cj/bg1.jpg') 0 0 no-repeat; }*/
+	.bg-2{background: url('__PUBLIC__/cj/rc/bg2.jpg') 0 0 no-repeat; width: 640px; height: 264px; position: relative;}
+	.bg-3{width: 580px; height: 215px;margin: 0 auto; padding: 0 30px; }
+	.bg-3 h3{font-size: 1.5em; margin-bottom: 5px;}
+	.bg-3 .ul1{}
+	.bg-3 .ul1 li{font-size: 1.3em; margin-bottom: 3px;}
+
+	.bg-3 .ul2{padding: 10px 0; display: block; width: 580px; height: 122px;}
+	.bg-3 .ul2 li{margin-bottom: 5px;}
+	.bg-3 .ul2 li label{font-size: 1.3em;}
+	.bg-3 .ul2 li input[type='text']{width: 250px; height: 30px; line-height: 30px; font-size: 1.3em }
+	.bg-3 .ul2 li input[type='button']{width: auto;
+padding: 0 10px;
+height: 30px;
+line-height: 30px;
+font-size: 18px;
+background: #f1f1f1;
+color: #000;
+margin-left: 10px;}
+
+	.bg-4{width: 640px; height: 640px;margin: 0 auto;}
+	.bg-5{width: 580px; height: 260px; color: #666666;border-radius: 10px; padding: 10px; background: white; margin: 0 auto; border: 1px solid #f1f1f1; padding-bottom: 10px}
+	
+	.bg-5 h3{font-size: 1.5em; margin-bottom: 5px;}
+	.bg-5 ul li{margin-bottom: 5px; font-size: 1.3em;}
+	#main{width: 640px; height: auto; margin: 0 auto; background: #fff7c1; overflow: hidden;}
+	.demo{width:600px; height:600px; position:relative; margin:0 auto;}
+	#disk{width:600px; height:600px; background:url("__PUBLIC__/cj/rc/disk.png") no-repeat}
+	#start{width:163px; height:320px; position:absolute; top:140px; left:216px;}
+	#start img{cursor:pointer}
+
+	.bg6{width: 640px; height: 184px;background: url('__PUBLIC__/cj/bg6.jpg') 0 0 no-repeat; position: relative;}
+</style>
+</head>
+
+<body>
+
+	<div id="main">
+		<div class='bg-1'>
+			<img src='__PUBLIC__/cj/rc/bg1.jpg' width='640' height='346' alt="">
+		</div>
+		<div class='bg-2' style='position: relative'>
+			<a style='display: block;width: 280px;height: 100px;position: absolute;left: 20px;top: 25px;' href="http://www.xieche.com.cn/shop/31" alt='上海绅协绅通-东风日产' target="_blank"></a>
+			<a style='display: block;width: 280px;height: 100px;position: absolute;left: 336px;top: 25px;' href="http://www.xieche.com.cn/shop/1325" alt='上海开隆真北店-东风日产4S店' target="_blank"></a>
+			<a href="http://www.xieche.com.cn/shop/490" style='display: block;width: 280px;height: 100px;position: absolute;left: 20px;top: 159px;' alt='上海开隆虹梅店-东风日产4S店' target="_blank"></a>
+			<a href="http://www.xieche.com.cn/order/index-fsid-53.html" style='display: block;width: 280px;height: 100px;position: absolute;left: 336px;top: 159px;' alt='全部上海东风日产4S店' target="_blank"></a>
+		</div>
+		<div class='bg-3'>
+			<h3>[操作流程]</h3>
+			<ul class='ul1'>
+				<li>1. 填写手机号, 获取动态密码登陆,</li>
+				<li>2. 登录后, 点击[开始抽奖]进行抽奖.</li>
+				<notempty name="Think.session.mobile">
+					<li>3. <a href="__APP__/Lottery/my_salecoupon-membersalecoupon_id-{$data.membersalecoupon_id}.html" target="_blank">50元现金券的使用规则及可使用店铺请点击<strong>[这里]</strong>查看</a></li>
+				<else />
+					<li>3. <a href="http://www.xieche.com.cn/Lottery-salecoupon-salecoupon_id-1" target="_blank">50元现金券的使用规则及可使用店铺请点击<strong>[这里]</strong>查看</a>
+					</li>
+					
+				</notempty>
+			</ul>
+			<ul class='ul2'>
+			<notempty name="Think.session.uid">
+			<li id="li_username" style="display:display;">
+					<label id="username"for="">{$Think.session.mobile}用户现在可以抽奖</label>
+					<label for=""><a href="{:URL('/public/logout',array())}{:C('HTML_URL_SUFFIX')}" target="_self">[退出]</a></label>
+					<br>
+					<if condition="$count gt 0"><a href="__APP__/Lottery/my_salecoupon-membersalecoupon_id-{$data.membersalecoupon_id}.html" target="_blank">我的抵用券</a></if>
+					<input type="hidden" id="hiden_sessuser" name="hiden_sessuser" value={$Think.session.mobile}>
+					<input type="hidden" id="hide_mobile" name="hide_mobile" value={$Think.session.mobile}>
+					<input type="hidden" id="mobile" name="mobile" value={$Think.session.mobile}>
+					<input type="hidden" id="url" name="url" value={$url}>
+				
+			</li>
+			<else />
+				<li id="li_mobile">
+					<label for="">手机号：</label>
+					<input type="text" id="mobile" name="mobile"> 
+					<input type="button" value="获取验证码" id="send_verify">
+				</li>
+				<li id="li_mobile_verify_lottery">
+					<label for="">验证码：</label>
+					<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery">
+					<input type="button" id="btn_login" name="btn_login" value="登录" onclick="login();">
+				</li>
+			</notempty>
+			</ul>
+		</div>
+	
+		<div class='bg-4'>
+			<div class="demo">
+		        <div id="disk" ></div>
+		        <div id="start"><img src="__PUBLIC__/cj/start.png" id="startbtn" onclick="lottery();"></div>
+		   </div>
+		   <div class="ad_demo"></div><br/>
+		</div>
+	   	<div class="bg-5">
+	   		<h3>活动规则</h3>
+	   		<ul>
+	   			<li>1. 活动时间: 即日起 - 2014年2月28日</li>
+	   			<li>2. 每个手机号码仅限1次抽奖机会；</li>
+	   			<li>3. 抽中现金券的用户，请拨打客服电话 400-660-2822 或登录携车网预约下单后，方可在指定的4S店适用；</li>
+	   			<li>4. 本活动最终解释权归携车网所有；</li>
+	   			<li>5. 加油卡每个面额每天送出三张，抽中加油卡的用户，我们的网站工作人员稍后会与您联系。 </li>
+	   		</ul>
+	   	</div>
+	   	<div class='bg6'>
+	   		<div style='width: 450px;height: 40px;line-height: 29px;position: absolute;left: 156px;top: 39px;font-size: 1.3em;'>"携车网"客户端，4S店售后折扣对比、服务口碑辨别，保养价格查询，更有保养套餐和折后现金券团购</div>
+				<a href="http://www.xieche.com.cn/download.php" style='position: absolute; width: 640px; height: 184px; left:0 ;top:0; display:block;' onclick="ajax_app();">
+				
+				<!--<if condition="$header eq '3'">
+					<a href="http://www.xieche.net/xc.apk" style='position: absolute; width: 640px; height: 184px; left:0 ;top:0; display:block;' onclick="ajax_app();">
+				</if>
+				<if condition="$header eq '2'">
+					<a href="http://www.xieche.net/xc.apk" style='position: absolute; width: 640px; height: 184px; left:0 ;top:0; display:block;' onclick="ajax_app();">
+				</if>
+				<if condition="$header eq '1'">
+					<a href="http://www.xieche.net/xc.apk" style='position: absolute; width: 640px; height: 184px; left:0 ;top:0; display:block;' onclick="ajax_app();">
+				</if>
+			-->
+	   	</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<script>
+	function order_delete(id){
+		if(!confirm("确定要删除吗？")){
+			return false;
+		}
+		$.ajax({
+			type:'POST',
+			url:'__URL__/delete_order',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+		
+	}
+
+
+	function GetShopname(){
+		var shopname = $('#shopname').val();
+		$.ajax({
+			type: "POST",
+			url: "__URL__/GetShopname",
+			cache: false,
+			data: "shopname="+shopname,
+			success: function(data){
+				if(data!='none'){
+					data = eval("(" + data + ")");
+					$("#shop_id").html("");
+					$("#shop_id").append("<option value=''>请选择4S店</option>");
+					for (i=0; i<data.length; i++ ){
+						$("#shop_id").append("<option value='"+data[i]['id']+"'>"+data[i]['shop_name']+"</option>");
+					}
+				}
+			}
+		
+		})
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+	
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">数据列表</div>
+<!--  功能操作区域  -->
+<div class="operate" >
+<!-- 查询区域 -->
+<div>
+<FORM METHOD=POST ACTION="__URL__">
+
+<table cellspacing="0" cellpadding="10" >
+	<tr>	
+		<!--<td width=25%>店铺ID：&nbsp;&nbsp;&nbsp;<input type="text"  name="id" /></td>
+		<td >-->
+		搜索4S店：<input type="text" name="shopname" id="shopname" value="{$data.shop_name}"><input type="button" id="btn_ok" value="查询" onclick="GetShopname();">
+		</td>
+
+	</tr>
+	<tr>	
+		<td colspan="2">
+			4S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店：&nbsp;
+			<select name="shop_id" id="shop_id">
+			<option value="">--请选择4S店--</option>
+			<volist name="data.shop_list" id="shopvo">
+			<option value="{$shopvo.id}" <if condition="$shopvo['id'] eq $data['shop_id']">selected</if>>{$shopvo.shop_name}</option>
+			</volist>
+			</select>
+		</td>
+	</tr>
+	<tr>	
+		<td colspan="2">	
+			时间搜索：
+			
+			开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+			结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly">
+		</td>
+	</tr>
+	<tr>	
+		<td colspan="3" align="center">	
+			<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">
+		</td>
+	</tr>
+</table>
+
+</FORM>
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+			<table class="list">
+				<tr class="row">
+					<th>店铺ID</th>
+					<th>4S店铺</th>
+					<th>订单总数</th>
+					<th>返利总金额</th>
+					<th>竞价次数</th>
+					<!--<th>操作</th>-->
+				</tr>
+				<volist name="data.shop" id="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.shop_name}</td>
+					<td><a href="__URL__/Ordercount/shop_id/{$vo.id}">{$vo.order_count}</a></td>
+					<td><a href="__URL__/rate/shop_id/{$vo.id}"><if condition="$vo.price eq ''">0<else/>{$vo.price}</if></a></td>
+					<td><a href="__URL__/shopcount/shop_id/{$vo.id}">{$vo.shopbidding_count}</a></td>
+				</tr>
+				</volist>
+			</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

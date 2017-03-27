@@ -1,0 +1,109 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>优惠券结算</h1></div>
+
+<div id="main-right2">
+	<div>
+		<form method="post" name="form" id="form" action="__URL__">
+		<table class="list" width="785">
+			<tr>
+				<td>结算状态：</td>
+				<td>
+					<label><input type="radio" name="jiesuan_status" value="" <if condition="$jiesuan_status eq ''"> checked </if>>全部</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="jiesuan_status" value="1" <if condition="$jiesuan_status eq 1"> checked </if>>申请结算</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="jiesuan_status" value="2" <if condition="$jiesuan_status eq 2"> checked </if>>商家确认</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="jiesuan_status" value="3" <if condition="$jiesuan_status eq 3"> checked </if>>已结算</label>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>结算时间：</td>
+				<td>
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$start_time}" >
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$end_time}" ></td>
+			</tr>
+
+			<tr>
+				<td><a href="__URL__/index/month_type/last_month">上个月未结算</a></td>
+				<td><a href="__URL__/index/month_type/this_month">本月未结算</a></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"><input type="submit" value="搜索"></td>
+			</tr>
+			
+		</table>
+		</form>
+	</div>
+	<form method="post" name="form" id="form" action="__URL__/true_jiesuan">
+	<table width="785" border="0" cellspacing="1" cellpadding="1">
+		<tr>
+			<td height="40" bgcolor="#F2F2F2">抵用券ID</td>
+			<td bgcolor="#F2F2F2">优惠券类型</td>
+			<td bgcolor="#F2F2F2">优惠券名称</td>
+			<td bgcolor="#F2F2F2">用户名</td>
+			<td bgcolor="#F2F2F2" style="white-space:nowrap;" >车牌/手机</td>
+			<!-- <td bgcolor="#F2F2F2">车牌号</td> -->
+			<td bgcolor="#F2F2F2" width="10%">金额</td>
+			<td bgcolor="#F2F2F2">佣金</td>
+			<td bgcolor="#F2F2F2">使用时间</td>
+			<td bgcolor="#F2F2F2">结算时间</td>
+			<td bgcolor="#F2F2F2">结算状态</td>
+		</tr>
+		<volist name="Msalecouponjiesuan" id="vo">
+		<tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+		  <td height="40"><input type='checkbox' name="membersalecoupon_id[]" id="membersalecoupon_id[]" value="{$vo.membersalecoupon_id}" checked>{$vo.membersalecoupon_id}</td>
+		  <td>抵用券</td>
+		  <td>{$vo.coupon_name}</td>
+		  <td>{$vo.user_name}</td>
+		  <td><if condition="$vo.licenseplate eq ''"> {$vo.mobile}<else /> {$vo.licenseplate}</if></td>
+		 
+		  <td>价值:{$vo.coupon_amount}</td>
+		   <td>{$vo.commission}</td>
+		  <td>{$vo.use_time|date="Y-m-d H:i:s",###}</td>
+		  <td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+		  <td>{$vo.jiesuan_status_str}</td>
+		</tr>
+		</volist>
+		<noempty name="$jiesuan_amount1">
+		<tr style="font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>结算金额</td><td>{$jiesuan_amount1}</td>
+			<td colspan="2">佣金</td><td colspan="2">{$jiesuan_commission1}</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr style="font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>实际支付</td><td>{$true_pay1}</td>
+			<td colspan="5">&nbsp</td>
+		</tr>
+		</noempty>
+		<!--<tr>
+			<td colspan="10">&nbsp;</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>总结算金额</td><td>{$jiesuan_amount}</td>
+			<td colspan="2">总佣金</td><td colspan="2">{$jiesuan_commission}</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="3">&nbsp</td>
+			<td>总实际支付</td><td>{$true_pay}</td>
+			<td colspan="5">&nbsp</td>
+		</tr>
+		<if condition="$jiesuan_status eq 1">
+		<tr>
+			<!--<td colspan="10"><input type="button" onclick="window.open('{$true_jiesuan_url}');" value="确认结算信息"></td>-->
+
+		<td colspan="10" align="center"><input type="submit" value="确认结算信息" ></td>
+		</tr>
+		</if>
+	</table>
+	</form>
+	<div id="main-right3">{$page}</div>
+</div>
+
+</div>

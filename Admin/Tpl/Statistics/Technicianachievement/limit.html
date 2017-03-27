@@ -1,0 +1,34 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<link href="//cdn.bootcss.com/select2/4.0.0/css/select2.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/select2/4.0.0/js/select2.min.js"></script>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <form method="post" id="form1" action="__URL__/limit" style="width: 640px;height: auto;">
+            选择技师业绩查看全部授权用户：
+            <select name="user_ids[]" id="sel_users" multiple="multiple" style="width: 640px;height: auto">
+                <volist name="users" id="user">
+                    <option value="{$user.id}" <range name="user.id" value="$sel_users" type="in"> selected </range> >{$user.account} {$user.nickname}</option>
+                </volist>
+            </select>
+
+            <p></p>
+            <input type="submit" value="保存" class="submit">
+        </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script>
+    jQuery(document).ready(function() {
+        jQuery("#sel_users").select2();
+    });
+</script>

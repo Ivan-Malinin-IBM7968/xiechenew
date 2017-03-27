@@ -1,0 +1,662 @@
+<layout name='layout_new' />
+
+<style type="text/css">
+table {margin:auto;vertical-align:middle;border-collapse:collapse;border-spacing:0;}
+td {vertical-align:middle;}
+.xzxm {
+  padding: 0px;
+  height: auto;
+  width: 810px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-left: auto;
+}
+.xzxm .xz_title {
+  font-size: 26px;
+  display: block;
+  padding: 0px;
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+.xzxm .jg {
+  font-family: "微软雅黑";
+  font-size: 18px;
+  margin: 0px;
+  display: block;
+}
+.xzxm .xz_bd {
+  
+}
+form{position:relative}
+.xzxm .xz_bd table tr td #form1 {
+  background-image: url(__PUBLIC__/carservice/img/1.png);
+  background-repeat: no-repeat;
+  height: 34px;
+  width: 736px;
+  margin: 0px;
+  padding: 0px;
+  
+}
+.xzxm .xz_bd table tr td #form1 #item_0,.xzxm .xz_bd table tr td #form2 #item_1,.xzxm .xz_bd table tr td #form3 #item_2,.xzxm .xz_bd table tr td #form4 #item_3,.xzxm .xz_bd table tr td #form4 #item_3 {
+  padding: 0px;
+  height: 30px;
+  line-height:30px;
+  width: 580px;
+  margin-top: 2px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 140px;
+  background-image: url(__PUBLIC__/carservice/img/x.png);
+  background-size: 12px auto;
+  background-repeat: no-repeat;
+  background-position: 548px 12px;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  font-size: 14px;
+  cursor:pointer;
+  padding-left:10px;
+	
+}
+.xzxm .xz_bd table tr td #form2 {
+  background-image: url(__PUBLIC__/carservice/img/2.png);
+  background-repeat: no-repeat;
+  width: 736px;
+  margin: 0px;
+  padding: 0px;
+  
+	height:34px;
+}
+.CheckboxGroup:hover{background-color:#f0f0f0}
+
+.xzxm .xz_bd table tr td #form3 {
+  background-image: url(__PUBLIC__/carservice/img/3.png);
+  background-repeat: no-repeat;
+  width: 736px;
+  margin: 0px;
+  padding: 0px;
+	height:34px;
+}
+
+.xzxm .xz_bd table tr td #form4 {
+  background-image: url(__PUBLIC__/carservice/img/4.png);
+  background-repeat: no-repeat;
+  width: 736px;
+  margin: 0px;
+  padding: 0px;
+	height:34px;
+}
+
+.xzxm .hs {
+  background-color: #EFEFEF;
+  padding: 0px;
+  height: 150px;
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+.table tr{height:80px;border-bottom:1px dashed #ccc}
+.item_price{display:none}
+
+/*2014-10-14*/
+.sel-tab{width: 810px; margin: 20px auto;}
+.sel-tab *{font-family: "微软雅黑";}
+.sel-tab ul{height: 36px; line-height: 36px; position: relative; font-size: 16px;}
+.sel-tab ul li{display: inline-block; border: 1px solid #00abf1; border-bottom: none; background: #FFFFFF; height: 35px; margin-right: 7px; border-radius: 5px 5px 0 0; padding: 0 25px; cursor: pointer; background: #00abf1; color: #FFFFFF; text-align: center; position: relative; bottom: -1px; font-size: 16px;}
+.sel-tab ul li span{font-size: 16px;}
+.sel-tab ul li.current{background: #ffffff; color: #222222;}
+.sel-tab ul li.current span{color: #FF0000; font-weight: bold;}
+.sel-tabcon{border: 1px solid #00abf1; height: 300px; width:758px; height: auto; padding: 20px 25px; color: #353535;}
+.sel-tabconlist{background: #eeeeee; color: #353535; height: 37px; font-size: 14px;}
+.sel-tabconlist td{font-size: 14px; color: #353535;}
+.sel-tabcontip{font-size: 12px; color: #353535; line-height: 2em; height: 110px; overflow: hidden; padding-top: 20px;}
+.sel-tabcontip p{font-size: 12px;}
+.sel-tabcontip p.w10{height: 10px; overflow: hidden;}
+.sel-tabcontip span.acolor{color: #00abf1; font-size: 12px;}
+.showhide{font-size: 12px; color: #00abf1;}
+.showhide span{display: inline-block; cursor: pointer; background: url(__PUBLIC__/carservice/img/showhideico.png) no-repeat; text-indent: 12px; font-size: 12px;}
+.showhide span.showmore{background-position: 0 -18px;}
+.showhide span.hidemore{background-position: 0 2px;}
+</style>
+</head>
+
+<body>
+<div class="xzxm">
+<h2 class="xz_title">{$car_name}</h2>
+
+<div class="sel-tab">
+  <ul>
+    <li data-id="{$recommend_high.id}">谢师傅推荐款&nbsp;&nbsp;<span>￥<span id="highprice">{$recommend_high.price}</span></span></li>
+    <li data-id="{$recommend_low.id}" class="current">经济款&nbsp;&nbsp;<span>￥<span id="lowprice">{$recommend_low.price}</span></span></li>
+  </ul>
+  <div class="sel-tabcon">
+    <div id="xieteacher" style="display:none">
+      <div class="sel-tabconlist">
+        <table width="100%" height="37">
+          <tbody>
+            <tr>    
+              <td width="150" align="center">谢师傅推荐款</td>
+              <td width="150" align="center">{$recommend_high.type}</td>
+              <td>{$recommend_high.name}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sel-tabcontip">
+        <p><span class="acolor">机油的作用</span>是给发动机：润滑、冷却。从品种上分有三类：矿物油、半合成、全合成，等级依次升高。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">什么是全合成油？</span></p>
+        <p>全合成的优点是：对应矿物油、半合成机油，全合成可以在更低温度时就产生油膜形成保护，同时可以比半合成使用时间保持更长，油质表现的更稳定，在极端车况下也能提供很好的保护。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">什么是半合成油？</span></p>
+        <p>半合成的优点是：低温时比矿物油流动性更好，保证一定的润滑度；高温时比矿物油有更好的粘性度，给车件所需的润滑；同时相比较矿物油不容易产生油泥，对发动机更好的保护。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">什么是矿物油？</span></p>
+        <p>矿物油的优点：价格比较低；缺点是低温时对车辆的润滑度降低，高温时粘度会降低不能够达到车件所需的润滑，沉淀物较多容易产生油泥等。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">合成机油恰恰克服矿物油的缺点。一般15万以下不带T（涡轮增压），用矿物即可，带T的建议用合成机油。</span></p>
+        <p><span class="acolor">主要知名品牌有：</span>壳牌、美孚、嘉实多。黄喜力、金嘉护属于矿物油；蓝喜力、磁护属于半合成机油；灰喜力、银美孚、金美孚、极护属于全合成机油。</p>
+      </div>
+      <div class="showhide"><span class="showmore">查看更多</span><span class="hidemore">收起</span></div>
+    </div>
+    <div id="jingji">
+      <div class="sel-tabconlist">
+        <table width="100%" height="37">
+          <tbody>
+            <tr>
+              <td width="150" align="center">经济款推荐</td>
+              <td width="150" align="center">{$recommend_low.type}</td>
+              <td>{$recommend_low.name}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sel-tabcontip">
+        <p><span class="acolor">机油的作用</span>是给发动机：润滑、冷却。从品种上分有三类：矿物油、半合成、全合成，等级依次升高。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">什么是半合成油？</span></p>
+        <p>半合成的优点是：低温时比矿物油流动性更好，保证一定的润滑度；高温时比矿物油有更好的粘性度，给车件所需的润滑；同时相比较矿物油不容易产生油泥，对发动机更好的保护。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">什么是全合成油？</span></p>
+        <p>全合成的优点是：对应矿物油、半合成机油，全合成可以在更低温度时就产生油膜形成保护，同时可以比半合成使用时间保持更长，油质表现的更稳定，在极端车况下也能提供很好的保护。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">什么是矿物油？</span></p>
+        <p>矿物油的优点：价格比较低；缺点是低温时对车辆的润滑度降低，高温时粘度会降低不能够达到车件所需的润滑，沉淀物较多容易产生油泥等。</p>
+        <p class="w10"></p>
+        <p><span class="acolor">合成机油恰恰克服矿物油的缺点。一般15万以下不带T（涡轮增压），用矿物即可，带T的建议用合成机油。</span></p>
+        <p><span class="acolor">主要知名品牌有：</span>壳牌、美孚、嘉实多。黄喜力、金嘉护属于矿物油；蓝喜力、磁护属于半合成机油；灰喜力、银美孚、金美孚、极护属于全合成机油。</p>
+        <p class="w10"></p>
+      </div>
+      <div class="showhide"><span class="showmore">查看更多</span><span class="hidemore">收起</span></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="xz_bd">
+  <p style="font-family: 微软雅黑; font-size:18px; height:50px; line-height:50px; font-weight:bold;">项目：（机油、机滤为小保养组合项，建议同时购买）</p>
+  <table width="100%" border="0" cellspacing="5" cellpadding="0" class="table">
+    <tr>
+      <!-- <td width="100" height="40" align="left" valign="middle"><strong><font style="font-size:22px; font-family:'微软雅黑';">项目:</font></strong></td> -->
+      <td width="60">
+        <empty name="$item_sets[0]['price']">
+          <input type="checkbox" checked id="check1" class="checkbox" data-price="0" disabled="disabled"/>
+        <else />
+          <input type="checkbox" checked id="check1" class="checkbox" data-price="{$item_sets[0]['price']}" disabled="disabled"/>
+        </empty>
+      </td>
+	  <td width="676" ><form id="form1" name="form1" method="post" action="">
+        <label for="item_0"></label>
+        <empty name="item_sets">
+        	<input data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" name="item_0" type="text" id="item_0" class="item_i oil-input" placeholder="请选择机油" data_id="-1" value="自备配件（￥0）" data-price="0" />
+        <else />
+        	<input data-oil-1-id="{$item_sets[0]['oil_1']}" data-oil-2-id="{$item_sets[0]['oil_2']}" data-oil-1-num="{$item_sets[0]['oil_1_num']}" data-oil-2-num="{$item_sets[0]['oil_2_num']}" name="item_0" type="text" id="item_0" data-price="{$item_sets[0]['price']}" class="item_i oil-input" placeholder="请选择机油" data_id="{$item_sets[0]['id']}" value="{$item_sets[0]['name']}&nbsp;{$car_style['norms']}（￥{$item_sets[0]['price']}）" />
+        </empty>
+        <div class="item_d" id="item_0_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+          <p><b>全合成油</b></p>
+          <foreach name="item_sets" item="set1" key="k" >
+            <eq name="set1.type" value="3">
+              <li data-type="{$set1['type']}" data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set1['id']}" data-id="{$set1['id']}" data-price="{$set1['price']}" style="padding-left:20px;">{$set1.name}&nbsp;{$car_style['norms']}<strong>（￥{$set1.price}）</strong></li>
+            </eq>
+          </foreach>
+          <p><b>半合成油</b></p>
+          <foreach name="item_sets" item="set1" key="k" >
+            <eq name="set1.type" value="2">
+              <li data-type="{$set1['type']}" data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set1['id']}" data-id="{$set1['id']}" data-price="{$set1['price']}" style="padding-left:20px;">{$set1.name}&nbsp;{$car_style['norms']}<strong>（￥{$set1.price}）</strong></li>
+            </eq>
+          </foreach>
+          <p><b>矿物油</b></p>
+          <foreach name="item_sets" item="set1" key="k" >
+            <eq name="set1.type" value="1">
+              <li data-type="{$set1['type']}" data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_{$set1['id']}" data-id="{$set1['id']}" data-price="{$set1['price']}" style="padding-left:20px;">{$set1.name}&nbsp;{$car_style['norms']}<strong>（￥{$set1.price}）</strong></li>
+            </eq>
+          </foreach>
+          <p><b>其他</b></p>
+          <li data-oil-1-id="0" data-oil-2-id="0" data-oil-1-num="0" data-oil-2-num="0" width="309" height="45" class="CheckboxGroup" data-tag="check1" id="CheckboxGroup0_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+          </ul>
+        </div>
+      </form></td>
+      <td width="140" style="color:#e80012;font-size:14px"><span id="item_price_0" class="item_price">{$item_sets['0']['price']}</span></td>
+    </tr>
+    <tr>
+      
+	   <td>
+      <empty name="$item_set[1][0]['price']">
+        <input type="checkbox" checked id="check2"  data-price="0" class="checkbox"  disabled="disabled" data-a="1"/>
+      <else />
+        <input type="checkbox" checked id="check2"  data-price="{$item_set[1][0]['price']}" class="checkbox"  disabled="disabled" data-a="2"/>
+      </empty>
+    </td>
+      <td><form id="form2" name="form2" method="post" action="">
+        <label for="item_1"></label>
+        
+        <empty name="item_set[1]">
+        	<input name="item_1" type="text" id="item_1" class="item_i" placeholder="请选择机油滤清器" data_id="-1" data-price="0" value="自备配件（￥0）" />
+        <else />
+        	<input name="item_1" type="text" id="item_1" data-price="{$item_set['1']['0']['price']}" class="item_i" placeholder="请选择机油滤清器" data_id="{$item_set['1']['0']['id']}" value="{$item_set['1']['0']['name']}（￥{$item_set['1']['0']['price']}）" />
+        </empty>
+        <div class="item_d" id="item_1_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+          <foreach name="item_set[1]" item="value">
+            <li width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_{$value['id']}" data-id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li>
+          </foreach>
+          <li width="309" height="45" class="CheckboxGroup" data-tag="check2" id="CheckboxGroup1_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+          </ul>
+        </div>
+      </form></td>
+      <td style="color:#e80012;font-size:14px"><span id="item_price_1" class="item_price">{$item_set['1']['0']['price']}</span></td>
+    </tr>
+    <tr>
+      
+	   <td><input type="checkbox" id="check3" data-price="{$item_set[2][0]['price']}" class="checkbox" /></td>
+      <td><form id="form3" name="form3" method="post" action="">
+        <label for="item_2"></label>
+          <empty name="item_set[2]">
+          	<input name="item_2" type="text" id="item_2" class="item_i" placeholder="请选择空气滤清器" data_id="-1" data-price="0" value="自备配件（￥0）" />
+    	  <else />
+	        <input name="item_2" type="text" id="item_2" data-price="{$item_set['2']['0']['price']}" class="item_i" placeholder="请选择空气滤清器" data_id="{$item_set['2']['0']['id']}" value="{$item_set['2']['0']['name']}（￥{$item_set['2']['0']['price']}）" />
+    	  </empty>	
+        <div class="item_d" id="item_2_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+	          <foreach name="item_set[2]" item="value">
+	            <li width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_{$value['id']}" data-id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li>
+	          </foreach>
+               <li width="309" height="45" class="CheckboxGroup" data-tag="check3" id="CheckboxGroup2_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+          </ul>
+        </div>
+      </form></td>
+      <td style="color:#e80012;font-size:14px"><span id="item_price_2" class="item_price">{$item_set['2']['0']['price']}</span></td>
+    </tr>
+    <tr>
+      
+	   <td><input type="checkbox" id="check4" data-price="{$item_set[3][0]['price']}" class="checkbox" /></td>
+      <td><form id="form4" name="form4" method="post" action="">
+        <label for="kt"></label>
+          <empty name="item_set[3]">
+          	<input name="item_3" type="text" id="item_3" class="item_i" placeholder="请选择空调滤清器" data_id="-1" data-price="0" value="自备配件（￥0）" />
+          <else />
+        	<input name="item_3" type="text" id="item_3" data-price="{$item_set['3']['0']['price']}" class="item_i" placeholder="请选择空调滤清器" data_id="{$item_set['3']['0']['id']}" value="{$item_set['3']['0']['name']}（￥{$item_set['3']['0']['price']}）" />
+          </empty>
+        <div class="item_d" id="item_3_d" style="position:absolute;z-index:1000;width:594px;left:140px;top:34px;background:#FFF;border:1px solid #CCC;border-radius:4px;line-height:30px;display:none;">
+          <ul>
+	          <foreach name="item_set[3]" item="value">
+	            <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_{$value['id']}" data-id="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></li>
+	          </foreach>
+	          <li width="309" height="45" class="CheckboxGroup" data-tag="check4" id="CheckboxGroup3_0" data-id="-1" data-price="0" style="padding-left:20px;">自备配件<strong>（￥0）</strong></li>
+          </ul>
+        </div>
+      </form></td>
+      <td style="color:#e80012;font-size:14px"><span id="item_price_3" class="item_price">{$item_set['3']['0']['price']}</span></td>
+    </tr>
+    <tr>
+      
+	   <td><input id="no-service" type="checkbox" /></td>
+      <td>
+      <div style="width:736px;background-color:#efefef;text-align:center;height:34px;line-height:34px;font-size:14px">已有配件，仅购买上门服务</div>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      
+	   <td><input id="service_cost" type="checkbox" disabled="true" checked="" value="1" name="service_cost"></td>
+      <td>
+      <div style="width:736px;background-color:#efefef;text-align:center;height:34px;line-height:34px;font-size:14px">服务费99</div>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+<!--     <tr style="border-bottom:none">
+      <td height="65" colspan="2">&nbsp;</td>
+      <td></td>
+      <td>&nbsp;</td>
+    </tr> -->
+  </table>
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr style="border:none" height="50">
+      <td width="600" align="right"><span style="font-size:18px; font-family: 微软雅黑;">价格: </span><span style="font-size:30px; color:#C00; font-family: 微软雅黑;">￥<strong id="amount" style="font-size:30px;"></strong></span></td>
+      <td width="220" align="right">
+        <form method="post" name="subForm" id="subForm" action="__APP__/carservice/order">
+          <input type="hidden" name="oil_1_id" value="{$item_sets['0']['oil_1']}" />
+          <input type="hidden" name="oil_1_num" value="{$item_sets['0']['oil_1_num']}" />
+          <input type="hidden" name="oil_2_id" value="{$item_sets['0']['oil_2']}" />
+          <input type="hidden" name="oil_2_num" value="{$item_sets['0']['oil_2_num']}" />
+          <input type="hidden" name="CheckboxGroup0_res" id="CheckboxGroup0_res" value="<empty name="item_sets['0']['id']">-1<else />{$item_sets['0']['id']}</empty>">
+          <input type="hidden" name="CheckboxGroup1_res" id="CheckboxGroup1_res" value="<empty name="item_set['1']['0']['id']">-1<else />{$item_set['1']['0']['id']}</empty>">
+          <input type="hidden" name="CheckboxGroup2_res" id="CheckboxGroup2_res" value="{$item_set['2']['0']['id']}">
+          <input type="hidden" name="CheckboxGroup3_res" id="CheckboxGroup3_res" value="{$item_set['3']['0']['id']}">
+          <img src="__PUBLIC__/carservice/img/yd.jpg" width="210" height="34" style="cursor:pointer;" id="subBtn" />
+        </form>
+      </td>
+
+    </tr>
+    <tr style="border:none"><td align="right" colspan="2" style="font-family: 微软雅黑;">支付方式: 支持现金支付、在线支付</td></tr>
+  </table>
+</div>
+</div>
+
+<script>
+$(".item_i").focus(function(){
+        $(this).next().show();
+    });
+
+    $(".item_i").blur(function(){
+        var objThis = $(this);
+        setTimeout(function(){
+            objThis.next().hide();
+        }, 500);
+    });
+
+    //var amount = {$item_sets['0']['price'] + $item_set['1']['0']['price'] + $item_set['2']['0']['price'] + $item_set['3']['0']['price'] + 99};
+    //var amount = {$item_sets['0']['price'] + $item_set['1']['0']['price'] + 99};
+    if( $('#check1').attr('checked') == 'checked' ){
+      var item_0_p = $("#item_0").attr('data-price');
+      $('#check1').attr('data-price',Number(item_0_p));
+      var dp1 = $('#check1').attr('data-price');
+
+    }else{
+      var dp1 = 0;
+    }
+    if( $('#check2').attr('checked') == 'checked' ){
+      var item_1_p = $("#item_1").attr('data-price');
+      $('#check2').attr('data-price',Number(item_1_p));
+      var dp2 = $('#check2').attr('data-price');
+    }else{
+      var dp2 = 0;
+    }
+    if( $('#check3').attr('checked') == 'checked' ){
+      var item_2_p = $("#item_2").attr('data-price');
+      $('#check3').attr('data-price',Number(item_2_p));
+      var dp3 = $('#check3').attr('data-price');
+    }else{
+      var dp3 = 0;
+    }
+    if( $('#check4').attr('checked') == 'checked' ){
+      var item_3_p = $("#item_3").attr('data-price');
+      $('#check4').attr('data-price',Number(item_3_p));
+      var dp4 = $('#check4').attr('data-price');
+    }else{
+      var dp4 = 0;
+    }
+
+    var amount = (Number(dp1)+Number(dp2)+Number(dp3)+Number(dp4)+99);
+
+    $("#amount").text(amount);
+
+    var old_price = 0, price = 0,back_amount = amount;
+
+    $(".CheckboxGroup").click(function(){
+        id = $(this).attr("data-id");
+        price = $(this).attr("data-price");
+    
+        //console.log(amount);
+        var tag = $(this).attr("id");
+        tag = tag.split("_");
+        if(tag[0] && tag[1]){
+            $("#"+tag[0]+"_res").val(id);
+        }else{
+            return false;
+        }
+        $(this).parent().parent().prev('input').attr('data_id',id);
+        $(this).parent().parent().prev('input').attr('data-price',price);
+        old_price = $(this).parent().parent().parent().parent().parent().find(".item_price").text();
+        
+        //console.log(amount);
+        var $top_input = $(this).parent().parent().prev();
+        $top_input.val( $(this).text() );
+        if ( $top_input.hasClass('oil-input') ){
+          var $data_oil_1_id = $(this).attr('data-oil-1-id');
+          var $data_oil_1_num = $(this).attr('data-oil-1-num');
+          var $data_oil_2_id = $(this).attr('data-oil-2-id');
+          var $data_oil_2_num = $(this).attr('data-oil-2-num');
+          $top_input.attr('data-oil-1-id',$data_oil_1_id).attr('data-oil-1-num',$data_oil_1_num).attr('data-oil-2-id',$data_oil_2_id).attr('data-oil-2-num',$data_oil_2_num);
+        }
+        $(this).parent().parent().parent().parent().parent().find(".item_price").text(price);//隐藏中的每一项目价格
+        $(this).parent().parent().parent().parent().parent().find(".checkbox").attr('data-price',price);//勾选
+		
+		//判断checkbox是否选中
+		var $target =$(this).attr('data-tag');
+		if ($('#'+$target).attr('checked') == 'checked')
+		{
+      amount -= Number(old_price);
+        if(amount < 0){
+            amount = 99;
+        }
+			amount += Number(price);
+			$("#amount").text(amount);	
+		} 
+        //console.log(amount);
+
+    });
+
+    $("#service_cost").click(function(){
+        if($('input[name="service_cost"]:checked').val() == "1"){
+            amount += 99;
+        }else{
+            amount -= 99;
+        }
+        $("#amount").text(amount);
+    })
+
+    $("#subBtn").click(function(){
+        addValues();
+        if($('#check1').attr('checked') == 'checked'||$('#check2').attr('checked') == 'checked'||$('#check3').attr('checked') == 'checked'||$('#check4').attr('checked') == 'checked'||$('#no-service').attr('checked') == 'checked'){
+          $("#subForm").submit();
+        }else {
+          if(confirm("您没有勾选任何项目，是否已经自配配件？是否仅购买上门服务")){
+            $("#subForm").submit();
+          }else{
+            return false;
+          }
+          
+        }
+        
+    });
+    $('#no-service').click(function(){
+    	if( $(this).attr('checked') == 'checked' ){
+    		$('.checkbox').removeAttr('checked');
+        $('.checkbox').removeAttr('disabled');
+    		$("#amount").text('99');
+    		amount = 99;
+    		$('#CheckboxGroup0_res').val('');
+    		$('#CheckboxGroup1_res').val('');
+    		$('#CheckboxGroup2_res').val('');
+    		$('#CheckboxGroup3_res').val('');
+    	}else{
+    		$('.checkbox').attr('checked','checked');
+    		
+    		$('.table').find('.checkbox').each(function(){
+    			if( $(this).attr('checked') == 'checked' ){
+    				amount += Number( $(this).attr('data-price') );
+    			}
+    		})
+    		$("#amount").text(amount);
+    		addValues();
+    	}
+    })
+    function addValues(){
+      CheckboxGroup0_res = $('input[name=item_0]').attr('data_id');
+        CheckboxGroup1_res = $('input[name=item_1]').attr('data_id');
+        CheckboxGroup2_res = $('input[name=item_2]').attr('data_id');
+        CheckboxGroup3_res = $('input[name=item_3]').attr('data_id');
+        //获得每样的数量
+      var $oil_1_id = $('input[name=item_0]').attr('data-oil-1-id'); 
+      var $oil_1_num = $('input[name=item_0]').attr('data-oil-1-num');
+      var $oil_2_id = $('input[name=item_0]').attr('data-oil-2-id');
+      var $oil_2_num = $('input[name=item_0]').attr('data-oil-2-num');
+        if( $('#check1').attr('checked') == 'checked' ){
+          $('input[name=oil_1_id]').val($oil_1_id);//放到要提交的数据框里面
+          $('input[name=oil_2_id]').val($oil_2_id);
+          $('input[name=oil_1_num]').val($oil_1_num);
+          $('input[name=oil_2_num]').val($oil_2_num);
+          $('#CheckboxGroup0_res').val(CheckboxGroup0_res);
+        }else{
+          $('#CheckboxGroup0_res').val('');
+        }
+        if( $('#check2').attr('checked') == 'checked' ){
+          $('#CheckboxGroup1_res').val(CheckboxGroup1_res);
+        }else{
+          $('#CheckboxGroup1_res').val('');
+        }
+        if( $('#check3').attr('checked') == 'checked' ){
+          $('#CheckboxGroup2_res').val(CheckboxGroup2_res);
+        }else{
+          $('#CheckboxGroup2_res').val('');
+        }
+        if( $('#check4').attr('checked') == 'checked' ){
+          $('#CheckboxGroup3_res').val(CheckboxGroup3_res);
+        }else{
+          $('#CheckboxGroup3_res').val('');
+        }
+    }
+
+  $('.checkbox').click(function (){
+    $('#no-service').removeAttr('checked');
+
+    if( $(this).attr('checked') == 'checked' ){
+
+      $price = $(this).attr('data-price');
+      amount +=  Number($price);
+      //console.log($price);
+      $(this).attr("data-price",$price);
+
+      if($(this).attr("id")=='check1'){
+        $(this).attr("disabled","disabled");
+        if($("#check2").attr("checked")=="checked"){
+          
+        }else{
+          alert("注意：机油、机滤需要同时选择！");
+          $("#check2").attr("checked","checked");
+          $("#check2").attr("disabled","disabled");
+          $price = $("#check2").attr('data-price');
+          //$("#check2").attr("data-price",$price);
+          amount +=  Number($price);
+          
+        }
+      }else if($(this).attr("id")=='check2'){
+        $(this).attr("disabled","disabled");
+        if($("#check1").attr("checked")=="checked"){
+          
+        }else{
+          alert("注意：机油、机滤需要同时选择！");
+          $("#check1").attr("checked","checked");
+          $("#check1").attr("disabled","disabled");
+          $price = $("#check1").attr('data-price');
+          //$("#check1").attr("data-price",$price);
+          amount +=  Number($price);
+          
+        }
+      }
+      $("#amount").text(amount);
+    }else{
+      if($(this).attr("id")=='check1'){return false;}
+      if($(this).attr("id")=='check2'){return false;}
+      $price = $(this).attr('data-price');
+      amount -= Number($price);
+      if(amount<0){
+        amount = 0;
+      }
+      //console.log(amount)
+      $("#amount").text(amount);
+    }
+
+  });
+
+
+  // function checkClick(event,k){
+  //   $('#no-service').removeAttr('checked');
+  //   k--;
+  //   var $item_price = $('#item_price_'+k);
+  //   if( $(event).attr('checked') == 'checked' ){
+  //     $price = $(event).attr('data-price');
+  //     amount +=  Number($price );
+  //     $("#amount").text(amount);
+  //   }else{
+  //     $price = $(event).attr('data-price');
+      
+  //     amount -= Number($price);
+  //     if(amount<0){
+  //       amount = 0;
+  //     }
+  //     //console.log(amount)
+  //     $("#amount").text(amount);
+  //   }
+  //   $(this).attr("data-price",$price);
+  // }
+  
+//推荐款交互
+$(".sel-tab ul li").click(function(){
+  $(this).addClass("current").siblings().removeClass("current");
+  $(".sel-tabcon>div").eq($(this).index()).show().siblings().hide();
+  
+  if($(this).index() == 0){
+    $(".CheckboxGroup[data-id='{$recommend_high.id}']").click();
+  }
+  else if($(this).index() == 1){
+    $(".CheckboxGroup[data-id='{$recommend_low.id}']").click();
+  }
+});
+
+
+
+var lastPrice = $("#item_0_d li").eq($("#item_0_d li").size()-2).attr("data-price");
+
+
+var highPrice = (Number(lastPrice) + {$item_set['1']['0']['price'] + 99});
+
+//$("#lowprice").text(amount);
+//$("#highprice").text(highPrice);
+
+
+$(".hidemore").hide();
+$(".showmore").click(function(){
+  $(".showmore").hide();
+  $(".hidemore").show();
+  $(".sel-tabcontip").height("auto");
+});
+$(".hidemore").click(function(){
+  $(".hidemore").hide();
+  $(".showmore").show();
+  $(".sel-tabcontip").height("");
+});
+
+
+//alert({$item_0}+"-"+{$item_1}+"-"+{$item_2}+"-"+{$item_3});
+var seitem0 = ["{$item_0}","{$item_1}","{$item_2}","{$item_3}"];
+
+if(seitem0[0]!=""){
+  //alert("{$item_0}");
+}
+
+</script>
+
+</body>
+</html>

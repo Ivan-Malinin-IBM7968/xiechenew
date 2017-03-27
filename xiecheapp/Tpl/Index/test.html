@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="html5,本地存储" />
+<meta name="description" content="Helloweba演示平台，演示XHTML、CSS、jquery、PHP案例和示例" />
+<style type="text/css">
+.demo{width:640px; height:640px; position:relative; margin:50px auto;}
+#disk{width:640px; height:640px; background:url("__PUBLIC__/cj/disk.jpg") no-repeat}
+#start{width:163px; height:320px; position:absolute; top:46px; left:130px;}
+#start img{cursor:pointer}
+</style>
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/cj/jQueryRotate.2.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/cj/jquery.easing.min.js"></script>
+
+<script type="text/javascript">
+$(function(){ 
+   /*  $("#startbtn").click(function(){ 
+        lottery(); 
+    });*/ 
+}); 
+
+function lottery(){ 
+	var mobile = $('#mobile').val();
+	if(mobile){
+		$.ajax({ 
+			type: 'POST', 
+			url: '__APP__/index/ajaxcj', 
+			dataType: 'json', 
+			data: "mobile="+mobile,
+			cache: false, 
+			error: function(){ 
+				alert('出错了！'); 
+				return false; 
+			}, 
+			success:function(json){ 
+				
+				$("#startbtn").unbind('click').css("cursor","default"); 
+				var a = json.angle; //角度 
+				var p = json.prize; //奖项 
+				var count = json.count; //重复计数
+				var id = json.id; //重复计数
+				if(count=='noway'){
+					alert('您已经抽过奖了！');
+					return false;
+				}else{
+					 $("#startbtn").rotate({ 
+						duration:3000, //转动时间 
+						angle: 0, 
+						animateTo:1800+a, //转动角度 
+						easing: $.easing.easeOutSine, 
+						callback: function(){ 
+							var con = confirm('恭喜你，中得'+p+'\n'); 
+							$.ajax({
+								type: "POST",
+								url: "__APP__/index/addsale",
+								cache: false,
+								data: "id="+id+"&mobile="+mobile,
+								success: function(data){
+
+								}
+							})
+						} 
+					}); 
+				}
+			   
+			} 
+		});
+	}else{
+		alert('请填写手机号码!');
+		return false;
+	}
+} 
+
+
+</script>
+</head>
+
+<body>
+
+<div id="main">
+手机号：<input type="text" id="mobile" name="mobile">
+   <div class="demo">
+		
+        <div id="disk" ></div>
+        <div id="start"><img src="__PUBLIC__/cj/start.png" id="startbtn" onclick="lottery();"></div>
+   </div>
+   <div class="ad_demo"></div><br/>
+</div>
+</body>
+</html>

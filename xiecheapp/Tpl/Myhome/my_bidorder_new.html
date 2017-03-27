@@ -1,0 +1,61 @@
+<layout name='layout_new' />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<!--right conntent start-->
+		<div class="content-right main">
+			<div style="width: 908px; height: 15px; background: #fffcd8; border: 1px solid #dadada; padding: 20px; font-size: 14px; margin-bottom: 10px;">
+				发布事故车维修信息，4S店竞价，看谁修的快返利多服务好就到谁这里修。请下载携车网手机客户端后使用，<a href="http://xieche.com.cn/Application" target="_blank">点这里下载</a>。
+			</div>
+			<h2 class="title">我的保险订单:</h2>
+
+			<div class="table-con">
+				<table width="948">
+					<tr >
+						<th>订单号</th>
+						<th>驾驶员姓名</th>
+						<th>驾驶员手机号</th>
+						<th>车牌号</th>
+						<th>保险公司名称</th>
+						<th>定损金额</th>
+						<th>维修4S店</th>
+						<th>订单状态</th>
+						<th>添加时间</th>
+						<th>操作</th>
+					</tr>
+					<volist name="list" id="vo" key="key">
+					<tr <eq name="mod" value="1" >class="bg-blue"</eq>>
+						<td>{$vo.order_id}</td>
+						<td>{$vo.truename}</td>
+						<td>{$vo.mobile}</td>
+						<td>{$vo.licenseplate}</td>
+						<td>{$vo.insurance_info.insurance_name}</td>
+						<td>{$vo.insurance_info.loss_price}</td>
+						<td>{$vo.shop_name}</td>
+						<td>{$vo.order_status}</td>
+						<td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+						<td>
+						<!--  
+						<a href="__APP__/myhome/add_bidorder_comment/bidorder_id/{$vo.order_id}" style="padding-right:10px">评价</a>
+						-->
+						<a href="{:URL('/myhome/bidorder_progress',array('bidorder_id'=>$vo['order_id']))}">查看维修进度</a></td>
+					</tr>
+					</volist>
+				</table>
+				<div class="pagerArea">
+					<ul id="pager">
+						{$page}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>

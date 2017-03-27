@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>店铺详情 | Example Page</title>
+    <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<!-- <link rel="stylesheet" href="css/libs/jquery.mobile-1.4.0.css" /> -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/order.css" />
+	<script src="__PUBLIC__/mb/js/libs/jquery/jquery.min.js" ></script>
+	<!--  <script src="js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script> -->
+	<script type="text/javascript" src="__PUBLIC__/mb/js/main.js"></script>
+	
+
+	</style>
+</head>
+<body>
+	<div id="warpper" style="background:#f1f1f1;">
+		<!-- Header Start -->
+		<header id="header" data-role="header">
+			<h1>请选择服务项目</h1>
+			
+		</header>
+		<!-- Header End -->
+		
+		<!-- Content Wrapper Start -->
+		<div id="content-wrapper" data-role="content" >
+			<div id="inner-content-wrapper">
+				<!-- 服务类型 开始 -->
+				<div id="st" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>选择服务类型</h3>
+						<div class="clear"></div>
+					</div>
+					<div id="s-t" class="s-list">
+						<ul>
+							<li>小保养（机油、机滤）</li>
+							<li>大保养（机油、机滤）</li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- 服务类型 结束 -->
+				<!-- 维修项目 开始 -->
+				<div id="si1" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>选择常规替换及维修:</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="s-list">
+						<ul>
+							<li>更换前制动片</li>
+							<li>更换前制动盘</li>
+							<li>更换后制动片</li>
+							<li>更换后制动盘</li>
+							<li>更换防冻液</li>
+							<li>更换空调滤清器</li>
+							<li>更换火花塞</li>
+							<li>四轮定位</li>
+							<li>更换正时皮带</li>
+							<li>更换雨刮</li>
+							<li>更换转向助力液</li>
+							<li>更换制动液</li>
+							<li>更换转向助力液</li>
+							<li>更换制动a液</li>
+							<li>更换变速箱油</li>
+							<li>更换蓄电池</li>
+							<li>车辆维修</li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- 维修项目 结束 -->
+				<!-- 清洗项目 开始 -->
+				<div id="si2" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>选择清洗项目:</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="s-list">
+						<ul>
+							<li>清洗喷油嘴</li>
+							<li>清洗节气门</li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>	
+				<!-- 清晰项目 结束 -->
+				<!-- 确认提交 开始 -->
+				<div id="si3" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>确认提交:</h3>
+						<div class="clear"></div>
+					</div>
+					<!-- 确认提交内容部分 开始 -->
+					<div class="s-c-c">
+						<div class="info">
+							<span>如果不确定维修项目，请勾选下方选项。</span>
+							<span class="lookout">
+								注： 勾选后上方所有已经选择的项目将去除勾选状态。
+							</span>
+						</div>
+						<div id="no-s" style="position: relative;">
+							<input type="checkbox" id="no-s-c" >
+							<label for="no-s-c" >我不确定需要预约什么项目，需到店检查。</label>
+						</div>
+						<div id="next-btn">
+							<input type="button" value="下一步">
+						</div>
+					</div>
+					<!-- 确认提交内容部分 结束 -->
+					<div class="clear"></div>
+				</div>
+				<!-- 确认提交 结束 -->
+			</div>
+			
+		</div>
+		<!-- Content Wrapper End -->
+	</div>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+		(function(){
+			$(".sl .s-list li").on("touchstart",function(){
+				alert("touch")
+			})
+		}())
+	</script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+

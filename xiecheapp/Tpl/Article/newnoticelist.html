@@ -1,0 +1,90 @@
+<layout name='layout_new' />
+	<div class="content w1200">
+		<div class="content-left w780 news ">
+			<div class="keyword-con">
+				<dl>	
+					<dt>热门搜索: </dt>
+					<dd><a href="{:URL('/article/noticelist',array('keyword'=>大众))}">大众</a></dd>
+					<dd><a href="{:URL('/article/noticelist',array('keyword'=>丰田))}">本田</a></dd>
+					<dd><a href="{:URL('/article/noticelist',array('keyword'=>起亚))}">起亚</a></dd>
+					<dd><a href="{:URL('/article/noticelist',array('keyword'=>日产))}">日产</a></dd>
+				</dl>
+				<form class='search' method="post" action="__APP__/article/noticelist">
+					<input type="text" class="keyword-search" name="keyword" id="keyword" value="{$keyword}" />
+					<input type="submit" class='submit' value= "搜索" style="height: 20px;" />
+				</form>
+			</div>
+			<div class="bg-blue news-container">
+				<ul class="news-list">
+					<notempty name="noticeinfo" >
+						<volist name="noticeinfo" id="vo">
+						<li>
+							<a href="{:URL('/shop/favtype',array('shop_id'=>$vo['shop_id'],'id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">
+							<strong>{$vo.noticetitle}</strong>
+							<em>({$vo.update_time|date="Y-m-d",###})</em></a>
+						</li>
+						</volist>
+						<else/>
+							<li>
+							对不起暂无信息
+							</li>
+						</notempty>
+				</ul>
+					
+			</div>
+			<div class="pagerArea bg-blue">
+					<ul id="pager">
+					{$page}
+					
+					</ul>
+			</div>
+		</div>
+		<!--右侧开始-->
+		<div class="content-right w400">
+			<div class="w350 tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+			<div class="w350 tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<!--右侧结束-->
+	</div> 

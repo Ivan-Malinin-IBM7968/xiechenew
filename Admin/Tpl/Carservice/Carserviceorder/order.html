@@ -1,0 +1,606 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+	<script type="text/javascript" src="__WEB__/Public/Js/DatePicker/WdatePicker.js?v={$Think.config.VERSION_DATE}"></script>
+<style type="text/css">
+table {vertical-align:middle;border-collapse:collapse;border-spacing:0;}
+td {vertical-align:middle;font-size:14px}
+input,select,option{font-size:14px;color:#666}
+option{height:24px;line-height:24px}
+.ddtx {
+  padding: 0px;
+  height: auto;
+  width: 1200px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  border: 1px solid #005ead;
+  overflow: hidden;
+}
+.ddtx .tx_bd {
+  padding: 0px;
+  margin:20px 0px 0px 40px;
+}
+.ddtx .tx_title {
+  font-size: 22px;
+  font-family: "微软雅黑";
+  height: 40px;
+  padding: 0px;
+  line-height: 40px;
+  display: block;
+  width: 85%;
+  margin-top: 30px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+.ddtx .tx_bd table {
+  font-family: "微软雅黑";
+  font-size: 16px;
+}
+.ddtx .tx_bd table tr td #truename,.input-class {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;
+  width: 250px;
+  padding-left: 10px;
+line-height:30px;
+}
+.ddtx .tx_bd table tr td #ctiy {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  line-height: 30px;line-height:30px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #city2 {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #form4 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form13 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form13 #zctime {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form14 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+}
+.ddtx .tx_bd table tr td #form14 #vin {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 520px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #address {
+  margin: 0px;
+  height: 30px;
+	line-height:30px;
+  width: 522px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #mobile {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #form6 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 260px;
+}
+.ddtx .tx_bd table tr td #yzm {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 240px;
+  font-size: 14px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #form7 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+}
+.ddtx .tx_bd table tr td #licenseplate_type {
+  margin: 0px;
+  height: 34px;line-height:34px;
+  width: 50px;
+  font-size: 14px;
+	text-align:center;
+}
+.ddtx .tx_bd table tr td #licenseplate{
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.ddtx .tx_bd table tr td #order_time {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #order_time2 {
+  margin: 0px;
+  height: 34px;line-height:34px;
+  width: 266px;
+}
+.ddtx .tx_bd table tr td #form10 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+}
+.ddtx .tx_bd table tr td #time2 {
+  margin: 0px;
+  height: 30px;line-height:30px;
+  width: 240px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.ddtx .tx_bd table tr td #form11 {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+}
+.ddtx .tx_bd table tr td #chash {
+  margin: 0px;
+  height: 34px;line-height:34px;
+  width: 266px;
+  font-size: 14px;
+  color: #666;
+}
+.ddtx .tx_bd table tr td #car_reg_time, #engine_num, #vin_num {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 250px;
+  padding-left: 10px;
+}
+.ddtx .tx_bd table tr td #remark {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;line-height:30px;
+  width: 522px;
+}
+.ddtx .spxq_right {
+  padding:0px 40px;
+  height: auto;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
+  font-family: "微软雅黑";
+}
+.ddtx .spxq_right .spxq_title {
+  font-size: 24px;
+  font-family: "微软雅黑";
+  height: 40px;
+  padding: 0px;
+  line-height: 40px;
+  display: block;
+  width: 85%;
+  margin-top: 30px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+.ddtx .spxq_right table {
+  width: 80%;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-spacing: 1px;
+  background-color: rgb(204, 204, 204);
+  border-collapse: separate;
+  border-color: gray;
+}
+.ddtx .spxq_right table td{text-align:center}
+</style>
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">代下单</div>
+<div class="ddtx">
+
+<h2 class="tx_title">请填写以下内容</h2>
+<div class="tx_bd">
+  <form method="post" name="subForm" id="subForm" action="__URL__/create_order">
+  <table width="100%" border="0" cellspacing="4" cellpadding="4">
+    <tr>
+      <td width="15%" height="65" align="right" style="padding-right:60px" valign="middle"><img src="__PUBLIC__/carservice/img/xx.png" width="6" height="6" /> 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名 :</td>
+      <td width="25%" valign="middle">
+        <label for="truename"></label>
+        <input type="text" name="truename" id="truename" value="{$userinfo['truename']}" />
+      </td>
+      <td width="27%">&nbsp;</td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+	<tr>
+      <td width="15%" height="65" align="right" style="padding-right:60px" valign="middle"><img src="__PUBLIC__/carservice/img/xx.png" width="6" height="6" /> 城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 市 :</td>
+      <td width="25%" valign="middle">
+        <label for="city"></label>
+        <select name="city_id" id="city_id" style="font-size:14px">
+          <volist name="city_list" id="vi">
+			<option value="{$vi.id}" <eq name="userinfo['city_id']" value="vi['id']">selected</eq>>{$vi.name}</option>
+		  </volist>
+        </select>
+      </td>
+      <td width="27%">&nbsp;</td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" width="6" height="6" /> 详细地址：</td>
+      <td colspan="3">
+        <label for="address"></label>
+        <input name="address" type="text" id="address" value="{$userinfo['address']}" />  （外环内）
+      </td>
+      </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 手机号码：</td>
+      <td>
+        <label for="mobile"></label>
+        <input type="text" name="mobile" id="mobile" value="{$userinfo['mobile']}" />
+      </td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 车 牌 号 ：</td>
+      <td>
+        <select name="licenseplate_type" id="licenseplate_type" style="font-size:14px">
+          <volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="vo_os">
+			<option value="{$vo_os}">{$vo_os}</option>
+		  </volist>
+        </select>
+        <input name="licenseplate" type="text" id="licenseplate" value="" style="width:196px" />
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 服务时间：</td>
+      <td>
+        <label for="order_time"></label>
+        <input class="input-class datepicker1" onfocus="WdatePicker({minDate:'%y-%M-%d',maxDate:'%y-%M-{%d+30}','dateFormat':'yy-mm-dd'})" type="text" name="order_time" id="order_time" placeholder="请选择上门服务时间">
+      </td>
+      <td>
+        <label for="time2"></label>
+        <select name="order_time2" id="order_time2" style="font-size:14px" onblur="prevent()">
+			<option value="0">8:00-8:59</option>
+			<option value="1">9:00-9:59</option>
+			<option value="2">10:00-10:59</option>
+			<option value="3">11:00-11:59</option>
+			<option value="4">12:00-12:59</option>
+			<option value="5">13:00-13:59</option>
+			<option value="6">14:00-14:59</option>
+			<option value="7">15:00-15:59</option>
+			<option value="8">16:00-16:59</option>
+			<option value="9">17:00-17:59</option>
+			<option value="10">18:00-18:59</option>
+			<option value="11">19:00-19:59</option>
+			<option value="12">20:00-20:59</option>
+			<option value="13">21:00-21:59</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">&nbsp;<img src="__PUBLIC__/carservice/img/xx.png" alt="" width="6" height="6" /> 付款方式：</td>
+      <td>
+        <label for="chash"></label>
+        <select name="chash" id="chash" style="font-size:14px">
+          <option>现金</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+
+	<tr>
+      <td width="15%" height="65" align="right" style="padding-right:60px" valign="middle"> 业务来源 :</td>
+      <td width="25%" valign="middle">
+        <label for="city"></label>
+        <select name="business_source" id="business_source" style="font-size:14px">
+			<option value="">请选择来源</option>
+          <volist name="business_source_list" id="vi">
+			<option value="{$i}">{$vi}</option>
+		  </volist>
+        </select>
+      </td>
+      <td width="27%">&nbsp;</td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">抵用码：</td>
+      <td>
+        <label for="chash"></label>
+        <input class="input-class" type="text" name="replace_code" placeholder="输入抵用码，可以抵用服务费">
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">车辆注册时间：</td>
+      <td>
+        <label for="clzc"></label>
+        <input class="input-class datepicker2" onfocus="WdatePicker({'minDate':'+2','maxDate':'+16','dateFormat':'yy-mm-dd'})" type="text" name="car_reg_time" id="car_reg_time" placeholder="请选择车辆注册时间">
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">发动机号码：</td>
+      <td colspan="2">
+        <label for="zctime"></label>
+        <input type="text" name="engine_num" id="engine_num" />
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">VIN：</td>
+      <td colspan="2">
+        <label for="vin"></label>
+        <input type="text" name="vin_num" id="vin_num" />
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="65" align="right" style="padding-right:60px" valign="middle">备 注：</td>
+      <td colspan="3">
+        <label for="remark"></label>
+        <input type="text" name="remark" id="remark" />
+      </td>
+      </tr>
+	<tr>
+		<td height="65" align="right" style="padding-right:60px" valign="middle">
+			<input type="hidden" name="order_type" value="{$order_type}">
+			<input type="hidden" name="taobao_id" value="{$taobao_id}">
+			<input type="hidden" name="taobao_price" value="{$taobao_price}">
+		</td>
+	</tr>
+  </table>
+  </form>
+</div>
+
+<if condition="$order_type neq 2">
+<div class="spxq_right">
+<h2 class="spxq_title">上门保养详情</h2>
+<table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#CCCCCC">
+  <tr>
+    <td width="18%" bgcolor="#f8f8f8">&nbsp;&nbsp;保养项目</td>
+    <td width="12%" bgcolor="#f8f8f8">&nbsp;&nbsp;价格</td>
+  </tr>
+
+	<!--<empty name="item_list"> 
+		<tr>
+			<td rowspan="5" bgcolor="#FFFFFF">&nbsp;&nbsp;上门保养</td>
+		</tr>
+		<tr>
+			<td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">服务费</td>
+			<td bgcolor="#F8F8F8"> ￥99</td>
+			<td rowspan="5" bgcolor="#F8F8F8"> ￥{$item_amount}</td>
+		 </tr>
+		<tr>
+			<td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">套餐抵扣</td>
+			<td bgcolor="#F8F8F8"> -￥<empty name="typeprice">0<else />{$typeprice}</empty></td>
+		</tr>
+	<else/>-->
+
+	  <tr>
+		<foreach name="item_list" item="value" key="key">
+		<tr>
+		<td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">
+		  <if condition="$key eq 0">
+		  [机油]
+		  <elseif condition="$key eq 1" />
+		  [机油滤清器]
+		  <elseif condition="$key eq 2" />
+		  [空气滤清器]
+		  <elseif condition="$key eq 3" />
+		  [空调滤清器]
+		  </if>  
+		  {$value['name']}
+		</td>
+		<td bgcolor="#F8F8F8"> ￥{$value['price']}</td>
+		</tr>
+		</foreach>
+	  </tr>
+
+	  <tr>
+		<td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">服务费</td>
+		<td bgcolor="#F8F8F8"> ￥99</td>
+	  </tr>
+
+	  <tr>
+		<td height="40" bgcolor="#F8F8F8" style="text-align:left;padding-left:50px">套餐抵扣</td>
+		<td bgcolor="#F8F8F8"> -￥<empty name="typeprice">0<else />{$typeprice}</empty></td>
+	  </tr>
+	<!-- </empty> -->
+
+</table>
+</div>
+</if>
+
+<div class="zf" style="background:#efefef; width:100%; height:80px;line-height:80px">
+  <table width="100%" border="0" cellspacing="6" cellpadding="0">
+    <tr>
+	
+      <td width="82%" height="70" align="right" style="font-size:16px">应付总额：<font style="font-size:22px;margin-right:20px;color:#e80012">￥{$item_amount}</font></td>
+
+      <td width="18%" style="height:80px;line-height:80px">
+        <img src="__WEB__/Public/carservice/img/tj.png" width="180" height="50" id="subBtn" style="display:block;cursor:pointer"/>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+jQuery(function(){
+	 //4-19 超过下午四点 5-20
+	 /*  var minDate = new Date();
+	  hours = minDate.getHours();
+	  
+	  var maxDate = new Date();
+	  if(hours >=16){
+		  jQuery(".datepicker1").datePicker({'minDate':'+2','maxDate':'+16','dateFormat':'yy-mm-dd'});
+	  }else{
+		  jQuery(".datepicker1").datePicker({'minDate':'+1','maxDate':'+15','dateFormat':'yy-mm-dd'});
+	  }
+	  
+	  jQuery(".datepicker2").datepicker({'maxDate':new Date(),'dateFormat':'yy-mm-dd'});	 */
+	
+  jQuery("#yzmBtn").click(function(){
+      var mobile = jQuery("#mobile").val();
+      if(mobile){
+      }else{
+        alert('请填写手机号码');
+        jQuery("#mobile").focus();
+        return false;
+      }
+      $.ajax({
+          type:'POST',
+          url:'__URL__/giveeverify',
+          cache:false,
+          dataType:'JSON',
+          data:'mobile='+mobile,
+          success:function(data){
+              data = data.data;
+              if(data.errno == 0){
+                  alert('验证码发送成功');
+                  return true;
+              }else{
+                  alert(data.errmsg);
+                  return false;
+              }
+          }
+      });
+  });
+
+  jQuery("#subBtn").click(function(){
+
+	prevent();
+
+    var truename = jQuery("#truename").val();
+    var address = jQuery("#address").val();
+    var mobile = jQuery("#mobile").val();
+    var licenseplate = jQuery("#licenseplate_type").val()+jQuery("#licenseplate").val();
+    var order_time = jQuery("#order_time").val();
+    var source = jQuery("#business_source").val();
+    if(truename == ""){
+      alert('请填写姓名');
+      jQuery("#truename").focus();
+      return false;
+    }
+    if(address == ""){
+      alert('请填写详细地址');
+      jQuery("#address").focus();
+      return false;
+    }
+    if(mobile == ""){
+      alert('请填写手机号码');
+      jQuery("#mobile").focus();
+      return false;
+    }
+    if(licenseplate == ""){
+      alert('请填写车牌号');
+      jQuery("#licenseplate").focus();
+      return false;
+    }
+    if(order_time == ""){
+      alert('请选择服务时间');
+      jQuery("#order_time").focus();
+      return false;
+    }
+    if(source == ""){
+      alert('请选择来源');
+      jQuery("#business_source").focus();
+      return false;
+    }
+    jQuery("#subForm").submit();
+  });
+});
+//阻止客服同一时间段下过盛的订单
+function prevent(){
+    var order_time = jQuery("#order_time").val();
+    var order_time2 = jQuery("#order_time2").val();
+	var city_id = jQuery("#city_id").val();
+	if(city_id==1){
+		$.ajax({
+		  type:'POST',
+		  url:'__URL__/prevent',
+		  cache:false,
+		  dataType:'JSON',
+		  data:'order_time='+order_time+'&order_time2='+order_time2,
+		  success:function(data){
+			  //alert(data);
+			  if(data<26){
+				jQuery("#subBtn").attr('style','');
+				return true;
+			  }else{
+				jQuery("#subBtn").attr('style','display:none;');
+				alert('这个时间段单量已经饱和');
+				return false;
+			  }
+		  }
+		});
+	}
+}
+</script>
+
+</body>
+</html>

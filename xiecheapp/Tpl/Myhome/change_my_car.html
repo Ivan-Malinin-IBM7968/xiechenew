@@ -1,0 +1,136 @@
+<layout name='layout_new' />
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/new_2/js/base.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+
+<script>
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+	
+	$(".own_car").click(function(){
+		$("#other_car").removeAttr("checked");
+	})
+
+	$("#other_car").click(function(){
+		$(".own_car").removeAttr("checked");
+	})
+	
+	$("#how_find_code,#how_find_code2").click(function(){
+		
+			popup3();
+			$.ajax({
+				type:'POST',
+				url:'__APP__/order/codehelp',
+				cache:false,
+				datatype:'text',
+				data:"",
+				success: function(data){
+					if(data){
+						$("#code_help").html(data);
+					}
+				}
+			})
+	})
+})
+
+function popup3(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>车辆识别代码帮助</em><a close="1"  class="flbc">关闭</a></h3><div style="height:500px; overflow:scroll;" id="code_help"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:0,
+		y:-420
+	})
+}
+
+function goback(){
+
+	history.go(-1);
+	return false;
+}
+
+</script>
+	<!-- 头部Nav结束 -->
+	<div class='w1200 breadcrumb clear'>
+		<ul>
+			<li><a href="#">我的携车</a></li>
+			<li>></li>
+			<li><a href="#">我的维修保养订单</a></li>
+		</ul>
+	</div>
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--right conntent start-->
+		<div class="content-right main my-info">
+			<h2 class="title">
+				我的信息:
+				
+			</h2>
+
+			<div class="table-con my-info-con">
+				<form  action="{:URL('/myhome/update',array())}{:C('HTML_URL_SUFFIX')}" method="post">
+					<ul>
+						<li>
+							<label>品&nbsp;&nbsp;&nbsp;牌:</label> 
+							<select id="get_brand" name="brand_id" onchange="comp_brlist('get_brand','get_series', 'get_model');">
+							</select>
+						</li>
+						<li>
+							<label>车&nbsp;&nbsp;&nbsp;系:</label>
+								<select id="get_series" name="series_id" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+								</select>
+						</li>
+						<li>
+							<label>车&nbsp;&nbsp;&nbsp;型:</label>
+							<select id="get_model" name="model_id" disabled>
+							</select>
+
+						</li>
+						<li>
+							<label>车牌号:</label> 
+							<select class="chepai" style="width:45px" name="s_pro">
+								<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+								<option value="{$type}" <if condition="$vo.s_pro eq $type"> selected <elseif condition="$type eq '沪'" /> selected <else /></if>>{$type}</option>
+								</volist>
+							</select>
+
+							
+							<input type='text' value="{$vo.car_number}" name="car_number" style="margin-left: 5px; width: 150px;">
+						</li>
+						<li>
+							<label>车辆识别代码:</label> 
+							<input type="text" value="{$vo.car_identification_code}" name="car_identification_code">
+							<a href="###" id="how_find_code" class="additional-info">如何查找您爱车的车辆识别代码？</a>
+							
+						</li>
+						<li>
+							<label>给车取个昵称:</label> 
+							<input type="text" value="{$vo.car_name}" name="car_name">
+							<input type="hidden" name="u_c_id" value="{$vo.u_c_id}" />
+						</li>
+
+					</ul>
+					
+				
+					<input id="cancel" onclick="goback();" value='取 消'>
+					<button id="change-my-info"  type="submit" >修 改</button>
+				</form>
+				
+				
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--right conntent end-->
+	</div>
+	<script type="text/javascript">
+		comp_fctlist("get_brand", "get_series", "get_model",{$vo.brand_id},{$vo.series_id},{$vo.model_id});
+	</script>

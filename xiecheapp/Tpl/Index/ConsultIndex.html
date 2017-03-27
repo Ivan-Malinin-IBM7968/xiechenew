@@ -1,0 +1,123 @@
+<layout name='layout' />
+
+<!--页头导航_ICON开始zd-->
+<link rel="Shortcut Icon" href="http://www.xieche.net/Public/note/images/icon16.ico" />
+<link rel="icon" type="image/x-icon" href="http://www.xieche.net/Public/note/images/icon16.ico" />
+<!--加盟-->
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/ConsultIndex/css.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/ConsultIndex/ConsultIndex.css?v={$Think.config.VERSION_DATE}" />
+<script type="text/javascript" src="__PUBLIC__/new/js/ConsultIndex/ScrollPic.js?v={$Think.config.VERSION_DATE}"></script>
+<!--加盟-->
+    <!--页头导航_ICON结束-->
+<style type="text/css">
+
+</style>
+
+<div id="main-nav">main</div>
+<div id="main">
+<div id="main-left">
+<div id="main-left-cx"></div>
+<div id="main-left-xwzx">
+  <ul>
+	<volist name="data.XwzxArticle" id="list">
+    <li><a href="#">{$list.title|msubstr=0,24}</a></li>
+	</volist>
+  </ul>
+</div>
+<div id="main-left-xw">
+<dl>
+<dt>11</dt>
+<dd><a href="#">性能做工提升图解全新</a></dd>
+</dl>
+
+<dl>
+<dt>11</dt>
+<dd><a href="#">性能做工提升图解全新</a></dd>
+</dl>
+<ul>
+<volist name="data.XwArticle" id="list">
+<li><a href="#">{$list.title|msubstr=0,16}</a></li>
+</volist>
+</ul>
+</div>
+</div>
+<div id="main-middle"><h2><img src="/Public/new/images/20130304101916234.gif" width="250" height="150" /></h2>
+<div id="text-list-2"> 
+<ul>
+<!--第二要闻区-->
+<volist name="data.MiddleArticle" id="list">
+<li><span><a target="_blank" href="http://news.bitauto.com/zonghe/20130304/1106034148.html">{$list.title|msubstr=0,14}</a></span></li>
+</volist>
+</ul>
+</div>
+</div>
+<div id="main-right">
+	<volist name="data.Title_top" id="list">
+		<h2><a href="#">{$list.title|msubstr=0,14}</a></h2>
+		<!--<p class="biao1"><a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a></p>-->
+	</volist>
+	<volist name="data.Title_bottom" id="list">
+		<h2><a href="#">{$list.title|msubstr=0,14}</a></h2>
+		<!--<p class="biao1"><a href="#">大兵小将(上、下)</a> | <a href="#">某S辣评</a> | <a href="#">我就10万</a> | <a href="#">更多视频</a></p>-->
+	</volist>
+  <div id="text-list">
+  <ul>
+	<volist name="data.RightArticle" id="list">
+	 <li><span><a target="_blank" href="#">{$list.title|msubstr=0,11}</a></span> </li>
+	</volist>
+   </ul>
+    <ul>
+   <volist name="data.RightArticle_TO" id="list">
+	 <li><span><a target="_blank" href="#">{$list.title|msubstr=0,11}</a></span> </li>
+	</volist>
+	</ul>
+</div>
+<div id="text-nav">11</div>
+</div>
+</div>
+<div id="clear"></div>
+<!--加盟商家-->
+<div id="jm">
+<DIV class=rollphotos>
+  <div class=FixTitle>
+    <h3>最新加盟</h3>
+    <span>共有{$shop1count}家签约4S店，{$shop2count}家非签约4S店</span></div>
+  <div class=blk_29>
+    <div class=LeftBotton id=LeftArr></div>
+    <div class=Cont id=ISL_Cont_1>
+		<!-- 图片列表 begin -->
+		<volist name="shoplist" id="slist">
+		<div class=box><a class=imgBorder href="__APP__/shop/{$slist.id}" target=_blank>
+		<img alt="{$slist.shop_name}" src="{$slist.shop_pic}"  border=0></a>
+		<p><a href="__APP__/shop/{$slist.id}" target=_blank>{$slist.shop_name}</a></p>
+		</div>
+		</volist>
+		<!-- 图片列表 end -->
+    </div>
+    <div class=RightBotton id=RightArr></div>
+  </div>
+  <SCRIPT language=javascript type=text/javascript>
+		<!--//--><![CDATA[//><!--
+		var scrollPic_02 = new ScrollPic();
+		scrollPic_02.scrollContId   = "ISL_Cont_1"; //内容容器ID
+		scrollPic_02.arrLeftId      = "LeftArr";//左箭头ID
+		scrollPic_02.arrRightId     = "RightArr"; //右箭头ID
+
+		scrollPic_02.frameWidth     = 908;//显示框宽度
+		scrollPic_02.pageWidth      = 152; //翻页宽度
+
+		scrollPic_02.speed          = 10; //移动速度(单位毫秒，越小越快)
+		scrollPic_02.space          = 10; //每次移动像素(单位px，越大越快)
+		scrollPic_02.autoPlay       = false; //自动播放
+		scrollPic_02.autoPlayTime   = 3; //自动播放间隔时间(秒)
+
+		scrollPic_02.initialize(); //初始化
+							
+		//--><!]]>
+</SCRIPT>
+</DIV>
+</div>
+<!--加盟商家-->
+

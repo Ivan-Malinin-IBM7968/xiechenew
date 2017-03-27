@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>『{$Think.config.web_name}管理平台』By ThinkPHP {$Think.version}</TITLE>
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<load file="__CSS__/blue.css" />
+<script src="__JS__/DatePicker/WdatePicker.js"></script>
+
+<div id="main" class="main" >
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<!-- 列表显示区域  -->
+<div >
+<table cellspacing="0" cellpadding="0" border="1" class="l_fwinfo">
+<tr>
+<td>商家名称</td><td>{$get_shop.shop_name}</td>
+</tr>
+<tr>
+<td>商家地址</td><td>{$get_shop.shop_address}</td>
+</tr>
+<tr>
+<td>商家电话</td><td>{$get_shop.shop_phone}</td>
+</tr>
+</table>
+{$output_str}
+<form action="{:U('Store/order/insert')}" method="post">
+			<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+			<tr>
+			<td>预约时间</td><td><input type="text" name="order_date" class="Wdate" type="text" onfocus="WdatePicker({ <notempty name="sale_check"> disabledDays:[{$sale_check}],</notempty>enableKeyboard:false,doubleCalendar:<?php echo ($doubleCalendar);?>,dateFmt:'yyyy-MM-dd',minDate:'{$minday}',maxDate:'{$maxday}'})" value="{$lastorder.order_date}"/>
+			日<select name="order_hours" onclick="get_minute();" id="order_hours">
+			<volist name="Think.config.ORDER_HOURS" id="hours">
+			<if condition="($hours egt $min_hours) AND ($hours elt $max_hours) "> 
+			<option value="{$hours}" <if condition="$hours eq $lastorder['order_hour']">selected</if> >{$hours}</option>
+			</if>
+			</volist>
+			</select>时
+			<select name="order_minute" id="order_minute">
+				<option value="00">00</option>
+			</select>
+			分</td>
+			</tr>
+			<tr>
+			<td>姓名</td><td><input type="text" value="{$lastorder.truename}" name="truename" /></td>
+			</tr>
+			<tr>
+			<td>手机号码</td><td><input type="text" value="{$lastorder.mobile}" name="mobile" /></td>
+			</tr>
+			<tr>
+			<td>车牌号</td><td><select name="cardqz">
+				<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+				<option value="{$type}" <if condition="$lastorder.s_pro eq $type">selected<elseif condition="$type eq '沪'" />selected<else /></if> >{$type}</option>
+				</volist>
+</select><input type="text" name="licenseplate" value="{$lastorder.licenseplate}" /></td>
+			</tr>
+			<tr>
+			<td>已行驶公里数</td><td><input type="text" name="miles" value="{$lastorder.mileage}" /></td>
+			</tr>
+			<tr>
+			<td>车辆识别代码</td><td><input type="text" value="{$lastorder.car_sn}" name="car_sn" /></td>
+			</tr>
+			<tr>
+			<td>备注</td><td><textarea name="remark">{$lastorder.remark}</textarea></td>
+			</tr>
+			
+	<tr><td>
+		<input type="hidden" name="shop_id" value="{$Think.get.shop_id}" />
+		<input type="hidden" name="s1" value="{$Think.get.s1}" />
+		<input type="hidden" name="s2" value="{$Think.get.s2}" />
+		<input type="hidden" name="u_c_id" value="{$Think.get.u_c_id}" />
+		<input type="hidden" name="select_services" value="{$Think.request.select_services}" />
+		<input type="hidden" name="model_id" value="{$Think.request.model_id}" />
+		<input type="hidden" name="brand_id" value="{$Think.request.brand_id}" />
+		<input type="hidden" name="series_id" value="{$Think.request.series_id}" />
+		<input type="hidden" name="timesaleversion_id" value="{$Think.request.timesaleversion_id}" />
+		<input type="hidden" name="membercoupon_id" value="{$Think.request.membercoupon_id}" />
+		<input type="hidden" name="uid" value="{$Think.get.uid}" />
+		<input type="hidden" name="order_id" value="{$Think.get.order_id}" />
+
+	</td><td align="center"><input type="submit" class="button-yellow" value="保存" /></td>
+	</tr>
+
+			</table>
+	</form>	
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script>
+	function get_minute(){
+		var sel_hours = $("#order_hours").val();
+		var min_hours = '{$min_hours}';
+		var min_minute ='{$min_minute}';
+		var max_hours = '{$max_hours}';
+		var max_minute = '{$max_minute}';
+		var min = '{$lastorder.order_min}';
+		$("#order_minute").html("");
+		for(i=0; i<6; i++){
+			var select_min = '';
+			var m = i*10;
+			if(m == min){
+				select_min = 'selected';
+			}
+			if(m==0){
+				m='00';
+			}
+			if(sel_hours==min_hours || sel_hours==max_hours){
+				if(sel_hours==min_hours && min_minute<=m ){
+					$("#order_minute").append("<option value='"+m+"' "+select_min+">"+m+"</option>");
+				}
+				if(sel_hours==max_hours && max_minute>=m ){
+					$("#order_minute").append("<option value='"+m+"' "+select_min+">"+m+"</option>");
+				}
+			}else{
+				$("#order_minute").append("<option value='"+m+"' "+select_min+">"+m+"</option>");
+			}
+		}
+	}
+</script>

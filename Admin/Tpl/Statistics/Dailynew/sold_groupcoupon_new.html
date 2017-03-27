@@ -1,0 +1,83 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<script>
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+	
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">每日新增店铺详情</div>
+<!--  功能操作区域  -->
+<div class="operate" >
+<!-- 查询区域 -->
+<div>
+
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+			<table class="list">
+				<tr class="row">
+					<th>售出日期</th>
+					<th>现金券ID</th>
+					<th>现金券名称</th>
+					<th>现金券原价</th>
+					<th>现金券售出价</th>
+					<th>4S店</th>
+					<th>用户名</th>
+					<th>支付方式</th>
+					<th>支付状态</th>
+					<th>使用状态</th>
+					<th>绑定销售</th>
+				</tr>
+				<volist name="list" id="vo">
+				<tr>
+					<td>{$time}</td>
+					<td>{$vo.coupon_id}</td>
+					<td>{$vo.coupon_name}</td>
+					<td>{$vo.cost_price}</td>
+					<td>{$vo.coupon_amount}</td>
+					<td>{$vo.shop_name}</td>
+					<td>{$vo.truename}</td>
+					<td>
+						<if condition="$vo.is_use eq 0">
+						未使用
+							<if condition="$vo.is_refund eq 1">,已退款</if>
+						<else />
+						已使用
+						</if>
+					</td>
+					<td>
+						<if condition="$vo.pay_type eq 1">
+							财付通
+						<elseif condition="$vo.pay_type eq 2"/>
+							银联
+						<elseif condition="$vo.pay_type eq 3"/>
+							支付宝	
+						</if>
+					</td>
+					<td>
+					<volist name="Think.config.PAY_STATE" id="vo_os">
+					<eq name="key" value="$vo.is_pay">{$vo_os}</eq>
+					</volist>
+					</td>
+					<td>{$vo.nickname}</td>
+				</tr>
+				</volist>
+			</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

@@ -1,0 +1,61 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>确认结算信息</h1></div>
+
+<div id="main-right2">
+	<table width="785" border="0" cellspacing="1" cellpadding="1">
+		<tr>
+			<td height="40" bgcolor="#F2F2F2">保险订单号</td>
+			<td bgcolor="#F2F2F2">保险公司</td>
+			<td bgcolor="#F2F2F2">用户名</td>
+			<td bgcolor="#F2F2F2">手机号</td>
+			<!-- <td bgcolor="#F2F2F2">车牌号</td> -->
+			<td bgcolor="#F2F2F2" width="10%">保险金额</td>
+			<td bgcolor="#F2F2F2">佣金</td>
+			<td bgcolor="#F2F2F2">佣金比例</td>
+			<td bgcolor="#F2F2F2">结算时间</td>
+			<td bgcolor="#F2F2F2">结算状态</td>
+		</tr>
+
+		<volist name="bidorderjiesuan" id="vo">
+		<tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+		  <td height="40" ><a href="__APP__/Shop/Safeorder/bidorder/id/{$vo.insurance_id}/type/1" target="_blank" >{$vo.bidorder_id}</a></td>
+		  <td>{$vo.insurance_name}</td>
+		  <td>{$vo.user_name}</td>
+		  <td>{$vo.user_phone}</td>
+		  <!-- <td>{$vo.licenseplate}</td> -->
+		  <td>{$vo.loss_price}</td>
+		   <td>订单佣金:{$vo.insurance_commission}</br>
+					保险公司佣金:{$vo.company_commission}
+		   </td>
+		  <td>订单佣金比例:{$vo.insurance_rebate}%</br>
+					保险公司佣金比例:{$vo.company_rebate}%
+			</td>
+		  <td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+		  <td>{$vo.jiesuan_status_str}</td>
+		</tr>
+		</volist>
+		<tr>
+			<td colspan="9">&nbsp;</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="2">&nbsp</td>
+			<td>总结算金额</td><td>{$jiesuan_amount}</td>
+			<td colspan="2">总佣金</td><td colspan="2">{$jiesuan_commission}</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr style="color:red;font-weight:bold;">
+			<td colspan="2">&nbsp</td>
+			<td>总实际支付</td><td>{$true_pay}</td>
+			<td colspan="5">&nbsp</td>
+		</tr>
+		<if condition="$jiesuan_status eq 1">
+		<tr>
+			<td colspan="10"><input type="button" onclick="window.location.href='{$update_jiesuan_url}'" value="确认结算信息"></td>
+		</tr>
+		</if>
+	</table>
+</div>
+
+</div>

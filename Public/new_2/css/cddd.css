@@ -1,0 +1,222 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ckdd {
+	padding: 0px;
+	width: 1200px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+	overflow: hidden;
+}
+.ckdd .ckdd_left {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	height: 700px;
+	width: 254px;
+	overflow: hidden;
+}
+.wdxc {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #0066cc;
+	padding: 0px;
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	height: 25px;
+	line-height: 25px;
+}
+.ckdd ul {
+	margin: 0px;
+	width: 252px;
+	clear: both;
+	height: auto;
+	list-style-type: none;
+	display: block;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #0084bf;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+.ckdd .ckdd_left ul li a {
+	color: #000;
+	text-decoration: none;
+}
+.ckdd .ckdd_left ul .ddzx a:hover {
+	text-decoration: underline;
+	background-image: url(../img/icon_1.jpg);
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	margin: 0px;
+	padding: 0px;
+	height: 51px;
+	width: 100%;
+}
+.ckdd .ckdd_left ul .zczx a:hover {
+	background-image: url(../img/icon2_2.jpg);
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	margin: 0px;
+	padding: 0px;
+	height: 51px;
+	width: 100%;
+}
+.ckdd .ckdd_left ul .grzx a:hover {
+	background-image: url(../img/icon3_3.jpg);
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	margin: 0px;
+	padding: 0px;
+	height: 51px;
+	width: 100%;
+}
+.ckdd .ckdd_left ul li a:hover {
+	margin: 0px;
+	padding: 0px;
+	height: 41px;
+	width: 100%;
+	display: block;
+	text-decoration: none;
+	background-color: #EFFAFF;
+}
+
+.ckdd .ckdd_left ul li {
+	height: 41px;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	line-height: 41px;
+	text-align: center;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+.ckdd .ckdd_left ul .ddzx {
+	height: 51px;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	background-color: #EFFAFF;
+	font-size: 20px;
+	line-height: 51px;
+	background-image: url(../img/icon.jpg);
+	background-position: 25px center;
+	background-repeat: no-repeat;
+}
+.ckdd .ckdd_left ul .zczx {
+	margin: 0px;
+	padding: 0px;
+	height: 51px;
+	width: 100%;
+	font-size: 20px;
+	line-height: 51px;
+	background-color: #EFFAFF;
+	background-image: url(../img/icon2.jpg);
+	background-repeat: no-repeat;
+	background-position: 25px center;
+}
+.ckdd .ckdd_left ul .grzx {
+	margin: 0px;
+	padding: 0px;
+	height: 51px;
+	width: 100%;
+	line-height: 51px;
+	font-size: 20px;
+	background-image: url(../img/icon3.jpg);
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	background-color: #EFFAFF;
+}
+
+
+
+.ckdd .ckdd_right {
+	padding: 0px;
+	height: 320px;
+	width: 925px;
+	background-repeat: no-repeat;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	border: 2px solid #015EAC;
+	background-image: url(../images/detail_order_t_bg.png);
+	background-position: right top;
+}
+.ckdd .ckdd_right .spxq {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	font-weight: normal;
+	height: 51px;
+	width: 91%;
+	display: block;
+	line-height: 51px;
+	background-image: url(../images/detail_order_t_bg.gif);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 60px;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCC;
+}
+.ckdd .ckdd_right p {
+	font-size: 14px;
+	line-height: 25px;
+	padding: 0px;
+	height: 25px;
+	display: block;
+	margin-top: 6px;
+	margin-right: auto;
+	margin-bottom: 5px;
+	margin-left: auto;
+	padding-left:12px;
+}
+.ckdd .spxq_right {
+	padding: 0px;
+	width: 925px;
+	height: auto;
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.ckdd .spxq_right .spxq_title {
+	font-family: "微软雅黑";
+	font-size: 24px;
+	line-height: 40px;
+	height: 40px;
+	width: 100%;
+	padding: 0px;
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}

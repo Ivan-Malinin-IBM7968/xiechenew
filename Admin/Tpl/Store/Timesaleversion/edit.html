@@ -1,0 +1,89 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/DatePicker/WdatePicker.js'></script>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">数据列表[ <A HREF="__URL__/index/timesale_id/{$vo.timesale_id}">返回列表</A> ]</div>
+<!--  功能操作区域  -->
+<div class="operate" >
+</form>
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+<form action="__URL__/update" method="post">
+<table cellspacing="0" cellpadding="0" class="list" id="checkList">
+	<tr>
+		<td width="10%">配件折扣</td>
+		<td width="90%">
+		<select name="product_sale" >
+		<volist name="Think.config.SALE_VALUE" id="vosale">
+		<eq name="vosale" value="$vo.product_sale"><option value="{$vosale}" selected="selected">{$vosale}</option><else/><option value="{$vosale}">{$vosale}</option></eq>
+		</volist>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>工时折扣</td>
+		<td>
+		<select name="workhours_sale" >
+		<volist name="Think.config.SALE_VALUE" id="vosale">
+		<eq name="vosale" value="$vo.workhours_sale"><option value="{$vosale}" selected="selected">{$vosale}</option><else/><option value="{$vosale}">{$vosale}</option></eq>
+		</volist>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>开始日期</td>
+		<td>
+		<input type="text"  onclick="WdatePicker({enableKeyboard:false,dateFmt:'yyyy-MM-dd',minDate:'%y-%M-{%d+1}'})" <if condition="$vo.s_time lt $nowtime">disabled</if> value="{$vo.s_time|date='Y-m-d',###}" name="s_time" >
+		</td>
+	</tr>
+	<tr>
+		<td>结束日期</td>
+		<td>
+		<input type="text"  onclick="WdatePicker({enableKeyboard:false,dateFmt:'yyyy-MM-dd',minDate:'%y-%M-{%d+1}'})"  readonly="readonly" value="{$vo.e_time|date='Y-m-d',###}" name="e_time">
+		</td>
+	</tr>
+	<tr>
+		<td>优惠券</td>
+		<td>
+		<select name="coupon_id">
+			<option value="0">选择优惠券</option>
+			<volist name="coupon" id="couponlist">
+				<option value="{$couponlist.id}" <if condition="$couponlist.id eq $vo['coupon_id']">selected</if> >{$couponlist.coupon_name}</option>
+			</volist>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>备注</td>
+		<td>
+			<textarea name="memo" >{$vo.memo}</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="hidden" name="id" value="{$vo.id}">
+			<input type="hidden" name="old_coupon_id" value="{$vo.coupon_id}">
+		</td>
+		<td><input type="submit" value="修改"></td>
+	</tr>
+</table>
+</form>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

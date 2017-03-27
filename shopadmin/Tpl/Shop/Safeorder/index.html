@@ -1,0 +1,114 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+
+<div id="main">
+<div id="main-right"><h1>事故车抢单大厅</h1>
+</div>
+<div id="main-right2">
+	<div>
+	<FORM METHOD=POST ACTION="__URL__">
+		<table class="list"  width="785">
+		
+			<tr>
+				<td>时间搜索：</td>
+				<td>
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly"></td>
+			</tr>
+			<tr>
+			<td>订单状态：</td>
+				<td>
+					<volist name="Think.config.insurance_status" id="isvo">
+						<if condition="$key gt 0">
+						<input type="radio" value="{$key}" name="insurance_status" <if condition="$data.insurance_status eq $key">checked</if>>{$isvo}
+						</if>
+					</volist>
+					<input type="radio" value="" name="insurance_status" <if condition="$data.insurance_status eq ''">checked</if>>全部
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="搜索" style="impBtn hMargin fLeft shadow"></td>
+			</tr>
+		</table>
+		</FORM>
+	</div>
+
+	<table width="785" border="0" cellspacing="1" cellpadding="1" bgcolor="#E4E4E4">
+		<tr>
+			<td align="center" bgcolor="#EEEEEE">用户名</td>
+			<td align="center" bgcolor="#EEEEEE">联系电话</td>
+			<td align="center" bgcolor="#EEEEEE">品牌</td>
+			<td align="center" bgcolor="#EEEEEE">保险公司</td>
+			<td align="center" bgcolor="#EEEEEE">定损金额</td>
+			<td align="center" bgcolor="#EEEEEE">状态</td>
+			<td align="center" bgcolor="#EEEEEE">操作</td>
+		</tr>
+
+		<volist name="data.Insurance" id="vo">
+		<tr>
+			<td  align="center" bgcolor="#FFFFFF"><if condition="($vo.insurance_status gt 2) AND ($vo.shopbidcount eq 1)">{$vo.user_name}<else/><font color="red">抢单成功后可见</font></if></td>
+			<td align="center" bgcolor="#FFFFFF"><if condition="($vo.insurance_status gt 2) AND ($vo.shopbidcount eq 1)">{$vo.user_phone}<else/><font color="red">抢单成功后可见</font></if></td>
+			<td align="center" bgcolor="#FFFFFF">{$vo.fsname}</td>
+			<td align="center" bgcolor="#FFFFFF">{$vo.insurance_name}</td>
+			<td align="center" bgcolor="#FFFFFF"><if condition="$vo.loss_price eq 0">到店定损<else/>{$vo.loss_price}</if></td>
+			<td align="center" bgcolor="#FFFFFF">
+				<if condition="$vo.insurance_status eq 1">竞价中</if>
+				<if condition="$vo.insurance_status eq 2">竞价结束</if>
+				<if condition="$vo.insurance_status eq 3">竞价确认</if>
+				<if condition="$vo.insurance_status eq 4">竞价完成</if>
+			</td>
+
+			<td align="center" bgcolor="#FFFFFF">
+				<if condition="$vo.insurance_status eq 1">
+					<input type="hidden" name="" id="validity_time" value="{$vo.validity_time}">
+					<div id="remainTime" style="font-size:20px;font-weight:800;color:#FF9900"></div>
+					<if condition="$vo.shopbidcount neq 1"><a href="__APP__/Shop/Safeorder/partake/id/{$vo.id}">抢单</a></if>
+					<if condition="$vo.shopbidcount eq 1"><a href="__APP__/Shop/Safeorder/edit/id/{$vo.id}">编辑</a></if>
+					<p class="endtime" value="{$vo.validity_time}"></p>
+				</if>
+				<if condition="$vo.insurance_status neq 1 AND $vo.insurance_status neq 2">
+					<a href="__APP__/Shop/Safeorder/edit/id/{$vo.id}">查看</a>
+					<if condition="$vo.bidcount eq 1">
+						<a href="__APP__/Shop/Safeorder/bidorder/id/{$vo.id}">订单详情</a></if>
+					</if>
+				</if>
+			</td>
+		</tr>
+		</volist>
+	</table>
+	<div id="main-right3">{$page}</div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+var serverTime = {$nowtime} * 1000; //服务器时间，毫秒数 
+$(function(){ 
+    var dateTime = new Date(); 
+    var difference = dateTime.getTime() - serverTime; //客户端与服务器时间偏移量 
+     
+    setInterval(function(){ 
+      $(".endtime").each(function(){ 
+        var obj = $(this); 
+        var endTime = new Date(parseInt(obj.attr('value')) * 1000); 
+        var nowTime = new Date(); 
+        var nMS=endTime.getTime() - nowTime.getTime() + difference; 
+        var myD=Math.floor(nMS/(1000 * 60 * 60 * 24)); //天 
+        var myH=Math.floor(nMS/(1000*60*60)) % 24; //小时 
+        var myM=Math.floor(nMS/(1000*60)) % 60; //分钟 
+        var myS=Math.floor(nMS/1000) % 60; //秒 
+        var myMS=Math.floor(nMS/100) % 10; //拆分秒 
+        if(myD>= 0){ 
+            var str = " 剩余时间 <font color=red>"+myM+"</font>分<font color=red>"+myS+"</font>秒"; 
+        }else{ 
+            var str = "<font color=red>已结束！</font>";     
+        } 
+        obj.html(str); 
+      }); 
+    }, 100); //每个0.1秒执行一次 
+}); 
+
+</script>

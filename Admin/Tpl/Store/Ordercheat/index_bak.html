@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>『{$Think.config.web_name}管理平台』By ThinkPHP {$Think.version}</TITLE>
+<load file="__CSS__/blue.css" />
+</HEAD>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">数据列表</div>
+<!--  功能操作区域  -->
+<div class="operate" >
+<html:imageBtn name="add" value="新增" click="add()" style="impBtn hMargin fLeft shadow" />
+<!-- 查询区域 -->
+<div>
+<FORM METHOD=POST ACTION="__URL__">
+<div>
+	<select name="type">
+			<option value="truename">姓名</option>
+			<option value="mobile">电话</option>
+		</select><span id="key"><input TYPE="text" NAME="keyword" title="用户名或电话查询" value="{$Think.post.name}" class="medium" ></span>
+</div>
+<div>
+订单状态
+<volist name="Think.config.ORDER_STATE" id="statevo">
+<input type="radio" value="{$key}" name="order_state">{$statevo}
+</volist>
+<input type="radio" value="" name="order_state">全部
+</div>
+<div>
+4S店
+<select name="shop_id">
+<option value="">--请选择4S店--</option>
+<volist name="shop_list" id="shopvo">
+<option value="{$shopvo.id}">{$shopvo.shop_name}</option>
+</volist>
+</select>
+</div>
+<div>
+<input type="submit" value="查询" style="impBtn hMargin fLeft shadow">
+</div>
+</FORM>
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+<table class="list">
+<tr class="row">
+<th>订单号</th><th>预约时间</th><th>用户ID</th><th>姓名</th><th>电话</th><th>车牌</th><th>4S店</th><th>预约状态</th><th>投诉状态</th><th>订单操作</th>
+</tr>
+<tr>
+<volist name="list" id="vo">
+<td>{$vo.id}</td><td>{$vo.order_time|date="y-m-d H:i:s",###}</td><td>{$vo.uid}</td><td>{$vo.truename}</td><td>{$vo.mobile}</td><td>{$vo.licenseplate}</td>
+<td>
+{$vo.shop_name}
+</td>
+<td>
+<volist name="Think.config.ORDER_STATE" id="vo_os">
+<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+</volist>
+</td>
+<td>
+<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+</volist>
+</td>
+<td>
+<a href="__URL__/edit/order_id/{$vo.id}">修改</a>&nbsp;&nbsp;|<a href="__URL__/orderlog/order_id/{$vo.id}">跟踪</a>
+</td>
+</tr>
+</volist>
+</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title><if condition=" $title neq '' " >{$title},你适合开什么？</if><if condition=" $title eq ''" >你是什么司机</if></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+		<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+		<style type="text/css">
+			body{max-width:640px;min-width:320px;overflow:hidden;margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;background-color:#694429;}
+			.main{background:url('__PUBLIC__/mobile/images/bg2.jpg') scroll no-repeat center top #333;min-height:600px;position:relative;margin:0 auto;min-width:320px;max-width:640px}
+			.ab{position:absolute}
+			.top{left:20px;color:#ffffff;top:-8px;font-size:22px;font-weight:bold}
+			.center{left:20px;top:70px;color:#000;font-size:18px;text-indent:20px;line-height:48px;width:290px;overflow:hidden}
+			.content{cursor:pointer;line-height:38px;padding:0; margin:0;width:100%;overflow:hidden}
+			.fl{float:left;}
+			.content-1{width:50px;}
+			.content-2{width:240px;text-indent:0px} 
+			.share1{text-align:center;text-decoration:none;color:#ffffff;font-size:18px;width:240px;cursor:pointer;display:block;background-color:#00aaf0;-moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius:15px;padding:10px 20px}
+			.share{position: fixed;width: 100%;height: 100%;left: 0;top: 0;z-index: 2000;background: rgba(0,0,0,0.9);}
+			.share_wx,.share_other{position: absolute;width: 100%;height: 100%;left: 0;top: 0;z-index: 2002;}
+			.share_wx p{background: #41C7D2;width: 126px;height: 55px;padding: 15px 10px 0;border-radius: 4px;position: absolute;right: 3px;top: 15px;text-align: center;}
+			.share_wx span{display: block;}
+			.share_wx strong{font-weight: normal;color: #FFFC24;}
+			.share_wx p:after{content: "";display: block;width:0; height:0; line-height:0; font-size:0; border:10px dashed transparent; border-bottom-color:#41C7D2; border-bottom-style:solid;position: absolute;right: 14px;top: -20px;}
+			p.q_id{line-height:28px}
+		</style>
+	</head>
+	<body>
+		<if condition=" $shareshow eq '1' " >
+		<div class="share " style="display:block;">
+		</if>
+		<if condition=" $shareshow eq '' " >
+		<div class="share " style="display:none;">
+		</if>
+			<div class="share_wx">
+				<p>点击右上角图标<span>选择<strong>分享给朋友</strong></span></p>
+			</div>
+		</div>
+
+		<section class="main" id="main">
+			<p class="top ab">测测你开啥车的安全系数最高</p>
+			<div class="center ab">
+				<if condition=" $q_id neq '' " >
+					<p id="{$q_id}" class='q_id'><font color=#ffffff>{$q_info.content}</font></p>
+					<volist name="a_info" id="data">
+						<div onClick="changePage(this);" class="content"><div class="content-1 fl"><input type="radio" name="link" value="{$data.link_id}" id="{$data.link_id}"></div><div class="content-2 fl"><font color=#ffffff>{$data.content}</font></div></div>
+					</volist>
+				</if>
+				<if condition=" $q_id eq '' " >
+					<p><font color=#ffffff>这是一个轻松悠闲的周末，艳阳高照彩云飘飘，你决定带上家人出门散心。正当你要打开车门开始全新的旅程时，一系列奇幻而又神秘的选择出现在了你的面前......</font></p>
+				</if>
+			</div>
+			<if condition=" $q_id gt 21 " >
+			<div style="width:100%;text-align:center;top:375px;left:20px;position:absolute">
+			<a class="share1 ab" href="/fenxiang" onclick="share()">分享给朋友（圈）</a>
+			</div>
+			</if>
+			<if condition=" $q_id eq '' " >
+			<div style="width:100%;text-align:center;top:375px;left:20px;position:absolute">
+				<a class="share1" href="/mobile/survey-question_id-1">开始测试</a>
+			</div>
+			</if>
+			<div style="width:100%;text-align:center;top:437px;left:0px;position:absolute">
+				<a href=http://mp.weixin.qq.com/s?__biz=MzA5NDA1NjcyNw==&mid=200466749&idx=1&sn=c303575cc2d663eb9fe1eea56070ff1f#rd><img src=__PUBLIC__/mobile/images/upbg.jpg border=0 onclick="adv()"></a>
+			</div>
+		</section>
+	</body>
+<script type="text/javascript">
+function changePage(event){
+	id = $(event).find('input').attr("id");
+	window.location.href="http://www.xieche.com.cn/mobile/survey-question_id-"+id;
+}
+
+function adv(){
+	window.location.href="http://mp.weixin.qq.com/s?__biz=MzA5NDA1NjcyNw==&mid=200466749&idx=1&sn=c303575cc2d663eb9fe1eea56070ff1f#rd";
+}
+
+function share(){
+	$(".share").css("display","block");
+	window.location.href="http://www.xieche.com.cn/mobile/survey-shareshow-1-qid-{$q_id}";
+}
+
+$(document).ready(function(){
+	$(".share").click(function(){
+		$(".share").css("display","none");
+	});
+});
+</script>
+
+<script>
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		window.shareData = {
+				"timeLineLink": "http://www.xieche.com.cn/mobile/survey",
+				"sendFriendLink": "http://www.xieche.com.cn/mobile/survey",
+				"weiboLink": "http://www.xieche.com.cn/mobile/survey",
+				"tTitle": "{$title}，你适合开什么车？",
+				"tContent": "",
+				"fTitle": "{$title}，你适合开什么车？",
+				"fContent": "",
+				"wContent": ""
+			};
+			// 发送给好友
+			WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+				WeixinJSBridge.invoke('sendAppMessage', {
+					"img_url": "http://www.xieche.com.cn/Public/new_2/images/survey/{$p_number}.jpg",
+					"img_width": "401",
+					"img_height": "275",
+					"link": window.shareData.sendFriendLink,
+					"desc": window.shareData.fContent,
+					"title": window.shareData.fTitle
+				}, function (res) {
+					_report('send_msg', res.err_msg);
+				})
+			});
+			// 分享到朋友圈
+			WeixinJSBridge.on('menu:share:timeline', function (argv) {
+				WeixinJSBridge.invoke('shareTimeline', {
+					"img_url": "http://www.xieche.com.cn/Public/new_2/images/survey/{$p_number}.jpg",
+					"img_width": "401",
+					"img_height": "275",
+					"link": window.shareData.timeLineLink,
+					"desc": window.shareData.tContent,
+					"title": window.shareData.tTitle
+				}, function (res) {
+					_report('timeline', res.err_msg);
+				});
+			});
+		}, false)
+</script>
+</html>
+
+

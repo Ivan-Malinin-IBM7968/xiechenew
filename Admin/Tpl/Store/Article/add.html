@@ -1,0 +1,146 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+	<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+    <script type='text/javascript'>
+        //以下为编辑器配置
+        var plugins={
+            map:{c:'btnMap',t:'插入Google地图',e:function(){
+                    var _this=this;
+                    _this.saveBookmark();
+                    _this.showIframeModal('Google 地图','__PUBLIC__/Js/Xheditor/googlemap/googlemap.html',function(v){_this.loadBookmark();_this.pasteHTML('<img src='+v+' />');},538,404);
+                }}
+        };
+        var editorConf = {
+            plugins:plugins,
+            width:'850px',
+            height:'300px',
+            upLinkUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=附件文件(*.zip;*.rar;*.txt)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upImgUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=图片文件(*.jpg;*.jpeg;*.gif;*.png)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upFlashUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=Flash动画(*.swf)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upMediaUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=多媒体文件(*.wmv;*.avi;*.wma;*.mp3;*.mid)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de'
+        };
+
+    </SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    function getshops(){
+        var fsid = $("#get_fs").val();
+        $.ajax({
+			type:'POST',
+			url:'__APP__/Store/Article/get_shops',
+			cache:false,
+			dataType:'text',
+			data:'fsid='+fsid,
+			success:function(data){
+				if(data!='null'){
+	        		var param = eval(data);
+					$("#get_shops").html("");
+					$("#get_shops").append("<option value='0'>请选择店铺</option>");
+					for (i=0; i<param.length; i++ ){
+						var selected = "";
+						$("#get_shops").append("<option value='"+param[i]['id']+"' "+selected+">"+param[i]['shop_name']+"</option>");
+					}
+				}
+			}
+		})
+    }
+    //-->
+</SCRIPT>
+    <div class="content">
+        <div class="title">文章管理 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1" action="__URL__/insert" enctype="multipart/form-data">
+			<input type="hidden" name="create_time" id="create_time" value="{$time}">
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight" >文章标题：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="名称不能为空" NAME="title"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >网页标题(seo)：</TD>
+                    <TD class="tLeft" >
+                            <textarea class="large bLeftRequire" NAME="seo_title" rows="5" cols="50"></textarea>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >所在城市：</TD>
+                    <TD class="tLeft" >
+                    <select name="city_name">
+                    	<volist name="citys" id="city">
+                    		<option value="{$city}">{$city}</option>
+                    	</volist>
+                    </select>
+                </TR>
+                <tr>
+					<TD class="tRight" >品牌：</td>
+					<TD class="tLeft" >
+						<select id="get_fs" name="fsid" onchange="getshops();">
+							<option value="0">全部</option>
+							<volist name="fs" id="vofs">
+	                    		<option value="{$vofs.fsid}" >{$vofs.fsname}</option>
+	                    	</volist>
+						</select>
+					</td>
+				</tr>
+				<TR>
+                    <TD class="tRight" >店铺：</TD>
+                    <TD class="tLeft" ><select name="shop_id" id="get_shops">
+                    					
+                    				   </select>
+                   </TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >文章关键词(seo)：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire"  NAME="keyword"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >文章描述(seo)：</TD>
+                    <TD class="tLeft" ><TEXTAREA class="bLeftRequire"  NAME="summary" ROWS="10" COLS="100"></TEXTAREA></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >文章内容：</TD>
+                    <TD class="tLeft" >
+                    	<textarea id='content' name='content'></textarea>
+                        <script type='text/javascript'>
+                            jQuery('#content').xheditor(editorConf);
+                        </script>
+                    </TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >添加时间：</TD>
+                    <TD class="tLeft" >
+                    	<input TYPE="text" NAME="create_time" title="更新时间" class="medium" value="" >(时间类型：2013-05-08 00:00:00)
+                    </TD>
+                </TR>
+				<TR>
+					<TD class="tRight" >文章类型：</TD>
+					<TD class="tLeft" >
+						<select name="type">
+							<option value="1">普通</option>
+							<option value="2">府上养车专题</option>
+						</select>
+				</TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>
+

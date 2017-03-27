@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Think>
+<!--样式文件，如为default时，表示会自动加载style/default.css文件-->
+<_THEME_>default</_THEME_>
+<!--ajax等待样式-->
+<_PAGE_ id="ajaxWait"><![CDATA[
+<div  style="z-index:1000">正在加载中..</div>
+]]>
+</_PAGE_>
+<!--笼罩层样式-->
+<_PAGE_ id="coverlay"><![CDATA[
+<div class="Think_cover"></div>
+]]>
+</_PAGE_>
+<!--默认弹出框样式-->
+<_PAGE_ id="popup"><![CDATA[
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td drag="1" class="t_l"></td>
+      <td drag="1" class="t_c"></td>
+      <td drag="1" class="t_r"></td>
+    </tr>
+    <tr>
+      <td drag="1"  class="m_l">&nbsp;&nbsp;</td>
+      <td content="1" class="m_c">      
+      </td>
+      <td drag="1" class="m_r"></td>
+    </tr>
+    <tr>
+      <td drag="1" class="b_l"></td>
+      <td drag="1" class="b_c"></td>
+      <td drag="1" class="b_r"></td>
+    </tr>
+  </tbody>
+</table>
+]]>
+</_PAGE_>
+<!--信息提示框样式-->
+<_PAGE_ id="alert"><![CDATA[
+<div id="popup_container" style="padding: 0pt; margin: 0pt; min-width: 310px; max-width: 310px;" class="ui-draggable" content="1" drag="1"></div>
+]]>
+</_PAGE_>
+<!--操作失败信息提示框内容-->
+<_PAGE_ id="alert_0"><![CDATA[
+  <h1 id="popup_title" drag="1" style="cursor: move;">出错啦！</h1>
+  <div id="popup_content" class="confirm">
+    <div id="popup_message">#msg#</div>
+    <div id="popup_panel">
+      <input type="button" close="1" ok="1" id="popup_ok" value="&nbsp;确认&nbsp;">
+    </div>
+  </div>
+]]>
+</_PAGE_>
+<!--操作成功信息提示框内容-->
+<_PAGE_ id="alert_1"><![CDATA[
+  <h1 id="popup_title" drag="1" style="cursor: move;">信息提示</h1>
+  <div id="popup_content" class="alert">
+    <div id="popup_message">#msg#</div>
+    <div id="popup_panel">
+      <input type="button" close="1" ok="1" id="popup_ok" value="&nbsp;确认&nbsp;">
+    </div>
+  </div>
+]]>
+</_PAGE_>
+<!--confirm信息提示框内容-->
+<_PAGE_ id="alert_2"><![CDATA[
+  <h1 id="popup_title" drag="1" style="cursor: move;">请确认！</h1>
+  <div id="popup_content" class="prompt">
+    <div id="popup_message">#msg#</div>
+    <div id="popup_panel">
+      <input type="button" close="1" ok="1" id="popup_ok" value="&nbsp;确认&nbsp;"> <input type="button" close="1" id="popup_cancel" value="&nbsp;取消&nbsp;">
+    </div>
+  </div>
+]]>
+</_PAGE_>
+<!--弹出框样式2，demo中测试时使用的-->
+<_PAGE_ id="popup2"><![CDATA[
+<div class="popup2"><div drag='1'>拖动层</div><div content='1'> </div><div drag='1'>拖动层</div></div>
+]]>
+</_PAGE_>
+<!--表单验证成功时的提示文字-->
+<_MSG_ id="validateError"><![CDATA[您提交的数据有误，请检查]]></_MSG_>
+</Think>

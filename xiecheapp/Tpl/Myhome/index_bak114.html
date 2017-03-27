@@ -1,0 +1,476 @@
+<layout name='layout_note' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+		//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+	$(".comment").click(function(){
+		popupcomment();
+		var shopid = $(this).attr('shopid');
+		var orderid = $(this).attr('orderid');
+		$.ajax({
+			type:'POST',
+			url:'__APP__/comment',
+			cache:false,
+			dataType:'text',
+			data:'shopid='+shopid+'&orderid='+orderid,
+			success:function(data){
+				$("#comment_content").append(data);
+			}
+		})
+	})
+	
+	$(".showcomment").click(function(){
+		popupshowcomment();
+		var shopid = $(this).attr('shopid');
+		var orderid = $(this).attr('orderid');
+		$.ajax({
+			type:'POST',
+			url:'__APP__/comment/showcomment',
+			cache:false,
+			dataType:'text',
+			data:'shopid='+shopid+'&orderid='+orderid,
+			success:function(data){
+				$("#show_comment").append(data);
+			}
+		})
+	})
+	
+})
+
+function popupcomment(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>回复</em><a close="1"  class="flbc">关闭</a></h3><div style="height:300px;width:500px; overflow:scroll;" id="comment_content"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:10,
+		y:10
+	})
+}
+
+function popupshowcomment(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>评价</em><a close="1"  class="flbc">关闭</a></h3><div style="height:400px;width:800px; overflow:scroll;" id="show_comment"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:10,
+		y:10
+	})
+}
+
+/*function popup2(){
+	Think.popup({
+	content:'<h3 class="flb" drag="1"><em>明细</em><a close="1"  class="flbc">关闭</a></h3><div id="product_content"></div>',
+	drag:true,//不可拖动
+	cover:true//设置笼罩
+	});
+}*/
+
+function del_confirm(u_c_id){
+	if(!confirm("如果您删除这款车型，与这款车型相关的\n维修保养预约数据和用车账本数据也将一并\n删除并无法恢复。请问您是否确认要删除?")){
+		return false;
+	}else{
+		window.location.href="__APP__/membercar/delete/u_c_id/"+u_c_id;
+		return false;
+	}
+}
+function   out(u_c_id)   
+{   
+	$("#tr_mycar_"+u_c_id).removeClass('is_default');
+	$("#tr_mycar_"+u_c_id).addClass('not_default');
+	$("#mycar_"+u_c_id).removeClass('car_is_default');
+	$("#mycar_"+u_c_id).addClass('car_is_not_default');
+}  
+
+function   over(u_c_id)   
+{   
+	$("#tr_mycar_"+u_c_id).removeClass('not_default');
+	$("#tr_mycar_"+u_c_id).addClass('is_default');
+	$("#mycar_"+u_c_id).removeClass('car_is_not_default');
+	$("#mycar_"+u_c_id).addClass('car_is_default');
+}
+function set_default_car(u_c_id){
+	 $.ajax({
+			type: "POST",
+			url: "__APP__/membercar/set_default_car",
+			cache: false,
+			dataType:"text",
+			data:"u_c_id="+u_c_id,			
+			success: function(data){
+				if (data==1){
+					alert("设置成功！");
+					window.location.reload();
+				}else{
+					alert("设置失败！");
+				}
+			}
+		}) 
+}
+</script>
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Js/Jquery/jquery.cookie.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Js/jquery-fn-tab.js?v={$Think.config.VERSION_DATE}"></script>
+<div class="usercontent">
+       <div class="guidenav" > <a href="#" class="Crumbs" >首页</a> > 用户中心</div>
+       <div class="userjzbar14"></div>
+       <div id="ex01" >
+       	<div class="order_change">
+			<ul class="tag02 tabTitle">
+				<li class="">普通订单</li>
+				<li class="">优惠券订单</li>
+				<li class="">车辆管理</li>
+				<li class="">个人信息修改</li>
+				<li class="">积分查询</li>
+				<li class="">推荐注册</li>
+				<li class="">我的优惠券<if condition="$no_usenum gt '0'">({$no_usenum})</if></li>
+			</ul>
+		</div>
+		<style>
+			 .tabBox .yuyuebox{
+				display:none;
+			}
+		</style>
+		
+		<div class="tabBox">
+			<div class="yuyuebox">
+				<div class="clear"></div>
+				<div class="yuyuelistbg1"></div>
+				<table border="0" cellspacing="0" cellpadding="0" class="yuyuelisttitle">
+				  <tr>
+					<td class="w2"><span class="left">我的订单：<span class="f12 f6">共 <span class="fr2">{$count}</span> 个订单</span></span>
+				
+					 </td>
+				  </tr>
+				</table>
+				
+				<ul class="tag01">
+				<li <notpresent  name="type" >class="current"</notpresent>><a href="__URL__/">全部</a></li>
+				<volist name="Think.config.ORDER_MENU_TYPE" id="vo_os">
+					<li <if condition="$key eq $_GET['type']" >class="current"</if>>{$vo_os}</li>
+				</volist>
+	
+					<div class="clear"></div>
+				</ul>
+				<div class="clear"></div>
+			  <table border="0" cellspacing="0" cellpadding="0" class="yuyuelistbody none">
+				  <tr>
+	                <th>订单号 </th>
+	                <th>预约时间</th>
+	                <th>订单状态</th>
+					<th>投诉状态</th>
+					<th>操作</th>
+	                <th>查看</th>
+	              </tr>
+				  <volist name="list" id="vo">
+	              <tr>
+	                <td><strong>{$vo.order_id}</strong></td>
+	                <td class="f11">{$vo.order_time|date="y-m-d H:s",###}</td>
+					
+					<td class="fgre">
+					<volist name="Think.config.ORDER_STATE" id="vo_os">
+					<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+					</volist>
+					</td>
+					<td class="f11">
+					<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+					<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+					</volist>
+					</td>
+					<td><eq name="vo.order_state" value="0"><a href="__APP__/order/editstate/order_id/{$vo.id}/order_state/-1">取消预约</a></eq>&nbsp;&nbsp;
+					<if condition="($vo.complain_state == 0) AND ($vo.order_state == 2)">
+					<a href="__APP__/order/editstate/order_id/{$vo.id}/complain_state/1">投诉</a>
+					</if>
+					<if condition="($vo.complain_state == 1) AND ($vo.order_state == 2)">
+					<a href="__APP__/order/editstate/order_id/{$vo.id}/complain_state/2">取消投诉</a>
+					</if>
+					</td>
+	                <!-- <td><a href="javascript:void(0);" class="ckanbut listdetail" timesale_id="{$vo.timesale_id}" product_sale="{$vo.list_timesale.product_sale}" workhours_sale="{$vo.list_timesale.workhours_sale}" product_str="{$vo.product_str}" select_services="{$vo.select_services}" select_model_id="{$vo.model_id}" shopid="{$vo.shop_id}" ></a> <if condition="($vo.order_state eq 2) and ($vo.iscomment eq 0)" >| <a href="###" id="comment" orderid="{$vo.id}" shopid="{$vo.shop_id}">评价</a></if> <if condition="$vo.iscomment eq 1" >| <a href="###" id="showcomment" orderid="{$vo.id}" shopid="{$vo.shop_id}">查看评价</a></if></td> -->
+	                <td><a href="__URL__/show_order_detail/orderid/{$vo.id}" class="ckanbut listdetail"></a> <if condition="($vo.order_state eq 2) and ($vo.iscomment eq 0)" ><a href="###" class="comment" id="comment" orderid="{$vo.id}" shopid="{$vo.shop_id}"></a></if> <if condition="$vo.iscomment eq 1" ><a href="###" class="showcomment" id="showcomment" orderid="{$vo.id}" shopid="{$vo.shop_id}"></a></if></td>
+	              </tr>
+				</volist>
+				<tr>
+					<td colspan="6">{$page}</td>
+				</tr>
+	            </table>
+			</div>
+			
+			<div class="yuyuebox coupon">
+				<div class="clear"></div>
+				<div class="yuyuelistbg1"></div>
+				<table border="0" cellspacing="0" cellpadding="0" class="yuyuelisttitle">
+				  <tr>
+					<td class="w2"><span class="left">我的订单：<span class="f12 f6">共 <span class="fr2">{$coupon_count}</span> 个订单</span></span>
+				
+					 </td>
+				  </tr>
+				</table>
+				
+				<ul class="tag01">
+				<li <notpresent  name="type" >class="current"</notpresent>><a href="__URL__/">全部</a></li>
+				<volist name="Think.config.ORDER_MENU_TYPE" id="vo_os">
+					<li <if condition="$key eq $_GET['type']" >class="current"</if>>{$vo_os}</li>
+				</volist>
+	
+					<div class="clear"></div>
+				</ul>
+				<div class="clear"></div>
+			  <table border="0" cellspacing="0" cellpadding="0" class="yuyuelistbody none">
+				  <tr>
+	                <th>订单号 </th>
+	                <th>预约时间</th>
+	                <th>订单状态</th>
+					<th>投诉状态</th>
+					<th>操作</th>
+					<th>支付状态</th>
+	                <th>查看</th>
+	              </tr>
+				  <volist name="coupon_list" id="coupon_vo">
+	              <tr>
+	                <td><strong>{$coupon_vo.order_id}</strong></td>
+	                <td class="f11">{$coupon_vo.order_time|date="y-m-d H:s",###}</td>
+					
+					<td class="fgre">
+					<volist name="Think.config.ORDER_STATE" id="vo_os">
+					<eq name="key" value="$coupon_vo.order_state">{$vo_os}</eq>
+					</volist>
+					</td>
+					<td class="f11">
+					<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+					<eq name="key" value="$coupon_vo.complain_state">{$vo_os}</eq>
+					</volist>
+					</td>
+					<td><eq name="coupon_vo.order_state" value="0"><a href="__APP__/order/editstate/order_id/{$coupon_vo.id}/order_state/-1">取消预约</a></eq>&nbsp;&nbsp;
+					<if condition="($coupon_vo.complain_state == 0) AND ($coupon_vo.order_state == 2)">
+					<a href="__APP__/order/editstate/order_id/{$coupon_vo.id}/complain_state/1">投诉</a>
+					</if>
+					<if condition="($coupon_vo.complain_state == 1) AND ($coupon_vo.order_state == 2)">
+					<a href="__APP__/order/editstate/order_id/{$coupon_vo.id}/complain_state/2">取消投诉</a>
+					</if>
+					</td>
+					<td>
+						<if condition="$coupon_vo.pay_status == 1">已支付</if>
+						<if condition="$coupon_vo.pay_status == 0">
+						<a href="__APP__/tuangou/order/order_id/{$coupon_vo.order_id}">立即支付</a>
+						</if>
+					</td>
+	                <!-- <td><a href="javascript:void(0);" class="ckanbut listdetail" timesale_id="{$vo.timesale_id}" product_sale="{$vo.list_timesale.product_sale}" workhours_sale="{$vo.list_timesale.workhours_sale}" product_str="{$vo.product_str}" select_services="{$vo.select_services}" select_model_id="{$vo.model_id}" shopid="{$vo.shop_id}" ></a> <if condition="($vo.order_state eq 2) and ($vo.iscomment eq 0)" >| <a href="###" id="comment" orderid="{$vo.id}" shopid="{$vo.shop_id}">评价</a></if> <if condition="$vo.iscomment eq 1" >| <a href="###" id="showcomment" orderid="{$vo.id}" shopid="{$vo.shop_id}">查看评价</a></if></td> -->
+	                <td><a href="__URL__/show_order_detail/orderid/{$coupon_vo.id}" class="ckanbut listdetail"></a> <if condition="($coupon_vo.order_state eq 2) and ($coupon_vo.iscomment eq 0)" ><a href="###" class="comment" id="comment" orderid="{$coupon_vo.id}" shopid="{$coupon_vo.shop_id}"></a></if> <if condition="$coupon_vo.iscomment eq 1" ><a href="###" class="showcomment" id="showcomment" orderid="{$coupon_vo.id}" shopid="{$coupon_vo.shop_id}"></a></if></td>
+	              </tr>
+				</volist>
+				<tr>
+					<td colspan="6">{$coupon_page}</td>
+				</tr>
+	            </table>
+			</div>
+			
+			
+			<div class="yuyuebox Consumebox">
+				<div class="yuyuelistbg1"></div>
+				<p class="ht01">
+				<a href="__APP__/membercar/add" class="addcarbut"></a>
+				
+				</p>
+				<div class="clear"></div>
+				<div class="Consumelistbg1"></div>
+				<table border="0" cellspacing="0" cellpadding="0" class="Consumelisttitle">
+				  <tr>
+					<td width="25%">车辆名称</td>
+					<td width="20%">平均油耗</td>
+					<td width="20%">月均费用</td>
+					<td width="30%">操作</td>
+				  </tr>
+				</table>
+				<table border="0" cellspacing="0" cellpadding="0" class="Consumelistbody">
+				<volist name="list_all_car" id="vo">
+				  <tr id="tr_mycar_{$vo.u_c_id}" <if condition="$vo.is_default eq 1" > class="is_default" <else /> class="not_default" onmouseout="out({$vo.u_c_id})" onmouseover="over({$vo.u_c_id})" </if> >
+					<td width="25%"><a href="__APP__/detail/listdetail/u_c_id/{$vo.u_c_id}" class="link01">{$vo.car_name}</a></td>
+					<td width="20%"><strong>{$vo.list_total.avg_oil}</strong><span class="f6">升/百公里</span></td>
+					<td width="20%"><strong>{$vo.list_total.avg_month_cost}</strong><span class="f6">元</span></td>
+					<td width="30%"><a href="__APP__/membercar/read/u_c_id/{$vo.u_c_id}" class="editbut"></a><a href="###" class="Delbut" onclick="del_confirm({$vo.u_c_id});" ></a><if condition="$vo.is_default eq 1" > 默认车辆 <else /> <a class="car_is_not_default" href="###" id="mycar_{$vo.u_c_id}" onclick="set_default_car({$vo.u_c_id});">设为默认车辆</a> </if></td>
+				  </tr>	
+				  </volist>
+				</table>
+			</div>
+		
+			<div class="yuyuebox uc-inner">
+				<div class="yuyuelistbg1"></div>
+				<form action="/index.php/member/update_user" method="post">
+				<div class="add-form">
+				<dl>
+					<dt><label> 原来的密码</label></dt>
+					<dd><input name="oldpassword" type="password" id="oldpassword"
+						class="inp01" /><font size="1" color="grey">&nbsp;修改密码时需要输入</font></dd>
+				</dl>
+				<dl>
+					<dt><label> 密码</label></dt>
+					<dd><input name="password" type="password" id="password"
+						class="inp01" /><font size="1" color="grey">&nbsp;修改密码时需要输入</font></dd>
+				</dl>
+				<dl>
+					<dt><label> 请确认密码</label></dt>
+					<dd><input name="repassword" type="password" id="repassword"
+						class="inp01" /><font size="1" color="grey">&nbsp;修改密码时需要输入</font></dd>
+				</dl>
+				<dl>
+					<dt><label> 邮箱</label></dt>
+					<dd><input type="text" name="email" id="email" class="inp01" value="{$memberinfo.email}"/><font
+						color=red><b></b></font><span id="check_email" class="check_register"></span></dd>
+				</dl>
+				<dl>
+					<dt><label> 手机号码</label></dt>
+					<dd><input type="text" name="mobile" id="mobile" class="inp01" value="{$memberinfo.mobile}"/><font
+						color=red><b></b></font><span id="check_mobile" class="check_register"></span></dd>
+				</dl>
+				
+				<dl>
+					<dt><label> 选择城市</label></dt>
+					<dd>
+						<select location="loc" label="省" name="prov"></select>
+						<select location="loc" label="市" name="city"></select>
+						<select location="loc" label="区" name="area"></select>
+					</dd>
+				</dl>
+				
+				<div class="clear"></div>
+				<div class="form-footer"><input type="submit"
+					style="width: 80px; height: 30px; line-height: 30px; font-size: 14px; font-weight: bold;"
+					class="button-default" value="提交" /></div>
+				</div>
+				</form>
+				<input type="hidden" id="old_email" name="old_email" value="{$memberinfo.email}" />
+				<input type="hidden" id="old_mobile" name="old_mobile" value="{$memberinfo.mobile}" />
+			</div>
+			
+			
+			<div class="yuyuebox point">
+				<div class="yuyuelistbg1"></div>
+				<table border="0" cellspacing="0" cellpadding="0" class="yuyuelisttitle">
+				  <tr>
+					<td class="w2"><span class="left">我的积分：<span class="f12 f6">总共 <span class="fr2">{$memberinfo.point_number}</span>分</span></span>
+		<span style="float:right;font-size: 12px;font-weight: normal;margin: 0 10px;color:#FF7A17;"><a href="__APP__/article/article6" target="_blank">积分规则</a></span>
+		<span style="float:right;font-size: 12px;font-weight: normal;margin: 0 10px;color:#FF7A17;"><a href="__APP__/article/article5" target="_blank">积分兑换</a></span>
+					 </td>
+				  </tr>
+				</table>
+				<table class="yuyuelistbody none" cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<th>订单号</th>
+						<th>完成时间</th>
+						<th>增加积分</th>
+						<th>积分备注</th>
+					</tr>
+					<volist name="point_info" id="pointlist">
+					<tr>
+						<td>{$pointlist.orderid}</td>
+						<td>{$pointlist.create_time|date="y-m-d H:i:s",###}</td>
+						<td>{$pointlist.point_number}</td>
+						<td>{$pointlist.point_memo}</td>
+					</tr>
+					</volist>
+				</table>
+			</div>
+			
+			
+			<!-- 推荐注册 开始-->
+			<div class="yuyuebox point">
+				<div class="yuyuelistbg1"></div>
+				<div class="register_comm">
+					<span>您的推荐注册地址为:</span>
+					<input type="text" name="register_url" id="register_url" value="{$register_url}" class="input_style"/>
+					<span id="copy_url"><b>复制链接</b></span>
+				</div>
+				<div style="height:20px;"></div>
+				
+				<div class="register_users">
+					<notempty name="registerre_list" >
+					<div class="register_table">您的推荐注册用户为：</div>
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tuijian_users">
+					<tr>
+						<th width="30%">用户名</th>
+						<th width="30%">注册时间</th>
+						<th width="40%">为您获得的推荐奖励积分</th>
+					</tr>
+					<volist name="registerre_list" id="userlist">
+					<tr>
+						<td>{$userlist.username}</td>
+						<td>{$userlist.reg_time|date="Y-m-d H:i:s",###}</td>
+						<td>{$userlist.point_number}</td>
+					</tr>
+					</volist>
+					</table>
+					<else />
+					您还没有推荐用户
+					</notempty>
+				</div>
+			</div>
+			
+			<!-- 推荐注册 结束-->
+			
+			<div class="yuyuebox coupon">
+				<div class="yuyuelistbg1"></div>
+				<table border="0" cellspacing="0" cellpadding="0" class="yuyuelisttitle">
+				  <tr>
+					<td class="w2"><span class="left">我的优惠券：</span></td>
+				  </tr>
+				</table>
+				<table class="yuyuelistbody none" cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<th width="30%">优惠券名称</th>
+						<th width="10%">获得日期</th>
+						<th width="10%">开始日期</th>
+						<th width="10%">结束日期</th>
+						<th width="15%">优惠券类型</th>
+						<th width="15%">优惠内容</th>
+						<th width="10%">使用状态</th>
+					</tr>
+					<volist name="couponinfo" id="couponlist">
+					<tr>
+						<td>{$couponlist.coupon_name}</td>
+						<td>{$couponlist.create_time|date="Y-m-d",###}</td>
+						<td>{$couponlist.start_time|date="Y-m-d",###}</td>
+						<td>{$couponlist.end_time|date="Y-m-d",###}</td>
+						<td><if condition="$couponlist['coupon_discount'] gt '0'">工时折扣券<else /><if condition="$couponlist['coupon_amount'] gt '0'">工时抵用券</if></if></td>
+						<td><if condition="$couponlist['coupon_discount'] gt '0'">再减{$couponlist['coupon_discount']*10}折<else /><if condition="$couponlist['coupon_amount'] gt '0'">抵用{$couponlist['coupon_amount']}元</if></if></td>
+						<td><if condition="$couponlist['is_use'] eq '0'"><if condition="$couponlist['end_time'] lt time()">已过期<else />未使用</if><else />已使用</if></td>
+					</tr>
+					</volist>
+				</table>
+			</div>
+			
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+<script type="text/javascript" src="__PUBLIC__/Js/copy/ZeroClipboard.js?v={$Think.config.VERSION_DATE}"></script>
+<script language="JavaScript">
+$(function(){
+	init();
+})
+var clip = null;
+function init() {
+	ZeroClipboard.setMoviePath( '__PUBLIC__/Js/copy/ZeroClipboard.swf' );
+	clip = new ZeroClipboard.Client();
+	clip.reposition();
+	clip.setHandCursor(true);
+	clip.addEventListener('mouseOver', function (client) {
+	 // update the text on mouse over
+	 clip.setText( $('#register_url').val() );
+	});
+	
+	clip.addEventListener('complete', function (client, text) {
+	 //debugstr("Copied text to clipboard: " + text );
+	 alert("该地址已经复制，你可以使用Ctrl+V 粘贴。");
+	});
+	clip.glue('copy_url' );
+}
+$("#ex01").tabs(".tabTitle", ".tabBox", { currentTab: '{$tab_n}', isAutoPlay: false, switchingMode: 'c' });
+</script>

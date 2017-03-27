@@ -1,0 +1,27 @@
+/* order.html css style file*/
+.order{width: 778px; height: auto; border: 1px solid #cdcdcd; font-size: 13px;}
+.info-h3{color: #000; padding: 10px 0 10px 10px;  font-size: 15px; font-weight: bolder; border-bottom: 3px solid #00b4f8;}
+.order-option{padding: 10px;}
+.order-option span.title{padding-bottom: 6px; font-weight: bolder; color: #000000; display: inline-block; font-size: 15px; }
+.weixiu ul{display: block; width: 758px; height: auto; font-size: 13px; padding: 5px 0; }
+.option-con{ display: block; width: 100%; padding: 10px 0; }
+.weixiu ul li{display: block; width: 170px; padding-left: 5px; height: 25px; line-height: 25px;  padding-top: 2px; float: left; text-align: left; font-weight: normal; margin-right: 10px; border-radius: 5px; border-bottom: 1px dashed #aaa}
+.weixiu ul li:hover{ color: #e65400}
+.weixiu ul li label{margin-left: 6px; }
+.weixiu ul li.checked{background: #e65400;}
+.weixiu ul li.checked label{color: #ffffff;}
+.weixiu ul li input[type='checkbox']{margin-right: 8px;}
+.jgtj{text-align: center;}
+.jgtj tr th{ font-size:12px; height: 20px; line-height: 20px; background-color: #f1f1f1; border-bottom: 1px dashed #aaa}
+.jgtj tr td{font-size: 14px; height: 30px; line-height: 30px; background: #effaff; font-weight:  bold}
+.jgtj tr td.my-car{line-height: 20px;}
+.add {color: #066601}
+
+.grxx{width: 778px; height: 290px;}
+.grxx ul{display: block;  height: auto;}
+.grxx ul li{display: block; width: 778px; height: 25px; line-height: 25px; }
+.grxx label{width: 120px; display:inline-block;}
+
+.yyts{padding: 10px; background: #effaff;}
+.yyts dl dt{font-size: 14px; font-weight: bold;}
+.yyts dl dd{font-size: 13px; line-height: 18px;}

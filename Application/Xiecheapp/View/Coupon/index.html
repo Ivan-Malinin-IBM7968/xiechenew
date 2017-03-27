@@ -1,0 +1,154 @@
+<layout name='layout_maintenance' />
+ <link type="text/css" href="__PUBLIC__/css/groupbuy.css" rel="stylesheet">
+    <div class="snav" id="snav">
+	    <ul>
+	    	<li><a href="/carservice">府上养车</a></li>
+	        <li><a href="/shopservice/index">4S店预约保养</a></li>
+	        <li><a href="/coupon" class="current" style="background-color:#fbfaf8;">团购保养</a></li>
+	    </ul>
+	    <span>
+	        <b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+	    </span>
+    </div>
+	
+	<div class="car4s">
+		<div class="group">
+		  
+		  <div class="w1183">
+		      <div class="adrarea">
+		        <a href="#c" class="current">跨品牌保养</a>
+		        <a href="#d">本品牌保养</a>
+		        <a href="#f">现金券</a>
+		      </div>
+	      </div>
+	      
+	    </div>
+    </div>
+	
+	<div class="group" name="c" id="c">
+		 
+		 <div class="w1183">
+		 	<div class="quanfenlei">
+		        <div class="row"><div class="col-md-4"><a class="current">跨品牌保养套餐券</a></div></div>
+		    </div>
+			<div class="w1183 xianjinquan">
+				<empty name="tuijian_coupon3"><p style="text-align:center; line-height: 5em;">对不起，您选择的车型没有跨品牌保养套餐券</p><else/>
+		 		<ul>
+				<volist name="tuijian_coupon3" id="tcoupon1">
+	              	<li>
+	                  	<div class="xianjinquancon">
+	                    	<h6><a href="{:U('/coupon/detail',array('id'=>$tcoupon1['id']))}{:C('HTML_URL_SUFFIX')}" title="{$tcoupon1.coupon_name}">{$tcoupon1.coupon_name|mb_substr=0,13}</a></h6>
+	                    	<p><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$tcoupon1.coupon_logo}" alt=""></p>
+	                    	<div class="xianjinquandes">
+	                      		<div class="xianjinquandestop t1">&nbsp;</div>
+	                      		<div class="xianjinquandescon c14b3b7">
+			                        <table class="xianjinquandescon1" width="100%">
+			                          <tbody>
+			                            <tr height="10"></tr>
+			                            <tr height="50">
+			                              <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$tcoupon1.coupon_amount|substr=0,-3}</b></td>
+			                              <td align="center" class="xianjinstyle">跨品牌<br>保养套餐券</td>
+			                            </tr>
+			                            <tr height="10"></tr>
+			                          </tbody>
+			                        </table>
+			                        <p>支持“15天内退款”、“过期退款”</p>
+		                        	<a href="{:U('/coupon/detail',array('id'=>$tcoupon1['id']))}{:C('HTML_URL_SUFFIX')}">查&nbsp;&nbsp;看</a>
+	                      		</div>
+	                    	</div>
+	                  	</div>
+	                </li>
+				</volist>
+				</ul>
+				</empty>
+			 </div>
+
+			 <notempty name="tuijian_coupon3"><div class="clearfix text-right group-more"><a href="/coupon/type/id/1">查看更多>></a></div></notempty>
+		 </div>
+		 
+	</div>
+	
+	<div class="group-c" name="d" id="d">
+		
+		 <div class="w1183">
+		 	<div class="quanfenlei">
+		        <div class="row"><div class="col-md-4"><a style="background-color:#ff7f48">本品牌保养套餐券</a></div></div>
+		    </div>
+		 	<div class="w1183 xianjinquan">
+		 		<empty name="tuijian_coupon2"><p style="text-align:center; line-height: 5em;">对不起，您选择的车型没有本品牌保养套餐券</p><else/>
+		 		<ul>
+				 <volist name="tuijian_coupon2" id="tcoupon1">
+				 	<li>
+		                <div class="xianjinquancon">
+		                  <h6><a href="{:U('/coupon/detail',array('id'=>$tcoupon1['id']))}{:C('HTML_URL_SUFFIX')}" title="{$tcoupon1.coupon_name}">{$tcoupon1.coupon_name|mb_substr=0,13}</a></h6>
+		                  <p><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$tcoupon1.coupon_logo}" alt=""></p>
+		                
+		                  <div class="xianjinquandes">
+		                    <div class="xianjinquandestop t2">&nbsp;</div>
+		                    <div class="xianjinquandescon cff7f48">
+		                      <table class="xianjinquandescon1" width="100%">
+		                        <tbody>
+		                          <tr height="10"></tr>
+		                          <tr height="50">
+		                            <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$tcoupon1.coupon_amount|substr=0,-3}</b></td>
+		                            <td align="center" class="xianjinstyle">本品牌<br>保养套餐券></td>
+		                          </tr>
+		                          <tr height="10"></tr>
+		                        </tbody>
+		                      </table>
+		                      <p>支持“15天内退款”、“过期退款”</p>
+		                      <a href="{:U('/coupon/detail',array('id'=>$tcoupon1['id']))}{:C('HTML_URL_SUFFIX')}">查看</a>
+		                    </div>
+		                  </div>
+		                </div>
+	              	</li>
+				 </volist>
+				 </ul>
+				 </empty>
+			 </div>
+			 <notempty name="tuijian_coupon2"><div class="clearfix text-right group-more"><a href="/coupon/type/id/2">查看更多>></a></div></notempty>
+		 </div>
+
+	</div>
+	
+	<div class="group-c" name="f" id="f">
+
+		 <div class="w1183">		 	
+		 	<div class="quanfenlei">
+		        <div class="row"><div class="col-md-4"><a style="background-color:#ff5651">现金券</a></div></div>
+		    </div>
+		 	<div class="w1183 xianjinquan">
+		 		<empty name="tuijian_coupon1"><p style="text-align:center; line-height: 5em;">对不起，您选择的车型没有本品牌保养套餐券</p><else/>
+		 		<ul>
+				 <volist name="tuijian_coupon1" id="tcoupon1">
+				 	<li>
+		                <div class="xianjinquancon">
+		                  <h6><a href="{:U('/coupon/detail',array('id'=>$tcoupon1['id']))}{:C('HTML_URL_SUFFIX')}" title="{$tcoupon1.coupon_name}">{$tcoupon1.coupon_name|mb_substr=0,13}</a></h6>
+		                  <p><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$tcoupon1.coupon_logo}" alt=""></p>
+		                
+		                  <div class="xianjinquandes">
+		                    <div class="xianjinquandestop">&nbsp;</div>
+		                    <div class="xianjinquandescon">
+		                      <table class="xianjinquandescon1" width="100%">
+		                        <tbody>
+		                          <tr height="10"></tr>
+		                          <tr height="50">
+		                            <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$tcoupon1.coupon_amount|substr=0,-3}</b></td>
+		                            <td align="center" class="xianjinstyle"><b>现金券</b></td>
+		                          </tr>
+		                          <tr height="10"></tr>
+		                        </tbody>
+		                      </table>
+		                      <p>支持“15天内退款”、“过期退款”</p>
+		                      <a href="{:U('/coupon/detail',array('id'=>$tcoupon1['id']))}{:C('HTML_URL_SUFFIX')}">查看</a>
+		                    </div>
+		                  </div>
+		                </div>
+	              	</li>
+				 </volist>
+				 </ul>
+				 </empty>
+			 </div>
+			 <notempty name="tuijian_coupon1"><div class="clearfix text-right group-more"><a href="/coupon/type/id/3">查看更多>></a></div></notempty>
+		 </div>
+	</div>

@@ -1,0 +1,32 @@
+<!-- 列表显示区域  -->
+<div class="list" >
+<FORM METHOD=POST ACTION="__URL__/save_collect" >
+<table class="list">
+<tr class="row">
+<th>编号</th>
+<th>类别</th>
+<th>4S店</th>
+
+<th width=10%>事故车数量</th>
+<th width=10%>应收账款</th>
+<th>到账日期</th>
+</tr>
+<tr>
+<volist name="data.Bidorderjiesuan" id="vo">
+<td><input type='checkbox' name="id[]" id="id[]" value="{$vo.shop_id}" checked>{$vo.shop_id}</td>
+<td>事故车佣金</td>
+<td>{$vo.shop_name}</a>
+<td><a href='__WEB__/Admin/index.php/Balance/Bidjiesuan/index/type/viewdetail/shop_id/{$vo.shop_id}/jiesuan_status/3'>{$vo.count}</a></td>
+<td>{$vo.commission}</td>
+<td><input TYPE="text" class="large bLeft"  NAME="collect_time[]" onclick="new Calendar().show(this);" value="" readonly="readonly"></td>
+</tr>
+</volist>
+<tr>
+	<td colspan="9" align="center"><input type="submit" vaslue="提交" style="impBtn hMargin fLeft shadow"></td>
+</tr>
+</table>
+</FORM>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->

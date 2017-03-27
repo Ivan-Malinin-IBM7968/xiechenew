@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+ 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no">
+	<title>机油明细</title>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+	<style type="text/css">
+	*{margin: 0; padding: 0; list-style: none; text-decoration: none; font-family: "微软雅黑";}
+	body{background: url(/Public/mobile/images/castrol/newbg.jpg) top center no-repeat #4a9cc4; background-size: 100%; color: #FFFFFF;}
+	.botborder{background: #FFFFFF; height: 1px; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5; overflow: hidden; width: 100%;}
+	.wrap{overflow: hidden;}
+	.wp1{font-size: 14px; margin: 20px 0; text-align: center;}
+	.wp1 span{font-size: 24px;}
+	.wp1 a{font-size: 16px;}
+	a{color: #FFFFFF;}
+	.onetop{margin: 15px 20px 10px; padding-left: 25px; height: 20px; font-size: 16px; line-height: 20px;}
+	.dynamicico{background: url(/Public/mobile/images/castrol/dynamicicon.png) left center no-repeat; background-size: 19px;}
+	.dynamiclist{font-size: 12px; padding: 10px 20px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<p class="wp1">当前机油<span>{$oil_num}ml</span></p>
+		<p class="wp1">更多商品等着你哦，兑换根本停不下来</p>
+		<p class="wp1"><a href="/mobilecar-ech_testimonial-wx-{$weixin_id}">去兑换商品看看 >></a></p>
+		<div class="onetop dynamicico">机油明细</div>
+		<div class="botborder">&nbsp;</div>
+		<div class="dynamiclist">
+			<table width="100%">
+				<tbody>
+					<volist name="otherDatas" id="vo">
+				    	<notempty name="vo.tag">
+				    		<equal name="vo.tag" value="sign">
+								<tr height="35">
+									<td>"{$vo.nickname}"签到1次</td>
+									<td width="10"></td>
+									<td width="100">机油增加{$vo.oil_num}ml</td>
+									<td width="35">{$vo.create_time|date="m-d H:i",###}</td>
+								</tr>
+							<else />
+								<tr height="35">
+									<td>"{$vo.nickname}"兑奖:{$vo.prizename}<gt name="vo.num" value="1">X {$vo.num}</gt></td>
+									<td width="10"></td>
+									<td width="100">机油减少{$vo.oil}ml</td>
+									<td width="35">{$vo.create_time|date="m-d H:i",###}</td>
+								</tr>
+							</equal>
+						<else />
+					    	<tr height="35">
+								<td>"{$vo.nickname}"帮{$nickname}加油</td>
+								<td width="10"></td>
+								<td width="100">机油增加100ml</td>
+								<td width="35">{$vo.create_time|date="m-d H:i",###}</td>
+							</tr>
+						</notempty>
+			    	</volist>
+			    	<tr height="35">
+						<td>"{$nickname}"关注携车网</td>
+						<td width="10"></td>
+						<td width="100">机油增加100ml</td>
+						<td width="35">{$list.create_time|date="m-d H:i",###}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+	</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html >
+<html >
+<head>
+	<meta charset="utf-8" />
+	<!-- Google Web Master Tracking Start-->
+	<meta name="google-site-verification" content="8wmX5B2WFkCUepvfui4OFCwlvesXyiuy6tllvITgB28" />
+	<!-- Google Web Master Tracking End-->
+	<meta name="baidu-site-verification" content="d6mO5rDwhc" /> <!-- for com.cn -->
+	<meta name="baidu-site-verification" content="Vn7wCqQ1FE" /> <!-- for net -->
+	<title><notempty  name="title">{$title}<else/>携车网,汽车保养维修预约,4S店折扣优惠,事故车维修预约</notempty></title>
+	<empty name="meta_keyword">
+	<meta content="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修" name="keywords">
+	<else/>
+	<meta content="{$meta_keyword}" name="keywords">
+	</empty>
+	<empty name="description">
+	<meta content="汽车保养维修,事故车维修-首选携车网,全国唯一4S店汽车保养维修折扣的网站,最低5折起,还有更多团购套餐任您选,事故车维修预约,不花钱,还有返利拿4006602822"  name="description">
+	<else/>
+	<meta content="{$description}" name="description">
+	</empty>
+	<link rel="shortcut icon" href="__PUBLIC__/new_2/images/favicon.ico" type="image/x-icon">   
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/common.css?v={$Think.config.VERSION_DATE}" />
+	
+	<!-- ! GA track code start -->
+	<script src="__PUBLIC__/new_2/js/ga.js" ></script>
+	<!-- ! GA track code end -->
+	<notempty name="canonical">
+		<link rel="canonical" href="{$canonical}"/>
+	</notempty>
+</head>
+<body >
+	<!-- 头部Nav开始 -->
+	<div class='top-container' style="padding: 20px 0px; height: 90px;" >
+		<a href="http://www.xieche.com.cn" id="logo-h1-con" title='携车网,汽车保养维修预约,4S店折扣优惠,事故车维修预约' style="float: left;margin-top: 20px;">
+			<h1 id='logo'>携车网</h1>
+		</a>
+		<div class="cs" style="float: left; top: 62px;">
+			
+		</div>
+		<div class="ad banner" style="margin:10px auto; width: 850px; height: 80px; float: right">
+			
+			<if condition="$Think['const'].PA_BANNER eq 'xc'">
+					<a href="http://www.xieche.com.cn/shiguche" title="携车网-事故车" target="_blank">
+					<img src="http://statics.xieche.com.cn/ad-banner/850/ac-car.jpg" alt="携车网-事故车" width="850" height="80">
+					</a>
+				<else />
+				<div class="pa-i-banner" style="width: 850px; height: 80px; background: url('__PUBLIC__/ad-banner/850/ac-car-pa.png') 0px 0px no-repeat; overflow: hidden;">
+					<a href="__APP__/shiguche" target="_blank" style="display: block; width: 635px; height: 80px; float: left;"></a>
+					<a href="http://www.pahaoche.com" target="_blank" style="display: block; width: 215px; height: 80px; float: right;"></a>
+				</div>
+					
+
+					
+			 </if>
+			
+		</div>
+	</div>
+	
+	<div class="nav-container">
+		<div class="nav">
+			<ul class='main-nav'>
+				<li style="width:1px;border-left:none;"></li>
+				<li><a href="__APP__/index.php" title="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修">首页1</a></li>
+				<li <if condition="$current eq 'order' ">class="current"</if>><a href="__APP__/order">4S店售后预约</a></li>
+				<li <if condition="$current eq 'coupon' ">class="current"</if>><a href="__APP__/coupon">4S店售后团购</a></li>
+				<li <if condition="$current eq 'noticelist' ">class="current"</if>><a href="__APP__/noticelist">优惠速递</a></li>
+				<li <if condition="$current eq 'articlelist' ">class="current"</if>><a href="__APP__/articlelist">用车心得</a></li>
+				<li <if condition="$current eq 'shiguche' ">class="current"</if>><a href="__APP__/shiguche" target="_blank">事故车维修</a><span class="new"></span></li>
+				<li <if condition="$current eq 'carservice' ">class="current"</if>><a href="__APP__/carservice" target="_blank">府上养车</a><span class="new"></span></li>
+				
+			</ul>
+			<div class="login-box">
+				<notempty name="Think.session.uid">
+				<span >您好
+				<present  name="Think.session.username">{$Think.session.username}<else /><present name="Think.session.cardid">{$Think.session.cardid}<else />{$Think.session.mobile}</present></present >
+
+				</span>
+				<else />
+				<span class='not-user'>
+					<a href="__APP__/Public/login?jumpUrl=%2Fmyhome" rel="nofollow">登陆 / 注册</a> 
+					<!-- <a href="{:URL('/member/add',array())}{:C('HTML_URL_SUFFIX')}" rel="nofollow"></a> -->
+				</span>
+			
+				 </notempty>
+				<span class='my-account'>我的账户</span>
+
+				<notempty name="Think.session.uid">
+				<b class="dropdown-arrow-down"></b>
+				<div class="account-dropdown">
+						<ul>
+							<li>我的订单</li>
+							<li class="sub"><a href="{:URL('/myhome/index',array())}{:C('HTML_URL_SUFFIX')}">未消费订单</a><a href="{:URL('/myhome/index',array())}{:C('HTML_URL_SUFFIX')}">未评价订单</a></li>
+							<li><a href="{:URL('/myhome/myorder',array())}{:C('HTML_URL_SUFFIX')}">我的维修保养订单</a></li>
+							<li>资产中心</li>
+							<li><a href="{:URL('/myhome/mycoupon1',array())}{:C('HTML_URL_SUFFIX')}">我的现金券</a></li>
+							<li><a href="{:URL('/myhome/mycoupon2',array())}{:C('HTML_URL_SUFFIX')}">我的套餐券</a></li>
+							<li><a href="{:URL('/myhome/my_salecoupon',array())}{:C('HTML_URL_SUFFIX')}">我的抵用券</a></li>
+							<li><a href="{:URL('/myhome/mypoints',array())}{:C('HTML_URL_SUFFIX')}">我的积分</a></li>
+							<li>个人中心</li>
+							<li><a href="{:URL('/myhome/myinfo',array())}{:C('HTML_URL_SUFFIX')}">我的信息</a></li>
+							<li><a href="{:URL('/myhome/my_car',array())}{:C('HTML_URL_SUFFIX')}">我的车辆</a></li>
+							<li><a href="{:URL('/myhome/my_comment',array())}{:C('HTML_URL_SUFFIX')}">我的点评</a></li>
+							<li class="log-out"><a href="{:URL('/public/logout',array())}{:C('HTML_URL_SUFFIX')}" target="_self">[退出]</a></li>
+						</ul>	
+				</div>
+				</notempty>
+
+			</div>
+		</div>
+	</div>
+	<!-- 头部Nav结束 -->

@@ -1,0 +1,130 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/sales.css?v={$Think.config.VERSION_DATE}" />
+	<style>
+		.content{border: none;}
+		.bought { position: absolute; bottom: 11px; right: -15px; width: 100px; height: 30px; font-size: 11px; color: #7777}
+	</style>
+	<div class="w1200 content">
+		<div class="w830 content-left">
+			<!--filter start-->
+			<div class="filter w830">
+				<dl>
+					<dt>类型:</dt>
+					<dd <if condition="($coupon_type eq 'all') OR ($coupon_type eq '')">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>'all','brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部</a></dd>
+					<dd <if condition="$coupon_type eq 1">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>1))}{:C('HTML_URL_SUFFIX')}">现金券</a></dd>
+					<dd <if condition="$coupon_type eq 2">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>2))}{:C('HTML_URL_SUFFIX')}">套餐券</a></dd>
+				</dl>
+				<div class="clear"></div>
+				<dl>
+					<dt>品牌:</dt>
+					<dd <if condition="($brand_id eq 'all') OR ($brand_id eq '')">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>$coupon_type,'brand_id'=>'all'))}{:C('HTML_URL_SUFFIX')}">全部</a></dd>	
+					<volist name="brands" id="vo">
+        				<dd <if condition="$vo[brand_id] eq $brand_id">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>$coupon_type,'brand_id'=>$vo['brand_id']))}{:C('HTML_URL_SUFFIX')}">{$vo.brand_name}</a></dd>
+        			</volist>
+				</dl>
+				<div class="clear"></div>
+				<present name="series">
+				<dl>
+					<dt>车系:</dt>
+					<dd <if condition="($series_id eq 'all') OR ($series_id eq '')">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>'all'))}{:C('HTML_URL_SUFFIX')}">全部</a></dd>	
+					<volist name="series" id="voo">
+        				<dd <if condition="$voo[series_id] eq $series_id">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>$voo['series_id']))}{:C('HTML_URL_SUFFIX')}">{$voo.series_name}</a></dd>
+        			</volist>
+				</dl>
+				<div class="clear"></div>
+				</present>
+
+				<present name="carmodel">
+				<dl>
+					<dt>车型:</dt>
+					<dd <if condition="($model_id eq 'all') OR ($model_id eq '')">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>$series_id,'model'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部</a></dd>	
+					<volist name="carmodel" id="vooo">
+        				<dd <if condition="$vooo[model_id] eq $model_id">class="current"</if>><a href="{:URL('/tuangou/index',array('coupon_type'=>$coupon_type,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$vooo['model_id']))}{:C('HTML_URL_SUFFIX')}">{$vooo.model_name}</a></dd>
+        			</volist>
+				</dl>
+				<div class="clear"></div>
+				</present>
+
+			</div>
+			<!--filter end-->
+			<!--sales start-->
+			<ul class="w830 sales-con">
+				<volist name="tuangous" id="tg">
+				<li>
+					<div class="img-con">
+						<a href="__URL__/{$tg.id}" target="_blank" title="{$tg.coupon_name}">
+							<img alt="{$tg.coupon_name}" title="{$tg.coupon_name}" src="/UPLOADS/Coupon/Logo/{$tg.coupon_pic}" width="253" height="190">
+						</a>
+						
+					</div>
+					<div class="content">
+						<a href="__URL__/{$tg.id}" target="_blank" title="{$tg.coupon_name}"><h5>{$tg.coupon_name}</h5></a>
+						<span>{$tg.shop_name}  <a href="__APP__/shop/{$tg.shop_id}" target="_blank">[查看店铺]</a></span>
+						<span class="address">
+							<strong href="#">{$tg.shop_address}</strong>
+						</span>
+						<div class="price"><strong class="orange">￥{$tg.coupon_amount}元</strong><em> {$tg.cost_price}元</em></div>
+						<div class="bought"><strong class="orange">{$tg.pay_count}</strong><em>人已购</em></div>
+					</div>
+				</li>
+				</volist>
+
+			</ul>
+			<!--sales end-->
+			<div class="clear"></div>
+			<div class="pagerArea">
+				<ul id="pager">
+				{$page}
+				</ul>
+			</div>
+		</div>
+
+		<div class="w350 content-right">
+			<div class="tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+					<li>
+						<div class='image'>
+							<a href="__APP__/tuangou/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/tuangou/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}">
+								<strong class="title">{$tcoupon1.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+
+			</div>
+			<div class="tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+					<li>
+						<div class='image'>
+							<a href="__APP__/tuangou/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" >
+							</a>
+						</div>
+						<div class='info'>
+							<a href="__APP__/tuangou/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}">
+								<strong class="title">{$tcoupon2.coupon_name}</strong>
+							</a>
+							<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+						</div>
+						<div class="clear"></div>
+					</li>
+					
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>

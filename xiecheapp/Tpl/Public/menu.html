@@ -1,0 +1,104 @@
+
+
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/think"
+	})
+	$(".comment").click(function(){
+		popupcomment();
+		var shopid = $(this).attr('shopid');
+		var orderid = $(this).attr('orderid');
+		$.ajax({
+			type:'POST',
+			url:'__APP__/comment',
+			cache:false,
+			dataType:'text',
+			data:'shopid='+shopid+'&orderid='+orderid,
+			success:function(data){
+				$("#comment_content").append(data);
+			}
+		})
+	})
+	
+	$(".showcomment").click(function(){
+		popupshowcomment();
+		var shopid = $(this).attr('shopid');
+		var orderid = $(this).attr('orderid');
+		$.ajax({
+			type:'POST',
+			url:'__APP__/comment/showcomment',
+			cache:false,
+			dataType:'text',
+			data:'shopid='+shopid+'&orderid='+orderid,
+			success:function(data){
+				$("#show_comment").append(data);
+			}
+		})
+	})
+})
+function popupcomment(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>回复</em><a close="1"  class="flbc">关闭</a></h3><div style="height:300px;width:500px; overflow:scroll;" id="comment_content"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:10,
+		y:10
+	})
+}
+
+function popupshowcomment(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>评价</em><a close="1"  class="flbc">关闭</a></h3><div style="height:400px;width:800px; overflow:scroll;" id="show_comment"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:10,
+		y:10
+	})
+}
+
+
+</script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/myhome.css?v={$Think.config.VERSION_DATE}" />
+<div id="xz" ></div>
+<div id="wddd"><font style="font-size:12px;color:#666666;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的携车网&nbsp;>&nbsp;&nbsp;我的订单</font></div>
+<div id="wddd-zx">
+<div id="wddd-left">
+<div id="wddd-left-sz"><p class="sz" style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;我的携车网</p></div>
+<div id="wddd-left-kh"><p class="dd" style="font-size:14px;font-weight: 700;">订单中心</p></div>
+<div id="wddd-left-zx-dh">
+  <ul>
+    <li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome">我的订单</a></li>
+    <!-- <li><a href="__APP__/myhome/mycoupon1order">我的现金券订单</a></li>
+    <li><a href="__APP__/myhome/mycoupon2order">我的团购卷订单</a></li> -->
+  </ul>
+</div>
+<div id="wddd-left-kh"><p class="dd" style="font-size:14px;font-weight: 700;">客户服务</p></div>
+<div id="wddd-left-zx-dh">
+  <ul>
+  	<li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome/mycarlist">车辆管理</a></li>
+    <li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome/mypoint">积分查询</a></li>
+    <li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome/registerrecommend">推荐注册</a></li>
+  </ul>
+</div>
+<div id="wddd-left-kh" style="font-size:14px;font-weight:700;"><p class="dd">账户中心</p></div>
+<div id="wddd-left-zx-dh">
+  <ul>
+    <li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome/myinfo">个人信息修改</a></li>
+	<!--<li><a href="javascript:void(0)" onclick="window.location.replace('http://www.xieche.net/tipask/?user/editimg.html');">个人头像修改</a></li>-->
+    <li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome/mycoupon1">我的现金券</a></li>
+    <li style="font-size:12px;line-height:30px;"><a href="__APP__/myhome/mycoupon2">我的套餐券</a></li>
+  </ul>
+</div>
+<!-- <div id="wddd-left-yy"><p class="dd">我的应用</p></div>
+<div id="wddd-left-zx-dh">
+  <ul>
+  
+    <li><a href="#"> 我要预约</a></li>
+    <li><a href="#">我要记账</a></li>
+    <li><a href="#">费用明细</a></li>
+  </ul>
+</div>-->
+</div> 

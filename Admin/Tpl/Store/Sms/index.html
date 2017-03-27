@@ -1,0 +1,90 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script>
+	function send_sms(id){
+		if(!confirm("确定重新发送？")){
+			return false;
+		}
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Store/Sms/send_sms',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("发送成功");
+				}else{
+					alert("发送失败");
+				}
+			}
+		})
+	}
+
+	//通道阻塞发俩个通道
+	function send_smstype(id,sms_type){
+		if(!confirm("确定重新发送？")){
+			return false;
+		}
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Store/Sms/send_smstype',
+			cache:false,
+			dataType:'text',
+			data:'id='+id+"&type="+sms_type,
+			success:function(data){
+				if(data == 1){
+					alert("发送成功");
+				}else{
+					alert("发送失败");
+				}
+			}
+		})
+	}
+
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+	<!-- 主体内容  -->
+	<div class="content" >
+	<div class="title">短消息管理</div>
+	<div style="height:20px;"></div>
+	<div>
+		<form action="__APP__/Store/Sms" method="post" >
+			手机号码： <input type="text" name="phones" value="{$phones}" />&nbsp;&nbsp;<input type="submit" value="搜索">
+		</form>
+	</div>
+	<div class="list">
+		<table class="list">
+			<tr class="row">
+				<th width="10%">ID</th>
+				<th width="10%">手机号码</th>
+				<th width="10%">发送时间</th>
+				<th width="30%">短消息内容</th>
+				<th width="20%">操作</th>
+			</tr>
+			<volist name="list" id="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.phones}</td>
+					<td>{$vo.sendtime|date='Y-m-d H:i:s',###}</td>
+					<td><textarea name="content" cols="50" rows="5">{$vo.content}</textarea></td>
+					<td><input type="button" value="重新发送" onclick="send_sms({$vo.id});">
+						<input type="button" value="发送老通道" onclick="send_smstype({$vo.id},1);">
+						<input type="button" value="发送新通道" onclick="send_smstype({$vo.id},2);">
+					</td>
+				</tr>
+			</volist>
+			<tr>
+				<td colspan="4">{$page}</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+</div>

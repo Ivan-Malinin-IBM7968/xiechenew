@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <HEAD>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <TITLE>『{$Think.config.web_name}管理平台』By ThinkPHP {$Think.version}</TITLE>
+        <load file="__CSS__/newstyle.css" />
+        <style>
+            html{overflow-x : hidden;}
+        </style>
+        <base target="main" />
+    </HEAD>
+
+    <body >
+        <div id="main">
+			<div id="main-left" style="margin: 5px 35px;">
+				<div style="line-height: 26px;background-color: #008BD0; color: #FFFFFF; height: 28px; width: 151px;"><span style="margin-left:40px">商家管理</span></div>
+				<div class="minus">
+					<p class="dd" style="font-size:14px;font-weight: 700;">预约订单管理</p>
+				</div>
+
+				<ul>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Order/index/">订单及评价管理</a></li>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Comment/index/">用户评价列表</a></li>
+				</ul>
+				<!-- <ul>
+					<volist id="item" name="menu" >
+					  <eq name="item['group_id']" value="$menuTag">
+						  <eq name="item['access']" value="1" >
+							  <li style="line-height: 30px;">
+								  <A HREF="__APP__/{$item['name']}/index/" id="{$key}">{$item['title']}</A>
+							  </li>
+						  </eq>
+					  </eq>
+					</volist>
+				</ul> -->
+				<neq name='Think.session.remark' value="servicemember">
+				<eq name='Think.session.safestate' value="1">
+				<div class="minus">
+					<p class="dd" style="font-size:14px;font-weight: 700;">事故车中心</p>
+				</div>
+
+				<ul>
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Safeorder/index/">事故车抢单大厅</a></li>
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Bidorder/index/">事故车订单</a></li>
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Bidforms/index/">抢单总次数</a></li>
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Bidcoupon/index/">事故车现金券验证</a></li>
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Bidcoupon/rebate/">返利券使用记录</a></li>
+						<!--<li style="line-height: 30px;"><a href="__APP__/Shop/Bidcouponjiesuan/index/">保险类优惠券结算</a></li> -->
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Bidorderjiesuan/index/">事故车订单结算</a></li>
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Bidcoupon/show/">事故车返利记录</a></li>
+				</ul>
+				</eq>
+
+				<div class="minus">
+					<p class="dd" style="font-size:14px;font-weight: 700;">优惠券管理</p>
+				</div>
+
+				<ul>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Coupon1/index/">团购现金券验证</a></li>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Coupon/index/">团购套餐券验证</a></li>
+
+					<in name="Think.session.shop_id" value="$Think.session.shop_salecoupon">
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Salecoupon/index/">促销抵用券验证</a></li>
+					</in>
+
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Couponorder/index/">团购券记录</a></li>
+
+					<in name="Think.session.shop_id" value="$Think.session.shop_salecoupon">
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Salecouponorder/index/">促销抵用券记录</a></li>
+					</in>
+				</ul>
+
+				<div class="minus">
+					<p class="dd" style="font-size:14px;font-weight: 700;">优惠券结算</p>
+				</div>
+
+				<ul>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Couponjiesuan/index/">团购券结算</a></li>
+					<in name="Think.session.shop_id" value="$Think.session.shop_salecoupon">
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Salecouponjiesuan/index/">促销抵用券结算</a></li>
+					</in>
+				</ul>
+
+				<div class="minus">
+					<p class="dd" style="font-size:14px;font-weight: 700;">服务顾问管理</p>
+				</div>
+
+				<ul>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Servicemember/index">服务顾问</a></li>
+					
+				</ul>
+				</neq>
+				<div class="minus">
+					<neq name='Think.session.remark' value="servicemember">
+						<p class="dd" style="font-size:14px;font-weight: 700;">商家信息管理</p>
+					<else/>
+						<p class="dd" style="font-size:14px;font-weight: 700;">基本信息管理</p>
+					</neq>
+				</div>
+
+				<ul>
+					<li style="line-height: 30px;"><a href="__APP__/Shop/Servicefun/index">配套设施</a></li>
+					<li style="line-height: 30px;"><a href="__APP__/public/profile">修改资料</a></li>
+					<li style="line-height: 30px;"><a href="__APP__/public/password">修改密码</a></li>
+					<neq name='Think.session.remark' value="servicemember">
+					<eq name='Think.session.safestate' value="1">
+						<li style="line-height: 30px;"><a href="__APP__/Shop/Shopsaleconfig">修改竞价配置</a></li>
+					</eq>
+					</neq>
+				</ul>
+
+			</div>
+		</div>
+    </body>
+</html>

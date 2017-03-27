@@ -1,0 +1,115 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+	<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+    <script type='text/javascript'>
+        <!-- //以下为编辑器配置
+        var plugins={
+            map:{c:'btnMap',t:'插入Google地图',e:function(){
+                    var _this=this;
+                    _this.saveBookmark();
+                    _this.showIframeModal('Google 地图','__PUBLIC__/Js/Xheditor/googlemap/googlemap.html',function(v){_this.loadBookmark();_this.pasteHTML('<img src='+v+' />');},538,404);
+                }}
+        };
+        var editorConf = {
+            plugins:plugins,
+            width:'850px',
+            height:'300px',
+            upLinkUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Design/Attach/Multiupload&immediate%3D1&ext=附件文件(*.zip;*.rar;*.txt)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upImgUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Design/Attach/Multiupload&immediate%3D1&ext=图片文件(*.jpg;*.jpeg;*.gif;*.png)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upFlashUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Design/Attach/Multiupload&immediate%3D1&ext=Flash动画(*.swf)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upMediaUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Design/Attach/Multiupload&immediate%3D1&ext=多媒体文件(*.wmv;*.avi;*.wma;*.mp3;*.mid)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de'
+        };
+        //-->
+    </SCRIPT>
+    <div class="content">
+        <div class="title">新增促销 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <FORM METHOD=POST ID="form1" NAME="form1" ACTION="__URL__/insert" ENCTYPE="multipart/form-data">
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight" >标	题：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire"  warning="标题名不能为空" NAME="title"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >参与城市：</TD>
+                    <TD class="tLeft" >
+                        <select name="city_id" id="city_id">
+                                <option value="0">不限城市</option>
+                                <volist name="city" id="c">
+                                        <option value="{$key}">{$c}</option>
+                                </volist>
+                        </select>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >作者名字：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeft"  NAME="author"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >跳转地址：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeft"  NAME="click_to_url">填写完整URL，以"http://"开头</TD>
+                </TR>
+		<TR>
+                    <TD class="tRight" >关键字：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeft"  NAME="keyword"></TD>
+                </TR>
+		<TR>
+                    <TD class="tRight" >页面描述：</TD>
+                    <TD class="tLeft" ><TEXTAREA class="bLeft large" NAME="description" ROWS="5" COLS="35"></TEXTAREA></TD>
+                </TR>
+		<TR>
+                    <TD class="tRight" >初始浏览量：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeft"  NAME="views" value="{:rand(100,500)}"></TD>
+                </TR>
+		<TR>
+                    <TD class="tRight" >排序序号：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeft"  NAME="sort" value="0"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >置顶推荐：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeft"  NAME="is_top" value="0"></TD>
+                </TR>
+		<TR>
+                    <TD class="tRight tTop">开始时间：</TD>
+                    <TD class="tLeft">
+                            <input TYPE="text" class="large bLeft"  NAME="start_time" onclick="showCalendar(this);" readonly="readonly">
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">结束时间：</TD>
+                    <TD class="tLeft"><input TYPE="text" class="large bLeft"  NAME="end_time" onclick="showCalendar(this);" readonly="readonly"></TD>
+                </TR>
+		<TR>
+                    <TD class="tRight" style=" vertical-align: top;">促销内容：</TD>
+                    <TD class="tLeft">
+                        <textarea id='content' name='content'></textarea>
+                        <script type='text/javascript'>
+                                jQuery('#content').xheditor(editorConf);
+                        </script>
+                </TR>
+		
+                <TR>
+                    <TD class="tRight tTop">备  注：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft large" NAME="remark" ROWS="5" COLS="35"></TEXTAREA></TD>
+                </TR>
+                 <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>
+

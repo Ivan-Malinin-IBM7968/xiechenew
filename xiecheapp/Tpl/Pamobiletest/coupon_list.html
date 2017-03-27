@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+	<head>
+		<meta>
+	    <title>优惠券详情 ｜ Coupon Example</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/coupon_list.css" />
+		<script src="__PUBLIC__/mb/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<script src="__PUBLIC__/mb/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<script src="__PUBLIC__/mb/js/main.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>优惠券详情 ｜ Coupon Example</h1>
+				</header>
+				<!-- Header End -->
+				<nav id="list-sort">
+					<ul>
+						<li id="sort-block-a" style="width: 50%"><a href="#select-brand" data-transition="slidefade">选择车型</a></li>
+						<li id="sort-block-c" class="hover" style="width: 50%">距离优先</li>
+					</ul>
+				</nav>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+				         <li class="ui-grid-a single-coupon" style="margin-bottom: 10px;">
+							<div class="ui-block-a" style="width: 30%">
+								<img src="http://placehold.it/62x47" alt="店铺图片"  style="width: 100%">
+							</div>
+							
+							<div class="ui-block-b" style="width: 70%; padding-left: 10px;">
+								<div class="ui-grid-a" >
+									<div class="ui-block-a" style="width: 70%">
+										<h3 class="coupon-name" style="margin: 0px; white-space: normal; height:40px; line-height: 20px;">上海虹湾一汽大众4S店1000元现金券</h3>
+									</div>
+									<div class="ui-block-b coupon-price" style="width: 30%">
+										<strong>¥900</strong>
+										<em>¥1000</em>
+									</div>
+								</div>
+								<div class="ui-grid-a" style="margin:4px 0px;">
+									<div class="ui-block-a" >
+										<span class="coupon-type">现金券</span>
+									</div>
+									<div class="ui-block-b coupon-distance" style="text-align: right">
+										<span>2.84km</span>
+									</div>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a" >
+										<span class="bought-count">10人已经购买</span>
+									</div>
+									<div class="ui-block-b coupon-last-date" style="text-align: right">
+										<span>2014-06-02到期</span>
+									</div>
+								</div>
+								
+															
+							</div>
+							
+				        </li>
+				    </ul>
+				</div>
+			</div>
+			<!-- Main Page End -->
+			<!-- Navigation Start -->
+			<div data-role="page" id="select-brand">
+				<header id="header" data-role="header">
+					<span id="left-trigger" >
+						<a href="#coupon-list-main" data-transition="slidefade">返回</a>
+					</span>
+					<span id="right-trigger" data-role="ui-btn-icon-right"></span>
+					<h1>请选择品牌</h1>
+				</header>
+				<ul data-role="listview">
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+					<li><a href="">aabbccddee</a></li>
+				</ul>
+			</div>
+			<!-- Navigation End -->
+		</div>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+	</body>
+</html>

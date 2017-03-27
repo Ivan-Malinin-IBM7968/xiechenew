@@ -1,0 +1,13 @@
+
+#pagination{width: 90%; height: 50px; margin: 0 auto; padding: 10px 0px;}
+#pagination > div{float: left;box-sizing: border-box; width: 33.33%}
+.page-trigger{ }
+#totle-page{ text-align: center; height: 40px; line-height: 40px; font-size: 1.2em}
+.page-trigger > a{ display:block; border-radius: 5px; background: #eeeeee; text-align: center; width: 98px; height: 40px; line-height: 40px; font-size: 1.1em; color: #444; text-decoration: none;}
+.page-trigger > a:visited{color: #444;}
+.page-trigger > a:hover{color: #ffffff; background: #777777}
+
+.single-coupon { min-height: 80px;}
+.coupon-price strong{ font-size: 1.3em; color: #fd8612; font-weight: bold; display: block; height: 23px; margin-right: 5px;}
+.coupon-price em{ color: #999999; text-decoration: line-through; font-size: 0.8em; width: 50px; margin-right: 5px; }
+.buy-btn{padding:  .3em 1.1em; color: white; background: #fd8612; font-size: 1.1em; display: inline-block; border-radius: 5px;}

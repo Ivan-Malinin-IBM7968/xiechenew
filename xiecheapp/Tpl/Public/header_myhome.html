@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><notempty  name="title">{$title}<else/>携车网:4S店预约保养,保养团购,售后资讯,汽车售后服务网站</notempty></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="all" name="robots" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<empty name="meta_keyword">
+<meta content="4S店预约保养,保养价格,事故理赔,工时费折扣,保养团购券,代金券,上海大众保养多少钱,奥迪保养多少钱,宝马保养多少钱" name="keywords">
+<else/>
+<meta content="{$meta_keyword}" name="keywords">
+</empty>
+
+<empty name="description">
+<meta content="携车网向广大车主提供汽车保养维修预约享受折扣服务，用车费用记录、油耗统计信息、车辆维修保养价格数据信息等，帮您轻松解决小保养、大保养、机油、机滤、刹车片、火花塞等汽车保养难题，是您选择养车服务的第一网络平台。"  name="description">
+<else/>
+<meta content="{$description}" name="description">
+</empty>
+
+<!--页头导航_ICON开始zd-->
+<link rel="Shortcut Icon" href="__PUBLIC__/note/images/icon16.ico" />
+<link rel="icon" type="image/x-icon" href="__PUBLIC__/note/images/icon16.ico" />
+<!--页头导航_ICON结束-->
+<!--CSS-->
+    
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/index_style-20121120135046.css?v={$Think.config.VERSION_DATE}" /> 
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/myhomeindex.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/css1.css?v={$Think.config.VERSION_DATE}" />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/css.css?v={$Think.config.VERSION_DATE}" />
+<!--JS-->
+
+<script src="__PUBLIC__/Js/note/note_script.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/DatePicker/WdatePicker.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/com.js?v={$Think.config.VERSION_DATE}"></script>        
+<!-- ! GA track code start -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-46647039-1', 'xieche.com.cn');
+	  ga('require', 'linkid', 'linkid.js');
+	  ga('send', 'pageview');
+
+	</script>
+	<!-- ! GA track code end -->
+
+</head>
+<body class="on_festival">
+    <!--201202_首页_全屏广告
+
+<ins id="div_432996f2-7573-4a9a-bef1-ca65a80fafc0" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="432996f2-7573-4a9a-bef1-ca65a80fafc0"> </ins>-->
+
+<!--201202_首页_顶部登录内容-->    
+<!--登录条开始-->
+    <div class="bit_top" style="border-bottom:1px solid #CCC">
+        <div class="bit950">
+            <!-- <ul>
+                <li><a target="_blank" href="#">携车网</a></li>
+<li><a target="_blank" href="#">携车网</a></li>
+<li><a target="_blank" href="#">携车网</a></li>
+<li><a target="_blank" href="#">汽车报价</a></li>
+<li><a target="_blank" href="#">携车网</a></li>
+    <li class="last"><a target="_blank" href="#">携车网</a></li>
+            </ul> -->
+            <!--网站导航-->
+            <div class="bt_login_box">
+        	<ul>
+            	<li class="last bit_link"  id="login_navhover">
+        	<strong><a href="__APP__/myhome" target="_blank">个人中心</a></strong>
+        
+          
+        		</li>
+            </ul>
+        </div>
+        <!--用户登陆-->
+           <div class="bt_login_box bt_login_box_l" id="divLoginDivID">
+            <notempty name="Think.session.uid">
+            	<ul><!--login-->
+            		<li>您好,</li>
+            		<li onmouseout="" onmouseover="" class="bit_link">
+            			<strong>
+            				<a href="__APP__/myhome" id="aHeaderUserName" target="_blank"><present  name="Think.session.username">{$Think.session.username}<else /><present name="Think.session.cardid">{$Think.session.cardid}<else />{$Think.session.mobile}</present></present >
+            				<em></em></a><sub></sub>
+            			</strong>
+            		</li>
+            		<!--index-->
+            		<li onmouseout="" onmouseover="" class="bit_link" id="myfocuscar">
+            			<strong><a href="__APP__/myhome/mycarlist">我的车辆<em></em></a><sub></sub></strong>
+            		</li><!--/index-->
+            		<li class="lastB"><a href="__APP__/public/logout" target="_self">[退出]</a></li><!--/login--></ul>
+            	<else />
+            	<ul>
+					<!--logout-->
+					<li>
+						<label>帐号</label>
+						<input type="text" id="txtUserNameTopHeader" name="txtUserNameTopHeader" class="bit_loginInput" >
+					</li>
+					<li>
+						<label>密码</label>
+						<input type="password" id="txtUserPwdHeader" name="txtUserPwdHeader" class="bit_loginInput" >
+					</li>
+					<li class="login">
+						<input type="button" id="btnUserLoginHeader" class="bit_logintop" value="登录" onclick="check_login();">
+					</li>
+					<li class="login_0">
+						<a href="__APP__/member/add" target="_blank">注册</a>
+					</li>
+					<!-- <li onmouseout="document.getElementById('ulSqure').style.display='none';this.className='bit_link';" onmouseover="document.getElementById('ulSqure').style.display='';this.className='bit_link bit_hover';" class="bit_link">
+						<strong><a href="javascript:void(0)">其它帐号登录<em></em></a><sub></sub></strong>
+						<ul style="display: none;" id="ulSqure">
+							<li>
+								<a onclick="Bitauto.Login.OtherWebSiteLogin('sina',600,410);" href="javascript:void(0)" title="新浪微博帐号登录" class="sina" target="_self">新浪微博</a>
+							</li>
+							<li>
+								<a onclick="Bitauto.Login.OtherWebSiteLogin('qq',450,320);" href="javascript:void(0)" title="QQ帐号登录" class="qq" target="_self">QQ帐号</a>
+							</li>
+							<li>
+								<a onclick="Bitauto.Login.OtherWebSiteLogin('renren',560,340);" href="javascript:void(0)" class="renren" title="人人网帐号登录" target="_self">人人网</a>
+							</li>
+							<li>
+								<a onclick="Bitauto.Login.OtherWebSiteLogin('kaixin',520,400);" href="javascript:void(0)" class="kaixin" id="kx001_btn_login" target="_self">开心网</a>
+							</li>
+							<li>
+								<a onclick="Bitauto.Login.OtherWebSiteLogin('baidu',560,340);" href="javascript:void(0)" class="baidu" target="_self">百度</a>
+							</li>
+							<li class="last">
+								<a onclick="Bitauto.Login.OtherWebSiteLogin('taobao',520,520);" href="javascript:void(0)" class="taobao" target="_self">淘宝网</a>
+							</li>
+						</ul>
+					</li>-->
+				<!--/logout-->
+				</ul>
+				</notempty>
+			</div>
+            <!--用户登陆-->
+	
+        </div>
+    </div>
+    <!--登录条结束-->
+
+    <!--登录条结束-->
+<!--顶通提示开始-->
+
+<!--顶通提示结束-->
+
+    <!--头部开始-->
+    <div class="header_style">
+        <!-- <div class="bitauto_logo">
+        </div> -->
+        <!--页头导航_yiche_LOGO开始-->
+        <h1 ><a href="__APP__/index.php">携车网</a></h1>
+
+        <!--页头导航_yiche_LOGO结束-->
+        <!-- <div class="city_name " id="city_name_boxhover">
+		<if condition="$areaname eq 上海">
+			<a href="#">上海站</a><em></em>
+		<elseif condition="$areaname eq 北京"/> 
+			<a href="#">北京站</a><em></em>
+		<else />
+			<a href="#">广州站</a><em></em>
+		</if>
+
+
+		 <sub></sub><ul style="display:none;" id="city_name_box">    	
+		  <li><a href="#" target="_blank">北京</a></li>
+		  <li class="lastcity"><a href="#"  target="_blank">341个城市&gt;&gt;</a></li>
+		</ul>
+		</div> -->
+
+		
+		<div id="G_loc-wrap" class="location">
+		<a class="loc-btn" id="G_loc" href="javascript:void(0);"><span class="txt">{$Think.session.area_info.0}站</span></a>
+			<div id="G_loc-panel" class="pop-panel pp_location" style="display:none">
+				<!--<dl>
+					<dt>华北东北:</dt>
+					<dd>
+						<ul class="Fix">
+								<li><a href="###" title="即将上线" class="area"><font style="color: #999999;">北京(即将上线)</font></a></li>
+						</ul>
+					</dd>
+				</dl-->>
+				<dl>
+					<dt>华东地区:</dt>
+					<dd>
+						<ul class="Fix">
+								<li><a href="http://www.xieche.net" class="area">上海</a></li>
+						</ul>
+					</dd>
+				</dl>
+				<!--<dl>
+					<dt>华南地区:</dt>
+					<dd>
+						<ul class="Fix">
+								<li><a href="###" title="即将上线" class="area"><font style="color: #999999;">广州(即将上线)</font></a></li>
+						</ul>
+					</dd>
+				</dl>-->
+			</div>
+		</div>
+
+		<div class="phone"><img src="/Public/new/images/4002new.jpg"></div>
+	<script>
+		$("#G_loc").click(function() {
+		/*
+			if ($("#G_loc-panel").css("visibility") == "hidden")
+			{
+				$("#G_loc-panel").css("visibility","visible");
+			}else{
+				$("#G_loc-panel").css("visibility","hidden");
+			}
+			*/
+			$("#G_loc-panel").toggle();
+		});
+		/*
+		$("#G_loc-wrap").focusout(function() {
+			$("#G_loc-panel").fadeOut(1);
+		});*/
+	
+		$("#G_loc-panel").click(function() {
+			$("#G_loc-panel").hide();
+		});
+	</script>
+		
+		
+		
+	<div style="width:450px; height:49px; margin:0px; padding:0px; float:right;" id="head-min">
+		<img src="__PUBLIC__/new/images/nav.jpg" />
+	</div>
+
+<!-- <div class="ad_w700_h40"> <ins id="div_f4830636-f3fb-403c-9909-67355b7d639b" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="f4830636-f3fb-403c-9909-67355b7d639b"> </ins>
+</div> -->
+
+    </div>
+    <!--头部结束-->
+    <!--导航开始-->
+<if condition="$show neq 1">
+<div class="publicTabNew">
+<ul id="ulForTempClickStat" class="tab">
+
+<li><a id="treeNav_chexing" target="_blank" href="__APP__/index.php"><font size="3px" >首页</font></a></li>
+
+
+
+<li><a id="treeNav_pingce" target="_blank" href="__APP__/order"><font size="3px" >预约4S店</font></a></li>
+<if condition="$areaname eq '上海'">
+<li><a id="treeNav_shipin" target="_blank" href="__APP__/coupon"><font size="3px" >携车优惠券</font></a></li>
+</if>
+
+<!--<li><a id="treeNav_daogou"  href="###" title="即将上线"><font size="3px" >明星顾问答疑</font></a></li>-->
+<li><a href="__APP__/article/noticelist" target="_blank" ><font size="3px" >4S店优惠信息</font></a></li>
+<li><a href="__APP__/article/articlelist" target="_blank" ><font size="3px" >售后资讯</font></a></li>
+
+
+<li class="last">
+</li>
+</ul>
+</div>
+</if>

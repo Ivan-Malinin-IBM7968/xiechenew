@@ -1,0 +1,127 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function del(id){
+        if(!confirm("确定要删除该条优惠券！")){
+            return false;
+        }
+    	$.ajax({
+			type: "POST",
+			url: "{:U('/Store/Timesaleversion/del')}",
+			cache: false,
+			dataType:"text",
+			data:"id="+id,			
+			success: function(data){
+				if (data==1){
+					alert("删除成功！");
+					window.location.reload();
+				}else{
+					alert("删除失败！");
+				}
+			}
+		})
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title"><a href="__APP__/Store/timesale/index/shop_id/{$timesale.shop_id}">返回</a></div>
+<!--  功能操作区域  -->
+<div class="operate" >
+<html:imageBtn name="add" value="新增" click="add({$Think.get.timesale_id})" style="impBtn hMargin fLeft shadow" />
+
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+<table cellspacing="0" cellpadding="0" class="list" id="checkList">
+<tbody>
+	<tr>
+		<td height="5" class="topTd" colspan="10"></td>
+	</tr>
+	<tr class="row">
+		<th width="8">
+			<input type="checkbox" onclick="CheckAll('checkList')" id="check">
+		</th>
+		<th width="8%">
+			<a title="按照编号升序排列 " href="javascript:sortBy('shop_id','1','index')">编号<img align="absmiddle" width="12" height="17" border="0" src="/xieche_tp3.0/xiecheadmin/Tpl/Public/images/desc.gif"></a>
+		</th>
+		<th>
+			<a title="按照配件折扣升序排列 " href="javascript:sortBy('product_sale','1','index')">配件折扣</a>
+		</th>
+		<th>
+			<a title="按照工时折扣升序排列 " href="javascript:sortBy('workhours_sale','1','index')">工时折扣</a>
+		</th>
+		<th>
+			<a title="按照开始时间升序排列 " href="javascript:sortBy('s_time','1','index')">开始日期</a>
+		</th>
+		<th>
+			<a title="按照结束时间升序排列 " href="javascript:sortBy('e_time','1','index')">结束日期</a>
+		</th>
+		<th>
+			<a title="按照发表时间升序排列 " href="javascript:sortBy('submit_time','1','index')">发表时间</a>
+		</th>
+		<th>
+			备注
+		</th>
+		<th>
+			优惠券
+		</th>
+		<th>
+			操作
+		</th>
+	</tr>
+	<volist name="list" id="vo">
+	<tr onclick="change(event)" onmouseout="out(event)" onmouseover="over(event)" class="row">
+		<td>
+			<input type="checkbox" value="{$vo.id}" name="key">
+		</td>
+		<td>
+			{$vo.id}
+		</td>
+		<td>
+			{$vo.product_sale}
+		</td>
+				<td>
+			{$vo.workhours_sale}
+		</td>
+		<td>
+			{$vo.s_time|date="Y-m-d",###}
+		</td>
+		<td>
+			{$vo.e_time|date="Y-m-d",###}
+		</td>
+		<td>
+			{$vo.submit_time|date="Y-m-d",###}
+		</td>
+		<td>
+			{$vo.memo}
+		</td>
+		
+		<td>
+			<if condition="$vo.coupon_id eq 0">无<else />{$vo.coupon_name}</if>
+		</td>
+		
+		<td> 
+			<a href="javascript:edit('{$vo.id}')">编辑</a>|<a href="###" onclick="del({$vo.id})">删除</a>
+		</td>
+	</tr>
+	</volist>
+</tbody>
+</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

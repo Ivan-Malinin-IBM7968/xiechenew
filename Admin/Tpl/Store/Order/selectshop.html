@@ -1,0 +1,291 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<script src="__JS__/Think/jquery.think.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_select.js"></script>
+
+<script>
+$(function(){
+	//初始化
+	Think.init({
+			basePath:"__PUBLIC__/Js/Think"
+	})
+
+	$(".checksubmit").click(function(){
+		 var shop_id=$(this).attr('shop_id');
+		 var timesaleversion_id=$(this).attr('timesaleversion_id');
+		 var select_services=$(this).attr('select_services');
+		 var model_id=$(this).attr('model_id');
+		 var brand_id=$(this).attr('brand_id');
+		 var series_id=$(this).attr('series_id');
+		 var u_c_id=$(this).attr('u_c_id')|0;
+		// var coupon_id=$(this).attr('coupon_id');
+		 var uid= "{$uid}";
+		 var order_id = "{$orderinfo.id}";
+		 var url="__URL__/addorder/shop_id/"+shop_id+"/uid/"+uid+"/select_services/"+select_services+"/brand_id/"+brand_id+"/model_id/"+model_id+"/series_id/"+series_id+"/timesaleversion_id/"+timesaleversion_id+"/u_c_id/"+u_c_id;
+		 if(order_id){
+			 url = url+"/order_id/"+order_id;
+		 }
+		 window.location.href=url;
+	})
+	
+})
+function popup1(){
+	Think.popup({
+		content:'<h3 class="flb" drag="1"><em>维修保养价格</em><a close="1"  class="flbc">关闭</a></h3><div  style="height:400px; overflow:scroll;padding:20px;" id="product_content"></div>',
+		drag:true,//不可拖动
+		cover:true,//设置笼罩
+		x:0,
+		y:-250
+	});
+}
+	
+function other_car_select(){
+	$("#list_other_car").show();
+}
+function own_car_select(){
+	$("#list_other_car").hide();
+}
+
+function baoyang_selected_check(d){
+	if($(d).attr("checked")=='checked'){
+		$("[name='select_services[]']").each(function(){
+			if($(this).attr("service_type")=='baoyang'){
+				$(this).removeAttr("checked");
+			}
+		})
+		$(d).attr("checked",'true');
+	}
+}
+function yuyue_submit(shopid,timesaleid,services_str,not_coupon_services_str){
+	if(services_str == ''){
+		alert("很抱歉，您所选择的维修保养项目不在该优惠活动范围内，请点击该活动查看优惠项目详情。");
+		return false;
+	}
+	if($("#product_content_"+shopid+"_"+timesaleid).is(":hidden")){
+		if(not_coupon_services_str != ''){
+			alert("很抱歉，您所选择的一个或多个维修保养项目不在该优惠活动范围内，请点击该活动查看优惠项目详情。如果您仍需预约活动范围外的维修保养项目，请您分开下单。");
+		}
+		$("#product_content_"+shopid+"_"+timesaleid).show();	
+	}else{
+		$("#product_content_"+shopid+"_"+timesaleid).hide();
+	}
+}
+function hide_product_info(shopid,timesaleid){
+	$("#product_content_"+shopid+"_"+timesaleid).hide();
+}
+
+function submit_form(){
+	$('#form1').submit(function(){
+		return flase;
+	});
+}
+</script>
+</HEAD>
+<body>
+<!-- 菜单区域  -->
+<!-- 主页面开始 -->
+<div>
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">代号码为【{$memberinfo.mobile}】下单 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+		 <form method="post" id="form1" action="{:U('/Store/Order/selectshop',array('uid'=>$_GET['uid'],'order_id'=>$_GET['order_id']))}">
+			<volist name="list_si_level_0" id="vo">
+                <dl class="filter_li">
+                    <dt>{$vo.name}</dt>
+                    <dd><div class="filter_data1">
+                    	<table><tr>
+                    		<?php $n=0;?>
+							<volist name="list_si_level_1" id="vo1">
+								<if condition="$vo[id] eq $vo1[service_item_id]">
+									<td>
+									<?php $n++;?>
+										<if condition="$vo1['service_item_id'] eq 1">
+										<input type="checkbox" id="server_{$vo1.id}" onclick="baoyang_selected_check(this);" name="select_services[]" service_type="baoyang" value="{$vo1.id}" <in name="vo1.id" value="$select_services_str">checked</in> />
+										&nbsp;&nbsp;
+										<else />
+										<input type="checkbox" name="select_services[]" <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/>&nbsp;&nbsp;
+										</if>{$vo1.name}
+									</td><if condition="$n%4 eq 0"></tr><tr></if>
+								</if>
+							</volist>
+						</tr></table>
+						   </div>
+                    </dd>
+                </dl>
+			</volist>
+			<dl class="filter_li">
+				<dt>其他</dt>
+                <dd>
+					<div class="filter_data1">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<input type="checkbox" value="-1" name="select_services[]">&nbsp;&nbsp;我不知道做什么项目，到店检查为准</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                 </dd>
+            </dl>
+				<!--
+                <dl class="filter_li">
+                    <dt>车型：</dt>
+                    <dd>
+                        <div class="filter_data1">
+                            <span>ALFA 147 2004款 2.0T</span><a href="#">[更改]</a></div>
+                    </dd>
+                </dl>-->
+      <dl class="filter_li">
+      	<dt>车型：</dt><dd><div class="filter_data1">
+      	<font><b>&nbsp;选择我的车型</b></font><br />
+		<volist name="list_membercar" id="vo" key="k">
+		<input type="radio" name="u_c_id" class="own_car" value="{$vo.u_c_id}" <if condition="((!isset($u_c_id)) && ($other_car neq 1) && ($k eq 1)) || ($vo.u_c_id eq $u_c_id)" > checked </if> onclick="own_car_select();"/>{$vo.car_name}&nbsp;{$vo.brand_name}-{$vo.series_name}-{$vo.model_name}<br>
+		</volist>
+		<font><b>&nbsp;选择其他车型</b></font><br />
+		<input type="radio" id="other_car" name="other_car" value="1" onclick="other_car_select();" <if condition="$other_car eq 1" > checked </if>/>选择其他车辆：
+		<div class="filter_data2 mfpart" id="list_other_car" <if condition="$other_car neq 1">style="display:none;"</if> >
+			<table>
+			<tr>
+			<th>品牌</th>
+			<td>
+			<select id="get_brand" name="brand_id">
+			<option value="0">请选择品牌</option>
+			<volist name="brand" id="brand_vo">
+			<option value="{$brand_vo.brand_id}" <if condition="$brand_vo.brand_id eq $brand_id" >selected</if> >{$brand_vo.word}&nbsp;{$brand_vo.brand_name}</option>
+			</volist>
+			</select>
+			<volist name="data" id="data_brand">
+				<input type="checkbox" name="checkbox_brand_id" value="{$data_brand.brand_id}|{$data_brand.fsid}" class="checkbox_brand"/>{$data_brand.brand_name}
+			</volist>
+			</td>
+			</tr>
+			<tr>
+			<th>车系</th>
+			<td>
+			<select id="get_series" name="series_id">
+				<option value="0">请选择车系</option>
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<th>车型</th>
+			<td>
+			<select id="get_model" name="model_id">
+				<option value="0">请选择车型</option>
+			</select>
+			</td>
+			</tr>
+			</table>
+</div>
+							</div>
+                        </dd>
+ 
+              </dl>
+		                <dl class="filter_li">
+							<dt>店铺名：<input type="text" name="shop_name"value="{$shop_name}">&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="is_across" value="1">跨品牌店铺
+							</dt>
+							<dd style="align:center;">
+								<button id="submit-btn" onclick="submit_form();">查找</button>
+							</dd>
+						</dl>
+              </form> 
+              
+<input type="hidden" name="brand_id" id="brand_id" value="{$brand_id}"></input> 
+<input type="hidden" name="series_id" id="series_id" value="{$series_id}"></input> 
+<input type="hidden" name="model_id" id="model_id" value="{$model_id}"></input>
+
+<div class="title">【查询到的商家信息】</div>
+	<table class="list">
+		<tr>
+			<td width="10%">商家名称</td>
+			<td width="10%">商家地址</td>
+			<td width="10%">商家电话</td>
+			<td width="13%">时间</td>
+			<td width="13%">日期</td>
+			<td width="13%">工时折扣 </td>
+			<td width="13%">零件折扣 </td>
+			<td width="14%">操作</td>
+		</tr>
+		<volist name="list" id="vo"> 
+		<tr <if condition="$orderinfo['shop_id'] eq $vo['id']"> style="background-color:#F0F0FF"</if>>
+			<td>{$vo.shop_name}</td>
+			<td>{$vo.shop_address}</td>
+			<td>{$vo.shop_phone}</td>
+			<td colspan="5">
+				<table class="list">
+		 			<volist name="list_timesale_arr[$vo[id]]['timesale_arr']" id="time_arr">
+		 				<volist name="time_arr" id="timesale_arr">
+						<tr>
+							<td width="20%">
+								<p style="padding:8px 20px 0px 6px;margin-bottom:8px;">{$timesale_arr.begin_time}--{$timesale_arr.end_time}</p>
+						<!--<font color="red">{$timesale_arr.memo}</font>-->
+							</td> 
+							<td width="20%">
+								<p style="padding:8px 20px 0px 6px;margin-bottom:8px;">{$timesale_arr.s_time|date="Y-m-d",###}--{$timesale_arr.e_time|date="Y-m-d",###}</p>
+							</td> 
+							<td width="20%">
+								<span class="price red">{$timesale_arr.oldworkhours_sale_str}</span>
+							</td>
+							<td width="20%">
+								<span class="price red">{$timesale_arr.product_sale_str}</span>
+							</td>
+							<td width="20%"><a href="javascript:void(0);" class="ckanbut" onclick="yuyue_submit({$vo.id},{$timesale_arr.id},'{$timesale_arr.services_str}','{$timesale_arr.not_coupon_services_str}');">查看并预定</a>
+							</td>
+						</tr>
+						<tr id="product_content_{$vo.id}_{$timesale_arr.id}" style="border: 1px solid #CCCCCC;display:none;">
+						<td colspan="6">
+					 <div>
+						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<img src="/UPLOADS/Product/{$vo.product_info.$timesale_arr[id]}">
+								</td>
+							</tr>
+							</table>
+						  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+						  	<tr>
+						    	<td align="left" valign="middle"><img src="/Public/note/images/01.png"><span class="STYLE9"><span class="STYLE11">纵横携车网所提供的汽车售后维修保养项目明细价格（包括但不限于零件费和/或工时费等费用），由与纵横携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，纵横携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据，最终付款以在服务提供商处实际发生额为准。但您享受到的折扣率不变。</span></span></td>
+						  	</tr>
+						  	<tr>
+						    	<td height="20">&nbsp;</td>
+						  	</tr>
+						  	<tr>
+						    	<td height="20" align="left">
+						    		<span class="STYLE10">您所选择的4S店信息：<br><br>
+						      			 4S店：<font color="blue">{$vo['shop_name']}</font><br>
+										 地址：<font color="blue">{$vo['shop_address']}</font><br>
+										 客服电话：<font color="blue">{$Think.config.CALL_400}</font>		
+						    		</span>
+						    	</td>
+						  	</tr>
+						  	<tr>
+						    	<td height="20"><span class="submit_order">
+						    	<a href="javascript:void(0);" shop_id="{$vo['id']}" timesaleversion_id="{$timesale_arr.id}" select_services="{$timesale_arr.services_str}" model_id="{$select_model_id}" brand_id="{$select_brand_id}" series_id="{$select_series_id}" u_c_id="{$u_c_id}" coupon_id="{$timesale_arr.coupon_id}" class="checksubmit"><img src="/Public/note/images/02.png" width="138" height="39"></a>
+						    	</span>
+						    	<span class="hide_product"><a href="###" onclick="hide_product_info({$vo.id},{$timesale_arr.id});">隐藏</a></span>
+						    	</td>
+						  	</tr>
+						</table>
+						
+					</div>
+					</td></tr>
+						</volist> 
+					</volist>
+				</table>
+			</td>
+		</tr>
+		</volist>
+	</table>
+
+
+
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>请选择服务项目</title>
+    <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<!-- <link rel="stylesheet" href="css/libs/jquery.mobile-1.4.0.css" /> -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/order.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/main.css?v={$Think.config.VERSION_DATE}" />
+	<!-- <script src="__PUBLIC__/mb/js/libs/jquery/jquery.min.js" ></script> -->
+	<!--  <script src="js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script> -->
+	<script type="text/javascript" src="__PUBLIC__/mb/js/main.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mb/js/libs/zepto/zepto.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mb/js/libs/zepto/touch.js"></script>
+	<script src="http://statics.xieche.net/mb/js/pamb_ga.js"></script>
+	<include file="Public:wapfoot" />
+</head>
+<body>
+	<form action="{:URL('/Pamobile/order_two')}" id="form_go" method="get" class="post-form">
+	<div id="warpper" style="background:#f1f1f1;">
+		<!-- Header Start -->
+		<header id="header" data-role="header">
+			<h1>请选择服务项目</h1>
+			<span id="left-trigger">
+				<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+			</span>
+			<span id="right-trigger" >
+				<a href="tel:4006602822" class="service-call"></a>
+			</span>
+		</header>
+		<!-- Header End -->
+		<!-- Content Wrapper Start -->
+		<div id="content-wrapper" data-role="content" >
+			<div id="inner-content-wrapper">
+				<!-- 维修项目 开始 -->
+				<volist name="serviceitem" id="list" key="k">
+				<!--<div id="si1" class="sl"> -->
+				<div <if condition="$list.id eq 1">id="st"<else/>id="si{$k-1}"</if> class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>{$list.name}:</h3>
+						<div class="clear"></div>
+					</div>
+					
+					<div class="s-list" <if condition="$list.id eq 1">id="s-t"</if>>
+						<ul>
+							<volist name="list.son_service" id="data">
+							<li data-isSelected="0" id="{$data.id}">
+								<strong>{$data.name}</strong>
+								<span class="selected-sign"></span>
+								<span class="selected-font">选</span>
+							</li>
+							</volist>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				</volist>
+				<!-- 维修项目 结束 -->
+				
+				<!-- 确认提交 开始 -->
+				<div id="si3" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>确认提交:</h3>
+						<div class="clear"></div>
+					</div>
+					<!-- 确认提交内容部分 开始 -->
+					<div class="s-c-c">
+						<!-- <div class="info">
+							<span>如果不确定维修项目，请勾选下方选项。</span>
+							<span class="lookout">
+								注： 勾选后上方所有已经选择的项目将去除勾选状态; 取消勾选可以恢复所有已选项目。
+							</span>
+						</div> -->
+						<div id="no-s" style="position: relative;" class="info">
+							<input type="checkbox" id="no-s-c"  />
+							<label for="no-s-c" style="font-size: 1em;">我不确定需要预约什么项目，需到店检查。<br>
+								<span class="lookout" style="color: #cc3300;">
+								取消勾选可恢复之前已选项目
+								</span>
+							</label>
+							
+							<div class="clear"></div>
+						</div>
+						<div id="next-btn">
+							<a href="javascript:void(0)" value="">下一步</a>
+						</div>
+					</div>
+					<!-- 确认提交内容部分 结束 -->
+					<div class="clear"></div>
+				</div>
+				<!-- 确认提交 结束 -->
+			</div>
+			
+		</div>
+		<!-- Content Wrapper End -->
+		<input type="hidden" id="selectedFinal" name="selectedFinal" value="">
+		<input type="hidden" id="shop_id" name="shop_id" value="{$shop_id}">
+		<input type="hidden" id="timesaleversion_id" name="timesaleversion_id" value="{$timesaleversion_id}">
+		<input type="hidden" id="workhours_sale" name="workhours_sale" value="{$workhours_sale}">
+		
+	</div>
+	</form>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+		(function(){
+			var selectedArr = []
+
+			function selectItem() {
+				var $this = $(this);
+				
+				if($this.attr("data-isSelected") == 0){
+					$this.children(".selected-sign,.selected-font").show();
+					$this.attr("data-isSelected","1").addClass("selected");
+				}else{
+					$this.children(".selected-sign,.selected-font").hide();
+					$this.attr("data-isSelected","0").removeClass("selected");
+				}
+			}
+
+			
+			function selectType(){
+				var $this = $(this);
+				
+				if($this.attr("data-isSelected") == 0){
+					
+					if($this.siblings("li").attr("data-isSelected") == 1){
+						$this.siblings("li").children(".selected-sign,.selected-font").hide();
+						$this.siblings("li").attr("data-isSelected","0").removeClass("selected");
+					}
+					$this.children(".selected-sign,.selected-font").show();
+					$this.attr("data-isSelected","1").addClass("selected");
+				}else{
+					$this.children(".selected-sign,.selected-font").hide();
+					$this.attr("data-isSelected","0").removeClass("selected");
+				}
+			}
+
+			$("#st .s-list li").on("tap", selectType);
+			$("#si1 .s-list li,#si2 .s-list li").on("tap", selectItem);
+
+			$("#next-btn a").on("tap", function(e){
+				
+				var selectedArrFinal = []
+				$(".selected").each(function(index,value){
+					selectedArrFinal.push($(value).attr("id"));
+				})
+				
+				$("#selectedFinal").val(selectedArrFinal.join(","));
+				$("#form_go").submit();
+			})
+
+			$("#no-s-c").on("change", function(){
+
+				if($(this).attr("checked")==true){
+					
+					$(".selected").each(function(index,value){
+						selectedArr.push($(value).attr("id"));
+					})
+					$(".selected").removeClass("selected").children(".selected-sign,.selected-font").hide();
+					$("#st .s-list li").off("tap", selectType);
+					$("#si1 .s-list li,#si2 .s-list li").off("tap", selectItem);
+
+				}else{
+					if(selectedArr.length > 0){
+						$.each(selectedArr, function(index, value){
+							$("#"+value).addClass("selected").children(".selected-sign,.selected-font").show();
+						})
+					}
+					selectedArr=[];
+					$("#st .s-list li").on("tap", selectType);
+					$("#si1 .s-list li,#si2 .s-list li").on("tap", selectItem);
+				}
+			})
+
+		}())
+	</script>
+</body>

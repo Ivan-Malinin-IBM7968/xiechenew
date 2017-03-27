@@ -1,0 +1,87 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function deleteRow(e){
+        var event = e || event;
+        var Elm  =  event.target || event.srcElement; 
+        while(Elm  &&  Elm.tagName  !=  "TR")   
+        {   
+            Elm  =  Elm.parentElement;   
+        } 
+        var intThisIndex = Elm.rowIndex; 
+        Elm.parentElement.deleteRow(intThisIndex);  
+    }
+
+    function addNodeAttribute(){
+        var totalRow = $('actionAtrribute').rows.length;
+        var row=$('actionAtrribute').insertRow(totalRow-1);
+        var cell = document.createElement("td");
+        cell.innerHTML	=	'<input TYPE="text" class="medium bLeftRequire"  NAME="name[]">';
+        cell.align="center";
+        row.appendChild(cell); 
+        var cell = document.createElement("td");
+        cell.innerHTML	=	'<input TYPE="text" class="medium bLeftRequire"  NAME="title[]">';
+        cell.align="center";
+        row.appendChild(cell); 
+        var cell = document.createElement("td");
+        cell.innerHTML	=	'<SELECT class="medium bLeft" NAME="group_id[]"><option value="">未分组</option><volist name="list" id="vo"><option value="{$vo.id}">{$vo.title}</option></volist></SELECT>';
+        cell.align="center";
+        row.appendChild(cell); 
+        var cell = document.createElement("td");
+        cell.innerHTML	=	'<input TYPE="text" class="large"  NAME="remark[]">';
+        cell.align="center";
+        row.appendChild(cell); 
+        var cell = document.createElement("td");
+        cell.innerHTML	=	'<SELECT class="small bLeft"  NAME="status[]"><option value="1">启用</option><option value="0">禁用</option></SELECT>';
+        cell.align="center";
+        row.appendChild(cell); 
+        var cell = document.createElement("td");
+        cell.innerHTML	=	'<IMG SRC="../Public/Images/del.gif"  style="cursor:hand"  onclick="deleteRow(event);" WIDTH="20" HEIGHT="20" BORDER="0" ALT="删除" align="absmiddle">';
+        cell.align="center";
+        row.appendChild(cell); 
+    }
+
+    function clearTable(){
+        $('form1').reset();
+    }
+    function saveNode(){
+        ThinkAjax.sendForm('form1','__URL__/patchAdd',saveComplete);
+    }
+    function saveComplete(data,status){
+        if (status==1)
+        {
+            $('form1').reset();
+        }
+    }
+    //-->
+</SCRIPT>
+<div id="main" class="main" >
+    <div class="content">
+        <div class="title"> 批量新增
+            <eq name="level" value="1">项目</eq><eq name="level" value="2">模块</eq><eq name="level" value="3">操作</eq> [ <A HREF="__URL__">返回列表</A> ] </div>
+        <FORM METHOD=POST  id="form1" >
+            <TABLE cellpadding=0 cellspacing=0 class="list" id="actionAtrribute">
+                <tr><td height="5" colspan="10" class="topTd" ></td></tr>
+                <TR class="row" >
+                    <Th class="tCenter" ><eq name="level" value="1">项目</eq><eq name="level" value="2">模块</eq><eq name="level" value="3">操作</eq>名</Th>
+                    <Th class="tCenter" >显示名</Th>
+                    <Th class="tCenter" >分组</Th>
+                    <Th class="tCenter" >描 述</Th>
+                    <Th class="tCenter" >状 态</Th>
+                    <Th class="tCenter"  >操 作</Th>
+                </TR>
+                <tr><td height="5" colspan="10" class="bottomTd"></td></tr>
+            </TABLE>
+            <input TYPE="hidden" name="ajax" value="1">
+            <input TYPE="hidden" name="level" value="{$level}">
+            <input TYPE="hidden" name="pid" value="{$pid}">
+            <div class="title tRig"><input TYPE="button" value="增 加" onclick="addNodeAttribute()" class="button"> <input TYPE="button" value="保 存" onclick="saveNode()" class="button">	<input TYPE="button" class="button" value="重 置" onclick="clearTable()"> </div>
+        </FORM>
+        <script language="JavaScript">
+            <!--
+            addNodeAttribute();
+            //-->
+        </script>
+    </div>
+</div>

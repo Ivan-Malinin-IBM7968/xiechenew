@@ -1,0 +1,25 @@
+/*all page css*/
+
+.repairo-1{padding-top:36px;padding-bottom:40px;}
+.repairo-1-1{padding-bottom:26px;font-size:16px}
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td{border:none;width: 25%;padding:0px;vertical-align:middle}
+.repairo-2{padding:30px;border:1px solid #eaeeed}
+.repairo-2 h5{margin:30px 0px;background-color:#eaeeed;height:40px;line-height:40px;text-indent:10px}
+.repairo-2 .fl{background: url(../images/common/bg_arrow.gif) 0px 0px no-repeat;width:201px;height:36px;line-height:36px}
+.repairo-2-1{font-size:14px;color:#fe5a23}
+input[type="radio"], input[type="checkbox"]{margin-top:-2px;vertical-align:middle;margin-right:5px}
+.table,.repairo-2-3,.repairo-2-5{margin-left:20px}
+.repairo-2-3{width:800px;overflow:hidden;}
+.btn-sub{background-color:#f05525;color:#ffffff; padding:7px 90px;margin-right:20px}
+.repairo-2-4{color:#fe7240}
+.form-control{width:280px}
+a.ab{left:300px;top:35%;text-decoration:underline;color:#2a6496}
+.btn:hover,.btn:focus{color:#ffffff}
+.datetimepicker table{width:270px}
+.table tr,.repairo-2-5 p{line-height:2em;}
+.form-group{margin-bottom:20px}
+label{font-weight:normal}
+.modal{}
+.modal-dialog{width:720px}
+.close {font-size: 18px;font-weight: normal;opacity: 0.5;}
+

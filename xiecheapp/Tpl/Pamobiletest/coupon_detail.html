@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<head>
+		<meta>
+	    <title>优惠券详情 ｜ Coupon Example</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mb/css/coupon_detail.css" />
+		<!--  <script src="js/libs/jquery/jquery.min.js" ></script> -->
+		<script src="__PUBLIC__/mb/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<script src="__PUBLIC__/mb/js/main.js"></script>
+		
+	</head>
+	<body>
+		<div id="warpper" style="background:#f1f1f1;">
+			<!-- Header Start -->
+			<header id="header" data-role="header">
+				<h1>优惠券详情 ｜ Coupon Example</h1>
+			</header>
+			<!-- Header End -->
+
+			<!-- Content Wrapper Start -->
+			<div id="content-wrapper" style="background:#f1f1f1; padding: 10px;" data-role="content" >
+
+				<!-- Coupon Image Start -->
+				<div class="ui-grid-solo" style="background: #ffffff; ">
+					<img src="http://xieche.com.cn/UPLOADS/Coupon/Logo/52a53045e87a8.jpg" alt="" style="width: 100%">	
+				</div>
+				<!-- Coupon Image End -->
+
+				<!-- Coupon Name&Price Start -->
+				<div class="ui-grid-a" style="background: #ffffff; padding: 10px;">
+					<div class="ui-block-a coupon-name" style="width: 70%;">
+						<h2>上海虹湾一汽大众4S店1000元现金券</h2>
+					</div>
+					<div class="ui-block-b coupon-price"  style="width: 30%; padding-left: 10px;">
+						<strong>¥900</strong>
+						<em>¥1000</em>	
+					</div>
+				</div>
+				<!-- Coupon Name&Price End -->
+
+				<!-- Coupon Type Start -->
+				<div class="ui-grid-solo coupon-type" style="background: #ffffff; padding: 0px 10px;">
+					<span>现金券</span>
+				</div>
+				<!-- Coupon Type End -->
+
+				<!-- Coupon Info Block Start -->
+				<div class="ui-grid-a" style="background: #ffffff; padding: 10px;">
+					<div class="ui-block-a coupon-info" >
+						<ul>
+							<li>10人已经购买</li>
+							<li>2014-06-20到期</li>
+						</ul>
+					</div>
+					<div class="ui-block-b coupon-buy-btn">
+						<a href="" rel="external">购买</a>
+					</div>
+				</div>
+				<!-- Coupon Info Block End -->
+
+				<!-- Map Start -->
+				<div class="ui-grid-solo coupon-map" style="background: #ffffff; padding: 10px;border-top: 2px solid #f1f1f1;">
+					<h4 style="margin: 0px;">上海市 徐汇区 龙水南路386号...</h4>
+				</div>
+				<!-- Map End -->
+
+				<!-- Coupon Detail Content Start -->
+				<div class="ui-grid-solo coupon-content" style="background: #ffffff; padding: 10px;border-top: 2px solid #f1f1f1;">
+					{$coupon_des}
+				</div>
+				<!-- Coupon Detail Contents End -->
+
+			</div>
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+	</body>
+</html>

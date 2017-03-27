@@ -1,0 +1,67 @@
+<layout name='layout_note' />
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <div class="userjzbar07"></div>
+        <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		<form action="__URL__/savenote/type/Noteforfeit/note_id/{$list_note.note_id}" method="post">
+          <tr>
+            <td class="tdright w1">车辆：</td>
+            <td>
+			<span>{$select_u_c_id.car_name}</span> 
+			</td>
+            <td class="tdright w2">日期：</td>
+            <td><input type="text" class="left fgre inp01" onclick="WdatePicker()" value="{$list_note.happen_time|date="Y-m-d",###}" name="happen_time">
+              <a href="#" class="Selecttime"></a> </td>
+          </tr>
+        </table>
+		
+		<table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+		     <td class="tdright w1">摘要：</td>
+		     <td><input type="text" value="{$list_note.summary}" class="inp01 w4" name="summary" id="summary"></td>
+	       </tr>
+	    </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+             <td class="tdright w1">金额：</td>
+		     <td><input type="text" onblur="if (!(/^[\d]+\.?\d*$/.test(this.value)) ){this.value='';};checkMoneys(this,2)" onclick="checkMoneys(this,1)" value="{$list_note.total_cost}" autocomplete="off" onkeydown="intelligence()" onchange="return CheckMoney(this, 'TXT_Total')" style="text-align:right; width:130px; color:#CCCCCC;" class="addframetextbox w3 inp01" name="total_cost" id="TXT_Total">
+		       元</td>
+		     <td class="tdright w1">地点：</td>
+		     <td><input type="text" value="{$list_note.Noteforfeit.place}"  name="place" class="w2 inp01" id="place"></td>
+	       </tr>
+		   <tr>
+             <td class="tdright w1">缴款方式：</td>
+		     <td><select name="pay_method">
+				<volist name='Think.config.PAY_TYPE' id="type" key="title_key">
+				<option value="{$title_key}" <eq name="title_key" value="$list_note.Noteforfeit.pay_method">selected="selected"</eq>>{$type}</option>
+				</volist>
+				</select></td>
+	         <td class="tdright w1">缴款日期：</td>
+	         <td><input type="text" onclick="WdatePicker()" value="{$list_note.Noteforfeit.pay_date|date="Y-m-d",###}" class="left fgre inp01"  name="pay_date" id="pay_date">
+             <a href="#" class="Selecttime"></a></td>
+		   </tr>
+         </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr class="none">
+             <td class="tdright w1 tdtop">备注：</td>
+		     <td><textarea rows="4"  type="text" name="remark" id="remark">{$list_note.remark}</textarea></td>
+	       </tr>
+		    <tr class="none">
+            <td ></td>
+            <td ><input type="submit" class="button-yellow" value="保存"></td>
+          </tr>
+		  </form>
+        </table>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+
+
+
+
+

@@ -1,0 +1,355 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+#head {
+	padding: 0px;
+	width: 960px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+	height: 40px;
+}
+#head #head-nav {
+	padding: 0px;
+	float: right;
+	height: 36px;
+	width: 350px;
+	display: block;
+	margin-top: 0px;
+	margin-right: 2px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-color: #900;
+	text-indent: -9999px;
+}
+#head h1 {
+	margin: 0px;
+	padding: 0px;
+	height: 36px;
+	width: 129px;
+	display: block;
+	background-repeat: no-repeat;
+	float: left;
+}
+#head #head-sh {
+	padding: 0px;
+	height: 25px;
+	width: 55px;
+	font-size: 13px;
+	line-height: 25px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 8px;
+}
+#daohang {
+	padding: 0px;
+	height: 40px;
+	width: 960px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	display: block;
+	background-image: url(../Images/head.png);
+	background-repeat: no-repeat;
+}
+#daohang ul {
+	padding: 0px;
+	list-style-type: none;
+	height: 40px;
+	width: 500px;
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	float: left;
+}
+#daohang ul li {
+	float: left;
+	height: 40px;
+	display: block;
+	margin-top: 0px;
+	margin-right: 8px;
+	margin-bottom: 0px;
+	margin-left: 8px;
+	line-height: 40px;
+	padding: 0px;
+}
+#daohang ul li a {
+	color: #FFF;
+	text-decoration: none;
+	margin: 0px;
+	padding: 0px;
+}
+#daohang ul li a:hover {
+	color: #FFF;
+	display: block;
+	height: 40px;
+}
+#daohang #daohang-right {
+	padding: 0px;
+	float: right;
+	height: 40px;
+	width: 300px;
+	font-size: 13px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	line-height: 40px;
+}
+#daohang #daohang-right ul {
+	margin: 0px;
+	padding: 0px;
+	width: 180px;
+	line-height: 40px;
+	float: right;
+}
+#daohang #daohang-right ul li.xg {
+	margin: 0px;
+	padding: 0px;
+}
+#daohang #daohang-right ul li.xg1 {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 8px;
+	margin-bottom: 0px;
+	margin-left: 8px;
+}
+#daohang #daohang-right ul li.xg2 {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 8px;
+	margin-bottom: 0px;
+	margin-left: 8px;
+}
+#main {
+	padding: 0px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+	height: auto;
+}
+#main #main-left {
+	padding: 0px;
+	width: 150px;
+	float: left;
+	background-color: #EEE;
+	display: block;
+	height: 250px;
+	border: 1px solid #DDD;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 210px;
+}
+#main #main-left ul {
+	padding: 0px;
+	list-style-type: none;
+	width: 100px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	display: block;
+	font-size: 13px;
+}
+#main #main-left ul li {
+	padding: 0px;
+	margin-top: 2px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	text-decoration: none;
+}
+#main #main-left ul li a {
+	color: #666;
+	text-decoration: none;
+	font-size: 14px;
+}
+#main #main-left ul li a:hover {
+	color: #900;
+	text-decoration: none;
+}
+#main #main-right {
+	height: 25px;
+	width: 780px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-color: #FFF;
+	border-bottom-width: 1px;
+	border-top-color: #D6D6D6;
+	border-right-color: #D6D6D6;
+	border-bottom-color: #008BD0;
+	border-left-color: #D6D6D6;
+	border-bottom-style: solid;
+	font-size: 13px;
+	line-height: 25px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+#main #main-right h1 {
+	font-size: 13px;
+	line-height: 25px;
+	float: left;
+	margin: 0px;
+	background-image: url(../images/sc1302221_2.jpg);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 27px;
+}
+#main #main-right ul {
+	margin: 0px;
+	padding: 0px;
+	float: right;
+	list-style-type: none;
+}
+#main #main-right ul li {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	height: 25px;
+	font-size: 12px;
+}
+#main #main-right .width_55{
+	width: 55px;
+}
+#main #main-right .width_230{
+	width: 230px;
+}
+#main #main-right2 {
+	width: 785px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	height: auto;
+	font-size: 13px;
+}
+#main #main-right3 {
+	height: 27px;
+	width: 777px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-bottom: 30px;
+	margin-left: auto;
+	float: right;
+	background-color: #EEE;
+	line-height: 27px;
+	font-size: 13px;
+	text-align: right;
+	padding-top: 0px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+#footer {
+	padding: 0px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	clear: both;
+	height: 35px;
+	width: 960px;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #008BD0;
+	line-height: 35px;
+}
+#footer ul {
+	padding: 0px;
+	list-style-type: none;
+	width: 320px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	display: block;
+	height: 35px;
+	line-height: 35px;
+}
+#footer ul li {
+	padding: 0px;
+	float: left;
+	font-size: 12px;
+	line-height: 35px;
+	margin-top: 0px;
+	margin-right: 6px;
+	margin-bottom: 0px;
+	margin-left: 6px;
+	color: #000;
+	text-decoration: none;
+}
+#footer ul li a {
+	color: #000;
+	text-decoration: none;
+}
+.icpbox {
+	height: 47px;
+	width: 130px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	display: block;
+	clear: both;
+	background-image: url(http://x.xieche.net/Public/note/images/icon.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	text-align: right;
+	border: 1px solid #EAEAEA;
+	padding: 5px;
+	font-size: 12px;
+}
+.icpbox span {
+	margin: 0px;
+	padding: 0px;
+	height: 47px;
+	width: 75px;
+	float: right;
+	text-align: center;
+	display: block;
+}
+#main #main-right2 table {
+	font-size: 13px;
+}
+#main-right2 table tbody tr td a {
+	color: #900;
+	text-decoration: none;
+}
+#main-right2 table tbody tr td a:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+#main div form .list {
+	font-size: 13px;
+}
+
+#main #main-left ul li {
+	padding: 0px;
+	margin-top: 2px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	text-decoration: none;
+}

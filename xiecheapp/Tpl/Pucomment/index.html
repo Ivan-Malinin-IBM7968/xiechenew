@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta >
+    <title>携车网-全面进驻大众点评爱车频道</title>
+    <link rel="shortcut icon" href="http://statics.xieche.net/new_2/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="__PUBLIC__/common/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/new_pa/css/selectize.css">
+    <link rel="stylesheet" href="__PUBLIC__/event/20140606//css/main.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <meta name="apple-mobile-web-app-title" content="携车网">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-itunes-app" content="app-id=588144466" />
+    <script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+    <script src="__PUBLIC__/common/js/libs/jquery/jquery-1.11.min.js"></script>
+    <script src="__PUBLIC__/new_pa/js/selectize.js"></script>
+
+	<link rel="shortcut icon" href="__PUBLIC__/new_2/images/favicon.ico" type="image/x-icon">   
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/common.css?v={$Think.config.VERSION_DATE}" />
+  </head>
+  <body style="position: relative;">
+  <div id="float-banner" >
+      <div id="inner-banner">
+         <a href="javascript:void(0);" id="close-banner"></a>
+      </div>
+     
+  </div>
+	<!-- 头部Nav开始 -->
+	<div class='top-container' style="padding: 20px 0px; height: 90px;" >
+		<a href="http://www.xieche.com.cn" id="logo-h1-con" title='携车网,汽车保养维修预约,4S店折扣优惠,事故车维修预约' style="float: left;margin-top: 20px;">
+			<h1 id='logo'>携车网</h1>
+		</a>
+		<div class="cs" style="float: left; top: 62px;">
+			
+		</div>
+		<div class="ad banner" style="margin:10px auto; width: 850px; height: 80px; float: right">
+			
+			<if condition="$Think['const'].PA_BANNER eq 'xc'">
+					<a href="http://www.xieche.com.cn/shiguche" title="携车网-事故车" target="_blank">
+					<img src="http://statics.xieche.com.cn/ad-banner/850/ac-car.jpg" alt="携车网-事故车" width="850" height="80">
+					</a>
+				<else />
+				<div class="pa-i-banner" style="width: 850px; height: 80px; background: url('__PUBLIC__/ad-banner/850/ac-car-pa.png') 0px 0px no-repeat; overflow: hidden;">
+					<a href="__APP__/shiguche" target="_blank" style="display: block; width: 635px; height: 80px; float: left;"></a>
+					<a href="http://www.pahaoche.com" target="_blank" style="display: block; width: 215px; height: 80px; float: right;"></a>
+				</div>
+					
+
+					
+			 </if>
+			
+		</div>
+	</div>
+	
+	<div class="nav-container">
+		<div class="nav">
+			<ul class='main-nav'>
+				<li style="width:1px;border-left:none;"></li>
+				<li><a href="__APP__/index.php" title="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修,养车3折团">首页</a></li>
+				<li <if condition="$current eq 'order' ">class="current"</if>><a href="__APP__/order">4S店售后预约</a></li>
+				<li <if condition="$current eq 'coupon' ">class="current"</if>><a href="__APP__/coupon">4S店售后团购</a></li>
+				<li <if condition="$current eq 'noticelist' ">class="current"</if>><a href="__APP__/noticelist">优惠速递</a></li>
+				<li <if condition="$current eq 'articlelist' ">class="current"</if>><a href="__APP__/articlelist">用车心得</a></li>
+				<li <if condition="$current eq 'shiguche' ">class="current"</if>><a href="__APP__/shiguche" target="_blank">事故车维修</a></li>
+				<li <if condition="$current eq 'yangchetuan' ">class="current"</if>><a href="__APP__/coupon-explosion" target="_blank">养车3折团</a><span class="new"></span></li>
+				<li <if condition="$current eq 'carservice' ">class="current"</if>><a href="__APP__/carservice" target="_blank">上门保养</a><span class="new"></span></li>
+				
+			</ul>
+			<div class="login-box">
+				<notempty name="Think.session.uid">
+				<span >您好
+				<present  name="Think.session.username">{$Think.session.username}<else /><present name="Think.session.cardid">{$Think.session.cardid}<else />{$Think.session.mobile}</present></present >
+
+				</span>
+				<else />
+				<span class='not-user'>
+					<a href="__APP__/Public/login?jumpUrl=%2Fmyhome" rel="nofollow">登陆 / 注册</a> 
+					<!-- <a href="{:URL('/member/add',array())}{:C('HTML_URL_SUFFIX')}" rel="nofollow"></a> -->
+				</span>
+			
+				 </notempty>
+				<span class='my-account'>我的账户</span>
+
+				<notempty name="Think.session.uid">
+				<b class="dropdown-arrow-down"></b>
+				<div class="account-dropdown">
+						<ul>
+							<li>我的订单</li>
+							<li class="sub"><a href="{:URL('/myhome/index',array())}{:C('HTML_URL_SUFFIX')}">未消费订单</a><a href="{:URL('/myhome/index',array())}{:C('HTML_URL_SUFFIX')}">未评价订单</a></li>
+							<li><a href="{:URL('/myhome/myorder',array())}{:C('HTML_URL_SUFFIX')}">我的维修保养订单</a></li>
+							<li>资产中心</li>
+							<li><a href="{:URL('/myhome/mycoupon1',array())}{:C('HTML_URL_SUFFIX')}">我的现金券</a></li>
+							<li><a href="{:URL('/myhome/mycoupon2',array())}{:C('HTML_URL_SUFFIX')}">我的套餐券</a></li>
+							<li><a href="{:URL('/myhome/my_salecoupon',array())}{:C('HTML_URL_SUFFIX')}">我的抵用券</a></li>
+							<li><a href="{:URL('/myhome/mypoints',array())}{:C('HTML_URL_SUFFIX')}">我的积分</a></li>
+							<li>个人中心</li>
+							<li><a href="{:URL('/myhome/myinfo',array())}{:C('HTML_URL_SUFFIX')}">我的信息</a></li>
+							<li><a href="{:URL('/myhome/my_car',array())}{:C('HTML_URL_SUFFIX')}">我的车辆</a></li>
+							<li><a href="{:URL('/myhome/my_comment',array())}{:C('HTML_URL_SUFFIX')}">我的点评</a></li>
+							<li class="log-out"><a href="{:URL('/public/logout',array())}{:C('HTML_URL_SUFFIX')}" target="_self">[退出]</a></li>
+						</ul>	
+				</div>
+				</notempty>
+
+			</div>
+		</div>
+	</div>
+	<!-- 头部Nav结束 -->
+
+
+
+    <div id="block1">
+        <div id="inner-block-1">
+          <div style="float: left">
+            <img src="http://event.xieche.com.cn/20140606/images/banner_1.jpg" alt="">
+          </div>
+            <div id="inner-wrapper">
+                <div class="service" id="">
+                  <ul id="tabs1" class="tabs">
+                    <li class="current">搜索4S店铺维修保养</li>
+                    <li >现金抵用券团购</li>
+                    <li >事故车维修</li>
+                  </ul>
+                  <div id="con1" class="con">
+                    <!-- 搜索4S店铺维修保养 开始 -->
+                    <div style="display: none;" class='current'>
+                       <form class="search"  name="form2" method="POST" action="__APP__/order" target="_blank">
+                        <ul>
+                          <li id="pinpai">
+                            <label>选择品牌:</label>
+                             <select id="get_brand" name="brand_id" placeholder="选择品牌" style="width:437px; float: left;">
+                              
+                            </select>
+                          </li>
+                          <li id="chexing" class="clear" >
+                            <label>选择车系:</label>
+                            <select class="car_series"id="get_series" placeholder="选择车系" name="series_id" style="float: left;">
+                              
+                            </select>
+                            <label >选择车型:</label>
+                            <select class="car_model" id="get_model" placeholder="选择车型" name="model_id" style="float: left;">
+                              
+                            </select>
+                          </li>
+                          <li id="diqu" style="overflow: hidden; height: 40px; margin-bottom: 15px;">
+                            <label style="height: 38px; line-height: 38px;">所在地区:</label>
+                            <input type="text" id="area_name" name="area_name" class="input-text"  style="width: 427px; height: 38px; line-height: 38px; float: left;" value="例:徐汇区">
+                            
+                          </li>
+                          <li id="guanjianzi" style="overflow: hidden; height: 40px;">
+                            <label style="height: 38px; line-height: 38px;">4S店铺名:</label>
+                            <input type="text" id="shop_name" name="shop_name" class="input-text" style="float: left; margin-right: 15px; width: 292px ; height: 38px; line-height: 38px;"  value="可选填" >
+                            <input type="submit" value="提 交 搜 索" class="submit-btn" style="float: left;  height: 36px; line-height: 36px; font-size: 16px;">
+                          </li>
+                          
+                        </ul>
+                        
+                      </form>
+                    </div>
+                    <!-- 搜索4S店铺维修保养 结束 -->
+                    <!-- 现金抵用券团购 开始-->
+                    <div style="display: none; overflow: hidden;" class='quick-access'>
+                      <div class="brand-filter">
+                        <span class="title">品 牌:</span> 
+                        <!-- 包括“全部”，ul一共可以展示8个 <li> -->           
+                        <ul class="tabs2">
+                          <li  class="current"><a href="{:URL('/coupon/index',array('coupon_type'=>'all'))}{:C('HTML_URL_SUFFIX')}" target="_blank">全部</a></li>  
+                          <volist name="data_Pcoupon.Coupon" id="list" >
+                            <li><a href="{:URL('/coupon/index',array('coupon_type'=>1,'brand_id'=>$list['brand_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$list.brand_name}</a>
+                          </li>
+                          </volist>
+                        </ul>
+                        <a href="{:URL('/coupon/index',array('coupon_type'=>1))}{:C('HTML_URL_SUFFIX')}" class="more" target="_blank">更多>></a>
+                      </div>
+                      
+                      <div class="brand-sale con2">
+                        <div>
+                          <ul>
+                          <volist name="data_AllPcoupon" id="arr" >
+                            <li class="single-con">
+                              <a href="__APP__/coupon/{$arr.id}" target="_blank"> 
+                                <img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="优惠券" width="86" height="64">
+                                <div class="desc">
+                                  <h4>{$arr.coupon_name}</h4>
+                                  <div>
+                                    <strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                          </volist>
+                          </ul>
+                        </div>
+                        <volist name="data_Pcoupon.Coupon" id="voc1" >
+                          <div>
+                            <ul>
+                              <volist name="voc1.Pcoupon" id="arr" >
+                                <li class="single-con">
+                                  <a href="__APP__/coupon/{$arr.id}" target="_blank"> 
+                                    <img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="优惠券" width="86" height="64">
+                                    <div class="desc">
+                                      <h4>{$arr.coupon_name}</h4>
+                                      <div>
+                                        <strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </li>
+                              </volist>
+                            </ul>
+                          </div>
+                        </volist>
+                      </div>
+                    </div>
+
+
+
+                    <!-- 现金抵用券团购 结束 -->
+                    <!-- 保养套餐券团购 开始 -->
+                    <div style="display: none;" class='my-cars'>
+                      <img src="http://event.xieche.com.cn/20140606/images/ac_banner.jpg" alt="">
+                      <div class="brand-filter" style="display:none">
+                        <span class="title">品 牌:</span> 
+                        <!-- 包括“全部”，ul一共可以展示8个 <li> -->   
+                      
+                        <ul class="tabs3">
+                          <li  class="current"><a href="{:URL('/coupon/index',array('coupon_type'=>'all'))}{:C('HTML_URL_SUFFIX')}" target="_blank">全部</a></li>
+                          <volist name="data_Gcoupon.Coupon" id="list" >
+                            <li>
+                            <a href="{:URL('/coupon/index',array('coupon_type'=>2,'brand_id'=>$list['brand_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$list.brand_name}
+                            </a>
+                          </li>
+                          </volist>
+
+                        </ul>
+                        <a href="{:URL('/coupon/index',array('coupon_type'=>2))}{:C('HTML_URL_SUFFIX')}" class="more" target="_blank">更多>></a>
+                      </div>
+
+                      <div class="brand-sale con3" style="display:none">
+                        <div>
+                          <ul>
+                            <volist name="data_AllGcoupon" id="arr" >
+                              <li class="single-con">
+                                <a href="__APP__/coupon/{$arr.id}" target="_blank"> 
+                                  <img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="套餐券" width="86" height="64">
+                                  <div class="desc">
+                                    <h4>{$arr.coupon_name}</h4>
+                                    <div>
+                                      <strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                            </volist>
+                          </ul>
+                        </div>
+                        
+                      <volist name="data_Gcoupon.Coupon" id="voc1" >
+
+                        <div>
+                          <ul>
+                          <volist name="voc1.Gcoupon" id="arr" >
+                            <li class="single-con">
+                              <a href="__APP__/coupon/{$arr.id}" target="_blank"> 
+                                <img src="/UPLOADS/Coupon/Logo/{$arr.coupon_pic}" alt="套餐券" width="86" height="64">
+                                <div class="desc">
+                                  <h4>{$arr.coupon_name}</h4>
+                                  <div>
+                                    <strong>￥{$arr.coupon_amount}</strong>&nbsp;<span>￥{$arr.cost_price}</span>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                          </volist>
+                          </ul>
+                        </div>
+
+                      </volist>
+
+                        
+                      </div>
+                    </div>
+                    <!-- 保养套餐券团购 结束 -->
+                  </div>
+                  <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div> 
+        </div>
+    </div>
+    <div id="block2">
+      <div id="inner-block2">
+          <div class="title">
+            <div>预约流程</div>
+          </div>
+      </div>
+    </div>
+    <div id="block3">
+        <div id="inner-block2">
+            <div class="title">
+              <div>最热优惠券</div>
+            </div>
+            <div class="coupon-contianer">
+                <ul class="coupon-ul">
+				<volist name="coupon" id="list">
+                    <li>
+                      <div>
+                        <div class="coupon-img">
+                           <a href="__APP__/coupon/{$list.id}" target="_blank"> <img src="/UPLOADS/Coupon/Logo/{$list.coupon_pic}" alt=""></a>
+                        </div>
+                        <div class="coupon-name"><a href="__APP__/coupon/{$list.id}" target="_blank">{$list.coupon_name}</a></div>
+                        <div class="cuupon-address">{$list.shop_address}<a href="__APP__/coupon/{$list.id}" target="_blank">[查看店铺]</a> </div>
+                        <div class="coupon-price">
+                          <strong>￥{$list.coupon_amount}元</strong>
+                          <em>￥{$list.cost_price}元</em>
+                          <div class="coupon-bought">
+                            <span>{$list.pay_count}</span>人已购买
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="block4">
+      <div id="inner-block-4">
+         <div class="title">
+              <div>热门活动</div>
+          </div>
+          <ul class="event-ul">
+            <li class="event-li">
+              <a href="__APP__/shop/1367">
+                <img src="http://event.xieche.com.cn/20140606/images/banner_2.jpg" alt="" width="590" height="300">
+              </a>
+            </li>
+            <li class="event-li">
+            <a href="__APP__/coupon/371" target="_blank">
+                <img src="http://event.xieche.com.cn/20140606/images/banner_3.jpg" alt="" width="590" height="300">
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <div id="block5">
+      
+      <div id="inner-block-5">
+        <div class="title">
+            <div>明星4S店</div>
+        </div>
+        <ul class="shop-ul">
+		<volist name="shoplist" id="slist">
+          <li class="shop-li">
+            <div>
+              <div class="shop-info">
+                <div class="shop-name"><a href="__APP__/shop/{$slist.id}" target="_blank">{$slist.shop_name}</a></div>
+                <div class="shop-rating">
+                  <span  <php>echo "class='rating-".round($slist[comment_rate]/10)." rating-img'";</php>></span>
+                  <strong>{$slist[comment_rate]/10}</strong> 分
+                </div>
+                <div class="shop-sale">工时折扣:  <span>{$slist.workhours_sale} </span>折起 </div>
+                <div class="shop-address">{$slist.shop_address}<a href="__APP__/shop/{$slist.id}" target="_blank">[查看店铺]</a></div>
+                <div class="shop-comment"><a href="__APP__/shop/{$slist.id}#comment">{$slist.comment_number}</a>人评论</div>
+              </div>
+              <div class="shop-img">
+                <a href="__APP__/shop/{$slist.id}" target="_blank">
+                  <img src="{$slist.shop_pic}" alt="{$slist.shop_name}" title="{$slist.shop_name}" width="227" height="171"> 
+                </a>
+              </div>
+            </div>
+          </li>
+		  </volist>
+
+        </ul>
+      </div>
+    </div>
+
+
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>
+	<div class="clear"></div>
+	<div class="w1200 footer">
+		
+		<ul class="row gy">
+				<li><a href="__APP__/about/4" target="_blank" rel="nofollow">关于我们</a>|</li>
+				<li><a href="__APP__/about/16" target="_blank" rel="nofollow">联系我们</a>|</li>
+				<li><a href="__APP__/about/24" target="_blank" rel="nofollow">服务协议</a>|</li>
+				<li><a href="__APP__/about/9" target="_blank">如何预约维修保养 </a>|</li>
+				<li style="display:none;"><a href="__APP__/Sitemap.xml">xml地图</a>|</li>
+				<li><a href="__APP__/sitemap.html">网站地图</a></li>	
+			</ul>
+			<div class="row ba">
+				Copyright © {$Think.config.YEAR} WWW.XIECHE.COM.CN 沪ICP备12017241号 携车网 版权所有
+				
+				<!-- Start Alexa Certify Javascript -->
+				<script type="text/javascript">
+				_atrk_opts = { atrk_acct:"blklh1aMQV00iP", domain:"xieche.com.cn",dynamic: true};
+				(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+				</script>
+				<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=blklh1aMQV00iP" style="display:none" height="1" width="1" alt="" /></noscript>
+				<!-- End Alexa Certify Javascript -->
+			
+				<br class="clear">
+			</div>
+			
+			<div class="row fi"> 
+				<ul>
+					<li class="t1">
+						<a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121109104613460" title="经营性网站备案信息" target="_blank" rel="nofollow"></a>
+					</li>
+					<li class="t2">
+						<a href="http://webscan.360.cn/index/checkwebsite/url/www.xieche.com.cn" title="360网站安全检测" target="_blank" rel="nofollow"></a>
+					</li>
+					<li class='t3'>
+						<a href="http://www.zx110.org/" title="征信网" target="_blank" rel="nofollow">
+							
+						</a>
+					</li>
+					<li class="t4">
+						<!--<a href="http://www.alipay.com/" rel="nofollow"></a>-->
+					</li>
+					
+				</ul>
+				
+			</div>
+				
+			<div class="clear"></div>
+	</div>
+	<div style="text-align:center">
+		<!--新加的百度统计-->
+		<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F60969e039f9a2a7252a22e6e27e9f16f' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<!--新加的百度统计结束-->
+		
+
+		<!--CNZZ-->
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5724214'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/stat.php%3Fid%3D5724214%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+		
+
+		
+
+	</div>
+	
+
+	<!-- Google Tag Manager -->
+	<noscript>
+		<iframe src="//www.googletagmanager.com/ns.html?id=GTM-MFHJWV" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-MFHJWV');
+	</script>
+	<!-- End Google Tag Manager -->
+
+
+
+
+   <script src="__PUBLIC__/common/js/libs/jquery/jquery-1.11.min.js"></script>
+    <script src="__PUBLIC__/new_pa/js/selectize.js"></script>
+    <script>
+      $("#close-banner").on("click", function(e){
+          e.preventDefault();
+          $("#float-banner").fadeOut("fast");
+      })
+
+    function showid(id,name){
+      $('#address').val(name);
+      $('#shop_area').val(id);
+      $('#address_Shop').hide();
+      $('#ShopAddressDiv').hide();
+    }
+      
+      $(document).ready(function(){
+
+        $(".coupon-ul li,.shop-ul li").hover(function(){
+          $(this).css({
+            "border-color" : "#ff6600"
+          })
+        }, function(){
+           $(this).css({
+            "border-color" : "#e7e7e7"
+          })
+        })
+
+        $("#shop_name, #area_name").each(function(index, element) {
+              var $element = $(element);
+              var defaultValue = $element.val();
+              $element.css('color', '#999999');
+              $element.focus(function() {
+                  var actualValue = $element.val();
+                  if (actualValue == defaultValue) {
+                      $element.val('');
+                      $element.css('color', '#333');
+                  }
+              });
+              $element.blur(function() {
+                  var actualValue = $element.val();
+                  if (!actualValue) {
+                      $element.val(defaultValue);
+                      $element.css('color', '#999999');
+                  }
+              });
+          });
+            
+        //Paiframe-PostCar_series  传入brand_id变量名字
+        //Paiframe-PostCar_model  传入series_id变量名字 返回车型内容
+
+        var brandData = get_car_info("/Paiframe-PostCar_brand");
+        
+        var $getBrand, getBrand,
+          $getSeries, getSeries,
+          $getModel, getModel;
+
+        function managerAjaxdata(data){
+          return data
+        }
+
+        function get_car_info(url){
+          $.ajax({
+            url : url ,
+            dataType : "json",
+            success : function(data){
+              managerAjaxdata(data)
+            }
+          });
+        };
+
+        function hTab(tab_controler,tab_con){
+          this.tab_controler = tab_controler;
+          this.tab_con = tab_con;
+          var tabs = $(tab_controler).children("li");
+          var panels = $(tab_con).children("div");
+          $(tab_con).children("div").css("display","none");
+          $(tab_con).children("div:first").css("display","block");
+          $(tabs).hover(function(){
+            var index = $.inArray(this,tabs);
+            tabs.removeClass("current").eq(index).addClass("current");
+            panels.css("display","none").eq(index).css("display","block");
+          });
+        };
+
+        hTab('#tabs1','#con1');
+        hTab(".tabs2",".con2");
+        hTab(".tabs3",".con3");
+
+        //get car brand 
+
+         $getBrand = $("#get_brand").selectize({
+          "create": false,
+            "labelField" : "brand_name",
+            "valueField" : "brand_id",
+            "searchField" : ["brand_name"],
+            "sortField": [
+                  {"field": "word", "direction": "asc"}
+              ],
+            onChange : function(value){
+              if (!value.length) return;
+                getSeries.disable();
+                  getSeries.clearOptions();
+                  getSeries.load(function(cb){
+                    getSeries.enable();
+                    getSeries.addOption({"series_name":"选择车系","series_id":""});
+                    $.ajax({
+                  url : "Paiframe-PostCar_series-brand_id-"+ value,
+                  dataType : "json",
+                  success : function(data){
+                    cb(data)
+                  }
+                });
+                  })
+              }
+          }); 
+
+        //get car series
+        $getSeries = $("#get_series").selectize({
+           "creat" : false,
+           "labelField" : "series_name",
+           "valueField" : "series_id",
+           "searchField" : ["series_name"],
+           "sortField": [
+                  {"field": "word", "direction": "asc"}
+              ],
+           onChange : function(value){
+              if (!value.length) return;
+                getModel.disable();
+                  getModel.clearOptions();
+                  getModel.load(function(cb){
+                    getModel.enable();
+                    getSeries.addOption({"model_name":"选择车型","model_id":""});
+                    $.ajax({
+                  url : "Paiframe-PostCar_model-series_id-"+ value,
+                  dataType : "json",
+                  success : function(data){
+                    cb(data)
+                  }
+                });
+                  })
+              }
+        }); 
+
+        // get car model
+        $getModel = $("#get_model").selectize({
+          "create" : false,
+          "searchField" : ["model_name"],
+            "labelField" : "model_name",
+            "valueField" : "model_id",
+            "sortField": [
+                  {"field": "word", "direction": "asc"}
+              ]
+        }); 
+
+        
+
+        getBrand = $getBrand[0].selectize;
+        getBrand.load(function(cb){
+          $.ajax({
+            url : "Paiframe-PostCar_brand",
+            dataType : "json",
+            success : function(data){
+              cb(data)
+            }
+          });
+        });
+        getSeries = $getSeries[0].selectize;
+        getModel = $getModel[0].selectize;
+
+        getSeries.disable();
+        getModel.disable();
+
+      });
+    </script>
+    <script type="text/javascript">
+      $(function() {
+        var sWidth = $("#focus").width(); //获取焦点图的宽度（显示面积）
+        var len = $("#focus ul li").length; //获取焦点图个数
+        var index = 0;
+        var picTimer;
+        
+        //以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
+        var btn = "<div class='btnBg'></div><div class='btn'>";
+        for(var i=0; i < len; i++) {
+          btn += "<span></span>";
+        }
+        btn += "</div>";
+        $("#focus").append(btn);
+        $("#focus .btnBg").css("opacity",0.5);
+
+        //为小按钮添加鼠标滑入事件，以显示相应的内容
+        $("#focus .btn span").css("opacity",0.4).mouseover(function() {
+          index = $("#focus .btn span").index(this);
+          showPics(index);
+        }).eq(0).trigger("mouseover");
+
+        //本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
+        $("#focus ul").css("width",sWidth * (len));
+        
+        //鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
+        $("#focus").hover(function() {
+          clearInterval(picTimer);
+        },function() {
+          picTimer = setInterval(function() {
+            showPics(index);
+            index++;
+            if(index == len) {index = 0;}
+          },4000); //此4000代表自动播放的间隔，单位：毫秒
+        }).trigger("mouseleave");
+        
+        //显示图片函数，根据接收的index值显示相应的内容
+        function showPics(index) { //普通切换
+          var nowLeft = -index*sWidth; //根据index值计算ul元素的left值
+          $("#focus ul").stop(true,false).animate({"left":nowLeft},500); //通过animate()调整ul元素滚动到计算出的position
+          //$("#focus .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
+          $("#focus .btn span").stop(true,false).animate({"opacity":"0.4"},500).eq(index).stop(true,false).animate({"opacity":"1"},500); //为当前的按钮切换到选中的效果
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,687 @@
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>驴妈妈专题页面</title>
+		<style>
+	
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, embed, 
+			figure, figcaption, footer, header, hgroup, 
+			menu, nav, output, ruby, section, summary,
+			time, mark, audio, video {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline;
+				font-family: "微软雅黑";
+			}
+
+			li{list-style: none;}
+			
+			.block-1{ width: 100%; height: 333px; background: url("__PUBLIC__/event/lmm-web/bg1.jpg") center center; }
+			.inner-block-1{width: 1000px; height: 333px; position: relative; margin: 0 auto;}
+
+
+			.block-2{ width: 100%; height: 544px; background: url("__PUBLIC__/event/lmm-web/bg2.jpg") center center; }
+			.inner-block-2{width: 1000px; height: 544px; position: relative; margin: 0 auto;}
+
+			.trigger-ticket{ font-size: 45px; position: absolute; right: 69px; text-decoration: none; top: 360px; color: #007ceb; }
+			.trigger-ticket:visited {color: #007ceb; }
+			.trigger-ticket:hover{color: white; }
+			.get-ticket{width: 396px; height: 76px; position: absolute; right: 62px ; top: 345px;padding: 10px; background: #00b8fd;}
+			.get-ticket ul{width: 396px; height: 76px; }
+			.get-ticket ul li{width: 390px; height: 35px; margin: 1px; line-height: 35px;}
+			.get-ticket ul li .input-text{width: 220px; height: 25px; border-radius: 5px; background: rgba(255,255,255,.8); border: none; font-size: 14px; color: black;}
+			.get-ticket ul li .input-btn{width: 90px; height: 25px; line-height: 25px; border: none; font-size: 14px; border-radius: 5px;}
+
+			.block-3{ width: 100%; height: 980px; background: url("__PUBLIC__/event/lmm-web/bg3.jpg") center center; }
+			.inner-block-3{width: 1000px; height: 980px; position: relative; margin: 0 auto;}
+			.info-con{width: 960px; height: 860px; top: 50px; left: 10px; position: absolute; padding: 10px; font-style: italic;}
+			.info-con .title{font-size: 28px; font-weight: bold; margin-bottom: 10px;}
+			.info-con ul{margin-bottom: 20px; width: 840px; height: auto; padding: 10px;}
+			.info-con ul li{ font-size: 22px; line-height: 40px; margin-bottom: 5px;}
+
+			.block-4{ width: 100%; height: 384px; background: url("__PUBLIC__/event/lmm-web/bg4.jpg") center center; }
+			.inner-block-4{width: 1000px; height: 384px; position: relative; margin: 0 auto;}
+			.brands-tab{width: 960px; height: 230px; top: 120px; left: 10px; position: absolute; padding: 10px; }
+			.brands-tab ul{width: 960px; height: 230px; }
+			.brands-tab ul li{float: left; color: #00aced; font-size: 20px; margin-right: 10px; padding: 5px; height: 35px; display: inline; line-height: 35px; width: 126px;overflow: hidden; text-align: center}
+			.brands-tab ul li.long-one{width: 300px;}
+			.brands-tab ul li.brand2{width: 90px}
+			.brands-tab ul li.brand2 a{width: 50px;}
+			.brands-tab ul li.brand3{width: 120px}
+			.brands-tab ul li.brand3 a{width: 70px;}
+			.brands-tab ul li.brand4{width: 130px}
+			.brands-tab ul li.brand4 a{width: 90px;}
+			.brands-tab ul li.long-one a{width: 220px;}
+			.brands-tab ul li.brand5 a{width: 100px;}
+			.brands-tab ul li.brand6 a{width: 140px;}
+			.brands-tab ul li.current{border-radius: 5px; background: #00aced; }
+			.brands-tab ul li.current em,.brands-tab ul li.current a{color: white;}
+			.brands-tab ul li em{color: #999; display: inline-block; font-style: normal;}
+			.brands-tab ul li a{color: #00aced; text-decoration: none; display: inline-block; height: 35px; line-height: 35px; width: 90px;}
+			.brands-tab ul li a:visited{color: #ffffff;}
+			.brands-tab ul li a:hover{text-decoration: underline;}
+
+			.block-5{ width: 100%; height: 764px; background: url("__PUBLIC__/event/lmm-web/bg5.jpg") center center; }
+			.inner-block-5{ width: 1000px; height: 764px; position: relative ; margin: 0 auto;;}
+			.brands-con{width: 940px; height:680px; top: 0px; left: 10px; position: absolute; padding: 20px;}
+			.brands-con .single-brand{}
+			.brands-con .single-brand .brand-title{font-style: bold; font-size: 50px; margin: 10px 0; color: #00aced}
+			.brands-con .single-brand ul{}
+			.single-brand ul li{display: inline-block; float: left; width: 287px; height: auto; padding: 10px;}
+			.single-brand ul li a{display: block; width: 287px; height: auto; line-height: 30px; font-size: 20px; color: #000000; text-decoration: none;}
+			.single-brand ul li a:visited{color: #000000;}
+			.single-brand ul li a:hover{color: #00aced; text-decoration: underline;}
+			.single-brand ul li em{ display: block; width: 287px; height: 20px; line-height: 20px; font-size: 14px; font-style: normal;color: #444}
+
+			.block-6{ width: 100%; height: 689px; background: url("__PUBLIC__/event/lmm-web/bg6.jpg") center center; }
+			.inner-block-6{width: 1000px; height: 689px; position: relative; margin: 0 auto;}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="block-1">
+			<div class="inner-block-1">
+				
+			</div>
+		</div>
+		<div class="block-2">
+			<div class="inner-block-2">
+				<a href="javascript:void(0)" class="trigger-ticket">点&nbsp;&nbsp;击&nbsp;&nbsp;免&nbsp;&nbsp;费&nbsp;&nbsp;领&nbsp;&nbsp;取</a>
+				<div class="get-ticket" style="display: none;">
+					<ul  >
+						<li id="li_mobile"><label for="">
+							手机号：
+							</label><input id="mobile" class="input-text">
+							<input type="button" value="获取验证码" class="input-btn" id="send_verify">
+						</li>
+						<li id="li_mobile_verify_lottery"><label for="">验证码：</label>
+							<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" class="input-text"> 
+							<input type="button"  value="点击领取" class="input-btn"  onclick="login();">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="block-3">
+			<div class="inner-block-3">
+				<div class="info-con">
+					<h2 class="title">现金券详情</h2>
+					<ul>
+						<li>1. 凭携车网50元折后现金抵用券可在指定4S店接受维修保养服务后抵用全部或部分消费金额 </li>
+						<li>2. 携车网50元折后现金抵用券，为折后现金抵用券，可在指定4S店使用。 </li>
+						<li>3. 您必须首先致电或在线通过携车网进行售后预约，到指定4S店接受汽车售后服务，享受网站与该店签定的预约折扣，在付款时凭借现金券抵用享受预约折扣之后的消费金额（包括工时费和零件费）。 </li>
+						<li>4. 未经携车网预约到店将无法使用该现金抵用券。</li>
+						<li>5. 如您需要发票，可向4S店要求开具金额为现金券抵用后实际付款金额的发票（如在享受7折工时费之后的消费金额为550元，则您可以使用该50元现金抵用券，并支付500元现金，并开具500元发票）。</li>
+					</ul>
+					<h2 class="title">特别提示</h2>
+					<ul>
+						<li>1. 使用有效期：即日起 - 2014年4月1日</li>
+						<li>2. 通过携车网预约后，可以享受4S店预约专用工位，并有4S店专人接待</li>
+						<li>3. 现金券不兑现、不可找零</li>
+						<li>4. 使用现金券，不得自带机油配件</li>
+						<li>5. 现金券请在到店时出示，并在付款时使用</li>
+						<li>6. 友情提醒：如需发票，请在消费时向4S店提出</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="block-4">
+			<div class="inner-block-4">
+				<div class="brands-tab" >
+					<ul id="tabs">
+						<li class="brand2 current"><em>(A)</em><a href="javascript:void:(0)">奥迪</a></li>
+						<li class="brand2"><em>(B)</em><a href="javascript:void:(0)">别克</a></li>
+						<li class="brand2"><a href="javascript:void:(0)">宝马</a></li>
+						<li class="brand3"><a href="javascript:void:(0)">比亚迪</a></li>
+						<li class="brand4"><a href="javascript:void:(0)">北京现代</a></li>
+						<li class="brand2"><em>(C)</em><a href="javascript:void:(0)">长城</a></li>
+						<li class="brand5"><a href="javascript:void:(0)">长安马自达</a></li>
+						<li class="brand4"><em>(D)</em><a href="javascript:void:(0)">东风本田</a></li>
+						<li class="brand4"><a href="javascript:void:(0)">东风日产</a></li>
+						<li class="brand4"><a href="javascript:void:(0)">东风标致</a></li>
+						<li class="brand6"><a href="javascript:void:(0)">东风悦达起亚</a></li>
+						<li class="brand2"><em>(F)</em><a href="javascript:void:(0)">福特</a></li>
+						<li class="brand4"><em>(G)</em><a href="javascript:void:(0)">广汽本田</a></li>
+						<li class="brand2"><em>(H)</em><a href="javascript:void:(0)">海马</a></li>
+						<li class="brand4"><a href="javascript:void:(0)">华城中华</a></li>
+						<li class="long-one"><em>(K)</em><a href="javascript:void:(0)">克莱斯勒、JEEP、道奇</a></li>
+						<li class="brand2"><em>(L)</em><a href="javascript:void:(0)">路虎</a></li>
+						<li class="brand2"><em>(Q)</em><a href="javascript:void:(0)">奇瑞</a></li>
+						<li class="brand2"><em>(R)</em><a href="javascript:void:(0)">荣威</a></li>
+						<li class="brand2"><em>(S)</em><a href="javascript:void:(0)">三菱</a></li>
+						<li class="brand3"><a href="javascript:void:(0)">斯柯达</a></li>
+						<li><a href="javascript:void:(0)">上海大众</a></li>
+						<li class="brand3"><em>(X)</em><a href="javascript:void:(0)">雪铁龙</a></li>
+						<li class="brand4"><em>(Y)</em><a href="javascript:void:(0)">一汽丰田</a></li>
+						<li class="brand5"><a href="javascript:void:(0)">一汽马自达</a></li>
+						<li class="brand4"><a href="javascript:void:(0)">一汽大众</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="block-5">
+			<div class="inner-block-5">
+				<div class="brands-con" id="con">
+					<div class="single-brand">
+						<h3 class="brand-title">奥迪</h3>
+						<ul>
+							<li class="current">
+								<a href="http://www.xieche.com.cn/shop/1333" target="_blank">上海南空-奥迪4S店</a>
+								<em>虹口区 场中路445号</em>
+							</li>
+						
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">别克</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1338" target="_blank">上海协通驰骋-别克4S店</a>
+								<em>嘉定区 安亭镇安驰路278号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/298" target="_blank">上海协通-别克4S店</a>
+								<em>嘉定区 曹安路3908号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/9" target="_blank">上海奇通-别克4S店</a>
+								<em>松江区 沪松公路1217号</em>
+							</li>
+				
+							<li>
+								<a href="http://www.xieche.com.cn/shop/291" target="_blank">上海玮兴-别克4S店</a>
+								<em>青浦区 外青松公路5600号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/304" target="_blank">上海文洋长宁-别克4S店</a>
+								<em>长宁区 哈密路1231号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/8" target="_blank">上海汽修三厂-别克4S店</a>
+								<em>普陀区 金沙江路971号</em>
+							</li>
+							
+							<li>
+								<a href="http://www.xieche.com.cn/shop/299" target="_blank">上海锦江通永-别克4S店</a>
+								<em>徐汇区 宋园路166号</em>
+							</li>
+					
+
+							<li>
+								<a href="http://www.xieche.com.cn/shop/496" target="_blank">上海上强-别克4S店</a>
+								<em>闸北区 沪太路800号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/297" target="_blank">上海安吉名流-别克4S店</a>
+								<em>普陀区 铜川路1366号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/118" target="_blank">上海名流星远-别克4S店</a>
+								<em>杨浦区 内江路301号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">宝马</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/246" target="_blank">上海众国宝泓-宝马4S店</a>
+								<em>普陀区 红柳路233号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">比亚迪</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1355" target="_blank">上海华帆北松分公司-比亚迪4S店</a>
+								<em>松江区 北松路959号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">北京现代</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/5" target="_blank">上海北现-北京现代4S店</a>
+								<em>徐汇区 吴中路472号</em>
+							</li>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/429" target="_blank">上海恒锐-北京现代4S店</a>
+								<em>闸北区 江场西路872号</em>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">长城</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/73" target="_blank">上海康捷-长城汽车特约维修站</a>
+								<em>普陀区 金沙江支路200号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/313" target="_blank">上海东卫-长城4S店</a>
+								<em>闵行区 华翔路1185号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">长安马自达</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/72" target="_blank">上海景和真南-长安马自达4S店</a>
+								<em>普陀区 真南路2121号</em>
+							</li>
+						
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">东风本田</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/21" target="_blank">上海申银本业-东风本田4S店</a>
+								<em>宝山区 江杨南路1645号</em>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">东风日产</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/482" target="_blank">上海宝钢普陀-东风日产4S店</a>
+								<em>普陀区 真陈路399号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/490" target="_blank">上海开隆虹梅店-东风日产4S店</a>
+								<em>闵行区 虹梅南路1528弄5号1幢</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/487" target="_blank">上海众泰-东风日产4S店</a>
+								<em>虹口区 汶水东路957号</em>
+							</li>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/31" target="_blank">上海绅协绅通-东风日产4S店</a>
+								<em>徐汇区 龙吴路2996号</em>
+							</li>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/1325" target="_blank">上海开隆真北店-东风日产4S店</a>
+								<em>普陀区 真北路2251号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">东风标致</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/25" target="_blank">上海绿地闵弘-东风标致4S店</a>
+								<em>闵行区 沪松公路1225号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">东风悦达起亚</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/116" target="_blank">上海绅协绅起-东风悦达起亚4S店</a>
+								<em>普陀区 真南路2165号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">福特</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/152" target="_blank">上海协通福骋-长安福特4S店</a>
+								<em>闸北区 共和新路3200号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1332" target="_blank">上海协通福茂-长安福特4s店</a>
+								<em>宝山区 潘泾路401号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1338" target="_blank">上海格林威中环-长安福特4S店</a>
+								<em>杨浦区 军工路1488号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">广汽本田</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/82" target="_blank">上海华田-广汽本田4S店</a>
+								<em>徐汇区 龙吴路900号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1351" target="_blank">上海亚欧-广汽本田4S店</a>
+								<em>徐汇区 龙吴路900号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">海马</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/41" target="_blank">上海盛德世海-海马汽车4S店</a>
+								<em>闵行区 华翔路1319号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">华晨中华</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/42" target="_blank">上海交运明友-华晨中华汽车4S店</a>
+								<em>闸北区 沪太路901号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/387" target="_blank">上海五角场-华晨中华汽车4S店</a>
+								<em>杨浦区 民星路50号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">克莱斯勒、JEEP、道奇</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1341" target="_blank">上海名创安亭店-克莱斯勒、JEEP、道奇4S店</a>
+								<em>嘉定区 安亭镇博园路7588号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">路虎</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/177" target="_blank">上海捷润-捷豹路虎4S店</a>
+								<em>松江区 沪松公路1197号</em>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">奇瑞</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/501" target="_blank">上海弘阁-奇瑞4S店</a>
+								<em>虹口区 凉城路1420号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">荣威</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/52" target="_blank">上海文洋闵行-荣威4S店</a>
+								<em>闵行区 元江路3266号</em>
+							</li>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/211" target="_blank">上海安吉-MG4S店</a>
+								<em>徐汇区 东安路239号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">三菱</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1339" target="_blank">上海中进名奇-三菱4S店</a>
+								<em>嘉定区 安亭镇博园路7588号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">斯柯达</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/450" target="_blank">上海佳网-斯柯达4S店</a>
+								<em>松江区 美能达路800号</em>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">上海大众</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/370" target="_blank">上海海博广得利-上大众4S店</a>
+								<em>宝山区 场中路3525号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/356" target="_blank">上海协通驰骋-别克4S店</a>
+								<em>嘉定区 曹安路4188号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/57" target="_blank">上海申银-上海大众4S店</a>
+								<em>普陀区 中山北路2500号</em>
+							</li>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/54" target="_blank">上海交运起元-上海大众4S店</a>
+								<em>徐汇区 龙水南路386号</em>
+							</li>
+
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1345" target="_blank">上海西上海众达-上海大众4S店</a>
+								<em>嘉定区 安亭镇墨玉南路999号</em>
+							</li>
+
+
+							<li>
+								<a href="http://www.xieche.com.cn/shop/364" target="_blank">上海强生-上海大众4S店</a>
+								<em>闸北区 沪太路800号</em>
+							</li>
+				
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1346" target="_blank">上海南空军雷-上海大众特约维修站</a>
+								<em>虹口区 场中路445号</em>
+							</li>
+							
+
+							<li>
+								<a href="http://www.xieche.com.cn/shop/1356" target="_blank">上海交通虹桥旗舰店-上海大众4S店</a>
+								<em>青浦区 华新镇北青公路4149号</em>
+							</li>
+
+							<li>
+								<a href="http://www.xieche.com.cn/shop/348" target="_blank">上海安吉斯铭东安-上海大众4S店</a>
+								<em>徐汇区 东安路239号二楼</em>
+							</li>
+
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">雪铁龙</h3>
+						<ul>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/100" target="_blank">上海鹏宇-东风雪铁龙4S店</a>
+								<em>闵行区 中春路6111号</em>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">一汽丰田</h3>
+						<ul>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/139" target="_blank">上海开隆丰田-一汽丰田4S店</a>
+								<em>闵行区 吴中路1219号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/65" target="_blank">上海中升丰田-一汽丰田4S店</a>
+								<em>普陀区 金沙江路2033号</em>
+							</li><li>
+								<a href="http://www.xieche.com.cn/shop/1335" target="_blank">上海中汽丰田松江店-一汽丰田4S店</a>
+								<em>松江区 美能达路800号</em>
+							</li>
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">一汽马自达</h3>
+						<ul>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/218" target="_blank">上海锦江亿马-一汽马自达4S店</a>
+								<em>徐汇区 宋园路168号</em>
+							</li>
+							<li>
+								<a href="http://www.xieche.com.cn/shop/219" target="_blank">上海交运隆嘉-一汽马自达4S店</a>
+								<em>闸北区 中山北路558号</em>
+							</li>
+						
+						</ul>
+					</div>
+					<div class="single-brand">
+						<h3 class="brand-title">一汽大众</h3>
+						<ul>
+							<li>
+
+								<a href="http://www.xieche.com.cn/shop/1353" target="_blank">上海东联北松-一汽大众4S店</a>
+								<em>松江区 东墩镇北松公路6280号</em>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block-6">
+			<div class="inner-block-6">
+				
+			</div>
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js" ></script>
+		<script type="text/javascript">
+			function hTab(tab_controler,tab_con){
+					this.tab_controler = tab_controler;
+					this.tab_con = tab_con;
+					var tabs = $(tab_controler).children("li");
+					var panels = $(tab_con).children("div");
+					$(tab_con).children("div").css("display","none");
+					$(tab_con).children("div:first").css("display","block");
+					$(tabs).click(function(e){
+						e.preventDefault()
+						var index = $.inArray(this,tabs);
+						tabs.removeClass("current")
+						.eq(index).addClass("current");
+						panels.css("display","none")
+						.eq(index).css("display","block");
+					});
+				};
+
+				hTab('#tabs','#con');
+
+				$(".trigger-ticket").on("click" ,function(e){
+					$(this).hide()
+					e.preventDefault();
+					$(".get-ticket").slideDown()
+				})
+	$(function(){ 
+		$("#send_verify").attr("disabled",false);
+			$("#send_verify").on("click",function(){
+				var mobile = $('#mobile').val();
+				var second = "60";
+				
+				if(/^1\d{10}$/.test(mobile)){
+					$.getJSON("http://www.xieche.com.cn/Lottery-send_verifylmm?mobile="+mobile+"&callback=?", function(data){
+						
+						if(data.success == '1'){
+								$("#send_verify").show();
+								send_verify_show(second);
+							}else if(data == '-1'){
+								send_verify_show(second);
+								alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+								return false;
+							}
+					});
+				}
+			})
+
+	}); 
+
+
+function ajax_app(){
+	$.ajax({
+		type: "POST",
+		url: "__APP__/Lottery-ajaxapp",
+		cache: false,
+		data:"mobile=1",
+		dataType: "json",
+		success: function(data){
+		},
+		error: function(){
+			
+		}
+	})
+
+
+
+}
+function send_verify_show(i){
+	if(i>='0'){
+		$("#send_verify").attr("disabled",true); 
+		$("#send_verify").attr("value",i+"秒后重新发送");
+		i--;
+		setTimeout(function(){send_verify_show(i);},1000);
+	}else{
+		$("#send_verify").attr("disabled",false); 
+		$("#send_verify").attr("value","发送手机验证码");
+	}
+}
+
+
+ $.getScript("http://www.skygq.com/ci/jquery_ajax_json_php/search_server_2.html?letter="+$.val(),function(){ 
+
+
+ }); 
+
+function login(){
+	var mobile = $('#mobile').val();
+	var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+	$.getJSON("http://www.xieche.com.cn/Lottery-lotterylogin_salelmm?mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery+"&callback=?", function(data){
+			if(data.success=='noway'){
+				alert('您已领取过此券只能领取1次！');
+			}else if(data.success=='lotteryerror'){
+				alert('验证码填写有误！');
+			}
+			else{	
+				alert('领取成功！');
+				window.location.href="http://www.xieche.com.cn/Lottery-my_salecoupon-id-2-membersalecoupon_id-"+data.success;
+			}
+	});
+}
+
+</script>
+	<script type="text/javascript">
+		$(".getTickets").on("click", function(e){
+			e.preventDefault();
+			$(".ul2").slideDown('fast');
+		})
+	</script>
+	
+	</body>
+</html>
+
+	

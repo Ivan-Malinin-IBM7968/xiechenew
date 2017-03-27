@@ -1,0 +1,156 @@
+<div class="">
+    <p>范围包含：</p>
+    <ul> 
+        <volist name="streetList" id="street">
+        <li>{$street}</li>
+        </volist>
+    </ul>
+</div>
+<div class="">
+    <p>服务日程管理：</p>
+    <div class="">
+        <if condition="$hasSchedule">
+        <input type="text" id="start_time" name="start_time" onclick="new Calendar().show(this);" value="{$scheduleInfo.schedule_begin_time|date="Y-m-d",###}" readonly="readonly"> —
+        <input type="text" id="end_time" name="end_time" onclick="new Calendar().show(this);" value="{$scheduleInfo.schedule_end_time|date="Y-m-d",###}" readonly="readonly">
+        <a id="editSchedule" data-id="{$scheduleInfo.serve_schedule_id}" data-url="/Admin/index.php/Admin/Taobaoapi/scheduleUpdateAPI" href="javascript:void(0)">编辑</a>
+        <a id="removeSchedule" data-id="{$scheduleInfo.serve_schedule_id}" data-url="/Admin/index.php/Admin/Taobaoapi/scheduleRemoveAPI" href="javascript:void(0)">删除</a>
+        <else />
+        <input type="text" id="start_time" name="start_time" onclick="new Calendar().show(this);" value=""Y-m-d",###}" readonly="readonly"> —
+        <input type="text" id="end_time" name="end_time" onclick="new Calendar().show(this);" value=""Y-m-d",###}" readonly="readonly">
+        <a id="addSchedule" data-url="/Admin/index.php/Admin/Taobaoapi/scheduleCreateAPI" href="javascript:void(0)">增加</a>
+        </if>
+    </div>
+    </if>
+</div>
+<if condition="$hasSchedule">
+<div class="">
+    <p>库存：</p>
+    <table>
+        <tr>
+            <th>日期</th>
+            <volist name="serveTimeRange" id="time">
+            <th>{$time}点</th>
+            </volist>
+        </tr>
+        <volist name="inventoryList" id="inventory">
+        <tr>
+            <td>{$inventory.date}</td>
+            <volist name="inventory.point_inventory_list" id="point">
+            <td>
+                <input type="text" size="4" data-date="{$inventory.date}" data-time="{$point.time}" name="quantity" value="{$point.quantity}">
+            </td>
+            </volist>
+        </tr>
+        </volist>
+    </table>
+    <a id="updateInventory" data-id="{$scheduleInfo.serve_schedule_id}" data-url="/Admin/index.php/Admin/Taobaoapi/inventoryUpdateAPI" href="javascript:void(0)">更新</a>
+</div>
+</if>
+
+<script type="text/javascript" charset="utf-8">
+    (function(){
+        $('#addSchedule').click(function(){
+            var url = $(this).attr('data-url');
+            var serve_range_id = $('#rangeGroup').val();
+            var start_time = $('#start_time').val();
+            var end_time = $('#end_time').val();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_range_id:serve_range_id,
+                    start_time:start_time,
+                    end_time:end_time,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('添加成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+
+        $('#editSchedule').click(function(){
+            var url = $(this).attr('data-url');
+            var serve_schedule_id = $(this).attr('data-id');
+            var serve_range_id = $('#rangeGroup').val();
+            var start_time = $('#start_time').val();
+            var end_time = $('#end_time').val();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_schedule_id:serve_schedule_id,
+                    serve_range_id:serve_range_id,
+                    start_time:start_time,
+                    end_time:end_time,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('编辑成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+
+        $('#removeSchedule').click(function(){
+            var url = $(this).attr('data-url');
+            var serve_schedule_id = $(this).attr('data-id');
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_schedule_id:serve_schedule_id,
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('删除成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+
+        $('#updateInventory').click(function(){
+            var url = $(this).attr('data-url');
+            var serve_schedule_id = $(this).attr('data-id');
+            var inventory = [];
+            var quantity = $("input[name='quantity']");
+            $.each(quantity, function (i, item) {
+                inventory.push({
+                    date: $(item).attr('data-date'),
+                    time: $(item).attr('data-time'),
+                    quantity: $(item).val()
+                });
+            });
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    serve_schedule_id: serve_schedule_id,
+                    inventory: inventory
+                },
+                dataType: "json"
+            })
+            .done(function(data){
+                if (data.status == 1) {
+                    alert('更新成功');
+                    window.location.reload();
+                } else {
+                    alert(data.info);
+                }
+            });
+        });
+    })();
+</script>

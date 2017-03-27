@@ -1,0 +1,52 @@
+<layout name='layout_note' />
+<div id="wddd-right">个人信息修改</div>
+<div id="wddd-right2"><br/>
+<div class="yuyuebox uc-inner">
+				<form action="/index.php/member/update_user" method="post">
+				<div class="add-form">
+				<dl>
+					<dt><label> 原来的密码</label></dt>
+					<dd><input name="oldpassword" type="password" id="oldpassword"
+						class="inp01" /><font size="1" color="grey">&nbsp;修改密码时需要输入</font></dd>
+				</dl>
+				<dl>
+					<dt><label> 密码</label></dt>
+					<dd><input name="password" type="password" id="password"
+						class="inp01" /><font size="1" color="grey">&nbsp;修改密码时需要输入</font></dd>
+				</dl>
+				<dl>
+					<dt><label> 请确认密码</label></dt>
+					<dd><input name="repassword" type="password" id="repassword"
+						class="inp01" /><font size="1" color="grey">&nbsp;修改密码时需要输入</font></dd>
+				</dl>
+				<dl>
+					<dt><label> 邮箱</label></dt>
+					<dd><input type="text" name="email" id="email" class="inp01" value="z@sina.com.cn"/><font
+						color=red><b></b></font><span id="check_email" class="check_register"></span></dd>
+				</dl>
+				<dl>
+					<dt><label> 手机号码</label></dt>
+					<dd><input type="text" name="mobile" id="mobile" class="inp01" value="13800131000"/><font
+						color=red><b></b></font><span id="check_mobile" class="check_register"></span></dd>
+				</dl>
+				
+				<dl>
+					<dt><label> 选择城市</label></dt>
+					<dd>
+						<select location="loc" label="省" name="prov"></select>
+						<select location="loc" label="市" name="city"></select>
+						<select location="loc" label="区" name="area"></select>
+					</dd>
+				</dl>
+				
+				<div class="clear"></div>
+				<div class="form-footer"><input type="submit"
+					style="width: 80px; height: 30px; line-height: 30px; font-size: 14px; font-weight: bold;"
+					class="button-default" value="提交" /></div>
+				</div>
+				</form>
+			</div>
+</div>
+
+
+</div>

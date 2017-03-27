@@ -1,0 +1,56 @@
+<layout name='layout_new' />
+
+
+<style type="text/css">
+zx-left {
+    background-color: #F7F9FC;
+    border: 1px solid #EFEFEF;
+    float: left;
+    margin: 0 0 20px;
+    padding: 0;
+    width: 630px;
+}
+
+#gs-left p.gs-left {
+    background-image: url("../images/4sicon.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #008BD0;
+    display: block;
+    font-size: 13px;
+    height: 25px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0 0 0 12px;
+}
+
+</style>
+
+<div style="TEXT-ALIGN: center;">
+	<h2>资讯信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><a target="_blank" href="__APP__/articlelist">>>更多</a></em></h2>
+	<volist name="data.ArticleList" id="list">
+		<a href="__APP__/article/{$list.id}" target="_blank">{$list.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$list.create_time|date="Y-m-d",###}<br>
+	</volist>
+	<h2>优惠信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><a target="_blank" href="__APP__/noticelist">>>更多</a></em></h2>
+	<volist name="data.Notice" id="list">
+		<a href="{:URL('/shop/favtype',array('shop_id'=>$list['shop_id'],'id'=>$list['id']))}{:C('HTML_URL_SUFFIX')}">{$list.noticetitle}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$list.update_time|date="Y-m-d",###}<br>
+	</volist>
+		
+	<h2 >上海4S店铺信息<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><a target="_blank" href="__APP__/Colligate/ShopList/shop_city/3306">>>更多</a></em>--></h2>
+	
+	<volist name="data.SH_shoplist" id="list">
+		<a href="__APP__/shop/{$list.id}" target="_blank">{$list.shop_name}</a><br>
+	</volist>
+	<!--
+	<h2>北京4S店铺信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><a target="_blank" href="__APP__/Colligate/ShopList/shop_city/2912">>>更多</a></em></h2>
+	<volist name="data.BJ_shoplist" id="list">
+		{$list.shop_name}<br>
+	</volist>
+
+	<h2>广州4S店铺信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><a target="_blank" href="__APP__/Colligate/ShopList/shop_city/2918">>>更多</a></em></h2>
+	<volist name="data.GZ_shoplist" id="list">
+		{$list.shop_name}<br>
+	</volist>
+	-->
+
+</div>

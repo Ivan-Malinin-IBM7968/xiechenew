@@ -1,0 +1,179 @@
+<include file="Public:pa_head"/>
+		<link rel="stylesheet" href="__PUBLIC__/common/css/reset.css" />
+		<style>
+			#block1{width: 100%; height: 356px; background: url("__PUBLIC__/image/event/20140325/bg1.jpg") center center no-repeat;}
+			#inner-block1{width: 1100px; height: 356px; margin: 0 auto;}
+			#block2{width: 100%; height: 327px; background: url("__PUBLIC__/image/event/20140325/bg2.jpg") center center no-repeat;}
+			#inner-block2{width: 1100px; height: 327px; margin: 0 auto; position: relative;}
+			#go-link{position: absolute; bottom: 0px; right: 50px; font-size: 20px; font-family: "微软雅黑","Microsoft yahei"; color: black;  }
+			#go-link:visited{color: black;}
+			#go-link:hover{text-decoration: underline;}
+			#block3{width: 100%; height: 393px; background: url("__PUBLIC__/image/event/20140325/bg3.jpg") center center no-repeat;}
+			#inner-block3{position: relative; width: 1100px; height: 393px; margin: 0 auto;}
+			.reg-box{position: absolute; width: 387px; height: 130px; overflow: hidden; top:85px; left: 77px;  overflow: hidden;}
+			.reg-box .phone, 
+			.reg-box .verify{ margin: 20px auto; width: 387px; height: 42px; overflow: hidden;}
+			.reg-box .phone input, 
+			.reg-box .verify input{  border: 1px solid #cdcdcd; width: 255px; padding-left: 5px; height: 38px; line-height: 38px; margin-right: 10px; font-size: 16px; display: inline-block; float: left;}
+			.reg-box .phone a, 
+			.reg-box .verify a{
+				display: inline-block; background: #f1f1f1; color: #000000; width: 103px; height: 40px; line-height: 40px; text-align: center; text-decoration: none;float: left;
+			}
+			.reg-box .verify a:after{}
+			.reg-box .phone a{background: url("__PUBLIC__/image/event/20140325/sprite.png") 0px 0px no-repeat;}
+			.reg-box .phone a:visited{background: url("__PUBLIC__/image/event/20140325/sprite.png") 0px 0px no-repeat;}
+			.reg-box .phone a:hover{background: url("__PUBLIC__/image/event/20140325/sprite.png") 0px -40px no-repeat;}
+			.reg-box .verify a{color: #f1f1f1; background: url("__PUBLIC__/image/event/20140325/sprite.png") 0px -80px no-repeat;}
+			.reg-box .verify a:visited{background: url("__PUBLIC__/image/event/20140325/sprite.png") 0px -80px no-repeat;}
+			.reg-box .verify a:hover{background: url("__PUBLIC__/image/event/20140325/sprite.png") 0px -120px no-repeat;}
+			#block4{width: 100%; height: 246px; background: url("__PUBLIC__/image/event/20140325/bg4.jpg") center center no-repeat;}
+			#inner-block4{width: 1100px; height: 246px; margin: 0 auto;}
+		</style>
+		<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+		
+	</head>
+	<script type="text/javascript">
+$(function(){ 
+	$("#send_verify").attr("disabled",false);
+		$("#send_verify").click(function(){
+			
+			var mobile = $('#mobile').val();
+			var second = "60";
+			if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Palottery/send_verify",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							$("#send_verify").show();
+							alert('发送成功！');
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						$("#send_verify").show();
+						send_verify_show(second);
+					}
+				})
+			}else{
+				alert('请输入正确手机号');
+				return false;
+			}
+		})
+
+	
+	$('#btn_login').click(function(){
+		var mobile = $('#mobile').val();
+		var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+		$.ajax({
+			type: "POST",
+			url: "__APP__/Palottery/palogion",
+			cache: false,
+			data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery,
+			dataType: "json",
+			success: function(data){
+				//alert(data);
+				if(data == '1'){
+					alert('验证码填写错误');
+					return false;
+				}else if(data == '3'){
+					alert('领取成功');
+					location.reload();
+				}
+				else if(data == '5'){
+					alert('请填写手机号码');
+					return false;
+				}else{
+					alert('您已经领取过优惠券了');
+					location.reload();
+					return false;
+				}
+			},
+			error: function(){
+				
+			}
+		})	
+	})
+
+
+}); 
+
+
+function send_verify_show(i){
+	if(i>='0'){
+		$("#send_verify").attr("disabled",true); 
+		$("#send_verify").attr("value",i+"秒后重新发送");
+		i--;
+		setTimeout(function(){send_verify_show(i);},1000);
+	}else{
+		$("#send_verify").attr("disabled",false); 
+		$("#send_verify").attr("value","发送手机验证码");
+	}
+}
+
+</script>
+	<body>
+		<div id="block1">
+			<div id="inner-block1">
+				
+			</div>
+		</div>
+		<div id="block2">
+			<div id="inner-block2">
+				<a href="http://baoyang.pahaoche.com/coupon" id="go-link">访问<span style="color: #e85000; font-size: 26px;"> 这里 </span>挑选合适您的现金券或者套餐券</a>
+			</div>
+		</div>
+		<div id="block3">
+			<div id="inner-block3">
+				<div class="reg-box">
+					<div class="phone">
+						<input type="text" id="mobile" name="mobile"  value="手机号码"> 
+						<a href="###" id="send_verify">获取验证</a>	
+					</div>
+					<div class="verify">
+						<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery" value="验证码">
+						<a href="###" id="btn_login" name="btn_login">立即领取</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="block4">
+			<div id="inner-block4">
+				
+			</div>
+		</div>
+		<script src="__PUBLIC__/common/js/libs/jquery/jquery-1.11.min.js"></script>
+		<script>
+			(function(){
+		      $(".reg-box .phone input, .reg-box .verify input").each(function(index, element) {
+		          var $element = $(element);
+		          var defaultValue = $element.val();
+		          $element.css('color', '#999999');
+		          $element.focus(function() {
+		              var actualValue = $element.val();
+		              if (actualValue == defaultValue) {
+		                  $element.val('');
+		                  $element.css('color', '#333');
+		              }
+		          });
+		          $element.blur(function() {
+		              var actualValue = $element.val();
+		              if (!actualValue) {
+		                  $element.val(defaultValue);
+		                  $element.css('color', '#999999');
+		              }
+		          });
+		      });
+		  }());
+
+		</script>
+	</body>
+
+<include file="Public:pa_foot"/>

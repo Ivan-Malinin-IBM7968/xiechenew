@@ -1,0 +1,283 @@
+<layout name='layout_index' />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/index.css?v={$Think.config.VERSION_DATE}" />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/new/js/g.base.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/new/js/ScrollPic.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script>
+	$(function(){
+			//初始化
+		Think.init({
+				basePath:"__PUBLIC__/think"
+		})
+	})
+
+	function getnoticecontent(notice_id,shop_id){
+		popup1();
+		$.ajax({
+			type: "POST",
+			url: "/index.php/index/AjaxNotice",
+			cache: false,
+			data: "ShopId="+shop_id+"&NoticeId="+notice_id,
+			success: function(data){
+				data = eval("(" + data + ")");
+				
+				content = data['noticedescription']+'<br /><br /><a href="/index.php/shop/'+data['shop_id']+'" target="_blank">'+data['shop_name']+'</a><br /><a href="/index.php/shop/'+data['shop_id']+'" target="_blank">'+data['shop_address']+'</a><br />联系电话：400-660-2822';
+				$("#shop_name").append(data['shop_name']);
+				$("#notice_title").append(data['noticetitle']);
+				$("#notice_content").append(content);
+			}
+		})
+		
+	}
+
+	
+
+	function popup1(){
+		Think.popup({
+			content:'<h3 class="flb" drag="1"><em>店铺公告</em><a close="1"  class="flbc">关闭</a></h3><div style="height:20px;font-size: 22px; text-align: center;"  id="notice_title"></div><div style="height:300px;width:400px; padding:20px;"  id="notice_content"></div>',
+			drag:true,//不可拖动
+			cover:true//设置笼罩
+		});
+	}
+</script>
+
+<div id="nav-yy" style="width:960px; height:91px; margin:10px auto; padding:0px; ">
+<a href="__APP__/coupon" target="_blank"><img src="__PUBLIC__/new/images/banner.jpg"></a>
+</div><!--广告位-->
+<!--主要部分-->
+<div id="main" style="width:960px; margin:10px auto; padding:0px; ">
+   <!--左边-->
+  <div id="mian-left">
+   <!--广告位-->
+   <!--广告位-->
+   <!--焦点图-->
+   <div class="mian-left-jdt"> 
+   <div class="hdp">
+      <div id="slide"></div>
+		<script type="text/javascript">
+		$("#slide").jdSlide({width:595,height:220,pics:[
+			{src:"__PUBLIC__/new/images/banner/iosapp.jpg",href:"http://www.xieche.net/Application",alt:"",breviary:"#",type:"img"},
+			{src:"__PUBLIC__/new/images/banner/banner1.jpg",href:"http://www.xieche.net/coupon/46",alt:"",breviary:"#",type:"img"},
+			{src:"__PUBLIC__/new/images/banner/banner2.jpg",href:"http://www.xieche.net/coupon/21",alt:"",breviary:"#",type:"img"},
+			{src:"__PUBLIC__/new/images/banner/banner3.jpg",href:"http://www.xieche.net/shop/87",alt:"",breviary:"#",type:"img"}
+		]})
+		</script>
+    </div>
+    </div>
+   <!--焦点图-->
+	<div id="main-left-gs">
+		<div id="gs-left">
+			<p class="gs-left"><em><a target="_blank" href="__APP__/article/noticelist">>>更多</a></em>4S店优惠信息</p>
+		
+			<p class="kd1"><a href="__APP__/shop/{$shopnotice[0].shop_id}/FavType/1/id/{$shopnotice[0].id}" target="_blank" title="{$shopnotice[0].noticetitle}">{$shopnotice[0].noticetitle|g_substr=30}</a></p>
+			<p class="kd2"><a href="__APP__/shop/{$shopnotice[1].shop_id}/FavType/1/id/{$shopnotice[1].id}" target="_blank" title="{$shopnotice[1].noticetitle}">{$shopnotice[1].noticetitle}</a></p> 
+			<volist name="shopnotice" id="snvo" offset="2" length="19">
+			<p class="kd5"><a href="__APP__/shop/{$snvo.shop_id}/FavType/1/id/{$snvo.id}" target="_blank" title="{$snvo.noticetitle}">{$snvo.noticetitle|g_substr=45}</a> </p> 
+			</volist>   
+ 
+			<!--<p class="gs-left">在线问答精选</p>
+			   <volist name="question" id="voq">
+			   <dl>
+				注释----<dt style="background-image:url(__PUBLIC__/new/images/icon{$i}.jpg); background-repeat:no-repeat;">{$voq.author}<small>（{$voq.time|date="Y-m-d",###}）</small></dt> 
+			   <dt> <em>{$i}</em>{$voq.author}<small>（{$voq.time|date="Y-m-d",###}）</small></dt>
+			   <dd>{$voq.title}</dd>
+				 <dd class="gs-left1">{$voq.description}</dd>
+			   </dl>
+			   </volist>-->
+   </div>
+   <div id="gs-right">
+   
+   <p class="gs-right3"><em><a target="_blank" href="__APP__/article/articlelist">>>更多</a></em>4S店售后资讯</p>
+   <!-- <p class="gs-right4">
+		<img src="__PUBLIC__/new/images/weibo.jpg" width="260" />
+   </p> -->
+   <p class="kd1"><a target="_blank" href="__APP__/article/{$articlelist[0].id}" title="{$articlelist[0].title}">{$articlelist[0].title|g_substr=30}</a></p>
+	<p class="kd2"><a target="_blank" href="__APP__/article/{$articlelist[1].id}" title="{$articlelist[1].title}">{$articlelist[1].title}</a> </p> 
+
+	<volist name="articlelist" id="artvo" offset="2" length="19">
+	<p class="kd5"><a target="_blank" href="__APP__/article/{$artvo.id}" title="{$artvo.title}">{$artvo.title|g_substr=45}</a> </p> 
+	</volist>  
+   
+   <!-- 
+   <p class="gs-right2">明星顾问</p>
+   
+   <volist name="expert_tuijian" id="voexpert">
+   <dl>
+   <dt><img src="__PUBLIC__/new/images/dt1.png" /></dt>
+   <dd>{$voexpert.username}</dd>
+   </dl>
+   </volist>
+
+   <div id="phb">
+     <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#DBDBDB" style="border:2px solid #008BD0;">
+       <tr>
+         <td height="25" colspan="4" align="center" bgcolor="#e3f4fb" style="font-size:13px;">  <font color="#008BD0">明星顾问排行榜</font> </td>
+         </tr>
+       <tr>
+         <td width="18%" height="25" align="center" bgcolor="#FFFFFF">排名</td>
+         <td width="26%" align="center" bgcolor="#FFFFFF">名字</td>
+         <td width="29%" align="center" bgcolor="#FFFFFF">品牌</td>
+         <td width="27%" align="center" bgcolor="#FFFFFF">人气</td>
+       </tr>
+       <volist name="expert" id="voe">
+       <tr>
+         注释----<td height="22" align="center" valign="middle" bgcolor="#FFFFFF"><img src="__PUBLIC__/new/images/icon{$i}.jpg" width="23" height="17"></td> 
+         <td height="28" align="center" valign="middle" bgcolor="#FFFFFF" ><p style=" width:17px; height:17px;margin:0 auto; padding:0px; display:block; background-color: #900; color:#FFF">{$i}</p></td>
+         <td bgcolor="#FFFFFF">{$voe.username}</td>
+         <td bgcolor="#FFFFFF">{$voe.brand_name}</td>
+         <td bgcolor="#FFFFFF">{$voe.credit1}</td>
+       </tr>
+       </volist>
+     </table>
+   </div> -->
+   </div>
+   </div>
+ </div>
+   <!--左边-->
+   <div id="main-right">
+   <div id="main-right-cx">
+   <p class="main-right-bt">&nbsp;&nbsp;&nbsp;车型查询</p>
+   <form name="form2" method="POST" action="__APP__/order">
+     <p>
+       <label for="chexing">品 牌</label>
+        <select id="get_brand" name="brand_id" style= "width:120px" onchange="comp_brlist('get_brand','get_series', 'get_model');">
+		</select>
+     </p>
+     <br/>
+     <p>
+       <label for="cz">车 系</label>
+       <select id="get_series" name="series_id" style= "width:120px" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+	   </select>
+     </p>
+     <br/>
+     <p>
+       <label for="pingpai">车 型</label>
+       <select id="get_model" name="model_id" style= "width:120px" disabled>
+			</select>
+     </p>
+      <br/>
+     <p>
+       <input name="cx" type="submit" id="cx" value="提交">
+     </p>
+   </form>
+   <script type="text/javascript">
+	comp_fctlist("get_brand", "get_series", "get_model");
+</script>
+   </div>
+   <p class="main-right-wb">快速车型入口</p>
+	<div id="main-right-xw" >
+	<dl >
+		<dt>小型车 &gt;</dt>
+		<dd><a href="index.php/order/index/brand_id/17/series_id/153/model_id/408/" target="_blank">新Polo</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/63/series_id/439/model_id/1186/" target="_blank">晶锐</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/54/series_id/377/model_id/1028/" target="_blank">K2</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/25/series_id/231/model_id/631/" target="_blank">嘉年华</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/68/series_id/471/model_id/1278/" target="_blank">爱唯欧</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/8/series_id/83/model_id/227/" target="_blank">飞度</a> </dd>
+	</dl> 
+	<dl >
+		<dt>紧凑型车&gt;</dt>
+		<dd><a href="index.php/order/index/brand_id/17/series_id/156/model_id/418/" target="_blank">朗逸</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/17/series_id/164/model_id/449/" target="_blank">高尔夫</a></dd>
+		<dd><a href="index.php/order/index/brand_id/63/series_id/440/model_id/1188/" target="_blank">明锐</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/11/series_id/118/model_id/315/" target="_blank">凯越</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/56/series_id/407/model_id/1099/" target="_blank">荣威550</a> </dd>
+		
+	</dl>
+
+	<dl class/"right">
+		<dd><a href="index.php/order/index/brand_id/25/series_id/229/model_id/617/" target="_blank" 
+		style/"width:30px;">新福克斯</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/10/series_id/102/model_id/278/" target="_blank" 
+		style/"width:30px;">307</a></dd>
+		<dd><a href="index.php/order/index/brand_id/68/series_id/473/model_id/1286/" target="_blank" 
+		style/"width:30px;">科鲁兹</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/17/series_id/170/model_id/473/" target="_blank" 
+		style/"width:30px;">速腾</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/23/series_id/205/model_id/555/" target="_blank" >卡罗拉</a> </dd>
+		</dl>
+		
+	<dl >
+
+	<dt>中级车 &gt;</dt>
+		<dd><a href="index.php/order/index/brand_id/17/series_id/152/model_id/400/" target="_blank">新帕萨特
+		</a></dd>
+		<dd><a href="index.php/order/index/brand_id/11/series_id/114/model_id/303/" target="_blank">君威</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/63/series_id/438/model_id/1179/" target="_blank">昊锐</a> </dd>
+		<dd><a href="index.php/order/index/brand_id/25/series_id/233/model_id/1403/" target="_blank">蒙迪欧致胜
+		</a></dd>
+		<dd><a href="index.php/order/index/brand_id/55/series_id/397/model_id/1078/" target="_blank">天籁</a> </dd>
+	</dl> 
+ </div>
+
+	<div id="gs-right" style="margin: 0 5px 10px;float:left">
+		<p class="gs-right1">纵横携车网移动<font color="#990000"><strong>客户端</strong></font></p>
+		<ul>
+			<li><a href="http://www.xieche.net/index.php/Application" class="nav1" target="_blank">iPhone</a></li>
+			<li><a href="http://www.xieche.net/index.php/Application" class="nav2" target="_blank">Android</a></li>
+		</ul>
+	</div>
+	
+	<div id="gs-right" style="margin: 0 5px 10px;float:left">
+		<p class="gs-right1" style="margin: 0 5px 5px 0;">纵横携车网微博</p>
+		<iframe width="300" height="330" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=300&height=330&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2463073343&verifier=ff61d30e&dpc=1"></iframe>
+	</div>
+
+   </div>
+</div>
+<!--主要部分-->
+<div id="nav">
+	<embed width="960" height="90" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" type="application/x-shockwave-flash" allowscriptaccess="always" name="adKia2" swliveconnect="true" bgcolor="#ffffff" quality="high" src="http://d1.sina.com.cn/201206/14/431648_auto-950x90-0614kia-a.swf">
+
+</div>
+<!--最新加盟-->
+<div id="tpgd"><!--滚动图片 start-->
+
+<DIV class=rollphotos>
+  <div class=FixTitle>
+    <h3>最新加盟</h3>
+    <span><a href="__APP__/order">共有{$shop_count}家4S店</span></a></div>
+  <div class=blk_29>
+    <div class=LeftBotton id=LeftArr></div>
+    <div class=Cont id=ISL_Cont_1>
+      <!-- 图片列表 begin -->
+      <volist name="shoplist" id="slist">
+      <div class=box><a class=imgBorder href="__APP__/shop/{$slist.id}" target=_blank>
+      <img alt="{$slist.shop_name}" src="{$slist.shop_pic}"  border=0></a>
+        <p><a href="__APP__/shop/{$slist.id}" target="_blank">{$slist.shop_name}</a></p>
+      </div>
+      </volist>
+
+      <!-- 图片列表 end -->
+    </div>
+    <div class=RightBotton id=RightArr></div>
+  </div>
+  <SCRIPT language=javascript type=text/javascript>
+		<!--//--><![CDATA[//><!--
+		var scrollPic_02 = new ScrollPic();
+		scrollPic_02.scrollContId   = "ISL_Cont_1"; //内容容器ID
+		scrollPic_02.arrLeftId      = "LeftArr";//左箭头ID
+		scrollPic_02.arrRightId     = "RightArr"; //右箭头ID
+
+		scrollPic_02.frameWidth     = 908;//显示框宽度
+		scrollPic_02.pageWidth      = 152; //翻页宽度
+
+		scrollPic_02.speed          = 10; //移动速度(单位毫秒，越小越快)
+		scrollPic_02.space          = 10; //每次移动像素(单位px，越大越快)
+		scrollPic_02.autoPlay       = false; //自动播放
+		scrollPic_02.autoPlayTime   = 3; //自动播放间隔时间(秒)
+
+		scrollPic_02.initialize(); //初始化
+							
+		//--><!]]>
+</SCRIPT>
+</DIV>
+<!--滚动图片 end--></div>
+
+<!--推荐商家-->
+<!--推荐商家-->
+<!--问答-->
+<!--问答-->

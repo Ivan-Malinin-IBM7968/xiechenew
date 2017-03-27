@@ -1,0 +1,42 @@
+.filter{background: #f1f1f1; height: auto; font-size: 12px;}
+.filter dl{display: block; width: 810px; height: auto; padding: 0 10px;line-height: 25px; overflow: hidden;}
+.filter dl dt, .filter dl dd{float: left; margin-right: 10px;}
+.filter dl a{padding: 2px 4px; color: #0c314c}
+.filter dl dd.current a, .filter dl a:hover{background: #0c314c; color: white;}
+
+.filter-container{ width:808px; margin:0px 0px 20px 0px; background: #fffcd8; padding: 10px 10px 15px 10px;  border: 1px solid #d9e8ff; border-top: 1px solid #0066cc;}
+
+.get-brand-container,
+.get-series-container,
+.get-models-container{width: 234px; height: 60px; float: left}
+
+.submit-container{float: left; width: 100px; height: 60px; }
+.submit-container input{float: right; margin-top: 25px; background: #0066cc; border: 0px; color: white; width: 100px; height: 36px; border-radius: 2px; font-size: 16px;}
+
+.get-brand-container label,
+.get-series-container label,
+.get-models-container label{float: left;float: left; font-size: 15px;
+display: inline-block; width: 80px; height: 25px; line-height: 25px; color: #666666; font-weight: bolder;}
+
+.coupon-notice{background: #fffcd8; padding: 10px;margin-bottom: 20px; }
+.coupon-notice h3{height: 30px; line-height: 30px; font-size: 18px; color: #3d95c9; font-weight: bolder;}
+.coupon-notice ul{margin: 10px 0px; }
+.coupon-notice ul li{font-size: 14px; line-height: 20px; margin-bottom: 10px;}
+
+.coupon-ul{}
+.coupon-ul li{display: block; width: 372px; height: 404px; border: 1px solid #e7e7e7; padding: 20px; float: left; overflow: hidden;}
+.coupon-name a{font-size: 22px; padding: 10px 0px; letter-spacing: 0px; height: 40px ; color: black; display: block; line-height: 20px; }
+.coupon-name a:visited{color: black;}
+.coupon-name a:hover{color: #3f77b8}
+
+.coupon-img {overflow: hidden; width: 372px; height: 270px}
+.coupon-img a img{display: block;width: 372px; height: 270px}
+.cuupon-address{padding: 5px 0px; font-size: 18px;}
+.cuupon-address a{margin-left: 5px; color: #175bbc}
+.cuupon-address a:visited{margin-left: 5px; color: #175bbc}
+.cuupon-address a:hover{text-decoration: underline;}
+
+.coupon-price{width: 358px; height: 45px; padding: 10px 0px; position: relative; line-height: 65px;}
+.coupon-price strong{font-size: 26px; font-weight: bold; color: #e60012;}
+.coupon-price em{font-size: 15px; color: #999; text-decoration: line-through; margin-left: 10px;}
+.coupon-price .coupon-bought{position: absolute; right: 0px; top: 13px;}

@@ -1,0 +1,74 @@
+<load file="__CSS__/newstyle.css" />
+<div id="main">
+<div id="main-right"><h1>竞价列表</h1>
+</div>
+<div id="main-right2">
+	<div>
+	<FORM METHOD=POST ACTION="__URL__/shopcount/">
+		<table class="list"  width="785">
+		
+			<tr>
+				<td>时间搜索：</td>
+				<td>
+				开始时间：<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" value="{$data.start_time}" readonly="readonly">
+				结束时间：<input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" value="{$data.end_time}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<td>订单状态：</td>
+				<td>
+					<volist name="Think.config.insurance_status" id="isvo">
+						<if condition="$key gt 0">
+						<input type="radio" value="{$key}" name="insurance_status" <if condition="$data.insurance_status eq $key">checked</if>>{$isvo}
+						</if>
+					</volist>
+					<input type="radio" value="" name="insurance_status" <if condition="$data.insurance_status eq ''">checked</if>>全部
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="搜索" style="impBtn hMargin fLeft shadow"></td>
+			</tr>
+		</table>
+		</FORM>
+	</div>
+  <table width="785" border="0" cellspacing="1" cellpadding="1" bgcolor="#E4E4E4">
+    <tr>
+      
+      <td align="center" bgcolor="#EEEEEE">竞价时间</td>
+      <td align="center" bgcolor="#EEEEEE">车辆品牌</td>
+      <td align="center" bgcolor="#EEEEEE">保险公司</td>
+	  <td align="center" bgcolor="#EEEEEE">定损金额</td>
+	  <td align="center" bgcolor="#EEEEEE">事故描述</td>
+	  <td align="center" bgcolor="#EEEEEE">竞价状态</td>
+      <td align="center" bgcolor="#EEEEEE">操作</td>
+    </tr>
+
+
+    <volist name="list" id="vo">
+    <tr>
+      <td  align="center" bgcolor="#FFFFFF">{$vo.create_time|date="y-m-d H:i:s",###}</td>
+      <td align="center" bgcolor="#FFFFFF">{$vo.fsname}</td>	  
+      <td align="center" bgcolor="#FFFFFF">{$vo.insurance_name}</td>
+      <td align="center" bgcolor="#FFFFFF">{$vo.loss_price}</td>
+	  <td align="center" bgcolor="#FFFFFF">{$vo.operator_remark}</td>
+	  <td align="center" bgcolor="#FFFFFF">
+		<if condition="$vo.insurance_status eq 1">竞价中</if>
+		<if condition="$vo.insurance_status eq 2">竞价结束</if>
+		<if condition="$vo.insurance_status eq 3">竞价确认</if>
+		<if condition="$vo.insurance_status eq 4">竞价完成</if>
+
+		<if condition="($vo.is_order eq 1) AND ($vo.insurance_status neq 1)">---<font color="red">竞价成功</font><else/>---<font color="blue">竞价失败</font></if>
+	   </td>
+	   <td>
+		<a href="__APP__/Shop/Safeorder/edit/id/{$vo.insurance_id}">查看</a>
+		<if condition="$vo.insurance_status neq 1 AND $vo.insurance_status neq 2 AND $vo.is_order eq 1">
+			<a href="__APP__/Shop/Safeorder/bidorder/id/{$vo.insurance_id}">订单详情</a></if>
+		</if>
+	  </td>
+    </tr>
+    </volist>
+  </table>
+  <div id="main-right3">{$page}</div>
+</div>
+
+</div>

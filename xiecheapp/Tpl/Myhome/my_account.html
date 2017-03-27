@@ -1,0 +1,152 @@
+<layout name='layout_new' />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	<style type="text/css">
+	.personal-info{width: 908px; height: 10px; background: #effaff; border: 1px solid #dadada;padding: 20px; font-size: 14px;}
+	table { border:1px; padding:3px; }
+	th { height:50px; }
+
+	.recommend { margin-top: 20px; width: 950px; height: 780px; }
+	.acc-tab .con{height: auto; border: none; padding-top: 20px; }
+	.acc-tab .tabs{border-bottom: 1px solid #d9d9d9; }
+	.acc-tab .tabs li{width: 160px; font-size: 16px; background: none; border: 1px solid #ffffff; border-bottom: none; color: #000000;}
+	.acc-tab .tabs li.current { height: 40px; border: 1px solid #d9d9d9; background: white; border-bottom: none; color: #0364cb;}
+	#zhye th{height: 40px; line-height: 40px; font-size: 14px; background: #ececec; border: 1px solid #d9d9d9;}
+	#zhye tr td{height: 40px; line-height: 40px; font-size: 14px; background: #ffffff; border: 1px solid #d9d9d9;}
+	</style>
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<div class="content-right main">
+			<!--personal info summary start-->
+			<div class="personal-info">
+				<ul class='grxx'>
+					<li>当前账户余额为：{$member.username}</li>
+				</ul>
+			</div>
+			<!--personal info summary end-->
+			<!--recommend start-->
+			<div class="acc-tab recommend">
+				<ul id="tabs1" class="tabs">
+					<li class="current">使用步骤</li>
+					<li class="">账户查询</li>
+			
+				</ul>
+				<div id="con1" class='con'>
+					<div class="re-shop">
+						<img src="http://statics.xieche.com.cn/new_2/images/myhome/zhye_guide.jpg" alt="我的账户余额使用步骤">
+					</div>
+					<div style="display: none;" class='re-ticket'>
+							<table width="950" id="zhye">
+								<tr>
+									<th bgcolor="#ccffff">时间</th>
+									<th bgcolor="#ccffff">存入</th>
+									<th bgcolor="#ccffff">支付</th>
+									<th bgcolor="#ccffff">类型</th>
+								</tr>
+								<volist name="account_info" id="vo">
+								<tr>
+									<td align='center'>{$vo.create_time|date="Y-m-d",###}</td>
+									<td align='center'>{$vo.save}</td>
+									<td align='center'>{$vo.pay}</td>
+									<td align='center'>{$vo.content}</td>
+								</tr>
+								</volist>
+							</table>
+							<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--recommend end-->
+		</div><div class="clear"></div>
+		<!--right conntent end-->
+	</div>
+
+	<div id="popup"></div>
+	<div class="blackbox"></div>
+
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>
+	<script type="text/javascript">
+		function hTab(tab_controler,tab_con){
+			this.tab_controler = tab_controler;
+			this.tab_con = tab_con;
+			var tabs = $(tab_controler).children("li");
+			var panels = $(tab_con).children("div");
+			$(tab_con).children("div").css("display","none");
+			$(tab_con).children("div:first").css("display","block");
+			$(tabs).hover(function(){
+				var index = $.inArray(this,tabs);
+				tabs.removeClass("current")
+				.eq(index).addClass("current");
+				panels.css("display","none")
+				.eq(index).css("display","block");
+			});
+		};
+
+		hTab('#tabs1','#con1');
+		hTab('#tabs2','#con2');
+
+
+	$('.showcomment').on('click',function(){
+			$('.blackbox').show();
+			$("#popup").css({
+				"width" : "600px",
+				"height" : "400px",
+				"top": "100px",
+	            "left": ( $(window).width() - parseInt(800)) / 2+$(window).scrollLeft() + "px"
+			}).show();
+
+			var orderid = $(this).attr('orderid');
+			var shopid = $(this).attr('shopid');
+			$.ajax({
+				type: "POST",
+				url: "/comment/showcomment",
+				cache: false,
+				data: "orderid="+orderid+"&shopid="+shopid,
+				success: function(data){
+					$("#popup").html("");
+					$("#popup").append("<div style='padding: 10px 10px 8px;height:20;line-height:20px;color: #336699;'>评价</div>");
+					$("#popup").append(data);
+				}
+			});
+	
+	} );
+
+	$('.comment').on('click',function(){
+		$('.blackbox').show();
+		$("#popup").css({
+			"width" : "600px",
+			"height" : "400px",
+			"top": "100px",
+			"left": ( $(window).width() - parseInt(800)) / 2+$(window).scrollLeft() + "px"
+		}).show();
+		
+		var orderid = $(this).attr('orderid');
+		var shopid = $(this).attr('shopid');
+		$.ajax({
+			type: "POST",
+			url: "/comment",
+			cache: false,
+			data: "orderid="+orderid+"&shopid="+shopid,
+			success: function(data){
+				$("#popup").html("");
+				$("#popup").append("<div style='padding: 10px 10px 8px;height:20;line-height:20px;color: #336699;'>回复</div>");
+				$("#popup").append(data);
+			}
+		});
+	} );
+
+
+	$('.blackbox').not("#popup").on('click', function(){
+		$('.blackbox').hide();
+		$("#popup").hide()
+	});
+
+
+</script>	

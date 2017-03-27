@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>携车网-订单列表</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="pagetop">
+      <div class="reindex" id="reindex_bk"  onclick="javascript: history.go(-1);">&nbsp;</div>
+      <div class="thispage">订单列表</div>
+    </div>
+    <div class="container huise">
+      <if condition="$isshow eq 3">
+        <table width="100%" class="table">
+          <tr>
+            <td><input type="text" id="mobile" name="mobile" placeholder="下单手机号"/></td>
+            <td><input type="button" value="获取验证码" id="yzmBtn"/></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="verify" name="verify"/></td>
+            <td><input type="button" id="goshow" value="确定"/></td>
+          </tr>
+        </table>
+        <script type="text/javascript">
+        var i;
+        $("#yzmBtn").click(function(){
+          var mobile = $("#mobile").val();
+          i = 60;
+          if(mobile){
+          }else{
+            alert('请填写手机号码');
+            $("#mobile").focus();
+            return false;
+          }
+          if( $(this).hasClass('noClick') ){
+            return false;
+          }
+          $.ajax({
+              type:'POST',
+              url:'__APP__/mobilecar/giveeverify2',
+              cache:false,
+              dataType:'JSON',
+              data:'mobile='+mobile,
+              success:function(data){
+                  data = data.data;
+                  if(data.errno == 0){
+                      $("#yzmBtn").prop("disabled",true);
+                      alert('验证码发送成功');
+                      setInterval(aaauto,1000);
+                      return true;
+                  }else{
+                      alert(data.errmsg);
+                      return false;
+                  }
+              }
+          });
+        });
+        
+        function aaauto(){
+          if(i>0){
+            $("#yzmBtn").val(i);
+            i--;
+          }else{
+            $("#yzmBtn").prop("disabled",false);
+            $("#yzmBtn").val("重新获取");
+          }
+
+        }
+
+        $("#goshow").click(function(){
+          var code = $("#verify").val();
+          var mobile = $("#mobile").val();
+          $.ajax({
+              type:'POST',
+              url:'__APP__/mobilecar/mycarservice_yz',
+              cache:false,
+              dataType:'JSON',
+              data:'code='+code+'&mobile='+mobile,
+              success:function(data){
+                  if(data.status==1){
+                    window.location.reload();
+                  }else{
+                    alert("验证码错误");
+                  }
+              }
+          });
+        });
+        </script>
+        </if>
+        <if condition="$isshow eq 2">
+        <empty name="list"><p style="margin:10px 5px;">您暂无府上养车订单</p></empty>
+        <div class="formlist row">
+            <ul>
+              <volist name="list" id="vo" key="key">
+              <li class="formlistli" ><!-- onclick="window.location.href='__APP__/mobilecar/mycarservice_detail_pa?order_id={$vo[id]}';" -->
+                <table width="100%">
+                  <tbody>
+                    <tr class="aaa" height="30">
+                      <td class="Ftitle"><strong>府上养车</strong> <span>{$vo['pay_status_name']}</span></td>
+                      <td align="right" class="cff682d">￥{$vo['amount']}</td>
+                    </tr>
+                    <tr height="40">
+                      <td>{$vo['car_name']}</td>
+                      <td align="right" class="c8e8e8e" width="80">
+            <if condition="$vo['order_time'] neq 0">{$vo['order_time']|date="Y-m-d H",###}:00-{$vo['order_time']|date="H",###}:59<else/>客服稍后与您电话确认</if></td>
+                    </tr>
+
+                    <if condition="$vo.order_type eq 46">
+                      <tr height="20">
+                        <td colspan="2"><b>金美孚套餐-套餐内容：</b></td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">金美孚 {$vo['item_list']['0']['norms']}L</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">上门保养服务费</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">38项全车检测</td>
+                      </tr>
+                      <volist name="vo['item_list']" id="vi" offset="1">
+                        <if condition="$vi['name'] neq '自备配件'">
+                          <tr height="20">
+                            <td colspan="2">{$vi['name']}</td>
+                          </tr>
+                        </if>
+                      </volist>
+                    </if>
+
+                    <if condition="$vo.order_type eq 45">
+                      <tr height="20">
+                        <td colspan="2"><b>壳牌蓝喜力套餐-套餐内容：</b></td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">壳牌蓝喜力 {$vo['item_list']['0']['norms']}L</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">上门保养服务费</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">38项全车检测</td>
+                      </tr>
+                      <volist name="vo['item_list']" id="vi" offset="1">
+                        <if condition="$vi['name'] neq '自备配件'">
+                          <tr height="20">
+                            <td colspan="2">{$vi['name']}</td>
+                          </tr>
+                        </if>
+                      </volist>
+                    </if>
+
+                    <if condition="$vo.order_type eq 44">
+                      <tr height="20">
+                        <td colspan="2"><b>壳牌黄喜力套餐-套餐内容：</b></td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">壳牌黄喜力 {$vo['item_list']['0']['norms']}L</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">上门保养服务费</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">38项全车检测</td>
+                      </tr>
+                      <volist name="vo['item_list']" id="vi" offset="1">
+                        <if condition="$vi['name'] neq '自备配件'">
+                          <tr height="20">
+                            <td colspan="2">{$vi['name']}</td>
+                          </tr>
+                        </if>
+                      </volist>
+                    </if>
+
+                    <if condition="$vo.order_type eq 43">
+                      <tr height="20">
+                        <td colspan="2"><b>单次服务套餐-套餐内容：</b></td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">上门保养服务费</td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">38项全车检测</td>
+                      </tr>
+                      <volist name="vo['item_list']" id="vi">
+                        <if condition="$vi['name'] neq '自备配件'">
+                          <tr height="20">
+                            <!--<empty name="vo.item_list.0.norms"><td colspan="2">{$vi['name']}></td><else /> <td colspan="2">{$vi['name']}&nbsp;&nbsp;{$vo['item_list']['0']['norms']}L</empty>-->
+                            <td colspan="2">{$vi['name']}</td>
+                          </tr>
+                        </if>
+                      </volist>
+                    </if>
+
+                    <if condition="$vo.order_type eq 34">
+                      <tr height="20">
+                        <td colspan="2"><b>补配件订单：</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">{$vo['item_list']['0']['name']}&nbsp;&nbsp;{$vo['item_list']['0']['norms']}L</td>
+                      </tr>
+                      <volist name="vo['item_list']" id="vi" offset="1">
+                        <if condition="$vi['name'] neq '自备配件'">
+                          <tr height="20">
+                            <td colspan="2">{$vi['name']}</td>
+                            <!--<empty name="vo.item_list.0.norms"><td colspan="2">{$vi['name']}></td><else /> <td colspan="2">{$vi['name']}&nbsp;&nbsp;{$vo['item_list']['0']['norms']}L</empty>-->
+                          </tr>
+                        </if>
+                      </volist>
+                    </if>
+
+                    <if condition="$vo.order_type eq 14">
+                      <tr height="20">
+                        <td colspan="2"><b>好空气套餐-套餐内容：</b></td>
+                      </tr>
+                      <tr height="20">
+                        <td colspan="2">品牌空气滤更换</td>
+                      </tr>
+                    </if>
+
+                    <if condition="($vo.order_type neq 34) AND ($vo.order_type neq 43) AND ($vo.order_type neq 44) AND ($vo.order_type neq 45) AND ($vo.order_type neq 46) AND ($vo.order_type neq 14)">
+                      <tr>
+                        <td colspan="2">{$vo['item_list']['0']['name']}&nbsp;&nbsp;{$vo['item_list']['0']['norms']}L</td>
+                      </tr>
+                      <volist name="vo['item_list']" id="vi" offset="1">
+                        <if condition="$vi['name'] neq '自备配件'">
+                          <tr height="20">
+                            <td colspan="2">{$vi['name']}</td>
+                            <!--<empty name="vo.item_list.0.norms"><td colspan="2">{$vi['name']}></td><else /> <td colspan="2">{$vi['name']}&nbsp;&nbsp;{$vo['item_list']['0']['norms']}L</empty>-->
+                          </tr>
+                        </if>
+                      </volist>
+                    </if>
+                    
+                    <notempty name="show_jishi">
+                      <tr height="30">
+                        <td>技师</td>
+                        <td align="right">{$vo['technician_name']}</td>
+                      </tr>
+                    </notempty>
+                  </tbody>
+                </table>
+              </li>
+              </volist>
+            </ul>
+        </div>
+      </if>
+    </div>
+      
+    <script>
+    $(function(){
+
+      $("#reindex").click(function(){
+          window.location.href='__APP__/mobilecar/order_as';
+      });
+
+
+    });
+    </script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?60969e039f9a2a7252a22e6e27e9f16f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </body>
+</html>

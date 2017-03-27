@@ -1,0 +1,185 @@
+<!DOCTYPE html >
+  <html ><head>
+  <meta charset="utf-8" />
+  <title>{$Think.config.web_name}管理系统登录</title>
+   <load href="__JS__/prototype.js" />
+    <import file="Js.Base,Js.mootools,Js.Think.ThinkAjax,Js.PHP.php#min,Js.Form.CheckForm"  basepath="__PUBLIC__" />
+  <link rel="shortcut icon" href="/Public/new_2/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="/Public/new_2/css/common.css?v=20131225" />
+    <script src="/Public/new_2/js/jquery.min.js" ></script>
+	
+          <style>  
+              .gy a:visited{
+                color: #000000;
+              }
+              .gy a:hover{
+                text-decoration: underline;
+              }
+         </style>
+  </head>
+	
+  
+    
+    <style>
+        /*********************** new shopadmin Login Page ***********************
+        *********************** 2013-12-25 & Merry Christmas ********************/
+        *{margin: 0px; padding: 0px;}
+        body{ width: 100%;height: 975px;  background: url("__IMG__/shopadmin/login/bg.jpg") 0px 0px repeat-x;}
+        #section1{ width: 100%; height: 281px; background: url("__IMG__/shopadmin/login/background_01.jpg") center center no-repeat; }
+        #inner-section1{ width: 100%; height: 80; position: relative; margin: 0 auto; background: white}
+        #section2{ width: 100%; height: 325px; background: url("__IMG__/shopadmin/login/background_02.jpg") center center no-repeat; }
+        #inner-section2{ width: 1200px; height: 325px; position: relative; margin: 0 auto;}
+        #inner-section2 .login-form{width: 310px; height: 360px; position: absolute; right: 54px; top: 0px; }
+        .login-form .login-field{padding-left: 5px; display: block; width: 265px; height: 45px;  font-size: 19px; border: 1px solid #c0c0c0; margin: 15px auto; box-shadow:inset 0 0 5px #cccccc; border-radius: 4px;}
+        .login-form .login-field:focus{border: 1px solid #4d90fe;}
+        .display-code{padding-left: 5px; display: block; width: 265px; height: 45px;  font-size: 19px;  margin: 10px auto;  border-radius: 4px; font-size: 16px;}
+        #submit{border: 1px solid #0066cc; background: #0066cc; color: white; width: 270px; border-radius: 5px; cursor: pointer; padding-left: 5px; display: block; width: 265px; height: 45px;  font-size: 19px; border: 1px solid #c0c0c0; margin:10px auto; box-shadow:inset 0 0 5px #cccccc; border-radius: 4px;}
+        .error-list{display:none; background-color: #ffdede; padding: 15px; width:240px; height: 15px; margin: 5px auto;}
+        #section3{ width: 100%; height: 224px; background: url("__IMG__/shopadmin/login/background_03.jpg") top center no-repeat; }
+        #inner-section3{ width: 1200px; height: 224px; position: relative; margin: 0 auto;}
+        #section4{ width: 100%; height: 90px; background: url("__IMG__/shopadmin/login/background_04.jpg") center center no-repeat; }
+        #inner-section4{ width: 1200px; height: 90px; position: relative; margin: 0 auto;}
+    </style>
+ 
+<body >  
+	<div id="section1">
+    <div id="inner-section1">
+      <!-- 头部Nav开始 -->
+      <div class='top-container'>
+        <a href="/index" id="logo-h1-con" title='携车网'>
+          <h1 id='logo'>携车网</h1></a><div class="cs"></div></div><div class="nav-container">
+          <div class="nav">
+            <ul class='main-nav'>
+              <li style="width:1px;border-left:none;"></li>
+              <li><a href="/index.php">首页</a></li>
+              <li ><a href="/order">4S店售后预约</a></li>
+              <li ><a href="/coupon">4S店售后团购</a></li>
+              <li ><a href="/noticelist">优惠速递</a></li>
+              <li ><a href="/articlelist">用车心得</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 头部Nav结束 --> 
+    </div>
+    
+  </div>
+  
+  
+  <div id="section2">
+    <div id="inner-section2">
+        <div class="login-form">
+             <form method=post name="login" id="form1" >
+                <input type="text" name="account" id="Top1_txtUserID" class="login-field" value="用户名:">
+                <input type="password" name="password" id="Top1_txtPassWord" class="login-field" value="密 码:">
+                <input type="text" name="verify" id="checkno" onkeydown="keydown(event)" class="login-field" value="验证码:">
+                <div class="display-code">
+                  <span>
+                    <img id="verifyImg" SRC="__URL__/verify/" onclick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle" width="70" style="width: 70px"> 看不清换一张！
+                  </span>
+
+                </div>
+               
+                     <input type="hidden" name="ajax" value="1">
+	       <input type="button" id="submit" name="submit" value="马上登录" class="btn-submit" onclick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')" tabindex="6" />
+			
+
+                <div class="error-list" id="result">
+                   Please enter a valid check-in date.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+  </div>
+  <div id="section3">
+     <div id="inner-section3">
+       
+    </div>
+  </div>
+  <div id="section4">
+    
+    <!-- 底部foot --> 
+
+    <div class="w1200 footer">
+      <ul class="row gy">
+          <li><a href="/about/4" target="_blank">关于我们</a>|</li>
+          <li><a href="/about/16" target="_blank">联系我们</a>|</li>
+          <li><a href="/about/24" target="_blank">服务协议</a>|</li>
+          <li><a href="/about/9" target="_blank">如何预约维修保养 </a></li>
+      </ul>
+      <div class="row ba">Copyright <a href="/Colligate/index" target="_blank">©</a>2013 WWW.XIECHE.COM.CN <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备12017241号</a> 携车网 版权所有<br class="clear"></div>
+      <div class="row fi">
+          <ul>
+              <li class="t1"><a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121109104613460" title="经营性网站备案信息" target="_blank"></a></li>
+              <li class="t2"><a href="http://webscan.360.cn/index/checkwebsite/url/www.xieche.net" title="360网站安全检测" target="_blank"></a></li>
+              <li class='t3'><a href="http://www.zx110.org/" title="征信网" target="_blank"></a></li>
+              <li class="t4"><a href="http://www.alipay.com/"></a></li>
+          </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+
+<script>
+  jQuery.noConflict();
+  (function($){
+      $(".login-field").each(function(index, element) {
+          var $element = $(element);
+          var defaultValue = $element.val();
+          $element.css('color', '#999999');
+          $element.focus(function() {
+              var actualValue = $element.val();
+              if (actualValue == defaultValue) {
+                  $element.val('');
+                  $element.css('color', '#333');
+              }
+          });
+          $element.blur(function() {
+              var actualValue = $element.val();
+              if (!actualValue) {
+                  $element.val(defaultValue);
+                  $element.css('color', '#999999');
+              }
+          });
+      });
+  })(jQuery)
+  
+</script>
+<script LANGUAGE="JavaScript">
+   // <!--
+    var PUBLIC   =   '__PUBLIC__';
+    ThinkAjax.image = [  '__IMG__/loading2.gif', '__IMG__/ok.gif','__IMG__/update.gif' ]
+    ThinkAjax.updateTip = '登录中～';
+    function loginHandle(data,status){
+      var timenow = new Date().getTime();
+      if (status==1){
+       $('result').innerHTML  = '<span style="color:blue"><IMG SRC="__IMG__/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+      $('form1').reset();
+      window.location = '__APP__/Admin';
+      }else{
+        $('verifyImg').src= '__URL__/verify/'+timenow;
+      }
+    }
+    function keydown(e){
+      var e = e || event;
+      if (e.keyCode==13){
+       ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+      }
+    }
+    function fleshVerify(type){ 
+    //重载验证码
+    var timenow = new Date().getTime();
+      if (type){
+        $('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+      }else{
+        $('verifyImg').src= '__URL__/verify/'+timenow;
+      }
+
+    }
+      if ( window != top){  window.top.location =window.location;}  
+
+    //
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<layout name='layout_new' />
+
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+
+
+
+<div id='test'>  
+	 <form METHOD=POST id="form1" name="form1" action="__URL__/test_up" enctype="multipart/form-data">
+			<table cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >优惠券：</TD>
+                     <TD class="tLeft" ><input type="file" name="coupon_pic[]" class="file  large"></TD>
+                </TR>
+					<TR>
+                    <TD class="tRight" >优惠券：</TD>
+                     <TD class="tLeft" ><input type="file" name="coupon_pic[]" class="file  large"></TD>
+                </TR>
+					<TR>
+                    <TD class="tRight" >优惠券：</TD>
+                     <TD class="tLeft" ><input type="file" name="coupon_pic[]" class="file  large"></TD>
+                </TR>
+					<TR>
+                    <TD class="tRight" >优惠券：</TD>
+                     <TD class="tLeft" ><input type="file" name="coupon_pic[]" class="file  large"></TD>
+                </TR>
+				 </TR>
+					<TR>
+                    <TD class="tRight" ></TD>
+                     <TD class="tLeft" ><input type="submit" name="btn" id="btn" value="确认"></TD>
+                </TR>
+			</table>
+	</form>
+
+	<volist name="data" id="list">
+		<img src="/UPLOADS/Shop/{$list.img}" />
+		{$list.img}<br>
+	</volist>
+</div>

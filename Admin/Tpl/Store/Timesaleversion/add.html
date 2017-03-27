@@ -1,0 +1,67 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/DatePicker/WdatePicker.js'></script>
+<div id="main" class="main" >
+<div class="content">
+<div class="title">添加分时折扣[ <A HREF="__URL__/index/timesale_id/{$Think.get.id}">返回列表</A> ]</div>
+<form action="__URL__/insert" method="post">
+<table>
+	<tr>
+		<td>配件折扣</td>
+		<td>
+		<select name="product_sale" >
+		<volist name="Think.config.SALE_VALUE" id="vo">
+		<eq name="vo" value="0.00"><option value="{$vo}" selected="selected">{$vo}</option><else/><option value="{$vo}">{$vo}</option></eq>
+		</volist>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>工时折扣</td>
+		<td>
+		<select name="workhours_sale" >
+		<volist name="Think.config.SALE_VALUE" id="vo">
+		<eq name="vo" value="0.00"><option value="{$vo}" selected="selected">{$vo}</option><else/><option value="{$vo}">{$vo}</option></eq>
+		</volist>
+		</select>
+		</td>
+	</tr>
+		
+	<tr>
+		<td>开始日期</td>
+		<td>
+		<input type="text"  onclick="WdatePicker({enableKeyboard:false,dateFmt:'yyyy-MM-dd',minDate:'%y-%M-{%d+1}'})"  readonly="readonly" value="" name="s_time">
+		</td>
+	</tr>
+	<tr>
+		<td>结束日期</td>
+		<td>
+		<input type="text"  onclick="WdatePicker({enableKeyboard:false,dateFmt:'yyyy-MM-dd',minDate:'%y-%M-{%d+1}'})"  readonly="readonly" value="" name="e_time">
+		</td>
+	</tr>
+	<tr>
+		<td>优惠券</td>
+		<td>
+		<select name="coupon_id">
+			<option value="0">选择优惠券</option>
+			<volist name="coupon" id="couponlist">
+				<option value="{$couponlist.id}">{$couponlist.coupon_name}</option>
+			</volist>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>备注</td>
+		<td>
+			<textarea name="memo" ></textarea>
+		</td>
+	</tr>
+	<tr>
+	<td><input type="hidden" name="timesale_id" value="{$Think.get.id}"><input type="submit" value="提交"></td>
+	</tr>
+</table>
+</form>
+</div>
+</div>

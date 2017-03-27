@@ -1,0 +1,14 @@
+<table>
+	<tr>	
+		<td>关键字</td>
+		<td>来源</td>
+		<td>时间</td>
+	</tr>
+	<volist name="info" id="vo">
+	<tr>	
+		<td>{$vo.wd}</td>
+		<td><if condition="$vo[from] eq 'baidu'">百度</if></td>
+		<td>{$vo.create_time|date="y-m-d ",###}</td>
+	</tr>
+	</volist>
+</table>

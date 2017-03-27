@@ -1,0 +1,360 @@
+<layout name='layout_maintenance' />
+
+<script src="http://api.map.baidu.com/api?v=1.5&ak=3db05159a3e3c55937fbf0160e2d8933" type="text/javascript"></script>  
+
+<link type="text/css" href="__PUBLIC__/css/car4s.css" rel="stylesheet">
+    <div class="snav" id="snav">
+        <ul>
+          <li><a href="/carservice">府上养车</a></li>
+          <li><a href="/shopservice/index" class="current" style="background-color:#fbfaf8;">4S店预约保养</a></li>
+          <li><a href="/coupon">团购保养</a></li>
+        </ul>
+        <span>
+          <b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+        </span>
+    </div>
+
+    <div class="car4s">
+      <div class="adrareabg">
+        <div class="adrarea">
+
+          <div class="w1183">
+            <span>区域：</span>
+            <a  <if condition="$shop_area eq ''">class="current"</if> href="{:U('/shopservice/index',array('fsid'=>$fsid,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">全部区域</a>
+            <volist name="Carea[$sessarea]" id="area">
+				<empty name="fsid">
+					<a <if condition="$shop_area eq $key">class="current"</if> href="{:U('/shopservice/index',array('shop_area'=>$key,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">{$area}</a>
+				<else/>
+					<a href="{:U('/shopservice/index',array('shop_area'=>$key,'fsid'=>$fsid,'brand_id'=>$brand_id,'series_id'=>$series_id,'model_id'=>$model_id))}{:C('HTML_URL_SUFFIX')}">{$area}</a>
+				</empty>
+			</volist>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="w1183">
+        <div class="row">
+          <div class="quanfenlei">
+            <div class="col-md-4"><a href="javascript:;" class="current current0">跨品牌保养套餐券</a></div>
+            <div class="col-md-4"><a href="javascript:;">本品牌保养套餐券</a></div>
+            <div class="col-md-4"><a href="javascript:;">现金券</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w1183">
+      <div class="row">
+      <div class="quanfenleicon">
+
+        <div class="quanfenleicons">
+             <div class="w1183 xianjinquan">
+             <if condition="$tuijian_coupon3 eq ''"><div>对不起，您选择的车型没有跨品牌保养套餐券</div></if>
+              <ul>
+               <volist name="tuijian_coupon3" id="voc">
+                <li>
+                  <div class="xianjinquancon">
+                    <h6><a href="{:U('/coupon/detail',array('id'=>$voc['id']))}" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+                    <p><a href="{:U('/coupon/detail',array('id'=>$voc['id']))}" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+                  
+                    <div class="xianjinquandes">
+                      <div class="xianjinquandestop t1">&nbsp;</div>
+                      <div class="xianjinquandescon c14b3b7">
+                        <table class="xianjinquandescon1" width="100%">
+                          <tbody>
+                            <tr height="10"></tr>
+                            <tr height="50">
+                              <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+                              <td align="center" class="xianjinstyle">跨品牌<br>保养套餐券</td>
+                            </tr>
+                            <tr height="10"></tr>
+                          </tbody>
+                        </table>
+                        <p>支持“15天内退款”、“过期退款”</p>
+                        <a href="{:U('/coupon/detail',array('id'=>$voc['id']))}">查&nbsp;&nbsp;看</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+               </volist>
+               </ul>
+             </div>
+            </div>
+        <div class="quanfenleicons"  style="display:none;">
+         <div class="w1183 xianjinquan">
+             <if condition="$tuijian_coupon2 eq ''"><div>对不起，您选择的车型没有本品牌保养套餐券</div></if>
+            <ul>
+             <volist name="tuijian_coupon2" id="voc">
+              <li>
+                <div class="xianjinquancon">
+                  <h6><a href="{:U('/coupon/detail',array('id'=>$voc['id']))}" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+                  <p><a href="{:U('/coupon/detail',array('id'=>$voc['id']))}" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+                
+                  <div class="xianjinquandes">
+                    <div class="xianjinquandestop t2">&nbsp;</div>
+                    <div class="xianjinquandescon cff7f48">
+                      <table class="xianjinquandescon1" width="100%">
+                        <tbody>
+                          <tr height="10"></tr>
+                          <tr height="50">
+                            <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+                            <td align="center" class="xianjinstyle">本品牌<br>保养套餐券</td>
+                          </tr>
+                          <tr height="10"></tr>
+                        </tbody>
+                      </table>
+                      <p>支持“15天内退款”、“过期退款”</p>
+                      <a href="{:U('/coupon/detail',array('id'=>$voc['id']))}">查&nbsp;&nbsp;看</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+             </volist>
+             </ul>
+           </div>
+        </div>
+        <div class="quanfenleicons" style="display:none;">
+           <div class="w1183 xianjinquan">
+             <if condition="$tuijian_coupon1 eq ''"><div>对不起，您选择的车型没有现金券</div></if>
+              <ul>
+               <volist name="tuijian_coupon1" id="voc">
+                <li>
+                  <div class="xianjinquancon">
+                    <h6><a href="{:U('/coupon/detail',array('id'=>$voc['id']))}" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+                    <p><a href="{:U('/coupon/detail',array('id'=>$voc['id']))}" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+                  
+                    <div class="xianjinquandes">
+                      <div class="xianjinquandestop">&nbsp;</div>
+                      <div class="xianjinquandescon">
+                        <table class="xianjinquandescon1" width="100%">
+                          <tbody>
+                            <tr height="10"></tr>
+                            <tr height="50">
+                              <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+                              <td align="center" class="xianjinstyle">现金券</td>
+                            </tr>
+                            <tr height="10"></tr>
+                          </tbody>
+                        </table>
+                        <p>支持“15天内退款”、“过期退款”</p>
+                        <a href="{:U('/coupon/detail',array('id'=>$voc['id']))}">查&nbsp;&nbsp;看</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+               </volist>
+               </ul>
+             </div>
+
+        </div>
+
+
+      </div>
+      
+      </div>
+    </div>
+
+    </div>
+
+    <div class="car4s2">
+        <div class="w1183 po-re">
+        <div class="car4slist">
+          <volist name="shops" id="vo" key="k">
+          <div class="car4sone single-shop" data-index="{$k}" data-lng="{$vo.shop_maps}" data-name="{$vo.shop_name}" data-address="{$vo.shop_address}" data-href="{:U('/shopservice/detail',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" id="list-id-{$vo.id}">
+            
+            
+            <div class="c95">
+              <div class="onecon">
+                <div class="oneimg fl"><a href="{:U('/shopservice/detail',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}"><img src="{:C('WEB_ROOT')}{$vo.shop_pic}" width="100%" alt=""></a></div>
+                <div class="onedes fr">
+                  <h3><a href="{:U('/shopservice/detail',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}">{$vo.shop_name}</a></h3>
+                  <div class="pingjia">
+                    <script type="text/javascript">var pingjiai = {$vo['comment_rate']};pingjiai=parseInt(pingjiai/10);document.write('<img class="fl" src="__PUBLIC__/images/car4s/'+pingjiai+'.png" height="20">');</script>
+                    <span>{$vo[comment_rate]/10}分</span><a href="{:U('/shopservice/detail',array('shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}#comment" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;{$vo.comment_number}人评价</a></div>
+                  <div class="onetel">400-660-2822</div>
+                  <div class="oneaddr">{$vo.shop_address}&nbsp;&nbsp;<a href="javascript:;" desc="商家名称：{$vo.shop_name} ^^地址：{$vo.shop_address} ^^电话：{$vo.shop_phone}" lng="{$vo.shop_maps}" class="point">[查看地图]</a></div>
+                </div>
+              </div>
+              <notempty name="vo.coupon_list">
+	              <div class="oneyh">
+	                <h4>优惠券</h4>
+	                <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+	                  <tr style="border-bottom:1px solid #e3e3e3; font-size:16px; height:50px;">
+	                    <td>名称</td>
+	                    <td align="center" width="100">现价</td>
+	                    <td align="center" width="100">原价</td>
+	                    <td align="center" width="100">已购数量</td>
+	                    <td align="center" width="100">操作</td>
+	                  </tr>
+					         <volist name="vo.coupon_list" id="voc" mod="2" key="c_k">
+	                  <tr height="40">
+	                    <td><a href="#">{$voc.coupon_name}</a></td>
+	                    <td align="center"><span>￥</span><span>{$voc.coupon_amount}</span></td>
+	                    <td align="center"><span>￥</span><span>{$voc.cost_price}</span></td>
+	                    <td align="center">{$voc.pay_count}人已购买</td>
+	                    <td align="center"><a href="/coupon/detail/id/{$voc.id}.html" class="showyh">查看</a></td>
+	                  </tr>
+	                  </volist>
+	                </table>
+	              </div>
+              </notempty>
+              <notempty name="vo.timesale">
+	              <div class="oneyh">
+	                <h4>预约折扣</h4>
+	                <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+	                  <tr style="border-bottom:1px solid #e3e3e3; font-size:16px; height:50px;">
+	                    <td>星期</td>
+	                    <td align="center" width="100">时段</td>
+	                    <td align="center" width="100">工时折扣率</td>
+	                    <td align="center" width="100">零件折扣率</td>
+	                    <td align="center" width="100">操作</td>
+	                  </tr>
+					<volist name="vo.timesale" id="sale_item" mod="2" key="t_k">
+	                  <tr height="40">
+	                    <td>周一~周日</td>
+	                    <td align="center">{$sale_item.begin_time} - {$sale_item.end_time}</td>
+	                    <td align="center"><span>{$sale_item.workhours_sale_str}</span></td>
+	                    <td align="center">{$sale_item.product_sale_str}</td>
+	                    <td align="center"><a href="{:U('/shopservice/order',array('timesaleversion_id'=>$sale_item['id'],'model_id'=>$model_id,'u_c_id'=>$u_c_id,'shop_id'=>$vo['id']))}{:C('HTML_URL_SUFFIX')}" class="showyh">查看并预约</a></td>
+	                  </tr>
+					 </volist>
+	                </table>
+	              </div>
+	             </notempty>
+            </div>
+            
+            
+          </div>
+          </volist>
+          <div class="c95">
+          <div class="fenye">
+            <ul>
+            {$page}
+            </ul>
+          </div>
+          </div>
+        </div>
+        
+
+        <div class="c25">
+          <div class="carmap">
+              <div class="car4smap fr" style="width:350px;">
+                <div class="map" id="map">
+                  <div id='inner-map' style="height:350px;">
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(function(){
+        // var pos = $(".inner-search-box").css('position'), 
+        // top = $('.inner-search-box').offset().top,
+        // mapPos = $("#inner-map").css('position'), 
+        // mapTop = $('#inner-map').offset().top,
+        // mapLeft = $('#inner-map').offset().left,
+        // paBannerLeft = $(".pa-banner").offset().left,
+        // paBannerTop = $(".pa-banner").offset().top;
+
+        $(window).resize(function(){
+          mapLeft = $('#inner-map').offset().left;
+        })
+
+
+
+
+        var adrtop = $('.adrarea').offset().top;
+        var carmaptop = $(".carmap").offset().top-100;
+        if($(document).scrollTop()>adrtop){
+          $('.adrarea').css("position","fixed");
+        }else{
+          $('.adrarea').css("position","relative");
+        }
+
+        if($(document).scrollTop()>carmaptop){
+          $('.c25').css({"position":"absolute","top":$(document).scrollTop()-carmaptop+"px"});
+        }else{
+          $('.c25').css({"position":"absolute","top":"0px"});
+        }
+        $(document).scroll(function(){
+          if($(document).scrollTop()>adrtop){
+            $('.adrarea').css("position","fixed");
+          }else{
+            $('.adrarea').css("position","relative");
+          }
+
+          if($(document).scrollTop()>carmaptop){
+            $('.c25').css({"position":"absolute","top":$(document).scrollTop()-carmaptop+"px"});
+          }else{
+            $('.c25').css({"position":"absolute","top":"0px"});
+          }
+        });
+
+
+        $(".quanfenlei div").hover(function(){
+          $(this).find("a").addClass("current current"+$(this).index()).end().siblings().find("a").removeClass("current current0 current1 current2");
+          $(".quanfenleicon .quanfenleicons").eq($(this).index()).show().siblings().hide();
+        });
+
+        $(".point").click(function(){
+          
+          $('.blackbox').show();
+          $("#popup-sl-map").css({
+                  "left": ( $(window).width() - parseInt(600)) / 2+$(window).scrollLeft() + "px"
+          }).show();
+          
+           var map = new BMap.Map("baidu-map");
+           var lng=$(this).attr('lng');
+           //var lat=$(this).attr('lat');
+           arr=lng.split(',');//分割
+            
+           var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+            //var point = new BMap.Point(121.457314,31.158372); // 创建点坐标
+            
+           //alert(lng);
+           var text=$(this).attr('desc');
+           var textArr=text.split('^^');
+            map.centerAndZoom(point,15);
+            map.addControl(new BMap.NavigationControl());
+            map.addControl(new BMap.MapTypeControl());
+            map.addControl(new BMap.ScaleControl());
+            map.addControl(new BMap.OverviewMapControl());
+            map.setDefaultCursor("url('bird.cur')");  
+            map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+            map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}));  //右上角，仅包含平移和缩放按钮
+            addMarker(point);
+
+           function addMarker(point)
+           {
+            var html='';
+            for(var i=0;i<textArr.length;i++)
+            {
+              html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+            }
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            var infoWindow = new BMap.InfoWindow(html);
+            marker.openInfoWindow(infoWindow);
+            
+            }
+        
+         });
+
+        $('.blackbox').not("#popup-sl-map").on('click', function(){
+          $('.blackbox').hide();
+          $("#popup-sl-map").hide()
+        });
+
+      });
+    </script>
+    
+    <script src="__PUBLIC__/js/list_map.js?v={$Think.config.VERSION_DATE}" ></script>
+
+  <div id="popup-sl-map">
+    <div></div>
+    <div id='baidu-map' ></div>
+  </div>
+  <div class="blackbox"></div>

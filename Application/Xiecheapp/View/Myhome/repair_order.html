@@ -1,0 +1,173 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<link type="text/css" href="__PUBLIC__/css/home_repair.css" rel="stylesheet">
+<style type="text/css">
+	.table tbody > tr > th{background-color: #F6F6F6;}
+	.table tbody > tr > td{background-color: #FFFFFF;}
+	.repair_li.cur{background-color: #f6f6f6;}
+	.repair_ul{background-color: #dee4eb; padding-left:0;}
+</style>
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr>
+			<td width="200" valign="top">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td style="vertical-align:top">
+	<div style="margin-right:20px;" style="background-color:#f6f6f6;">
+		<ul class="repair_ul clearfix">
+			<li id="all" class="repair_li"><a href="/myhome/all_order">全部订单</a></li>
+			<li id="bank" class="repair_li"><a href="/myhome/carservice_order">保养订单</a></li>
+			<li id="platform" class="repair_li cur"><a href="/myhome/shiguche_order">维修订单</a></li>
+			<li id="weixin" class="repair_li"><a href="/myhome/coupon_order">团购订单</a></li>
+		</ul>
+		<div class="home-c" style="background-color:#F6F6F6; overflow: hidden;">
+			<div class="clearfix">
+				<a href="/myhome/shiguche_order" class="repair_s">事故车维修订单</a>
+				<a href="/myhome/repair_order" class="repair_s repair_s_cur">故障维修订单</a>
+			</div>
+			<if condition="($repairList eq '')"><div style="margin-top: 20px; text-indent: 20px;">抱歉，您您暂无此订单！</div></if>
+		 	<notempty name="repairList">
+		 	<div style="padding:0 15px;">
+			<table class="table">
+			 	<tr>
+			 		<th style="text-align:left;">订单编号</th>
+			 		<th>下单时间</th>
+			 		<th>保险公司名称</th>
+			 		<th>预约状态</th>
+			 		<th style="color:#ff4a00">4S店</th>
+			 		<th>订单金额</th>
+			 		<th>操作</th>
+			 	</tr>
+			 	<volist name="repairList" id="vo">
+				 	<tr>
+				 		<td style="text-align:left;">{$vo.order_id}</td>
+				 		<td>{$vo.create_time|date="y-m-d",###}</td>
+				 		<td><if condition="$vo.salecoupon_name neq ''">{$vo.salecoupon_name}<else/>---</if></td>
+				 		<td>
+				 			<volist name="Think.config.ORDER_STATE" id="vo_os">
+								<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+							</volist>
+				 		</td>
+				 		<td><notempty name="vo.shop_id">{$vo.shop_id} <else />---</notempty></td>
+				 		<td>￥{$vo.total_price}</td>
+				 		<td>
+				 			<notempty name="vo.shop_id">
+				 			<p><a href="javascript:;" class="btn btn-comment" data-id="{$vo.id}" shop-id="{$vo.shop_id}">评价</a></p>
+				 			</notempty>
+				 			<p><a href="{:U('/myhome/repair_detail',array('order_id'=>$vo['order_id']))}">订单详情</a></p>
+				 		</td>
+				 	</tr>
+				 	<tr><td colspan="7" style="background-color:#f6f6f6">&nbsp;</td></tr>
+			 	</volist>
+			</table>
+			</div>
+			
+			<div class="fenye">
+				<ul>
+					{$page}
+				</ul>
+			</div>
+		 	</notempty>
+			
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+    <div class="Mcomment">
+      <div class="Mcc">
+        <div class="Mcctop">
+          <div class="Mcstar fl"><span class="fl">评价：</span>
+            <div class="fl Mccstar">
+              <ul>
+                <li class="current"></li>
+                <li class="current"></li>
+                <li class="current"></li>
+                <li class="current"></li>
+                <li class="current"></li>
+              </ul>
+            </div>
+          </div>
+          <div class="Mclose fr"><a href="javascript:;">关闭</a></div>
+        </div>
+        <form action="/myhome/comment" method="post">
+	        <div class="Mcccon">
+	        	<input name="type" value="1" type="hidden" />
+	        	<input name="shop_id" type="hidden" />
+	        	<input name="star" type="hidden" value="5" />
+	        	<input name="order_id" type="hidden" />
+	            <textarea name="content"></textarea>
+	            <p><a href="javascript:;" class="fr sub_comment">提交</a></p>
+	        </div>
+        </form>
+      </div>
+    </div>
+
+<script type="text/javascript">
+$(function(){
+  	//评价显示
+  	$(".btn-comment").click(function(){
+  		var order_id = $(this).attr('data-id');
+  		var shop_id = $(this).attr('shop-id');
+  		$('input[name=order_id]').val(order_id);
+  		$('input[name=shop_id]').val(shop_id);
+  		$(".Mcomment").slideDown();
+  	});
+
+  	//定义评价星星等级
+    var istar = 5;
+    //评价星星选择
+    $(".Mccstar ul li").hover(function(){
+      $(".Mccstar ul li").removeClass("current");
+      for(var i=0;i<=$(this).index();i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      
+    },function(){
+      $(".Mccstar ul li").removeClass("current");
+      for(var i=0;i<istar;i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      
+    });
+
+    //点击选定评价级别
+    $(".Mccstar ul li").click(function(){
+      istar = $(this).index()+1;
+      for(var i=0;i<istar;i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      $('input[name=star]').val(istar);
+    });
+
+    //关闭评价
+    $(".Mclose a").click(function(){
+    	$(".Mcomment").slideUp();
+    });
+    //提交评价
+    $(".sub_comment").click(function(){
+    	$.post('/myhome/comment',$('form').serialize(),function(data){
+    		if(data.status){
+    			alert(data.info);
+    			window.location.reload();
+    		}else{
+    			alert(data.info);
+    		}
+    	},'json');
+    	$(".Mcomment").slideUp();
+    });
+	
+    $(".quanfenlei div").hover(function(){
+        $(this).find("a").addClass("current current"+$(this).index()).end().siblings().find("a").removeClass("current current0 current1 current2");
+        $(".quanfenleicon .quanfenleicons").eq($(this).index()).show().siblings().hide();
+      });
+  });
+</script>

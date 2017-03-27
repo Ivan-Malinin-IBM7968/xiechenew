@@ -1,0 +1,183 @@
+<layout name='layout_new' />
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script src="__PUBLIC__/new_2/js/base.js" ></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+	
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title">
+				订单详情:
+			</h2>
+
+			<div class="table-con">
+				<table width="948">
+					<tr>
+						<th>订单编号</th>
+						<th>预约时间</th>
+						<th>项目内容</th>
+						<th>订单状态</th>
+						<th>完成时间</th>
+						<th>获得积分</th>
+					</tr>
+					<tr>
+						<td>{$order_id}</td>
+						<td>{$order.order_time|date="Y-m-d H:i",###}</td>
+						<td>{$order.serviceitem_name}</td>
+						<td>
+							<volist name="Think.config.ORDER_STATE" id="vo_os">
+							<eq name="key" value="$order.order_state">{$vo_os}</eq>
+							</volist>
+						</td>
+						<td><if condition="$order.order_state neq 2" >未完成<else />{$order.complete_time|date="Y-m-d H:i:s",###}</if></td>
+						<td>{$order.point}</td>
+					</tr>
+				</table>	
+			</div>
+			<div class="table-con xm">
+				<table width="948">
+					<tr>
+						<td width="474" class="info">您为您的爱车 {$car_arr.brand_name} {$car_arr.series_name} {$car_arr.model_name} 选择的维修保养项目为：</td>
+						<td width="474">
+							<ul >
+								<volist name="serviceitem_name" id="serviceitem">
+									<li>{$i}、{$serviceitem}</li>
+								</volist>
+							</ul>
+						</td>
+					</tr>
+					
+					<notempty name="servicemember">
+					<tr>
+						<td width="474" class="info">服务顾问：</td>
+						<td width="474">
+							<img src="/UPLOADS/Service/{$servicemember.logo}" width="50" height="50"> &nbsp;&nbsp; {$servicemember.name}
+						</td>
+					</tr>
+					</notempty>
+
+				</table>	
+			</div>
+
+			<div class="dpxx">
+				<h3 class="info-h3">您选择的4S店是：</h3>
+				<ul>
+					<li><a href="__APP__/shop/{$shop.id}" target="_blank">{$shop.shop_name}</a></li>
+					<li>地址：{$shop.shop_address}</li>
+					<li>工时费 {$order.workhours_sale_str}，零件费 {$order.product_sale_str}</li>
+				</ul>
+			</div>
+			<h3 class="info-h3"> {$list.ServerName.name}</h3>
+			<div class="table-con">
+			 <volist name="data" id="list">
+				<table width="948">
+					<tr>
+						<th width="247">零件明细</th>
+						<th width="247">零件单价</th>
+						<th width="247">零件数量</th>
+						<th width="247">零件折扣率</th>
+					</tr>
+
+					<volist name="list.test" id="vo">
+						<if condition="$vo.Midl_name neq '工时费'">
+							<tr class="sub-table-content">
+								<td align="center" height="30">{$vo.Midl_name}</td>
+								<td align="center" height="30">{$vo.price}</td>
+								<td align="center" height="30">{$vo.quantity} | {$vo.unit}</td>
+								<td align="center" height="30">{$product_sale}</td>
+							</tr>
+						</if>
+
+					</volist>
+				</table>
+				</volist>
+				</div>
+
+				<div class="table-con">
+				 <volist name="data" id="list">
+					<table width="948">
+						<tr>
+							<th width="247" >工时明细</th>
+							<th width="247">工时单价</th>
+							<th width="247">公式数量</th>
+							<th width="247">折扣率</th>
+						</tr>
+						<volist name="list.test" id="vo">
+						<if condition="$vo.Midl_name eq '工时费'">
+							<tr class="sub-table-content">
+								<td align="center" height="30">{$vo.Midl_name}</td>
+								<td align="center" height="30">{$vo.price}</td>
+								<td align="center" height="30">{$vo.quantity} | {$vo.unit}</td>
+								<td align="center" height="30">{$product_sale}</td>
+							</tr>
+						</if>
+					</volist>
+					</table>	
+					</volist>
+				</div>
+				<h3 class="info-h3">通过携车网预约, 一共为您节省:</h3>
+				<div class="table-con">
+					<table width="948">
+						<tr>
+							<th width="247"></th>
+							<th width="247">门市价</th>
+							<th width="247">折后价</th>
+							<th width="247">节省</th>
+						</tr>
+						<tr>
+							<td>零件费</td>
+							<td>{$price.ProductPrice}</td>
+							<td>{$price.SaleProductPrice}</td>
+							<td>{$price.FavProductPrice}</td>
+						</tr>
+						<tr>
+							<td>工时费</td>
+							<td>{$price.WorkPrice}</td>
+							<td>{$price.SaleWorkPrice}</td>
+							<td>{$price.FavWorkPrice}</td>
+						</tr>
+						<tr>
+							<td>合计</td>
+							<td>{$price.Allprice}</td>
+							<td>{$price.SaleAllPrice}</td>
+							<td>{$price.FavAllPrice}</td>
+						</tr>
+					</table>	
+				</div>
+				
+			<p class="sp-info">注：携车网所提供的汽车售后维修保养项目明细价格（包括但不限于零件费和/或工时费等费用），由与纵横携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，纵横携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据，最终付款以在服务提供商处实际发生额为准。但您享受到的折扣率不变。</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript">
+		function hTab(tab_controler,tab_con){
+			this.tab_controler = tab_controler;
+			this.tab_con = tab_con;
+			var tabs = $(tab_controler).children("li");
+			var panels = $(tab_con).children("div");
+			$(tab_con).children("div").css("display","none");
+			$(tab_con).children("div:first").css("display","block");
+			$(tabs).hover(function(){
+				var index = $.inArray(this,tabs);
+				tabs.removeClass("current")
+				.eq(index).addClass("current");
+				panels.css("display","none")
+				.eq(index).css("display","block");
+			});
+		};
+
+		hTab('#tabs1','#con1');
+		hTab('#tabs2','#con2');
+	</script>
+</body>
+</html>

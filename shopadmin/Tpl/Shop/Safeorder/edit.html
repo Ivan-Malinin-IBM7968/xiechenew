@@ -1,0 +1,122 @@
+<load file="__CSS__/newstyle.css" />
+<style type="text/css">
+	.tishi{
+		font-size: 11px;
+		color: #999;
+	}
+</style>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+
+<div id="main">
+<div id="main-right"><h1>事故车竞价查看</h1>
+</div>
+<div id="main-right2">
+<table width="785" border="0" cellspacing="1" cellpadding="8" bgcolor="#E4E4E4" style="width:100%; ">
+	
+    <tr>
+		<td align="center" width=130 >品牌：</td>
+		<td style="text-align:left;">{$data.Fs.fsname}</td>
+    </tr>
+	<tr>
+		<td align="center" width=130 >车型：</td>
+		<td style="text-align:left;">{$data.Insurance.car_info}</td>
+    </tr>
+	<tr>
+		<td align="center">汽车图片：</td>
+		<td style="text-align:left;">
+		    	<volist name="data.Insuranceimg" id="vo">
+					<a href="__URL__/showimg/id/{$insurance_id}" target="_blank"><img src="/UPLOADS/Driving/{$vo.car_img}" width=80 height=100  border="0"></a>&nbsp;
+				</volist>
+				<!--<a href="__URL__/showimg/id/{$insurance_id}" >查看受损车图片</a>-->
+		</td>
+		
+	</tr>
+	<tr>
+		<td align="center" >定损金额：</td>
+		<td  style="text-align:left;">{$data.Insurance.loss_price}</td>
+	</tr>
+	<tr>
+		<td align="center" >携车网客服备注：</td>
+		<td  style="text-align:left;">{$data.Insurance.operator_remark}</td>
+	</tr>
+	
+  </table>
+
+
+<form action="__APP__/Shop/Safeorder/edit_do/" method="post" onsubmit="return Check();">	
+  <table width="785" border="0" cellspacing="1" cellpadding="8" bgcolor="#E4E4E4" style="width:100%;">
+	<input type="hidden" name="insurance_id" id="insurance_id" value="{$data.Shopbid.insurance_id}">
+    <tr>
+		<td align="center" width=130 >维修时间：</td>
+		<td style="text-align:left;">
+			<!--<input type="text" name="servicing_time" id="servicing_time" value="{$data.Shopbid.servicing_time}">-->
+			<select name="servicing_time" id="servicing_time">
+				<option value="当天" <if condition="$data['Shopbid']['servicing_time'] eq 0">selected</if>>当天</option>
+				<option value="1天" <if condition="$data['Shopbid']['servicing_time'] eq 1">selected</if>>1天</option>
+				<option value="2天" <if condition="$data['Shopbid']['servicing_time'] eq 2">selected</if>>2天</option>
+				<option value="3天" <if condition="$data['Shopbid']['servicing_time'] eq 3">selected</if>>3天</option>
+				<option value="4天" <if condition="$data['Shopbid']['servicing_time'] eq 4">selected</if>>4天</option>
+				<option value="5天" <if condition="$data['Shopbid']['servicing_time'] eq 5">selected</if>>5天</option>
+				<option value="6天" <if condition="$data['Shopbid']['servicing_time'] eq 6">selected</if>>6天</option>
+				<option value="7天" <if condition="$data['Shopbid']['servicing_time'] eq 7">selected</if>>7天</option>
+				<option value="8天" <if condition="$data['Shopbid']['servicing_time'] eq 8">selected</if>>8天</option>
+				<option value="9天" <if condition="$data['Shopbid']['servicing_time'] eq 9">selected</if>>9天</option>
+				<option value="10天" <if condition="$data['Shopbid']['servicing_time'] eq 10">selected</if>>10天</option>
+				<option value="10天以上" <if condition="$data['Shopbid']['servicing_time'] eq '10天以上'">selected</if>>10天以上</option>
+				<option value="到店确认天数" <if condition="$data['Shopbid']['servicing_time'] eq '到店确认天数'">selected</if>>到店确认天数</option>
+			</select>
+			<br/>
+			<span class="tishi">(维修时间一天，代表用户今天送车到店，24小时后，明天的此时可以取车，若维修时间晚于商家的预估时间，晚一天需另返还用户50元现金券，晚两天，返100，以此类推...)</span>
+		</td>
+    </tr>
+	<tr>
+		<td align="center" >&nbsp;代步车：</td>
+		<td  style="text-align:left;">
+			<input type="radio" name="scooter" value="0" <if condition="$data.Shopbid.scooter eq 0"> checked</if>>无
+			<input type="radio" name="scooter" value="1" <if condition="$data.Shopbid.scooter eq 1"> checked</if>>有
+			<br/>
+			<span class="tishi">(用户车辆在维修期间，商家是否提供代步车。)</span>
+		</td>
+			
+		
+	</tr>
+	<tr>
+		<td align="center">返利现金：</td>
+		<td style="text-align:left;">
+			<input type="text" name="rebate" id="rebate" value="{$data.Shopbid.rebate}" onkeyup="this.value=this.value.replace(/\D/g,'')">
+			<br/>
+			<span class="tishi">(商家返回给用户的现金券，只限本店使用，可以不返券，返券最低100元起)</span>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" >备&nbsp;&nbsp;注：</td>
+		<td  style="text-align:left;">
+			<TEXTAREA class="bLeft large" NAME="remark" ROWS="5" COLS="35" >{$data.Shopbid.remark}</TEXTAREA>
+			<br/>
+			<span class="tishi">(您可以填写此单的备注，此信息仅您可见，用户不可见)</span>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" ></td>
+		<td  style="text-align:left;">
+			<if condition="$data[Insurance][insurance_status] eq 1">
+				<input type="submit" id="btn_ok" name="btn_ok" value="提交">
+			</if>
+		</td>
+	</tr>
+  </table>
+ 
+</div>
+
+</div>
+
+<script type="text/javascript">
+function Check(){
+	var rebate = $("#rebate").val();
+	/*if (rebate<100 && rebate != '') {
+		alert("返券最低100元起");
+		return false;
+	}*/
+	return true;
+}
+</script>

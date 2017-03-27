@@ -1,0 +1,69 @@
+<load file="__CSS__/newstyle.css" />
+<div id="main">
+	<div id="main-right"><h1>订单用户评价</h1>
+	<ul>
+	<li class="width_55"><a href="__URL__/index/comment_type/1/servicemember_id/{$servicemember_id}" style="text-decoration: none;color:black;">好评(<font color="red">{$good_num}</font>)</a></li>
+	<li class="width_55"><a href="__URL__/index/comment_type/2/servicemember_id/{$servicemember_id}" style="text-decoration: none;color:black;">中评(<font color="red">{$mid_num}</font>)</a></li>
+	<li class="width_55"><a href="__URL__/index/comment_type/3/servicemember_id/{$servicemember_id}" style="text-decoration: none;color:black;">差评(<font color="red">{$bad_num}</font>)</a></li>
+	</ul>
+	</div>
+	<div id="main-right2">
+		<div>
+		<FORM METHOD=POST ACTION="__URL__/index">
+			<table class="list"  width="785">
+					<td>服务顾问：</td>
+					<td>
+						<input type="radio" name="servicemember_id" id="servicemember_id" value="" <if condition="$servicemember_id eq ''">checked</if>>全部
+						<volist name="Sermember" id="list" >
+							<input type="radio" name="servicemember_id" id="servicemember_id" value="{$list.id}" <if condition="$servicemember_id eq $list['id']">checked</if>>{$list.name}
+						</volist>
+					</td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td><input type="submit" value="搜索" style="impBtn hMargin fLeft shadow"></td>
+				</tr>
+			</table>
+			</FORM>
+		</div>
+
+	  <table width="785" border="0" cellspacing="1" cellpadding="1">
+	    <tr>
+	      <td width="100" height="40" bgcolor="#F2F2F2">订单号</td>
+		  <td width="100"  bgcolor="#F2F2F2">手机号</td>
+		  <td width="100" bgcolor="#F2F2F2">车牌号</td>
+	      <td width="80" bgcolor="#F2F2F2">姓名</td>
+		  <td width="150" bgcolor="#F2F2F2">预约日期</td>
+	      <td width="70" bgcolor="#F2F2F2">是否好评</td>
+	      <td bgcolor="#F2F2F2">评价回复</td>
+	    </tr>
+	  </table>
+	    <volist name="comments" id="vo">
+		<table width="785" border="0" cellspacing="1" cellpadding="1"  onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+	    <tr>
+	      <td width="100" height="40" ><a href="__APP__/Shop/order/edit/order_id/{$vo.true_order_id}">{$vo.order_id}</a></td>
+	      <td width="100">{$vo.mobile}</td>
+		  <td width="100">{$vo.licenseplate}</td>
+	      <td width="80">{$vo.user_name}</td>
+		  <td width="150">{$vo.order_time|date="Y-m-d H:i:s",###}</td>
+	      <td width="70"><if condition="$vo.comment_type eq 1">好评<elseif condition="$vo.comment_type eq 2"/>中评<else />差评</if></td>
+	      <td >
+			<a href="__URL__/comment/comment_id/{$vo.id}">回复</a>
+      			({$vo.comment_reply_num})
+		  </td>
+	    </tr>
+		<tr>
+			<td colspan="2">所属服务顾问</td>
+			<td colspan="5"><notempty name="vo.servicemember_name">{$vo.servicemember_name}<else/>无</notempty></td>
+		</tr>
+		<tr>
+			<td colspan="2">评价内容</td>
+			<td colspan="5">{$vo.comment}</td>
+		</tr>
+		</table>
+		<br/>
+	   </volist>
+	  <div id="main-right3">{$page}</div>
+	</div>
+</div>

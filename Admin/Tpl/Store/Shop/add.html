@@ -1,0 +1,206 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+
+    </style>
+    <script type='text/javascript'>
+        <!-- //以下为编辑器配置
+        var plugins={
+            map:{c:'btnMap',t:'插入Google地图',e:function(){
+                    var _this=this;
+                    _this.saveBookmark();
+                    _this.showIframeModal('Google 地图','__PUBLIC__/Js/Xheditor/googlemap/googlemap.html',function(v){_this.loadBookmark();_this.pasteHTML('<img src='+v+' />');},538,404);
+                }}
+        };
+        var editorConf = {
+            plugins:plugins,
+            width:'850px',
+            height:'300px',
+            upLinkUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=附件文件(*.zip;*.rar;*.txt)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upImgUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=图片文件(*.jpg;*.jpeg;*.gif;*.png)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upFlashUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=Flash动画(*.swf)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de',
+            upMediaUrl:'!__PUBLIC__/Js/Xheditor/xheditor_plugins/multiupload/multiupload.html?uploadurl=__APP__/Store/Attach/Multiupload&immediate%3D1&ext=多媒体文件(*.wmv;*.avi;*.wma;*.mp3;*.mid)&sid=0cc1b74b3b19ff78d73e4ea6fdfcc0de'
+        };
+ function getSubRegion (parent_sel_id , ajax_url , sub_id , region_type , first_title,set_name_id){
+            var parent_id = jQuery("#"+parent_sel_id).val();
+            //alert(parent_id);
+            if(parent_id == ''){
+                return;
+            }
+            jQuery.getJSON(
+            ajax_url,
+            {
+                'parent_id':parent_id,
+                'region_type':region_type
+            },
+            function(data) {
+                jQuery("#"+sub_id).empty();
+                var option="<option value=''>" + first_title + "</option>";
+                jQuery.each(data['data'], function(k, v) {
+                    option += '<option value="'+v.id+'">'+v.region_name+'</option>';
+                })
+                jQuery("#"+sub_id).html(option);
+            });
+
+			setSubRegionName(parent_sel_id,set_name_id);
+
+        }
+		
+		//select_id：下拉框id
+		//set_name_id：要赋值的隐藏域Id
+		function setSubRegionName(select_id,set_name_id){
+			var subRegionName = $("#"+select_id).find("option:selected").text();
+			$("#"+set_name_id).val(subRegionName);
+		}
+    </SCRIPT>
+    <div class="content">
+        <div class="title">新增商铺 [ <A HREF="__URL__/index">返回列表</A> ]</div>
+        <form METHOD=POST id="form1" name="form1" action="__URL__/insert" enctype="multipart/form-data">
+            <TABLE cellpadding=3 cellspacing=3>
+                <TR>
+                    <TD class="tRight" >名 称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" check='^\S+$' warning="名称不能为空" NAME="shop_name"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >地 区：</TD>
+                    <TD class="tLeft" >
+						 <select name="shop_prov" id="province_id" onchange="javascript:getSubRegion('province_id','{:U('Store/Region/ajaxRegion')}','city_id','2','请选择城市','province_name');">
+                            <option value="">请选择所在省</option>
+                            <volist name="province" id="p">
+                                <option value="{$p.id}">{$p.region_name}</option>
+                            </volist>
+                        </select>
+                        <select name="shop_city" id="city_id" onchange="javascript:getSubRegion('city_id','{:U('Store/Region/ajaxRegion')}','area_id','3','请选择县/区','city_name');">
+                            <option value="">请选择城市</option>
+                        </select>
+						<select name="shop_area" id="area_id" onchange="javascript:setSubRegionName('area_id','area_name')">
+                            <option value="">请选择区域</option>
+                        </select>
+					</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight">LOGO：</TD>
+                    <TD class="tLeft" id="add_div" ><div class="impBtn  fLeft" id="remove_div" ><input TYPE="file" name="logo" class="file  large"><input type="button" name="btn" value="删除" id="btn" class="remove_btn" ></div>(图片大小120*90)</TD>
+                </TR>
+				<TR>
+                    <TD class="tRight tTop">开始时间：</TD>
+                    <TD class="tLeft">
+						<input TYPE="text" class="large bLeft"  NAME="start_time" onclick="new Calendar().show(this);" readonly="readonly">
+					</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">结束时间：</TD>
+                    <TD class="tLeft"><input TYPE="text" class="large bLeft"  NAME="end_time" onclick="new Calendar().show(this);" readonly="readonly"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >商家坐标：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="shop_maps"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >地址：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="shop_address"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >电话：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="shop_phone"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >手机号码：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="shop_mobile"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >事故车专员手机号：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="shop_salemobile"></TD>
+                </TR>
+
+                <TR>
+                    <TD class="tRight" >排序：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="sort"></TD>
+                </TR>
+
+                <TR>
+                    <TD class="tRight" >初始评分：</TD>
+                    <TD class="tLeft" ><input TYPE="text" class="large bLeftRequire" NAME="avg_rank" VALUE="0">(最高5分)</TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >所属品牌：</TD>
+                    <TD class="tLeft" >
+						<table>
+							<volist name="fs_arr" id="fs" mod="10">
+							<eq name="mod" value="0">
+							<tr>
+							</eq>
+								<td><input type="checkbox" name="fsids[]" value="{$fs.fsid}"/>{$fs.fsname}</td>
+							<eq name="mod" value="9">
+							</tr>
+							</eq>
+							</volist>
+						</table>
+					</TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >折扣：</TD>
+                    <TD class="tLeft" >
+					<select>
+					<volist name="Think.config.SALE_VALUE" id="sale">
+						<option value="{$key}">{$sale}</option>
+					</volist>
+					</select>
+					</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">商铺简介：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft large" NAME="shop_account" ROWS="5" COLS="35"></TEXTAREA> (255字符以内)</TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" style=" vertical-align: top;">商铺详细介绍：</TD>
+                    <TD class="tLeft" >
+                        <textarea id='detail_intro' name='shop_detail'></textarea>
+                        <script type='text/javascript'>
+                            jQuery('#detail_intro').xheditor(editorConf);
+                        </script>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >店铺类型：</TD>
+                    <TD class="tLeft" >
+                    <select name="shop_class">
+						<option value="1">签约</option>
+						<option value="2">非签约</option>
+					</select>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">备  注：</TD>
+                    <TD class="tLeft"><TEXTAREA class="bLeft large" NAME="remark" ROWS="5" COLS="35"></TEXTAREA></TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <div class="impBtn fLeft"><INPUT TYPE="submit" value="保 存" class="button small"></div>
+                        <div class="impBtn fLeft hMargin"><input TYPE="reset" class="reset imgButton" value="清空" ></div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('#btn').live('click','#btn',function(){
+            $("#remove_div").remove();
+            var div = "<div class='impBtn  fLeft' id='remove_div'><INPUT type='file' name='logo' class='file  large'><INPUT type='button' value='删除' id='btn' class='remove_btn'>"+"</div>"+"(图片大小120*90)";
+            $("#add_div").html(div);
+        });
+    });
+
+</script>

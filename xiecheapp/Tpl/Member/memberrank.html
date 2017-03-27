@@ -1,0 +1,29 @@
+<layout name='layout' />
+<!-- 顶部结束 -->
+<div class="bodybgwrap">
+ 	<div class="wrapbox">
+    	<div class="ht10"></div>
+    
+		<div class="guidenav guidenav1" > <a href="#" class="Crumbs">首页</a> > 用户排名</div>
+    	<div class="memberrank">
+			<table cellspacing="0" cellpadding="0" border="0" class="memberlist">
+				 <tr>
+					<th width="30%">&nbsp;用户名</th>
+					<th width="20%">&nbsp;注册时间</th>
+					<th width="15%">推荐用户数</th>
+					<th width="20%">&nbsp;积分</th>
+				 </tr>
+				 <volist name="memberlist" id="eachmember">
+				 <tr>
+				 	<td>{$eachmember.username}</td>
+				 	<td>{$eachmember.reg_time|date="Y-m-d H:i:s",###}</td>
+				 	<td>{$eachmember.recommend_effective_number}</td>
+				 	<td>{$eachmember.point_number}</td>
+				 </tr>
+				 </volist>
+    		</table>
+    	</div>
+    	<div>{$page}</div>
+	</div>
+</div>
+<div class="clear"></div>

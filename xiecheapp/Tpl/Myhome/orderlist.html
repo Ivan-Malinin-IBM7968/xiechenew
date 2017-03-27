@@ -1,0 +1,83 @@
+<layout name='layout_myhome' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+<script>
+function search_order(){
+	var order_date = $("#order_date").val();
+	var order_state = $("#order_state").val();
+	location.href="__APP__/myhome/index-order_date-"+order_date+"-order_state-"+order_state;
+}
+
+</script>
+<div id="wddd-right">我的订单</div>
+<div id="wddd-right2">
+  <form name="form2" method="post" action="">
+    <select name="order_date" size="1" id="order_date" onChange="search_order();">
+      <option value="1" <if condition="$order_date eq 1"> selected </if>>近一个月的订单</option>
+      <option value="2" <if condition="$order_date eq 2"> selected </if>>一个月前的订单</option>
+    </select>
+    <select name="order_state" id="order_state" onChange="search_order();">
+      <option value="all" <if condition="$order_state eq 'all'"> selected </if> >全部订单</option>
+      <volist name="Think.config.ORDER_STATE" id="vo_os">
+      	<option value="{$key}" <if condition="($order_state eq $key) AND ($order_state neq 'all')"> selected </if> >{$vo_os}</option>
+	  </volist>
+    </select>
+   
+  </form><br/>
+ <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#e4e4e4" style="margin-left:10px;">
+  <tr>
+    <td width="12%" height="30" align="center" valign="middle" bgcolor="#EBEBEB">订单编号</td>
+    <td width="22%" align="center" valign="middle" bgcolor="#EBEBEB"> 预约时间 </td>
+    <td width="19%" align="center" valign="middle" bgcolor="#EBEBEB"> 订单状态 </td>
+    <td width="16%" align="center" valign="middle" bgcolor="#EBEBEB"> 投诉状态 </td>
+    <td width="15%" align="center" valign="middle" bgcolor="#EBEBEB">操作</td>
+    <td align="center" valign="middle" bgcolor="#EBEBEB">查看</td>
+    </tr>
+  <volist name="list" id="vo">
+  <tr>
+    <td height="35" align="center" bgcolor="#FFFFFF"><strong>{$vo.order_id}</strong></td>
+    <td align="center" bgcolor="#FFFFFF">{$vo['order_time']|date="Y-m-d H:s",###}</td>
+    <td align="center" bgcolor="#FFFFFF">
+	 	<volist name="Think.config.ORDER_STATE" id="vo_os">
+		<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+		</volist>
+	</td>
+    <td align="center" bgcolor="#FFFFFF">
+    	<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+		<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+		</volist>
+    </td>
+    <td align="center" bgcolor="#FFFFFF">
+
+
+    <eq name="vo.order_state" value="0"><a href="__APP__/order/editstate/order_id/{$vo.id}/order_state/-1">取消预约</a></eq>&nbsp;&nbsp;
+    <eq name="vo.order_state" value="-1">已取消</eq>&nbsp;&nbsp;
+	<if condition="($vo.complain_state == 0) AND ($vo.order_state == 2)">
+	<a href="__URL__/editstate/order_id/{$vo.id}/complain_state/1">投诉</a>
+	</if>
+	<if condition="($vo.complain_state == 1) AND ($vo.order_state == 2)">
+	<a href="__URL__/editstate/order_id/{$vo.id}/complain_state/2">取消投诉</a>
+	</if>
+    </td>
+    <td align="center" bgcolor="#FFFFFF"><a href="__APP__/myhome/orderdetail/order_id/{$vo.order_id}">查看</a><if condition="($vo.order_state eq 2) and ($vo.iscomment eq 0)" > | <a href="###" class="comment" id="comment" orderid="{$vo.id}" shopid="{$vo.shop_id}">评价</a></if> <if condition="$vo.iscomment eq 1" > | <a href="###" class="showcomment" id="showcomment" orderid="{$vo.id}" shopid="{$vo.shop_id}">查看评价</a></if></td>
+    </tr>
+  </volist>
+  <tr>
+    <td height="30" colspan="6" align="right" bgcolor="#FFFFFF">
+    	未完成的订单数：<font color="#990000">{$count1}</font>   
+    	已完成的订单数：<font color="#990000">{$count2}</font>  
+    	已取消订单数：<font color="#990000">{$count3}</font>  
+    	订单总数：<font color="#990000">{$count}</font>  &nbsp;&nbsp;</td>
+    </tr>
+  <tr>
+    <td height="45" colspan="6" align="right" bgcolor="#FFFFFF"><table width="50%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center" colspan='3'><font color="#990000">{$page}</font></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<br>
+</div>
+
+</div>

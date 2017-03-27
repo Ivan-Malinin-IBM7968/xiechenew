@@ -1,0 +1,176 @@
+<!doctype>
+<html>
+    <head> 
+        <title>  点评到家数据显示</title> 
+        <script src="/Public_new/jquery/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://www.xieche.com.cn/Public/Admin/Css/blue.css" />
+        <style> 
+           #main{
+                width: 1200px ;
+                margin: 0 auto ;
+            }
+            
+            
+            #export{
+                width: 1170px ;
+                margin: 10px auto ;
+                height: 30px ;
+                text-align: right ;
+                font-size: 20px ;
+            }
+            
+            .btn{
+                background: #f1f1f1 url("/Public/Admin/Images/idx_btnbg.gif") repeat-x scroll center center;
+                border: 1px solid gray;
+                color: #333;
+                cursor: pointer;
+                height: 25px;
+                width: 120px;
+                margin-left: 3px;
+                margin-right: 3px;  
+                margin-bottom: 10px ;
+            }
+        
+        
+        </style>
+    </head>
+    <body>
+        <p id="export"> <a href="/Dpdata/export_order"> 导出全部订单为csv </a></p>
+        <div id="main"> 
+            <table  class="list">
+            <tr class="row">
+            <td width="10%">临时id</td>
+            <td width="10%">城市</td>
+            <td width="10%">电话</td>    
+            <td width="10%">地址</td>
+             <td width="10%">门牌号</td>
+            <td width="10%">备注</td>
+            <td width="10%">产品价格 </td>  
+            <td width="10%">支付价格 </td>  
+            <td width="10%">产品信息 </td>    
+            <td width="10%">车型数据</td>
+            <td width="10%">下单时间</td>
+            <td width="10%">服务开始时间</td>
+            <td width="10%">操作</td>
+            </tr> 
+            
+            <volist  name="dpdata"  id="vo">
+            <tr class="row">
+            <td> {$vo.id}</td>
+            <td> {$vo.city}</td>
+            <td> {$vo.mobile} </td>    
+            <td> {$vo.address} </td>
+            <td> {$vo.housenumber} </td>
+            <td> {$vo.remark} </td>
+            <td> ￥{$vo.price} </td>  
+            <td> ￥{$vo.pay_price} </td>  
+            <td> {$vo.product} </td>    
+            <td> {$vo.car_info}</td>
+            <td> {$vo.create_time|date='Y-m-d H:i:s',###}</td>
+            <td> {$vo.order_time|date='Y-m-d H:i:s',###}</td>
+            <td>  
+                <input type="hidden"  name="id"  value ="{$vo.id}"> 
+                订单id : <input type="input"  name="order_id" class="order_id"  value =" "  autocomplete="off" > 
+                <input  type="button" class="btn"  value="完成下单" autocomplete="off"> 
+                <input  type="button" class="cancel" value="通知点评取消订单" autocomplete="off"> 
+                <input  type="button" class="complete" value="通知点评订单已完成(谨慎点击)" autocomplete="off"> 
+            </td>
+            </tr> 
+            </volist>
+            </table>  
+        </div>
+    </body> 
+<script  type="text/javascript">
+ $(function(){
+    // alert(0);
+    $(".btn").bind("click",function(){
+        var order_id = $(this).parent().find(".order_id").val();
+        var id = $(this).parent().find("input[name='id']").val();
+        var mythis = $(this);
+        
+        if(order_id == " "){
+            alert('请输入对应订单号!');
+        }else{
+            $.ajax({
+                url: '__APP__/Dpdata/ajax_update_order',
+                type: 'POST',
+                data:{id: id ,order_id:order_id },
+                dataType: 'json',
+                success: function(data){
+                  data = data.data;
+                  if(data.errno == '0'){
+                    mythis.val('已完成');
+                    mythis.attr("disabled","disabled");
+                    
+                    //点评到家结果显示
+                    //alert(data.dphome.code);
+                    if(data.dphome.code==1){
+                        mythis.parent().append('点评到家通知失败，客服人员请电话联系客户！');
+                    }
+                    
+                    alert(data.msg);
+                    return true;
+                  }
+                }
+            });
+                
+        }
+    });
+    
+    
+    //取消订单，通知点评到家
+    $(".cancel").bind("click",function(){
+        if(confirm('确认通知点评取消订单')){
+            var id = $(this).parent().find("input[name='id']").val();
+            var mythis = $(this);
+            $.ajax({
+                    url: '__APP__/Dpdata/ajax_cancel_order',
+                    type: 'POST',
+                    data:{id: id },
+                    dataType: 'json',
+                    success: function(data){
+                      data = data.data;
+                      if(data.errno == '0'){
+                        mythis.val('已完成');
+                        mythis.attr("disabled","disabled");
+                        alert(data.msg);
+                        return true;
+                      }
+                    }
+            });    
+        }else{
+            return  false ;
+        }
+           
+    });
+    
+    
+     //完成订单，通知点评到家
+    $(".complete").bind("click",function(){
+        if(confirm('确认通知点评已完成')){
+            var id = $(this).parent().find("input[name='id']").val();
+            var mythis = $(this);
+
+            $.ajax({
+                url: '__APP__/Dpdata/ajax_complete_order',
+                type: 'POST',
+                data:{id: id },
+                dataType: 'json',
+                success: function(data){
+                  data = data.data;
+                  if(data.errno == '0'){
+                    mythis.val('通知点评已完成');
+                    mythis.attr("disabled","disabled");
+                    alert(data.msg);
+                    return true;
+                  }
+                }
+            });
+        }else{
+            return false ;
+        }
+    });
+    
+});       
+</script>
+</html>

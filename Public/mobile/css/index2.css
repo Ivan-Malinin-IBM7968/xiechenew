@@ -1,0 +1,100 @@
+
+body {color: #333333; display: block; font-family: "微软雅黑",sans-serif; min-height: 568px; position: relative; width: 100%; min-width: 320px; overflow: hidden;}
+.bg {max-width: 100%;}
+.rl {position: relative;}
+.ab {position: absolute;}
+.brand {display: none; right: 0; top: 0; width: 0; z-index: 10;}
+.red{color: #FF0000;}
+
+input::-webkit-input-placeholder { 
+  	line-height: normal;
+}
+
+.form-control::-moz-placeholder{
+	line-height: normal;
+}
+.form-control::-webkit-placeholder{
+	line-height: normal;
+}
+
+.pagetop{height: 44px; background: #00aaf1; color: #FFFFFF; line-height: 44px; font-size: 18px; width: 100%; overflow: hidden; position: relative;}
+.pagetop .reindex{font-family: "Glyphicons Halflings"; background: url(../images/reindex.png) center center no-repeat; position: absolute; left: 0; top: 0; width: 50px; height: 44px; cursor: pointer;}
+.pagetop .thispage{text-align: center;}
+
+/*填写订单*/
+.addform{font-size: 14px; color: #2d2d2d;}
+.form1{padding: 0 10px;}
+
+.formtable tr{margin-bottom: 5px;}
+.formtable option{height: 30px;}
+.form-more{background: #f4f6f3; overflow: hidden;}
+.form-more h3{background: url(../images/moreh3.png) 0 center no-repeat; height: 25px; line-height: 25px; text-indent: 25px; color: #01358c; margin: 10px 0; font-size: 14px;}
+.form-more h3.current{background: url(../images/moreh3hover.png) 0 center no-repeat;}
+
+
+.Bsubmit{width:100%; background:#ff5a5e; border-color:#ff5a5e; color: #FFFFFF; margin: 20px 0; height: 40px;}
+.Bsubmit:hover{color: #FFFFFF; background: #d94044;}
+
+/*立即下单*/
+.huise{background: #f4f6f3;}
+.smenu{height: 44px; line-height: 44px; text-align: center; border-bottom: 1px solid #DDDDDD; overflow: hidden;}
+.smenu .smenuli{font-size: 14px;}
+.smenu .smenuli a{color: #2d2d2d;}
+.smenu .smenuli.smrbg{background: url(../images/line.png) right center no-repeat;}
+.smenu .smenuli.current{height: 43px; border-bottom: 2px solid #00aaf1;}
+.smenu .smenuli.current>a{color: #00AAF1}
+
+.carname{line-height: 30px; font-size: 14px; height: 30px; margin-top: 10px;}
+.carname span{color: #00aaf1;}
+
+.carprice{line-height: 30px; font-size: 14px; height: 30px; margin-bottom: 10px;}
+.carprice span{color: #ff5a5e; font-size: 20px; font-weight: bold;}
+
+.smenu2{height: 40px; line-height: 40px; text-align: center; border: 1px solid #FFFFFF; background: #FFFFFF; border-bottom: 1px solid #e3e5e2; border-radius: 5px; overflow: hidden; font-size: 16px;}
+.smenu2 .sm2rbg{background: url(../images/line2.png) right center no-repeat;}
+.smenu2 .current{color: #00AAF1;}
+
+.smianfei{color: #494b4a; overflow: hidden; margin: 20px 0; font-size: 12px;}
+
+.xiangmu{}
+
+.xiangmu .xmone{height: 40px; border: 1px solid #c8c8c8; border-radius: 5px; margin-bottom: 10px; line-height: 38px;}
+.xiangmu .xmone select{background: none; border: none; width: 97%;}
+.xiangmu .xmone select.item_id{background: url(../images/icondown.png) 100% center no-repeat;}
+
+
+button.btnyd{border-color: #ff5a5e; background: #ff5a5e; width: 100%; color: #FFFFFF; margin: 10px 0; height: 40px;}
+button.btnyd:hover,button.btnyd:visited,button.btnyd:active{background: #ff5a5e; border-color: #ff5a5e; color: #FFFFFF;}
+
+
+/*订单列表*/
+.Ftitle{background: url(../images/Ftitlebg.png) 0 center no-repeat; height: 29px; line-height: 30px; font-size: 16px;}
+.Ftitle.m5{margin: 5px 0;}
+.Ftitle strong{padding-left: 25px; }
+.Ftitle span{background: #e4e4e4; padding: 0px 4px; font-size: 12px;}
+
+.fl-one{line-height: 40px;}
+.fl-bt{border-top: 1px solid #c8c8c8;}
+.fl-bb{border-bottom: 1px solid #c8c8c8;}
+.fl-one span.c00aaf1{color: #00aaf1;}
+.fl-one2{margin-top: 10px; color: #838383;}
+
+button.btnzf{border-color: #00aaf1; background: #00aaf1; width: 100%; color: #FFFFFF; margin: 0 0 10px; height: 40px;}
+button.btnzf:hover,button.btnzf:visited,button.btnzf:active{background: #00aaf1; border-color: #00aaf1; color: #FFFFFF;}
+
+.aaa{border-bottom: 1px solid #00aaf1;}
+
+.formlist{}
+.formlist ul,.formlist ul li{list-style: none; padding: 0; margin: 0}
+.formlist ul li{background: #FFFFFF; margin: 10px 0; padding: 0 5px;}
+
+.formlist ul li .c8e8e8e{color: #8e8e8e;}
+.formlist ul li .cff682d{color: #ff682d;}
+
+
+
+
+
+
+
+

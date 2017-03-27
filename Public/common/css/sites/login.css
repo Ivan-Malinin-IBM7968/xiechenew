@@ -1,0 +1,27 @@
+/*用户登录 注册页面 样式表*/
+.wrapper{width: 100%; height: auto; margin: 30px auto; }
+a{font-size: 14px; color: #195cbc; }
+a:visited{ color: #195cbc}
+a:hover{text-decoration: underline;}
+.block-1{width: 100%; height: 592px; background: url("http://statics.xieche.net/Images/assets/login/bg01.jpg") center center no-repeat;}
+.inner-block-1{width: 1200px; height: 592px; position: relative; margin: 0 auto;}
+.user-box{width: 380px; height: 520px; float: right}
+.user-box .controler{width: 380px; height: 50px; }
+.user-box .controler li{float: left; display: inline-block; width: 190px; font-size: 22px; font-weight: bolder; color: #77a6e2; text-align: center; cursor: pointer; line-height: 50px; border-bottom: 5px solid #ffffff; font-family: "微软雅黑","Microsoft YaHei",sans-serif}
+.user-box .controler li.current{color: #195cbc; border-bottom: 5px solid #195cbc; }
+.user-box .container{width: 360px; height: 430px; background: #eeeeee; padding: 20px 10px;}
+.user-box .container .row{width: 320px; height: 55px; line-height: 50px; margin: 20px auto; }
+.user-box .container .row.row-narrow{height: 30px; line-height: 30px;}
+.user-box .container .row .float-left{float: left;}
+.user-box .container .row .float-right{float: right;}
+.user-box .container .row .input-field{height: 48px; padding: 0px 10px; line-height: 50px; border: 1px solid #bdbcbc; font-size: 14px}
+.user-box .container .row .input-field.error{background: #ffefd7 url("http://statics.xieche.net/Images/assets/login/login-sprite.png") top right no-repeat; border: 1px solid #f19149; color: #e60012; }
+.user-box .container .row .input-text{width: 298px;  }
+.user-box .container .row .input-code{width: 120px; }
+.user-box .container .row #img-code,
+.user-box .container .row #refreshCode{cursor: pointer;}
+.user-box .container .row .input-login,
+.user-box .container .row .input-reg{ width: 100%; height: 50px; line-height: 50px; font-size: 16px; border: none; color: #ffffff; background: #195cbc; cursor: pointer; }
+.block-2{width: 100%; height: 201px;  background: url("http://statics.xieche.net/Images/assets/login/bg02.jpg") center center no-repeat;}
+.inner-block-2{width: 1200px; height: 201px; position: relative; margin: 0 auto;}
+

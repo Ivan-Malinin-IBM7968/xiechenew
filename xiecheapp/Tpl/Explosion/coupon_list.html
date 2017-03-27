@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>养车套餐3折抢</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/reset.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/main.css">
+		<link rel="stylesheet" href="http://event.xieche.com.cn/20140620/css/apps/app.css">
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.js"></script>
+		<script src="http://event.xieche.com.cn/20140620/js/libs/jquery.mobile-1.4.2.min.js"></script>
+		
+	</head>
+	
+</head>
+	<body>
+		<div id="wrapper">
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>养车套餐3折抢</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<!-- Header End -->
+
+				<input type="hidden" id="hide_fsid" name="hide_fsid" value="{$fs_id}">
+				<input type="hidden" id="hide_fsname" name="hide_fsname" value="{$fs_Name}">
+				<nav id="list-sort">
+					<ul>
+						<li id="sort-block-a" style="width: 100%">
+						<a href="#select-brand" data-transition="slidefade" style="display: block;">
+							<if condition="$fs_Name eq ''">
+								全部品牌
+							<else/>
+								{$fs_Name}
+							</if>
+						</a>
+						</li>
+					</ul>
+				</nav>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+						<notempty name="couponlist">
+						<volist name="couponlist" id="list">
+				        <li class="ui-grid-a single-coupon" >
+							<div class="ui-block-a" style="width: 35%">
+								<img src="{$list.coupon_logo}" alt="{$list.coupon_name}" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">{$list.coupon_name}</h3>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥{$list.coupon_amount}</strong>
+										<em>¥{$list.cost_price}</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="__APP__/Mobile-coupon_detail-coupon_id-{$list.id}-dztype-1" rel="external" class="buy-btn disable">立即购买</a>
+									</div> 
+									
+								</div>
+											
+							</div>
+				        </li>
+						</volist>
+						<else/>
+						暂无该品牌优惠券
+						</notempty>
+				    </ul>
+				</div>
+				<div id="pagination">
+					{$page}
+				</div>
+			</div>
+			
+			<!-- Main Page End -->
+			<!-- Navigation Start -->
+			<div data-role="page" id="select-brand">
+				<header id="header" data-role="header">
+					<span id="left-trigger" >
+						<a href="#coupon-list-main" data-transition="slidefade" class="back"></a>
+					</span>
+					<span id="right-trigger" data-role="ui-btn-icon-right"></span>
+					<h1>请选择品牌</h1>
+				</header>
+			
+				<ul data-role="listview" id="brand-list">
+					<li><a href="#" data-fsid="" data-fsname="" rel="external" data-index="false">全部品牌</a></li>
+					<volist name="FSdata" id="list">  
+						<li>
+						<a href="#" data-fsid="{$list.fsid}" data-fsname="{$list.fsname}" rel="external" class="brand-li" data-index="false">{$list.word}&nbsp;&nbsp;&nbsp;&nbsp;{$list.fsname}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<!-- Navigation End -->
+		</div>
+		<include file="Public:wapfoot" />
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+		//xieche.com.cn/explosion-coupon_list-fsid-1-fsname-1
+
+		$("#brand-list li a").on("click", function(e){
+			e.preventDefault();
+			var fsName = $(this).attr('data-fsname'),
+				fsId = $(this).attr('data-fsid');
+
+			window.open('http://www.xieche.com.cn/explosion-coupon_list-fsid-'+fsId+'-fs_Name-'+fsName,'_self');
+		})
+
+	</script>
+	</body>
+</html>

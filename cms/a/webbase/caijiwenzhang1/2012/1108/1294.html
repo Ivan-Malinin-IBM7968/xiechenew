@@ -1,0 +1,1228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+                                    喜迎十八大 中华V_我的网站</title>
+<meta name="keywords" content="喜迎十八大,中华V5\H530力度" />
+<meta name="description" content="喜迎十八大 中华V5\H530力度促销…为庆祝中国十八大的胜利召开，华晨特加大中华V5/H530的促销力度，与国同庆，以祝贺全国繁荣富强！中华V5全系车型优惠1万产品名称配置变化市场价格" />
+<link href="/cms/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/cms/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/cms/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/cms/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/cms/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/cms/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/cms/data/sitemap.html" target="_blank">网站地图</a>|<a href="/cms/tags.php">TAG标签</a><a href="/cms/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.xieche.net');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://www.xieche.net','我的网站')">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://www.xieche.net"><img src="/cms/templets/default/images/logo.gif" height="54" width="216" alt="我的网站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner1&charset=gbk"></script></div>
+      <div class="banner2"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=ctenttpbanner2&charset=gbk"></script></div>
+       
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/cms/'><span>主页</span></a></li>
+      	<li class='hover'><a href='/cms/a/webbase/'  rel='dropmenu1'><span>网页基础</span></a></li>
+      	<li><a href='/cms/a/pics/' ><span>站长图集</span></a></li>
+      	
+      	<li><a href='/cms/a/downloads/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='/cms/a/shops/' ><span>商品销售</span></a></li>
+      	
+      	<li><a href='/cms/a/infos/' ><span>分类信息</span></a></li>
+      	
+      	<li><a href='http://www.dedecms.com' ><span>织梦CMS</span></a></li>
+      	
+      	<li><a href='http://docs.dedecms.com' ><span>帮助文档</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/cms/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/cms/tags.php?/dedecms5.1/'>dedecms5.1</a></li>
+          
+            <li><a href='/cms/tags.php?/sp1/'>sp1</a></li>
+          
+            <li><a href='/cms/tags.php?/%E5%85%8D%E8%B4%B9%E7%89%88/'>免费版</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://www.xieche.net/cms'>主页</a> > <a href='/cms/a/webbase/'>网页基础</a> > <a href='/cms/a/webbase/caijiwenzhang1/'>采集文章1</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>
+                                    喜迎十八大 中华V</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2012-11-08 17:01<small>来源:</small> <small>作者:</small> <small>点击:</small>
+   <script src="/cms/plus/count.php?view=yes&aid=1294&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">喜迎十八大 中华V5\H530力度促销…为庆祝中国十八大的胜利召开，华晨特加大中华V5/H530的促销力度，与国同庆，以祝贺全国繁荣富强！中华V5全系车型优惠1万产品名称配置变化市场价格</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td><div id="contentMidPicAD" style="float:right; clear:both; top:0; vertical-align:top;"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentmidpicad&charset=gbk"></script></div>
+      <!--content area-->
+				  <div class="content tabline_wzh" id="content">
+				  <p>
+	为庆祝中国十八大的胜利召开，华晨特加大中华V5/H530的促销力度，与国同庆，以祝贺全国繁荣富强！</p>
+<p>
+	中华V5全系车型优惠1万</p>
+<p>
+	&nbsp;</p>
+<table height="456" style="width: 553px" width="553">
+	<tbody>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">产品名称</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">配置变化</span></td>
+			<td height="24" style="width: 72px; height: 24px">
+				<span style="font-size: 11px">市场价格</span></td>
+			<td height="24" style="width: 72px; height: 24px">
+				<span style="font-size: 11px">成交价</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT舒适风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="117800">
+				<span style="font-size: 11px">117800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="107800">
+				<span style="font-size: 11px">107800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT舒适型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="109800">
+				<span style="font-size: 11px">109800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="99800">
+				<span style="font-size: 11px">99800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="127800">
+				<span style="font-size: 11px">127800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="117800">
+				<span style="font-size: 11px">117800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="119800">
+				<span style="font-size: 11px">119800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="109800">
+				<span style="font-size: 11px">109800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT舒适风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="127800">
+				<span style="font-size: 11px">127800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="117800">
+				<span style="font-size: 11px">117800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT舒适型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="119800">
+				<span style="font-size: 11px">119800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="109800">
+				<span style="font-size: 11px">109800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="137800">
+				<span style="font-size: 11px">137800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="127800">
+				<span style="font-size: 11px">127800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="129800">
+				<span style="font-size: 11px">129800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="119800">
+				<span style="font-size: 11px">119800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT尊贵型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">增配</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="145800">
+				<span style="font-size: 11px">145800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="135800">
+				<span style="font-size: 11px">135800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TMT运动风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="127800">
+				<span style="font-size: 11px">127800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="117800">
+				<span style="font-size: 11px">117800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TMT运动型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="119800">
+				<span style="font-size: 11px">119800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="109800">
+				<span style="font-size: 11px">109800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TMT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="133800">
+				<span style="font-size: 11px">133800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="123800">
+				<span style="font-size: 11px">123800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TMT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="125800">
+				<span style="font-size: 11px">125800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="115800">
+				<span style="font-size: 11px">115800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TAT运动风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="137800">
+				<span style="font-size: 11px">137800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="127800">
+				<span style="font-size: 11px">127800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TAT运动型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="129800">
+				<span style="font-size: 11px">129800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="119800">
+				<span style="font-size: 11px">119800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TAT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+迎宾踏板</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="145800">
+				<span style="font-size: 11px">145800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="135800">
+				<span style="font-size: 11px">135800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TAT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="137800">
+				<span style="font-size: 11px">137800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="127800">
+				<span style="font-size: 11px">127800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TAT尊贵型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">增配</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="155800">
+				<span style="font-size: 11px">155800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="145800">
+				<p>
+					<span style="font-size: 11px">145800</span></p>
+			</td>
+		</tr>
+	</tbody>
+	<colgroup>
+		<col />
+		<col />
+		<col />
+		<col />
+	</colgroup>
+</table>
+<p>
+	&nbsp;</p>
+<p>
+	中华H530全系车型优惠6000元</p>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<table height="264" style="width: 553px" width="553">
+	<tbody>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">产品名称</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">配置变化</span></td>
+			<td height="24" style="width: 72px; height: 24px">
+				<span style="font-size: 11px">市场价格</span></td>
+			<td height="24" style="width: 72px; height: 24px">
+				<span style="font-size: 11px">成交价</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT舒适风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+饰条</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="92800">
+				<span style="font-size: 11px">92800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="86800">
+				<span style="font-size: 11px">86800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT舒适型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="85800">
+				<span style="font-size: 11px">85800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="79800">
+				<span style="font-size: 11px">79800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+饰条</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="100800">
+				<span style="font-size: 11px">100800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="94800">
+				<span style="font-size: 11px">94800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6MT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="93800">
+				<span style="font-size: 11px">93800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="87800">
+				<span style="font-size: 11px">87800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT舒适风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+饰条</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="102800">
+				<span style="font-size: 11px">102800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="96800">
+				<span style="font-size: 11px">96800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT舒适型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="95800">
+				<span style="font-size: 11px">95800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="89800">
+				<span style="font-size: 11px">89800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+饰条</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="110800">
+				<span style="font-size: 11px">110800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="104800">
+				<span style="font-size: 11px">104800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6AT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="103800">
+				<span style="font-size: 11px">103800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="97800">
+				<span style="font-size: 11px">97800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TMT豪华风尚版</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">导航+倒车影像+DVD+高级皮座椅+饰条</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="106800">
+				<span style="font-size: 11px">106800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="100800">
+				<span style="font-size: 11px">100800</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.5TMT豪华型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="99800">
+				<span style="font-size: 11px">99800</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="93800">
+				<span style="font-size: 11px">93800</span></td>
+		</tr>
+	</tbody>
+	<colgroup>
+		<col />
+		<col />
+		<col />
+		<col />
+	</colgroup>
+</table>
+<p>
+	&nbsp;</p>
+<p>
+	中华骏捷</p>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<table height="48" style="width: 553px" width="553">
+	<tbody>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">产品名称</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">配置变化</span></td>
+			<td height="24" style="width: 72px; height: 24px">
+				<span style="font-size: 11px">市场价格</span></td>
+			<td height="24" style="width: 72px; height: 24px">
+				<span style="font-size: 11px">成交价</span></td>
+		</tr>
+		<tr height="24">
+			<td height="24" style="width: 125px; height: 24px">
+				<span style="font-size: 11px">1.6新锐舒适型</span></td>
+			<td height="24" style="width: 284px; height: 24px">
+				<span style="font-size: 11px">标准配置</span></td>
+			<td height="24" style="width: 72px; height: 24px" x:num="83800">
+				<span style="font-size: 11px">83800</span></td>
+			<td height="24" style="width: 72px" x:num="69800">
+				<span style="font-size: 11px">69800</span></td>
+		</tr>
+	</tbody>
+	<colgroup>
+		<col />
+		<col />
+		<col />
+		<col />
+	</colgroup>
+</table>
+<p>
+	<span style="font-size: 11px">&nbsp;</span></p>
+<p>
+	<span style="font-size: 14px">还有更多车型促销力度让你意想不到！详询：</span></p>
+<p>
+	&nbsp;</p>
+<p>
+	<span style="font-size: 11px">&nbsp;</span></p>
+<p>
+	<span style="font-size: 11px"><span style="font-size: 14px">浦西店：上海华星鸿华</span></span></p>
+<p>
+	<span style="font-size: 11px"><span style="font-size: 14px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400-888-5696、021-62509696</span></span></p>
+<p>
+	<span style="font-size: 11px"><span style="font-size: 14px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;普陀区真南路2133号（11号线武威路站下）</span></span></p>
+<p>
+	<span style="font-size: 11px">&nbsp;</span></p>
+<p>
+	<span style="font-size: 11px"><span style="font-size: 14px">浦东店：上海华星鸿星</span></span></p>
+<p>
+	<span style="font-size: 11px"><span style="font-size: 14px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4008-212-998、021-68060101</span></span></p>
+<p>
+	<span style="font-size: 11px"><span style="font-size: 14px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浦东新区沪南路2805号（近S20沪南路出口）</span></span></p>
+				  </div>
+				 </div>
+			  	<div id="afterVote"></div>
+			  	
+				<!--buy car area-->
+				
+				<div class="clear"></div>
+				<div class="wd_setcar">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                	<col width="120" />
+                	<col width="180" />
+                	<col width="90" />
+                	<col width="90" />
+                	<tr>                                                   
+                    <th><span>品牌</span></th>
+                    <th><span>车型</span></th>
+                    <th><span>指导价</span></th>
+                    <th><span>报价</span></th>
+                    <th><span></span></th>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11391.html" target="_blank" title="1.6 MT舒适型 2011 款">1.6 MT舒适型 2011 款</a></span></td>
+                    <td><span class="t_c">8.88万</span></td>
+                    <td><span class="t_c"><em>8.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11391.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11391.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11392.html" target="_blank" title="1.6 MT豪华型 2011 款">1.6 MT豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">9.88万</span></td>
+                    <td><span class="t_c"><em>9.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11392.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11392.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11393.html" target="_blank" title="1.8 MT舒适型 2011 款">1.8 MT舒适型 2011 款</a></span></td>
+                    <td><span class="t_c">9.88万</span></td>
+                    <td><span class="t_c"><em>9.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11393.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11393.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11394.html" target="_blank" title="1.8 MT豪华型 2011 款">1.8 MT豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">10.88万</span></td>
+                    <td><span class="t_c"><em>10.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11394.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11394.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11395.html" target="_blank" title="1.8 AT豪华型 2011 款">1.8 AT豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">12.88万</span></td>
+                    <td><span class="t_c"><em>12.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11395.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11395.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11396.html" target="_blank" title="1.8T MT豪华型 2011 款">1.8T MT豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">13.88万</span></td>
+                    <td><span class="t_c"><em>13.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11396.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11396.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1740.html" title="骏捷">骏捷</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11397.html" target="_blank" title="1.8T AT尊贵型 2011 款">1.8T AT尊贵型 2011 款</a></span></td>
+                    <td><span class="t_c">15.88万</span></td>
+                    <td><span class="t_c"><em>15.88万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11397.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11397.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1925.html" title="骏捷FRV">骏捷FRV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/10399.html" target="_blank" title="1.3MT 舒适型 2010 款">1.3MT 舒适型 2010 款</a></span></td>
+                    <td><span class="t_c">5.73万</span></td>
+                    <td><span class="t_c"><em>5.73万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/10399.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/10399.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1925.html" title="骏捷FRV">骏捷FRV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/10743.html" target="_blank" title="1.3MT 豪华型 2010 款">1.3MT 豪华型 2010 款</a></span></td>
+                    <td><span class="t_c">6.53万</span></td>
+                    <td><span class="t_c"><em>6.53万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/10743.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/10743.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1925.html" title="骏捷FRV">骏捷FRV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/10744.html" target="_blank" title="1.5MT 舒适型 2010 款">1.5MT 舒适型 2010 款</a></span></td>
+                    <td><span class="t_c">6.53万</span></td>
+                    <td><span class="t_c"><em>6.53万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/10744.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/10744.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1925.html" title="骏捷FRV">骏捷FRV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/10745.html" target="_blank" title="1.5MT 豪华型 2010 款">1.5MT 豪华型 2010 款</a></span></td>
+                    <td><span class="t_c">7.33万</span></td>
+                    <td><span class="t_c"><em>7.33万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/10745.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/10745.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1925.html" title="骏捷FRV">骏捷FRV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/10746.html" target="_blank" title="1.5AT 舒适型 2010 款">1.5AT 舒适型 2010 款</a></span></td>
+                    <td><span class="t_c">7.73万</span></td>
+                    <td><span class="t_c"><em>7.73万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/10746.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/10746.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_1925.html" title="骏捷FRV">骏捷FRV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/10747.html" target="_blank" title="1.5AT 豪华型 2010 款">1.5AT 豪华型 2010 款</a></span></td>
+                    <td><span class="t_c">8.53万</span></td>
+                    <td><span class="t_c"><em>8.53万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/10747.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/10747.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_2742.html" title="骏捷FSV">骏捷FSV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11353.html" target="_blank" title="1.5AT舒适型 2010 款">1.5AT舒适型 2010 款</a></span></td>
+                    <td><span class="t_c">8.48万</span></td>
+                    <td><span class="t_c"><em>8.48万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11353.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11353.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_2742.html" title="骏捷FSV">骏捷FSV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/11354.html" target="_blank" title="1.5AT豪华型 2010 款">1.5AT豪华型 2010 款</a></span></td>
+                    <td><span class="t_c">9.28万</span></td>
+                    <td><span class="t_c"><em>9.28万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/11354.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/11354.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_2742.html" title="骏捷FSV">骏捷FSV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14074.html" target="_blank" title="1.5L 手动 基本型 新锐版 2011 款">1.5L 手动 基本型 新锐版 20</a></span></td>
+                    <td><span class="t_c">6.58万</span></td>
+                    <td><span class="t_c"><em>6.58万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14074.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14074.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_2742.html" title="骏捷FSV">骏捷FSV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14078.html" target="_blank" title="1.5L 自动 舒适型 新锐版 2011 款">1.5L 自动 舒适型 新锐版 20</a></span></td>
+                    <td><span class="t_c">6.98万</span></td>
+                    <td><span class="t_c"><em>6.98万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14078.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14078.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_2742.html" title="骏捷FSV">骏捷FSV</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14079.html" target="_blank" title="1.5L 自动 豪华型 新锐版 2011 款">1.5L 自动 豪华型 新锐版 20</a></span></td>
+                    <td><span class="t_c">7.78万</span></td>
+                    <td><span class="t_c"><em>7.78万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14079.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14079.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3370.html" title="中华H530">中华H530</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14594.html" target="_blank" title="1.6L 手动 舒适型 2011 款">1.6L 手动 舒适型 2011 款</a></span></td>
+                    <td><span class="t_c">8.58万</span></td>
+                    <td><span class="t_c"><em>8.58万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14594.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14594.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3370.html" title="中华H530">中华H530</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14599.html" target="_blank" title="1.6L 手动 豪华型 2011 款">1.6L 手动 豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">9.38万</span></td>
+                    <td><span class="t_c"><em>9.38万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14599.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14599.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3370.html" title="中华H530">中华H530</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14600.html" target="_blank" title="1.6L 自动 舒适型 2011 款">1.6L 自动 舒适型 2011 款</a></span></td>
+                    <td><span class="t_c">9.58万</span></td>
+                    <td><span class="t_c"><em>9.58万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14600.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14600.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3370.html" title="中华H530">中华H530</a></span></td>
+                    <td><span><a href="/100017104/price_detail/14601.html" target="_blank" title="1.6L 自动 豪华型 2011 款">1.6L 自动 豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">10.38万</span></td>
+                    <td><span class="t_c"><em>10.38万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/14601.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/14601.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3534.html" title="中华V5">中华V5</a></span></td>
+                    <td><span><a href="/100017104/price_detail/15079.html" target="_blank" title="1.6 自动 豪华型 2011 款">1.6 自动 豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">12.98万</span></td>
+                    <td><span class="t_c"><em>12.98万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/15079.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/15079.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3534.html" title="中华V5">中华V5</a></span></td>
+                    <td><span><a href="/100017104/price_detail/15394.html" target="_blank" title="1.6 自动 舒适型 2011 款">1.6 自动 舒适型 2011 款</a></span></td>
+                    <td><span class="t_c">11.98万</span></td>
+                    <td><span class="t_c"><em>11.98万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/15394.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/15394.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3534.html" title="中华V5">中华V5</a></span></td>
+                    <td><span><a href="/100017104/price_detail/15395.html" target="_blank" title="1.6 手动 豪华型 2011 款">1.6 手动 豪华型 2011 款</a></span></td>
+                    <td><span class="t_c">11.98万</span></td>
+                    <td><span class="t_c"><em>11.98万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/15395.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/15395.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                  <tr>
+                    <td><span><a href="/100017104/cars_3534.html" title="中华V5">中华V5</a></span></td>
+                    <td><span><a href="/100017104/price_detail/15396.html" target="_blank" title="1.6 手动 舒适型 2011 款">1.6 手动 舒适型 2011 款</a></span></td>
+                    <td><span class="t_c">10.98万</span></td>
+                    <td><span class="t_c"><em>10.98万</em></span></td>
+                    <td><span><a href="/100017104/price_detail/15396.html?type=open" target="_blank">询价>></a><a href="/100017104/price_detail/15396.html?type=open&order=1" target="_blank">试驾>></a> </span></td>
+                  </tr>
+				
+                </table>
+                </div>
+				
+				<div class="buycar" >
+				
+					
+					<ul>
+						<li><label>店面地址：</label><span>普陀店：真南路2133号 浦东店：浦东新区沪南路2805号</span></li>
+      
+      (责任编辑：admin)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',1294)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',1294)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(1294);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/cms/a/webbase/caijiwenzhang1/2012/1108/1293.html'>
+                                    感恩回馈 中华系列</a> </li>
+     <li>下一篇：没有了 </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/cms/plus/stow.php?aid=1294" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/cms/plus/erraddsave.php?aid=1294&title=
+                                    喜迎十八大 中华V" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/cms/plus/recommend.php?aid=1294" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+ <!-- //AJAX评论区 -->
+ <!-- //主模板必须要引入/cms/include/dedeajax2.js -->
+<a name='postform'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>发表评论</strong> <span class="more"></span> </dt>
+    <dd>
+      <div class="dede_comment_post">
+        <form action="#" method="post" name="feedback" onsubmit="return false;">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="1294" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="dcmp-title"> <small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small> </div>
+          <!-- /dcmp-title -->
+          <div class="dcmp-stand"> <strong>评价:</strong>
+            <input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" />
+            <label for="dcmp-stand-neu"><img src="/cms/templets/default/images/cmt-neu.gif" />中立</label>
+            <input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" />
+            <label for="dcmp-stand-good"><img src="/cms/templets/default/images/cmt-good.gif" />好评</label>
+            <input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" />
+            <label for="dcmp-stand-bad"><img src="/cms/templets/default/images/cmt-bad.gif" />差评</label>
+          </div>
+          <!-- /dcmp-stand -->
+          <div class="clr"></div>
+          <div class="dcmp-content">
+            <script type="text/javascript">
+					//<![CDATA[
+					window.CKEDITOR_BASEPATH='/cms/include/ckeditor/';
+					//]]>
+                    </script>
+            <script type="text/javascript" src="/cms/include/ckeditor/ckeditor.js?t=B8DJ5M3"></script>
+            <script type="text/javascript">//<![CDATA[
+CKEDITOR.config.ubb_smiley = {"高兴":"{s:1}","撇嘴":"{s:2}","抓狂":"{s:3}","汗":"{s:4}","惊恐":"{s:5}","奋斗":"{s:6}","疑问":"{s:7}","晕":"{s:8}","偷笑":"{s:9}","可爱":"{s:10}","疑惑":"{s:11}","酷":"{s:12}","暴汗":"{s:13}","呕吐":"{s:14}","大笑":"{s:15}","色":"{s:16}"}
+//]]></script>
+<textarea name="msg" rows="8" cols="60"></textarea>
+<script type="text/javascript">//<![CDATA[
+CKEDITOR.replace('msg', {"extraPlugins":"dedepage,multipic,addon,bbcode","fontSize_sizes":"30\/30%;50\/50%;100\/100%;120\/120%;150\/150%;200\/200%;300\/300%","disableObjectResizing":"true","smiley_path":"\/cms\/images\/smiley\/","smiley_images":["1.gif","2.gif","3.gif","4.gif","5.gif","6.gif","7.gif","8.gif","9.gif","10.gif","11.gif","12.gif","13.gif","14.gif","15.gif","16.gif"],"smiley_descriptions":["高兴","撇嘴","抓狂","汗","惊恐","奋斗","疑问","晕","偷笑","可爱","疑惑","酷","暴汗","呕吐","大笑","色"],"toolbar":[["Source","-","Bold","Italic","Underline","-"],["FontSize","TextColor"],["Link","Unlink","Smiley"]],"height":100,"skin":"kama"});
+//]]></script>
+ </div>
+          <!-- /dcmp-content -->
+          <div class="dcmp-post">
+            <!--未登陆-->
+            <div class="dcmp-userinfo" id="_ajax_feedback"> 用户名:
+              <input type="text" name="username" size="16" class="ipt-txt" style="text-transform: uppercase;"/>
+              
+              验证码:
+              <input type="text" name="validate" size="4" class="ipt-txt" style="text-transform:uppercase;"/>
+              <img src= "/cms/include/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片"  class="vdimg"/>
+              <input type="checkbox" name="notuser" id="dcmp-submit-guest" />
+              <label for="dcmp-submit-guest" />
+              匿名?
+              </label>
+            </div>
+            
+            <script language="javascript" type="text/javascript">CheckLogin();</script>
+            
+            <div class="dcmp-submit">
+              <button type="button" onClick='PostComment()'>发表评论</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dd>
+  </dl>
+</div>
+<!-- //评论表单区结束 -->
+<!-- //评论内容区 -->
+<a name='commettop'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>最新评论</strong> <span class="more"><a href="/cms/plus/feedback.php?aid=1294">进入详细评论页&gt;&gt;</a></span> </dt>
+    <!-- //这两个ID的区块必须存在，否则JS会出错 -->
+    <dd id='commetcontentNew'></dd>
+    <dd id='commetcontent'></dd>
+  </dl>
+</div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language='javascript'>
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/cms/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/cms/plus/feedback_ajax.php?dopost=getlist&aid=1294&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var msg = CKEDITOR.instances.msg.getData();
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/cms/images/loadinglit.gif' />正在发送中...</div>";
+		if(msg=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(msg.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		/*
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		*/
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '1294');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', msg);
+		myajax.SendPost2('/cms/plus/feedback_ajax.php');
+		//msg = '';
+		CKEDITOR.instances.msg.setData('');
+		//taget_obj.removeAttribute('id');
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/cms/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+}
+function quoteCommet(fid)
+{
+	    document.feedback.fid.value = fid;
+}
+  
+function ajaxFeedback(aid, fid, type)
+{
+	
+	var taget_obj = $DE('ajaxfeedback_'+fid);
+	if(taget_obj.innerHTML == '')
+	{
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x');
+		myajax.SendGet2("/cms/plus/feedback.php?aid="+aid+"&fid="+fid+"&action=quote&type=ajax");
+		eval('var result = typeof CKEDITOR.instances.msg_'+fid);
+		if(result != 'undefined')
+		{
+			// 删除实例
+			eval('var edit = CKEDITOR.instances.msg_'+fid);
+			CKEDITOR.remove(edit);
+		}
+		CKEDITOR.replace(document.getElementById('msg_'+fid) , CKEDITOR.instances.msg.config);
+		scroll(0, taget_obj.offsetTop - 120);
+		var formname = 'f = document.ajaxfeedback_'+fid;
+		eval(formname);
+		if(f.validate)
+		{
+			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "/cms/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+		DedeXHTTP = null;
+	}
+}
+
+
+
+function ajaxQuotePost(fid)
+{
+	var formname = 'f = document.ajaxfeedback_'+fid;
+	eval(formname);
+	//var f = document.formname;
+	//var f = f[0];
+	var nvalidate = '';
+	var nnotuser = '';
+	var nusername = '';
+	var npwd = '';
+	var taget_obj = $DE('commetcontentNew');
+	var waithtml = "<div style='line-height:30px'><img src='/cms/images/loadinglit.gif' />正在发送中...</div>";
+	eval('var msg = CKEDITOR.instances.msg_'+fid+'.getData()');
+
+	if(f.validate)
+	{
+		if(f.validate.value=='') {
+			alert("请填写验证码！");
+			return;
+		}
+		else {
+			nvalidate = f.validate.value;
+		}
+	}
+	var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+	
+	if(f.notuser.checked) nnotuser = '1';
+	if(f.username) nusername = f.username.value;
+	if(f.pwd) npwd = f.pwd.value;
+	
+	myajax.sendlang = 'utf-8';
+	myajax.AddKeyN('dopost', 'send');
+	myajax.AddKeyN('aid', '1294');
+	myajax.AddKeyN('fid', f.fid.value);
+	myajax.AddKeyN('type', 'ajax');
+	myajax.AddKeyN('comtype', f.comtype.value);
+	myajax.AddKeyN('isconfirm','yes');
+	
+	myajax.AddKeyN('typeid', f.typeid.value);
+	myajax.AddKeyN('quotemsg', f.quotemsg.value);
+	myajax.AddKeyN('validate', nvalidate);
+	myajax.AddKeyN('notuser', nnotuser);
+	myajax.AddKeyN('username', nusername);
+	myajax.AddKeyN('pwd', npwd);
+	myajax.AddKeyN('msg', msg);
+	myajax.SendPost2('/cms/plus/feedback_ajax.php');
+	//alert(f.quotemsg.value);
+	if($DE('ajaxfeedback_'+fid).innerHTML != null)
+	{
+		$DE('ajaxfeedback_'+fid).innerHTML = '';
+	}
+	scroll(0, taget_obj.offsetTop);
+}
+LoadCommets(1);
+</script>
+<!-- //评论内容区结束 -->
+ </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+      <li><a href='/cms/a/webbase/html/'>HTML</a></li>
+      
+      <li><a href='/cms/a/webbase/div-css/'>DIV&CSS</a></li>
+      
+      <li><a href='/cms/a/webbase/javascript-ajax/'>Javascript/Ajax</a></li>
+      
+      <li><a href='/cms/a/webbase/dreamweaver/'>Dreamweaver</a></li>
+      
+      <li><a href='/cms/a/webbase/caijiwenzhang/'>采集文章</a></li>
+      <li><a href='/cms/a/webbase/caijiwenzhang1/' class='thisclass'>采集文章1</a></li>
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad&charset=gbk"></script></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1284.html">
+                                    上海团</a>
+       <p>上海团购节招募啦 中华团购价惊喜不断…7月28日-29日上海光大会...</p>
+      </li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1276.html">
+                                    迎五一</a>
+       <p>迎五一 梦工厂试驾活动招募中…迎五一劳动节，我店在4月20日举...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1275.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1276.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1277.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1278.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1279.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1280.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1281.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1282.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1283.html">
+                             </a></li>
+<li><a href="/cms/a/webbase/caijiwenzhang1/2012/1108/1284.html">
+                             </a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD2" style="margin:10px auto"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=contentrtpicad2&charset=gbk"></script></div>
+ </div>
+ <!-- /pright -->
+</div>
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"><script type="text/javascript" src="http://ad.dedecms.com/adsview/?action=single&key=innerfooterad2&charset=gbk"></script></div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+	<!-- 
+		为了支持织梦团队的发展,请您保留织梦内容管理系统的链接信息.
+		我们对支持织梦团队发展的朋友表示真心的感谢!织梦因您更精彩!
+	-->
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP1</strong></a> &copy; 2004-2011 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br /><div class="copyright">Copyright &copy; 2004-2011 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+</body>
+</html>

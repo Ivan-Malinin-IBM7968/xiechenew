@@ -1,0 +1,392 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>选择保养项目</title>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/carservice.css?v={$Think.config.VERSION_DATE}" />
+<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+<style type="text/css">
+	select{border:none}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td id="toptd">  
+      <div class="toptdleft" id="backBtn"><img src="__PUBLIC__/mobile/images/carservice/顶图返回箭头.png" width="20" height="25"  alt=""/></div>    
+      <div id="toptdright">上门保养</div>   
+  </tr>
+
+  <tr>
+    <td height="10"></td>
+  </tr>
+  
+  <tr height="25">
+    <td><table width="94%" bgcolor="#E7E7E7" border="0" align="center" cellpadding="4" cellspacing="4">
+      <tr>
+        <td width="70%">{$brand_name}&nbsp;&nbsp;<span id="xingqinfont1">{$model_name}</span></td>
+        <td id="xiangmu1">机油{$car_style['norms']}</td>
+      </tr>
+    </table></td>
+  </tr>
+
+  <tr>
+    <td height="10"></td>
+  </tr>
+
+  <tr>
+      <td height="50">
+      <table width="94%" height="40" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>         
+            <td background="__PUBLIC__/mobile/images/carservice/灰框1.png" width="8"></td>
+         
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-right:4px;" ><img src="__PUBLIC__/mobile/images/carservice/选中钩.png" width="17" height="15"  alt="" class="itemBtn item1" data-price="{$item_sets[0]['price']}" /></td>
+          
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png" ><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td width="50" background="__PUBLIC__/mobile/images/carservice/灰框2.png" align="center">机油</td>
+                 
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png">
+                <select name="item_id_0" id="item_id_0" class="item_id" style="width:120%;height:40px;background:transparent;-webkit-appearance:none;border:0;z-index:999;">
+                    <foreach name="item_sets" item="set1" key="k" >
+                    <option data-oil-1-id="{$set1['oil_1']}" data-oil-2-id="{$set1['oil_2']}" data-oil-1-num="{$set1['oil_1_num']}" data-oil-2-num="{$set1['oil_2_num']}" id="CheckboxGroup0_{$set1['id']}" value="{$set1['id']}" data-price="{$set1['price']}">{$set1['name']}（￥{$set1['price']}）</option>
+                    </foreach>
+                    <option id="CheckboxGroup0_-1" value="0" data-price="0">自备配件<strong>（￥0）</strong></option>
+                </select>
+                <input type="hidden" id="item_price_0" class="item_price" value="{$item_sets['0']['price']}" data-id="{$item_sets['0']['id']}">
+            </td>
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-left:4px;">
+                <img src="__PUBLIC__/mobile/images/carservice/三角标.png" width="14" height="9"  alt="" id="item_0_sel" />
+            </td>
+          
+            <td width="8" background="__PUBLIC__/mobile/images/carservice/灰框3.png"></td>  
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td height="50">
+      <table width="94%" height="40" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>         
+            <td background="__PUBLIC__/mobile/images/carservice/灰框1.png" width="8"></td>
+         
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-right:4px;" ><img src="__PUBLIC__/mobile/images/carservice/选中钩.png" width="17" height="15"  alt="" class="itemBtn item2" data-price="{$item_set[1][0]['price']}" /></td>
+          
+            <td width="1"background="__PUBLIC__/mobile/images/carservice/灰框2.png" ><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td width="50" background="__PUBLIC__/mobile/images/carservice/灰框2.png" align="center">机滤</td>
+                 
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png">
+                <select name="item_id_1" id="item_id_1" class="item_id" style="width:120%;height:40px;background:transparent;-webkit-appearance:none;border:0;z-index:999;">
+                    <foreach name="item_set[1]" item="value">
+                    <option id="CheckboxGroup1_{$value['id']}" value="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></option>
+                    </foreach>
+                    <option id="CheckboxGroup1_-1" value="0" data-price="0">自备配件<strong>（￥0）</strong></option>
+                </select>
+                <input type="hidden" id="item_price_1" class="item_price" value="{$item_set['1']['0']['price']}" data-id="{$item_set['1']['0']['id']}">
+            </td>
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-left:4px;">
+                <img src="__PUBLIC__/mobile/images/carservice/三角标.png" width="14" height="9"  alt="" id="item_0_sel" />
+            </td>
+          
+            <td width="8" background="__PUBLIC__/mobile/images/carservice/灰框3.png"></td>  
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+
+
+  <tr>
+    <td height="50">
+      <table width="94%" height="40" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>         
+            <td background="__PUBLIC__/mobile/images/carservice/灰框1.png" width="8"></td>
+         
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-right:4px;" ><img src="__PUBLIC__/mobile/images/carservice/未选中钩.png" width="17" height="15"  alt="" class="itemBtn item3" data-price="{$item_set[2][0]['price']}" /></td>
+          
+            <td width="1"background="__PUBLIC__/mobile/images/carservice/灰框2.png" ><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td width="50" background="__PUBLIC__/mobile/images/carservice/灰框2.png" align="center">空气滤</td>
+                 
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png">
+                <select name="item_id_2" id="item_id_2" class="item_id" style="width:120%;height:40px;background:transparent;-webkit-appearance:none;border:0;z-index:999;">
+                    <foreach name="item_set[2]" item="value">
+                    <option id="CheckboxGroup2_{$value['id']}" value="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></option>
+                    </foreach>
+                    <option id="CheckboxGroup2_-1" value="0" data-price="0">自备配件<strong>（￥0）</strong></option>
+                </select>
+                <input type="hidden" id="item_price_2" class="item_price" value="{$item_set['2']['0']['price']}" data-id="{$item_set['2']['0']['id']}">
+            </td>
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-left:4px;">
+                <img src="__PUBLIC__/mobile/images/carservice/三角标.png" width="14" height="9"  alt="" id="item_0_sel" />
+            </td>
+          
+            <td width="8" background="__PUBLIC__/mobile/images/carservice/灰框3.png"></td>  
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td height="50">
+      <table width="94%" height="40" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>         
+            <td background="__PUBLIC__/mobile/images/carservice/灰框1.png" width="8"></td>
+         
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-right:4px;" ><img src="__PUBLIC__/mobile/images/carservice/未选中钩.png" width="17" height="15"  alt="" class="itemBtn item4" data-price="{$item_set[3][0]['price']}" /></td>
+          
+            <td width="1"background="__PUBLIC__/mobile/images/carservice/灰框2.png" ><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td width="50" background="__PUBLIC__/mobile/images/carservice/灰框2.png" align="center">空调滤</td>
+                 
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+         
+            <td align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png">
+                <select name="item_id_3" id="item_id_3" class="item_id" style="width:120%;height:40px;background:transparent;-webkit-appearance:none;border:0;z-index:999;">
+                    <foreach name="item_set[3]" item="value">
+                    <option id="CheckboxGroup3_{$value['id']}" value="{$value['id']}" data-price="{$value['price']}" style="padding-left:20px;">{$value['name']}<strong>（￥{$value['price']}）</strong></option>
+                    </foreach>
+                    <option id="CheckboxGroup3_-1" value="0" data-price="0">自备配件<strong>（￥0）</strong></option>
+                </select>
+                <input type="hidden" id="item_price_3" class="item_price" value="{$item_set['3']['0']['price']}" data-id="{$item_set['3']['0']['id']}">
+            </td>
+            <td width="1" background="__PUBLIC__/mobile/images/carservice/灰框2.png"><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+
+            <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-left:4px;">
+                <img src="__PUBLIC__/mobile/images/carservice/三角标.png" width="14" height="9"  alt="" id="item_0_sel" />
+            </td>
+          
+            <td width="8" background="__PUBLIC__/mobile/images/carservice/灰框3.png"></td>  
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td height="50"><table width="94%" height="40" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td background="__PUBLIC__/mobile/images/carservice/灰框1.png" width="8"></td>
+        <td width="30" align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png" style="padding-right:4px;" ><img src="__PUBLIC__/mobile/images/carservice/未选中钩.png" width="17" height="15"  alt="" id="hasItemBtn" /></td>
+        <td width="1"background="__PUBLIC__/mobile/images/carservice/灰框2.png" ><img src="__PUBLIC__/mobile/images/carservice/竖条.png"/></td>
+       
+        <td align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png">已有配件,仅购买上门服务</td>
+       
+        <td width="8" background="__PUBLIC__/mobile/images/carservice/灰框3.png"></td>
+      </tr>
+    </table></td>
+  </tr>
+<tr>
+    <td height="50"><table width="94%" height="40" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td background="__PUBLIC__/mobile/images/carservice/灰框1.png" width="6"></td>
+        
+       
+        <td align="center" background="__PUBLIC__/mobile/images/carservice/灰框2.png">服务费 ￥{$service_cost}元</td>
+       
+        <td width="6" background="__PUBLIC__/mobile/images/carservice/灰框3.png"></td>
+      </tr>
+    </table></td>
+</tr>
+
+<tr>
+  <td height="10"></td>
+</tr>
+
+<tr>
+    <td height="50" bgcolor="#00AAF1"><table width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center" id="xiangmu3">￥<strong id="amount" style="font-size:22px;"></strong></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="50"><table width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="color: #999">支持现金支付、在线支付</td>
+      </tr>
+    </table></td>
+  </tr>
+  
+  <tr>
+    <td height="50" align="center" onclick="document.getElementById('subForm').submit();">
+        <form method="post" name="subForm" id="subForm" action="__APP__/mobiletmp/order">
+        	  <input type="hidden" name="oil_1_id" value="{$item_sets['0']['oil_1']}" />
+              <input type="hidden" name="oil_1_num" value="{$item_sets['0']['oil_1_num']}" />
+              <input type="hidden" name="oil_2_id" value="{$item_sets['0']['oil_2']}" />
+              <input type="hidden" name="oil_2_num" value="{$item_sets['0']['oil_2_num']}" />
+              <input type="hidden" name="CheckboxGroup0_res" id="CheckboxGroup0_res" value="<empty name="item_sets['0']['id']">-1<else />{$item_sets['0']['id']}</empty>">
+              <input type="hidden" name="CheckboxGroup1_res" id="CheckboxGroup1_res" value="<empty name="item_set['1']['0']['id']">-1<else />{$item_set['1']['0']['id']}</empty>">
+              <input type="hidden" name="CheckboxGroup2_res" id="CheckboxGroup2_res" value="0">
+              <input type="hidden" name="CheckboxGroup3_res" id="CheckboxGroup3_res" value="0">
+
+              <table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="8" height="40" background="__PUBLIC__/mobile/images/carservice/yudingBtn1.png">
+                  </td>
+                  <td height="40" background="__PUBLIC__/mobile/images/carservice/yudingBtn2.png">
+                    <div style="color:#FFF;width:100%;text-align:center;padding:0.6rem;">立即预定</div>
+                  </td>
+                  <td width="8" height="40" background="__PUBLIC__/mobile/images/carservice/yudingBtn3.png">
+                  </td>
+                </tr>
+              </table>
+        </form>
+    </td>
+  </tr>
+ 
+  <tr>
+    <td height="4">&nbsp;</td>
+  </tr>
+</table>
+
+<script>
+$(function(){
+
+    $("#backBtn").click(function(){
+    	<empty name="pa_id">
+    		window.location.href='http://www.xieche.com.cn/mobiletmp-carservice';
+    	<else />
+    		window.location.href='http://www.xieche.com.cn/mobiletmp-carservice-pa_id-{$pa_id}';
+    	</empty>
+    });
+
+    //var amount = {$item_sets['0']['price'] + $item_set['1']['0']['price'] + $item_set['2']['0']['price'] + $item_set['3']['0']['price'] + $service_cost};
+    var amount = {$item_sets['0']['price'] + $item_set['1']['0']['price'] + $service_cost};
+    $("#amount").text(amount);
+    var old_price = 0, price = 0;
+
+    $(".itemBtn").click(function(){
+        var res = $(this).parent().parent().find(".item_id").val();
+        //console.log("%o", res);
+        var _id = $(this).parent().parent().find(".item_id").attr("id");
+        var id = $(this).parent().parent().find(".item_id").find('option:selected').attr("id");
+        //console.log("%o", id);
+        id = id.split("_");
+        id = id['1'];
+        
+        _id = _id.split("_");
+        _id = _id['2'];
+
+        if($(this).attr("src") == "__PUBLIC__/mobile/images/carservice/未选中钩.png"){
+            $("#CheckboxGroup"+_id+"_res").val(id);
+			
+            var price = $(this).parent().parent().find(".item_price").val();
+            amount += Number(price);
+
+            $(this).attr("src", "__PUBLIC__/mobile/images/carservice/选中钩.png");
+        }else{
+            $("#CheckboxGroup"+_id+"_res").val(0);
+
+            var price = $(this).parent().parent().find(".item_price").val();
+            amount -= Number(price);
+            if(amount < 0){
+                amount = 99;
+            }
+
+            $(this).attr("src", "__PUBLIC__/mobile/images/carservice/未选中钩.png");
+        }
+
+        $("#amount").text(amount);
+        $("#hasItemBtn").attr("src", "__PUBLIC__/mobile/images/carservice/未选中钩.png");
+    });
+
+    $(".item_id").change(function(){
+        if($(this).parent().parent().find(".itemBtn").attr("src") == "__PUBLIC__/mobile/images/carservice/选中钩.png"){
+            var res = $(this).val();
+            var _id = $(this).attr('id');
+            var select_item = $(this).find('option:selected');
+            var price = select_item.attr("data-price");
+            var id = select_item.attr("id");
+            console.log(id);
+          	if( $(this).attr('id') == 'item_id_0' ){
+	            //获得每样的数量
+	            var $oil_1_id = select_item.attr('data-oil-1-id'); 
+	        	var $oil_1_num = select_item.attr('data-oil-1-num');
+	        	var $oil_2_id = select_item.attr('data-oil-2-id');
+	        	var $oil_2_num = select_item.attr('data-oil-2-num');
+	        	$('input[name=oil_1_id]').val($oil_1_id);//放到要提交的数据框里面
+	        	$('input[name=oil_2_id]').val($oil_2_id);
+	        	$('input[name=oil_1_num]').val($oil_1_num);
+	        	$('input[name=oil_2_num]').val($oil_2_num);
+          	}
+            //console.log("price:%o", price);
+
+            _id = _id.split("_");
+            _id = _id['2'];
+            
+            id = id.split("_");
+            id = id['1'];
+            $("#CheckboxGroup"+_id+"_res").val(id);
+            
+			$(this).next().attr('data-id',id);
+
+            old_price = $(this).next().val();
+            //console.log("old_price:%o", old_price);
+            amount -= Number(old_price);
+            if(amount < 0){
+                amount = 0;
+            }
+			
+            $(this).next().val(price);
+            amount += Number(price);
+            $("#amount").text(amount);
+            
+          	
+        }
+    });
+    $("#hasItemBtn").click(function(){
+    	if ( $(this).attr('src') == '__PUBLIC__/mobile/images/carservice/未选中钩.png'){
+	        $("#CheckboxGroup0_res").val(0);
+	        $("#CheckboxGroup1_res").val(0);
+	        $("#CheckboxGroup2_res").val(0);
+	        $("#CheckboxGroup3_res").val(0);
+	        amount = {$service_cost};
+	        $("#amount").text(amount);
+	
+	        $(".itemBtn").attr("src", "__PUBLIC__/mobile/images/carservice/未选中钩.png");
+	        $(this).attr("src", "__PUBLIC__/mobile/images/carservice/选中钩.png");
+    	}else{
+    		$(this).attr("src", "__PUBLIC__/mobile/images/carservice/未选中钩.png");
+    		$(".itemBtn").attr("src", "__PUBLIC__/mobile/images/carservice/选中钩.png");
+    		var old0_price  = $('#item_price_0').val();
+    		var old1_price  = $('#item_price_1').val();
+    		var old2_price  = $('#item_price_2').val();
+    		var old3_price  = $('#item_price_3').val();
+    		var old0_id = $('#item_price_0').attr('data-id');
+    		var old1_id = $('#item_price_1').attr('data-id');
+    		var old2_id = $('#item_price_2').attr('data-id');
+    		var old3_id = $('#item_price_3').attr('data-id');
+    		amount = Number(old0_price) + Number(old1_price) + Number(old2_price) + Number(old3_price)+99;
+    		$("#CheckboxGroup0_res").val(old0_id);
+	        $("#CheckboxGroup1_res").val(old1_id);
+	        $("#CheckboxGroup2_res").val(old2_id);
+	        $("#CheckboxGroup3_res").val(old3_id);
+	        $("#amount").text(amount);
+    	}
+    });
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+/*all page css*/
+@import url(common.css);
+
+/*car4s page css*/
+
+.car4s{
+	background: #EDEAE5;
+	overflow: hidden;
+}
+
+.car4s2{
+	background: #EDEAE5;
+	overflow: hidden;
+	position: relative;
+}
+
+.adrareabg{
+	overflow: hidden;
+	height: 100px;
+	width: 100%;
+}
+.adrarea{
+	overflow: hidden;
+	height: 100px;
+	line-height: 100px;
+	background: #EDEAE5;
+	z-index: 100;
+	width: 100%;
+	position: static;
+	top: 0;
+	left: 0;
+}
+
+.adrarea span,.adrarea a{
+	display: inline-block;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+} 
+
+.adrarea a{
+	height: 30px;
+	line-height: 30px;
+	padding: 0 5px;
+}
+
+.adrarea a:hover{
+	color: #FFFFFF;
+	background: #35548c;
+	text-decoration: none;
+}
+
+.adrarea a.current{
+	color: #FFFFFF;
+	background: #35548c;
+	text-decoration: none;
+}
+
+
+.quanfenlei{
+	text-align: center;
+	line-height: 80px;
+}
+.quanfenlei a{
+	display: inline-block;
+	width: 100%;
+	color: #35548c;
+	font-size: 18px;
+}
+.quanfenlei a:hover{
+	background: url(../images/car4s/quanflbg.png) #1ab7bc center 70px no-repeat;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.quanfenlei a.current{
+	background: url(../images/car4s/quanflbg.png) center 70px no-repeat;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.quanfenlei a.current0{background-color: #1ab7bc;}
+.quanfenlei a.current1{background-color: #ff7f48;}
+.quanfenlei a.current2{background-color: #ff5651;}
+
+.c65{
+	width: 65%;
+	overflow: hidden;
+}
+
+
+.car4slist{
+	overflow: hidden;
+}
+
+.car4sone{
+	overflow: hidden;
+	padding: 35px 0;
+	border-top: 1px solid #c5c5c5;
+}
+
+.onecon{
+	overflow: hidden;
+}
+
+.oneimg{
+	width: 48%; 
+	overflow: hidden;
+}
+
+.onedes{
+	width: 45%; 
+	overflow: hidden;
+}
+
+.onedes h2{
+	margin: 5px 0 30px;
+}
+
+.onedes .pingjia{
+	font-size: 24px;
+	margin: 30px 0;
+}
+
+.onedes .pingjia span{
+	color: #ff4a00;
+}
+
+.onedes .onetel{
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+.onedes .oneaddr{
+	font-size: 18px;
+}
+
+
+.oneyh{
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+.oneyh h4{
+	text-indent: 10px;
+	margin: 40px 0 20px;
+}
+
+.oneyh table span{
+	color: #ff4a00;
+}
+
+.fenye{
+	text-align: center;
+	overflow: hidden;
+	margin: 50px 0;
+}
+
+.fenye a{
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 5px;
+}
+
+.fenye a:hover{
+	background: #35548c;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.fenye a.current{
+	background: #35548c;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+.c25{
+	position: absolute;
+	top: 0;
+	right: 8.33333%;
+	margin-top: 1px;
+}
+
+.car4smap{
+	width: 350px;
+	height: 300px;
+}
+
+.group-1{background-color:#1ab7bc;color:#fff;font-size:18px;padding-top:15px;}
+.group-p{padding-top:40px;}
+.group-p img{width:100%}
+.group-p .fl{width:49%}
+.group-2{height:66px;line-height:66px;text-align:center}
+.group-3{border-left:1px dotted #ffffff;padding:5px 0px 0px 20px}
+.bold{font-size:22px;font-weight:bold}
+.group-4{display:block;padding:15px 30px;background-color:#f4f6f3;}
+.groupbg1 .group-4{color:#14b3b7}
+.groupbg2 .group-4{color:#fc774e}
+.groupbg3 .group-4{color:#f95e5a}
+.groupbg2{background-color:#ff7f48}
+.groupbg3{background-color:#ff5651}
+
+.group-more{padding:30px 0px;font-size:18px;border-bottom: 1px solid #c5c5c5;}
+
+.quanfenleicon{
+	overflow: hidden;
+	margin: 20px 0 0 0;
+}
+.quanfenleicons{
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+
+.group-p-c{border:20px solid #ffffff;width:360px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

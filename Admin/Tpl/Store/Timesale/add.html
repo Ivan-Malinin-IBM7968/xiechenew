@@ -1,0 +1,49 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+<div id="main" class="main" >
+<div class="content">
+<form action="__URL__/insert" method="post">
+<table>
+	<tr>
+		<td>星期</td>
+		<td>
+		<input type="text" name="week">星期为数字表示，每个数字之间用','隔开，0表示星期天。如1,2,3,4,5,6,0
+		</td>
+	</tr>
+	<tr>
+		<td>开始时间</td>
+		<td>
+			<select name="start_hours" >
+			<volist name="Think.config.ORDER_HOURS" id="vo">
+			<option value="{$vo}">{$vo}</option>
+			</volist>
+			</select>
+			<select name="start_minute" >
+			<volist name="Think.config.ORDER_MINUTE" id="vo">
+			<option value="{$vo}">{$vo}</option>
+			</volist>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>结束时间</td>
+		<td>
+			<select name="end_hours" >
+			<volist name="Think.config.ORDER_HOURS" id="vo">
+			<option value="{$vo}">{$vo}</option>
+			</volist>
+			</select>
+			<select name="end_minute" >
+			<volist name="Think.config.ORDER_MINUTE" id="vo">
+			<option value="{$vo}">{$vo}</option>
+			</volist>
+			</select>
+		</td>
+	</tr>
+	<tr>
+	<td><input type="hidden" name="shop_id" value="{$Think.get.id}"><input type="submit" value="提交"></td>
+	</tr>
+</table>
+</form>
+</div>
+</div>

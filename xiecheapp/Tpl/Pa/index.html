@@ -1,0 +1,125 @@
+<meta content="4S店预约保养,保养价格,事故理赔,工时费折扣,保养团购券,代金券,上海大众保养多少钱,奥迪保养多少钱,宝马保养多少钱" name="keywords">
+<meta content="携车网  (原名纵横携车网) 向广大车主提供汽车保养维修预约享受折扣服务，用车费用记录、油耗统计信息、车辆维修保养价格数据信息等，帮您轻松解决小保养、大保养、机油、机滤、刹车片、火花塞等汽车保养难题，是您选择养车服务的第一网络平台。" name="description">
+<link rel="shortcut icon" href="/Public/new_2/images/favicon.ico" type="image/x-icon">
+<if condition="$header eq '4'">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="initial-scale = 0.5, user-scalable = no">
+<base target="_blank">
+
+</if>
+<if condition="$header eq '3'">
+<meta name="viewport" content="initial-scale = 0.5, user-scalable = no">
+<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+</if>
+<if condition="$header eq '2'">
+<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
+</if>
+<if condition="$header eq '1'">
+<meta name="viewport" content="width=device-width, initial-scale = 0.5, user-scalable=false;">
+<meta name="viewport" content="initial-scale=0.5,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=no" />
+</if>
+
+
+<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/cj/jQueryRotate.2.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/cj/jquery.easing.min.js"></script>
+<script type="text/javascript">
+$(function(){ 
+	$("#send_verify").attr("disabled",false);
+		$("#send_verify").click(function(){
+			var mobile = $('#mobile').val();
+			var second = "60";
+			if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Pa/send_verify",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							$("#send_verify").show();
+							send_verify_show(second);
+						}else if(data == '-1'){
+							send_verify_show(second);
+							alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+							return false;
+						}
+					},
+					error: function(){
+						$("#send_verify").show();
+						send_verify_show(second);
+					}
+				})
+			}
+		})
+
+	
+	$('#btn_login').click(function(){
+		var mobile = $('#mobile').val();
+		var mobile_verify_lottery = $('#mobile_verify_lottery').val();
+		$.ajax({
+			type: "POST",
+			url: "__APP__/Pa/palogion",
+			cache: false,
+			data:"mobile="+mobile+"&mobile_verify_lottery="+mobile_verify_lottery,
+			dataType: "json",
+			success: function(data){
+				alert(data);
+				if(data == '1'){
+					alert('验证码填写错误');
+					return false;
+				}else if(data == '3'){
+					alert('领取成功');
+					location.reload();
+				}
+				else if(data == '5'){
+					alert('请填写手机号码');
+					return false;
+				}else{
+					alert('您已经领取过优惠券了');
+					location.reload();
+					return false;
+				}
+			},
+			error: function(){
+				alert('123');	
+			}
+		})	
+	})
+
+
+}); 
+
+
+function send_verify_show(i){
+	if(i>='0'){
+		$("#send_verify").attr("disabled",true); 
+		$("#send_verify").attr("value",i+"秒后重新发送");
+		i--;
+		setTimeout(function(){send_verify_show(i);},1000);
+	}else{
+		$("#send_verify").attr("disabled",false); 
+		$("#send_verify").attr("value","发送手机验证码");
+	}
+}
+
+</script>
+</head>
+<body>
+	<li id="li_mobile">
+					<label for="">手机号：</label>
+					<input type="text" id="mobile" name="mobile"> 
+					<input type="button" value="获取验证码" id="send_verify" style=" width: 140px; height: 30px;">
+				</li>
+				<li id="li_mobile_verify_lottery">
+					<label for="">验证码：</label>
+					<input type="text" id="mobile_verify_lottery" name="mobile_verify_lottery">
+					<input type="button" id="btn_login" name="btn_login" value="立即领取"  style="background: #0066cc; border: none; color: white; width: 140px; height: 30px;">
+				</li>
+
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<layout name='layout_note' />
+<div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <ul class="jznavbut">
+		<volist name='Think.config.NOTE_TYPE_TITLE' id="title" key="title_key">
+			<volist name='Think.config.NOTE_TYPE_NAME' id="name" key="name_key">
+				<if condition="$title_key == $name_key">
+					<li class="but<?php echo sprintf("%02d", $key); ?>"><a href="__APP__/note/notemenu/type/{$title}" target="_blank"></a></li>
+				</if>
+			</volist>
+		</volist>
+          </ul>
+      </div>
+      <div class="clear"></div>
+      </div>
+	  <div class="userfootbg"></div>
+	</div>
+</div>
+<div class="clear"></div>

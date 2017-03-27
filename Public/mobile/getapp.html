@@ -1,0 +1,63 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>微信内连接测试</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+		<meta name="apple-mobile-web-app-title" content="携车网">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<style>
+			body{padding-top: 30px;}
+			.a-link{
+				width: 200px; height: 60px; line-height: 60px; margin: 0 auto; display: block; text-align: center; text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <script>
+			if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+			    alert(navigator.userAgent);  
+			    alert("ios")
+			    window.open("http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=588144466&mt=8","_blank");
+			} else if (/(Android)/i.test(navigator.userAgent)) {
+			    alert(navigator.userAgent); 
+			    alert("android")
+			    window.open("http://xieche.com.cn/xc.apk","_blank");
+			} else {
+				alert(navigator.userAgent); 
+			    //window.location.href ="pc.html";
+			};
+
+		</script>-->
+		<!-- <a href="weixin://shareTimeline?title='tiline d'" class="a-link" style="background: yellow; color: #666666;">打开微信客户端</a> -->
+
+		<a href="https://itunes.apple.com/cn/app/xie-che-wang-qi-che-shou-hou/id588144466?mt=8" class="a-link" style="background: #0066cc; color: #ffffff;" name="Mobile-iPhone-AppStore" target="_blank" >携车网客户端</a>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+			
+			(function(){
+				var ua = navigator.userAgent.toLowerCase();
+				if(ua.match(/MicroMessenger/i)=="micromessenger") {
+					
+					var weixin_prepend_link = 'http://mp.weixin.qq.com/mp/redirect?url=',
+	                	orgiLink = $(".a-link").attr('href');
+	                	
+
+	            	$(".a-link").attr('href', weixin_prepend_link+orgiLink);
+	            	$(".a-link").click(function(e){
+	            		window.open(weixin_prepend_link+orgiLink)
+	            	})
+					
+			 	} 
+			})()
+
+			
+                 
+		</script>	
+		<!-- <a href="https://itunes.apple.com/cn/app/xie-che-wang-qi-che-shou-hou/id588144466?mt=8&uo=4" target="itunes_store" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/htmlResources/assets//images/web/linkmaker/badge_appstore-sm.png) no-repeat;width:61px;height:15px;@media only screen{background-image:url(https://linkmaker.itunes.apple.com/htmlResources/assets//images/web/linkmaker/badge_appstore-sm.svg);}"></a> -->
+	</body>
+</html>

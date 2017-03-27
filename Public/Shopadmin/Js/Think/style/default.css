@@ -1,0 +1,85 @@
+@charset "utf-8";
+.error{ color:#F00;}
+/*笼罩层样式*/
+.Think_cover{ top:0px; left:0px; width:100%; margin:0;padding:0; position:absolute; z-index:1000; height:100%; cursor:wait; background:#000; }
+
+.iefix{ position:relative;}
+/*弹出框样式*/
+table { empty-cells: show; border-collapse: collapse; }
+	.t_l, .t_c, .t_r, .m_l, .m_r, .b_l, .b_c, .b_r { overflow: hidden; cursor:move;  opacity: 0.2; filter:alpha(opacity=20); background:none repeat scroll 0 0 #000000 }
+	.t_l, .t_r, .b_l, .b_r { width: 8px; height: 8px; }
+	.t_c, .b_c { height: 8px; }
+	.m_l, .m_r { width: 8px; }
+
+	.t_l { -moz-border-radius: 8px 0 0 0; -webkit-border-radius: 8px 0 0 0; border-radius: 8px 0 0 0; }
+	.t_r { -moz-border-radius: 0 8px 0 0; -webkit-border-radius: 0 8px 0 0; border-radius: 0 8px 0 0; }
+	.b_l { -moz-border-radius: 0 0 0 8px; -webkit-border-radius: 0 0 0 8px; border-radius: 0 0 0 8px; }
+	.b_r { -moz-border-radius: 0 0 8px 0; -webkit-border-radius: 0 0 8px 0; border-radius: 0 0 8px 0; }
+	.m_c { background:#fff;}
+
+	.flb { padding: 10px 10px 8px; height: 20px; line-height: 20px; font-size:1em; margin:0px; cursor:move; }
+		.flb em { float: left; font-size: 14px; font-weight: 700; color: #336699; font-style:normal;}
+			.flbc { float: right; margin-left:10px; display:inline; color: #999999;  width: 20px; height: 20px; overflow: hidden; text-indent: -9999px; background:url(img/cls.gif) no-repeat 0 0; cursor: pointer; }
+				.flbc:hover { background-position: 0 -20px; }
+	.content{ padding:0 10px 10px;}
+
+.popup2{ background:#eee;}
+/*alert*/
+
+#popup_container {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	min-width: 300px; /* Dialog will be no smaller than this */
+	max-width: 600px; /* Dialog will wrap after this width */
+	background: #FFF;
+	border: solid 5px #999;
+	color: #000;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#popup_title {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 1.75em;
+	color: #666;
+	background: #CCC url(img/title.gif) top repeat-x;
+	border: solid 1px #FFF;
+	border-bottom: solid 1px #999;
+	cursor: default;
+	padding: 0em;
+	margin: 0em;
+}
+
+#popup_content {
+	background: 16px 16px no-repeat url(img/info.gif);
+	padding: 1em 1.75em;
+	margin: 0em;
+}
+
+#popup_content.alert {
+	background-image: url(img/info.gif);
+}
+
+#popup_content.confirm {
+	background-image: url(img/important.gif);
+}
+
+#popup_content.prompt {
+	background-image: url(img/help.gif);
+}
+
+#popup_message {
+	padding-left: 48px;
+}
+
+#popup_panel {
+	text-align: center;
+	margin: 1em 0em 0em 1em;
+}
+
+#popup_prompt {
+	margin: .5em 0em;
+}

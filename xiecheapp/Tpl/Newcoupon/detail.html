@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>携车网-优惠券使用说明</title>
+        <meta charset="utf-8">
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="telephone=no" name="format-detection">
+        <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="__PUBLIC__/Coupon/css/coupon.css" rel="stylesheet">
+
+        <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+        <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+
+    <style type="text/css">
+        html, body {
+            width: 100%;
+        }
+    </style>
+
+    <body>
+        <div class="detail-main">
+            <div id="detail-img">
+                <img src="{$detail.coupon_detail_img}">
+            </div>
+            <div id="detail-text">
+                <p><b>使用说明：</b></p>
+                <p>1.点击下方“立即使用”按钮直接进入下单页面。</p>
+                <p>2.{$detail.coupon_summary}</p>
+                <p>3.此券不找零，不兑现，不可与其他优惠同时使用。</p>
+                <p><b>服务范围：</b>{$detail.service_area}</p>
+                <p><b>活动时间：</b>{$detail.active_time}</p>
+                <p><b>客服电话：</b>400-660-2822</p>
+            </div>
+            <a href="{$detail.order_url}">
+                <div class="text-center" id="detail-button">
+                    立即使用           
+                </div>
+            </a>
+        </div>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+        (function(){
+        })();
+    </script>
+</html>

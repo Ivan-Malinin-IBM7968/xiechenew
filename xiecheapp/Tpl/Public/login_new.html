@@ -1,0 +1,163 @@
+
+<if condition="$Think['const'].TOP_CSS eq 'xc'">
+<include file="Public:header_new"/>
+
+<!-- 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title><notempty  name="title">{$title}<else/>携车网,汽车保养维修预约,4S店折扣优惠,事故车维修预约</notempty></title>
+	<empty name="meta_keyword">
+	<meta content="汽车保养,汽车维修,携车网,4S店预约保养,事故车维修" name="keywords">
+	<else/>
+	<meta content="{$meta_keyword}" name="keywords">
+	</empty>
+	<empty name="description">
+	<meta content="汽车保养维修,事故车维修-首选携车网,全国唯一4S店汽车保养维修折扣的网站,最低5折起,还有更多团购套餐任您选,事故车维修预约,不花钱,还有返利拿4006602822"  name="description">
+	<else/>
+	<meta content="{$description}" name="description">
+	</empty>
+
+	<link rel="shortcut icon" href="__PUBLIC__/new_2/images/favicon.ico" type="image/x-icon">   
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/common.css?v={$Think.config.VERSION_DATE}" />
+</head>
+<body>
+ -->
+<else/>
+
+<include file="Public:pa_head"/>
+</if>
+
+<link href="__PUBLIC__/new/style/myhome/login.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<link href="__PUBLIC__/new/style/myhome/gb.css" rel="stylesheet" type="text/css">
+
+
+<script>
+	function fleshVerify(){ 
+	//重载验证码
+	var timenow = new Date().getTime();
+	$('#verifyImg').attr("src",'__APP__/common/verify/'+timenow);
+	
+	}
+	function get_pwd(){
+		var username = $("#username").val();
+		location.href="__APP__/member/get_password/username/"+username;
+	}
+</script>
+
+ <!-- 头部 开始 -->
+<style type="text/css">
+	.yx_head {
+		margin: 0 auto;
+		padding: 0 50px;
+		text-align: left;
+		width: 960px;
+	}
+	.yx_head .logo .logo_bd_login {
+		float: left;
+		width: 434px;
+		height: 131px;
+		background: url("__PUBLIC__/new/images/logo_big.jpg") no-repeat left top;
+	}
+	.yx_head .logo {
+		width: 434px;
+		height: 131px;
+	}
+</style>
+<div class="yx_head">
+	<div class="logo">
+		<h1><a title="携车网" class="logo_bd_login" href="http://www.xieche.com.cn"><span class="hide_clip">携车网</span></a></h1>
+	</div>
+</div>
+<!-- 头部 结束 -->
+<style>
+	.v_n{
+		position: relative;
+	}
+	.v_n span{
+		float: left;
+		margin-right: 5px;
+	}
+</style>
+<!-- 内容 开始 -->
+<div class="main wrap_login" id="container">
+	<div class="mod_login">
+		<div class="hd">
+			<h3>用户登录<span>User Login</span></h3>
+		</div>
+		<div class="bd">
+			<form action="__APP__/public/logincheck" method="post" name="form1">
+			<ul class="list_info">
+				<li class="row_name"><span class="tit">用户名/手机号：</span><input name="username" id="username" type="text" class="input_short nor" value=""></li>
+				<li><span class="tit">密　码：</span><input name="password" type="password" class="input_short" value=""></li>
+				<li style="position: relative" class="v_n">
+					<span class="tit">验证码：</span>
+					<span>
+						<input  check="Require" warning="请输入验证码" name="verify" type="text" class="input_vali" />
+					</span>
+					<span>
+						<img id="verifyImg" SRC="__APP__/common/verify/" onClick="fleshVerify()" border="0" alt="点击刷新验证码" title="点击刷新验证码" style="cursor:pointer;width:48px;height:22px;" align="absmiddle" />
+					</span>
+					<span>
+						<a href="###" class="change" onClick="fleshVerify()">看不清？换一张</a>
+					</span>
+					<div style="clear:both"></div>
+				</li>
+				<li class="label_wrap"><label for="is_remember"><input name="" id="is_remember" type="checkbox" value=""> 在这台电脑上记住我</label></li>
+				<li><div class="btn_wrap"><a href="###" class="btn btn_login" hotname="I.LOGIN.LOGIN" id="sub_btn" onClick="document.form1.submit(); return false"><b> 登 录 </b></a> <a href="###" onclick="get_pwd();" class="btn_get_pwd">忘记密码</a></div></li>
+			</ul>
+			<input type="hidden" id="jumpUrl" name="jumpUrl" value="">
+			</form>
+		</div>
+		<!-- <div class="login_other"><span class="t">使用合作网站帐号登录：</span>
+			<a id="qqauthlogin" href="#" hidefocus="true" class="btn_login_with_qq" hotname="I.LOGIN.FROMQQ">QQ登录</a>
+			<a href="#" class="btn_login_alipay" id="ali_login" hotname="I.LOGIN.FROMALIPAY">支付宝登录</a>
+		</div> -->
+		<div class="register">
+			<h3 style="font-size:20px; padding-top: 15px;">还不是携车网用户？<a id="reg_btn" style="color: #0066cc; font-size: 16px;" href="__APP__/member/add">免费注册</a></h3>
+			<!-- <div class="txt_tips">一分钟轻松注册，就可以方便购物！ </div> -->
+		</div>
+	</div>
+	<span class="login_shadow"></span>
+	<!--S 左边banner -->
+	<div class="banner">
+		<!-- <div class="info_icson">
+			<h2 class="tit">携车网</h2>
+			<div class="con">
+				<ul>
+					<li>行货正品—易迅网全部商品保证行货正品，您可放心购物。</li>
+					<li>正规发票—全部商品均可提供正规商业发票。</li>
+					<li>当日发货—商品购买后当天发货，上海地区24小时内到货。</li>
+					<li>七天包退—购买后七天之内可无理由退货。</li>
+				</ul>
+			</div>
+		</div> -->
+	</div>
+	<!--E 左边banner -->
+</div>
+<!-- 内容 结束 -->
+<script type="text/javascript">
+<!--
+	(function($){
+		$.getUrlParam = function(name)
+		{
+			var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if (r!=null) return unescape(r[2]); return null;
+		}
+	})(jQuery);
+	
+	var jumpUrl = $.getUrlParam("jumpUrl");
+	$("#jumpUrl").val(jumpUrl);
+//-->
+</script>
+
+
+<if condition="$Think['const'].TOP_CSS eq 'xc'">
+<include file="Public:footer_new"/>
+<else/>
+<include file="Public:pa_foot"/>
+</if>

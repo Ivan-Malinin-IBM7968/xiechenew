@@ -1,0 +1,150 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+	<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+    <style type='text/css'>
+        .btnMap {
+            width:50px !important;
+            background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+        }
+    </style>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+
+<div class="title">添加雨刷</div>
+
+<!-- 列表显示区域  -->
+<div >
+
+<table style="line-height:50px;">
+	
+<tr>
+	<td>名称:</td>
+	<td>
+		<input type="text" name="name" id="name">
+	</td>
+</tr>
+
+<tr>
+	<td>品牌:</td>
+	<td>
+		<select id="brand_id">
+   			<option value="0">选择</option>
+			<foreach name="brand_list" item="vo" >
+   				<option value="{$vo.id}">{$vo.name}</option>
+   			</foreach>
+   		</select>
+	</td>
+</tr>
+<tr>
+	<td>雨刷类型:</td>
+	<td>
+		<select id="wiper_id">
+			<option value="0">选择</option>
+            <foreach name="wiper_list" item="vo2" >
+                <option value="{$vo2.id}">{$vo2.name}</option>
+            </foreach>
+		</select>
+	</td>
+</tr>
+    <tr>
+        <td>尺寸:</td>
+        <td>
+            尺寸1：<input type="text" name="size1" id="size1">
+            尺寸2：<input type="text" name="size2" id="size2">
+        </td>
+    </tr>
+
+	<tr>
+	<td>价格:</td>
+	<td>
+		<input type="text" name="price" id="price">
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2" align="center">
+		<input type="button" name="saveBtn" id="saveBtn" value="添加">
+	</td>
+</tr>
+
+</table>
+
+</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+
+<script>
+$("#saveBtn").click(function(){
+	var name = $("#name").val();
+	var brand_id = $("#brand_id").val();
+	var price = $("#price").val();
+    var size1 = $("#size1").val();
+    var size2 = $("#size2").val();
+	var wiper_id = $("#wiper_id").val();
+
+	if(name == ""){
+		alert('请填写雨刷名称');
+		$("#name").focus();
+		return false;
+	}
+
+	if(brand_id == 0){
+		alert('请选择雨刷品牌');
+		$("#brand_id").focus();
+		return false;
+	}
+
+	if(price == ""){
+		alert('请填写雨刷价格');
+		$("#price").focus();
+		return false;
+	}
+    if(size1 == ""){
+        alert('请填写尺寸1');
+        $("#size1").focus();
+        return false;
+    }
+    if(size2 == ""){
+        alert('请填写尺寸2');
+        $("#size2").focus();
+        return false;
+    }
+	if(wiper_id == 0){
+		alert('请填写雨刷类型');
+		$("#pads").focus();
+		return false;
+	}
+
+	$.ajax({
+	    url: '__APP__/Carservice/Carwiperconfig/ajax_edit',
+	    type: 'POST',
+	    data:{ name:name,brand_id:brand_id,price:price,wiper_id:wiper_id,size1:size1,size2:size2},
+	    dataType: 'json',
+	    timeout: 1000,
+	    error: function(){
+	      alert('系统繁忙!');
+	      return false;
+	    },
+	    success: function( data ){
+	      data = data.data;
+	      if(data.errno=='0'){
+	        window.location.href='__APP__/Carservice/Carwiperconfig';
+	        return true;
+	      }
+	    }
+	});
+});
+</script>

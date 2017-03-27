@@ -1,0 +1,228 @@
+<layout name='layout_new' />
+
+<script>
+$(function () {
+     $("#send_verify").attr("disabled", false);
+     $("#send_verify").click(function () {
+         var mobile = $('#mobile').val();
+         var second = "60";
+         $.ajax({
+             type: "POST",
+             url: "__APP__/Member/send_verify",
+             cache: false,
+             data: "mobile=" + mobile,
+             dataType: "json",
+             success: function (data) {
+                 if (data == '1') {
+                     $("#send_verify").show();
+                     send_verify_show(second);
+                 } else if (data == '2') {
+                     send_verify_show(second);
+                     alert("该手机号已注册请确认。");
+                     return false;
+                 } else if (data == '-1') {
+                     send_verify_show(second);
+                     alert("发送失败！发送过于频繁，请一分钟后再尝试。");
+                     return false;
+                 }
+             },
+             error: function () {
+                 $("#send_verify").show();
+                 send_verify_show(second);
+             }
+         })
+
+     })
+
+ })
+
+
+ function send_verify_show(i) {
+     if (i >= '0') {
+         $("#send_verify").attr("disabled", true);
+         $("#send_verify").attr("value", i + "秒后重送");
+         i--;
+         setTimeout(function () {
+             send_verify_show(i);
+         }, 1000);
+     } else {
+         $("#send_verify").attr("disabled", false);
+         $("#send_verify").attr("value", "发送手机验证码");
+     }
+ }
+
+
+
+ function fleshVerify() {
+     //重载验证码
+     var timenow = new Date().getTime();
+     $('#verifyImg').attr("src", '__URL__/verify/' + timenow);
+
+ }
+</script>
+<script src="__PUBLIC__/Js/member/check_member.js?v={$Think.config.VERSION_DATE}"></script>
+
+<style>
+.login-ul{padding:20px 0px 0px 20px; }
+.login-ul li{display:inline-block;width:780px;height:35px;line-height:35px;margin-bottom:4px}
+.login-ul li label{display:inline-block;width:80px;height:30px;line-height:30px;text-align:right;float:left;overflow:hidden}
+.login-ul li input{display:inline-block;width:250px;height:24px;line-height:19px;float:left}
+.xy{margin:0;padding:0}
+#send_verify:hover{cursor: pointer;}
+.legal{width: 554px; height: 200px; overflow-x: hidden; overflow-y: scroll; margin-left: 74px; word-break: break-all; padding-bottom: 10px; background: #f5f5f5; border: 1px solid #ddd; padding: 10px; }
+.legal li{word-break: break-all; width: 550px; line-height: 22px; list-style-type: decimal; height: auto;}
+</style>
+
+<div class="w1200" style="margin: 0 auto;">
+
+  <div class="content">
+
+    <div class="w780 content-left">
+
+    <div class="login-box1">
+        <div class="login_list">
+            <form action="__URL__/insert" method="post">
+            <h6>注册</h6>
+            <ul class='login-ul'>
+                <li class="z_index">
+                    <label>用户名：</label>
+                    <input type="text"  name="username" id="LoginName"  maxlength="50"  class="input"  aside="请输入邮箱或手机，它将成为您未来的登录帐号"/>
+                    <div style="display: none;" id="maillayer" class="maillayer">
+                        <ul id="maillList"></ul>
+                    </div>
+                </li>
+
+                <li>
+                    <label>设置密码：</label>
+                    <input type="password"  name="password" id="txtPwd" maxlength="16" class="input" aside="6-16个英文字母或数字" />
+                </li>
+                <li>
+                    <label>请确认密码：</label>
+                    <input name="repassword" type="password" id="repassword" maxlength="16" class="input" aside="6-16个英文字母或数字" />
+                </li>
+
+                <li>
+                    <label>邮箱：</label>
+                    <input type="text"  name="email" id="txtUserName" maxlength="50" class="input"  aside="注册邮箱号，方便以后找回密码和账号" />
+                </li>
+                <li>
+                    <label>手机：</label>	
+                    <input type="text" name="mobile" id="mobile"  maxlength="16" class="input"  aside="注册邮箱号，方便以后找回密码和账号" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width: 170px; margin-right: 10px; " />
+                    <input type="button" value="获取验证码" id="send_verify" style=" width: 70px; height: 30px; background: #f1f1f1; border: none;">
+                </li>
+                <!--<li class="yz">
+                    <label>验证码：</label>
+                    <input type="text" class="input" check="Require" warning="请输入验证码" name="verify"> 
+					<img id="verifyImg" SRC="__APP__/common/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码"  align="absmiddle" style='margin-left: 5px;'>
+                </li>-->
+                 <li class="yz">
+                    <label>手机验证码：</label>
+                    <input type="text" class="input" check="Require" warning="请输入验证码" id="mobile_verify" name="mobile_verify"> 
+                </li>
+                <li class="xy" style='position: relative'>
+                    <label > &nbsp;</label>
+                    <input id="cbxAgree" checked="checked"  name="cbxAgree" type="checkbox" value="" style='width: 15px; height: 15px; position: absolute; top: 2px; left:74px;' />
+                    <span style='position: absolute; top: 2px; left: 99px; display: inline-block; height: 20px; line-height: 20px;'>我已经看过并同意<a href="javascript: void(0)" target="_blank" style="color: #0066cc">《网络服务协议》</a></span>
+                </li>
+                <li class="xy" style='position: relative; height: 240px;'>
+                    <div class="legal">
+                        <ol style="">
+                            <li>1. 会员在访问携车网之前，请务必仔细阅读本条款并同意本声明。会员访问携车网的行为以及通过各类方式使用携车网的行为，都将被视作是对本声明全部内容的认可。</li>
+                            <li>2. 携车网所提供的汽车售后维修保养项目明细价格(包括但不限于零部件费和/或工时费等费用)，由与携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据。最终付款以在服务提供商处实际发生额为准。</li>
+                            <li>3. 携车网与签约的服务提供商以合同形式约定：通过携车网预约售后服务的车主能够享有一定的工时费和/或零件费折扣，携车网发出的预约确认信息作为车主享有这一折扣的凭证。如服务提供商拒绝向出示预约确认信息的车主提供上述折扣，车主应与携车网联系，由携车网与服务提供商协调解决。</li>
+                            <li>4. 携车网与签约的服务提供商以合同形式约定：通过携车网预约售后服务的车主若按预约时间准时到达服务提供商处，可以享受预约优先工位。如服务提供商无法按预约时间提供预约优先工位，车主应与携车网联系，由携车网和服务提供商协调解决。</li>
+                            <li>5. 通过携车网预约汽车售后服务的车主，在服务提供商处接受服务后，与服务提供商形成服务合同关系。携车网与该服务合同无关，携车网不承担因该服务合同产生的任何直接和/或间接的责任。 </li>
+                            <li>6. 携车网不对车辆在质保期内的保修和/或索赔做出预约保证。车辆在质保期内的保修和/或索赔受车辆制造商和/或服务提供商保修和/或索赔政策的约束，服务提供商可依据其保修和/或索赔政策接受或拒绝车主的索赔要求。</li>
+                            <li>7. 携车网致力于提供合理、准确、完整的资讯信息，但并不保证信息的合理性、准确性和完整性，且不对因信息的不合理、不准确或遗漏导致的任何损失或损害承担责任。</li>
+                            <li>8. 访问者在携车网注册时提供的一些个人资料，携车网除您本人同意及第9条规定外不会将用户的任何资料以任何方式泄露给任何一方。</li>
+                            <li>当政府部门、司法机关等依照法定程序要求携车网披露个人资料时，携车网将根据执法单位之要求或为公共安全之目的提供个人资料。在此情况下之任何披露，携车网均得免责。</li>
+                            <li>9. 任何由于黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常经营的不可抗力而造成的损失，携车网得免责。由于与携车网链接的其它网站所造成之个人资料泄露及由此而导致的任何法律争议和后果，携车网均免责。 </li>
+                            <li>10. 携车网如因系统维护或升级而需暂停服务时，将事先公告。若因线路及非本公司控制范围外的硬件故障或其它不可抗力而导致暂停服务，于暂停服务期间造成的一切不便与损失，携车网不负任何责任。</li>
+                            <li>11. 携车网使用者因为违反本声明的规定而触犯中华人民共和国法律的，一切后果自行承担，携车网不承担任何责任。</li>
+                            <li>12. 凡以任何方式登陆携车网或直接、间接使用携车网资料者，视为自愿接受携车网声明的约束。</li>
+                            <div class="clear"></div>
+                        </ol>
+                    </div>
+                </li>
+                <li style="margin-top: 10px;">
+                    <label>&nbsp;</label>
+                    <div class="bottom_an">
+                        <input type="submit"  value="注  册" class="bottom_yt" id="submit" style='background: #E16600; height: 30px; line-height: 30px; border: none; color: #ffffff; font-size: 16px; cursor: pointer'/>
+                    </div>
+               </li>
+               <div class="clear"></div>
+
+            </ul>
+            <div class="clear"></div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- <div class="login_rightNav0">
+
+        <div class="stylebox">
+
+            <h3>您还可以使用以下账号直接登录</h3>
+
+            <div class="login_other">
+
+                
+
+
+
+<a class="lo_sina" title="新浪微博帐号登录" href="javascript:;" onclick="Bitauto.oAuthLogin.openAgentLoginPage('Sina');">
+
+新浪微博</a>
+
+<a class="lo_qq" title="QQ帐号登录" href="javascript:;" onclick="Bitauto.oAuthLogin.openAgentLoginPage('Tencent');">QQ帐号</a>
+
+<a title="人人网帐号登录" class="lo_ren" href="javascript:;" onclick="Bitauto.oAuthLogin.openAgentLoginPage('Renren');">人人网</a>
+
+<a class="lo_kaixin" href="javascript:;" onclick="Bitauto.oAuthLogin.openAgentLoginPage('Kaixin');">开心网</a>
+
+<a class="lo_taobao" href="javascript:;" onclick="Bitauto.oAuthLogin.openAgentLoginPage('Taobao');">淘宝网</a>        
+
+<a class="lo_baidu" href="javascript:;" onclick="Bitauto.oAuthLogin.openAgentLoginPage('Baidu');">百度</a>
+
+<script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_oauthLogin&v=3"></script>
+
+
+
+            </div>
+
+        </div>
+
+    </div> -->
+
+
+
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+<script type="text/javascript">
+
+    var emailList = eval({"@qq.com":"http://mail.qq.com/","@163.com":"http://email.163.com/","@126.com":"http://www.126.com/","@139.com":"http://mail.10086.cn/","@sina.com":"http://mail.sina.com.cn/","@hotmail.com":"http://www.hotmail.com/","@yahoo.com.cn":"http://mail.cn.yahoo.com/","@sohu.com":"http://mail.sohu.com/","@gmail.com":"http://www.gmail.com/","@bitauto.com":"http://mail.bitauto.com"});
+
+    </script>
+
+<script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_validator&v=3"></script>
+
+
+
+<!-- <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_jq_aside,ibt_jq_aside_config,ibt_reg&v=3"></script>
+ -->
+<script type="text/javascript" src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_baa9.js"></script>
+<script>
+var mv_switch = 32;
+var _mvq = _mvq || [];
+_mvq.push(["$setAccount", "21089"]);
+_mvq.push(["$setBeacon", "308"]);
+_mvq.push(["$logConversion"]);
+</script>
+<script type="text/javascript" src="http://static.mediav.com/mvl.js"></script>

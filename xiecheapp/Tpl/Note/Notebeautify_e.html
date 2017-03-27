@@ -1,0 +1,44 @@
+<layout name='layout_note' />
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <div class="userjzbar02"></div>
+        <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+        <form action="__URL__/savenote/type/Notebeautify/note_id/{$list_note.note_id}" method="post">
+          <tr>
+            <td class="tdright w1">车辆：</td>
+            <td>				
+            	<span>{$select_u_c_id.car_name}</span>          
+              </td>
+            <td class="tdright w2">日期：</td>
+            <td>
+            <input type="text" class="left fgre inp01" onclick="WdatePicker()" value="{$list_note.happen_time|date="Y-m-d",###}" name="happen_time">
+              <a class="Selecttime"></a> </td>
+          </tr>
+        </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+		     <td class="tdright w1">摘要：</td>
+		     <td><input type="text" value="{$list_note.summary}" class="inp01 w4" name="summary" id="summary"></td>
+	       </tr>
+		  <tr>
+		     <td class="tdright">费用：</td>
+		     <td><input width="100" type="text" value="{$list_note.total_cost}" onblur="if (!(/^[\d]+\.?\d*$/.test(this.value)) ){this.value='';};checkMoneys(this,2)" onclick="checkMoneys(this,1)" onchange="return CheckMoney(this,'TXT_Total')" onmouseout="this.className='addframetextbox'" onmouseover="this.className='addframetextboxfocus';" class="addframetextbox inp01 w3" name="total_cost" id="TXT_Total"> 元</td>
+	       </tr>
+		   <tr class="none">
+             <td class="tdright w1 tdtop">备注：</td>
+              <td><textarea rows="4" onmouseout="this.className='addframetextbox';this.style.width='100%'" onmouseover="this.className='addframetextboxfocus';this.style.width='100%'" style="width: 100%; height: 111px;" class="addframetextbox" type="text" name="remark" id="TXT_Remark">{$list_note.remark}</textarea></td>
+	       </tr>
+		    <tr class="none">
+            <td ></td>
+            <td > <input type="submit" class="button-yellow" value="保存"></td>
+          </tr>
+          </form>
+        </table>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>

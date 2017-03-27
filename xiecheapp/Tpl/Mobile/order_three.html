@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>请填写备注信息</title>
+    <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/order.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+	<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+	<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/main.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/zepto/zepto.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/zepto/touch.js"></script>
+	<include file="Public:wapfoot" />
+	<style>
+		#loading-overlay{
+			display: none;
+		}
+	</style>
+</head>
+<body style="background: #f1f1f1;">
+	<div id='loading-overlay'>
+        <div class="loading" id="loading-con">
+            <img src="__PUBLIC__/mb/images/ajax-loader.gif" alt="Loading..."/>  
+            <div class="loading-text">正在跳转到支付页面</div>
+        </div>
+    </div>
+<form action="__APP__/Mobile-save_order" id="form_go" method="post" class="post-form" data-ajax="false">
+	<div id="warpper" style="background:#f1f1f1;">
+		
+		<!-- Header Start -->
+		<header id="header" data-role="header">
+			<h1>请填写备注信息</h1>
+			<span id="left-trigger">
+				<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+			</span>
+			<span id="right-trigger" >
+				<a href="tel:4006602822" class="service-call"></a>
+			</span>
+		</header>
+		<!-- Header End -->
+		
+		<!-- Content Wrapper Start -->
+		<div id="content-wrapper" data-role="content" >
+			<div id="inner-content-wrapper">
+				<!-- 服务类型 开始 -->
+				<div id="pi" class="sl">
+					<div class="title">
+						<span class="circle"></span>
+						<h3>请选择时间</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="i-list">
+						<ul>
+							<li>
+								<label style="width: 25%; display: inline-block;">姓 名：</label>
+								
+								<input type="text" id="truename" name="truename" style="width: 75%; display: inline-block;">
+							</li>
+							<li>
+								<label style="width: 25%; display: inline-block;">手 机：</label>
+
+								<input type="text" id="mobile" name="mobile" value="{$old_weixin.mobile}" style="width: 75%; display: inline-block;">
+								
+							</li>
+							<li style="padding-top: 0px;">
+								<if condition="$weixin_status eq 1">
+									<a href="#" name="btn_ok" id="btn_ok">发送验证码</a>
+								</if>
+							</li>
+							<if condition="$weixin_status eq 1">
+								<li>
+									<label style="width: 25%; display: inline-block;">验证码：</label>
+									<input type="text" id="code" name="code" style="width: 75%; display: inline-block;">	
+									
+									<input type="hidden" id="hide_weixin_status" name="hide_weixin_status" value="{$weixin_status}" >
+								</li>
+								<li style="padding-top: 0px;">
+									<a href="#" name="btn_yz" id="btn_yz">验证</a>
+								</li>
+							</if>
+							
+							<li>
+								<label style="width: 25%; display: inline-block;">车牌号：</label>
+								<select name="cardqz" id="cardqz" style="width: 25%; display: inline-block;">
+									<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="list">
+										<option>{$list}</option>
+									</volist>
+								</select>
+								<input type="text" id="licenseplate" name="licenseplate" style="width: 50%; display: inline-block;">
+							</li>
+							<li>
+								<label style="width: 25%; display: inline-block;">备 注：</label>
+								<textarea id="operator_remark" name="operator_remark" ></textarea>
+							</li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- 服务类型 结束 -->
+				<div id="next-btn" >
+					<a href="javascript:void(0)"  rel="external">下一步</a>
+				</div>
+			</div>
+			
+		</div>
+		<!-- Content Wrapper End -->
+	</div>
+	<input type="hidden" id="pa_id" name="pa_id" value="{$pa_id}">
+	<input type="hidden" id="Paweixin_id" name="Paweixin_id" value="{$Paweixin_id}">
+	<input type="hidden" id="shop_id" name="shop_id" value="{$shop_id}">
+	<input type="hidden" id="workhours_sale" name="workhours_sale" value="{$workhours_sale}">
+	<input type="hidden" id="select_services" name="select_services" value="{$selectedFinal}">
+	<input type="hidden" id="order_date" name="order_date" value="{$order_date}">
+	<input type="hidden" id="timesaleversion_id" name="timesaleversion_id" value="{$timesaleversion_id}">
+	<input type="hidden" id="order_time" name="order_time" value="{$order_time}">
+	</form> 
+	<script>
+	document.addEventListener("touchstart", function() {},false);
+	$("#next-btn a").on("click", function(e){
+		   var re = /^[0-9]+.?[0-9]*$/;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/   
+			var mobile = $('#mobile').val();
+			if(!$('#mobile').val() || $('#mobile').val() == '请输入手机号码'){
+				alert('手机号不能为空！');
+				return false;
+			}
+			if(mobile.length!=11){
+				alert('手机号不满11位请重新填写！');
+				return false;
+			}
+			if(!re.test(mobile)){
+				alert('手机号码只能输入数字！');
+				return false;
+			}
+			var truename = $('#truename').val();
+			if(!truename){
+				alert('姓名不能为空！');
+				return false;
+			}
+			var hide_weixin_status = $('#hide_weixin_status').val();
+			var code = $('#code').val();
+			if(hide_weixin_status == 1 && !code){
+				alert('验证码不能为空！');
+				return false;
+			}	
+			$("#form_go").submit();
+			$("#loading-overlay").show();
+	})
+
+
+	
+	$(function(){
+		$("#btn_ok").click(function(){
+			var mobile = $('#mobile').val();
+			var second = "60";
+			if(/^1\d{10}$/.test(mobile)){
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Mobile/SendSms",
+					cache: false,
+					data:"mobile="+mobile,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							alert("发送成功！");
+						}else{
+							alert("发送失败！");
+							return false;
+						}
+					},
+					error: function(){
+					}
+				})
+			}else{
+				alert('请填写数字');
+			}
+		})
+		
+		$("#btn_yz").click(function(){
+			var code = $('#code').val();
+			var truename = $('#truename').val();
+			var mobile = $('#mobile').val();
+			var Paweixin_id = $('#Paweixin_id').val();
+			var second = "60";
+			
+				$.ajax({
+					type: "POST",
+					url: "__APP__/Mobile/CheckCode2",
+					cache: false,
+					data:"code="+code+"&mobile="+mobile+"&Paweixin_id="+Paweixin_id+"&truename="+truename,
+					dataType: "json",
+					success: function(data){
+						if(data == '1'){
+							alert("验证成功！");
+							
+						}else{
+							alert("验证码不正确！");
+							return false;
+						}
+					},
+					error: function(){
+					}
+				})
+		})
+
+
+	}); 
+
+	</script>
+</body>

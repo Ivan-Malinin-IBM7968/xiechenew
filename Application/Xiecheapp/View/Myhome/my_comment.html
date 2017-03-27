@@ -1,0 +1,103 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<style type="text/css">
+	.table tbody > tr > th{
+		background-color: #eff6fd;
+		color: #000000;
+	}
+	.table tbody > tr > td{border-bottom: 1px solid #F6F6F6; border-top:1px solid #F6F6F6;}
+	.table tbody > tr .td1{border-left:2px solid #F6F6F6;color:#ff4a00;}
+	.table tbody > tr .td2{border-right:1px solid #F6F6F6;color:#35548b;}
+	.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td{line-height: 2em;}
+</style>
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="200">
+	
+	<div style="margin-left:20px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="myxinxi">
+			<div class="myxxtop">
+				<ul>
+					<li <empty name="type">class="current"</empty>><a href="javascript:;">全部评价</a></li>
+					<li data-type="1" <eq name="type" value="1">class="current"</eq>><a href="javascript:;">好评</a></li>
+					<li data-type="3" <eq name="type" value="3">class="current"</eq>><a href="javascript:;">差评</a></li>
+				</ul>
+			</div>
+			<empty name="list2"><div style="margin-top: 20px;">抱歉，您暂无此评论！</div><else/>
+			<div class="myxxcon">
+				<table class="table" cellspacing="42">
+				 	<tbody>
+				 		<tr>
+					 		<th>评分</th>
+					 		<th>评价</th>
+					 		<th>店铺</th>
+					 		<th>操作</th>
+				 		</tr>
+				 		<volist name="list2" id="vo" mod="2">
+					 	<tr>
+							<tr height="20"></tr>
+					 		<td class="td1">{$vo['star']*2}分<br><img width="63" src="__PUBLIC__/images/car4s/{$vo['star']*2}.png"></td>
+							<td>{$vo.comment}<br/><font style="color:#666666;font-size:12px"><if condition="$vo.update_time egt 1422514199">{$vo.update_time|date="Y-m-d H:i",###}<else/>{$vo.create_time|date="Y-m-d H:i",###}</if></font></td>
+					 		<td>{$vo.shop_name}<br><font style="color:#ff4a00;font-size:12px">{$vo.comment_rate}%好评</font></td>
+					 		<td class="td2"><a href="javascript:void(0)" onClick="if(confirm('确认要删除该评论吗?'))del('{$vo.id}')">删除</a>
+					 		<!-- <br><a href="javascript:void(0)" onClick="edit('{$vo.id}')">修改</a>-->
+					 		</td>
+					 	</tr>
+					 	</volist>
+				</tbody>
+			</table>
+			<div class="fenye">
+	        	<ul>
+	        		{$page}
+	        	</ul>
+        	</div>
+			</div>
+			</empty>
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<style type="text/css">
+	.myxinxi{background: #ffffff; overflow: hidden; margin-bottom: 20px;}
+	.myxxtop{height: 40px; background: #dee4eb;}
+	.myxxtop ul{overflow: hidden;}
+	.myxxtop ul li{float: left; width: 100px; text-align: center;}
+	.myxxtop ul li.current{background: #ff5651;}
+	.myxxtop ul li a{display: inline-block; width: 100px; height: 37px; margin-top: 3px; line-height: 36px;}
+	.myxxtop ul li.current a{ background: #f6f6f6;}
+
+	.myxxcon{padding: 20px 0; overflow: hidden; }
+</style>
+
+<script type="text/javascript">
+	$(".myxxtop ul li").click(function(){
+		$(this).addClass("current").siblings().removeClass("current");
+		$type = $(this).attr('data-type');
+		if($type){
+			document.location.href = '/myhome/my_comment?type='+$type;
+		}else{
+			document.location.href = '/myhome/my_comment';
+		}
+	});
+	function del(id){
+		$.post('/myhome/delComment',{'id':id},function(data){
+			if(data.status){
+				alert('删除成功');
+				window.location.reload();
+			}else{
+				alert(data.msg);
+			}
+		},'json')
+	}
+</script>

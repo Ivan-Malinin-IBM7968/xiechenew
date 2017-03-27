@@ -1,0 +1,57 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body,ul,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div {margin:0;padding:0;}
+body {background:#fff;color:#333;font-size:12px; font-family: Arial, Helvetica, sans-serif, "微软雅黑", "黑体";}
+
+ul,dl {list-style-type:none;}
+select,input,img,select {vertical-align:middle;}
+
+a {color:#0390c0;text-decoration: none;}
+a:hover {color:#ff8006 !important; text-decoration:underline; cursor:pointer;}
+#vickrey  a:hover {color:#666666 !important; text-decoration:underline; cursor:text;}
+
+img{border:none;}
+
+.cleafix {clear:both;}
+.clear {clear:both;}
+.pageBox {margin:0; padding:0;}
+.pdb_100 {padding-bottom: 100px;}
+.pdb_20 {padding-bottom: 20px;}
+.pdt_10 {padding-top: 10px;}
+.mt_20 {margin-top:20px;}
+.fl {float:left;}
+.fr {float: right;}
+.red {color:red; font-size:12px; margin: 0px 10px;}
+.block {display:block;}
+.hidden {display:none;}
+
+/*page*/
+.pageContainer {width:100%; margin:0 auto; height:100%; padding:0px;}
+
+/*header*/
+.topContainer {width:100%; margin:0px auto; height:132px; padding:0px; background:url(../images/sub_navbg.gif) bottom left repeat-x;}
+.topContent {width:980px; margin:0px auto; height:132px; padding:0px auto;}
+
+.Header {width:980px; margin:0 auto; height:90px; padding:0px; position:relative; font-size: 12px; font-family: "微软雅黑";}
+.Head_r {width: 210px; height: 70px; float:right; padding-top: 10px;text-align: right;}
+.Header .logo {float:left; display:block; width:290px; height:90px; background:url(../images/logo.png) 0 0px;  margin:0px; padding:0px;}
+.top_cx {float:right; width:80px; height:15px; line-height:15px; padding-left:10px;}
+.log_buyer {float:right; width:73px; height:15px; line-height:15px; padding-left:10px;padding-right: 3px;}
+.top_cx a,.log_buyer a {color:#333; font-weight:bold;}
+.top_cx a:hover, .log_buyer a:hover {color:#333; text-decoration:none;}
+.hotline {width: 200px; height:24px; padding:0px; position:relative; float:right; margin-top: 30px;}
+
+/*导航subNav*/
+.subNav {width:980px; height:42px; margin: 0px auto; background:url(../images/sub_navbg.gif) repeat-x; color:#333; position:relative; left:0; top:0;}
+.subNav .navbar {width:980px; position: absolute; font-size:13px; font-weight:bold; font-family: "微软雅黑";}
+.subNav .navbar li {float:left; display:block; width:90px; padding-right:3px; background:url(../images/part_libg.gif) no-repeat right top;}
+.subNav .navbar li a {color:#333; display:block; width:90px; height:40px; line-height:40px; text-align:center;}
+.subNav .navbar li a:hover {text-decoration: none; background:url(../images/nav_focus.gif) bottom left repeat-x;}
+.subNavMouseOut {text-decoration: none; background:url(../images/nav_focus.gif) bottom left repeat-x;}
+.subNav .search_tit {float:right; position:relative; width:257px; height:40px; top:0px; *margin:-1px; padding:0px;}
+.navFocus {text-decoration: none; background:url(../images/nav_focus.gif) bottom left repeat-x;}
+
+.subNav .navbar li ul{position:absolute; display:none; margin-top:1px; border:1px #ccc solid; border-bottom:0px; z-index:9999;}
+.subNav .navbar li ul li{float:none; display:block; margin:0; padding:0; background:0;}
+.subNav .navbar li ul li a{width:90px; height:30px; line-height:30px; text-align:center;border-bottom:1px solid #ccc; background-color:#fefefe; color:#666;}
+.subNav .navbar li ul li a:hover{color:#ff6600; background:#fff;}

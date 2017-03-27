@@ -1,0 +1,115 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<load file="__JS__/Think/jquery-1.6.2.min.js" />
+<!-- 菜单区域  -->
+<script>
+	function delete_sale(id){
+		$.ajax({
+			type:'POST',
+			url:'__URL__/delete_sale',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+	function account(id){
+		$.post('__URL__/account_order',{'id':id},function(data){
+			if(data.status){
+				alert('结算成功');
+				document.location.reload()
+			}else{
+				alert('结算失败');
+			}
+		},'json')
+	}
+</script>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+	<!-- 主体内容  -->
+	<div class="content" >
+	<div class="title">财务管理</div>
+	<!--  
+	<div class="operate">
+		 <form action="__URL__" method="post" >
+			类别：<select name="super_cate">
+					<option value="0">请选择类别</option>
+					<option value="1" <eq name="super_cate" value="1">selected</eq>>机油</option>
+					<option value="2" <eq name="super_cate" value="2">selected</eq>>机滤</option>
+					<option value="3" <eq name="super_cate" value="3">selected</eq>>空气滤清器</option>
+					<option value="4" <eq name="super_cate" value="4">selected</eq>>空调滤清器</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			销售<select name="sale_price">
+					<option value="0" <eq name="sale_price" value="0">selected</eq>>未销售</option>
+					<option value="1" <eq name="sale_price" value="1">selected</eq>>已销售</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;
+			仓库状态<select name="store_status">
+					<option value="0">请选择</option>
+					<option value="1" <eq name="store_status" value="1">selected</eq>>未入库</option>
+					<option value="2" <eq name="store_status" value="2">selected</eq>>入库</option>
+					<option value="3" <eq name="store_status" value="3">selected</eq>>出库</option>
+					<option value="4" <eq name="store_status" value="4">selected</eq>>退货未退款</option>
+					<option value="5" <eq name="store_status" value="5">selected</eq>>退货已退款</option>
+			</select>
+			<input type="submit" value="搜索">
+		</form> 
+	</div>
+	-->
+	<div class="list">
+		<table class="list">
+			<tr class="row">
+				<th align=center>订单类型</th>
+				<th align=center>订单号</th>
+				<th align=center>姓名</th>
+				<th align=center>总金额</th>
+				<th align=center>支付方式</th>
+				<th align=center>已收金额</th>
+				<th align=center>保养日期</th>
+				<th align=center>结算状态</th>
+				<th align=center>操作</th>
+			</tr>
+			<volist name="list" id="vo">
+				<tr>
+					<td align=center>
+						<switch name="vo.finance_type">
+					    	<case value="1">上门保养</case>
+					    	<case value="2">其他类型</case>
+					    </switch>
+					</td>
+					<td align=center>{$vo.oid}</td>
+					<td align=center>{$vo.truename}</td>
+					<td align=center>{$vo.amount}</td>
+					<td align=center>
+						<switch name="vo.pay_type">
+							<case value="0">现金</case>
+					    	<case value="1">现金</case>
+					    	<case value="2">微信</case>
+					    </switch>
+					</td>
+					<td align=center>{$vo.amount}</td>
+					<td align=center>{$vo.create_time|date="y-m-d",###}</td>
+					<td align=center>
+						<if condition="$vo.amount_status eq 1">未结算</if>
+						<if condition="$vo.amount_status eq 2">已结算</if>
+					</td>
+					<td align=center><if condition="$vo.amount_status eq 1"><a onclick="account({$vo.id})">点击结算</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</if><a onclick="showlog('financemanage',{$vo.id})" href="javascript:void(0);">查看日志</a></td>
+				</tr>
+			</volist>
+			<tr>
+				<td colspan="4">{$page}</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+</div>

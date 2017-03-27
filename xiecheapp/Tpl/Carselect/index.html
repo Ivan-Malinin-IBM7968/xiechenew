@@ -1,0 +1,111 @@
+<layout name='layout_note' />
+
+
+
+<div>
+<select id="get_brand" name="brand_id">
+<volist name="brand" id="vo">
+<option value="{$vo.brand_id}">{$vo.word}&nbsp;{$vo.brand_name}</option>
+</volist>
+</select>
+<select id="get_series" name="series_id">
+</select>
+<select id="get_model" name="model_id">
+</select>
+<input type="hidden" id="default_brand" name="brand_id" value="33" brand_name="奥迪">
+<input type="hidden" id="default_series" name="series_id" value="19" series_name="奥迪A4">
+<input type="hidden" id="default_model" name="series_id" value="146" model_name="2004款 1.8T 基本型">
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+	$(document).ready(function(){
+		$.ajax({
+				type: "POST",
+				url: "__APP__/carselect/ajax_get_carinfo",
+				cache: false,
+				data: "brand_id="+$(this).val(),
+				success: function(data){
+					if (data!='null'){
+						var param = eval(data);
+						//alert(data);
+						for (i=0; i<param.length; i++ ){
+							$("#get_series").append("<option value='"+param[i]['series_id']+"'>"+param[i]['series_name']+"</option>");
+						}
+					}
+				}
+			});
+		var brand_id = $("#default_brand").val();
+		var series_id = $("#default_series").val();
+		var model_id = $("#default_model").val();
+		var brand_name = $("#default_brand").attr('brand_name');
+		var series_name = $("#default_series").attr('series_name');
+		var model_name = $("#default_model").attr('model_name');
+		if(brand_id && series_id && model_id && brand_name && series_name && model_name){
+			$("#get_brand").append("<option selected='selected' value='"+brand_id+"'>"+brand_name+"</option>");
+			$("#get_series").append("<option selected='selected' value='"+series_id+"'>"+series_name+"</option>");
+			$("#get_model").append("<option selected='selected' value='"+model_id+"'>"+model_name+"</option>");
+		}
+	});
+
+
+
+
+
+
+	$("#get_brand").change(function(){
+		$("#get_series").html("");
+		if($(this).val() != '0'){
+			$.ajax({
+				type: "POST",
+				url: "__APP__/carselect/ajax_get_carinfo",
+				cache: false,
+				data: "brand_id="+$(this).val(),
+				success: function(data){
+					if (data!='null'){
+						var param = eval(data);
+						//alert(data);
+						for (i=0; i<param.length; i++ ){
+							$("#get_series").append("<option value='"+param[i]['series_id']+"'>"+param[i]['series_name']+"</option>");
+						}
+					}
+				}
+			});
+		}else{
+			
+		}
+	});
+
+
+		$("#get_series").change(function(){
+		$("#get_model").html("");
+		if($(this).val() != '0'){
+			$.ajax({
+				type: "POST",
+				url: "__APP__/carselect/ajax_get_carinfo",
+				cache: false,
+				data: "series_id="+$(this).val(),
+				success: function(data){
+					if (data!='null'){
+						var param = eval(data);
+						//alert(data);
+						for (i=0; i<param.length; i++ ){
+							$("#get_model").append("<option value='"+param[i]['model_id']+"'>"+param[i]['model_name']+"</option>");
+						}
+					}
+				}
+			});
+		}else{
+			
+		}
+	});
+
+</script>

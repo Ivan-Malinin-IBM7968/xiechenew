@@ -1,0 +1,495 @@
+<layout name='layout' />
+<link type="text/css" href="__PUBLIC__/css/home.css" rel="stylesheet">
+<div class="home-nav">&nbsp;</div>
+<div style="overflow:hidden;">
+	<table width="100%">
+	<tbody>
+		<tr>
+			<td width="200" valign="top">
+	
+	<div style="margin-left:20px; width:180px;">
+		<include file="Public:menu"/>
+	</div>
+	</td>
+	<td>
+	<div style="margin-right:20px;">
+		<div class="home-head">
+			<div class="clearfix home-head1">
+				<div class="fl home-name">
+					<h3>{$member.username}</h3>
+					<p>绑定手机号&nbsp;&nbsp;{$member.mobile}</p>
+					<div class="home-money">
+						<img src="__PUBLIC__/images/home/2.png" />
+						<span>账户余额 <empty name="account.amount"><font style="color:#ff5651;">￥0.00</font><else /><font style="color:#ff5651;">{$account.amount}</font></empty>元</span>
+						<img src="__PUBLIC__/images/home/3.png" />
+						<span><a href="/myhome/my_salecoupon"><font style="color:#ff5651;padding-right:5px">{$data.sale_coupon}</font>张抵用卷</a></span>
+						<img src="__PUBLIC__/images/home/4.png" />
+						<span>我的检测报告</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="clearfix home-head2">
+				<div class="fl head2-box">
+					<a href="#">
+						<span>{$pay_count}</span>
+						<p>待付款订单</p>
+					</a>
+				</div>
+				<div class="fl head2-box">
+					<a href="#">
+						<span>{$comment_count}</span>
+						<p>待评价订单</p>
+					</a>
+				</div>
+			</div> -->
+		</div>
+		
+		<div class="home-c">
+			<h3 style="margin-bottom:10px;"><font class="home-c-t">最近订单&nbsp;&nbsp;</font><p class="fr" style="font-size:14px;"><a href="/myhome/all_order">查看全部>></a></p></h3>
+			<div style="height:40px;"></div>
+			<table class="table" style="font-size:14px;">
+				<if condition="($order eq '' and $bidorder eq '' and $carservice eq '')"><tr><td>抱歉，您暂无此订单！</td></tr></if>
+				<notempty name="order">
+					<volist name="order" id="vo">
+					<tr>
+						<th width="150">订单编号：<a href="{:U('/myhome/repair_detail',array('order_id'=>$vo[id]))}">{$vo.id}</a></th>
+						<th width="250">成交时间：{$vo.create_time|date="Y-m-d H:i:s",###}</th>
+						<th>店铺：{$vo.shop_name}</th>
+						<th colspan="3">&nbsp;</th>
+					</tr>
+					
+					<tr valign="baseline" class="tr-2">
+						<td style="text-align:left;" colspan="3"><if condition="$vo.order_type eq 3">故障维修<else />4S店保养</if></td>
+						<td><if condition="vo.total_price eq 0">以4S店价格为准<else />￥{$vo.total_price}</if></td>
+						<td>
+							<volist name="Think.config.ORDER_STATE" id="vo_os">
+								<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+							</volist>
+						</td>
+						<td width="100" style="border-right: 1px solid #eff6fd;">
+							<if condition="$vo.order_type eq 4 and $vo.isComment eq 1"><p><a href="javascript:;" class="btn btn-comment" data-id="{$vo.order_id}" shop-id="{$vo.shop_id}">评价</a></p></if>
+							<a class="color-a" href="{:U('/myhome/repair_detail',array('order_id'=>$vo[id]))}">查看详情</a>
+						</td>
+					</tr>
+					<tr style="height: 25px;"></tr>
+					</volist>
+			 	</notempty>
+
+			 	<notempty name="bidorder">
+					<volist name="bidorder" id="vo">
+					<tr>
+						<th width="150">订单编号：<a href="{:U('/myhome/shiguche_detail',array('insurance_order_id'=>$vo[id]))}">{$vo.id}</a></th>
+						<th width="250">成交时间：{$vo.create_time|date="Y-m-d H:i:s",###}</th>
+						<th>店铺：<empty name="vo.shop_name">4S店暂未确认<else />{$vo.shop_name}</empty></th>
+						<th colspan="3">&nbsp;</th>
+					</tr>
+					<tr valign="baseline" class="tr-2">
+						<td style="text-align:left;" colspan="3">事故车</td>
+						<td>￥{$vo.loss_price}</td>
+						<td>
+							<empty name="vo.order_status">
+				 			    <if condition="$vo.insurance_status eq 1">竞价中
+							    <elseif condition="$vo.insurance_status eq 2"/>竞价结束
+							    <elseif condition="$vo.insurance_status eq 3"/>订单确认
+							    <elseif condition="$vo.insurance_status eq 4"/>订单完成
+							    <else />订单已提交，等待确认
+							    </if>
+				 			<else />
+				 				<if condition="$vo.order_status eq 0">已预约
+				 				<elseif condition="$vo.order_status eq 1"/>已确认
+							    <elseif condition="$vo.order_status eq 2"/>维修中
+							    <elseif condition="$vo.order_status eq 3"/>已取消
+							    <elseif condition="$vo.order_status eq 4"/>已完成
+							    <else />订单状态异常
+							    </if>
+				 			</empty>
+						</td>
+						<td style="border-right: 1px solid #eff6fd;"><notempty name="vo.shop_id"><p><a href="javascript:;" class="btn btn-comment" shop-id="{$vo.shop_id}" data-id="{$vo.id}">评价</a></p></notempty><a class="color-a" class="color-a" href="{:U('/myhome/shiguche_detail',array('insurance_order_id'=>$vo[id]))}">查看详情</a></td>
+					</tr>
+					<tr style="height: 25px;"></tr>
+					</volist>
+			 	</notempty>
+			 	<notempty name="carservice">
+					<volist name="carservice" id="vo">
+					<tr>
+						<th width="150">订单编号：<a href="{:U('/myhome/carservice_detail',array('order_id'=>$vo[id]))}">{$vo.id}</a></th>
+						<th width="250">成交时间：{$vo.create_time|date="Y-m-d H:i:s",###}</th>
+						<th>&nbsp;</th>
+						<th colspan="3">&nbsp;</th>
+					</tr>
+					<tr valign="baseline" class="tr-2">
+						<td style="text-align:left;" colspan="3">上门保养</td>
+						<td><empty name="vo.amount"><else />￥{$vo.amount}</empty></td>
+						<td>
+							<if condition="($vo.status eq 0)"> 等待处理
+							    <elseif condition="$vo.status eq 1"/>预约已确认
+							    <elseif condition="$vo.status eq 2"/>已分配技师
+							    <elseif condition="$vo.status eq 7"/>用户终止
+							    <elseif condition="$vo.status eq 8"/>订单作废
+							    <elseif condition="$vo.status eq 9"/>服务已完成
+							    <else />订单状态异常
+							</if>
+						</td>
+						<td style="border-right: 1px solid #eff6fd;"><if condition="($vo.pay_status eq 0 and $vo.pay_type eq 2 and $vo.status eq 0)"><p><a href="{:C('WEB_ROOT')}/weixinpaytest/nativecall.php?membercoupon_id=vo.id&all_amount=vo.amount&coupon_name=上门保养套餐" class="btn btn-comment">去支付</a></p><elseif condition="($vo.pay_status eq 0 and $vo.pay_type eq 1)"/><p>待分配</p><else /></if><a class="color-a" href="{:U('/myhome/carservice_detail',array('order_id'=>$vo[id]))}">查看详情</a></td>
+					</tr>
+					<tr style="height: 25px;"></tr>
+					</volist>
+			 	</notempty>
+			</table>
+			
+			<h3 style="margin-bottom:10px;"><font class="home-c-t">我的评价&nbsp;&nbsp;</font><p class="fr" style="font-size:14px;"><a href="/myhome/my_comment">查看全部>></a></p></h3>
+			<div style="height:40px;"></div>
+			<table class="table">
+				<empty name = "order_comment"><tr><td>您暂无评价</td></tr><else/>
+			 	<tr>
+			 		<th>评分</th>
+			 		<th>评价</th>
+			 		<th>店铺</th>
+					<th>商品</th>
+			 		<th width="100">操作</th>
+					<tr style="height:30px; border-bottom: 1px solid #eff6fd"></tr>
+			 	</tr>
+				<volist name="order_comment" id="vo" key="i">
+			 	<tr style="font-size:14px;" class="tr-3">
+			 		<td style="color:#ff4a00; border-left:1px solid #eff6fd;">{$vo['star']*2}分<p style="padding-top:12px;"><img width="63" src="__PUBLIC__/images/car4s/{$vo['star']*2}.png"/></p></td>
+			 		<td>{$vo.comment}<p style="padding-top:12px;"><font style="color:#666666;font-size:12px"><if condition="$vo.update_time egt 1422514199">{$vo.update_time|date="Y-m-d H:i",###}<else/>{$vo.create_time|date="Y-m-d H:i",###}</if></font></p></td>
+			 		<td>{$vo.shop_name}<p style="padding-top:12px;"><font style="color:#ff4a00;font-size:12px">{$vo.comment_rate}%好评</font></p></td>
+					<td><if condition="$vo.order_type eq 3">4s店故障车维修<elseif condition="$vo.order_type eq 4"/>4s店保养<else/></if></td>
+			 		<td style="border-right: 1px solid #eff6fd;"><a class="color-a" href="javascript:void(0)" onClick="if(confirm('确认要删除该评论吗?')){del('{$vo.id}')}">删除</a><!-- <br>修改 -->
+						<p style="padding-top:12px;"><a style="color:#35548b" href="javascript:;" class="update-pl" data-shop-id="{$vo.shop_id}" data-comment-id="{$vo.id}" data-comment="{$vo.comment}" data-star="{$vo.star}" >修改</a></p></td>
+			 	</tr>
+					<if condition="$i eq 1"><tr style="height: 25px; border-bottom: 1px solid #eff6fd;"></tr><else/> </if>
+				</volist></empty>
+				<tr style="height:26px;"></tr>
+			</table>
+			
+			<h3 style="margin-bottom:10px;"><font class="home-c-t">猜您想要&nbsp;&nbsp;</font><font class="home-ds">为了帮您省钱，我们都已经淘了好久了</font><p class="fr" style="font-size:14px;"><a href="/coupon">查看全部>></a></p></h3>
+			
+			
+			<div class="quanfenlei clearfix">
+		          <div class="fl"><a href="javascript:;" class="current current0">跨品牌保养套餐券</a></div>
+		          <div class="fl"><a href="javascript:;">本品牌保养套餐券</a></div>
+		          <div class="fl"><a href="javascript:;">现金券</a></div>
+			</div>
+			<div class="quanfenleicon">
+			<div class="quanfenleicons">
+        		<div class="xianjinquan">
+					<empty name="Coupon2">对不起，您选择的车型没有本品牌保养套餐券<else />
+					<ul>
+	               <volist name="Coupon2" id="voc">
+	                <li>
+	                  <div class="xianjinquancon">
+	                    <h6><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+	                    <p><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+	                  
+	                    <div class="xianjinquandes">
+	                      <div class="xianjinquandestop t1">&nbsp;</div>
+	                      <div class="xianjinquandescon c14b3b7">
+	                        <table class="xianjinquandescon1" width="100%">
+	                          <tbody>
+	                            <tr height="10"></tr>
+	                            <tr height="50">
+	                              <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+	                              <td align="center" class="xianjinstyle">跨品牌<br>保养套餐券</td>
+	                            </tr>
+	                            <tr height="10"></tr>
+	                          </tbody>
+	                        </table>
+	                        <p>支持“15天内退款”、“过期退款”</p>
+	                        <a href="/coupon/detail/id/{$voc.id}.html">查&nbsp;&nbsp;看</a>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </li>
+	               </volist>
+	               </ul>
+				   </empty>
+	            </div>       
+	        </div>
+
+        <div class="quanfenleicons"  style="display:none;">
+           <div class="xianjinquan">
+			<empty name="Coupon3">对不起，您选择的车型没有本品牌保养套餐券<else />
+            <ul>
+             <volist name="Coupon3" id="voc">
+              <li>
+                <div class="xianjinquancon">
+                  <h6><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+                  <p><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+                
+                  <div class="xianjinquandes">
+                    <div class="xianjinquandestop t2">&nbsp;</div>
+                    <div class="xianjinquandescon cff7f48">
+                      <table class="xianjinquandescon1" width="100%">
+                        <tbody>
+                          <tr height="10"></tr>
+                          <tr height="50">
+                            <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+                            <td align="center" class="xianjinstyle">跨品牌<br>保养套餐券</td>
+                          </tr>
+                          <tr height="10"></tr>
+                        </tbody>
+                      </table>
+                      <p>支持“15天内退款”、“过期退款”</p>
+                      <a href="/coupon/detail/id/{$voc.id}.html">查&nbsp;&nbsp;看</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+             </volist>
+             </ul>
+			</empty>
+           </div>        
+        </div>
+
+        <div class="quanfenleicons" style="display:none;">
+           <div class="xianjinquan">
+			   <empty name="Coupon">对不起，您选择的车型没有现金券<else />
+              <ul>
+               <volist name="Coupon" id="voc">
+                <li>
+                  <div class="xianjinquancon">
+                    <h6><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}">{$voc.coupon_name|mb_substr=0,13}</a></h6>
+                    <p><a href="/coupon/detail/id/{$voc.id}.html" title="{$voc.coupon_name}"><img src="{:C('UPLOAD_ROOT')}/Coupon/Logo/{$voc.coupon_logo}" alt="{$voc.coupon_name}"></a></p>
+                  
+                    <div class="xianjinquandes">
+                      <div class="xianjinquandestop">&nbsp;</div>
+                      <div class="xianjinquandescon">
+                        <table class="xianjinquandescon1" width="100%">
+                          <tbody>
+                            <tr height="10"></tr>
+                            <tr height="50">
+                              <td style="border-right:1px dashed #FFFFFF; font-size:28px;" width="50%" align="center"><span style="font-size:20px;">￥</span><b>{$voc.coupon_amount|substr=0,-3}</b></td>
+                              <td align="center" class="xianjinstyle">跨品牌<br>保养套餐券</td>
+                            </tr>
+                            <tr height="10"></tr>
+                          </tbody>
+                        </table>
+                        <p>支持“15天内退款”、“过期退款”</p>
+                        <a href="/coupon/detail/id/{$voc.id}.html">查&nbsp;&nbsp;看</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+               </volist>
+               </ul>
+			   </empty>
+             </div>
+        	</div>
+		</div>	
+		</div>
+	</div>
+	</td>
+	</tr>
+</tbody>
+</table>
+</div>
+<div class="Mcomment">
+   <div class="Mcc">
+     <div class="Mcctop">
+       <div class="Mcstar fl"><span class="fl">评价：</span>
+         <div class="fl Mccstar">
+           <ul>
+             <li class="current"></li>
+             <li class="current"></li>
+             <li class="current"></li>
+             <li class="current"></li>
+             <li class="current"></li>
+           </ul>
+         </div>
+         <span class="fl MccShowbox">很满意</span>
+       </div>
+       <div class="Mclose fr"><a href="javascript:;">关闭</a></div>
+     </div>
+     <form action="/myhome/comment" method="post">
+      <div class="Mcccon">
+      	<input name="type" type="hidden" />
+      	<input name="star" type="hidden" value="5" />
+      	<input name="order_id" type="hidden" />
+	    <input name="shop_id" type="hidden" />
+        <textarea name="content"></textarea>
+        <p><a href="javascript:;" class="fr sub_comment">提交</a></p>
+      </div>
+     </form>
+   </div>
+ </div>
+<div class="Mcomment2">
+	<div class="Mcc">
+		<div class="Mcctop">
+			<div class="Mcstar2 fl"><span class="fl">评价：</span>
+				<div class="fl Mccstar2">
+					<ul>
+						<li class="current"></li>
+						<li class="current"></li>
+						<li class="current"></li>
+						<li class="current"></li>
+						<li class="current"></li>
+					</ul>
+				</div>
+				<span class="fl MccShowbox2">很满意</span>
+			</div>
+			<div class="Mclose2 fr"><a href="javascript:;">关闭</a></div>
+		</div>
+		<form class="form-up" action="/myhome/comment2" method="post">
+			<div class="Mcccon">
+				<input name="comment_id" type="hidden"/>
+				<input name="type2" type="hidden"/>
+				<input name="star2" type="hidden" value="5"/>
+				<input name="shop_id" type="hidden"  />
+				<textarea name="content"></textarea>
+				<p><a href="javascript:;" class="fr sub_comment2">提交</a></p>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+  	//订单评价
+  	$(".btn-comment").click(function(){
+  		var order_id = $(this).attr('data-id');
+		var type = $(this).attr('data-type');
+  		var shop_id = $(this).attr('shop-id');
+  		if(shop_id){
+  			$('input[name=order_id]').val(order_id);
+  	  		$('input[name=shop_id]').val(shop_id);
+  	  		$('input[name=type]').val(type);
+  		}else{
+  			$('input[name=order_id]').val(order_id);
+  		}
+  		
+  		$(".Mcomment").slideDown();
+  	});
+
+  	//定义评价星星等级
+    var istar = 5;
+    var commentCon = ['很差','差','一般','满意','很满意'];
+    //评价星星选择
+	$(".Mccstar ul li").hover(function(){
+      $(".Mccstar ul li").removeClass("current");
+      for(var i=0;i<=$(this).index();i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      $(".MccShowbox").text(commentCon[$(this).index()]);
+    },function(){
+      $(".Mccstar ul li").removeClass("current");
+      for(var i=0;i<istar;i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+
+      $(".MccShowbox").text(commentCon[istar-1]);
+      
+    });
+
+    //点击选定评价级别
+    $(".Mccstar ul li").click(function(){
+      istar = $(this).index()+1;
+      for(var i=0;i<istar;i++){
+        $(".Mccstar ul li").eq(i).addClass("current");
+      }
+      
+      $('input[name=star]').val(istar);
+
+      $(".MccShowbox").text(commentCon[istar-1]);
+    });
+
+    //关闭评价
+    $(".Mclose a").click(function(){
+    	$(".Mcomment").slideUp();
+    });
+    //提交评价
+    $(".sub_comment").click(function(){
+    	$.post('/myhome/comment',$('form').serialize(),function(data){
+    		if(data.status){
+    			alert(data.info);
+    			window.location.reload();
+    		}else{
+    			alert(data.info);
+    		}
+    	},'json');
+    	$(".Mcomment").slideUp();
+    });
+
+	//修改评价
+	$(".update-pl").click(function(){
+		$(".Mcomment2").css('display','block');
+		var comment_id = $(this).attr('data-comment-id');
+		var shop_id = $(this).attr('data-shop-id');
+		var comment = $(this).attr('data-comment');
+		var star = $(this).attr('data-star');
+		$(".Mccstar2 ul li").removeClass("current");
+		for(var i=0;i<star;i++){
+			$(".Mccstar2 ul li").eq(i).addClass("current");
+		}
+		if(shop_id){
+			$('input[name=comment_id]').val(comment_id);
+			$('input[name=shop_id]').val(shop_id);
+			$('input[name=type2]').val(1);
+			$('textarea[name=content]').val(comment);
+		}else{
+			$('input[name=comment_id]').val(comment_id);
+		}
+	});
+
+	//2
+	$(".Mccstar2 ul li").hover(function(){
+		$(".Mccstar2 ul li").removeClass("current");
+		for(var i=0;i<=$(this).index();i++){
+			$(".Mccstar2 ul li").eq(i).addClass("current");
+		}
+		$(".MccShowbox2").text(commentCon[$(this).index()]);
+	},function(){
+		$(".Mccstar2 ul li").removeClass("current");
+		for(var i=0;i<istar;i++){
+			$(".Mccstar2 ul li").eq(i).addClass("current");
+		}
+
+		$(".MccShowbox2").text(commentCon[istar-1]);
+
+	});
+	//2
+	$(".Mccstar2 ul li").click(function(){
+		istar = $(this).index()+1;
+		for(var i=0;i<istar;i++){
+			$(".Mccstar2 ul li").eq(i).addClass("current");
+		}
+		$('input[name=star2]').val(istar);
+
+		$(".MccShowbox2").text(commentCon[istar-1]);
+	});
+	$(".Mclose2 a").click(function(){
+		$(".Mcomment2").slideUp();
+	});
+	//提交评价
+	$(".sub_comment2").click(function(){
+		$.post('/myhome/comment2',$('.form-up').serialize(),function(data){
+			if(data.status){
+				alert(data.info);
+				window.location.reload();
+			}else{
+				alert(data.info);
+			}
+		},'json');
+		$(".Mcomment2").slideUp();//动态的影藏所匹配的元素
+	});
+
+
+    $(".quanfenlei div").hover(function(){
+        $(this).find("a").addClass("current current"+$(this).index()).end().siblings().find("a").removeClass("current current0 current1 current2");
+        $(".quanfenleicon .quanfenleicons").eq($(this).index()).show().siblings().hide();
+      });
+    
+  });
+
+
+function del(id){
+	$.post('/myhome/delComment',{'id':id},function(data){
+		if(data.status){
+			alert('删除成功');
+			window.location.reload();
+		}else{
+			alert(data.msg);
+		}
+	},'json')
+}
+</script>

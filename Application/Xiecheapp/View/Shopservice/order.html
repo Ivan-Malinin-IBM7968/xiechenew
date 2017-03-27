@@ -1,0 +1,562 @@
+<layout name='layout_maintenance' />
+ <link type="text/css" href="__PUBLIC__/css/carservice_order.css" rel="stylesheet">
+ <style type="text/css">
+	td.spe,th.spe{width:auto;text-align:center}
+  </style>
+    
+    <div class="snav" id="snav">
+    	<ul>
+        	<li><a href="/carservice">府上养车</a></li>
+        	<li><a href="/shopservice" class="current">4S店预约保养</a></li>
+        	<li><a href="/coupon">团购保养</a></li>
+        </ul>
+        <span>
+        	<b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+        </span>
+    </div>
+    
+	<div class="repairo">
+		
+		<div class="w1183 repairo-1">
+			<p class="repairo-1-1"><a href="/">首页</a> > <a href="/shopservice">4S店预约保养</a></p>
+			<form id="form" action="/shopservice/create_order" method="post">
+			<div class="row repairo-2">
+				<p style="margin:0px;">订单总价<font style="color:#fe5a23">￥</font><font style="font-size:24px;color:#fe5a23" id="amount"><notempty name="defaultPrice">{$defaultPrice}<else />0.00</notempty></font><font style="padding-right:10px;color:#fe5a23">元</font><!-- 原价<font style="text-decoration:line-through;">￥74</font> --> <font style="text-decoration:underline;cursor:pointer;padding-left:20px;color:#35548c" id="detail">查看明细</font></p>
+				<h5>您想获得什么样的服务<font class="repairo-2-1">(最少选择一项)</font></h5>
+
+				<volist name="list_si_level_0" id="vo">
+				<h5 style="margin-bottom:20px">{$vo.name}<font class="repairo-2-1">(显示价格仅供参考，具体价格以实际到店价格为准)</font></h5>
+				<ul>
+					<volist name="list_si_level_1" id="vo1">
+						<if condition="$vo[id] eq $vo1[service_item_id]">
+							<li <if condition="$vo1[id] eq 10">class="checked"</if> style="display:inline-block; width:25%;">
+								<if condition="$vo1['service_item_id'] eq 1">
+									<input type="checkbox" id="server_{$vo1.id}" class="checkbox1" product_sale="{$salesversion.product_sale}" workhours_sale="{$salesversion.workhours_sale}" total_price="{$vo1.total_price}" data-name="{$vo1.name}" data-price="{$vo1.price}" <volist name="vo1['detail2']" id="innervo" key="k"> data-{$k}-name="{$innervo.Midl_name}" data-{$k}-price="{$innervo.price}" data-{$k}-unit="{$innervo.unit}" data-{$k}-quantity="{$innervo.quantity}" </volist>  data-0-name="{$vo1.detail1.Midl_name}" data-0-price="{$vo1.detail1.price}" data-0-unit="{$vo1.detail1.unit}" data-0-quantity="{$vo1.detail1.quantity}"  <if condition="$vo1[id] eq 10">checked</if> name="select_services[]" service_type="baoyang" value="{$vo1.id}" <in name="vo1.id" value="$select_services_str">checked</in> <if condition="($default_check eq 1) and ($n eq 1)" > checked </if>/><label for="server_{$vo1.id}">{$vo1.name}</label>
+									<else />
+									<input type="checkbox" name="select_services[]" class="checkbox1" product_sale="{$salesversion.product_sale}" workhours_sale="{$salesversion.workhours_sale}" total_price="{$vo1.total_price}" data-name="{$vo1.name}" data-price="{$vo1.price}" <volist name="vo1['detail2']" id="innervo" key="k"> data-{$k}-name="{$innervo.Midl_name}" data-{$k}-price="{$innervo.price}" data-{$k}-unit="{$innervo.unit}" data-{$k}-quantity="{$innervo.quantity}" </volist> data-0-name="{$vo1.detail1.Midl_name}" data-0-price="{$vo1.detail1.price}" data-0-unit="{$vo1.detail1.unit}" data-0-quantity="{$vo1.detail1.quantity}"  <if condition="$membercoupon_id gt '0'">  disabled </if> <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/><label>{$vo1.name}<notempty name="vo1.price">（￥{$vo1.total_price}）</notempty></label>
+								</if>
+							</li>
+						</if>
+					</volist>
+				</ul>
+				</volist>
+				
+				<h5 style="margin:20px 0px">其他项目:</h5>
+				<ul>
+					<li><input type="checkbox" id="other" value="-1" name="select_services[]">车有故障，到店检查为准</li>
+				</ul>
+				<h5 class="repairo-2-2">请输入预约信息:</h5>
+				<div class="repairo-2-3">
+					<div class="form-horizontal" role="form">
+					  <div class="form-group">
+					    <label for="time" class="col-sm-2 control-label">预约时间:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="time" name="order_date" style="width:140px;float:left" />
+					      <div style="float:left;height:34px;line-height:34px;padding:0px 10px">日</div>
+					      <select class="form-control" name="order_hours" onclick="get_minute();" id="order_hours" style="width:100px;float:left">
+							<option value="0">小时</option>
+								<volist name="Think.config.ORDER_HOURS" id="hours">
+									<if condition="($hours egt $min_hours) AND ($hours elt $max_hours)"> 
+										<option value="{$hours}">{$hours}</option>
+									</if>
+								</volist>
+							</select>
+							<span style="float:left;height:34px;line-height:34px;padding:0px 10px">时</span>
+							<select class="form-control" name="order_minute" id="order_minute" style="width:100px;float:left">
+							<option value="">分钟</option>
+							</select>
+							<span style="float:left;height:34px;line-height:34px;padding:0px 10px">分</span>
+							
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="name" class="col-sm-2 control-label">姓名:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="name" name="truename" />
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="mobile" class="col-sm-2 control-label">手机:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="mobile" name="mobile" maxlength="11"/>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="license" class="col-sm-2 control-label">车牌号:</label>
+					    <div class="col-sm-2" style="padding-right:0px">
+					      <select class="form-control text-center" style="width:100%;" name="cardqz">
+					      	<option value="沪">沪</option>
+					      </select>
+					    </div>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="licenseplate" name="licenseplate" maxlength="6" style="width:141px" />
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="run-kilo" class="col-sm-2 control-label">已行驶公里数:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="run-kilo" name="miles" />
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="vin" class="col-sm-2 control-label">车辆识别代码:</label>
+					    <div class="col-sm-10 rl">
+					      <input type="text" class="form-control" id="vin" name="car_sn" />
+							<a href="javascript:;" id="whatVin" class="ab">如何查找车辆识别代号（VIN码）</a>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="remark" class="col-sm-2 control-label">备注:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="remark" style="width:100%" name="remark" />
+
+						<input type="hidden" name="shop_id" value="{$shop_id}" />
+						<input type="hidden" name="model_id" value="{$model_id}" />
+						<input type="hidden" name="timesaleversion_id" value="{$Think.request.timesaleversion_id}" />
+						<input type="hidden" name="u_c_id" value="{$u_c_id}" />
+						<input type="hidden" name="membercoupon_id" value="{$membercoupon_id}" />
+
+					    </div>
+					  </div>
+					  <div class="form-group" style="margin-bottom:0px">
+					    <div class="col-sm-offset-2 col-sm-10 repairo-2-4">
+					      <a id="submit" class="btn btn-sub">提交</a>
+					      <input type="checkbox" id="xieyi" checked name="xcagreement" value="1"/>同意《<a href="/shopservice/agreement" target="_blank" style="color: #fe7240;">携车网维修保养预约协议</a>》
+					    </div>
+					  </div>
+					</div>
+				</div>
+				<h5 class="repairo-2-2">预约提示:</h5>
+				<div class="repairo-2-5">
+					<p>1.我们目前只接受隔天预约，且只接受15天之内的预约。如果您预约第二天的维修保养服务，您需要在当天下午4点之前进行预约，以让我们的客服有时间与4S店确认您第二天的预约；</p>
+					<p>2.如果您选择的是分时折扣，则只能在您选择的折扣时段内进行预约；</p>
+					<p>3.请填入您的手机号，以接收预约确认的短信，该短信同时也是您到店后享受折扣的凭证；</p>
+					<p>4.车牌号、已行驶里程数、车辆识别代码（如何找到您爱车的车辆识别代码）能方便4S店在您到店前获知您爱车的详细信息，提前做好准备，以更好地为您服务；</p>
+					<p>5.如果您的爱车还有别的情况需要说明，请在备注中留言告诉我们。</p>
+				</div>
+			</div>
+			</form>
+		</div>
+		
+	</div>
+	<div class="modal fade">
+	  <div class="modal-dialog" id="modal">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">关闭</button>
+	        <h4 class="modal-title">费用明细</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>维修项目：小保养</p>
+	        <div class="table-responsive">
+			  <table class="table new_table">
+			    <tr>
+					<th style="width:auto;text-align:center">零件</th>
+					<th style="width:auto;text-align:center">单价</th>
+					<th style="width:auto;text-align:center">数量</th>
+					<th style="width:auto;text-align:center">门市价格</th>
+					<th style="width:auto;text-align:center">折扣率</th>
+					<th style="width:auto;text-align:center">折扣价格</th>
+			  	</tr>
+			  	<tr>
+					<td style="width:auto;text-align:center">机油</td>
+					<td style="width:auto;text-align:center">100</td>
+					<td style="width:auto;text-align:center">1L</td>
+					<td style="width:auto;text-align:center">100</td>
+					<td style="width:auto;text-align:center">9折</td>
+					<td style="width:auto;text-align:center">100</td>
+			  	</tr>
+			  </table>
+			</div>
+
+			<p class="text-right">价格仅供参考，以实际到店发生的交易金额为准</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="showVin">
+		<div class="sVintop"><span class="fr" id="Vinclose">关闭</span>车辆识别代码帮助</div>
+		<div class="sVincon">
+			<h4>1.为什么需要填写车辆识别代码？</h4>
+			<p>车辆识别代码（VIN码）是您车辆的唯一代码，提供车辆识别代码可以让4S店在您到店前获知您爱车的详细车型信息，做好准备，更方便地为您的爱车提供服务。</p>
+			<h4>2.怎么获得车辆识别代码？</h4>
+			<p><img src="__PUBLIC__/images/order/vin.jpg" width="100%"></p>
+		</div>
+	</div>
+
+	<script src="__PUBLIC__/bootstrap/js/datetimepicker.min.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/datetimepicker.cn.js"></script>
+    <link type="text/css" href="__PUBLIC__/bootstrap/css/datetimepicker.css" rel="stylesheet">
+	 <script type="text/javascript">
+      $(function () {
+      	var amount = Number($("#server_10").attr("total_price"));
+      	//$("#amount").text(amount);
+    	  //TODO::提交数据到后台@帅帅
+    	$('#submit').click(function(){
+
+   	    	if(!$("#time").val()){
+   	    		alert("请选择预约时间");
+   	    		return false;
+   	    	}
+   	    	if(!$("#name").val()){
+   	    		alert("请填写姓名");
+   	    		return false;
+   	    	}
+   	    	if(!$("#mobile").val()){
+   	    		alert("请填写手机号");
+   	    		return false;
+   	    	}
+   	    	var mobileRegExp = /^1[3|4|5|7|8][0-9]\d{4,8}$/;
+	        if(!mobileRegExp.test($("#mobile").val())){
+	           alert('请输入正确的手机号码');
+	           return false;
+	        }
+   	    	if(!$("#licenseplate").val()){
+   	    		alert("请填写车牌号");
+   	    		return false;
+   	    	}
+   	    	if($("#xieyi").prop("checked") == false){
+   	    		alert("未同意《携车网维修保养预约协议》");
+   	    		return false;
+   	    	}
+   	    
+    		var data = $('#form').serialize();
+    		//console.log(data);
+    		// $('form').submit();
+			$.post('/shopservice/create_order',data,function(data){
+				if(data.status){
+					alert(data.info);
+					window.location.href=data.url;
+				}else{
+					alert(data.info)
+				}
+				
+	    		},'json') 
+
+			});
+			
+		//弹出框样式
+		height=$("#modal").height();
+		width=$("#modal").width();
+		$("#modal").css({
+		   "top":"50%",
+		   "position":"fixed",
+		   "marginTop":"-200px",
+		   "marginLeft":-width/2,
+		   "paddingBottom":"0px",
+		   "paddingTop":"0px"
+		});
+		$(".modal-body").css({
+		   "maxHeight":"400px",
+		   "overflowX":"auto"	
+		});
+		$(".modal").css({
+		   "height":height,
+		   "width":width,
+		   "position":"static"
+		   	
+		});
+		$("body").css("marginRight","0px");
+    	
+
+		function getLastDay(year,month)        
+	        {        
+	         var new_year = year;    //取当前的年份        
+	         var new_month = month++;//取下一个月的第一天，方便计算（最后一天不固定）        
+	         if(month>12)            //如果当前大于12月，则年份转到下一年        
+	         {        
+	          new_month -=12;        //月份减        
+	          new_year++;            //年份增        
+	         }        
+	         var new_date = new Date(new_year,new_month,1);                //取当年当月中的第一天        
+	         return (new Date(new_date.getTime()-1000*60*60*24)).getDate();//获取当月最后一天日期        
+	        }
+
+	      //4-19 超过下午四点 5-20
+	       var now = new Date();
+	       year = now.getFullYear();
+	       hours = now.getHours();
+	       month = now.getMonth()+1;
+	       day = now.getDate();
+
+	       if(hours >=16){
+	        minDate = year+"-"+month+"-"+(day+2);
+	        maxDate = year+"-"+month+"-"+(day+16);
+	       }else{
+	        minDate = year+"-"+month+"-"+(day+1);
+	        maxDate = year+"-"+month+"-"+(day+15);
+	       }
+
+	       max2Date = year+"-"+month+"-"+getLastDay(year,month);
+
+    	//预约时间
+   	    $('#time').datetimepicker({
+   	    	format: 'yyyy-mm-dd',
+	   	 	language: 'zh-CN',
+	   	 	weekStart: 1,
+	   	 	autoclose: 1,
+	   	 	startView: 2,
+	   	 	minView: 3,
+	   	 	startDate: minDate,
+        	endDate: maxDate,
+        	initialDate: minDate,
+	   	 	forceParse: 0,
+	   	 	todayBtn:  1	
+   	    }).on("outOfRange",function(){
+        alert("日期不可选");
+      	});
+
+   	    //我不知道做什么项目，到店检查为准
+   	    $("#other").click(function(){
+   	    	$("input.checkbox1").removeProp("checked").parent().removeClass("checked");
+   	    	$("#other").attr("checked","checked").end().parent().addClass("checked");
+   	    	amount = 0;
+   	    	$("#amount").text(amount);
+   	    });
+
+    	//查看订单
+    	$('#detail').click(function(){
+    		modal();
+    		var data = {content:showhtml};
+    		$.post('/shopservice/shopserviceimg',data,function(data){
+					$(".modal-body").html(data.info);
+					$('.modal').modal({'backdrop':false});
+	    		},'json') 
+    		
+    	});
+    	
+   	    //选项选择
+   	    $("input.checkbox1").click(function(){
+   	    	if($("#other").prop("checked")==true){
+   	    		$("#other").prop("checked",false).parent().removeClass("checked");
+   	    	}
+   	    	var thisprice = Number($(this).attr("total_price"));
+   	    	if($(this).prop("checked")==true){
+   	    		$(this).parent().addClass("checked");
+   	    		amount += thisprice;
+   	    		$("#amount").text(amount);
+   	    	}else{
+   	    		$(this).parent().removeClass("checked");
+   	    		amount -= thisprice;
+   	    	}
+   	    	amount = Math.round(amount*100)/100;
+   	    	$("#amount").text(amount);
+   	    	modal();
+   	    });
+
+   	    //大小保养
+   	    $("#server_10").click(function(){
+   	    	if($("#server_10").prop("checked")==true){
+   	    		if($("#server_9").prop("checked")==true){
+   	    			$("#server_9").prop("checked",false).parent().removeClass("checked");
+   	    			var dxprice = Number($("#server_9").attr("total_price")).toFixed(2);
+   	    			amount -= dxprice;
+   	    			amount = Math.round(amount*100)/100;
+   	    			$("#amount").text(amount);
+   	    		}
+   	    	}
+   	    	modal();
+   	    });
+
+   	    $("#server_9").click(function(){
+   	    	if($("#server_9").prop("checked")==true){
+	   	    	if($("#server_10").prop("checked")==true){
+	   	    		$("#server_10").prop("checked",false).parent().removeClass("checked");
+	   	    		var dxprice = Number($("#server_10").attr("total_price")).toFixed(2);
+	   	    		amount -= dxprice;
+	   	    		amount = Math.round(amount*100)/100;
+   	    			$("#amount").text(amount);
+	   	    	}
+   	    	}
+   	    	modal();
+   	    });
+
+   	    function modal(){
+   	    	showhtml="";
+   	    	var sinput = $("input[name='select_services[]']");
+   	    	for(var i = 0; i < sinput.size(); i++){
+   	    		si = sinput.eq(i);
+   	    		if(si.prop("checked")==true){
+   	    			
+	   	    			var dname = si.attr("data-name");
+	   	    			var d0name = si.attr("data-0-name");
+	   	    			var d0price = si.attr("data-0-price");
+	   	    			var d0unit = si.attr("data-0-unit");
+	   	    			var d0quantity = si.attr("data-0-quantity");
+	   	    			
+	   	    			var d1name = si.attr("data-1-name");
+	   	    			var d1price = si.attr("data-1-price");
+	   	    			var d1unit = si.attr("data-1-unit");
+	   	    			var d1quantity = si.attr("data-1-quantity");
+						var product_sale = si.attr("product_sale");
+						var product_sale_cn = si.attr("product_sale");
+						var workhours_sale = si.attr("workhours_sale");
+						var workhours_sale_cn = si.attr("workhours_sale");
+						if(product_sale=="无折扣"){
+							product_sale=1;
+						}else{
+							product_sale = Number(product_sale.split('折')[0])/10;
+						}
+						if(workhours_sale=="无折扣"){
+							workhours_sale=1;
+						}else{
+							workhours_sale = Number(workhours_sale.split('折')[0])/10;
+						}
+						
+						
+	   	    			showhtml += '<p>维修项目：'+dname+'</p>';
+
+						if(d1name!=undefined){
+						showhtml += '<p>';
+						showhtml += '零件|';
+						showhtml += '零件单价|';
+						showhtml += '零件数量|';
+						showhtml += '门市价格|';
+						showhtml += '折扣率|';
+						showhtml += '折扣价格';
+						showhtml += '</p>';
+						
+
+						showhtml += '<p>';
+						showhtml += ''+d1name+'|';
+						showhtml += ''+d1price+'|';
+						showhtml += ''+d1quantity+' '+d1unit+'|';
+						showhtml += ''+d1price*d1quantity+'|';
+						showhtml += ''+product_sale_cn+'|';
+						showhtml += ''+d1price*d1quantity*product_sale+'';
+						showhtml += '</p>';
+						}
+						if (si.attr("id")=="server_10") {
+							if(si.attr("data-2-name")){
+								var d2name = si.attr("data-2-name");
+			   	    			var d2price = si.attr("data-2-price");
+			   	    			var d2unit = si.attr("data-2-unit");
+			   	    			var d2quantity = si.attr("data-2-quantity");
+			   	    			showhtml += '<p>';
+								showhtml += ''+d2name+'|';
+								showhtml += ''+d2price+'|';
+								showhtml += ''+d2quantity+' '+d2unit+'|';
+								showhtml += ''+d2price*d2quantity+'|';
+								showhtml += ''+product_sale_cn+'|';
+								showhtml += ''+d2price*d2quantity*product_sale+'';
+								showhtml += '</p>';
+							}
+						};
+						if (si.attr("id")=="server_9") {
+							if(si.attr("data-2-name")){
+								var d2name = si.attr("data-2-name");
+			   	    			var d2price = si.attr("data-2-price");
+			   	    			var d2unit = si.attr("data-2-unit");
+			   	    			var d2quantity = si.attr("data-2-quantity");
+								var d3name = si.attr("data-3-name");
+			   	    			var d3price = si.attr("data-3-price");
+			   	    			var d3unit = si.attr("data-3-unit");
+			   	    			var d3quantity = si.attr("data-3-quantity");
+			   	    			var d4name = si.attr("data-4-name");
+			   	    			var d4price = si.attr("data-4-price");
+			   	    			var d4unit = si.attr("data-4-unit");
+			   	    			var d4quantity = si.attr("data-4-quantity");
+			   	    			showhtml += '<p>';
+								showhtml += ''+d2name+'|';
+								showhtml += ''+d2price+'|';
+								showhtml += ''+d2quantity+' '+d2unit+'|';
+								showhtml += ''+d2price*d2quantity+'|';
+								showhtml += ''+product_sale_cn+'|';
+								showhtml += ''+d2price*d2quantity*product_sale+'';
+								showhtml += '</p>';
+			   	    			showhtml += '<p>';
+								showhtml += ''+d3name+'|';
+								showhtml += ''+d3price+'|';
+								showhtml += ''+d3quantity+' '+d3unit+'|';
+								showhtml += ''+d3price*d3quantity+'|';
+								showhtml += ''+product_sale_cn+'|';
+								showhtml += ''+d3price*d3quantity*product_sale+'';
+								showhtml += '</p>';
+								showhtml += '<p>';
+								showhtml += ''+d4name+'|';
+								showhtml += ''+d4price+'|';
+								showhtml += ''+d4quantity+' '+d4unit+'|';
+								showhtml += ''+d4price*d4quantity+'|';
+								showhtml += ''+product_sale_cn+'|';
+								showhtml += ''+d4price*d4quantity*product_sale+'';
+								showhtml += '</p>';
+							}
+						};
+							
+						
+						if(d0name!=""){
+						showhtml += '<p>';
+						showhtml += '工时|';
+						showhtml += '工时单价|';
+						showhtml += '工时数量|';
+						showhtml += '门市工时价格|';
+						showhtml += '折扣率|';
+						showhtml += '折扣价格|';
+						showhtml += '</p>';
+						showhtml += '<p>';
+						showhtml += ''+d0name+'|';
+						showhtml += ''+d0price+'|';
+						showhtml += ''+d0quantity+' '+d0unit+'|';
+						showhtml += ''+d0price*d0quantity+'|';
+						showhtml += ''+workhours_sale_cn+'|';
+						showhtml += ''+parseFloat(d0price*d0quantity*workhours_sale).toFixed(2)+'';
+						showhtml += '</p>';
+						}
+
+						if(d0name==""&&d1name==undefined){
+						showhtml += '<p>';
+						showhtml += '暂无价格信息';
+						showhtml += '</p>';
+						}
+						showhtml += '<p> </p>';
+   	    		}
+
+   	    	}
+
+   	    	//$(".modal-body").html(showhtml);
+   	    }
+
+   	    $("#whatVin").click(function(){
+   	    	$("#showVin").slideDown();
+   	    	$(".changecarboxbg").show();
+   	    });
+
+   	    $("#Vinclose").click(function(){
+   	    	$("#showVin").slideUp();
+   	    	$(".changecarboxbg").hide();
+   	    });
+   	    
+      })
+	function get_minute(){
+		var sel_hours = $("#order_hours").val();
+		var min_hours = '{$min_hours}';
+		var min_minute ='{$min_minute}';
+		var max_hours = '{$max_hours}';
+		var max_minute = '{$max_minute}';
+		$("#order_minute").html("");
+		$("#order_minute").append("<option value='0'>分钟</option>");
+		for(i=0; i<6; i++){
+			var m = i*10;
+			if(m==0){
+				m='00';
+			}
+			if(sel_hours==min_hours || sel_hours==max_hours){
+				if(sel_hours==min_hours && sel_hours!=max_hours && min_minute<=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+				if(sel_hours==max_hours && max_minute>=m ){
+					$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+				}
+			}else{
+				$("#order_minute").append("<option value='"+m+"'>"+m+"</option>");
+			}
+		}
+	}
+    </script>
+
+    <style type="text/css">
+	.repairo-2 li.checked{
+		color: #fe5a23;
+	}
+    </style>

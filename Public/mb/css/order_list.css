@@ -1,0 +1,43 @@
+.single-order{background:#ffffff; border:1px solid #dddddd; padding: 10px; position: relative; margin-bottom: 10px;}
+.order-sign{position: absolute; left: 0px; top: 0px;  border-width: 8px; border-style:solid; border-color:#ff6600 #ffffff #ffffff #ff6600;  background: #ff6600; z-index: 0;}
+.order-info-block-1{margin-top: 2px; font-size: .8em; color: #666666; padding-bottom: 6px; border-bottom: 1px solid #f1f1f1;}
+.order-info-block-1 span:first-child{text-align: left}
+.order-info-block-1 span:last-child{text-align:right;}
+
+.order-info-block-2{margin-top: 6px;}
+.shop-name{font-weight: bold; color: #333333; font-size: 1.3em;}
+.shop-address{font-size: .8em;color: #666666;}
+.shop-sale{font-size: .9em; color: #fd8612; }
+.shop-sale strong{font-size: 1.4em; font-weight: bold;}
+.progress-bar{border-radius: 20px; width: 60px; height: 10px; background: #f1f1f1; margin: 10px auto 5px;}
+.progress-bar span{height: 10px; background: #00aff1; display: block; border-radius: 20px;}
+.progress-bar span.w0{width: 30%;}
+.progress-bar span.w1{width: 60%;}
+.progress-bar span.w2，.progress-bar span.w-1，.progress-bar span.w6{width: 100%;}
+.order-status { color: #00aff1; font-size: 1.1em; display: block; margin-top: 0 auto; text-align: center; margin-top: -5px;}
+
+.order-info-block-3, 
+.order-info-block-4, 
+.order-info-block-5{margin-top: 5px;}
+
+.order-info-block-3 h4, .order-info-block-4 h4,.order-info-block-5 h4,
+.order-info-block-3 ul li, .order-info-block-4 ul li,.my-comment{color: #666666; font-size: .9em;}
+.my-comment{border-radius: 10px; padding:5px; background: #f1f1f1;}
+
+.order-info-operate{margin-top: 3px; font-size: 1.3em;  padding: 6px 0px 0px 0px; border-top: 1px solid #f1f1f1;}
+.order-info-operate a{color: #ff6600; text-decoration: none;}
+.order-info-operate a:visited{color: #ff6600; }
+.order-info-operate a:hover{color: #ff6600; } 
+.order-info-operate a:first-child{text-align: left; color: }
+.order-info-operate a:last-child{text-align:right;}
+.comment-con{border-top: 1px solid #f1f1f1; padding-top: 10px; display: none; height: auto; margin-top: 10px;}
+.comment-box{width: 100%; background: #f1f1f1; border-radius: 10px; height: auto; min-height: 50px; border: none; display: block; font-size: 1em; line-height: 18px; margin: 0 auto;}
+.comment-level{padding: 5px; }
+.comment-level span{ margin-right: 10px; background: #f1f1f1; padding: 5px 10px 3px 5px; float: left}
+.comment-level span label{display: inline-block; line-height: 20px;}
+.comment-level span input[type="radio"]{display: inline-block; margin-left: 5px; margin-right: 5px;}
+.comment-operation {text-align: right;}
+.comment-operation a{color: #ff6600; text-decoration: none; font-size: 1.2em; float: right; margin: 10px 10px 0px 10px; }
+
+/*helper class*/
+.slideToggle{display: none;}

@@ -1,0 +1,291 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/xheditor-1.1.13-zh-cn.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<style type='text/css'>
+.btnMap {
+    width:50px !important;
+    background:transparent url(__PUBLIC__/Js/Xheditor/googlemap/map.gif) no-repeat center center;
+}
+</style>
+<script type="text/javascript">
+	function check_member(){
+		var mobile = $("#member_mobile").val();
+		$.ajax({
+			type:'POST',
+			url:'__URL__/check_member',
+			cache:false,
+			dataType:'text',
+			data:'mobile='+mobile,
+			success:function(data){
+				if(data!='null'){
+					var param = eval('(' + data + ')');
+					var str = '';
+					if(param['username']){
+						str += '用户名：'+param['username'];
+					}
+					if(param['email']){
+						str += '  email：'+param['email'];
+					}
+					if(param['cardid']){
+						str += '  卡号：'+param['cardid'];
+					}
+					$("#memberinfo").html(str);
+					//alert("删除成功");
+					//window.location.reload();
+				}else{
+					//alert("删除失败");
+					$("#memberinfo").html('账号不存在！');
+				}
+			}
+		})
+	}
+	function bangdang_member(){
+		var mobile = $("#member_mobile").val();
+		$.ajax({
+			type:'POST',
+			url:'__URL__/bangding_member',
+			cache:false,
+			dataType:'text',
+			data:'mobile='+mobile+'&order_id='+order_id,
+			success:function(data){
+				if(data!='null'){
+					
+				}
+			}
+		})
+	}
+</script>
+<body>
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+
+<!-- 列表显示区域  -->
+<div style="width:40%;float:left;">
+<form action="__URL__/update" method="post">
+<table >
+<tr>
+<td width="25%">订单号:</td><td>{$vo.order_id}({$vo.id})</td>
+</tr>
+<if condition="$vo.uid gt 0">
+	<tr>
+	<td>用户ID:</td><td><a href="{:U('Store/membernew/read',array('id'=>$vo[uid]))}">{$vo.uid}</a></td>
+	</tr>
+<else />
+	<tr>
+	<td>用户信息:</td><td>订单手机号：<input type="text" name="mobile" id="member_mobile" value="{$vo.mobile}" onchange="check_member();"/><br /><span id="memberinfo">用户名：{$memberinfo.username}</span>&nbsp;&nbsp;<input type="button" value="绑定" onclick="bangdang_member();"/></td>
+	</tr>
+</if>
+<tr>
+<td>真实姓名:</td><td><input name="truename" value="{$vo.truename}" /></td>
+</tr>
+<tr>
+<td>电话:</td><td><input name="mobile" value="{$vo.mobile}" /></td>
+</tr>
+<tr>
+<td>车牌号:</td><td><input name="licenseplate" value="{$vo.licenseplate}" /></td>
+</tr>
+<tr>
+<td>已行驶公里数:</td><td><input name="mileage" value="{$vo.mileage}" /></td>
+</tr>
+<tr>
+<td>车辆识别代码:</td><td><input name="car_sn" value="{$vo.car_sn}" /></td>
+</tr>
+<tr>
+<td>4S店:</td><td>{$vo.shop_info.shop_name}</td>
+</tr>
+<tr>
+<td>4S店电话:</td><td>{$vo.shop_info.shop_phone}</td>
+</tr>
+<tr>
+<td>4S店地址:</td><td>{$vo.shop_info.shop_address}</td>
+</tr>
+<tr>
+<td>4S店坐标:</td>
+<td>
+<a href="__APP__/Store/shop/get_map/id/{$shop.id}" target="_blank">{$vo.shop_info.shop_maps}</a>
+</td>
+</tr>
+<tr>
+<td>服务项目:</td>
+<td>
+<volist name="service_ids_arr" id="vo_order">
+{$serviceitem[$vo_order]['name']}&nbsp;&nbsp;&nbsp;&nbsp;
+</volist>
+</td>
+</tr>
+<tr>
+<td>车型:</td>
+<td>
+{$select_car.brand_name}--{$select_car.series_name}--{$select_car.model_name}
+</td>
+</tr>
+<tr>
+	<td>预约时间</td><td><input type="text"  onclick="new Calendar().show(this);" readonly="readonly" value="{$vo.order_time.date}" name="order_date">
+	<select name="order_hours">
+	<volist name="Think.config.ORDER_HOURS" ID="ls">
+	<option value="{$ls}" <eq name="ls" value="$vo.order_time.hour"> selected="selected"</eq>>{$ls}</option>
+	</volist>
+	</select>
+	<select name="order_minute">
+	<volist name="Think.config.ORDER_MINUTE" ID="ls">
+	<option value="{$ls}" <eq name="ls" value="$vo.order_time.minute"> selected="selected"</eq>>{$ls}</option>
+	</volist>
+	</select>
+	
+	</td>
+</tr>
+<tr>
+	<td>下订时间</td>
+	<td>{$vo.create_time}</td>
+</tr>
+<tr>
+	<td>零件折扣率</td>
+	<td><input type="text" name="product_sale" value="{$vo.product_sale}" /></td>
+</tr>
+<tr>
+	<td>工时折扣率</td>
+	<td><input type="text" name="workhours_sale" value="{$vo.workhours_sale}" /></td>
+</tr>
+<notempty name="coupon">
+<tr>
+	<td>优惠劵名称</td>
+	<td>{$coupon.coupon_name}</td>
+</tr>
+<tr>
+	<td>优惠劵折扣</td>
+	<td>{$coupon.coupon_discount}</td>
+</tr>
+<tr>
+	<td>使用优惠劵后工时折扣</td>
+	<td>{$vo['workhours_sale']-$coupon['coupon_discount']}</td>
+</tr>
+</notempty>
+<tr>
+	<td>订单金额</td>
+	<td><input type="text" name="total_price" value="{$vo.total_price}" /></td>
+</tr>
+
+<tr>
+	<td>已使用优惠卷</td>
+	<td>
+		<volist name="Membercoupon" id="vo">
+			优惠券id:{$vo.membercoupon_id}
+			优惠券名:{$vo.coupon_name}
+		</volist>
+	</td>
+</tr>
+
+<tr>
+	<td>绑定顾问</td>
+	<td>
+		<select name="member_id"  style="width:120px">
+			<option value="0">选择顾问</option>
+			<volist name="expert" id="exp_vo">
+			<option value="{$exp_vo.uid}" <if condition="$exp_vo['uid'] eq $vo['member_id']">selected</if> >{$exp_vo.username}</option>
+			</volist>
+		</select>
+	</td>
+</tr>
+		<!-- <tr>
+		<td>
+		订单状态:
+		</td>
+		<td>
+		<select name="order_state">
+		<volist name="Think.config.ORDER_STATE" id="ls">
+		<option value="{$key}" <eq name="key" value="$vo.order_state">selected="selected"</eq>>{$ls}</option>
+		</volist>
+		</select>
+		</td>
+		</tr> -->
+<tr>
+<td>用户备注</td>
+<td><textarea rows="10" cols="30" name="remark">{$vo.remark}</textarea>
+</td>
+</tr>
+<td>客服备注</td>
+<td><textarea rows="10" cols="30" name="operator_remark">{$vo.operator_remark}</textarea>
+</td>
+</tr>
+<tr>
+	<td>原短信内容:</td>
+		<td>
+			<p style="font-size:12px;">{$send_add_order_data}</p>
+	</td>
+</tr>
+<tr>
+	<td>修改短信内容:</td>
+		<td>
+		
+		<textarea rows="10" cols="30" id="send_add_order_data" name="send_add_order_data"></textarea><font style="color:red;font-size:12px;">*必填</font><br>
+		<p style="font-size:12px;">修改参考内容:(工时费7折，配件费无折扣，到了4S店后服务顾问孙小姐将为您提供专人接待和服务，结算时请出示此短信以享受上述折扣,)</p>
+	</td>
+</tr>
+<tr>
+<td>
+	<input type="hidden" name="shop_name" value="{$vo.shop_info.shop_name}">
+	<input type="hidden" name="date" value="{$vo.order_time.date}">
+	<input type="hidden" name="hour" value="{$vo.order_time.hour}">
+	<input type="hidden" name="minute" value="{$vo.order_time.minute}">
+	<input type="hidden" name="shop_address" value="{$vo.shop_info.shop_address}">
+	<volist name="service_ids_arr" id="sub_vo">
+	<input type="hidden" name="select_services[]" value="{$sub_vo}">
+	</volist>
+</td>
+</tr>
+<tr>
+<td>
+<input type="hidden" name="id" id="orderid" value="{$vo.id}">
+</td>
+<td class="update_order">
+	<input type="submit" value="修改">
+	<if condition="$vo.order_state eq 0" ><input type="button" value="预约确认" onclick="update_order_state(1);"></if>
+	<if condition="$vo.order_state eq 1" ><input type="button" value="预约完成" onclick="update_order_state(2);"></if>
+	<if condition="($vo.order_state eq 0) || ($vo.order_state eq 1) " ><input type="button" value="作废预约" onclick="update_order_state(-1);"></if>
+</td>
+</tr>
+</table>
+</form>
+</div>
+<div style="width:50%;float:left;"><img src="/UPLOADS/Product/{$vo.img_name}"></div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+<script>
+	function update_order_state(d){
+		if(!confirm("确认要修改订单状态？")){
+			return false;
+		}
+		var send_add_order_data = $('#send_add_order_data').val();
+		var id = $("#orderid").val();
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Store/order/update_order_state',
+			cache:false,
+			datatype:'text',
+			data:"order_state="+d+"&id="+id+"&send_add_order_data="+send_add_order_data,
+			success: function(data){
+				
+				if(data == 1){
+					alert("修改成功！");
+					window.location.reload();
+					return false;
+				}else{
+					alert("修改失败！");
+					return false;
+				}
+			}
+		})
+	}
+</script>

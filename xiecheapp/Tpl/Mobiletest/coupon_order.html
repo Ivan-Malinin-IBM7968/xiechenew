@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+	<head>
+		<meta>
+	    <title>携车网 - 优惠券购买</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+	<!-- <link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.css" /> -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/coupon_order.css" />
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/zepto/zepto.min.js"></script>
+		<!--  <script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+		<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script> -->
+		<script src="__PUBLIC__/mobile/js/main.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/libs/zepto/touch.js"></script>
+		<style>
+			#loading-overlay{
+				display: none;
+			}
+		</style>
+	</head>
+	<body style="background: #f1f1f1; ">
+		<div id='loading-overlay'>
+	        <div class="loading" id="loading-con">
+	            <img src="__PUBLIC__/mb/images/ajax-loader.gif" alt="Loading..."/>  
+	            <div class="loading-text">正在提交</div>
+	        </div>
+	    </div>
+		<div id="wrapper" >
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>优惠券购买</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<div id="content-wrapper">
+				<form action="{:URL('/Mobile/savecoupon')}" id="form_go" method="post" class="post-form">
+				<div id="inner-content-wrapper">
+					<!-- 服务类型 开始 -->
+					<div id="pi" class="sl">
+						<div class="title">
+							<span class="circle"></span>
+							<h3>您所要购买的现金券</h3>
+							<div class="clear"></div>
+						</div>
+						<div class="i-list">
+							<ul>
+								<li>
+									<label>名 称：</label>
+									<div>{$coupon.coupon_name}</div>
+								</li>
+								<li>
+									<label>单 价：</label>
+									<strong style="color: #fd8612; font-size: 1.4em; font-weight: bold; display: inline-block; float: right" id="single-price">¥<span style="font-weight: bold">{$coupon.coupon_amount}</span></strong>
+								</li>
+								<li>
+									<label>数 量：</label>
+									<div id="conpon-count">
+										<a href="javascript:void(0);" id="count-plus">增加</a>
+										
+										<input type="text" id="coupon-count-value" name="number" value="1">
+										<a href="javascript:void(0);" id="count-minus">减少</a>
+									</div>
+									
+								</li>
+								<li>
+									<label>总 价：</label>
+									<strong style="color: #fd8612; font-size: 1.4em; font-weight: bold; display: inline-block; float: right" id="final-price">¥<span style="font-weight: bold">{$coupon.coupon_amount}</span></strong>
+								</li>
+								<div class="clear"></div>
+							</ul>
+						</div>
+						<div class="clear"></div>
+						<div class="title">
+							<span class="circle"></span>
+							<h3>您的联系方式：</h3>
+							<div class="clear"></div>
+						</div>
+						<div class="i-list" style="margin-top: 10px;">
+							<ul>
+								
+								<li style="background: white; border-bottom:none;">
+									<label style="width: 25%">手 机：</label>
+									<!-- <input style="width: 75%" type="text" id="mobile" name="mobile" onclick=" if( this.value == '请输入手机号码')value=''" onblur=" if( this.value.replace(/[ ]/g,'') == '')value='请输入手机号码'" value="请输入手机号码"> -->
+									<input style="width: 75%" type="text" id="mobile" name="mobile" value="{$old_weixin.mobile}">
+								</li>
+								<li style="padding-top: 0px;">
+									<if condition="$arr.weixin_status eq 1">
+										<input type="button" name="btn_ok" id="btn_ok" value="发送验证码">
+									</if>
+								</li>
+								<if condition="$arr.weixin_status eq 1">
+									<li style="background: white; border-bottom:none;">
+										<label style="width: 25%">验证码：</label><input style="width: 75%;" type="text" id="code" name="code" onclick=" if( this.value == '请输入验证码')value=''" onblur=" if( this.value.replace(/[ ]/g,'') == '')value='请输入验证码'" value='请输入验证码' >
+									</li>
+									<li style="border-bottom:none;padding-top: 0px;"><input type="button" name="btn_yz" id="btn_yz" value="验证" ></li>
+									<li><p id="div_content" name="div_content" style="color:red;"> </p></li>
+								</if>
+								<div class="clear"></div>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<!-- 服务类型 结束 -->
+					<div id="next-btn">
+						<a href="javascript:void(0)" value="">下一步</a>
+					</div>
+				</div>
+				<input type="hidden" id="Paweixin_id" name="Paweixin_id" value="{$arr.Paweixin_id}">
+				<input type="hidden" id="coupon_id" name="coupon_id" value="{$coupon.id}">
+				</form>
+			</div>
+			</div>
+			<!-- Main Page End -->
+			
+		</div>
+		<include file="Public:wapfoot" />
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+		$("#next-btn a").on("tap", function(e){
+				var re = /^[0-9]+.?[0-9]*$/;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/   
+				var mobile = $('#mobile').val();
+				if(!$('#mobile').val() || $('#mobile').val() == '请输入手机号码'){
+					alert('手机号不能为空！');
+					return false;
+				}
+				if(mobile.length!=11){
+					alert('手机号不满11位请重新填写！');
+					return false;
+				}
+				if(!re.test(mobile)){
+					alert('手机号码只能输入数字！');
+					return false;
+				}
+				$("#form_go").submit();
+				$("#loading-overlay").show();
+		})
+
+		$(function(){
+			$("#btn_ok").click(function(){
+			var mobile = $('#mobile').val();
+			var second = "60";
+			if(/^1\d{10}$/.test(mobile)){
+					$.ajax({
+						type: "POST",
+						url: "__APP__/Mobile/SendSms",
+						cache: false,
+						data:"mobile="+mobile,
+						dataType: "json",
+						success: function(data){
+							
+							if(data == '1'){
+								$('#div_content').html('发送成功！');
+							}else{
+								alert("发送失败！");
+								return false;
+							}
+						},
+						error: function(){
+						}
+					})
+				}else{
+					alert("手机号只能填写数字！");
+					return false;
+				}
+			})
+			
+			$("#btn_yz").click(function(){
+				var code = $('#code').val();
+				var mobile = $('#mobile').val();
+				var Paweixin_id = $('#Paweixin_id').val();
+				var second = "60";
+					$.ajax({
+						type: "POST",
+						url: "__APP__/Mobile/CheckCode2",
+						cache: false,
+						data:"code="+code+"&mobile="+mobile+"&Paweixin_id="+Paweixin_id,
+						dataType: "json",
+						success: function(data){
+							if(data == '1'){
+								$('#next-btn').show();
+								$('#div_content').html('验证成功！');
+							}else{
+								alert("验证码不正确！");
+								return false;
+							}
+						},
+						 cerror: function(){
+						}
+					})
+			})
+			
+
+
+			var count = $("#coupon-count-value"),
+				minusBtn = $("#count-minus"),
+				plusBtn = $("#count-plus"),
+				singlePrice = parseInt($("#single-price span").html()),
+				finalPrice = $("#final-price span");
+
+			minusBtn.on("click", function(){
+				var countValue = count.val();
+				countValue >1 ? count.val(--countValue) : 1
+				finalPrice.html(countValue*singlePrice);
+			})
+
+			plusBtn.on("click", function(){
+				var countValue = count.val();
+				count.val(++countValue);
+				finalPrice.html(countValue*singlePrice);
+			})
+
+		}())
+	</script>
+	
+	</body>
+</html>

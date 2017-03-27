@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no">
+<title>我的排名-千元油卡兑奖排名</title>
+</head>
+<body>
+<div class="rankmenu">
+	<ul>
+		<li><a href="/mobilecar-myrank" class="active">我的排名</a></li>
+		<li><a href="/mobilecar-ranking">前50名名单</a></li>
+	</ul>
+</div>
+
+<div class="rankdes">特别说明:原定50张加油卡已全部兑完,因活动火爆新增20张加油卡,先领先得,兑完为止。</div>
+
+<div class="ranklist">
+	<ul>
+		<empty name="myrank">
+			您未抢购成功
+		<else/>
+		<notempty name="pic">
+		<li>
+			<div class="ranknum">{$myrank.id}</div>
+			<div class="hpic"><img src="{$pic.face}" alt="" height="34"></div>
+			<div class="rankname">
+				<p>{$pic.nickname}</p>
+				<p class="mobile">{$myrank.mobile}</p>
+			</div>
+			<div id="ranktime" class="ranktime">{$myrank.create_time|date="Y-m-d H:i:s",###}{$myrank.create_time|substr=10,3}</div>
+			<if condition="$myrank.id lt 21">
+				<div class="rankres"><img src="/Public/mobile/images/castrol/success.png" width="40"/></div>
+			<else/>
+				<div class="rankres"><img src="/Public/mobile/images/castrol/nosuccess.png" width="40"/></div>
+			</if>
+		</li>
+		</notempty>
+		</empty>
+	</ul>
+</div>
+<style type="text/css">
+*{margin: 0; padding: 0; list-style: none; color: #343434;}
+a{text-decoration: none;}
+body{font-family: arial,"微软雅黑"; font-size: 14px; background: #F5F5F5;}
+.rankmenu{background: #F8F8F8; overflow: hidden; border-bottom: 1px solid #bbbbbb; height: 44px; line-height: 44px; padding: 0 10px;}
+.rankmenu ul{overflow: hidden;}
+.rankmenu li{float: left; width: 50%; text-align: center;}
+.rankmenu li a.active{border-bottom: 5px solid #3297ff; padding-bottom: 10px;}
+.rankdes{line-height: 1.5em; padding: 10px;}
+.ranklist{overflow: hidden;}
+.ranklist ul{overflow: hidden; padding: 0 10px;}
+.ranklist ul li{border: 1px solid #e7e7e7; background: #F8F8F8; position: relative; height: 44px; margin-bottom: 12px;}
+
+.ranknum{width: 30px; height: 44px; overflow: hidden; float: left; line-height: 44px; text-align: center;}
+.hpic{float: left; line-height: 44px; padding: 5px 5px 0 0;}
+.rankname{float: left; line-height: 22px;}
+.rankname p.mobile{color: #717171;}
+.ranktime{font-size: 12px; float: right; padding-right: 5px; line-height: 22px; color: #717171;}
+.rankres{position: absolute; right: -5px; bottom: -10px;}
+</style>
+
+</body>
+</html>

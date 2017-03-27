@@ -1,0 +1,55 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<div id="main" class="main" >
+    <SCRIPT LANGUAGE="JavaScript">
+        <!--
+        function selectGroup(){
+            var result= PopModalWindow('__URL__/select/pid/0',268,360);
+            if(typeof(result) == "undefined") return;
+            $('groupName').value=result[0][0];
+            $('pid').value=result[0][1];
+        }
+
+        //-->
+    </SCRIPT>
+    <div class="content">
+        <div class="title">新增组 [ <A HREF="__URL__">返回列表</A> ]</div>
+        <div id="result" class="result none"></div>
+        <FORM METHOD=POST id="form1" >
+            <TABLE cellpadding=3 cellspacing=3 >
+                <TR>
+                    <TD class="tRight" >组名：</TD>
+                    <TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire"  check='^\S+$' warning="组名不能为空,且不能含有空格" NAME="name"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >上级组：</TD>
+                    <TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="groupName"><INPUT TYPE="hidden" class="medium bLeft" NAME="pid"> <a href="javascript:selectGroup()" ><IMG SRC="../Public/images/search.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle"></a></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight">组状态：</TD>
+                    <TD class="tLeft">
+                        <SELECT class="small bLeft"  NAME="status">
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </SELECT>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD class="tRight tTop">描 述：</TD>
+                    <TD class="tLeft"><TEXTAREA class="large bLeft" NAME="remark"  ROWS="5" COLS="57"></TEXTAREA></TD>
+                </TR>
+                <TR>
+                    <TD ></TD>
+                    <TD class="center">
+                        <div style="width:85%;margin:5px">
+                            <INPUT TYPE="hidden" name="ajax" value="1">
+                            <div class="impBtn fLeft"><INPUT TYPE="button" value="保存" onclick="sendForm('form1','__URL__/insert/','tips')" class="save imgButton"></div>
+                            <div class="impBtn fRig"><INPUT TYPE="reset" class="reset imgButton" value="清空" ></div>
+                        </div>
+                    </TD>
+                </TR>
+            </TABLE>
+        </FORM>
+    </div>
+</div>

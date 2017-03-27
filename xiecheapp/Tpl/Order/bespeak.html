@@ -1,0 +1,921 @@
+<layout name='layout_new' />
+<script type="text/javascript" src="__PUBLIC__/Js/com.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/order.css?v={$Think.config.VERSION_DATE}" />
+
+<style>
+	.flb {
+		cursor: move;
+		font-size: 1em;
+		height: 20px;
+		line-height: 20px;
+		margin: 0;
+		padding: 10px 10px 8px;
+	}
+	.flb em {
+		color: #336699;
+		float: left;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 700;
+	}
+	.codehelp ul li b {
+		color: black;
+		float: left;
+		font-size: 14px;
+		font-style: normal;
+	}
+	.codehelp ul li p {
+		color: black;
+		float: left;
+		font-size: 12px;
+		font-style: normal;
+	}
+	.grxx ul li {
+		height: 30px;
+		line-height: 30px;
+	}
+	.grxx li label {
+		width: 120px;
+		display: inline-block;
+		height: 0px;
+		line-height: 20px;
+		font-size: 14px;
+	}
+	.grxx li .input-class {
+		width: 180px;
+		height: 20px;
+		line-height: 20px;
+		font-size: 14px;
+	}
+	.flbc {
+		background: url("img/cls.gif") no-repeat scroll 0 0 transparent;
+		color: #999999;
+		cursor: pointer;
+		display: inline;
+		float: right;
+		height: 20px;
+		margin-left: 10px;
+		overflow: hidden;
+		text-indent: -9999px;
+		width: 20px;
+	}
+	.codehelp ul li {
+		list-style-type: decimal;
+	}
+	.codehelp p {
+		width: 920px;
+		padding: 10px 0 10px 20px;
+	}
+	.codehelp img {
+		width: 430px;
+		padding: 0 10px 10px 20px;
+	}
+	.ticket-info {
+		margin: 10px 0;
+		clear: both;
+	}
+	.ticket-info-table {
+	}
+
+	.ticket-info-table tr th {
+		background-color: #F3F3F3;
+		height: 30px;
+		line-height: 30px;
+		font-size: 13px;
+		border: 1px solid #ddd
+	}
+	.ticket-info-table tr td {
+		height: 30px;
+		line-height: 30px;
+		font-size: 13px;
+		border: 1px solid #ddd;
+		margin-bottom: 10px;
+	}
+	#ticket-trigger:hover {
+		text-decoration: underline;
+	}
+	.cancel-radio:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	.consultant-con {/*position: absolute; top: 0px; right: 0px;*/
+		height: 150px;
+		border-top: 3px solid #f1f1f1;
+		padding-top: 10px;
+	}
+	.gw-caption {
+		float: left;
+		margin-top: -47px;
+	}
+	.gw-caption h4 {
+		display: block;
+		width: 80px;
+		height: 60px;
+		background: url("../images/gw-caption.png") 0px 0px no-repeat;
+		float: left;
+		padding-left: 70px;
+		padding-left: 60px;
+		line-height: 42px;
+		font-size: 16px;
+	}
+	.consultant {
+		display: block;
+		width: 830px;
+		height: auto;
+		text-align: justify;
+	}
+	.consultant::after {
+		width: 100%;
+		display: inline-block;
+		content: ".";
+		visibility: hidden
+	}
+	.consultant .single-consultant {
+		display: inline;
+		float: left;
+		margin: 5px 10px 5px 0px;
+		width: 230px;
+		height: 100px;
+		padding: 5px;
+		border-radius: 8px;
+		cursor: pointer;
+		border: 2px solid #ffffff
+	}
+	.grxx ul.consultant li.single-consultant:hover {
+		background: #effaff;
+		cursor: pointer;
+		border: 2px solid #effaff
+	}
+	.grxx ul.consultant li.single-consultant a {
+		display: block;
+		width: 85px;
+		height: 85px;
+		overflow: hidden;
+		float: left;
+		margin: 5px 0 0 5px;
+	}
+	.grxx ul.consultant li.single-consultant a img {
+		display: block;
+		width: 70px;
+		height: 70px;
+		border: 3px solid #f1f1f1;
+	}
+	.grxx ul.consultant-name {
+		display: none;
+		width: 60px;
+		height: 20px;
+		color: #444444;
+		line-height: 20px;
+		font-size: 12px;
+		text-align: center;
+	}
+	.grxx ul.consultant li.single-consultant .consultant-info {
+		display: block;
+		float: left;
+		overflow: hidden;
+		width: 130px;
+		margin-left: 0px;
+		margin-top: 6px;
+	}
+	.grxx ul.consultant li.single-consultant .consultant-info li {
+		float: left;
+		font-size: 13px;
+		height: 22px;
+		line-height: 22px;
+		color: #444;
+		width: 140px;
+	}
+	.gw-name {
+	}
+	.gw-name .caption {
+		font-size: 11px;
+	}
+	.gw-name .name {
+		font-size: 14px;
+		color: #000000;
+	}
+
+	.selected-consultant {
+		border: 2px solid #0066cc;
+		background: #effaff
+	}
+
+</style>
+<style>
+		#popup-sl-map{ position: fixed; width: 800px;  height: 550px; top: 100px; overflow: hidden; display: none;  z-index: 1113; background: white; }
+		#popup-sl-map #baidu-map{ width: 800px;  height: 550px;}
+</style>
+<form action="{:URL('/order/insert')}" method="post" class="post-form">
+	<div class='w1200 breadcrumb clear' >
+		<ul>
+			<li>
+				<a href="__APP__/order">4S店售后预约</a>
+			</li>
+			<li>
+				>
+			</li>
+			<li>
+				<a href="__APP__/shop/{$shop.id}" target="_blank">{$shop.shop_name}</a>
+			</li>
+			<li>
+				>
+			</li>
+			<li>
+				预约下单
+			</li>
+		</ul>
+	</div>
+	<div class='clear'></div>
+	<div class="content w1200" style="position: relative; width: 1300px;" >
+		<div class="content-left w780 order " style="width: 857px;; overflow: hidden;">
+			<h3 class="info-h3">您想获得什么样的服务 <font color="red">（最少选择一项）</font></h3>
+			<empty name="membercoupon_id">
+				<div class="weixiu order-option">
+					<volist name="list_si_level_0" id="vo">
+						<span class='title'>{$vo.name}</span>
+						<ul>
+							<volist name="list_si_level_1" id="vo1">
+								<if condition="$vo[id] eq $vo1[service_item_id]">
+									<li <if condition="$vo1[id] eq 10">class="checked"</if>>
+										<if condition="$vo1['service_item_id'] eq 1">
+											<input type="checkbox" id="server_{$vo1.id}" <if condition="$membercoupon_id gt '0'"> disabled </if> <if condition="$vo1[id] eq 10">checked</if> onclick="baoyang_selected_check(this);" name="select_services[]" service_type="baoyang" value="{$vo1.id}" <in name="vo1.id" value="$select_services_str">checked</in> <if condition="($default_check eq 1) and ($n eq 1)" > checked </if>/>
+											<else />
+											<input type="checkbox" name="select_services[]" <if condition="$membercoupon_id gt '0'">  disabled </if> onclick="get_price();" <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/>
+										</if><label for="check1">{$vo1.name}</label>
+									</li>
+								</if>
+							</volist>
+							<div class="clear"></div>
+						</ul>
+						<div class="clear"></div>
+					</volist>
+				</div>
+
+				<div class="order-option">
+					<span class='title'>其他:</span>
+					<span class='option-con'>
+						<input type="checkbox" name="select_services[]" id="nocheck" value="-1"/>
+						<label for="cg1">我不知道做什么项目，到店检查为准</label> </span>
+				</div>
+
+				<else />
+				<div class="weixiu order-option">
+					<volist name="list_si_level_0" id="vo">
+						<span class='title'>{$vo.name}</span>
+						<ul>
+							<volist name="list_si_level_1" id="vo1">
+								<if condition="$vo[id] eq $vo1[service_item_id]">
+									<li >
+										<!--class='checked'-->
+										<if condition="$vo1['service_item_id'] eq 1">
+											<input type="radio" id="server_{$vo1.id}" <if condition="$membercoupon_id gt '0'"> disabled </if> <if condition="$n eq 1">checked</if> onclick="baoyang_selected_check(this);" name="radio_services[]" service_type="baoyang" value="{$vo1.id}" <in name="vo1.id" value="$select_services_str">checked</in> <if condition="($default_check eq 1) and ($n eq 1)" > checked </if>/>
+											<else />
+											<input type="checkbox" name="select_services[]" <if condition="$membercoupon_id gt '0'">  disabled </if> onclick="get_price();" <in name="vo1.id" value="$select_services_str">checked</in> value="{$vo1.id}"/>
+										</if><label for="check1">{$vo1.name}</label>
+									</li>
+								</if>
+							</volist>
+							<div class="clear"></div>
+						</ul>
+						<div class="clear"></div>
+					</volist>
+
+			</empty>
+			<div class="order-option">
+				<span class="title">
+					<if condition="$model_id gt 0">
+						{$carname.brand_name} {$carname.series_name} {$carname.model_name}
+						<else />
+						<span id="select_model" style="color: #cc6600; font-size: 14px">您未选定车型: </span>
+				</span>
+				<span class="order-con">
+					<div style="text-align: left; padding: 5px 0;">
+						<div style="width: 200px; height: 25px; font-size: 13px; line-height: 25px; ">
+							<label>选择品牌:&nbsp;&nbsp;</label>
+							<select id="get_brand" name="brand_id"  onchange="comp_brlist('get_brand','get_series', 'get_model');" style="display: inline-block; width: 120px;">
+								<option value="">请选择品牌</option>
+								<volist name='brand_arr' id='vob'>
+									<option value="{$vob.brand_id}">{$vob.brand_name}</option>
+								</volist>
+							</select>
+						</div>
+						<div style="width: 200px; height: 25px;  font-size: 13px;  line-height: 25px;">
+							<label>选择车系:&nbsp;&nbsp;</label>
+							<select id="get_series" name="series_id" disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');" style="display: inline-block; width: 120px;"></select>
+						</div>
+						<div style="width: 200px; height: 25px;  font-size: 13px;  line-height: 25px;">
+							<label>选择车型:&nbsp;&nbsp;</label>
+							<select id="get_model" name="model_id" disabled onchange="get_price();" style="display: inline-block; width: 120px;"></select>
+						</div>
+
+						<div class="clear"></div>
+					</div> </if> </span>
+			</div>
+
+			<div class='jgtj'>
+				<table width="778">
+					<tr>
+						<th width='250'>车辆信息</th>
+						<th width='176'>原价</th>
+						<th width='176'>折后价</th>
+						<th width='176'>优惠</th>
+					</tr>
+					<tr>
+						<td width='250' class='my-car'></td>
+						<td width="176" id="cost_price" name="cost_price"></td>
+						<td width="176" id="sale_price" name="sale_price"></td>
+						<td width="176" id="favourable_price" name="favourable_price"></td>
+					</tr>
+				</table>
+
+				<img style="display:none" id="price_detail" src="" alt="">
+			</div>
+
+			<div class="order-option grxx" style='position: relative; width: 758px; height: auto; padding-bottom: 100px;'>
+				<span class='title'>请输入预约信息</span>
+				<ul>
+					<li>
+						<label>预约时间: </label>
+						<input class="input-class" type="text" name="order_date" class="Wdate" type="text" onfocus="WdatePicker({ <notempty name="sale_check"> disabledDays:[{$sale_check}],</notempty>enableKeyboard:false,doubleCalendar:<?php echo ($doubleCalendar);?>,dateFmt:'yyyy-MM-dd',minDate:'{$minday}',maxDate:'{$maxday}'})" />
+						日
+						<select name="order_hours" onclick="get_minute();" id="order_hours">
+							<option value="0">小时</option>
+							<volist name="Think.config.ORDER_HOURS" id="hours">
+								<if condition="($hours egt $min_hours) AND ($hours elt $max_hours)">
+									<option value="{$hours}">{$hours}</option>
+								</if>
+							</volist>
+						</select>
+						时
+						<select name="order_minute" id="order_minute">
+							<option value="">分钟</option>
+						</select>
+						分 <span><font color="red">&nbsp;*</font>
+					</li>
+					<li>
+						<label>姓  名: </label>
+						<input class="input-class" type="text" value="" name="truename">
+						<span><font color="red">&nbsp;*</font>
+					</li>
+					<li>
+						<label>车牌号:</label>
+						<select class="input-class" name="cardqz" style="width: 50px;" >
+							<volist name="Think.config.SHORT_PROVINCIAL_CAPITAL" id="type">
+								<option value="{$type}" <if condition="$membercar.s_pro eq $type">selected<elseif condition="$type eq '沪'" />selected<else /></if> >{$type}</option>
+							</volist>
+						</select>
+						<input class="input-class" type='text' name="licenseplate" value="{$membercar.licenseplate}" style="margin-left: 5px; width: 150px;">
+						<font color="red">&nbsp;*</font>
+					</li>
+					<li>
+						<label>手  机:</label>
+						<input class="input-class" type="text" name="mobile" value="{$member.mobile}" onkeyup="this.value=this.value.replace(/\D/g,'')">
+						<span><font color="red">&nbsp;*</font></span>
+					</li>
+					<li>
+						<label>已行驶公里数: </label>
+						<input class="input-class" type="text" value="" name="miles">
+					</li>
+					<li>
+						<label>车辆识别代码: </label>
+						<input class="input-class" type="text" value="{$my_car.car_identification_code}" name="car_sn">
+						<span><a href="###" id="how_find_code"><font size="2" color="grey">如何查找您爱车的车辆识别代码？</font></a></span>
+					</li>
+					<li style="height: 120px;">
+						<label style="width: 120px; height: 100px; position: relative;"><span style="position: absolute; top: 0;font-size:14px;">备  注:</span></label>
+						<textarea name="remark" cols=50 rows=6 style="width: 360px;height: 100px; margin-top: 3px; "></textarea>
+					</li>
+
+				</ul>
+				<div class=" consultant-con" style="width: 810px;">
+					<if condition="$Servicemember neq ''">
+						服务顾问（选择服务顾问，到店后直接由她接待噢）
+					</if>
+					<ul class="consultant">
+						<input type="hidden" name="ra_servicemember_id" id="ra_servicemember_id" value="">
+						<volist name="Servicemember" id="smvo">
+							<li class="single-consultant">
+
+								<input type="hidden" name="servicemember_id" id="servicemember_id" value="{$smvo.id}" class="consultnt-id">
+								<a href="javascript: void(0)"  class="consultant-tooltips" data-f="{$smvo.service}" data-z="{$smvo.profession}" data-c="{$smvo.sincerity}"> <img src="/UPLOADS/Service/{$smvo.logo}" alt="" class="consultant-img" width="70" height="70" /> </a>
+								<ul class='consultant-info'>
+									<li class="gw-name">
+										<strong class="name">{$smvo.name}</strong>
+									</li>
+									<li>
+										服务态度: {$smvo.service}分
+									</li>
+									<li>
+										专业技能: {$smvo.profession}分
+									</li>
+									<li>
+										诚   信: {$smvo.sincerity}分
+									</li>
+								</ul>
+							</li>
+						</volist>
+					</ul>
+				</div>
+				<input type="hidden" name="shop_id" value="{$shop_id}" />
+				<notempty name="model_id">
+					<input type="hidden" name="model_id" value="{$model_id}" />
+				</notempty>
+				<input type="hidden" name="timesaleversion_id" value="{$Think.request.timesaleversion_id}" />
+				<input type="hidden" name="u_c_id" value="{$u_c_id}" />
+				<input type="hidden" name="membercoupon_id" value="{$membercoupon_id}" />
+				<div style="clear: both; margin-bottom: 5px; margin-left: 5px; width: 750px; ">
+					<h3 style="font-size: 16px; display:inline; " >使用抵用券: </h3>
+					<a href="#" for="" style="color: #0066cc; font-size: 14px; float: right;" id="ticket-trigger">验证线下活动抵用券</a>
+					<div id="dialog-con" title="Basic dialog" >
+						<input type="text" id="code" name="code" style="width: 180px; height: 25px;" onclick=" if( this.value == '请输入抵用券码')value=''" onblur=" if( this.value.replace(/[ ]/g,'') == '')value='请输入抵用券码'" value="请输入抵用券码" style="height: 20px">
+						<input type="button" style="font-size: 14px;  background: #0066cc; border-radius: 5px; height: 25px; color: white; padding: 2px 5px; border: none; " id="btn_yz" value="验证添加" style="">
+						<p id="p_ok" style="display:none;"></p>
+					</div>
+
+				</div>
+				<if condition="$sess_uid neq ''">
+					<div class="ticket-info">
+						<table width="100%" style="border-collapse: collapse; border-spacing: 0; text-align:center; margin-top: 5px; font-size: 12px;" class="ticket-info-table">
+							<tr>
+								<th style="width: 180px;">名称</th>
+								<th>消费码</th>
+								<th>有效期</th>
+							</tr>
+							<volist name="salecoupon" id="vo" key="key">
+								
+									<tr>
+										<td ><a class="cancel-radio" style="font-size: 12px; float: left; margin-left: 10px; color: #0066cc; display:none; ">取消</a>&nbsp;
+										<input type="radio" name="radio_sale" id="radio_sale" class="radio-sale" value='{$vo.salecoupon_id}'>
+										{$vo.coupon_name} </td>
+										<td>{$vo.coupon_code}</td>
+										<td>{$vo.start_time|date="Y-m-d H:i:s",###}----{$vo.end_time|date="Y-m-d H:i:s",###}</td>
+									</tr>
+							
+
+							</volist>
+							<tr id="tab_ch" >
+
+							</tr>
+
+						</table>
+					</div>
+				</if>
+				<div style='position: absolute; left: 8px; bottom: 60px;'>
+					<input type="checkbox" name="xcagreement" checked value="1">
+					<if condition="$Think['const'].TOP_CSS eq 'xc'">
+					<a href="__APP__/about/24" target="_blank" style="color: #e65400" > 同意《携车网维修保养预约协议》</a>
+					<else/>
+					<a href="javascript:;" style="color: #e65400" class="point" >同意《携车网维修保养预约协议》</a>
+					</if>
+				</div>
+				<input type="submit" id="btn_ok" value='提  交' style="position: absolute; left: 11px; bottom: 26px; background: #e65400; border: none; width: 210px; height: 30px; color: white; font-size: 16px; border-radius: 8px;">
+				<div class="clear"></div>
+			</div>
+
+			<div class="yyts">
+				<dl>
+					<dt>
+						预约提示：
+					</dt>
+					<dd>
+						1、	我们目前只接受隔天预约，且只接受15天之内的预约。如果您预约第二天的维修保养服务，您需要在当天下午4点之前进行预约，以让我们的客服有时间与4S店确认您第二天的预约；
+					</dd>
+					<dd>
+						2、	如果您选择的是分时折扣，则只能在您选择的折扣时段内进行预约；
+					</dd>
+					<dd>
+						3、	请填入您的手机号，以接收预约确认的短信，该短信同时也是您到店后享受折扣的凭证；
+					</dd>
+					<dd>
+						4、	车牌号、已行驶里程数、车辆识别代码（如何找到您爱车的车辆识别代码）能方便4S店在您到店前获知您爱车的详细信息，提前做好准备，以更好地为您服务；
+					</dd>
+					<dd>
+						5、	如果您的爱车还有别的情况需要说明，请在备注中留言告诉我们。
+					</dd>
+
+				</dl>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="content-right w400" style="position: absolute; right: 10px; top: 10px;">
+			<div class="w350 tuijian">
+				<h3>推荐现金券</h3>
+				<ul>
+					<volist name="tuijian_coupon1" id="tcoupon1">
+						<li>
+							<div class='image'>
+								<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}"> <img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon1.coupon_pic}" width='80' height="60" > </a>
+							</div>
+							<div class='info'>
+								<a href="__APP__/coupon/{$tcoupon1.id}" target="_blank" title="{$tcoupon1.coupon_name}"> <strong class="title">{$tcoupon1.coupon_name}</strong> </a>
+								<span class="desc"><b>¥</b><strong>{$tcoupon1.coupon_amount}</strong><em>/{$tcoupon1.cost_price}</em></span>
+							</div>
+							<div class="clear"></div>
+						</li>
+
+					</volist>
+				</ul>
+			</div>
+			<div class="w350 tuijian">
+				<h3>推荐套餐券</h3>
+				<ul>
+					<volist name="tuijian_coupon2" id="tcoupon2" >
+						<li>
+							<div class='image'>
+								<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}"> <img src="/UPLOADS/Coupon/Logo/coupon2_{$tcoupon2.coupon_pic}" width='80' height="60" > </a>
+							</div>
+							<div class='info'>
+								<a href="__APP__/coupon/{$tcoupon2.id}" target="_blank" title="{$tcoupon2.coupon_name}"> <strong class="title">{$tcoupon2.coupon_name}</strong> </a>
+								<span class="desc"><b>¥</b><strong>{$tcoupon2.coupon_amount}</strong><em>/{$tcoupon2.cost_price}</em></span>
+							</div>
+							<div class="clear"></div>
+						</li>
+
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<!--右侧结束-->
+	</div>
+</form>
+
+<!--右侧开始-->
+
+
+<div id="popup">
+
+	<h3 class="flb" drag="1"><em>车辆识别代码帮助</em><a class="flbc" close="1">关闭</a></h3>
+	<div id="code_help" style="height:500px; overflow:scroll;">
+
+		<div class="codehelp">
+			<ul>
+				<li>
+					<h5 style="font-size:14px;line-height: 20px;"><b>1.为什么需要填写车辆识别代码</b></h5>
+					<p>
+						车辆识别代码（VIN码）是您车辆的唯一代码，提供车辆识别代码可以让4S店在您到店前获知您爱车的详细车型信息，做好准备，更方便地为您的爱车提供服务。
+					</p>
+				</li>
+				<br class="clear">
+				</br>
+				<li>
+					<h5 style="font-size:14px;line-height: 20px;">2.怎么获得车辆识别代码？</h5>
+					<p ><img  style="float:left;" src="/Public/Images/VIN_xingshizheng.jpg" alt="行驶证">
+						<img style="float:left;" src="/Public/Images/VIN_dangfeng.jpg" alt="挡风玻璃">
+					</p>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+</div>
+<div class="clear"></div>
+<div id="popup-sl-map">
+<p>
+<br><br>
+	1、 会员在访问携车网之前，请务必仔细阅读本条款并同意本声明。会员访问携车网的行为以及通过各类方式使用携车网的行为，都将被视作是对本声明全部内容的认可。<br/><br/> 2、 携车网所提供的汽车售后维修保养项目明细价格(包括但不限于零部件费和/或工时费等费用)，由与携车网签约的服务提供商提供。由于汽车售后维修保养项目的零件明细、零件价格、工时价格的不定期调整，携车网提供的明细价格仅供参考，不作为车主接受服务后的付款依据。最终付款以在服务提供商处实际发生额为准。<br/><br/>3、 携车网与签约的服务提供商以合同形式约定：通过携车网预约售后服务的车主能够享有一定的工时费和/或零件费折扣，携车网发出的预约确认信息作为车主享有这一折扣的凭证。如服务提供商拒绝向出示预约确认信息的车主提供上述折扣，车主应与携车网联系，由携车网与服务提供商协调解决。<br/><br/> 4、 携车网与签约的服务提供商以合同形式约定：通过携车网预约售后服务的车主若按预约时间准时到达服务提供商处，可以享受预约优先工位。如服务提供商无法按预约时间提供预约优先工位，车主应与携车网联系，由携车网和服务提供商协调解决。<br/><br/> 5、 通过携车网预约汽车售后服务的车主，在服务提供商处接受服务后，与服务提供商形成服务合同关系。携车网与该服务合同无关，携车网不承担因该服务合同产生的任何直接和/或间接的责任。 <br/><br/>6、 携车网不对车辆在质保期内的保修和/或索赔做出预约保证。车辆在质保期内的保修和/或索赔受车辆制造商和/或服务提供商保修和/或索赔政策的约束，服务提供商可依据其保修和/或索赔政策接受或拒绝车主的索赔要求。<br/> <br/>7、 携车网致力于提供合理、准确、完整的资讯信息，但并不保证信息的合理性、准确性和完整性，且不对因信息的不合理、不准确或遗漏导致的任何损失或损害承担责任。<br/> <br/>8、 访问者在携车网注册时提供的一些个人资料，携车网除您本人同意及第9条规定外不会将用户的任何资料以任何方式泄露给任何一方。<br/><br/>9、 当政府部门、司法机关等依照法定程序要求携车网披露个人资料时，携车网将根据执法单位之要求或为公共安全之目的提供个人资料。在此情况下之任何披露，携车网均得免责。<br/> <br/>10、 任何由于黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常经营的不可抗力而造成的损失，携车网得免责。由于与携车网链接的其它网站所造成之个人资料泄露及由此而导致的任何法律争议和后果，携车网均免责。<br/><br/> 11、 携车网如因系统维护或升级而需暂停服务时，将事先公告。若因线路及非本公司控制范围外的硬件故障或其它不可抗力而导致暂停服务，于暂停服务期间造成的一切不便与损失，携车网不负任何责任。<br/><br/> 12、 携车网使用者因为违反本声明的规定而触犯中华人民共和国法律的，一切后果自行承担，携车网不承担任何责任。<br/><br/> 13、 凡以任何方式登陆携车网或直接、间接使用携车网资料者，视为自愿接受携车网声明的约束。
+</p>
+</div>
+<div class="blackbox"></div>
+
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+
+<script src="__PUBLIC__/new_pa/js/base.js"></script>
+<script>
+	$(".single-consultant").on("click", function(e) {
+		e.preventDefault();
+		$(this).toggleClass('selected-consultant');
+		$(".single-consultant").not($(this)).removeClass("selected-consultant")
+	})
+
+	$("#btn_ok").click(function(e) {
+		e.preventDefault();
+		$(".single-consultant").each(function(idx, val) {
+			if ($(val).hasClass("selected-consultant")) {
+				$("#ra_servicemember_id").val($(val).children(".consultnt-id").val())
+			}
+		});
+		$(".post-form").submit();
+	})
+
+	$(".radio-sale").on("change", function() {
+		$(this).siblings(".cancel-radio").show()
+		$(".cancel-radio").not($(this).siblings(".cancel-radio")).hide()
+	})
+
+	$(".cancel-radio").on("click", function(e) {
+		e.preventDefault();
+		$(this).siblings('.radio-sale').removeAttr("checked");
+		$(this).hide()
+	})
+</script>
+
+<script>
+	function get_minute() {
+		var sel_hours = $("#order_hours").val();
+		var min_hours = '{$min_hours}';
+		var min_minute = '{$min_minute}';
+		var max_hours = '{$max_hours}';
+		var max_minute = '{$max_minute}';
+		$("#order_minute").html("");
+		$("#order_minute").append("<option value='0'>分钟</option>");
+		for ( i = 0; i < 6; i++) {
+			var m = i * 10;
+			if (m == 0) {
+				m = '00';
+			}
+			if (sel_hours == min_hours || sel_hours == max_hours) {
+				if (sel_hours == min_hours && sel_hours != max_hours && min_minute <= m) {
+					$("#order_minute").append("<option value='" + m + "'>" + m + "</option>");
+				}
+				if (sel_hours == max_hours && max_minute >= m) {
+					$("#order_minute").append("<option value='" + m + "'>" + m + "</option>");
+				}
+			} else {
+				$("#order_minute").append("<option value='" + m + "'>" + m + "</option>");
+			}
+		}
+	}
+</script>
+<script>
+	$(function() {
+		var salecount = 1;
+		$('#sale').click(function() {
+			if (salecount % 2 == 0) {
+				$('#sale_div50').hide();
+				$('#salelmm_div50').hide();
+				$('#sale_divch').hide();
+			} else {
+				$('#sale_div50').show();
+				$('#salelmm_div50').show();
+				$('#sale_divch').show();
+			}
+			salecount++;
+		})
+		$('#nocheck').click(function() {
+			$("input[name='select_services[]']:checked").not($(this)).removeAttr('checked');
+			$("input[name='radio_services[]']:checked").removeAttr('checked');
+			$(".weixiu ul li").removeClass('checked');
+		})
+		$(".own_car").click(function() {
+			$("#other_car").removeAttr("checked");
+		})
+		$("#other_car").click(function() {
+			$(".own_car").removeAttr("checked");
+		})
+		$('#how_find_code').on('click', { width: '1000px' , height: "540px"},popup_box);
+		
+		$("#how_find_code").click(function(){
+		//	popup3();
+		
+		$.ajax({
+		type:'POST',
+		url:'__APP__/order/codehelp',
+		cache:false,
+		datatype:'text',
+		data:"",
+		success: function(data){
+		if(data){
+		$("#code_help").html(data);
+		}
+		}
+		})
+		})
+		//调用Order方法AjaxGetcode 572行
+		$('#btn_yz').click(function() {
+			var code = $('#code').val();
+			$.ajax({
+				type : 'POST',
+				url : '__APP__/order/AjaxGetcode',
+				cache : false,
+				datatype : 'text',
+				data : "code=" + code,
+				success : function(data) {
+					if (data == "noway") {
+						$('#p_ok').html(' ×抵用券码有误~');
+						$("#p_ok").css("background-color", "#f92712");
+						$("#p_ok").css("color", "white");
+						$('#p_ok').show();
+
+					} else if (data == "again") {
+						$('#p_ok').html(' ×您已经添加过车惠50元抵用券~');
+						$("#p_ok").css("background-color", "#f92712");
+						$("#p_ok").css("color", "white");
+						$('#p_ok').show();
+					} else if (data == "fail") {
+						$('#p_ok').html(' ×您输入的抵用券码已使用~');
+						$("#p_ok").css("background-color", "#f92712");
+						$("#p_ok").css("color", "white");
+						$('#p_ok').show();
+					} else {
+						$('#p_ok').html(' √抵用券可以使用~');
+						$("#p_ok").css("background-color", "#16a7d7");
+						$("#p_ok").css("color", "white");
+						$('#p_ok').show();
+
+						arr = data.split("|");
+						str = "<td ALIGN=LEFT>&nbsp;<input type='radio' name='radio_sale' id='radio_sale' value='3'>" + arr[0] + "</td>";
+						str += "<td>" + arr[1] + "</td>";
+						str += "<td>" + arr[2] + "----" + arr[3] + "</td>";
+						$('#tab_ch').html(str);
+						$('#tab_ch').show();
+					}
+				}
+			})
+
+		})
+			
+		/*平安好车弹出页开始*/
+		$(".point").click(function(){
+			
+			$('.blackbox').show();
+			$("#popup-sl-map").css({
+	            "left":"300px"
+			}).show();
+		});
+
+		$('.blackbox').not("#popup-sl-map").on('click', function(){
+			$('.blackbox').hide();
+			$("#popup-sl-map").hide()
+		});
+	
+	
+		/*平安好车弹出页结束*/
+	})
+	function test2() {
+		popup3();
+		$.ajax({
+			type : 'POST',
+			url : '__APP__/order/codehelp',
+			cache : false,
+			datatype : 'text',
+			data : "",
+			success : function(data) {
+				if (data) {
+					$("#code_help").html(data);
+				}
+			}
+		})
+	}
+
+	var count = 0;
+	function get_detail(url) {
+		if (count % 2 == 0) {
+			$("#price_detail").show();
+			$("#price_detail").attr("src", '/UPLOADS/Product/' + url);
+		} else {
+			$("#price_detail").hide();
+		}
+		count++;
+		/*$.ajax({
+		 type:'POST',
+		 url:'__APP__/order/price_detail',
+		 cache:false,
+		 datatype:'text',
+		 data:"url="+url,
+		 success: function(data){
+		 if(data){
+		 $("#price_detail").html(data);
+		 }
+		 }
+		 })*/
+	}
+
+	$(function() {
+		get_price();
+	})
+	function baoyang_selected_check(d) {
+		if ($(d).attr("checked") == 'checked') {
+			$("[name='select_services[]']").each(function() {
+				if ($(this).attr("service_type") == 'baoyang') {
+					$(this).removeAttr("checked");
+				}
+			})
+			$(d).attr("checked", 'true');
+		}
+		get_price();
+	}
+
+	function get_price() {
+		var str = "";
+		var str1 = "";
+		count++;
+		$("input[name='select_services[]']:not(:checked)").each(function() {
+			$(this).parents("li").removeClass("checked");
+			///$("#price_detail").hide();
+
+		});
+
+		$("input[name='select_services[]']:checked").each(function() {
+			str += $(this).val() + ",";
+			$(this).parents("li").addClass('checked');
+			//$("#price_detail").hide();
+		})
+		$("input[name='radio_services[]']:not(:checked)").each(function() {
+			$(this).parents("li").removeClass("checked");
+			//$("#price_detail").hide();
+		});
+		$("input[name='radio_services[]']:checked").each(function() {
+			str1 += $(this).val() + ",";
+			$(this).parents("li").addClass('checked');
+			//$("#price_detail").hide();
+		})
+		str = str1 + str;
+		var membercoupon_id = "{$membercoupon_id}";
+		var model_id = "{$model_id}";
+		if (model_id == "") {
+			model_id = $("#get_model").val();
+
+			if (model_id) {
+				var model_str = "";
+				model_str += $("#get_brand option:selected").html() + " ";
+				model_str += $("#get_series option:selected").html() + " ";
+				model_str += $("#get_model option:selected").html();
+
+				$("#select_model").html(model_str);
+			}
+		}
+		var timesaleversion_id = "{$timesaleversion_id}";
+		var submit_url = '__URL__/checkorder/timesaleversion_id/' + timesaleversion_id;
+		if (model_id) {
+			submit_url += '/model_id/' + model_id;
+		}
+		if (str) {
+			submit_url += '/service_str/' + str;
+		}
+
+		$("#order_submit").html('<a href="' + submit_url + '" ><input type="button" value="预约下订" /></a>');
+		if (timesaleversion_id && model_id) {
+			$.ajax({
+				type : 'POST',
+				url : '__APP__/order/get_price',
+				cache : false,
+				dataType : 'text',
+				data : 'timesaleversion_id=' + timesaleversion_id + '&model_id=' + model_id + '&str=' + str,
+				success : function(data) {
+					//alert(data);
+					if (data && data != '店铺价格未更新') {
+						strs = data.split("|");
+						//字符分割
+						$("#cost_price").html("￥" + strs[0]);
+						//原价
+						$("#sale_price").html("￥" + strs[1]);
+						//折后价
+						$("#favourable_price").html("￥" + strs[2] + strs[3]);
+						//优惠价
+						$("#price_detail").attr("src", '/UPLOADS/Product/' + strs[4]);
+						$("#price_detail").show();
+					} else if (data == '店铺价格未更新') {
+						$("#cost_price").html("--");
+						$("#sale_price").html("---");
+						$("#favourable_price").html(data);
+						$("#price_detail").hide();
+					} else {
+						$("#cost_price").html("--");
+						$("#sale_price").html("---");
+						$("#favourable_price").html("暂无价格");
+						$("#price_detail").hide();
+					}
+				}
+			})
+		} else if (membercoupon_id) {
+			var coupon_amount = "{$coupon['coupon_amount']}";
+			var cost_price = "{$coupon['cost_price']}";
+			var svae_price = cost_price - coupon_amount;
+			//$("#shop_price").html("原价："+cost_price+"  优惠价："+coupon_amount+"  节省："+svae_price);
+			$("#cost_price").html("￥" + cost_price);
+			$("#sale_price").html("￥" + coupon_amount);
+			$("#favourable_price").html("￥" + svae_price);
+			return false;
+		} else {
+
+			$("#cost_price").html("---");
+			$("#sale_price").html("---");
+			$("#favourable_price").html("---");
+			//$("#shop_price").html("数据不全，不能查询价格");
+			return false;
+		}
+
+	}
+
+	//测试清空
+	function test() {
+		$("input[name='radio_services[]']:checked").each(function() {
+			$(this).attr("checked", false);
+		})
+	}
+
+	function other_car_select() {
+		$("#list_other_car").show();
+	}
+
+	function own_car_select() {
+		$("#list_other_car").hide();
+	}
+
+	//comp_fctlist("get_brand", "get_series", "get_model", '18', '{$series_id}', '{$model_id}');
+</script>

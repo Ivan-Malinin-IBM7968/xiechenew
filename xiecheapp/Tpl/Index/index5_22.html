@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<link href="__PUBLIC__/note/css/body.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/Js/DatePicker/WdatePicker.js"></script>
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js"></script>
+<script src="__PUBLIC__/Js/note/note_script.js"></script>
+	<meta name="Description" content="携车网" />
+	<meta name="Keywords" content="携车网" /> 
+    <title>携车网</title>
+	<script>
+	$(function(){
+	$(".tabBtn").click(function(){
+		$this=$(this);
+		$this.removeClass("over");
+		$this.addClass("current").siblings('.tabBtn').removeClass("current");
+		var index=$(".tabBtn").index(this);
+		$(".tabContent div").eq(index).show().siblings().hide();
+	});
+	$(".tabBtn").hover(function(){
+		if(!$(this).hasClass("current"))
+		{
+			$(this).addClass("over").siblings().removeClass("over");
+		}
+	});
+});
+	</script>
+</head>
+
+<body class="user">
+<div id="header" >
+	
+	<div class="logindiv"><notempty name="Think.session.uid">欢迎您：{$Think.session.username}&nbsp;&nbsp;<a href="__APP__/public/logout">退出</a><else /><a href="__APP__/public/login">登陆</a><a href="__APP__/public/register_tpl">注册</a></notempty>　　　</div>
+	<div class="clear"></div>
+	<div class="wrapbox">
+	<div class="logo">
+		<img src="__PUBLIC__/note/images/logo.png" alt="携车网" />
+	</div>
+	<div class="mainMenu">
+		<ul class="nav">
+			<li class="act"><a href="__APP__">首　页</a></li>
+			<li><a href="__APP__/myhome">个人主页</a></li>
+			<li><a href="#">好友</a></li>
+			<li><a href="#">随便看看</a></li>
+			<li><a href="#">消息</a></li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+</div>
+<div class="clear"></div>
+<!-- 顶部结束 -->
+
+<div class="bodybgwrap">
+	<div class="wrapbox">
+	<div class="ht10"></div>
+<DIV  class="content_wrapper">
+
+<DIV id="wrapper_left">
+<DIV class="tabWrap">
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js"></script>
+<UL class="clearfix">
+  <LI class="tabBtn current"><SPAN class="firstBtn">维修</SPAN> </LI>
+  <LI class="tabBtn"><SPAN class="midBtn">油耗</SPAN> </LI>
+  <LI class="tabBtn"><SPAN class="rightBtn">常用手册</SPAN> </LI></UL>
+<DIV class="tabContent">
+<DIV style="DISPLAY: block;float:left;">
+<form action="__APP__/order" method="get">
+<TABLE style="text-align:center;width:300px">
+
+
+  <TBODY>
+  
+  <TR>
+    <TH width="50">品牌</TH>
+    <TD><SELECT id=brandbox 
+      onchange="comp_brlist('brandbox','seriesbox','','modelbox');" 
+      name=brand_id></SELECT> </TD></TR>
+  <TR>
+    <TH>车系</TH>
+    <TD><SELECT id=seriesbox disabled 
+      onchange="comp_splist('brandbox', 'seriesbox','', 'modelbox');" 
+      name=series_id> <OPTION selected value=0>选择车系</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TH>车型</TH>
+    <TD><SELECT id=modelbox disabled name=model_id> <OPTION selected 
+        value=0>选择车型</OPTION></SELECT> </TD></TR>
+  <TR>
+  <TH></TH>
+    <TD><input type="submit" style="width: 60px; height:24px; line-height:24px; font-size: 12px; font-weight: bold;" class="button-yellow" value="预约" /></TD></TR>
+	</TBODY></TABLE></form>
+<SCRIPT type=text/javascript>
+comp_fctlist("brandbox", "seriesbox", "", "modelbox");
+</SCRIPT>
+</DIV>
+<DIV style="float:left;">
+<TABLE style="text-align:center;width:300px">
+  <TBODY>
+  <TR>
+    <TH width="50">品牌</TH>
+    <TD><SELECT id=brandbox1 
+      onchange="comp_brlist('brandbox1','seriesbox1','','modelbox1');" 
+      name=brandbox></SELECT> </TD></TR>
+  <TR>
+    <TH>车系</TH>
+    <TD><SELECT id=seriesbox1 disabled 
+      onchange="comp_splist('brandbo1x', 'seriesbox1','', 'modelbox1');" 
+      name=seriesbox> <OPTION selected value=0>选择车系</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TH>车型</TH>
+    <TD><SELECT id=modelbox1 disabled name=modelbox> <OPTION selected 
+        value=0>选择车型</OPTION></SELECT> </TD></TR>
+  <TR>
+  <TH></TH>
+    <TD><input type="button" style="width: 60px; height:24px; line-height:24px; font-size: 12px; font-weight: bold;" class="button-yellow" class="button-yellow" value="查询" /></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+comp_fctlist("brandbox1", "seriesbox1", "", "modelbox1");
+</SCRIPT>
+</DIV>
+<DIV style="float:left;">
+<TABLE style="text-align:center;width:300px">
+  <TBODY>
+  <TR>
+    <TH>品牌</TH>
+    <TD><SELECT id=brandbox2 
+      onchange="comp_brlist('brandbox2','seriesbox2','','modelbox2');" 
+      name=brandbox></SELECT> </TD></TR>
+  <TR>
+    <TH width="50">车系</TH>
+    <TD><SELECT id=seriesbox2 disabled 
+      onchange="comp_splist('brandbox2', 'seriesbox2','', 'modelbox2');" 
+      name=seriesbox> <OPTION selected value=0>选择车系</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TH>车型</TH>
+    <TD><SELECT id=modelbox2 disabled name=modelbox> <OPTION selected 
+        value=0>选择车型</OPTION></SELECT> </TD></TR>
+  <TR>
+  <TH></TH>
+    <TD><input type="button" style="width: 60px; height:24px; line-height:24px; font-size: 12px; font-weight: bold;" class="button-yellow" class="button-yellow" value="查询" /></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+comp_fctlist("brandbox2", "seriesbox2", "", "modelbox2");
+</SCRIPT>
+</DIV></DIV></DIV>
+</DIV>
+<DIV id=wrapper_right>
+<DIV class=what_to_do>
+<DL class="item d1">
+  <DT>售后价格查询 
+  <DD><SPAN>我们为您提供独家的售后价格查询功能，包括常规维修保养项目的零件费和工时费，涵盖4S店和快修店。汽车售后价格从未如此透明</SPAN> 
+  <SPAN class=bg></SPAN></DD></DL>
+<DL class="item d2">
+  <DT>停车位信息分享 
+  <DD><SPAN>您可以通过携车网或手机客户端方便地查询您周围或目的地的停车库位置、车位数量、收费标准等详细信息，当然您的无私分享会让我们的信息更加准确</SPAN> 
+  <SPAN class=bg></SPAN></DD></DL>
+<DL class="item d3">
+  <DT>爱车账本记录 
+  <DD><SPAN>我们为您提供爱车日常费用的记账功能，如果您通过我们进行维修保养预约，更可以在完成预约后直接记入账本。手机客户端则能让记账更为及时方便</SPAN> 
+  <SPAN class=bg></SPAN></DD></DL>
+<DL class="item d4">
+  <DT>油耗记录分享 
+  <DD><SPAN>手机客户端的加油记录功能可以自动计算您的爱车油耗，并将这些数据在携车网平台上与其它车主共享，爱车的油耗高低一目了然</SPAN> 
+  <SPAN class=bg></SPAN></DD></DL>
+<DL class="item d5">
+  <DT>定制化用车信息 
+  <DD><SPAN>只要您注册时填入爱车信息，登入后的首页即可显示定制化用车信息，包括爱车常用零件规格、保养DIY手册、各大汽车网站专属论坛入口等</SPAN> 
+  <SPAN class=bg></SPAN></DD></DL>
+<DL class="item d6">
+  <DT>维修保养预约 
+  <DD><SPAN>无论您选择4S店还是快修店，都可以通过我们进行预约，避免排队等候，并尊享工时费或零件费折扣</SPAN> <SPAN 
+  class=bg></SPAN></DD></DL>
+</DIV></DIV>
+
+
+
+
+
+
+</DIV>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="footerwrap">
+<div class="footerwrap1">
+<div class="clear"></div>
+<div class="footbox01">
+<dl>
+<dt><a href="#">最新签约商家</a> </dt>
+<dd><div class="number">1</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">2</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">3</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">4</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">5</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+</dl>
+<dl>
+<dt><a href="#">维修保养优惠</a> </dt>
+<dd><div class="number">1</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">2</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">3</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">4</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">5</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+</dl>
+<dl>
+<dt><a href="#">最新签约商家</a> </dt>
+<dd><div class="number">1</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">2</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">3</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">4</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">5</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+</dl>
+<div class="clear"></div>
+
+</div>
+<div class="footbox02">Copyright © 2012 WWW.XIECHE.NET  纵横携车网 版权所有　<a href="http://www.miibeian.gov.cn/" target="_blank"><font color="#ffffff">沪ICP备12017241号</a> </div>
+</div>
+</div>
+</body>
+</html>

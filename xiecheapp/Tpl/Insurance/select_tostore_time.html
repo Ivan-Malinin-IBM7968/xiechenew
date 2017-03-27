@@ -1,0 +1,70 @@
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js?v={$Think.config.VERSION_DATE}"></script>
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/shop4s.css?v={$Think.config.VERSION_DATE}" />
+<div style="margin: 0px 465px 10px;"><a href="__URL__/">首页</a> -->> <a href="__URL__/my_insurance">4S竞价查询</a> -->>  <a href="__URL__/get_shopbidding/id/{$id}">查看4S店竞价</a> -->> 选择4S店 填写预约到店时间</div>
+
+<form method="post" action="__URL__/add_order/id/{$id}">
+<table border="0" align="center" cellpadding="1" cellspacing="0">
+<tr>
+	<td>姓名</td>
+	<td>{$insurance_info.user_name}</td>
+	<td>手机</td>
+	<td>{$insurance_info.user_phone}</td>
+</tr>
+<tr>
+	<td colspan="4">{$car_info}</td>
+</tr>
+<tr>
+	<td>店铺名称</td>
+	<td>{$shop_info.shop_name}</td>
+	<td>好评率</td>
+	<td>{$shop_info.comment_rate} %</td>
+</tr>
+<tr>
+	<td>店铺竞价时间</td>
+	<td>{$shopbidding_info.create_time|date="Y-m-d H:i:s",###}</td>
+	<td>维修时间</td>
+	<td>{$shopbidding_info.servicing_time}天</td>
+</tr>
+<tr>
+	<td>保险公司名称</td>
+	<td>{$insurance_info.insurance_name}</td>
+	<td>定损金额</td>
+	<td>{$insurance_info.loss_price}</td>
+</tr>
+<tr>
+	<td>有无代步车</td>
+	<td><eq name="shopbidding_info.scooter" value="1">有<else/>无</eq></td>
+	<td>返利现金</td>、
+	<td>{$shopbidding_info.rebate}</td>
+</tr>
+<tr>
+	<td colspan="2">店铺备注</td>
+	<td colspan="2">{$shopbidding_info.remark}</td>
+</tr>
+<tr>
+	<td colspan="2">我的车辆描述</td>
+	<td colspan="2">{$insurance_info.description}</td>
+</tr>
+<tr>
+	<td colspan="2">选择预约到店时间</td>
+	<td colspan="2">
+		<select name="tostore_time">
+		<volist name="tostore_time" id="vo">
+			<option value="{$key}">{$vo}</option>
+		</volist>
+		</select>
+
+		<select name="hours">
+		<volist name="hours" id="vo">
+			<option value="{$vo}">{$vo}</option>
+		</volist>
+		</select>点
+	</td>
+</tr>
+<tr>
+	<td colspan="4"><input type="submit" value="确认提交"></td>
+</tr>
+</form>
+</table>

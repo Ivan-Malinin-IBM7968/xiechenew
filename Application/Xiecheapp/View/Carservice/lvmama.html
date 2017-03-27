@@ -1,0 +1,115 @@
+<layout name='layout_new' />
+
+
+<style type="text/css">
+.cs-bg{width: 100%; background:url('__APP__Public/carservice/img/carservice_bg1.jpg') scroll no-repeat center 0px #ffffff; overflow: hidden;}
+.cs-main{width:1200px;position:relative;margin:0px auto;overflow:hidden;}
+.cs-top{height:400px;}
+.input-line{padding:10px 0px;}
+.input-line input{background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    font-size: 14px;
+    height: 31px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    width: 299px;
+	vertical-align:top;
+	font-size:16px;margin-right:20px}
+</style>
+
+<div class="cs-main">
+	<div class="cs-top">
+		<img src="/__APP__Public/carservice/img/lvmama/1.jpg">
+	</div>
+	<div style="clear:both;zoom:1;padding-top:40px">
+   		<div class="left-video" style="float:left;width:600px;">
+        <div style="margin-bottom:15px; text-align:center; width:509px;">
+          <img src="/__APP__Public/carservice/img/lvmama/6.jpg">
+        </div>
+   			<div style="background-color:#30d6ff;padding:10px;margin-bottom:30px;width:489px">
+   				<form>
+   					<div class="input-line">
+   						<input type="text" name="mobile" id="mobile" pattern="[0-9]" maxlength="11" placeholder="请输入手机号" />
+   						<img src="/__APP__Public/carservice/img/lvmama/3.jpg" id="huoqu" style="cursor:pointer;"/>
+   					</div>
+   					<div class="input-line">
+   						<input type="text" name="code" id="yanzhengma" placeholder="请输入验证码" />
+   						<img src="/__APP__Public/carservice/img/lvmama/4.jpg" style="cursor:pointer;" id="lingquan"/>
+   					</div>
+   				</form>
+   			</div>
+   			<div style="position:relative">
+   				<img src="/__APP__Public/carservice/img/lvmama/2.jpg">
+   				<a href="__APP__/carservice" style="display:block;position:absolute;left:60px;top:545px;width:387px;height:39px;background:#fff;opacity:0; filter:alpha(opacity=0);">&nbsp;</a>
+   			</div>
+   		</div>
+   		<div style="float:left;width:600px;"><img src="/__APP__Public/carservice/img/lvmama/5.jpg"></div>
+   </div>
+</div>
+<script>
+
+      var tel;
+      var path = /^1[3458]\d{9}$/;
+
+      $("#huoqu").click(function(){
+        tel =$("#mobile").val();
+        if(tel==""||tel<13000000000||tel>=20000000000||tel.length!=11){
+          alert('手机号错误，请正确填写');
+          $("#mobile").focus();
+          return false;
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/Mobile/send_verify",
+          data: {mobile:tel},
+          dataType: "json",
+          success: function(data){
+            alert(data.data.message);
+            //if(data.status==1){
+              // $("#huoqu").attr("disabled","disabled");
+              // var i=60;
+              // var hset = setInterval(function(){
+              //   i--;
+              //   if(i<0){
+              //     clearInterval(hset);
+              //     $("#huoqu").removeAttr("disabled");
+              //     $("#huoqu").html("重新获取");
+              //   }else{
+              //     $("#huoqu").html(i+"s");
+              //   }
+              // },1000);
+            //}else{
+              //alert("发送失败");
+              //return false;
+            //}
+          }
+        });
+      });
+
+      $("#lingquan").click(function(){
+        var yanzhengma = $("#yanzhengma").val();
+        if(yanzhengma==""){
+          alert('请输入手机验证码');
+          $("#yanzhengma").focus();
+          return false;
+        }
+        $.ajax({
+          type: "POST",
+          url: "/Mobile/code_process",
+          data: {mobile:tel,code:yanzhengma},
+          dataType: "json",
+          success: function(data){
+            alert(data.data.message);
+            // if(data.status==1){
+            //  alert(data.data.message);
+            // }else{
+            //  alert(data.data.message);
+            // }
+          }
+        });
+      });
+</script>
+
+</body>
+</html>

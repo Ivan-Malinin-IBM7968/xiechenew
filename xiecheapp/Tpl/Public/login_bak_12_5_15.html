@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+	    <link href="../Public/css.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/think/jquery-1.6.2.min.js"></script>
+    <script src="__PUBLIC__/think/jquery.think.js"></script>
+<link href="__PUBLIC__/note/css/body.css" rel="stylesheet" type="text/css" />
+	<meta name="Description" content="携车网" />
+	<meta name="Keywords" content="携车网" /> 
+    <title>携车网</title>
+
+
+	    <script>
+		function fleshVerify(){ 
+		//重载验证码
+		var timenow = new Date().getTime();
+		$('#verifyImg').attr("src",'__APP__/common/verify/'+timenow);
+
+		}
+    </script>
+</head>
+
+<body class="user">
+<div id="header" >
+	<div class="logindiv"><notempty name="Think.session.uid">欢迎您：{$Think.session.username}&nbsp;&nbsp;<a href="__APP__/public/logout">退出</a><else /><a href="__APP__/public/login">登陆</a><a href="__APP__/public/register_tpl">注册</a></notempty>　　　</div>
+	<div class="clear"></div>
+	<div class="wrapbox">
+	<div class="logo">
+		<img src="__PUBLIC__/note/images/logo.png" alt="携车网" />
+	</div>
+	<div class="mainMenu">
+		<ul class="nav">
+			<li class="act"><a href="#">首　页</a></li>
+			<li><a href="#">个人主页</a></li>
+			<li><a href="#">好友</a></li>
+			<li><a href="#">随便看看</a></li>
+			<li><a href="#">消息</a></li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+</div>
+<div class="clear"></div>
+<!-- 顶部结束 -->
+
+<div class="bodybgwrap">
+	<div class="wrapbox">
+	<div class="ht10"></div>
+	<style>
+	.userbox {
+  background: url("") repeat-y scroll 0 0 transparent;
+  border: 1px solid #F18E16;
+  height: auto;
+  margin: 0 auto;
+  width: 958px;
+}
+	</style>
+	<div class="userbox">
+	<!--
+        <div class="sidebar">
+        <ul class="Menu">
+            <li> <a href="index.html"> <img src="images/ico01.png" />
+              <div class="left"> <strong class="f16">我要记账</strong> <span class="f6">我要记账</span> </div>
+              </a> </li>
+            <li> <a href="youhaoindex.html"> <img src="images/ico02.png" />
+              <div class="left"> <strong class="f16">油耗明细</strong> <span class="f6">油耗明细</span> </div>
+              </a> </li>
+            <li> <a href="yuyueindex.html"> <img src="images/ico03.png" />
+              <div class="left"> <strong class="f16">我要预约</strong> <span class="f6">我要预约</span> </div>
+              </a>
+			  </li>
+			 <li class="act"> <a href="帐户信息.html"> <img src="images/ico04.png" />
+              <div class="left"> <strong class="f16">帐户信息</strong> <span class="f6">帐户信息</span> </div>
+              </a>
+			  </li>
+          </ul>
+        <div class="clear"></div>
+      </div>
+	  -->
+        <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 帐户信息 </div>
+        <div class="userjzbar14"></div>
+		<div class="uc-inner">
+			<ul class="tag01">
+				<li class="act">用户登陆</li>
+			</ul>
+			<form action="__APP__/public/logincheck" method="post">
+                                <h2>
+                                    用户登陆</h2>
+                                <div class="add-form">
+                                <dl>
+                                    <dt>
+                                        <label>
+                                            用户名</label></dt><dd><input name="username" type="text"  class="w3 inp01"/></dd></dl>
+                                <dl>
+                                    <dt>
+                                        <label>
+                                            密码</label></dt><dd><input name="password" type="password"  class="w3 inp01"/></dd></dl>
+                                <dl>
+                                    <dt>
+                                        <label>
+                                            验证码</label></dt><dd><input type="text" class="small bLeftRequire w3 inp01" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__APP__/common/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle">
+                                            </dd>
+                                </dl>
+                                <div class="clear">
+                                </div>
+                                <div class="form-footer">
+                                    <input type="submit" style="width: 80px; height: 30px; line-height: 30px; font-size: 14px;
+                                        font-weight: bold;" class="button-default" value="登陆" />
+								
+                                </div>
+			</form>
+                                </div>
+                            </div>
+				
+		
+      </div>
+      <div class="clear"></div>
+      </div>
+	  <div class="userfootbg"></div>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="footerwrap">
+<div class="footerwrap1">
+<div class="clear"></div>
+<div class="footbox01">
+<dl>
+<dt><a href="#">最新签约商家</a> </dt>
+<dd><div class="number">1</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">2</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">3</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">4</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">5</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+</dl>
+<dl>
+<dt><a href="#">维修保养优惠</a> </dt>
+<dd><div class="number">1</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">2</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">3</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">4</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">5</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+</dl>
+<dl>
+<dt><a href="#">最新签约商家</a> </dt>
+<dd><div class="number">1</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">2</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">3</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">4</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+<dd><div class="number">5</div><a href="#">北京元丰正通汽车销售服务有限公司 </a></dd>
+</dl>
+<div class="clear"></div>
+
+</div>
+<div class="footbox02">Copyright © 2012 WWW.XIECHE.NET  纵横携车网 版权所有　沪ICP备09021918号 </div>
+</div>
+</div>
+</body>
+</html>

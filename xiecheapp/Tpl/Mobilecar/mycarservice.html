@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>携车网-订单列表</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="__PUBLIC__/mobile/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/mobile/bootstrap/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/mobile/css/index2.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="pagetop">
+      <div class="reindex" id="reindex_bk"  onclick="javascript: history.go(-1);">&nbsp;</div>
+      <div class="thispage">订单列表</div>
+    </div>
+    <div class="container huise">
+        <div class="row smenu" style="background:#FFFFFF;">
+          <div class="col-xs-4 smenuli smrbg current"><a href="#" id="allOrderBtn">府上养车</a></div>
+          <div class="col-xs-4 smenuli smrbg"><a href="__APP__/mobile-bidorder_list-pa_id-{$pa_id}" id="noPayOrderBtn_bk">事故车</a></div>
+          <div class="col-xs-4 smenuli"><a href="{:C('WEB_ROOT')}/Mobile-order_list-pa_id-{$pa_id}">4S店预约维修</a></div>
+        </div>
+       	<empty name="list"><p style="margin:10px 5px;">您暂无府上养车订单</p></empty>
+        <div class="formlist row">
+            <ul>
+              <volist name="list" id="vo" key="key">
+              <li class="formlistli">
+                <table width="100%" onclick="window.location.href='__APP__/mobilecar/mycarservice_detail?order_id={$vo[id]}';">
+                  <tbody>
+                    <tr style="border-bottom:1px solid #f0f0f0;" height="50" >
+                      <if condition="vo.pay_status eq 0"><td style="font-size:16px; font-weight:bold; color:#FF0000;"><else/><td style="font-size:16px; font-weight:bold;"></if>
+                      {$vo['pay_status_name']}</td>
+                      <td align="right" style="color:#b0b0b0;">{$vo['order_time']|date="Y-m-d",###}&nbsp;&nbsp;<strong style="font-family:宋体; font-size:16px">&gt;</strong></td>
+                    </tr>
+                    <tr height="40">
+                      <td colspan="2" style="font-size:16px; font-weight:bold; color:#333333;"><notempty name="vo.brand_logo"><img src="{:C('WEB_ROOT')}/UPLOADS/Brand/Logo/{$vo['brand_logo']}" width="30"/></notempty> {$vo['car_name']}</td>
+                    </tr>
+
+                    <notempty name="vo['item_list']['0']['name']">
+                    <tr height="30">
+                      <td style="color:#999"><span style="color:#666666;">[机油]  </span>{$vo['item_list']['0']['name']}&nbsp;{$vo['item_list']['0']['norms']}L</td>
+                      <td align="right">￥{$vo['item_list']['0']['price']}</td>
+                    </tr>
+                    </notempty>
+
+                    <notempty name="vo['item_list']['1']['name']">
+                    <tr height="30">
+                      <td style="color:#999"><span style="color:#666666;">[机滤]  </span>{$vo['item_list']['1']['name']}</td>
+                      <td align="right">￥{$vo['item_list']['1']['price']}</td>
+                    </tr>
+                    </notempty>
+                    
+                    <notempty name="vo['item_list']['2']['name']">
+                    <tr height="30">
+                      <td style="color:#999"><span style="color:#666666;">[空气滤清器]  </span>{$vo['item_list']['2']['name']}</td>
+                      <td align="right">￥{$vo['item_list']['2']['price']}</td>
+                    </tr>
+                    </notempty>
+
+                    <notempty name="vo['item_list']['3']['name']">
+                    <tr height="30">
+                      <td style="color:#999"><span style="color:#666666;">[空调滤清器]  </span>{$vo['item_list']['3']['name']}</td>
+                      <td align="right">￥{$vo['item_list']['3']['price']}</td>
+                    </tr>
+                    </notempty>
+
+                    <tr height="30">
+                      <td style="color:#666666;">服务费</td>
+                      <td align="right">￥99</td>
+                    </tr>
+                    <notempty name="vo['replace_value']">
+                    <tr height="30">
+                      <td style="color:#666666;">抵扣</td>
+                      <td align="right">-￥{$vo['replace_value']}</td>
+                    </tr>
+                    </notempty>
+                    <notempty name="show_jishi">
+	                    <tr height="30">
+	                      <td style="color:#666666;">技师</td>
+	                      <td align="right">{$vo['technician_name']}</td>
+	                    </tr>
+              		  </notempty>
+                  </tbody>
+                </table>
+                <table width="100%">
+                  <tbody>
+                    <tr style="border-top:1px solid #f0f0f0; font-size:16px; height:50px;">
+                      <td><a href="/mobilecar/commentList" style="display:block; border:1px solid #e8e8e8; border-radius:3px; text-align:center; color:#999; width:90px; height:35px; line-height:35px;">查看评价</a></td>
+                      <td align="right">总额<strong style="color:#d62b21;">￥{$vo['amount']}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
+              </volist>
+            </ul>
+        </div>
+    </div>
+      
+    <script>
+    $(function(){
+
+      $("#reindex").click(function(){
+          window.location.href='__APP__/mobilecar/order';
+      });
+
+      $("#allOrderBtn").click(function(){
+        window.location.href='__APP__/mobilecar-mycarservice-pa_id-{$pa_id}';
+      });
+
+      $("#noPayOrderBtn").click(function(){
+        window.location.href='__APP__/mobile-bidorder_list-pa_id-{$pa_id}';
+      }); 
+
+    });
+    </script>
+
+
+  </body>
+</html>

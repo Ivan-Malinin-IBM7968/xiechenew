@@ -1,0 +1,126 @@
+<!doctype>
+<html>
+    <head>
+        <title>订单测试</title>  
+        <script src="/Public_new/jquery/jquery.min.js"></script>
+        <style type='text/css'>
+            table{
+               border: 1px solid gray;
+                border-collapse: collapse;
+                float: left;
+                margin: 3px 0;
+                padding: 8px;
+                text-align: left;
+                width: 100%;
+
+            }
+            
+            tr{
+                height: 35px ;
+            }
+            
+            .hidtr{
+                display: none ;
+                font-size: 14px ;
+            }
+            .showtr{
+                font-size: 16px ;
+            }
+            
+            #showall{
+                background: #f1f1f1 url("/Public/Admin/Images/idx_btnbg.gif") repeat-x scroll center center;
+                border: 1px solid gray;
+                color: #333;
+                cursor: pointer;
+                height: 25px;
+                margin-bottom: 10px;
+                margin-left: 3px;
+                margin-right: 3px;
+               
+                
+            }
+            
+            .showall{
+                text-align: right ;
+                margin:  0 ;
+                padding: 0 ;
+            }
+            
+            .showbtn{
+                background: #f1f1f1 url("/Public/Admin/Images/idx_btnbg.gif") repeat-x scroll center center;
+                border: 1px solid gray;
+                color: #333;
+                cursor: pointer;
+                height: 20px;
+                margin-left: 3px;
+                margin-right: 3px;
+               
+            }
+            
+           
+        </style>
+    </head>
+    <body>
+        
+        <p class='showall'>
+            <input type="button" value="显示所有城市明细" id="showall">
+        </p>
+        
+        
+        <table border='1'>
+            <tr><th nowrap="false">月份(城市)</th><th>总订单量</th><th>保养订单量</th><th>保养订单人工费总计</th><th>保养订单零件费总计</th><th>保养订单占比</th><th>保养订单每单人工费</th><th>保养订单人工费折扣率</th><th>保养订单每单零件费</th><th>保养订单配件自带率</th><th>引流订单量</th><th>引流订单占比</th><th>引流订单人工费总计</th><th>引流订单零件费总计</th></tr>
+            <volist  name="data_order" id="vo" key="k">
+            <tr data_id="{$vo.year_and_month}"  nums ="{$vo.countPriceCount}" <if condition="($k-1)%7!=0 ">class='hidtr'<else/>class='showtr'</if>>
+                <td nowrap="false">
+                    {$vo.year_and_month}({$vo.city_name}) 
+                    <if condition="($k-1)%7==0 "><input type="button" value="+" class="showbtn"></if>
+                    
+                </td>
+                <td> {$vo.countPriceCount} </td>
+                <td> {$vo.by_nums} </td>
+                <td> {$vo.by_rengong} </td>
+                <td> {$vo.by_amount} </td>
+                <td> {$vo.by_percent} </td>
+                <td> {$vo.by_rengong_perorder} </td>
+                <td> {$vo.by_rengong_discount} </td>
+                <td> {$vo.by_peijian} </td>
+                <td> {$vo.zdpj_percent} </td>
+                <td> {$vo.yl} </td>
+                <td> {$vo.yl_percent} </td>
+                <td> {$vo.yl_rengong} </td>
+                <td> {$vo.yl_amount} </td>    
+            </tr>           
+            </volist>
+          
+        </table>    
+
+ 
+    </body>   
+</html>
+
+<script  type="text/javascript">
+$(function(){
+    //显示当前月份城市明细
+    $('.showbtn').bind('click',function(){
+        var data_id = $(this).parents().parents().attr('data_id');
+        $("tr[data_id="+data_id+"][nums!=0]").not(":first").toggle();
+        
+    });
+    
+    //显示/隐藏所有城市明细
+    $('#showall').bind('click',function(){
+        var text = $(this).val();
+        if(text=='显示所有城市明细'){
+            $(this).val('隐藏所有城市明细');
+            $(".hidtr[nums!=0]").show();
+        }else{
+            $(this).val('显示所有城市明细');
+            $(".hidtr[nums!=0]").hide(); 
+        }
+        
+    });
+    
+    
+});
+  
+</script>

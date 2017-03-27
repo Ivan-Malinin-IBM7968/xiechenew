@@ -1,0 +1,84 @@
+<!-- 列表显示区域  -->
+<div class="list" >
+<table class="list">
+<tr class="row">
+<th>订单号</th>
+<th>城市</th>
+<th>
+ <if condition="$order eq 'order_time'">
+  <a href="javascript:sortBy('order_time','{$sort}','index/status/{$status}')" title="按照编号{$sortType}">预约时间<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+ <else />
+    <a href="javascript:sortBy('order_time','0','index/status/{$status}')" title="按照编号升序排列 ">预约时间</a>
+  </if>
+</th>
+
+<th>
+ <if condition="$order eq 'create_time'">
+  <a href="javascript:sortBy('create_time','{$sort}','index/status/{$status}')" title="按照编号{$sortType}">下单时间<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+ <else />
+    <a href="javascript:sortBy('create_time','0','index/status/{$status}')" title="按照编号升序排列 ">下单时间</a>
+  </if>
+</th>
+
+<th>
+ <if condition="$order eq 'licenseplate'">
+  <a href="javascript:sortBy('licenseplate','{$sort}','index')" title="按照编号{$sortType}">车牌<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+ <else />
+    <a href="javascript:sortBy('licenseplate','1','index')" title="按照编号升序排列 ">车牌</a>
+ </if>
+</th>
+
+<th>
+ <if condition="$order eq 'amount'">
+  <a href="javascript:sortBy('amount','{$sort}','index')" title="按照编号{$sortType}">金额<img src="__PUBLIC__/Images/{$sortImg}.gif" width="12" height="17" border="0" align="absmiddle"></a>
+ <else />
+    <a href="javascript:sortBy('amount','1','index')" title="按照编号升序排列 ">金额</a>
+ </if>
+</th>
+<th>支付方式</th>
+<th>
+    <a href="javascript:sortBy('status','1','index')" title="按照编号升序排列 ">预约状态</a>
+</th>
+
+<th>技师</th>
+<th>客服</th>
+<th>车型</th>
+<th>机油</th>
+<th>机滤</th>
+<th>空气滤</th>
+<th>空调滤</th>
+</tr>
+
+<tr>
+<volist name="list" id="vo">
+<td><if condition="$authId neq '237'"><a href="__URL__/detail?id={$vo.id}" style="margin-left:5px">{$vo.show_id}</a><else/>{$vo.show_id}</if></td>
+<td><if condition="$vo.city_id eq '1'">上海</if>
+	<if condition="$vo.city_id eq '2'">杭州</if>
+	<if condition="$vo.city_id eq '3'">苏州</if>
+    <if condition="$vo.city_id eq '4'">成都</if>
+    <if condition="$vo.city_id eq '5'">济南</if>
+</td>
+<td>{$vo.order_time|date="y-m-d",###}</td>
+<td>{$vo.create_time|date="y-m-d",###}</td>
+<td>{$vo.licenseplate}</td>
+<td>{$vo.amount}</td>
+<td>{$vo.pay_type}</td>
+<td>{$vo.status_name}</td>
+<td>{$vo.technician_name}</td>
+<td>{$vo.operate}({$vo.operate_id})</td>
+<td>{$vo.car_name}</td>
+<td>{$vo.oil}</td>
+<td>{$vo.filter}</td>
+<td>{$vo.kongqi}</td>
+<td>{$vo.kongtiao}</td>
+</tr>
+</volist>
+<tr><td colspan="12">
+	<volist name="priceInfo" id="price">
+			{$price.name}:<font style="color:red">{$price.value}元</font>&nbsp;&nbsp;&nbsp;&nbsp;
+	</volist>
+</td>
+</tr>
+</table>
+</div>
+<!--  分页显示区域 -->

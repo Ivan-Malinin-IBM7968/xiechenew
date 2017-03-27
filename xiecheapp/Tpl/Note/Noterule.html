@@ -1,0 +1,89 @@
+<layout name='layout_note' />
+      <div class="usercontent">
+        <div class="guidenav"> <a href="#" class="Crumbs">首页</a> > 我要记账 </div>
+        <div class="userjzbar09"></div>
+		<form action="__URL__/add_note/type/Noterule" method="post">
+        <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+          <tr>
+            <td class="tdright w1">车辆：</td>
+            <td><select style="width:105px;" id="sel_Cars" name="u_c_id">
+					<volist name="select_u_c_id" id="k">
+						<option value="{$k.u_c_id}">{$k.car_name}</option>
+					</volist>
+				</select>            </td>
+            <td class="tdright w2">日期：</td>
+            <td><input type="text" class="left fgre inp01" onclick="WdatePicker()" value="{$Think.now}" name="happen_time">
+              <a href="#" class="Selecttime"></a>  </td>
+          </tr>
+        </table>
+		
+		<table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+		     <td class="tdright w1">摘要：</td>
+		     <td><input type="text" value="" class="inp01 w4" name="summary" id="summary"></td>
+	       </tr>
+	    </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr>
+             <td class="tdright w1">总费用：</td>
+		     <td colspan="3"><input type="text" onblur="if (!(/^[\d]+\.?\d*$/.test(this.value)) ){this.value='';};checkMoneys(this,2)" onclick="checkMoneys(this,1)" value="0.00" autocomplete="off" onkeydown="intelligence()" onchange="return CheckMoney(this, 'TXT_Total')" style="text-align:right; width:130px; color:#CCCCCC;" class="addframetextbox w3 inp01" name="total_cost" id="TXT_Total">
+		       元</td>
+	       </tr>
+		   <tr>
+             <td class="tdright w1">起始：</td>
+		     <td><input type="text" onclick="WdatePicker()" class="left fgre inp01" name="start_date" id="start_date">
+               <a href="#" class="Selecttime"></a> </td>
+		     <td class="tdright w1">截止：</td>
+		     <td><input type="text" onclick="WdatePicker()" class="left fgre inp01" name="end_date" id="end_date">
+               <a href="#" class="Selecttime"></a> </td>
+	       </tr>
+		   <tr>
+             <td class="tdright w1">规费名称：</td>
+		     <td><select name="rule_type">
+<volist name='Think.config.RULE_TYPE' id="type" key="title_key">
+<option value="{$title_key}">{$type}</option>
+</volist>
+</select></td>
+		     <td class="tdright w1">缴款方式：</td>
+		     <td><select name="pay_method">
+<volist name='Think.config.PAY_TYPE' id="type" key="title_key">
+<option value="{$title_key}">{$type}</option>
+</volist>
+</select></td>
+		   </tr>
+         </table>
+		 <table border="0" cellspacing="0" cellpadding="0" class="Editorbox">
+		   <tr class="none">
+             <td class="tdright w1 tdtop">备注：</td>
+		     <td><textarea rows="4"  type="text" name="remark" id="remark"></textarea></td>
+	       </tr>
+         <!-- <tr class="none">
+            <td class="tdright w1 pad01">保密：</td>
+            <td class="pad01">
+        <input type="radio" name="access" value="0" checked="checked">
+      完全公开
+
+      <input type="radio" name="access" value="1">
+      仅好友可见
+  
+      <input type="radio" name="access" value="2">
+      完全保密</td>
+          </tr>-->
+		    <tr class="none">
+            <td ></td>
+            <td > <input type="submit" class="button-yellow" value="保存"></td>
+          </tr>
+        </table>
+		  </form>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="userfootbg"></div>
+  </div>
+</div>
+<div class="clear"></div>
+
+
+
+

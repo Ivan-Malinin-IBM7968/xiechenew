@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>配送信息提交</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+ 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no">
+	<script src="{:C('WEB_ROOT')}/Public//mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+	<script src="{:C('WEB_ROOT')}/Public//mobile/bootstrap/js/weixin-api.js"></script>
+	<style type="text/css">
+	*{margin: 0; padding: 0;}
+	span.kquan{width: 15px; height: 15px; border-radius: 50%; border: 1px solid #FFFFFF; display: block;}
+	span.squan{width: 15px; height: 15px; border-radius: 50%; background: #4c66a4; display: block;}
+	.wrap{width:100%; min-width: 320px; background: url(/Public/mobile/images/castrol/bg.jpg) right bottom no-repeat; background-size: cover; height: 568px; font-size: "微软雅黑"; overflow: hidden; color: #FFFFFF; font-size: 14px;}
+	.form{overflow: hidden; width: 320px; margin: 0 auto;}
+	.form p{margin: 35px 0 15px; padding-left: 20px;}
+	.oneinput{background: url(/Public/mobile/images/castrol/inputbg.png) center bottom no-repeat; background-size: 100% 1px; height: 40px; line-height: 40px; padding: 0 20px; overflow: hidden;}
+	.oneinput label{display: block;}
+	.oneinput input{border: none; background: none; color: #FFFFFF; padding-left: 10px; width: 70%;}
+	.subinput{ text-align: center; overflow: hidden; margin: 20px 0;}
+	.subinput input{width:280px; height: 35px; color: #FFFFFF; font-size: 14px; line-height: 35px; text-decoration: none; background: #4c66a4; border-radius: 5px; border: none;}
+
+	.tips{width: 320px; margin: 0 auto;}
+	.tipstop{padding-left: 20px; height: 20px; line-height: 20px; overflow: hidden; margin-bottom: 15px;}
+	.tipstop span{float: left; margin: 3px 10px 0 0;}
+	.tipscon{background: url(/Public/mobile/images/castrol/tipbg.png) 0 0 no-repeat; width: 279px; height: 207px; margin: 0 auto; overflow: hidden;}
+	.tipscc{margin: 10px 20px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="form">
+			<p>请真实填写以下信息，便于机油准确配送</p>
+			<form action="" method="post">
+				<div class="oneinput"><label>选择车型<input type="text"></label></div>
+				<div class="oneinput"><label>您的姓名<input type="text"></label></div>
+				<div class="oneinput"><label>收件地址<input type="text"></label></div>
+				<div class="oneinput"><label>联系方式<input type="text"></label></div>
+				<div class="subinput"><input type="submit" value="提交信息"></div>
+			</form>
+		</div>
+		<div class="tips">
+			<div class="tipstop"><span class="squan"></span>小提示</div>
+			<div class="tipscon">
+				<div class="tipscc">
+					<p>选择车型选择车型</p>
+					<p>选择车型选择车型</p>
+					<p>选择车型选择车型</p>
+					<p>选择车型选择车型</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.write('<div style="display:none">');
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd72ff4cb8351da14591b0a4299e1915c' type='text/javascript'%3E%3C/script%3E"));
+		document.write('</div>');
+	</script>
+</body>
+</html>

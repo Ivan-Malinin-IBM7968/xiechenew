@@ -1,0 +1,65 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+
+	<!-- 头部Nav结束 -->
+
+	<include file="Public:pa" />
+
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title">我的现金券:</h2>
+			<div class="table-con my-tickets">
+				<table width="948">
+					<tr>
+						<th width="80">编号</th>
+						<th width="250">现金券名称</th>
+						<th width="100">消费码</th>
+						<th width="250">店铺</th>
+						<th width="105">是否使用</th>
+						<th width="105">是否支付</th>
+					</tr>
+					 <volist name="couponinfo" id="mycoupon" mod="2">
+						<tr <eq name="mod" value="1" >class="bg-blue no-border-bottom"</eq>>
+							<td>{$mycoupon.membercoupon_id}</td>
+							<td>
+								<a href="__APP__/coupon/{$mycoupon.coupon_id}" target="_blank">{$mycoupon.coupon_name}</a>
+								<span style="display: block; height: 20px; line-height: 10px; color: #777;">有效期：{$mycoupon.end_time|date="Y-m-d",###}</span>
+							</td>
+							<td><if condition="$mycoupon.coupon_code gt 0">{$mycoupon.coupon_code}</if></td>
+							<td>
+								<ul class="address">
+									<li>
+										<a href="__APP__/shop/{$mycoupon.shop_id}" target="_blank" class="shop-name">{$mycoupon.shop_name}</a>
+									</li>
+									<li>
+										<span class="shop-address">{$mycoupon.shop_address}</span>
+									</li>
+								</ul> 
+							</td>
+							<td>
+								<if condition="($mycoupon.is_pay eq 1) and ($mycoupon.is_use eq 1)"> 已于 {$mycoupon.use_time|date="Y-m-d",###} 使用 <else />未使用<if condition="$mycoupon.is_refund eq 1">,已退款</if></if>
+							</td>
+							<td>
+								<if condition="$mycoupon.is_pay eq 1">已于 {$mycoupon.pay_time|date="Y-m-d",###} 支付 <else />
+									<a href="__APP__/coupon/couponpay?membercoupon_id={$mycoupon.membercoupon_id}" target="_blank">支付</a><br>
+								<!--<a href="/pay/alipayto.php?membercoupon_id={$mycoupon.membercoupon_id}">支付宝支付</a>
+									<br>-->
+								</if>
+							</td>
+						</tr>
+					</volist>
+				</table>
+				<div class="pagerArea">
+					<ul id="pager">
+						{$page}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>

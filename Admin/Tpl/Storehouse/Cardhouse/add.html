@@ -1,0 +1,79 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+
+
+<style type="text/css">
+	td{padding:10px 20px;border-bottom:1px solid #cccccc}
+</style>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增产品入库 [ <A HREF="__URL__">返回列表</A> ]</div>
+         <div style="padding:20px 0px">
+         	开单人：{$Think.session.loginAdminUserName}&nbsp;&nbsp;&nbsp;&nbsp;
+         	开单日期：{$time|date="y-m-d",###}<br>
+         </div>
+         <notempty name="list">
+		 <form id="form">
+			<table cellpadding=3 cellspacing=0>
+				<tr>
+					<td></td>
+					<td>产品用途：</td>
+					<td>编码：</td>
+					<td>单价：</td>
+					<td>数量：</td>
+					<td>总金额：</td>
+				</tr>
+				<volist name="list" id="vo">
+					<tr>
+						<td><input type="checkbox" data-id="{$vo.id}" /></td>
+						<td>{$vo.use_way}</td>
+						<td>{$vo.ic} - {$vo.id}</td>
+						<td>{$vo.price}</td>
+						<td>{$vo.num}</td>
+						<td>{$vo['price']*$vo['num']}</td>
+					</tr>
+					
+				</volist>
+				<tr>
+					<td>开单备注</td>
+					<td colspan="5">
+						<textarea name="remark" style="width:100%"></textarea>
+					</td>
+				</tr>
+                <TR>
+                    <TD colspan="4" style="border:none"><input TYPE="button" value="提交" onclick="check();" /></TD>
+                </TR>
+			</table>
+		 </form>
+		 <else />
+		 	<p>暂无可入库产品</p>
+		 </notempty>
+    </div>
+<script type="text/javascript">
+function check(){
+	id = '';
+	$('#form').find('input[type=checkbox]').each(function(){
+		if( $(this).attr('checked') == 'checked'){
+			id += $(this).attr('data-id')+'|';
+		}
+	});
+	remark = $('textarea[name=remark]').val();
+	$.post("__URL__/do_add",{'id':id,'remark':remark},function(data){
+		if(data.status){
+			alert('入库成功');
+			document.location.href="/Admin/index.php/Storehouse/Cardhouse/index";
+		}else{
+			alert('添加失败');
+		}	
+	},'json'); 
+	
+}
+</script>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

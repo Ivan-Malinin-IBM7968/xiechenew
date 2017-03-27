@@ -1,0 +1,50 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="title">我的抵用券:</h2>
+
+			<div class="table-con my-tickets">
+				<table width="948">
+					<tr>
+						<th width="80">编号</th>
+						<th width="250">抵用券名称</th>
+						<th width="100">消费码</th>
+						<th width="105">金额</th>
+						<th width="105">是否使用</th>
+						<th width="250">使用店铺</th>
+					</tr>
+					 <volist name="couponinfo" id="mycoupon" mod="2">
+						<tr <eq name="mod" value="1" >class="bg-blue no-border-bottom"</eq>>
+							<td>{$mycoupon.membersalecoupon_id}</td>
+							<td>
+								<a href="###" target="_blank">{$mycoupon.coupon_name}</a>
+								<span style="display: block; height: 20px; line-height: 10px; color: #777;">有效期：{$mycoupon.end_time|date="Y-m-d",###}</span>
+							</td>
+							<td><if condition="$mycoupon.coupon_code gt 0">{$mycoupon.coupon_code}</if></td>
+							<td>{$mycoupon.coupon_amount}
+							</td>
+							<td><if condition="$mycoupon.is_use eq 1">已于 {$mycoupon.use_time|date="Y-m-d H:i",###} 使用<else />未使用</if>
+							</td>
+							<td><if condition="$mycoupon.shop_id gt 0"><a href="__APP__/shop/{$mycoupon.shop_id}" target="_blank">{$mycoupon.shop_name}</a><else />--</if>
+							</td>
+						</tr>
+					</volist>
+				</table>
+				<div class="pagerArea">
+					<ul id="pager">
+						{$page}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>

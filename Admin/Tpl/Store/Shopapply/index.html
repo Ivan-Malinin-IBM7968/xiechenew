@@ -1,0 +1,43 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+        <div class="title">商家申请列表  </div>
+        <!--  功能操作区域  -->
+        <div class="operate" >
+            <html:imageBtn name="delete" value="删除" click="del()" style="impBtn hMargin fLeft shadow" />
+            <!-- 查询区域 -->
+            <div class="fRig">
+                <FORM METHOD=POST ACTION="__URL__">
+                    <div class="fLeft"><span id="key"><input TYPE="text" NAME="shop_name" title="名称查询" value="{$Think.post.name}" class="medium" ></span></div>
+                    <html:imageBtn type="submit" name="search" value="查询" style="impBtn hMargin fLeft shadow" />
+            </div>
+            </FORM>
+        </div>
+        <!-- 功能操作区域结束 -->
+
+        <!-- 列表显示区域  -->
+        <div class="list" >
+				<html:list id="checkList" style="list" name="shopapply" checkbox="true" datasource="list" action="true" show="id:编号|10%,shop_name:商家名称,city:所在城市,username:联系人姓名,phone:联系电话,qq:qq,email:email,status|shopapplyStatus:状态,create_time|toDate='y-m-d':申请时间|10%" actionlist="edit:编辑:id" />
+				 
+        </div>
+        <!--  分页显示区域 -->
+        <div class="page">{$page}</div>
+        <!-- 列表显示区域结束 -->
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->
+

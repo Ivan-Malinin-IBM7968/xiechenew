@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>携车网:4S店预约保养,保养团购,售后资讯,汽车售后服务网站</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="all" name="robots" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta content="4S店预约保养,保养价格,事故理赔,工时费折扣,保养团购券,代金券,上海大众保养多少钱,奥迪保养多少钱,宝马保养多少钱" name="keywords">
+    <meta content="携车网向广大车主提供汽车保养维修预约享受折扣服务，用车费用记录、油耗统计信息、车辆维修保养价格数据信息等，帮您轻松解决小保养、大保养、机油、机滤、刹车片、火花塞等汽车保养难题，是您选择养车服务的第一网络平台。"  name="description">
+    <!--页头导航_ICON开始zd-->
+
+    <!--页头导航_ICON结束-->
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/index_style-20121120135046.css?v={$Think.config.VERSION_DATE}" /> 
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/g.base.v155.css?v={$Think.config.VERSION_DATE}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/c.index.v17.css?v={$Think.config.VERSION_DATE}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/css1.css?v={$Think.config.VERSION_DATE}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new/style/css.css?v={$Think.config.VERSION_DATE}" />
+</head>
+
+<body class="on_festival" style="background-color: #F6F6F6; background-image: url(__PUBLIC__/new/images/bgt.jpg);background-repeat: repeat;">
+<!--登录条开始-->
+    <div class="bit_top" style="border-bottom:1px solid #CCC">
+        <div class="bit950">
+         
+            <!--网站导航-->
+            <div class="bt_login_box">
+        	<ul>
+            	<li class="last bit_link"  id="login_navhover">
+        	<strong><a href="__APP__/myhome" target="_blank">个人中心</a></strong>
+        
+          
+        		</li>
+            </ul>
+        </div>
+        <!--用户登陆-->
+           <div class="bt_login_box bt_login_box_l" id="divLoginDivID">
+            <notempty name="Think.session.uid">
+            	<ul><!--login-->
+            		<li>您好,</li>
+            		<li onmouseout="" onmouseover="" class="bit_link">
+            			<strong>
+            				<a href="__APP__/myhome" id="aHeaderUserName" target="_blank"><present  name="Think.session.username">{$Think.session.username}<else /><present name="Think.session.cardid">{$Think.session.cardid}<else />{$Think.session.mobile}</present></present >
+            				<em></em></a><sub></sub>
+            			</strong>
+            		</li>
+            		<!--index-->
+            		<li onmouseout="" onmouseover="" class="bit_link" id="myfocuscar">
+            			<strong><a href="__APP__/myhome/mycarlist">我的车辆<em></em></a><sub></sub></strong>
+            		</li><!--/index-->
+            		<li class="lastB"><a href="__APP__/public/logout" target="_self">[退出]</a></li><!--/login--></ul>
+            	<else />
+            	<ul>
+					<!--logout-->
+					<li>
+						<label>帐号</label>
+						<input type="text" id="txtUserNameTopHeader" name="txtUserNameTopHeader" class="bit_loginInput" >
+					</li>
+					<li>
+						<label>密码</label>
+						<input type="password" id="txtUserPwdHeader" name="txtUserPwdHeader" class="bit_loginInput" >
+					</li>
+					<li class="login">
+						<input type="button" id="btnUserLoginHeader" class="bit_logintop" value="登录" onclick="check_login();">
+					</li>
+					<li class="login_0">
+						
+						<a href="__APP__/member/add" target="_blank">注册</a>
+					</li>
+				
+				</ul>
+				</notempty>
+			</div>
+            <!--用户登陆-->
+	
+        </div>
+    </div>
+    <!--登录条结束-->
+
+    <!--登录条结束-->
+<!--顶通提示开始-->
+
+<!--顶通提示结束-->
+
+    <!--头部开始-->
+    <div class="header_style">
+
+        <h1 ><a href="__APP__/index">携车网</a></h1>
+
+		<div id="G_loc-wrap" class="location">
+		<a class="loc-btn" id="G_loc" href="###"><span class="txt">{$Think.session.area_info.0}站</span></a>
+			<div data-target="#G_loc-wrap" id="G_loc-panel" class="pop-panel pp_location" style="visibility:hidden">
+				<!--<dl>
+					<dt>华北东北:</dt>
+					<dd>
+						<ul class="Fix">
+								<li><a href="###" title="即将上线"><font style="color: #999999;">北京(即将上线)</font></a></li>
+						</ul>
+					</dd>
+				</dl>-->
+				<dl>
+					<dt>华东地区:</dt>
+					<dd>
+						<ul class="Fix">
+								<li><a href="http://sh.xieche.net">上海</a></li>
+						</ul>
+					</dd>
+				</dl>
+				<!--<dl>
+					<dt>华南地区:</dt>
+					<dd>
+						<ul class="Fix">
+								<li><a href="###" title="即将上线"><font style="color: #999999;">广州(即将上线)</font></a></li>
+						</ul>
+					</dd>
+				</dl>-->
+			</div>
+		</div>
+
+		<div class="phone"><img src="/Public/new/images/4002.jpg"></div>
+	<!-- <script>
+		$("#G_loc").click(function() {
+			if ($("#G_loc-panel").css("visibility") == "hidden")
+			{
+				$("#G_loc-panel").css("visibility","visible");
+			}else{
+				$("#G_loc-panel").css("visibility","hidden");
+			}
+		});
+
+		$("#G_loc-panel").click(function() {
+		   $("#G_loc-panel").css("visibility","hidden");
+		});
+		
+		$("#G_loc-wrap").focusout(function() {
+		  $("#G_loc-panel").css("visibility","hidden");
+		});
+		
+
+	</script> -->
+		
+		
+		
+	<div style="width:450px; height:49px; margin:0px; padding:0px; float:right;" id="head-min">
+		
+			<a href="http://ev100.evzonechina.com/" target="_blank"><img src="__PUBLIC__/new/images/nav.jpg" /></a>
+		
+		
+	</div>
+
+
+    </div>
+    <!--头部结束-->
+    <!--导航开始-->

@@ -1,0 +1,412 @@
+<layout name='layout_maintenance' />
+ <link type="text/css" href="__PUBLIC__/css/car4s_detail.css" rel="stylesheet">
+    <div class="snav" id="snav">
+  	  <ul>
+        <li><a href="/carservice">府上养车</a></li>
+        <li><a href="/shopservice/" class="current" style="background-color:#fbfaf8;">4S店预约保养</a></li>
+        <li><a href="/coupon">团购保养</a></li>
+      </ul>
+      <span>
+        <b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+      </span>
+    </div>
+
+    <div class="car4s_detail">
+      
+      <div class="w1183">
+      	<div style="height:100px; line-height:100px; font-size:18px;"><a href="/">首页</a> > <a href="/carservice">保养</a> > <a href="/shopservice">4S店预约保养</a> > {$list.shop_name}</div>
+        <div class="car4sd1">
+          <div class="car4sdimg fl">
+          
+          	<div class="showimg"><img src="{:C('UPLOAD_ROOT')}/Shop/280/{$list.shop_id}.jpg" alt="" id="imgbox" width="100%"/></div>
+          	<ul class="showbox row">
+              <li class="col-md-4"><img src="{:C('UPLOAD_ROOT')}/Shop/280/{$list.shop_id}.jpg" alt="" width="100%"/></li>
+              <li class="col-md-4"><img src="{:C('UPLOAD_ROOT')}/Shop/280/{$list.shop_id}.jpg" alt="" width="100%"/></li>
+              <li class="col-md-4"><img src="{:C('UPLOAD_ROOT')}/Shop/280/{$list.shop_id}.jpg" alt="" width="100%"/></li>
+            </ul>
+            
+          </div>
+          <div class="car4sddes fr">
+            <h3>{$list.shop_name}</h3>
+            <div class="pingjia">
+              <img class="fl" alt="10分" src="__PUBLIC__/images/car4s/<eq name="comment_rate['good']" value="100">10<else />{$comment_rate['good']|substr=0,1}</eq>.png" height="22">
+              <span>{$comment_rate['good']/10}分</span>
+              <u><a href="#comment">{$list.comment_number}评价</a></u>
+            </div>
+            <div class="pingjia2">
+              <span>好评:&nbsp;&nbsp;</span>
+              <span class="line"><i style="width:{$comment_rate.good}%;">&nbsp;</i></span>
+              <span>&nbsp;{$comment_rate.good}%</span>
+              <span>&nbsp;&nbsp;中评:&nbsp;&nbsp;</span>
+              <span class="line"><i style="width:{$comment_rate.normal}%;">&nbsp;</i></span>
+              <span>&nbsp;{$comment_rate.normal}%</span>
+              <span>&nbsp;&nbsp;差评:&nbsp;&nbsp;</span>
+              <span class="line"><i style="width:{$comment_rate.bad}%;">&nbsp;</i></span>
+              <span>&nbsp;{$comment_rate.bad}%</span>
+            </div>
+            <div class="dianhua">400-660-2822</div>
+            <div class="dizhi">{$list.shop_address}  <a href="javascript:;" lng="{$list.shop_maps}" class="point" desc="商家名称：{$list.shop_name} ^^地址：{$list.shop_address} ^^电话：{$list.shop_phone}">[查看地图]</a></div>
+            <div class="description"><b>简介：</b>{$list.shop_detail}</div>
+            <div class="sheshi">
+              <b>设施：</b>
+              <span class="span1">免费WiFi</span>
+              <span class="span2">餐厅</span>
+              <span class="span3">台球室</span>
+              <span class="span4">免费茶水</span>
+            </div>
+            <div class="oneyh">
+              <h4>预约折扣</h4>
+              <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+                <tr style="border-bottom:1px solid #e3e3e3; font-size:16px; height:50px;">
+                  <td>星期</td>
+                  <td align="center" width="100">时段</td>
+                  <td align="center" width="100">工时折扣率</td>
+                  <td align="center" width="100">零件折扣率</td>
+                  <td align="center" width="100">操作</td>
+                </tr>
+                <notempty name="list_timesale">
+				<volist name="list_timesale" id="votimesale">
+					<volist name="votimesale.timesaleversion" id="timesaleversion" mod="2">
+		                <tr height="40">
+		                  <td>{$votimesale.week_name_s}</td>
+		                  <td align="center">{$votimesale.begin_time} - {$votimesale.end_time}</td>
+		                  <td align="center"><span>{$timesaleversion.workhours_sale_str}</span></td>
+		                  <td align="center">{$timesaleversion.product_sale_str}</td>
+		                  <td align="center"><a href="{:U('/shopservice/order',array('timesaleversion_id'=>$timesaleversion['id'],'shop_id'=>$shop_id))}{:C('HTML_URL_SUFFIX')}" class="showyh">查看并预约</a></td>
+		                </tr>
+                </volist>
+                </volist>
+				</notempty>
+              </table>
+            </div>
+          </div>
+        </div>
+        <notempty name="coupon1">
+	        <div class="oneyh">
+	          <h4>优惠券</h4>
+	          <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+	            <tr style="border-bottom:1px solid #e3e3e3; font-size:16px; height:50px;">
+	              <td>名称</td>
+	              <td align="center" width="100">现价</td>
+	              <td align="center" width="100">原价</td>
+	              <td align="center" width="100">已购数量</td>
+	              <td align="center" width="100">操作</td>
+	            </tr>
+				<volist name="coupon1" id="cou1" mod="2">
+		            <tr height="40">
+		              <td><a href="#">{$cou1.coupon_name}</a></td>
+		              <td align="center"><span>￥</span><span>{$cou1.coupon_amount}</span></td>
+		              <td align="center"><span>￥</span><span>{$cou1.cost_price}</span></td>
+		              <td align="center">{$cou1.pay_count}人已购买</td>
+		              <td align="center"><a href="__APP__/coupon/detail/id/{$cou1.id}" class="showyh">查看</a></td>
+		            </tr>
+				</volist>
+	          </table>
+	        </div>
+		</notempty>
+		<notempty name="coupon2">
+	        <div class="oneyh">
+	          <h4>套餐券</h4>
+	          <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+	            <tr style="border-bottom:1px solid #e3e3e3; font-size:16px; height:50px;">
+	              <td>名称</td>
+	              <td align="center" width="100">现价</td>
+	              <td align="center" width="100">原价</td>
+	              <td align="center" width="100">已购数量</td>
+	              <td align="center" width="100">操作</td>
+	            </tr>
+				<volist name="coupon2" id="cou2" mod="2">
+		            <tr height="40">
+		              <td><a href="#">{$cou2.coupon_name}</a></td>
+		              <td align="center"><span>￥</span><span>{$cou2.coupon_amount}</span></td>
+		              <td align="center"><span>￥</span><span>{$cou2.cost_price}</span></td>
+		              <td align="center">{$cou2.pay_count}人已购买</td>
+		              <td align="center"><a href="__APP__/coupon/detail/id/{$cou2.id}" class="showyh">查看</a></td>
+		            </tr>
+				</volist>
+	          </table>
+	        </div>
+		</notempty>
+		<notempty name="result">
+	        <div class="oneyh">
+	          <h4>常规保养费用</h4>
+	          <table width="100%" style="border-top:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3; font-size:14px;">
+	            <tr style="border-bottom:1px solid #e3e3e3; font-size:16px; height:50px;">
+	              <td>热门车型</td>
+	              <td align="center" width="200">工时费</td>
+	              <td align="center" width="200">零件费</td>
+	              <td align="center" width="200">折后价/门市价</td>
+	              <td align="center" width="200">节省</td>
+	              <td align="center" width="100">操作</td>
+	            </tr>
+				<volist name="result" key="key" id="value">
+	            <tr height="40">
+	              <td><a href="{:U('/shopservice/order',array('timesaleversion_id'=>$salesversion['id'],'shop_id'=>$shop_id,'model_id'=>$value['model_id']))}{:C('HTML_URL_SUFFIX')}">{$value.car_name}</a></td>
+	              <td align="center">￥{$value.workhour}</td>
+	              <td align="center">￥{$value.product}</td>
+	              <td align="center">￥{$value.sales_total}/<del>￥{$value.total}</del></td>
+	              <td align="center"><span>￥{$value.save_total}</span></td>
+	              <td align="center"><a href="{:U('/shopservice/order',array('timesaleversion_id'=>$salesversion['id'],'shop_id'=>$shop_id,'model_id'=>$value['model_id']))}{:C('HTML_URL_SUFFIX')}" class="showyh">查看</a></td>
+	            </tr>
+	            </volist>
+	
+	          </table>
+	        </div>
+		</notempty>
+        <div class="weixinjd">
+          <h4>微信查看预约进度</h4>
+          <div class="col-md-4">
+            <img src="__PUBLIC__/images/groupbuy_detail/wx1.jpg" alt="">
+            <p>1.扫描二维码，关注携车网</p>
+          </div>
+          <div class="col-md-4">
+            <img src="__PUBLIC__/images/groupbuy_detail/wx2.jpg" alt="">
+            <p>2.绑定微信</p>
+          </div>
+          <div class="col-md-4">
+            <img src="__PUBLIC__/images/groupbuy_detail/wx3.jpg" alt="">
+            <p>3.查看预约动态</p>
+          </div>
+        </div>
+		<notempty name="comment">
+	        <div class="allpingjia" name="comment" id="comment">
+	          <h4>店铺评价</h4>
+	          <div class="allpingjialine">
+	            <div class="pingjiastar fl"><img src="__PUBLIC__/images/car4s/10.png" alt="" class="fl">10分</div>
+	            <div class="pingjiafen fl">
+	              <span>好评:&nbsp;&nbsp;</span>
+	              <span class="line"><i style="width:{$comment_rate.good}%;">&nbsp;</i></span>
+	              <span>&nbsp;{$comment_rate.good}%</span>
+	              <span>&nbsp;&nbsp;中评:&nbsp;&nbsp;</span>
+	              <span class="line"><i style="width:{$comment_rate.normal}%;">&nbsp;</i></span>
+	              <span>&nbsp;{$comment_rate.normal}%</span>
+	              <span>&nbsp;&nbsp;差评:&nbsp;&nbsp;</span>
+	              <span class="line"><i style="width:{$comment_rate.bad}%;">&nbsp;</i></span>
+	              <span>&nbsp;{$comment_rate.bad}%</span>
+	          </div>
+	        </div>
+	        <div class="pingjiacon">
+	          <div class="pingjianav"><a href="javascript:void(0)" class="current" onclick="get_comment(1,0)">全部评论（{$all_count}）</a><a href="javascript:void(0)" onclick="get_comment(1,1)">好评（{$good_count}）</a><a href="javascript:void(0)" onclick="get_comment(1,2)">中评（{$medium_count}）</a><a href="javascript:void(0)" onclick="get_comment(1,3)">差评（{$bad_count}）</a></div>
+	          <div class="pingjialist">
+	            <ul id="all" name="all">
+	            <volist name="comment" id="voc">
+	              <li>
+	                <div class="pingjiades">
+	                  <div class="pingjiauser"><div class="pingjianame fl">{$voc.user_name}</div>
+	                  	<div class="userpingfen fl">
+							<img src="__PUBLIC__/images/car4s/10.png" alt="" class="fl" height="18">10分
+	              		</div>
+	              	  </div>
+	                  <div class="pingjiausercon">{$voc.comment}</div>
+	                  <div class="pingjiauserxm">维修项目：
+	                  	<volist name="voc.serviceitem" id="vocst">
+							{$vocst.name}&nbsp;
+						</volist>    
+						维修车辆：<a href="{:U('/shopservice/index',array('brand_id'=>$voc['brand_id'],'series_id'=>$voc['series_id'],'model_id'=>$voc['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$voc.car}</a>
+					 </div>
+	                </div>
+	              </li>
+				</volist>
+				<div class="fenye">
+		          	<ul>
+		          	{$page}
+		          	</ul>
+		        </div>
+	            </ul>
+	            <ul id="good" name="good" style="display:none;">
+	            <volist name="comment1" id="voc">
+	              <li>
+	                <div class="pingjiades">
+	                  <div class="pingjiauser"><div class="pingjianame fl">181****3210</div><div class="userpingfen fl"><img src="__PUBLIC__/images/car4s/10.png" alt="" class="fl" height="18">10分</div></div>
+	                  <div class="pingjiausercon">{$voc.comment}</div>
+	                  <div class="pingjiauserxm">维修项目：
+	                  	<volist name="voc.serviceitem" id="vocst">
+							{$vocst.name}&nbsp;
+						</volist>    
+						维修车辆：<a href="{:U('/shopservice/index',array('brand_id'=>$voc['brand_id'],'series_id'=>$voc['series_id'],'model_id'=>$voc['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$voc.car}</a>
+					 </div>
+	                </div>
+	              </li>
+				</volist>
+				<div class="fenye">
+		          	<ul>
+		          	{$page}
+		          	</ul>
+		        </div>
+	            </ul>
+	            <ul id="medium" name="medium" style="display:none;">
+	            <volist name="comment2" id="voc">
+	              <li>
+	                <div class="pingjiades">
+	                  <div class="pingjiauser"><div class="pingjianame fl">181****3210</div><div class="userpingfen fl"><img src="__PUBLIC__/images/car4s/10.png" alt="" class="fl" height="18">10分</div></div>
+	                  <div class="pingjiausercon">{$voc.comment}</div>
+	                  <div class="pingjiauserxm">维修项目：
+	                  	<volist name="voc.serviceitem" id="vocst">
+							{$vocst.name}&nbsp;
+						</volist>    
+						维修车辆：<a href="{:U('/shopservice/index',array('brand_id'=>$voc['brand_id'],'series_id'=>$voc['series_id'],'model_id'=>$voc['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$voc.car}</a>
+					 </div>
+	                </div>
+	              </li>
+				</volist>
+				<div class="fenye">
+		          	<ul>
+		          	{$page}
+		          	</ul>
+		        </div>
+	            </ul>
+	            <ul id="bad" name="bad" style="display:none;">
+	            <volist name="comment3" id="voc">
+	              <li>
+	                <div class="pingjiades">
+	                  <div class="pingjiauser"><div class="pingjianame fl">181****3210</div><div class="userpingfen fl"><img src="__PUBLIC__/images/car4s/10.png" alt="" class="fl" height="18">10分</div></div>
+	                  <div class="pingjiausercon">{$voc.comment}</div>
+	                  <div class="pingjiauserxm">维修项目：
+	                  	<volist name="voc.serviceitem" id="vocst">
+							{$vocst.name}&nbsp;
+						</volist>    
+						维修车辆：<a href="{:U('/shopservice/index',array('brand_id'=>$voc['brand_id'],'series_id'=>$voc['series_id'],'model_id'=>$voc['model_id']))}{:C('HTML_URL_SUFFIX')}" target="_blank">{$voc.car}</a>
+					 </div>
+	                </div>
+	              </li>
+				</volist>
+				<div class="fenye">
+		          	<ul>
+		          	{$page}
+		          	</ul>
+		        </div>
+	            </ul>
+	          </div>
+	          
+	        </div>
+	      </div>
+      </notempty>
+      </div>
+    </div>
+    <input type="hidden" id="divstyle" name="divstyle" />
+<script src="http://api.map.baidu.com/api?v=1.5&ak=3db05159a3e3c55937fbf0160e2d8933" type="text/javascript"></script>  
+<script type="text/javascript">
+	var i=0;
+	function get_comment(id,type){
+		if(!id){
+			return false;
+		}
+
+		if(type){
+			param = "p="+id+"&shop_id="+{$shop_id}+"&type="+type;
+			i = type;
+		}else{
+			param = "p="+id+"&shop_id="+{$shop_id};
+		}
+		if(type==0){
+			i=0;
+		}
+
+		$(".pingjialist>ul").eq(i).show().siblings().hide();
+		$(".pingjianav a").eq(i).addClass("current").siblings().removeClass("current");
+
+		
+		$.ajax({
+			type: "GET",
+			url: "/shopservice/get_comment",
+			cache: false,
+			dataType:"json",
+			data:param,	
+			success: function(data){
+
+				if(data.status){
+					var html = '';
+					$.each(data.data,function(i,v){
+						html += '<li><div class="pingjiades">';
+			            html += '<div class="pingjiauser"><div class="pingjianame fl">'+v.user_name+'</div><div class="userpingfen fl"><img src="__PUBLIC__/images/car4s/'+v.score+'.png" alt="" class="fl" height="18">'+v.score+'分</div></div>';
+			            html += '<div class="pingjiausercon">'+v.comment+'</div><div class="pingjiauserxm">维修项目：'+v.item; 
+			            html += '维修车辆：<a href="{:U("/shopservice/index",array("brand_id"=>"'+v.brand_id+'","series_id"=>"'+v.series_id+'","model_id"=>"'+v.model_id+'"))}{:C("HTML_URL_SUFFIX")}" target="_blank">'+v.car_name+'</a></div></div></li>';
+					})
+					html += '<div class="fenye"><ul>';
+					html += data.page;
+					html += '</ul><div>';
+					$('#all').html(html);
+				}else{
+					$('#all').html(data.data);
+				}				
+			}
+		})
+	 }
+
+$(function(){
+	$(".point").click(function(){
+
+          $('.blackbox').show();
+          $("#popup-sl-map").css({
+                  "left": ( $(window).width() - parseInt(600)) / 2+$(window).scrollLeft() + "px"
+          }).show();
+          
+           var map = new BMap.Map("baidu-map");
+           var lng=$(this).attr('lng');
+           //var lat=$(this).attr('lat');
+           arr=lng.split(',');//分割
+            
+           var point = new BMap.Point(arr[0], arr[1]); // 创建点坐标
+            //var point = new BMap.Point(121.457314,31.158372); // 创建点坐标
+            
+           //alert(lng);
+           var text=$(this).attr('desc');
+           var textArr=text.split('^^');
+            map.centerAndZoom(point,15);
+            map.addControl(new BMap.NavigationControl());
+            map.addControl(new BMap.MapTypeControl());
+            map.addControl(new BMap.ScaleControl());
+            map.addControl(new BMap.OverviewMapControl());
+            map.setDefaultCursor("url('bird.cur')");  
+            map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+            map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}));  //右上角，仅包含平移和缩放按钮
+            addMarker(point);
+
+           function addMarker(point)
+           {
+            var html='';
+            for(var i=0;i<textArr.length;i++)
+            {
+              html+="<p style='font-size:14px;'>"+textArr[i]+"</p>";
+            }
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            var infoWindow = new BMap.InfoWindow(html);
+            marker.openInfoWindow(infoWindow);
+            
+            }
+        
+         });
+
+        $('.blackbox').not("#popup-sl-map").on('click', function(){
+          $('.blackbox').hide();
+          $("#popup-sl-map").hide()
+        });
+
+        // $(".fenye li").click(function(){
+        // 	$(this).find("a").addClass("current").end().siblings().find("a").removeClass("current");
+        // });
+});
+ 
+</script>
+  <style>
+    #popup-sl-map{ position: fixed; width: 700px;  height: 500px; top: 50%;margin-top:-250px; overflow: hidden; display: none;  z-index: 1113; background: white; }
+    #popup-sl-map #baidu-map{ width: 700px;  height: 500px;}
+    #map{height: 630px;}
+    .pa-banner{position: absolute; top: 420px;}
+    .blackbox {
+    background: none repeat scroll 0 0 #000;
+    display: none;
+    height: 100%;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1112;
+}
+  </style>
+  <div id="popup-sl-map">
+    <div></div>
+    <div id='baidu-map' ></div>
+  </div>
+  <div class="blackbox"></div>

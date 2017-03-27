@@ -1,0 +1,85 @@
+<load file="__CSS__/newstyle.css" />
+<script type='text/javascript' src='/Public/Admin/Js/calendar.js'></script>
+<div id="main">
+<div id="main-right"><h1>预约订单列表</h1>
+	<ul>
+		<li>共有<font color="#990000">{$all_count}</font>个订单</li>
+	</ul>
+</div>
+
+<div id="main-right2">
+	<div>
+		<form method="post" action="__URL__/index/">
+		<table class="list" width="785">
+			<tr>
+				<td>用户手机号</td>
+				<td style="text-align:left"><input type="text"  name="mobile" value="{$mobile}"/></td>
+			</tr>
+			<tr>
+				<td>车牌号</td>
+				<td style="text-align:left"><input type="text"  name="licenseplate" value="{$licenseplate}" /></td>
+			</tr>
+			<tr>
+				<td>订单状态</td>
+				<td style="text-align:left">
+					<label><input type="radio" value="" name="order_state" <empty name="order_state">checked</empty> >全部</label>
+					<volist name="Think.config.ORDER_STATE" id="statevo">
+					<label><input type="radio" value="{$key}" name="order_state" <if condition="($order_state eq $key) AND ($order_state neq '') ">checked</if>>{$statevo}</label>
+					</volist>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				开始预约时间：<input type="text" class="large bLeft"  name="start_time" onclick="new Calendar().show(this);" value="{$start_time}" >
+				结束预约时间：<input type="text" class="large bLeft"  name="end_time" onclick="new Calendar().show(this);" value="{$end_time}" ></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="查询" style="impBtn hMargin fLeft shadow"></td>
+			</tr>
+		</table>
+		</form>
+	</div>
+
+  <table width="785" border="0" cellspacing="1" cellpadding="1">
+
+    <tr>
+      <td height="40" bgcolor="#F2F2F2">订单号</td>
+      <td bgcolor="#F2F2F2">预约时间</td>
+      <td bgcolor="#F2F2F2">姓名</td>
+      <td bgcolor="#F2F2F2">电话</td>
+      <td bgcolor="#F2F2F2">车牌</td>
+      <td bgcolor="#F2F2F2">预约状态</td>
+      <td bgcolor="#F2F2F2">投诉状态</td>
+      <td bgcolor="#F2F2F2" colspan="2">订单操作</td>
+    </tr>
+    <volist name="list" id="vo">
+    <tr onMouseOver="this.style.background='#F2F2F2'" onMouseOut="this.style.background='#FFFFFF'">
+      <td height="40">{$vo.order_id} <if condition="$vo['membersalecoupon_id'] neq ''">券</if></td>
+      <td>{$vo.order_time|date="Y-m-d H:i:s",###}</td>
+      <td>{$vo.truename}</td>
+      <td>{$vo.mobile}</td>
+      <td>{$vo.licenseplate}</td>
+      <td>
+      <volist name="Think.config.ORDER_STATE" id="vo_os">
+		<eq name="key" value="$vo.order_state">{$vo_os}</eq>
+	  </volist></td>
+      <td>
+		<volist name="Think.config.COMPLAIN_STATE" id="vo_os">
+		<eq name="key" value="$vo.complain_state">{$vo_os}</eq>
+		</volist>
+	  </td>
+	  <td>
+		  <a href="__URL__/edit/order_id/{$vo.id}">订单详情</a>
+	  </td>
+	  <td>
+		<if condition="$vo.comment_num gt 0">
+      	<a href="__APP__/Shop/comment/comment/order_id/{$vo.id}">查看评价({$vo.comment_num})</a><else />暂无评论
+      	</if>
+      </td>
+    </tr>
+    </volist>
+  </table>
+  <div id="main-right3">{$page}</div>
+</div>
+
+</div>

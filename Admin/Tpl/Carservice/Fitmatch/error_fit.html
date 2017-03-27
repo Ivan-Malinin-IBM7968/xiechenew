@@ -1,0 +1,95 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+
+<style>
+    #main{
+        width:100% ;
+        
+    }
+
+</style>
+
+<script type='text/javascript' src='__WEB__/Public/Admin/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+
+
+
+<!-- 主页面开始 -->
+
+
+<div id="main"  >
+   
+
+<!-- 主体内容  -->
+<div class="content" >
+
+
+<!-- 列表显示区域  -->
+<div class="list" >
+    
+    <div class="title">今日错件列表 </div>  
+    <table class="list">
+        <tr class="row">
+            <th> 错件名称</th>
+            <th> 错件二维码</th>
+        </tr>
+
+        <volist name="errorfitArr" id="vo">
+        <tr class="row">
+            <td> {$vo.name}    </td>
+            <td> {$vo.code}    </td>
+        </tr>
+        </volist>
+    </table>
+    
+    <br>
+    <br>
+    <br>
+    
+    <div class="title">今日漏件列表 </div>  
+    <table class="list">
+        <tr class="row">
+            <th> 订单号  </th>
+            <th> 漏件1</th>
+            <th> 漏件2</th>
+            <th> 漏件3</th>
+            <th> 漏件4</th>
+        </tr>
+
+        <volist name="lackfitArr" id="vo">
+        <tr class="row">
+            <td> {$vo[0]}    </td>
+            <td>
+                <if condition="is_array($vo[1])">
+                {$vo[1][0]}({$vo[1][1]})  
+                </if>
+            </td>
+            <td>  
+                <if condition="is_array($vo[2])">
+                {$vo[2][0]} ({$vo[2][1]}) 
+                </if>
+            </td>
+            <td> 
+                <if condition="is_array($vo[3])">
+                {$vo[3][0]} ({$vo[3][1]})   
+                </if>
+            </td>
+            <td> 
+                <if condition="is_array($vo[4])">
+                {$vo[4][0]} ({$vo[4][1]}) 
+                 </if>
+            </td>
+        </tr>
+        </volist>
+    </table>
+    
+</div>
+
+
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

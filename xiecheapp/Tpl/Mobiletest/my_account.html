@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta>
+	    <title>我的个人中心</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<script src="__PUBLIC__/mobile/js/libs/jquery/jquery-1.9.1.js" ></script>
+		<script src="__PUBLIC__/mobile/js/libs/jqmobile/jquery.mobile-1.4.0.min.js"></script>
+		<script src="__PUBLIC__/mobile/js/main.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/libs/jquery.mobile-1.4.0.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/main.css?v={$Think.config.VERSION_DATE}" />
+		<include file="Public:wapfoot" />
+		<style>
+			.acccount-list{
+				width: 100%; 
+			}
+			.acccount-list li{  width: 100%; border-bottom: 1px solid #f1f1f1; }
+			.acccount-list li a{ text-decoration: none;  color: #444; padding: 1em; display: inline-block; background: #ffffff; width: 100%;}
+			.acccount-list li a:visited{ background: #fbfbfb;}
+			.acccount-list li a:hover{ background: #f1f1f1}
+		</style>
+	</head>
+	<body style="background: #f1f1f1;">
+		<div id="warpper" >
+			
+			
+			<!-- Header Start -->
+			<header id="header">
+				<h1>我的个人中心</h1>
+				<span id="left-trigger">
+					<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+				</span>
+				<span id="right-trigger" >
+					<a href="tel:4006602822" class="service-call"></a>
+				</span>
+			</header>
+			<!-- Header End -->
+			<!-- Content Wrapper Start -->
+			
+			<div id="content-wrapper"  >
+				<ul class="acccount-list">
+					<li><a href="/Mobile-order_list" rel="external">我的预约</a></li>
+					<li><a href="/Mobile-my_coupon-coupon_type-1" rel="external">我的现金券</a></li>
+					<li><a href="/Mobile-my_coupon-coupon_type-2" rel="external">我的套餐券</a></li>
+				</ul>
+			</div>
+			<!-- Content Wrapper End -->
+			<a href="#popupMenu" data-rel="popup" data-transition="slideup" id="popup-btn" data-position-to="origin"></a>
+			<div data-role="popup" id="popupMenu" data-theme="none" style="position: relative; z-index:999">
+				 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" data-transition="slidedown">关闭</a>
+		        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+		            <li data-role="list-divider" style="background:#f1f1f1; height: 20px; position: relative">菜单
+						<a href="javascript:void(0)" data-rel="back" id="close-menu" data-transition="slidedown"></a>
+					</li>
+					<li><a href="__APP__/Mobile" rel="external">预约维修保养</a></li>
+					<li><a href="__APP__/Mobile-coupon_list" rel="external">优惠券</a></li>
+					<li><a href="__APP__/Mobile-my_account" rel="external">我的账户</a></li>
+		        </ul>
+			</div>
+		</div>	
+	</body>
+</html>

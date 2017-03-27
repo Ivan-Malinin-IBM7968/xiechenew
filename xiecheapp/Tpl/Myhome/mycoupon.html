@@ -1,0 +1,28 @@
+<layout name='layout_note' />
+<script src="__PUBLIC__/think/jquery.think.js?v={$Think.config.VERSION_DATE}"></script>
+<script src="__PUBLIC__/Js/member/check_update_member.js?v={$Think.config.VERSION_DATE}"></script>
+<div id="wddd-right">我的优惠券</div>
+<div id="wddd-right2"><br/>
+ <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#e4e4e4">
+  <tr>
+    <td width="75%" height="30" valign="middle" bgcolor="#EBEBEB">优惠券名称</td>
+    <td width="25%" align="center" valign="middle" bgcolor="#EBEBEB">操作</td>
+    </tr>
+  <volist name="couponinfo" id="mycoupon">
+  <tr>
+    <td width="75%" height="35" bgcolor="#FFFFFF"><strong>{$mycoupon.coupon_name}</strong></td>
+    <td align="center" bgcolor="#FFFFFF">编辑 | 删除</td>
+    </tr>
+  </volist>
+  <tr>
+    <td height="45" colspan="2" align="right" bgcolor="#FFFFFF">
+    	<table border="0" cellspacing="0" cellpadding="0" style="font-size:12px; margin:0 10px 0 0; padding:0px;" >
+      	<tr>
+        	<td height="36" align="right">{$page}</td>
+        </tr>
+      </table>
+   	</td>
+  </tr>
+</table>
+
+</div>

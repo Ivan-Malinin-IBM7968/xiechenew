@@ -1,0 +1,112 @@
+<tagLib name="html" />
+<include file="../../Public/header" />
+
+<!-- 菜单区域  -->
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">数据列表[ <A HREF="__APP__/Store/Shop/index/shop_name/{$ShopName}">返回列表</A> ]</div></div>
+<!--  功能操作区域  -->
+<div class="operate" >
+<html:imageBtn name="add" value="新增" click="add({$Think.get.shop_id})" style="impBtn hMargin fLeft shadow" />
+<html:imageBtn name="edit" value="编辑" click="edit()" style="impBtn hMargin fLeft shadow" />
+<html:imageBtn name="delete" value="删除" click="foreverdel()" style="impBtn hMargin fLeft shadow" />
+
+</form>
+</div>
+<!-- 功能操作区域结束 -->
+
+<!-- 列表显示区域  -->
+<div class="list" >
+<table cellspacing="0" cellpadding="0" class="list" id="checkList">
+<tbody>
+	<tr>
+		<td height="5" class="topTd" colspan="9"></td>
+	</tr>
+	<tr class="row">
+		<th width="8">
+			<input type="checkbox" onclick="CheckAll('checkList')" id="check">
+		</th>
+		<th width="8%">
+			<a title="按照编号升序排列 " href="javascript:sortBy('shop_id','1','index')">编号<img align="absmiddle" width="12" height="17" border="0" src="/xieche_tp3.0/xiecheadmin/Tpl/Public/images/desc.gif"></a>
+		</th>
+		<th>
+			<a title="按照商家名称升序排列 " href="javascript:sortBy('shop_id','1','index')">商家名称</a>
+		</th>
+		<!-- <th>
+			<a title="按照配件折扣升序排列 " href="javascript:sortBy('product_sale','1','index')">配件折扣</a>
+		</th>
+		<th>
+			<a title="按照工时折扣升序排列 " href="javascript:sortBy('workhours_sale','1','index')">工时折扣</a>
+		</th> -->
+		<th>
+			<a title="按照星期升序排列 " href="javascript:sortBy('week','1','index')">星期</a>
+		</th>
+		<th>
+			<a title="按照开始时间升序排列 " href="javascript:sortBy('begin_time','1','index')">开始时间</a>
+		</th>
+		<th>
+			<a title="按照结束时间升序排列 " href="javascript:sortBy('end_time','1','index')">结束时间</a>
+		</th>
+		<th>
+			<a title="按照发表时间升序排列 " href="javascript:sortBy('submit_time','1','index')">发表时间</a>
+		</th>
+		<th>
+			<a title="按照发表时间升序排列 " href="javascript:sortBy('status','1','index')">是否删除</a>
+		</th>
+		<th>
+			操作
+		</th>
+	</tr>
+	<volist name="list" id="vo">
+	<tr onclick="change(event)" onmouseout="out(event)" onmouseover="over(event)" class="row">
+		<td>
+			<input type="checkbox" value="{$vo.id}" name="key">
+		</td>
+		<td>
+			{$vo.id}
+		</td>
+		<td>
+			<volist name="shop" id="voshop">
+			<eq name="voshop.id" value="$vo.shop_id">{$voshop.shop_name}</eq>
+			</volist>
+		</td>
+		<!-- <td>
+			{$vo.product_sale}
+		</td>
+				<td>
+			{$vo.workhours_sale}
+		</td> -->
+		<td>
+{$vo.week}
+		</td>
+		<td>
+			{$vo.begin_time}
+		</td>
+		<td>
+			{$vo.end_time}
+		</td>
+		<td>
+			{$vo.submit_time|date="y-m-d",###}
+		</td>
+		<td>
+			<if condition="$vo.status eq 0">已删除<else />正常</if>
+		</td>
+		<td> 
+			<a href="javascript:edit('{$vo.id}')">编辑</a>&nbsp;&nbsp;<a href="__APP__/Store/timesaleversion/index/timesale_id/{$vo.id}">详情</a>&nbsp;&nbsp;
+		</td>
+	</tr>
+	</volist>
+</tbody>
+</table>
+</div>
+<!--  分页显示区域 -->
+<div class="page">{$page}</div>
+<!-- 列表显示区域结束 -->
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

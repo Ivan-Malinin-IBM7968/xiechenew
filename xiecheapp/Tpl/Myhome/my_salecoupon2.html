@@ -1,0 +1,251 @@
+<layout name='layout_new' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$Think.const.TOP_NAME}/css/my_account.css?v={$Think.config.VERSION_DATE}" />
+	<!-- 头部Nav结束 -->
+	<include file="Public:pa" />
+
+	<div class="w1200 content clear" >
+		<!--left content start-->
+		<include file="Public:menu_new" />
+		<!--left content end-->
+		<!--right conntent start-->
+		<div class="content-right main">
+			<h2 class="section-t">我的礼品卡</h2>		
+			<div class="acc-tab2">
+				<ul id="tabs1" class="tabs">
+					<li class="current">您购买的礼品卡</li>
+					<li class="">已使用的礼品卡</li>
+					<li class="">未使用的礼品卡</li>
+					<li class="">已过期的礼品卡</li>
+				</ul>
+				<div id="con1" class="con my-tickets2">
+					<!-- 您购买的礼品卡 开始-->
+					<div class="tickets-detail" style="display: block;" id="comment_all">
+						<table cellpadding="0" cellspacing="0" width="980">
+							<thead>
+								<tr>
+									<td width="160">订单号</td>
+									<td width="170">礼品卡卡号</td>
+									<td width="78">面值</td>
+									<td width="300">有效期</td>
+									<td width="90">卡片状态</td>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="couponinfo_all" id="vo_all">
+								<tr>
+									<td>{$vo_all.membersalecoupon_id} </td>
+									<td>{$vo_all.coupon_code} </td>
+									<td class="price-red">￥{$vo_all.coupon_amount}</td>
+									<td>{$vo_all.start_time|date="Y-m-d",###} 至{$vo_all.end_time|date="Y-m-d",###}</td>
+									<td><if condition="$vo_all.is_use eq 1">已使用<else />未使用</if></td>
+								</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="paginator">
+							<ul class="pages">
+								{$page_all}
+							</ul>
+						</div>
+						
+
+						<!-- <div class="paginator">
+							<ul class="pages">
+								<li><a href="javascript: void(0);" class="page-trigger disabled">上一页</a></li>
+								<li><a href="javascript: void(0);" class="current">1</a></li>
+								<li><a href="javascript: void(0);">2</a></li>
+								<li><a href="javascript: void(0);">3</a></li>
+								<li class="break">&nbsp;.&nbsp;.&nbsp;.&nbsp;</li>
+								<li><a href="javascript: void(0);">10</a></li>
+								<li><a href="javascript: void(0);" class="page-trigger">下一页</a></li>
+								<br class="clear">
+							</ul>
+							<div class="goto">
+								<span>共10页,到第</span>
+								<input type="text" class="page-goto">
+								<span>页</span>
+								<input type="submit" value="提交">
+							</div>
+						</div> -->
+						
+					</div>
+					<!-- 您购买的礼品卡 结束 -->
+					<!-- 已使用的礼品卡 开始 -->
+					<div class="tickets-detail" style="display: none;"  id="comment_use">
+						<table cellpadding="0" cellspacing="0" width="980">
+							<thead>
+								<tr>
+									<td width="160">礼品卡卡号</td>
+									<td width="90">面值</td>
+									<td width="260">使用时间</td>
+									<td width="90">卡片状态</td>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="couponinfo_use" id="vo_use">
+								<tr>
+									<td>{$vo_use.coupon_code} </td>
+									<td class="price-red">￥{$vo_use.coupon_amount}</td>
+									<td>{$vo_use.start_time|date="Y-m-d H:i",###}</td>
+									<td>已使用</td>
+								</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="paginator">
+							<ul class="pages">
+								{$page_use}
+							</ul>
+						</div>
+					</div>
+					<!-- 已使用的礼品卡 结束 -->
+					<!-- 未使用的礼品卡 开始 -->
+					<div class="tickets-detail" style="display: none;" id="comment_notuse">
+						<table cellpadding="0" cellspacing="0" width="980">
+							<thead>
+								<tr>
+									<td width="170">礼品卡卡号</td>
+									<td width="78">面值</td>
+									<td width="300">有效期</td>
+									<td width="90">卡片状态</td>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="couponinfo_notuse" id="vo_notuse">
+								<tr>
+									<td>{$vo_notuse.coupon_code} </td>
+									<td class="price-red">￥{$vo_notuse.coupon_amount}</td>
+									<td>{$vo_notuse.start_time|date="Y-m-d",###} 至{$vo_notuse.end_time|date="Y-m-d",###}</td>
+									<td>未使用</td>
+								</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="paginator">
+							<ul class="pages">
+								{$page_notuse}
+							</ul>
+						</div>
+					</div>
+					<!-- 未使用的礼品卡 结束 -->
+					<!-- 已过期的礼品卡 开始 -->
+					<div class="tickets-detail" style="display: none;" id="comment_passtime">
+						<table cellpadding="0" cellspacing="0" width="980">
+							<thead>
+								<tr>
+									<td width="170">礼品卡卡号</td>
+									<td width="78">面值</td>
+									<td width="300">有效期</td>
+									<td width="90">卡片状态</td>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="couponinfo_passtime" id="vo_passtime">
+								<tr>
+									<td>{$vo_passtime.coupon_code} </td>
+									<td class="price-red">￥{$vo_passtime.coupon_amount}</td>
+									<td>{$vo_passtime.start_time|date="Y-m-d",###} 至{$vo_passtime.end_time|date="Y-m-d",###}</td>
+									<td>已过期</td>
+								</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="paginator">
+							<ul class="pages">
+								{$page_passtime}
+							</ul>
+						</div>
+					</div>
+					<!-- 已过期的礼品卡 结束 -->
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="my-ticket-guide">
+				<img src="" alt="">
+			</div>
+			
+		</div>
+		<!--right conntent end-->
+		<div class="clear"></div>
+	</div>
+	<script src="__PUBLIC__/new_2/js/jquery.min.js" ></script>
+	<script src="__PUBLIC__/new_2/js/base.js" ></script>
+	<script>
+		function hTab(tab_controler,tab_con){
+			this.tab_controler = tab_controler;
+			this.tab_con = tab_con;
+			var tabs = $(tab_controler).children("li");
+			var panels = $(tab_con).children("div");
+			$(tab_con).children("div").css("display","none");
+			$(tab_con).children("div:first").css("display","block");
+			$(tabs).hover(function(){
+				var index = $.inArray(this,tabs);
+				tabs.removeClass("current")
+				.eq(index).addClass("current");
+				panels.css("display","none")
+				.eq(index).css("display","block");
+			});
+		};
+
+		hTab('#tabs1','#con1');
+
+		function get_comment_all(id){
+			var id = id;
+			$.ajax({
+				type: "GET",
+				url: "__URL__/get_comment_all",
+				cache: false,
+				dataType:"text",
+				data:"p="+id,			
+				success: function(data){
+					$('#comment_all').html(' ');
+					$('#comment_all').html(data);
+				}
+			})	
+		}
+
+		function get_comment_use(id){
+			var id = id;
+			$.ajax({
+				type: "GET",
+				url: "__URL__/get_comment_use",
+				cache: false,
+				dataType:"text",
+				data:"p="+id,			
+				success: function(data){
+					$('#comment_use').html(' ');
+					$('#comment_use').html(data);
+				}
+			})	
+		}
+
+		function get_comment_notuse(id){
+			var id = id;
+			$.ajax({
+				type: "GET",
+				url: "__URL__/get_comment_notuse",
+				cache: false,
+				dataType:"text",
+				data:"p="+id,			
+				success: function(data){
+					$('#comment_notuse').html(' ');
+					$('#comment_notuse').html(data);
+				}
+			})	
+		}
+
+		function get_comment_passtime(id){
+			var id = id;
+			$.ajax({
+				type: "GET",
+				url: "__URL__/get_comment_passtime",
+				cache: false,
+				dataType:"text",
+				data:"p="+id,			
+				success: function(data){
+					$('#comment_passtime').html(' ');
+					$('#comment_passtime').html(data);
+				}
+			})	
+		}
+	</script>

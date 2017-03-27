@@ -1,0 +1,230 @@
+<layout name='layout_new' />
+
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/car_data.js?v={$Think.config.VERSION_DATE}"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js?v={$Think.config.VERSION_DATE}"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/advertimages/ad.css?v={$Think.config.VERSION_DATE}" />
+
+<script>
+
+	function showid(id,name){
+		$('#address').val(name);
+		$('#shop_area').val(id);
+		$('#address_Shop').hide();
+		$('#ShopAddressDiv').hide();
+
+		
+	}
+
+	function close_div(id){
+		if(id == 1){
+			$('#address_Shop').hide();
+			$('#ShopAddressDiv').hide();
+		}else{
+			$('#ShopName_div').hide();
+			
+		}
+	}
+	
+	function giveshopname(id,name){
+		$('#text_shop_name').val(name);
+		$('#shop_name').val(name);
+		$('#ShopName_div').hide();
+		
+	}
+	function showadress(){
+		if( this.value == '可选填')value=' ';
+		$('#address_Shop').show();
+		$('#ShopAddressDiv').show();
+		$.ajax({
+			type: "POST",
+			url: "/index/AjaxInfo",
+			cache: false,
+			data: "type=1",
+			success: function(data){
+				
+				var str = "<table width=100% border='0' align='center' cellpadding='1' cellspacing='13'>";
+				data = eval("(" + data + ")");
+				var count = 1;
+				for(a=0;a<data.length;a++){
+					if(a%4==0){
+						str+="<tr>";
+					}
+					
+					str+="<td ><a href='###' onclick=showid("+(data[a]['id'])+",'"+(data[a]['region_name'])+"');><font style='color:#666666;'>"+data[a]['region_name']+"</font></a></td>";
+					if(a!=0){
+						if(count%4==0){
+							str+="</tr>";
+						}
+					}
+					count++;
+				}
+				str+="</table>";
+				$('#ShopAddressDiv').html(str);
+
+			}
+		})
+	}
+
+		
+	function showshopname(){
+		var shopname = $('#text_shop_name').val();
+		shopname = shopname.trim();
+		if(shopname){
+		
+			$.ajax({
+				type: "POST",
+				url: "/index/AjaxInfo",
+				cache: false,
+				data: "type=2&shopname="+shopname,
+				success: function(data){
+					
+					var str = "<div style='TEXT-ALIGN: right;'><a href='###' onclick='close_div(2);'>[关闭]</a>&nbsp;</div>";
+					str+= "<table width=100% border='0' align='left' cellpadding='1' cellspacing='10'>";
+					data = eval("(" + data + ")");
+					if(data){
+						for(a=0;a<data.length;a++){
+						str+="<tr  align='left'><td ><a href='###' onclick=giveshopname("+(data[a]['id'])+",'"+(data[a]['shop_name'])+"');><font style='color:#666666;'>"+data[a]['shop_name']+"</font></a></td></tr>";
+						}
+						str+="</table>";
+						$('#ShopName_div').show();
+						$('#ShopName_div').html(str);
+					}
+					
+
+				}
+			})
+		}
+		
+			
+	}
+	</script>
+
+<title>百度推广页面</title>
+
+<style>
+	
+</style>
+</head>
+
+
+<body>
+	<div id="bg1">
+		<div id="area1">
+			<a href="http://www.xieche.com.cn/Lottery/indexsh.html" id="getticket">
+				
+			</a>
+		</div>
+	</div>	
+	<div id="bg2">
+		<div id="area2">
+			<a href="" class="more">更多 >></a>
+			<form id="search" name="search" method="POST" action="__APP__/order">
+				<ul>
+					<li id="pinpai">
+						<label>选择品牌:</label>
+						 <select id="get_brand" name="brand_id"  onchange="comp_brlist('get_brand','get_series', 'get_model');">
+						</select>
+					</li>
+					<li id="chexing">
+						<label>选择车系:</label>
+						  <select id="get_series" name="series_id"  disabled onchange="comp_yearlist('get_brand', 'get_series', 'get_model');">
+						  </select>
+						<label style="margin-left:10px;">选择车型:</label>
+						 <select class="car_select" id="get_model" name="model_id"  disabled>
+						</select>
+					</li>
+					<li id="diqu">
+						<label>所在地区:</label>
+					
+						<input type="text" id="address" name="address"  onblur="if( this.value.replace(/[ ]/g,'') == '')value='可选填'" onclick="showadress();" style="display:block; width: 384px;margin-top: 6px; margin-left: 5px; height:20px;" value="可选填">
+						<div id="address_Shop" style="position:absolute;z-index:1;left:58px;top:108px;background-color:#67a1e2;vertical-align:middle;line-height:24px;width:430px;height:25px;color:white;font-size:12px;text-align:left;border:#CCCCCC solid 1px;display:none;" >&nbsp;&nbsp;可直接选择地理位置
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="###" style="color:white;" onclick="close_div(1);">[关闭]</a></div>
+						<div id="ShopAddressDiv" style="position:absolute;z-index:1;left:58px;top:133px;width:430px;height:180px;border:#CCCCCC solid 1px;background-color:white;display:none;">
+						</div>
+
+
+					</li>
+					<li id="guanjianzi">
+						<label>4S店铺名:</label>
+						<input type="text" id="text_shop_name" name="shop_name" onclick=" if( this.value == '可选填')value=' '" onblur=" if( this.value.replace(/[ ]/g,'') == '')value='可选填'" onkeyup="showshopname();" style="display:block; width:384px;margin-top: 6px; margin-left: 5px; height: 20px;" value="可选填">
+						<div id="ShopName_div" style="position:absolute;z-index:1;left:62px;top:149px;width:383px;height:218px;border:#CCCCCC solid 1px;background-color:white;display:none;">
+					</li>
+					<li>
+						<input type="submit" value="提 交 搜 索" style="display:block; width: 450px;margin-top: 6px; margin-left: 5px; height: 33px;line-height:33px; text-align:center; background: url('__PUBLIC__/advertimages/btn.png') 0 0 no-repeat; border:1px; font-size:15px; cursor: pointer;">
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>	
+<div id="bg3">
+		<div id="area3">
+			<a href="{:URL('/coupon/index',array())}{:C('HTML_URL_SUFFIX')}" class="more">更多 >></a>
+			<ul id="tabs" class="tabs">
+				<li class="current">推荐现金券</li>
+				
+			</ul>
+			<div id="con" class='con'>
+				<div>
+					<ul>
+						<li>
+						    <div class="img-con">
+								<a href="{:URL('/Lottery/indexsh',array())}{:C('HTML_URL_SUFFIX')}" target="_blank" title="{$voc2.coupon_name}"><img src="__PUBLIC__/advertimages/50.jpg" width="252"  alt='优惠券'></a>
+							</div>
+							<div class="content">
+								<h5 style="font:size:15px;">免费<a href="{:URL('/Lottery/indexsh',array())}{:C('HTML_URL_SUFFIX')}" target="_blank" title="免费送多品牌多4S店50元现金券">
+								送多品牌多4S店50元现金券</a></h5>
+								<span>多4S店 <a href="{:URL('/Lottery/indexsh',array())}{:C('HTML_URL_SUFFIX')}" target="_blank">[查看店铺]</a></span>
+								<div class="price"><strong class="orange">￥0元</strong><em> / 50元</em></div>
+								<div class="bought"><strong class="orange">{$Membersalecount}</strong><em>人已购</em></div>
+							</div>
+						</li>
+						<volist name="data.PRICE" id="voc2">
+							<li>
+								<div class="img-con">
+									<a href="coupon/{$voc2.id}" target="_blank" title="{$voc2.coupon_name}"><img src="/UPLOADS/Coupon/Logo/{$voc2.coupon_pic}" width="252"  alt='优惠券'></a>
+								</div>
+								<div class="content">
+									<h5><a href="coupon/{$voc2.id}" target="_blank" title="{$voc2.coupon_name}">{$voc2.coupon_name}</a></h5>
+									<span>{$voc2.shop_name}  <a href="__APP__/shop/{$voc2.shop_id}" target="_blank">[查看店铺]</a></span>
+									<div class="price"><strong class="orange">￥{$voc2.coupon_amount}元</strong><em> / {$voc2.cost_price}元</em></div>
+									<div class="bought"><strong class="orange">{$voc2.pay_count}</strong><em>人已购</em></div>
+								</div>
+							</li>
+						</volist>
+						<div class="clear"></div>
+ 					</ul>
+				</div>
+				<a href="{:URL('/coupon/index',array('coupon_type'=>1))}{:C('HTML_URL_SUFFIX')}"  style="position: absolute;top: 618px;right: 60px;display: block;width: 70px;height: 30px;background: #0066cc; color: white;line-height: 30px;text-align: center;">更多 >></a>
+			</div>
+			<ul id="tabs2" class="tabs">
+				<li class="current">推荐团购券</li>
+			</ul>
+			<div id="con2" class="con">
+				<div>
+					<ul>
+						<volist name="data.GROUP" id="voc2">
+							<li>
+								<div class="img-con">
+									<a href="coupon/{$voc2.id}" target="_blank" title="{$voc2.coupon_name}"><img src="/UPLOADS/Coupon/Logo/{$voc2.coupon_pic}" width="252"  alt='优惠券'></a>
+								</div>
+								<div class="content">
+									<h5><a href="coupon/{$voc2.id}" target="_blank" title="{$voc2.coupon_name}">{$voc2.coupon_name}</a></h5>
+									<span>{$voc2.shop_name}  <a href="__APP__/shop/{$voc2.shop_id}">[查看店铺]</a></span>
+									<div class="price"><strong class="orange">￥{$voc2.coupon_amount}元</strong><em> / {$voc2.cost_price}元</em></div>
+									<div class="bought"><strong class="orange">{$voc2.pay_count}</strong><em>人已购</em></div>
+								</div>
+							</li>
+						</volist>
+					</ul><div class="clear"></div>
+				</div>
+				<a href="{:URL('/coupon/index',array('coupon_type'=>2))}{:C('HTML_URL_SUFFIX')}"  style="position: absolute;top: 918px;right: 60px;display: block;width: 70px;height: 30px;background: #0066cc; color: white;line-height: 30px;text-align: center;">更多 >></a>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+	comp_fctlist("get_brand", "get_series", "get_model");
+</script>

@@ -1,0 +1,118 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    function delete_record(id){
+		$.ajax({
+			type:'POST',
+			url:'__APP__/Shop/Salerecord/delete_record',
+			cache:false,
+			dataType:'text',
+			data:'id='+id,
+			success:function(data){
+				if(data == 1){
+					alert("删除成功");
+					window.location.reload();
+				}else{
+					alert("删除失败");
+				}
+			}
+		})
+	}
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增销售记录 [ <A HREF="__URL__">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/update/id/{$vo.id}">
+			<table cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >商铺类别：</TD>
+                    <TD class="tLeft" ><select name="shop_type" >
+                    	<option value="0">选择店铺类别</option>
+                    	<option value="1" <if condition="$vo.shop_type eq 1">selected</if> >4S店</option>
+                    	<option value="2" <if condition="$vo.shop_type eq 2">selected</if> >快修店</option>
+                    </select></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >负责人：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_boss" class="large bLeftRequire" NAME="shop_boss" value="{$vo.shop_boss}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >店铺名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_name" class="large bLeftRequire" NAME="shop_name" value="{$vo.shop_name}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >店铺地址：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_address" class="large bLeftRequire" NAME="shop_address" value="{$vo.shop_address}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >主修品牌：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_brand" class="large bLeftRequire" NAME="shop_brand" value="{$vo.shop_brand}"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >合作状态：</TD>
+                    <TD class="tLeft" ><select name="cooperate_status" >
+                    	<option value="0">选择合作状态</option>
+                    	<option value="1" <if condition="$vo.cooperate_status eq 1">selected</if> >再沟通</option>
+                    	<option value="2" <if condition="$vo.cooperate_status eq 2">selected</if> >拒绝</option>
+                    	<option value="3" <if condition="$vo.cooperate_status eq 3">selected</if> >签约</option>
+                    </select></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系人：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts" class="large bLeftRequire" NAME="contacts" value="{$vo.contacts}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系人职务：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts_job" class="large bLeftRequire" NAME="contacts_job" value="{$vo.contacts_job}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系电话：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts_phone" class="large bLeftRequire" NAME="contacts_phone" value="{$vo.contacts_phone}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系邮箱：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts_email" class="large bLeftRequire" NAME="contacts_email" value="{$vo.contacts_email}"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" ><input type="hidden" name="id" value="{$vo.id}"></TD>
+                    <TD class="tLeft" ><input TYPE="submit" value="提交"></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <div class="list">
+		<table class="list">
+			<tr class="row">
+				<th width="5%">ID</th>
+				<th width="10%">添加人</th>
+				<th width="20%">添加时间</th>
+				<th width="20%">修改时间</th>
+				<th width="35%">走访内容</th>
+				<th width="10%">操作</th>
+			</tr>
+			<volist name="salerecord" id="voo">
+				<tr>
+					<td>{$voo.id}</td>
+					<td>{$voo.operator_name}</td>
+					<td>{$voo.create_time|date="Y-m-d H:i:s",###}</td>
+					<td>{$voo.update_time|date="Y-m-d H:i:s",###}</td>
+					<td>{$voo.content}</td>
+					<td><a href="__APP__/Shop/Salerecord/edit/id/{$voo.id}" >编辑</a> | <a href="###" onclick="delete_record({$voo.id});">删除</a></td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

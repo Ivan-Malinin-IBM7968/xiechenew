@@ -1,0 +1,79 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+<!-- 菜单区域  -->
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function cache(){
+        ThinkAjax.send('__URL__/cache','ajax=1');
+    }
+    //-->
+</SCRIPT>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增销售记录 [ <A HREF="__URL__">返回列表</A> ]</div>
+		 <form METHOD=POST id="form1" name="form1" action="__URL__/insert">
+			<table cellpadding=3 cellspacing=3>
+				<TR>
+                    <TD class="tRight" >商铺类别：</TD>
+                    <TD class="tLeft" ><select name="shop_type" >
+                    	<option value="0">选择店铺类别</option>
+                    	<option value="1">4S店</option>
+                    	<option value="2">快修店</option>
+                    </select></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >负责人：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_boss" class="large bLeftRequire" NAME="shop_boss"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >店铺名称：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_name" class="large bLeftRequire" NAME="shop_name"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >店铺地址：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_address" class="large bLeftRequire" NAME="shop_address"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >主修品牌：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="shop_brand" class="large bLeftRequire" NAME="shop_brand"></TD>
+                </TR>
+				<TR>
+                    <TD class="tRight" >合作状态：</TD>
+                    <TD class="tLeft" ><select name="cooperate_status" >
+                    	<option value="0">选择合作状态</option>
+                    	<option value="1">再沟通</option>
+                    	<option value="2">拒绝</option>
+                    	<option value="3">签约</option>
+                    </select></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系人：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts" class="large bLeftRequire" NAME="contacts"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系人职务：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts_job" class="large bLeftRequire" NAME="contacts_job"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系电话：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts_phone" class="large bLeftRequire" NAME="contacts_phone"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" >联系邮箱：</TD>
+                    <TD class="tLeft" ><input TYPE="text" id="contacts_email" class="large bLeftRequire" NAME="contacts_email"></TD>
+                </TR>
+                <TR>
+                    <TD class="tRight" ></TD>
+                    <TD class="tLeft" ><input TYPE="submit" value="提交"></TD>
+                </TR>
+			</table>
+		 </form>
+    </div>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

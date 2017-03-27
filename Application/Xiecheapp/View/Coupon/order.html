@@ -1,0 +1,88 @@
+<layout name='layout_maintenance' />
+ <link type="text/css" href="__PUBLIC__/css/groupbuy_order.css" rel="stylesheet">
+    <div class="snav" id="snav">
+      	<ul>
+        <li><a href="/carservice">府上养车</a></li>
+        <li><a href="/shopservice/index">4S店预约保养</a></li>
+        <li><a href="/coupon" class="current">团购保养</a></li>
+      </ul>
+      <span>
+        <b>{$carName}</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><u>修改车型</u></a>
+      </span>
+    </div>
+    
+	<div class="groupo">
+		
+		<div class="w1183 groupo-1">
+			<p class="groupo-1-1">首页 > 保养 > 团购保养 > 预约下单</p>
+			<div class="groupo-2">
+				<h5>购买详情</h5>
+				<div class="groupo-2-1">
+					<dl>
+					  <dt>商品名称</dt>
+					  <dd>{$coupon.coupon_name}<font class="groupo-2-2">￥{$coupon.coupon_amount}元</font></dd>
+					  <dt style="margin-top:20px">购买数量</dt>
+					  <dd><span class="glyphicon glyphicon-chevron-left" id="reduce" style="cursor:pointer"></span><span style="padding:0px 2px"><font id="num">1</font>张</span><span id="add" class="glyphicon glyphicon-chevron-right" style="cursor:pointer"></span></dd>
+					</dl>
+				</div>
+				<h5>购买详情发送到手机</h5>
+				<div>
+					<form action="/coupon/create_order" method="post" id="sform">
+						<input type="text" class="form-control" name="mobile" maxlength="11"/>
+						<input type="hidden" name="coupon_id" value="{$coupon_id}" />
+						<input type="hidden" name="number" value="1"  />
+					</form>
+				</div>
+				<div class="text-right">
+					<span class="groupo-2-3">实际付款</span> <span class="groupo-2-4">{$coupon.coupon_amount}元</span> <a class="btn btn-sub" id="sub">提交订单</a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<script type="text/javascript">
+		var amount = {$coupon.coupon_amount};
+		$('#add').click(function(){
+			var num = $('#num').text();
+			num = parseInt(num);
+			num++ ;
+			$('#num').text(num);
+			$('input[name=number]').val(num);
+			$(".groupo-2-4").text(num*amount+'元');
+		})
+		$('#reduce').click(function(){
+			var num = $('#num').text();
+			num = parseInt(num);
+			num-- ;
+			if(num<1){
+				num = 1;
+			}
+			$('#num').text(num);
+			$('input[name=number]').val(num);
+			$(".groupo-2-4").text(num*amount+'元');
+		})
+		$('#sub').click(function(){
+			var mobile = $('input[name=mobile]').val();
+			if(!mobile){
+				alert('请输入手机号');
+				return false;
+			}
+			var mobileRegExp = /^1[3|4|5|7|8][0-9]\d{4,8}$/;
+	        if(!mobileRegExp.test(mobile)){
+	           alert('请输入正确的手机号码');
+	           return false;
+	        }
+			// $('form').submit();
+			/*var coupon_id = $('input[name=coupon_id]').val();
+			var number = $('#num').text();*/
+			var data = $('#sform').serialize();
+			$.post('/coupon/create_order',data,function(data){
+				if(data.status){
+					//alert(data.info);
+					window.location.href=data.url;
+				}else{
+					alert(data.info);
+				}
+			},'json')
+		})
+	</script>

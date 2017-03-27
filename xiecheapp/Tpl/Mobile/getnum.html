@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<meta>
+    <title>xieche/mb</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-itunes-app" content="app-id=588144466" />
+	<link rel="stylesheet" href="__PUBLIC__/mb/css/libs/jquery.mobile-1.4.0.min.css" />
+	<script>
+	window.onload = function(){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(handleGetCurrentPosition);
+		}
+	}
+
+	function handleGetCurrentPosition(location){
+		window.open("http://www.xieche.com.cn/Mobile-index-long-"+location.coords.longitude+"-lat-"+location.coords.latitude, "_self");
+	}
+	
+		
+</script>
+</head>

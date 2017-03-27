@@ -1,0 +1,283 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<!-- 菜单区域  -->
+<script src="http://api.map.baidu.com/api?v=1.5&ak=3db05159a3e3c55937fbf0160e2d8933" type="text/javascript"></script> 
+<script type='text/javascript' src='__PUBLIC__/Js/Xheditor/jquery/jquery-1.4.4.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/calendar.js'></script>
+<style type="text/css">
+ .cs{border-top:1px solid #cccccc;border-right:1px solid #cccccc;}
+ .cs td{border-left:1px solid #cccccc;border-bottom:1px solid #cccccc;text-align: center;width: auto; height:auto; padding: 3px 5px; font-size: 14px; line-height: 2;}
+ .color-14{color:#ffffff;background-color:#de1616 }.color-15{color:#ffffff;background-color:#de4a16}.color-16{color:#ffffff;background-color:#de7d16}
+ .color-17{color:#ffffff;background-color:#45a220}.color-18{color:#ffffff;background-color:#05e1ca}
+ .color-19{color:#ffffff;background-color:#48c019}.color-20{color:#ffffff;background-color:#0d69b0}.color-21{color:#ffffff;background-color:#0d69b0}
+ .color-22{color:#ffffff;background-color:#19c083 }.color-23{color:#ffffff;background-color:#fc76ab}.color-24{color:#ffffff;background-color:#1f129a}
+ .color-25{color:#ffffff;background-color:#4231e6 }.color-26{color:#ffffff;background-color:#0e8ff1}.color-27{color:#ffffff;background-color:#43a9f7}
+ .color-28{color:#ffffff;background-color:#f95898 }
+ .time_font{text-align:right;color:#6d6d6d;font-size:12px;margin:0; }
+ .rl{position:relative;cursor:pointer;}
+ .ab{position:absolute;left:100px;top:0px;width:300px;height:200px;display:none;background-color:#f5f5f5;z-index:99;border:1px solid #cccccc;padding:0px 0px 10px 20px}
+</style>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">技师排班情况</div>
+<!-- 查询区域 -->
+<div>
+
+<FORM METHOD=POST ACTION="__URL__/index/">
+<table class="ta_date" cellspacing="0" cellpadding="10px">
+	<tr>
+
+	<td>
+		上门日期：<input TYPE="text" class="large bLeft"  NAME="order_time" onclick="new Calendar().show(this);" value="{$order_time}" readonly="readonly"/>
+	</td>
+	 <td>
+		<br/><br/><input type="submit" value="查询" style="impBtn hMargin fLeft shadow">&nbsp;&nbsp;
+	</td>
+	<td>
+	<p>共 {$count} 单，服务技师 {$count_js} 个（保养 {$count1} 单，免费检测 {$count2} 单，淘宝99元保养订单 {$count3} 单，免99元服务费订单 {$count6} 单，黄喜力套餐 {$count7} 单，蓝喜力套餐 {$count8} 单，灰喜力套餐 {$count9} 单，淘宝订单 {$count13+$count14+$count15+$count16+$count17+$count18} 单）<a href="__APP__/carservice/technicianassign/index">开始排班</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="__APP__/carservice/technicianlist/index">查看排班</a></p>
+	</td>
+ 	</tr>
+
+</table>
+
+</FORM>
+</div>
+	<div style="padding-left: 420px;">当前时间：{$order_time}</div>
+<!-- 功能操作区域结束 -->
+<div style="clear:both;padding-top:20px;width:2200px;">
+	<div style="float:left;width:400px">
+		<div class="map" id="map">
+          <div id='inner-map' style="height:400px;">
+          </div>
+        </div>
+	</div>
+	<div style="float:left;padding-left:20px">
+		<table class="cs">
+			<tr>
+				<td>技师姓名</td>
+				<td>08:00 - 08:59</td>
+				<td>09:00 - 09:59</td>
+				<td>10:00 - 10:59</td>
+				<td>11:00 - 11:59</td>
+				<td>12:00 - 12:59</td>
+				<td>13:00 - 13:59</td>
+				<td>14:00 - 14:59</td>
+				<td>15:00 - 15:59</td>
+				<td>16:00 - 16:59</td>
+				<td>17:00 - 17:59</td>
+				<td>18:00 - 18:59</td>
+				<td>19:00 - 19:59</td>
+				<td>20:00 - 20:59</td>
+				<td>21:00 - 22:59</td>
+			</tr>
+			<volist name="list" id="vo">
+				<tr>
+					<td>{$key}<br/><font style="color:red">{$countDetail.$key}单</font></td>
+					<volist name="vo" id="ko"  key="k">
+						<empty name="ko">
+							<td></td>
+						<else />
+						<td style="vertical-align:top">
+							<volist name="ko" id="co">
+								<div class="rl position" data-lng="{$co.order.longitude},{$co.order.latitude}" data-address="{$co.order.address}" data-technician="{$co.truename}">
+									{$co.order.order_name}<notempty name="co.technician_name"><font>&nbsp;&nbsp;&nbsp;{$co.order.technician_name}</font></notempty>
+									<p class="time_font">{$co.order.order_time|date="H:i",###}</p>
+									<div class="ab">
+										<p><a href="__APP__/Carservice/carserviceorder/detail?id={$co.order.id}" target="_blank"> 订单id:{$co.order.id}</a><i style="float:right;padding-right:20px" onClick="$(this).parent().parent().addClass('noshow')">X</i></p>
+										<p>预约时间:{$co.order.order_time|date="Y-m-d H:i:s",###}</p>
+										<p>服务项目:{$co.order.order_name}</p>
+										<p>地址:{$co.order.address}</p>
+										<p style="color:#ff4a00">{$co.order.coo}<notempty name="co.order.near_time">,两单时隔{$co.order.near_time}小时</notempty></p>
+									</div>
+								</div>
+							</volist>
+						</td>
+						</empty>
+					</volist>
+				</tr>
+			</volist>
+		</table>
+	</div>
+</div>
+</div>
+<!-- 主体内容结束 -->
+<script type="text/javascript">
+$('.rl').click(function(){
+	$('.rl').css('background-color','#ffffff');
+	$('.ab').hide();
+	if(!$(this).find('.ab').hasClass('noshow')){
+		$(this).find('.ab').show();
+	}else{
+		$(this).find('.ab').removeClass('noshow')
+	}
+	$(this).css('background-color','#cccccc');
+})
+$('.sub').click(function(){
+	var js = $(this).parent().find('select');
+	order_id = $(js).attr('data-id');
+	technician_id = $(js).val();
+	if(!technician_id || !order_id || technician_id==0){
+		alert('请选择技师');
+		return false;
+	}
+	$.post("__URL__/bindTech",{'order_id':order_id,'technician_id':technician_id},function(data){
+		if(data.status){
+			alert('分配技师成功');
+			document.location.reload(true);
+		}else{
+			alert(data.data);
+		}
+	},'json')
+})
+$(function(){
+
+	var map = new BMap.Map("inner-map"), // 初始化百度地图
+		shopList = $('.position'),  //获取所有顶铺List
+		listLanArr = [];
+
+	map.centerAndZoom("上海", 12);  
+	map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+	map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+	map.setViewport(listLanArr)	   //根据相关point设置地图viewport
+
+	shopList.each(function(index, list){
+		
+		var coorArr = $(list).attr("data-lng").split(','),
+			coor1 = parseFloat(coorArr[0]),
+			coor2 = parseFloat(coorArr[1]),
+			shopName = $(list).attr("data-technician"),
+			shopAddress =$(list).attr('data-address');
+	
+		var singleShop = {
+			'name' : shopName,
+			'address' : shopAddress,
+			'coor' : {
+				"x" : coor1,
+				"y" : coor2
+			}
+		}
+			
+		listLanArr.push(coor1 + "," +coor2);
+
+
+		var point = new BMap.Point(coor1, coor2), //New Point类
+			marker = new BMap.Marker(point); // New marker类
+
+		addMarker(point, singleShop) // add marker 并且在地途中绑定houver事件
+  		
+  		function addMarker(point, shopObject){
+			var marker = new BMap.Marker(point);
+			map.addOverlay(marker);
+			marker.addEventListener("mouseover", function(e){
+				var sContent =
+					"<div><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+shopObject.address+"</h4>" + 
+					
+					"<p style='margin:0;line-height:1.5;font-size:13px;text-align:center;color:red'>已分配给："+shopObject.name+"</p>" +
+					"</div>";
+				var infoWindow = new BMap.InfoWindow(sContent); 
+				e.target.openInfoWindow(infoWindow, {
+					"enableMessage" : false,
+					"enableAutoPan" : true
+				});
+			});	
+
+			marker.addEventListener("click", function(e){
+				var sContent =
+					"<div><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+shopObject.address+"</h4>" + 
+					
+					"<p style='margin:0;line-height:1.5;font-size:13px;text-align:center;color:red'>已分配给："+shopObject.name+"</p>" +
+					"</div>";
+				var infoWindow = new BMap.InfoWindow(sContent); 
+				e.target.openInfoWindow(infoWindow, {
+					"enableMessage" : false,
+					"enableAutoPan" : true
+				});
+
+			});	
+
+			marker.addEventListener("mouseout",function(){
+				$("#"+singleShop.id).css({
+					// "background" : "none"
+				})
+			})
+
+  		}
+	})
+
+	shopList.click(function(){
+		var $this = $(this),
+			coorArr = $this.attr("data-lng").split(','),
+			thisShop = {
+				"coor1" : parseFloat(coorArr[0]),
+				"coor2" : parseFloat(coorArr[1]),
+				"name" : $this.attr("data-technician"),
+				"address" : $this.attr('data-address'),
+			}
+
+		var point = new BMap.Point(thisShop.coor1, thisShop.coor2),
+			marker = new BMap.Marker(point);
+			map.addOverlay(marker);
+			var sContent =
+				"<div><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+thisShop.address+"</h4>" + 
+				
+				"<p style='margin:0;line-height:1.5;font-size:13px;text-align:center;color:red'>已分配给："+thisShop.name+"</p>" +
+				"</div>";
+			var infoWindow = new BMap.InfoWindow(sContent, {
+				"enableMessage" : false,
+				"enableAutoPan" : true
+			}); 
+			marker.openInfoWindow(infoWindow);
+			marker.addEventListener("mouseover", function(e){
+				var sContent =
+					"<div><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+thisShop.address+"</h4>" + 
+					"<p style='margin:0;line-height:1.5;font-size:13px;text-align:center;color:red'>已分配给："+thisShop.name+"</p>" +
+					"</div>";
+				var infoWindow1 = new BMap.InfoWindow(sContent); 
+				
+				e.target.openInfoWindow(infoWindow1, {
+					"enableMessage" : false,
+					"enableAutoPan" : true
+				});
+			});	
+
+			marker.addEventListener("click", function(e){
+				var sContent =
+					"<div><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+thisShop.address+"</h4>" + 
+					"<p style='margin:0;line-height:1.5;font-size:13px;text-align:center;color:red'>已分配给："+thisShop.name+"</p>" +
+					"</div>";
+				var infoWindow1 = new BMap.InfoWindow(sContent); 
+				
+				e.target.openInfoWindow(infoWindow1, {
+					"enableMessage" : false,
+					"enableAutoPan" : true
+				});
+				
+				
+			});	
+
+			marker.addEventListener("mouseout",function(){
+				$("#"+thisShop.shopId).css({
+					// "background" : "none"
+				})
+			})
+
+	}, function(){
+		var $this = $(this);
+		$this.css({
+		
+			// "background" : "none"
+		})
+	});
+
+	
+	
+
+}())
+</script>
+</div>
+<!-- 主页面结束 -->

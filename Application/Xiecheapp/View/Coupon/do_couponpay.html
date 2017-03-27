@@ -1,0 +1,216 @@
+<layout name='layout_maintenance' />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/sales.css?v={$Think.config.VERSION_DATE}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/pay/order_finish.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new_2/css/pay/gb.css" />
+	<!-- <script type="text/javascript" src="__PUBLIC__/new_2/js/yx.js"></script> -->
+	<style type="text/css">
+	.link_tx .sub {
+		background-position: -150px 0;
+		font-size: 0;
+		height: 11px;
+		margin-top: 5px;
+		position: absolute;
+		right: 5px;
+		top: 0;
+		width: 11px;
+	}
+	</style>
+
+	<div class='clear'></div>
+	<div class="content w1200">
+		<div class="content-left w780 order ">
+			<div class="buy-coupon">
+				<!-- <form method="post" action="/pay/alipayto.php?membercoupon_id={$membercoupon_id}" > -->
+				<!-- <form method="post" action="/coupon/do_couponpay.php?membercoupon_id={$membercoupon_id}" > -->
+
+				<div class="of_wrap">
+					<div class="of_col1">
+									   <i class="icon icon_msg3"></i>
+								</div>
+					<div class="of_col2">
+						<div class="of_mod_status">
+											<h3 class="of_mod_status_tit">订单已提交成功，请您立即付款，我们将为您闪电送达！</h3>
+												<p class="of_mod_status_desc">请您在<em>6</em>小时内完成付款，超过后系统将自动取消订单 </p>
+															<p class="of_mod_status_orderno" ytag="20011"><strong>订单编号：</strong>1074218198</p>
+							<p class="of_mod_status_limit"><strong>订单金额：</strong><span class="payprice">&#165;{$all_amount}</span></p>
+						</div>
+						<div style="" class="confirm" id="divConfirm">
+							<div id="divOnlineConfirm">
+								<span class="arrow_wrap"><i class="outter">◆</i><i class="inner">◆</i></span>
+									<p class="confirm_tit">已选择付款方式：</p>
+									<div class="confirm_con">
+									<div id="divSelectedPayType" class="pay_mod_bankitem confirm_con_bank" ytag="20012"><img src="/Public/new_2/images/bankLogo/bank{$selected}.png"></div><a id="linkModify" class="confirm_con_bank_change" href="javascript:;" onclick="YX.pay.confirmpay.changePayType()" title="修改" ytag="20013">修改</a>
+									</div>
+									<!-- <p id="pPayRules" class="confirm_tit">支付规则：</p>
+									<div id="divPayRules" style="" class="confirm_con"><table class="pay_rules" style="width:400px">    <tbody>    <tr>        <th>卡类</th>        <th>限额条件</th>        <th>单笔限额</th>        <th>每日限额</th>    </tr>            <tr>                        <td rowspan="2">储蓄卡</td>                        <td>大众版</td>        <td>500</td>        <td>500</td>    </tr>        <tr>                <td>专业版</td>        <td>无限额</td>        <td>无限额</td>    </tr>                <tr>                        <td rowspan="2">信用卡</td>                        <td>大额信用卡</td>        <td>本身额度</td>        <td>本身额度</td>    </tr>        <tr>                <td>小额信用卡</td>        <td>2000</td>        <td>本身额度</td>    </tr>            </tbody></table></div> 
+								<div class="confirm_action"><a id="btnConfirmpayOL" class="yx_btn_strong110" href="http://pay.yixun.com/redirect_1074218198" target="_blank" title="立即付款" ytag="20014">立即付款</a></div>-->
+								<!--p class="confirm_others">您现在还可以转用：<a href="javascript:;" onclick="YX.pay.confirmpay.change(2)" title="货到付款">货到付款</a></p-->
+							</div>
+							<div id="divCodConfirm" style="display:none">
+								<span class="arrow_wrap"><i class="outter">◆</i><i class="inner">◆</i></span>
+								<h3 class="confirm_que">确认使用货到付款完成订单？</h3>
+								<p class="confirm_des">支持现金或银行卡付款</p>
+								<div class="confirm_action"><a id="btnConfirmpayCOD" class="yx_btn_strong110" href="javascript:;" title="确认使用" ytag="20015">确认使用</a></div>
+								<!--p class="confirm_others">您现在还可以转用：<a href="javascript:;" onclick="YX.pay.confirmpay.change(1)" title="在线付款" ytag="20020">在线付款</a></p-->
+							</div>
+						</div>
+						<div class="pay_tab" id="divPayTab" style="display:none;">
+							<div class="pay_tab_hd">
+								<ul id="ulNavList" class="pay_nav_list">
+									<li tag="1" class="status_on" ytag="20016" ><a href="javascript:;">网银支付</a></li>
+									<li tag="2" ytag="20017" ><a href="javascript:;">支付平台</a></li>
+									<!-- <li tag="3" ytag="20018"><a href="javascript:;">财付通快捷支付</a></li> -->
+									<!--li tag="4" ytag="20019"><a href="javascript:;">分期付款</a></li-->							
+								</ul>
+							</div>
+							<div class="pay_tab_bd">
+								<!-- S 网银支付 -->
+								<div style="" id="payTypeList_1" class="pay_way_list">
+									<ul id="payTypeListUL_1" class="list_info"><li>      <div class="cuxiao_wrap" id="paymentPromotion_19"></div>      <label>          <input checked="checked" name="sel_online_pay" value="19" type="radio">          <img src="/Public/new_2/images/bankLogo/bank19.png" alt="招商银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_31"></div>      <label>          <input name="sel_online_pay" value="31" type="radio">          <img src="/Public/new_2/images/bankLogo/bank31.png" alt="中国银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_17"></div>      <label>          <input name="sel_online_pay" value="17" type="radio">          <img src="/Public/new_2/images/bankLogo/bank17.png" alt="工商银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_18"></div>      <label>          <input name="sel_online_pay" value="18" type="radio">          <img src="/Public/new_2/images/bankLogo/bank18.png" alt="农业银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_20"></div>      <label>          <input name="sel_online_pay" value="20" type="radio">          <img src="/Public/new_2/images/bankLogo/bank20.png" alt="建设银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_74"></div>      <label>          <input name="sel_online_pay" value="74" type="radio">          <img src="/Public/new_2/images/bankLogo/bank74.png" alt="平安银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_501"></div>      <label>          <input name="sel_online_pay" value="501" type="radio">          <img src="/Public/new_2/images/bankLogo/bank501.png" alt="邮储银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_34"></div>      <label>          <input name="sel_online_pay" value="34" type="radio">          <img src="/Public/new_2/images/bankLogo/bank34.png" alt="光大银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_35"></div>      <label>          <input name="sel_online_pay" value="35" type="radio">          <img src="/Public/new_2/images/bankLogo/bank35.png" alt="兴业银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_36"></div>      <label>          <input name="sel_online_pay" value="36" type="radio">          <img src="/Public/new_2/images/bankLogo/bank36.png" alt="中信银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_37"></div>      <label>          <input name="sel_online_pay" value="37" type="radio">          <img src="/Public/new_2/images/bankLogo/bank37.png" alt="民生银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_38"></div>      <label>          <input name="sel_online_pay" value="38" type="radio">          <img src="/Public/new_2/images/bankLogo/bank38.png" alt="交通银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_39"></div>      <label>          <input name="sel_online_pay" value="39" type="radio">          <img src="/Public/new_2/images/bankLogo/bank39.png" alt="广东发展银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_41"></div>      <label>          <input name="sel_online_pay" value="41" type="radio">          <img src="/Public/new_2/images/bankLogo/bank41.png" alt="上海银行">          <b class="bank_name"></b>      </label></li><li>      <div class="cuxiao_wrap" id="paymentPromotion_42"></div>      <label>          <input name="sel_online_pay" value="42" type="radio">          <img src="/Public/new_2/images/bankLogo/bank42.png" alt="浦发银行">          <b class="bank_name"></b>      </label></li></ul>
+								</div>
+								<!-- E 网银支付 -->
+
+								<!-- S 支付平台 -->
+								<div id="payTypeList_2" class="pay_way_list" style="display:none;">
+									<ul id="payTypeListUL_2" class="list_info netpay_list_info">
+									<li>      
+										<div class="cuxiao_wrap" id="paymentPromotion_502"></div>      
+										<label>          
+										<input name="sel_online_pay" value="502" type="radio">          
+										<img src="__PUBLIC__/new_2/images/bankLogo/bank100.png" alt="银联">          
+										<b class="bank_name"></b>      
+										</label>
+									</li>
+									<!-- <li>      
+										<div class="cuxiao_wrap" id="paymentPromotion_21"></div>      
+										<label>          
+										<input name="sel_online_pay" value="21" type="radio">          
+										<img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank21.png" alt="支付宝">          
+										<b class="bank_name"></b>      
+										</label>
+									</li> -->
+									<li>     
+										<div class="cuxiao_wrap" id="paymentPromotion_8"></div>      
+										<label>          
+										<input name="sel_online_pay" value="8" type="radio">          
+										<img src="__PUBLIC__/new_2/images/bankLogo/bank8.png" alt="财付通">          
+										<b class="bank_name"></b>      
+										</label>
+									</li>
+									<!-- <li>      
+										<div class="cuxiao_wrap" id="paymentPromotion_10"></div>      
+										<label>          
+										<input name="sel_online_pay" value="10" type="radio">          
+										<img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank10.png" alt="快钱">          
+										<b class="bank_name"></b>      
+										</label>
+									</li>
+									<li>      
+										<div class="cuxiao_wrap" id="paymentPromotion_32"></div>      
+										<label>          
+										<input name="sel_online_pay" value="32" type="radio">          
+										<img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank32.png" alt="一城卡">          
+										<b class="bank_name"></b>      
+										</label>
+									</li> -->
+									</ul>
+								</div>
+								<!-- E 支付平台 -->
+
+								<!-- S 快捷支付 -->
+								<!-- <div id="payTypeList_3" class="pay_way_list" style="display:none;">
+									<ul id="payTypeListUL_3" class="list_info quickpay_list_info"><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank17.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank18.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank20.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank31.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank36.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank19.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank34.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank39.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank37.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank74.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank40.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank35.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank_huarun.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li><li>      <div class="cuxiao_wrap"></div>      <label>          <input name="sel_online_pay" value="8" type="radio">          <img src="%E6%98%93%E8%BF%85%E6%94%AF%E4%BB%98%20-%20%E6%98%93%E8%BF%85%E7%BD%91_files/bank_ningbo.png" alt="">          <b class="name"></b>          <span class="ico_quick">快捷</span>      </label></li></ul>
+								</div> -->
+								<!-- E 快捷支付 -->
+
+								<!-- S 分期付款 -->
+								<div id="payTypeList_4" class="pay_fenqi_form" style="display:none;">
+									<div class="pay_fenqi_form_row">
+										<div class="pay_fenqi_label"><label>银&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行：</label></div>
+										<div class="pay_fenqi_con">
+											<label class="radio_wrap"><input type="radio">招商银行</label> <label class="radio_wrap"><input type="radio">平安银行</label>
+										</div>
+									</div>
+									<div class="pay_fenqi_form_row">
+										<div class="pay_fenqi_label"><label>期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：</label></div>
+										<div class="pay_fenqi_con">
+											<label class="radio_wrap"><input type="radio">3期</label> <label class="radio_wrap"><input type="radio">6期</label> <label class="radio_wrap"><input type="radio">12期</label>
+										</div>
+									</div>
+									<div class="pay_fenqi_form_row">
+										<div class="pay_fenqi_label"><label>还款总数：</label></div>
+										<div class="pay_fenqi_con">
+											<em class="tc_1">&#165;149.00</em> = 订单总额  <em class="tc_1">&#165;1299.00</em> + 分期手续费<em class="tc_1">&#165;200.00</em> <span class="tc_2">（以银行收取为准）</span>
+										</div>
+									</div>
+									<div class="pay_fenqi_form_row">
+										<div class="pay_fenqi_label"><label>还款规则：</label></div>
+										<div class="pay_fenqi_con">
+											<em class="tc_1">&#165;149.00</em> X <em class="tc_1">3</em>期手续费<span class="tc_2">（以银行收取为准）</span>
+										</div>
+									</div>
+								</div>
+								<!-- E 分期付款 -->
+								<div class="confirm_action"><a class="yx_btn_normal110" id="btnSelectPayType" href="javascript:;" title="确认使用" ytag="20021">确认支付方式</a></div>
+								<!--p class="confirm_others">您现在还可以转用：<a href="javascript:;" onclick="YX.pay.confirmpay.change(2)" title="货到付款" ytag="20022">货到付款</a></p-->
+							</div>
+						</div>
+						<!-- <div class="mod_note">
+							<h4 class="mod_hd">注意事项：</h4>
+							<div class="mod_bd">
+								<ol>
+									<li>“订单提交成功”仅表明易迅网收到了您的订单，只有您的订单通过审核后，才代表订单正式生效；</li>
+									<li>选择货到付款/易迅快递的客户，请您务必认真检查所收货物，如有不符，您可以拒收；</li>
+									<li>选择其他方式的客户，请您认真检查外包装。如有明显损坏迹象，您可以拒收该货品，并及时通知我们；</li>
+									<li>建议您在购买的15天内保留商品的全套包装、附件、发票等所有随货物品，以便后续的保修处理。</li>
+								</ol>
+							</div>
+						</div> -->
+					</div>
+				</div>
+
+
+				<div style="width:880px; height:60px; line-height: 60px; position: relative;">
+					<span class='pay-btn'>
+						<input type="submit" class='submit' value='立即支付' />
+					</span>
+				</div>
+			<form>
+			</div>
+		</div>
+		
+	</div> 
+	<script>
+	//点击修改
+	$('document').ready(function(){
+		$('.confirm_con_bank_change').click(function(){
+			$('.confirm').attr('style','display:none;');
+			$('#divPayTab').attr('style','');
+		});
+	});
+	//点击修改
+	$('document').ready(function(){
+		$("li").click(function(){
+			$(this).addClass('status_on');
+			$(this).siblings().removeClass('status_on');
+			key1=$(this).siblings().attr('tag');
+			//alert(key1);
+			$('#payTypeList_'+key1).attr('style','display:none;');
+			key2=$(this).attr('tag');
+			//alert(key2);
+			$('#payTypeList_'+key2).attr('style','');
+		})
+	});
+	//获取选择的支付方式
+	$('document').ready(function(){
+		$("#btnSelectPayType").click(function(){
+			//获取选中银行的src
+			src = $('input:radio[name="sel_online_pay"]:checked').parents('label').find('img').attr('src');
+			//console.log("%o", inner_html);
+			//alert(inner_html);
+			$("#divSelectedPayType").find('img').attr('src',src);
+			$('.confirm').attr('style','');
+			$('#divPayTab').attr('style','display:none;');
+		})
+	});
+	</script>

@@ -1,0 +1,127 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="../../Public/header" />
+<script src="__JS__/Think/jquery-1.6.2.min.js"></script>
+
+
+<style type="text/css">
+	td{padding:10px 20px;border-bottom:1px solid #cccccc}
+</style>
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+    <!-- 主体内容  -->
+    <div class="content" >
+         <div class="title">新增退卡单 [ <A HREF="__URL__">返回列表</A> ]</div>
+         <div style="padding:20px 0px">
+         	开单人：{$Think.session.loginAdminUserName}&nbsp;&nbsp;&nbsp;&nbsp;
+         	开单日期：{$time|date="y-m-d",###}<br>
+         </div>
+         <notempty name="list">
+		 <form id="form">
+			<table cellpadding=3 cellspacing=0>
+				<tr>
+					<td></td>
+					<td>产品用途：</td>
+					<td>编码：</td>
+					<td>单价：</td>
+					<td>可退数量：</td>
+					<td>总金额：</td>
+				</tr>
+				<volist name="list" id="vo">
+					<tr>
+						<td><input class="ck" type="checkbox" data-id="{$vo.id}" /></td>
+						<td>{$vo.use_way}</td>
+						<td>
+							<volist name="vo.cardListData" id="list_data">
+								<div style="padding:0px 10px"><input class="card_list" name="card_list" type="checkbox" data-id="{$list_data.id}" />{$vo.ic}-{$list_data.ic_id}</div>
+							</volist>
+						</td>
+						<td>{$vo.price}</td>
+						<td>{$vo.record_num}</td>
+						<td>{$vo['price']*$vo['num']}</td>
+					</tr>
+					
+				</volist>
+				
+				<tr>
+					<td>退卡人</td>
+					<td colspan="5">
+						<input type="text" name="receive_person" />
+					</td>
+				</tr>
+				<tr>
+					<td>退卡数量</td>
+					<td colspan="5">
+						<input type="text" name="num" />
+					</td>
+				</tr>
+				<tr>
+					<td>备注</td>
+					<td colspan="5">
+						<textarea name="remark" style="width:100%"></textarea>
+					</td>
+				</tr>
+                <TR>
+                    <TD colspan="4" style="border:none"><input TYPE="button" value="提交" onclick="check();" /></TD>
+                </TR>
+			</table>
+		 </form>
+		 <else />
+		 	<p>当前没有产品可退</p>
+		 </notempty>
+    </div>
+<script type="text/javascript">
+function check(){
+	id = list = '';
+	$('#form').find('.ck').each(function(){
+		if( $(this).attr('checked') == 'checked'){
+			id += $(this).attr('data-id')+'|';
+			$(this).parent().parent().find('.card_list').each(function(){
+				if( $(this).attr('checked') == 'checked'){
+					list += $(this).attr('data-id')+'|';
+				}
+			});
+		}
+	});
+	if(!id){
+		alert('请勾选要退卡的产品');
+		return false;
+	}
+	type = 1;
+	if($('input[name=type]').attr('checked') == 'checked'){
+		type = 2;
+	}
+	receive_person = $('input[name=receive_person]').val();
+	if(!receive_person){
+		alert('请填写退卡人');
+		return false;
+	}
+	num = $('input[name=num]').val();
+	if(!num){
+		alert('请填写退卡数量');
+		return false;
+	}
+	if( parseInt(num) != num ){
+		alert('退卡数量必须填整数');
+		return false;
+	}
+	if(!list){
+		alert('请勾选要退卡的编码');
+		return false;
+	}
+	remark = $('textarea[name=remark]').val();
+	$.post("__URL__/do_add",{'id':id,'remark':remark,'type':type,'receive_person':receive_person,'num':num,'list':list},function(data){
+		if(data.status){
+			alert(data.info);
+			document.location.href="/Admin/index.php/Storehouse/Cardrefund/index";
+		}else{
+			alert(data.info);
+		}	
+	},'json'); 
+	
+}
+</script>
+    <!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

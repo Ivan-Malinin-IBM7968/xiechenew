@@ -1,0 +1,215 @@
+
+<script src="__PUBLIC__/think/jquery-1.6.2.min.js"></script>
+<script src="__PUBLIC__/Js/note/note_script.js"></script>
+<div id="main" class="main" >
+<div class="content">
+<form action="__URL__/editproduct" method="post">
+<table>
+
+<tr>
+<td>项目分类</td>
+<td>
+<select name="service_item_id" id="si_level_1">
+<volist name="service_list" id="vo">
+
+<eq name="vo.service_id" value="$product_info.service_item_id"><option value="{$vo.service_id}" selected="selected">{$vo.si_name}</option><else/><option value="{$vo.service_id}">{$vo.si_name}</option></eq>
+</volist>
+</select>
+</td>
+</tr>
+<tr>
+<td>服务项目</td><td> 
+<select id="si_level_2" name="service_id">
+</select></td>
+</tr>
+<tr>
+<td>配件明细：<a class="AddItem" id="but">增加</a></td>
+<td>
+	
+	<div id="tab">
+	<volist name="product_detail" id="vo" key="i">
+		<table id="{$i}" border='0' cellspacing='0' cellpadding='0' class='AddItem'>
+			<tr>
+				<td>
+			       <div id='BigClass'>
+						<select name='TXT_BigClass[]' id='TXT_BigClass' onchange='Request(this,"midClass_{$i}", "smallClass_{$i}");'><volist name="Think.config.MAINTAIN_BIGCLASS" id="type" key="title_key">
+						<option value="{$key}" <eq name="key" value="$vo.Big">selected="selected"</eq>>{$type}</option></volist></select>
+						</div></td><td><div id="midClass_{$i}"><select name="TXT_MidlClass[]" id='TXT_MidlClass'><option value="{$vo.Midl}">{$vo.Midl_name}</option></select>
+					</div>
+				</td>
+				<td >说明：<input type='text' id='content' name='content[]'  value="{$vo.content}"></td>
+				<td >单价：<input type='text' id='price' name='price[]'  value="{$vo.price}"></td>
+				<td >数量：<input type='text' id='quantity' name='quantity[]'  value="{$vo.quantity}"></td>
+				<td >折扣：<select name="sale[]">
+				<volist name="list_productsale" id="vo_sale">
+				<option value="{$vo_sale.productsale_id}" <eq name="vo_sale.productsale_id" value="$vo.sale">selected="selected"</eq>>{$vo_sale.product_sale}</option>
+				</volist>
+				</td>
+				<td><a class='DelItem' onclick="deltr({$i})" >删除</a></td>
+			</tr>
+		</table>
+		</volist>	
+	</div>
+		
+			 
+</td>
+</tr>
+<tr>
+	<script type="text/javascript" src="__PUBLIC__/Js/car_select/normal.js"></script>
+<div style="display:block;" id="div_SearchCar" class="select_box"><!--当不显示时style="display:none"-->
+<tr>
+<th>品牌</th>
+<td>
+<select onchange="comp_brlist('brandbox','seriesbox','','modelbox');" name="brand_id" id="brandbox" multiple>
+        </select>
+</td>
+</tr>
+<tr>
+<th>车系</th>
+<td>
+<select disabled="" onchange="comp_splist('brandbox', 'seriesbox','', 'modelbox');" name="series_id" id="seriesbox" multiple>
+			
+		<option value="">选择车系</option></select>
+</td>
+</tr>
+<tr>
+<th>车型</th>
+<td>
+<select disabled="" name="model_id[]" id="modelbox" multiple>
+			
+		<option value="">选择车型</option></select>
+</td>
+</tr>
+</div>
+</tr>
+<tr>
+<th>商家</th><td><select name="shop_id[]" multiple>
+<volist name="list_shop" id="vo">
+<option value="{$vo.shop_id}">{$vo.shop_name}</option>
+</volist>
+</select></td>
+</tr>
+<tr>
+
+<td><input type="hidden" value="{$shop_id}"  name="shop_id"><input type="submit" value="保 存"  class="button small"> </td>
+<volist name="product_id_arr" id="vo">
+<input type="hidden" value="{$vo.product_id}"  name="product_id[]">
+</volist>
+</tr>
+
+</table>
+</form>
+</div>
+</div>
+
+<script>
+comp_fctlist("brandbox", "seriesbox", "", "modelbox",{$product_info.brand_id},{$product_info.series_id},[{$str_model_id}]);
+
+	$(document).ready(function(){
+		$.ajax({
+			type: "POST",
+			url: "__URL__/ajax_get_level",
+			cache: false,
+			data: "service_item_id="+$("#si_level_1").val(),
+			success: function(data){
+				if (data!='null'){
+					var param = eval(data);
+					//alert(data);
+					
+					for (i=0; i<param.length; i++ ){
+						if(param[i]['service_id'] == {$product_info.service_id}){
+							$("#si_level_2").append("<option value='"+param[i]['service_id']+"' selected='selected'>"+param[i]['si_name']+"</option>");
+						}else{
+							$("#si_level_2").append("<option value='"+param[i]['service_id']+"'>"+param[i]['si_name']+"</option>");
+						}
+					} 
+					
+				}
+			}
+		});
+
+
+	});
+
+	$("#si_level_1").change(function(){
+		$("#si_level_2").html("");
+		if($(this).val() != '0'){
+			$.ajax({
+				type: "POST",
+				url: "__URL__/ajax_get_level",
+				cache: false,
+				data: "service_item_id="+$(this).val(),
+				success: function(data){
+					if (data!='null'){
+						var param = eval(data);
+						for (i=0; i<param.length; i++ ){
+							$("#si_level_2").append("<option value='"+param[i]['service_id']+"'>"+param[i]['si_name']+"</option>");
+						}
+					}
+				}
+			});
+		}else{
+			
+		}
+	});
+
+
+
+
+
+
+	 function Request(bigClass, midClassDivId, smallClassDivId){
+	 if (bigClass.value == 0){
+	 	var midSelect = document.getElementById(midClassDivId);
+		
+			midSelect.innerHTML = "<select name=\"TXT_MidlClass[]\" id=\"TXT_MidlClass\" style=\"width:50px;\"><option></option></select>";
+		var smallSelect = document.getElementById(smallClassDivId);
+			smallSelect.innerHTML = "<select name=\"TXT_SmallClass[]\" id=\"TXT_SmallClass\" style=\"width:50px;\"><option></option></select>";
+	 }
+	 else
+	 {
+		 createXMLHttpRequest();
+		 xmlHttp.onreadystatechange = function(){ handleStateChange(midClassDivId); };
+		 var getUrl = "__URL__/maintaindetail/select/"+ bigClass.value +"/smallClass/" + smallClassDivId;
+		 getUrl = encodeURI(getUrl);
+  		 getUrl = encodeURI(getUrl);
+		 xmlHttp.open("GET", getUrl, true);
+		 xmlHttp.send(null);
+	 }
+ }
+     $(document).ready(function(){
+        //<tr/>居中
+        //$("#tab tr").attr("align","center");
+        
+        //增加<tr/>
+        $("#but").click(function(){
+            var _len = $(".AddItem:last").attr('id'); 
+			if(_len == 'but'){
+				var _len = 0;
+			}else{
+				var _len = ++_len;
+			}
+			 $("#tab").append("<table id="+_len+" border='0' cellspacing='0' cellpadding='0' class='AddItem'><tr><td><div id='BigClass'><select name='TXT_BigClass[]' id='TXT_BigClass' onchange=\'Request(this, \"midClass_"+_len+"\", \"smallClass_"+_len+"\");\'><volist name="Think.config.MAINTAIN_BIGCLASS" id="type" key="title_key"><option value='{$key}'>{$type}</option></volist></select></div></td><td><div id='midClass_"+_len+"'><select name='TXT_MidlClass[]' id='TXT_MidlClass'><option value='0'></option></select></div></td><td >说明：<input type='text' id='content' name='content[]' ></td><td >单价：<input type='text' id='price' name='price[]'></td><td>数量：<input type='text' id='quantity' name='quantity[]'></td><td >折扣：<select name='sale[]'><volist name='list_productsale' id='vo_sale'><option value='{$vo_sale.productsale_id}'>{$vo_sale.product_sale}</option></volist></td><td><a class='DelItem' onclick=\'deltr("+_len+")\' >删除</a></td></table>"); 
+
+
+        })    
+    })
+    
+    //删除<tr/>
+    var deltr =function(index)
+    {
+		
+        var _len = $("#tab table").length;
+		//alert(_len);
+        $("#tab table[id='"+index+"']").remove();//删除当前行
+		/*
+		alert("table[id='"+index+"']");
+        for(var i=index+1,j=_len;i<j;i++)
+        {
+		//alert(i);
+            var nextTxtVal = $("#desc"+i).val();
+            $("#tab table[id=\'"+(i-1)+"\']").replaceWith("<table id="+(i-1)+" border='0' cellspacing='0' cellpadding='0' class='AddItem'><tr class='none'><td class='w2'></td><td class='w2'></td><td class='w2'><a class='DelItem' onclick=\'deltr("+(i-1)+")\' ></a></td></tr><tr class='none'><td class='w2'><div id='BigClass'><select name='TXT_BigClass[]' id='TXT_BigClass' onchange=\'Request(this, \"midClass_"+(i-1)+"\", \"smallClass_"+i+"\");\'><option  selected='selected'></option><option value='190'>发动机</option><option value='191'>传动系配件</option><option value='192'>转向系配件</option><option value='193'>制动系配件</option><option value='194'>行走系配件</option><option value='195'>电器仪表件</option><option value='196'>车身及附件</option><option value='197'>横向件及其他</option><option value='200'>保养用品及设备</option><option value='201'>工具</option><option value='202'>汽车影音娱乐</option><option value='203'>汽车内外饰用品</option><option value='204'>汽车改装</option><option value='205'>汽车安全用品</option><option value='206'>其他</option></select></div></td><td class='w2'><div id='midClass_"+(i-1)+"'><select name='TXT_MidlClass[]' id='TXT_MidlClass'><option value='0'></option></select></div></td><td class='w2'><div id='smallClass_"+(i-1)+"'><select name='TXT_SmallClass[]' id='TXT_SmallClass'><option value='0'></option></select></div></td></tr><tr  class='none'><td >单价：<input type='text' id='TXT_Price' name='TXT_Pric[]' class='addframetextbox w3 inp01'> 元</td><td >数量：<input type='text' id='TXT_Quantity' name='TXT_Quantity[]' class='addframetextbox w3 inp01'> 件</td><td >总价：<input type='text'id='TXT_SubCost'name='TXT_SubCost[]' class='addframetextbox w3 inp01'> 元</td></tr></table>");
+        }   
+        */
+    }
+</script>

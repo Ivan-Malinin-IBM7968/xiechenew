@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>抢爆款约车模</title>
+	    <meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-itunes-app" content="app-id=588144466" />
+		<link rel="stylesheet" href="css/libs/jquery.mobile.min.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/apps/main.css">
+		<link rel="stylesheet" href="css/apps/app.css">
+		<script src="js/libs/jquery.js"></script>
+		<script src="js/libs/jquery.mobile-1.4.2.min.js"></script>
+		
+	</head>
+	
+</head>
+	<body style="background: #f5f5f5; position: relative;">
+		<div id="wrapper">
+			<!-- Main Page Start -->
+			<div data-role="page" id="coupon-list-main">
+				
+				<!-- Header Start -->
+				<header id="header" data-role="header">
+					<h1>每天一猜</h1>
+					<span id="left-trigger">
+						<!-- <a href="javascript: history.go(-1);" class="back" rel="external"></a> -->
+					</span>
+					<span id="right-trigger" >
+						<a href="tel:4006602822" class="service-call"></a>
+					</span>
+				</header>
+				<!-- Header End -->
+				
+
+				
+
+				<!-- 竞猜模块 -->
+				<div class="ui-grid-solo playground-container" >
+					<div class="playground ui-grid-solo">
+						<h4 class="coupon-name">联通新悦东风悦达起亚K5<br/>大保养套餐</h4>
+						<img src="http://placehold.it/450x338" alt="" class="coupon-img">
+						<div class="coupon-address">上海联通新悦-东风悦达起亚4S店</div>
+						<div class="playground-caption">猜底价</div>
+						<div class="number-holder">
+							<span class="rmb-sign">￥</span>
+							<span>1</span>
+							<span class="question-mark">?</span>
+							<span>1</span>
+						</div>
+						<ul class="ui-grid-d guess-num-container">
+							<li class="ui-block-a">
+								<a href="#popupDialog1" data-rel="popup" data-overlay-theme="b" data-position-to="window" data-transition="pop">1</a>
+							</li>
+							<li class="ui-block-b">
+								<a href="#popupDialog2" data-rel="popup" data-overlay-theme="b" data-position-to="window" data-transition="pop">2</a>
+							</li>
+							<li class="ui-block-c">
+								<a href="#popupDialog3" data-rel="popup" data-overlay-theme="b" data-position-to="window" data-transition="pop">3</a>
+							</li>
+							<li class="ui-block-d">
+								<a href="#popupDialog4" data-rel="popup" data-overlay-theme="b" data-position-to="window" data-transition="pop">4</a>
+							</li>
+							<li class="ui-block-e">
+								<a href="#popupDialog5" data-rel="popup" data-overlay-theme="b" data-position-to="window" data-transition="pop">5</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- 竞猜模块 -->
+				
+				<div data-role="popup" id="popupLogin" class="ui-corner-all">
+				    <form>
+				        <div style="padding:10px 20px;">
+				            <h3>Please sign in</h3>
+				            <label for="un" class="ui-hidden-accessible">Username:</label>
+				            <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+				            <label for="pw" class="ui-hidden-accessible">Password:</label>
+				            <input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+				            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>
+				        </div>
+				    </form>
+				</div>
+
+
+
+				<div class="index-cate-title">你可能感兴趣的</div>
+				<div id="list-coupon">
+					<ul data-role="listview" data-inset="true">
+				        <li class="ui-grid-a single-coupon" style="">
+							<div class="ui-block-a" style="width: 35%">
+								<img src="http://www.xieche.com.cn/UPLOADS/Coupon/Logo/coupon1_516e74ba21e20.jpg" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">联通新悦东风悦达起亚K2小保养套餐</h3>
+								</div>
+								<div class="ui-grid-a" >
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥199元</strong>
+										<em>¥299</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="" class="buy-btn disable">领 取</a>
+									</div> 
+									
+								</div>
+
+														
+							</div>
+				        </li>
+				        <li class="ui-grid-a single-coupon" >
+							<div class="ui-block-a" style="width: 35%">
+								<img src="http://www.xieche.com.cn/UPLOADS/Coupon/Logo/coupon1_516e74ba21e20.jpg" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">联通新悦东风悦达起亚K2小保养套餐</h3>
+								</div>
+								<div class="ui-grid-a" >
+									 
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥199元</strong>
+										<em>¥299</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="" class="buy-btn disable">领 取</a>
+									</div> 
+									
+									
+								</div>
+
+														
+							</div>
+				        </li>
+				        <li class="ui-grid-a single-coupon" >
+							<div class="ui-block-a" style="width: 35%">
+								<img src="http://www.xieche.com.cn/UPLOADS/Coupon/Logo/coupon1_516e74ba21e20.jpg" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">联通新悦东风悦达起亚K2小保养套餐</h3>
+								</div>
+								<div class="ui-grid-a" >
+									 
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥199元</strong>
+										<em>¥299</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="" class="buy-btn disable">领 取</a>
+									</div> 
+									
+									
+								</div>
+
+														
+							</div>
+				        </li>
+				        <li class="ui-grid-a single-coupon" >
+							<div class="ui-block-a" style="width: 35%">
+								<img src="http://www.xieche.com.cn/UPLOADS/Coupon/Logo/coupon1_516e74ba21e20.jpg" alt="" style="width: 95%; margin: 0 auto; display:block;">
+							</div>
+							<div class="ui-block-b" style="width: 65%; padding-left: 5px; overflow: hidden;">
+								<div class="ui-block-solo" >
+									<h3 class="coupon-name" style="margin: 0px; white-space: normal;">联通新悦东风悦达起亚K2小保养套餐</h3>
+								</div>
+								<div class="ui-grid-a" >
+									 
+									<div class="ui-block-a coupon-price" style="width: 40%">
+										<strong>¥199元</strong>
+										<em>¥299</em>
+									</div>
+									<div class="ui-block-b" style="width: 60%;">
+										<a href="" class="buy-btn disable">领 取</a>
+									</div> 
+									
+									
+								</div>
+
+														
+							</div>
+				        </li>
+				    </ul>
+				</div>
+				<div class="ui-grid-solo more-coupon-link">
+		   			<a href="" style="display: block; margin: 0 auto;">点击参与竞猜活动！</a>
+		   		</div>
+		   		<div class="index-cate-title">活动规则</div>
+		   		<ul class="event-rule">
+		   			<li>
+		   				<span>1</span>
+		   				凡通过携车网预约或购买产品的用户，致电 <a href="tel:400-660-2822">400-660-2822</a> 提前两天预约，就可享受车模全程接待
+		   			</li>
+		   			<li>
+		   				<span>2</span>
+		   				通过携车网车模接待的用户，均可获得小礼品一件。
+		   			</li>
+		   			<li>
+		   				<span>3</span>
+		   				活动时间：7月2日至7月8日
+		   			</li>
+		   		</ul>
+				
+
+				<!-- Popup1  Start -->
+				<div data-role="popup" class="popup-window" id="popupDialog1" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+					<h2 class="popup-title">恭喜你猜对了！</h2>
+				    <div role="main" class="ui-content popup-desc">
+				      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+			      	</div>
+				    <div class="popup-btn-container ui-grid-a">
+				    	<div class="ui-block-a">
+				    		<a href="#"  data-rel="back">填写手机号领券</a>
+				    	</div>
+				    	<div class="ui-block-b">
+				    		<a href="#"  data-rel="back" data-transition="flow">点击分享</a>
+				    	</div>
+				    </div>
+				</div>
+				<!-- Popup1  End -->
+
+				<!-- Popup2  Start -->
+				<div data-role="popup" class="popup-window" id="popupDialog2" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+					<h2 class="popup-title">恭喜你猜对了！</h2>
+				    <div role="main" class="ui-content popup-desc">
+				      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+			      	</div>
+				    <div class="popup-btn-container ui-grid-a">
+				    	<div class="ui-block-a">
+				    		<a href="#"  data-rel="back">填写手机号领券</a>
+				    	</div>
+				    	<div class="ui-block-b">
+				    		<a href="#"  data-rel="back" data-transition="flow">点击分享</a>
+				    	</div>
+				    </div>
+				</div>
+				<!-- Popup2  End -->
+
+				<!-- Popup3  Start -->
+				<div data-role="popup" class="popup-window" id="popupDialog3" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				    <h2 class="popup-title">恭喜你猜对了！</h2>
+				    <div role="main" class="ui-content popup-desc">
+				      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+			      	</div>
+				    <div class="popup-btn-container ui-grid-a">
+				    	<div class="ui-block-a">
+				    		<a href="#"  data-rel="back">填写手机号领券</a>
+				    	</div>
+				    	<div class="ui-block-b">
+				    		<a href="#"  data-rel="back" data-transition="flow">点击分享</a>
+				    	</div>
+				    </div>
+				</div>
+				<!-- Popup3  End -->
+
+				<!-- Popup4  Start -->
+				<div data-role="popup" class="popup-window" id="popupDialog4" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				    <h2 class="popup-title">恭喜你猜对了！</h2>
+				    <div role="main" class="ui-content popup-desc">
+				      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+			      	</div>
+				    <div class="popup-btn-container ui-grid-a">
+				    	<div class="ui-block-a">
+				    		<a href="#"  data-rel="back">填写手机号领券</a>
+				    	</div>
+				    	<div class="ui-block-b">
+				    		<a href="#"  data-rel="back" data-transition="flow">点击分享</a>
+				    	</div>
+				    </div>
+				</div>
+				<!-- Popup4  End -->
+
+				<!-- Popup5  Start -->
+				<div data-role="popup" class="popup-window" id="popupDialog5" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+					<h2 class="popup-title">恭喜你猜对了！</h2>
+				    <div role="main" class="ui-content popup-desc">
+				      	我们会将优惠券码发送到您的手机，请查收！好东西要分享，赶紧呼唤小伙伴们吧！
+			      	</div>
+				    <div class="popup-btn-container ui-grid-a">
+				    	<div class="ui-block-a">
+				    		<a href="#"  data-rel="back">填写手机号领券</a>
+				    	</div>
+				    	<div class="ui-block-b">
+				    		<a href="#"  data-rel="back" data-transition="flow">点击分享</a>
+				    	</div>
+				    </div>
+				</div>
+				<!-- Popup5  End -->
+
+			</div>
+			
+			<!-- Main Page End -->
+			
+		</div>
+		
+
+
+		
+	<script>
+		document.addEventListener("touchstart", function() {},false);
+	</script>
+	</body>
+</html>

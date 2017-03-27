@@ -1,0 +1,393 @@
+/*去掉a的下划线*/
+a {
+    blr: expression(this.onFocus=this.blur())
+}
+
+/*if IE*/
+a {
+    outline: none;
+}
+
+/*if 火狐等现代浏览器浏览器*/
+/*省略号*/
+/*white-space:nowrap;overflow:hidden;text-overflow:ellipsis;*/
+/*英文自动换行*/
+/*word-break: break-all;*/
+
+/*强制不换行*/
+/*white-space:nowrap;*/
+/*contenteditable="true"*/
+body, ul, ol, dl, dd, h1, h2, h3, h4, h5, h6, p, input, select, textarea, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px/1.5 "微软雅黑";
+}
+
+img {
+    border: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* input,select,textarea{outline:none;border:none;background:none;}*/
+textarea {
+    resize: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*清浮动*/
+/* .clearfix:after{ content:"";*display:block;*clear:both;}
+ .clearfix{zoom:1;}*/
+
+/*  <!-- contents -->----------------------------------------*/
+.bangyang {
+    width: 1003px;
+    margin: auto auto;
+}
+
+.title_bangyang {
+    padding-top: 30px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.title_bangyang h2 {
+    padding-top: 33px;
+    font-size: 28px;
+    color: #545454;
+}
+
+.title_bangyang p {
+    padding-top: 15px; /*padding-bottom: 40px;*/
+    color: #999999;
+    font-size: 16px;
+}
+
+.jllf {
+    margin-left: 133px;
+}
+
+.indentlf {
+    width: 890px;
+    margin: 0 auto;
+}
+
+.xianjinquandescon {
+
+}
+
+.contents {
+    width: 1000px;
+    margin: auto auto;
+}
+
+/*18px;5555*/
+.line_bottom {
+    width: 1000px;
+    border-bottom: 1px solid #f1f1f1;
+    margin-top: 40px;
+}
+
+.line_bottom2 {
+    width: 508px;
+    border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 12px;
+}
+
+.left_ma {
+    margin-left: 50px;
+}
+
+.left_ma p {
+    font-size: 14px;
+    color: #737373;
+    padding-bottom: 12px;
+}
+
+.left_ma .button_detail {
+    width: 115px;
+    height: 40px;
+    border: 1px solid #2d81c5;
+    text-align: center;
+    line-height: 40px;
+}
+
+.left_ma .button_detail a {
+
+    color: #2d81c5;
+    font-size: 16px;
+}
+
+.left_ma .english {
+    font-size: 24px;
+    color: #eeeeee;
+}
+
+.more_by {
+    background-color: #f2f2f2;
+    height: 590px;
+    margin-top: 90px;
+    overflow: hidden;
+}
+
+.more_by2 {
+    height: 514px;
+    overflow: hidden;
+}
+
+.more_by .content_more {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.more_by .content_more2 {
+    width: 910px;
+    margin: 0 auto;
+}
+/*---------------保养服务-----------------*/
+.tu_by{ background: url("../images/index_new/order_bg.png" ) no-repeat;}
+.more_by .left_more {
+    margin-left: 20px;
+    background: url("../images/index_new/shop_bg.png" ) no-repeat;
+}
+.more_by .left_more_by {
+    margin-left: 20px;
+    background: url("../images/index_new/coupon_bg.png" ) no-repeat;
+}
+.tu{
+    width: 320px;
+    height: 360px;
+    background-size: 100%;
+    overflow: hidden;
+}
+.tu1{
+    position: relative;
+    left: 0;
+    top: 200px;
+}
+
+.tu3{
+    position: relative;
+    left: 130px;
+    top:-200px;
+    width: 84px;
+    height: 83px;
+}
+.fl{ float: left;}
+.clearf{ clear: both; content:''; height: 0; display: block;}
+
+.more_postion {
+    position: relative;
+}
+
+.circle1 {
+    position: relative;
+    left: 119px;
+    top: -202px;
+}
+
+.circle2 {
+    position: relative;
+    left: 462px;
+    top: -285px;
+}
+
+.circle3 {
+    position: relative;
+    left: 800px;
+    top: -368px;
+}
+
+.circle4 {
+    position: relative;
+    left: 295px;
+    top: -73px;
+}
+
+.circle5 {
+    position: relative;
+    left: 773px;
+    top: -125px;
+}
+/*---------------保养服务-----------------*/
+.remark_weixiu {
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 18px;
+}
+
+/* .remark_weixiu a{
+     font-size: 18px;
+ }*/
+.left_more2 {
+    padding-left: 55px;
+}
+
+.coupon_des {
+    background: url("../images/index_new/coupon_bgnew.png") no-repeat;
+    background-size: 100%;
+    text-align: center;
+}
+
+.size_img img {
+    width: 209px;
+    height: 157px;
+
+}
+
+.title_coupon {
+    width: 430px;
+    margin: 45px auto;
+}
+
+.title_more {
+    width: 605px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+
+.coupon_content {
+    width: 960px;
+    margin:0 auto;
+}
+
+.coupon_detail {
+
+}
+
+.coupon_content ul li {
+    float: left;
+    padding-right: 41px;
+    display: block;
+}
+
+.coupon_des .line3 {
+    width: 167px;
+    border-bottom: 1px solid #7bc1eb;
+    height: 15px;
+    margin: auto;
+}
+
+.coupon_des h6 {
+    padding-top: 20px;
+}
+
+.coupon_des h6 a {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.pa_but {
+    padding-bottom: 20px;
+}
+
+
+/*-------------提问-----------------*/
+#item4 .more_by .ask {
+    height: 350px;
+    width: 1000px;
+    background: url(../images/bg_ask.png) top center no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.asktip {
+    width: 560px;
+    position: absolute;
+    left: 90px;
+    top: 70px;
+}
+
+.asktip h3 {
+    font-size: 28px;
+    height: 50px;
+    color: #ffffff;
+}
+
+.asktip p {
+    line-height: 2em;
+    font-size: 18px;
+    color: #a7a7a8;
+}
+
+.asktip a {
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    margin-top: 60px;
+    line-height: 50px;
+    text-align: center;
+    border: 2px solid #ffffff;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.askimg {
+    background: url(../images/index_new/iphone_01.png) no-repeat;
+    height: 100%;
+    position: relative;
+    top: -450px;
+    left: 353px;
+    width: 250px;
+    margin: auto;
+
+}
+
+.askimg img {
+    position: relative;
+    left: 17px;
+    top: 58px;
+
+    /* display: inline-block;
+     margin-left: 60px;
+     width: 190px;
+     height: 336px;*/
+}
+
+/*-------------提问-----------------*/
+.baodao_content {
+    width:1000px;
+    margin:0 auto;
+    padding-bottom: 30px;
+}
+.baodao_content .fl{width:248px;height:180px;padding:0;margin:0; text-align:center;border-bottom:1px solid #f3f3f3;vertical-align:middle;}
+.baodao_content .fl img{max-width:178px;}
+.baodao_content .fl #img{width:0;height:100%;}
+.baodao_content .last_baodao { margin-right:0; }
+.baodao_content .line_baodao{width:1px;padding:0;margin:0;}
+.line_baodao{
+    padding: 0;
+	margin:0;
+    width: 1px;
+    height: 180px;
+    background-color:#f3f3f3;/*#f3f3f3;*/
+}
+
+.ask3 {
+    margin-top: 0;
+}
+.font_price{
+    margin-top: 6px;
+    margin-bottom: 5px;
+    font-size:30px;
+    color: #ffe26d;
+}
+/*
+ 以前的版本
+*/
+
