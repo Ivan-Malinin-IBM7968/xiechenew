@@ -1,1 +1,0 @@
-ALTER TABLE `xc_order` ADD `service_ids` VARCHAR( 255 ) NOT NULL COMMENT '维修保养服务ID' AFTER `timesale_id` ;
