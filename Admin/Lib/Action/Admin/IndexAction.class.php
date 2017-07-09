@@ -3,6 +3,7 @@
 class IndexAction extends CommonAction {
 	// 框架首页
 	public function index() {
+            //这里是后台首页
 		if(!isset($_SESSION[C('USER_AUTH_KEY')])) {
 			$this->assign('jumpUrl',__APP__.'/Public/login');
 			header('Location:'.__APP__.'/Public/login');
